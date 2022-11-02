@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 /**
  * @author Thaumstrial
  */
-public interface DampAbleEntityBlock extends EntityBlock, DampBlock {
+public interface DampAbleBlockEntity extends EntityBlock, DampBlock {
 
     BlockEntityType<?> getType();
 
