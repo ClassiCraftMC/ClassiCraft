@@ -22,6 +22,5 @@ public class CCLanguageZhProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         add("itemGroup.classicraft.tab", "天工开物");
-        add(ModItems.SALT.get(), "盐");
     }
 }

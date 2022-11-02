@@ -22,7 +22,6 @@ public class CCLanguageProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         add("itemGroup.classiccraft.tab", "ClassicCraft Tab");
-        add(ModItems.SALT.get(), "Salt");
     }
 
 }
