@@ -1,10 +1,10 @@
 package nameless.classicraft.api.common.block.entity;
 
+import nameless.classicraft.util.ContainerUtils;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.items.ItemStackHandler;
-import tt432.millennium.util.container.ContainerUtils;
 
 /**
  * @author DustW
