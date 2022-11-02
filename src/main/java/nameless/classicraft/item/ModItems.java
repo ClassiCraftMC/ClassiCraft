@@ -1,12 +1,14 @@
 package nameless.classicraft.item;
 
-import nameless.classicraft.ClassicCraft;
+import nameless.classicraft.ClassiCraft;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.Locale;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
@@ -16,11 +18,20 @@ import java.util.function.Supplier;
  * 使用例子:
  * public static final RegistryObject<Item> EXAMPLE_ITEM = register("example_item");
  */
-public class CCItems {
+public class ModItems {
 
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ClassicCraft.MODID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ClassiCraft.MODID);
 
     public static final RegistryObject<Item> SALT = register("salt", SaltItem::new);
+    public static final RegistryObject<Item> ROTTEN_FOOD = normal("rotten_food", p -> p.food(new FoodProperties.Builder().build()));
+
+    private static RegistryObject<Item> normal(String name, Function<Item.Properties, Item.Properties> func) {
+        return ITEMS.register(name, () -> new Item(func.apply(base())));
+    }
+
+    private static Item.Properties base() {
+        return new Item.Properties().tab(ClassiCraftTab.TAB);
+    }
 
     /**
      * 用于注册物品
@@ -28,7 +39,7 @@ public class CCItems {
      * @return 返回新的注册实例
      */
     private static RegistryObject<Item> register(String name) {
-        return register(name, () -> new Item(new Item.Properties().tab(ClassicCraftTab.TAB)));
+        return register(name, () -> new Item(new Item.Properties().tab(ClassiCraftTab.TAB)));
     }
 
     /**

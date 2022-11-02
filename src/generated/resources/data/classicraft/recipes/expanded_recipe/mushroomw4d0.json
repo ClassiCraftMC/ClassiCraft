@@ -1,0 +1,31 @@
+{
+  "inputs": [
+    [],
+    [],
+    [],
+    {
+      "item": "minecraft:bone_meal"
+    },
+    {
+      "item": "minecraft:acacia_log"
+    },
+    {
+      "item": "minecraft:bone_meal"
+    },
+    {
+      "item": "classicraft:rotten_food"
+    },
+    {
+      "item": "minecraft:podzol"
+    },
+    {
+      "item": "classicraft:rotten_food"
+    }
+  ],
+  "result": {
+    "item": "classicraft:mushroom_planter",
+    "nbt": "{dirt:0,wood:4}",
+    "count": 1
+  },
+  "type": "classicraft:expanded_recipe"
+}

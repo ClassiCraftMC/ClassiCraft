@@ -1,8 +1,8 @@
 package nameless.classicraft.block;
 
-import nameless.classicraft.ClassicCraft;
-import nameless.classicraft.item.CCItems;
-import nameless.classicraft.item.ClassicCraftTab;
+import nameless.classicraft.ClassiCraft;
+import nameless.classicraft.item.ModItems;
+import nameless.classicraft.item.ClassiCraftTab;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -24,7 +24,7 @@ import java.util.function.Supplier;
  */
 public class CCBlocks {
 
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ClassicCraft.MODID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ClassiCraft.MODID);
 
     public static final RegistryObject<Block> SLAT_GRAVEL = register("salt_gravel", SaltGravelBlock::new);
 
@@ -36,7 +36,7 @@ public class CCBlocks {
      * @param <T> 继承自方块类，需要使用RegistryObject类
      */
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockSupplier) {
-        return register(name, blockSupplier, block -> new BlockItem(block, new Item.Properties().tab(ClassicCraftTab.TAB)));
+        return register(name, blockSupplier, block -> new BlockItem(block, new Item.Properties().tab(ClassiCraftTab.TAB)));
     }
 
     /**
@@ -68,6 +68,6 @@ public class CCBlocks {
      * @param <T> 继承自方块类，需要使用RegistryObject类
      */
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockSupplier, @Nullable Function<T, ? extends BlockItem> blockItemFactory) {
-        return registerBlock(CCBlocks.BLOCKS, CCItems.ITEMS, name, blockSupplier, blockItemFactory);
+        return registerBlock(CCBlocks.BLOCKS, ModItems.ITEMS, name, blockSupplier, blockItemFactory);
     }
 }

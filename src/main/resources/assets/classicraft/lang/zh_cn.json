@@ -1,0 +1,26 @@
+{
+  "block.classicraft.fridge": "冰箱",
+  "block.classicraft.glistering_melon": "闪烁的金西瓜",
+  "block.classicraft.cactus_fruit": "仙人掌果实",
+  "block.classicraft.mushroom_planter": "蘑菇农场",
+  "block.classicraft.unlit_torch": "熄灭的火把",
+  "block.classicraft.unlit_soul_torch": "熄灭的灵魂火把",
+  "block.classicraft.unlit_lantern": "熄灭的灯笼",
+  "block.classicraft.unlit_soul_lantern": "熄灭的灵魂灯笼",
+
+  "item.classicraft.cactus_fruit": "仙人掌果实",
+  "item.classicraft.rotten_food": "腐烂物",
+  "item.classicraft.cooked_egg": "煎蛋",
+  "item.classicraft.nether_mushroom_stew": "下界蘑菇汤",
+
+  "level.classicraft.fresh" : "新鲜的",
+  "level.classicraft.stale" : "陈旧的",
+  "level.classicraft.spoiled" : "变质的",
+  "level.classicraft.rotten" : "腐坏的",
+
+  "info.classicraft.rot" : "%s天后腐烂",
+  "info.classicraft.rotting_speed" : "腐烂速度：%s",
+
+  "container.classicraft.fridge" : "冰箱",
+  "itemGroup.classicraft": "天工开物"
+}

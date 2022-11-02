@@ -1,6 +1,6 @@
 package nameless.classicraft.item;
 
-import nameless.classicraft.ClassicCraft;
+import nameless.classicraft.ClassiCraft;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -11,12 +11,12 @@ import net.minecraft.world.item.Items;
  * 使用例子:
  * ClassicCraftTab.TAB
  */
-public class ClassicCraftTab extends CreativeModeTab {
+public class ClassiCraftTab extends CreativeModeTab {
 
-    public static final ClassicCraftTab TAB = new ClassicCraftTab();
+    public static final ClassiCraftTab TAB = new ClassiCraftTab();
 
-    public ClassicCraftTab() {
-        super(ClassicCraft.MODID + ".tab");
+    public ClassiCraftTab() {
+        super(ClassiCraft.MODID + ".tab");
     }
 
     @Override

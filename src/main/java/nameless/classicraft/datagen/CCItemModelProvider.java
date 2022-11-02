@@ -1,6 +1,6 @@
 package nameless.classicraft.datagen;
 
-import nameless.classicraft.ClassicCraft;
+import nameless.classicraft.ClassiCraft;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -31,7 +31,7 @@ public class CCItemModelProvider extends ItemModelProvider {
     protected Set<Item> skipItems = new HashSet<>();
 
     public CCItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper, DeferredRegister<? extends Item> deferredRegister) {
-        super(generator, ClassicCraft.MODID, existingFileHelper);
+        super(generator, ClassiCraft.MODID, existingFileHelper);
         this.deferredRegister = deferredRegister;
     }
 

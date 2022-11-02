@@ -1,7 +1,7 @@
 package nameless.classicraft.datagen;
 
-import nameless.classicraft.ClassicCraft;
-import nameless.classicraft.item.CCItems;
+import nameless.classicraft.ClassiCraft;
+import nameless.classicraft.item.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 
@@ -11,7 +11,7 @@ import net.minecraftforge.common.data.LanguageProvider;
 public class CCLanguageZhProvider extends LanguageProvider {
 
     public CCLanguageZhProvider(DataGenerator gen, String locale) {
-        super(gen, ClassicCraft.MODID, locale);
+        super(gen, ClassiCraft.MODID, locale);
     }
 
     /**
@@ -22,6 +22,6 @@ public class CCLanguageZhProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         add("itemGroup.classicraft.tab", "天工开物");
-        add(CCItems.SALT.get(), "盐");
+        add(ModItems.SALT.get(), "盐");
     }
 }

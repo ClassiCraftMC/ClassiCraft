@@ -1,6 +1,6 @@
 package nameless.classicraft;
 
-import nameless.classicraft.item.CCItems;
+import nameless.classicraft.item.ModItems;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -14,14 +14,14 @@ import org.slf4j.Logger;
  * ExampeModItems.ITEMS.register(modEventBus);
  * ExampeModBlocks.BLOCKS.register(modEventBus);
  */
-@Mod(ClassicCraft.MODID)
-public class ClassicCraft {
+@Mod(ClassiCraft.MODID)
+public class ClassiCraft {
 
     public static final String MODID = "classicraft";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public ClassicCraft() {
+    public ClassiCraft() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        CCItems.ITEMS.register(modEventBus);
+        ModItems.ITEMS.register(modEventBus);
     }
 }

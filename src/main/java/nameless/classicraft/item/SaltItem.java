@@ -15,7 +15,7 @@ public class SaltItem extends Item {
                     .build();
 
     public SaltItem() {
-        super(new Item.Properties().tab(ClassicCraftTab.TAB).food(SALT));
+        super(new Item.Properties().tab(ClassiCraftTab.TAB).food(SALT));
     }
 
 }
