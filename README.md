@@ -1,1 +1,1 @@
-# ClassiCraft
+# ClassicCraft
