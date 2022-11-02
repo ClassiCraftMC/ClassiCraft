@@ -1,6 +1,6 @@
 package nameless.classicraft.mixin;
 
-import nameless.classicraft.capability.ModCapabilities;
+import nameless.classicraft.common.capability.ModCapabilities;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;

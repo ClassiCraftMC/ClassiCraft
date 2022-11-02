@@ -1,6 +1,6 @@
 package nameless.classicraft.mixin;
 
-import nameless.classicraft.item.AttachFoods;
+import nameless.classicraft.common.item.AttachFoods;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import org.spongepowered.asm.mixin.Mixin;

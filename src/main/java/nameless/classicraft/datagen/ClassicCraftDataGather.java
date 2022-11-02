@@ -1,6 +1,6 @@
 package nameless.classicraft.datagen;
 
-import nameless.classicraft.item.ModItems;
+import nameless.classicraft.common.item.ModItems;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;

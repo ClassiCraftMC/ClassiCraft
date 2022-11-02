@@ -8,8 +8,15 @@
     "MixinBlockEntity",
     "MixinBlockItem",
     "MixinBlockStateBase",
+    "MixinBushBlock",
+    "MixinCactusBlock",
+    "MixinCakeBlock",
+    "MixinCropBlock",
     "MixinItem",
-    "MixinItemStack"
+    "MixinItemStack",
+    "MixinPumpkinBlock",
+    "MixinSugarCaneBlock",
+    "MixinTurtleEggBlock"
   ],
   "client": [
     "MixinItemRenderer"

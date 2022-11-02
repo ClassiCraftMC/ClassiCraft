@@ -1,7 +1,9 @@
 package nameless.classicraft.mixin;
 
-import nameless.classicraft.capability.ModCapabilities;
-import nameless.classicraft.rot.RotManager;
+import nameless.classicraft.api.common.block.RotBlock;
+import nameless.classicraft.common.block.entity.RotAbleBlockEntity;
+import nameless.classicraft.common.capability.ModCapabilities;
+import nameless.classicraft.common.rot.RotManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.Containers;
 import net.minecraft.world.item.ItemStack;
@@ -39,7 +41,6 @@ public abstract class MixinBlockStateBase {
             return;
         }
 
-        /**
         if (getBlock() instanceof RotBlock rb && rb.needDropSelf()) {
             ItemStack stack = new ItemStack(getBlock().asItem());
 
@@ -52,7 +53,7 @@ public abstract class MixinBlockStateBase {
 
             Containers.dropItemStack(pLevel, pPos.getX(), pPos.getY(), pPos.getZ(), stack);
         }
-         */
+
     }
 
     @Inject(method = "getDrops", at = @At("RETURN"), cancellable = true)

@@ -1,7 +1,7 @@
 package nameless.classicraft.datagen;
 
 import nameless.classicraft.ClassiCraft;
-import nameless.classicraft.item.ModItems;
+import nameless.classicraft.common.item.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 
