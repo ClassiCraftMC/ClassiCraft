@@ -37,4 +37,4 @@ jobs:
         with:
           name: classicraft-0.0.1.jar
           path: build/libs/classicraft-0.0.1.jar
-          repo-token: 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
+          repo-token: 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
