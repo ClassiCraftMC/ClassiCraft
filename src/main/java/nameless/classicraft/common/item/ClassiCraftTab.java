@@ -3,7 +3,7 @@ package nameless.classicraft.common.item;
 import nameless.classicraft.ClassiCraft;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * ClassicCraft物品栏类
@@ -11,17 +11,21 @@ import net.minecraft.world.item.Items;
  * 使用例子:
  * ClassicCraftTab.TAB
  */
-public class ClassiCraftTab extends CreativeModeTab {
+public class ClassiCraftTab {
 
-    public static final ClassiCraftTab TAB = new ClassiCraftTab();
+    public static final CreativeModeTab COMMON = new CreativeModeTab(ClassiCraft.MODID + ".common") {
+        @NotNull
+        @Override
+        public ItemStack makeIcon() {
+            return new ItemStack(ModItems.CLASSIC_CRAFT.get());
+        }
+    };
 
-    public ClassiCraftTab() {
-        super(ClassiCraft.MODID + ".tab");
-    }
-
-    @Override
-    public ItemStack makeIcon() {
-        return Items.CACTUS.getDefaultInstance();
-    }
-
+    public static final CreativeModeTab DECORATION = new CreativeModeTab(ClassiCraft.MODID + ".decoration") {
+        @NotNull
+        @Override
+        public ItemStack makeIcon() {
+            return new ItemStack(ModItems.UNLIT_FIRE_BOWL.get());
+        }
+    };
 }

@@ -23,7 +23,8 @@ public class CCLanguageZhProvider extends LanguageProvider {
      */
     @Override
     protected void addTranslations() {
-        add("itemGroup.classicraft.tab", "天工开物");
+        add("itemGroup.classicraft.common", "天工开物丨通常");
+        add("itemGroup.classiccraft.decoration", "天工开物丨装饰");
         add("level.classicraft.fresh", "新鲜的");
         add("level.classicraft.stale", "陈旧的");
         add("level.classicraft.spoiled", "变质的");

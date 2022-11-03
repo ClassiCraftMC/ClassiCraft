@@ -25,7 +25,8 @@ public class CCLanguageProvider extends LanguageProvider {
      */
     @Override
     protected void addTranslations() {
-        add("itemGroup.classiccraft.tab", "ClassicCraft Tab");
+        add("itemGroup.classiccraft.common", "ClassicCraft Common Tab");
+        add("itemGroup.classiccraft.decoration", "ClassicCraft Decoration Tab");
         add("level.classicraft.fresh", "Fresh ");
         add("level.classicraft.stale", "Stale ");
         add("level.classicraft.spoiled", "Spoiled ");
