@@ -39,8 +39,6 @@ public class ModBlocks {
     public static final RegistryObject<Block> UNLIT_SOUL_TORCH = BLOCKS.register("unlit_soul_torch", () -> new UnlitTorchBlock(torch()));
     public static final RegistryObject<Block> WALL_UNLIT_SOUL_TORCH = BLOCKS.register("wall_unlit_soul_torch", () -> new WallUnlitTorchBlock(torch()));
 
-    public static final RegistryObject<Block> SALT_ORE = BLOCKS.register("salt_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), UniformInt.of(0, 2)));
-
     // 批量添加不同材料和颜色的烛台方块
     public static final ArrayList<RegistryObject<Block>> UNLIT_CANDLEHOLDERS = new ArrayList<RegistryObject<Block>>(){{
         for (String material : Arrays.asList("golden_","","copper_"))//铁制烛台的命名空间不带有iron

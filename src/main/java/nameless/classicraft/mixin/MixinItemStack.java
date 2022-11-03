@@ -67,12 +67,12 @@ public abstract class MixinItemStack implements CCItemStack {
                 int selfCount = getCount();
                 int finalCount = Math.min(count, getMaxStackSize() - selfCount);
 
-                var finalDamp = (dampOther.getRotValue() - dampSelf.getRotValue()) * finalCount / (selfCount + finalCount);
+                var finalDamp = (dampOther.getDampValue() - dampSelf.getDampValue()) * finalCount / (selfCount + finalCount);
 
                 other.shrink(finalCount);
                 grow(finalCount);
 
-                dampSelf.setRotValue(finalDamp + dampSelf.getRotValue());
+                dampSelf.setDampValue(finalDamp + dampSelf.getDampValue());
 
                 cir.setReturnValue(true);
             });

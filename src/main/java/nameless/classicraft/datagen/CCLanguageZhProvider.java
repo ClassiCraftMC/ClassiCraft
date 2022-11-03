@@ -31,6 +31,10 @@ public class CCLanguageZhProvider extends LanguageProvider {
         add("info.classicraft.rot", "%s天后腐烂");
         add("info.classicraft.rotting_speed", "腐烂速度：%s");
         add("container.classicraft.fridge", "冰箱");
+        add("level.classicraft.dry", "干燥的 ");
+        add("level.classicraft.wet", "有水分的 ");
+        add("info.classicraft.damp", "%s天后干燥");
+        add("info.classicraft.damping_speed", "干燥速度: %s");
         add(ModBlocks.FRIDGE.get(), "冰箱");
         add(ModBlocks.GLISTERING_MELON.get(), "闪烁的金西瓜");
         add(ModBlocks.CACTUS_FRUIT.get(), "仙人掌果实");

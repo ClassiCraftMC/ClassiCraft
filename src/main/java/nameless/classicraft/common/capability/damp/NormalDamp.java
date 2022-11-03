@@ -15,7 +15,7 @@ public class NormalDamp extends AbstractDamp {
     public NormalDamp(ItemStack damp_item) {
         super(new DampHolder(getSecond(damp_item.getItem()), getSecond(damp_item.getItem())), true, damp ->
                 List.of(Component.translatable("info.classicraft.damp", String.format("%.2f", damp.getHolder().getCurrent() / 24000)),
-                        Component.translatable("info.classicraft.dampping_speed", (int) (damp.getFinalSpeed() * 100) + "%")), 1);
+                        Component.translatable("info.classicraft.damping_speed", (int) (damp.getFinalSpeed() * 100) + "%")), 1);
     }
 
     public static int getSecond(Item item) {

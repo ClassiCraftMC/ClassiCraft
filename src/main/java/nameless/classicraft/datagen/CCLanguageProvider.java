@@ -33,7 +33,11 @@ public class CCLanguageProvider extends LanguageProvider {
         add("level.classicraft.rotten", "Rotten ");
         add("info.classicraft.rot", "It will rotten after %s day");
         add("info.classicraft.rotting_speed", "Rotting Speed: %s");
-        add(ModMenuTypes.FRIDGE.get().toString(), "Fridge");
+        add("level.classicraft.dry", "Dry ");
+        add("level.classicraft.wet", "Wet ");
+        add("info.classicraft.damp", "It will dried after %s day");
+        add("info.classicraft.damping_speed", "Damping Speed: %s");
+        add("container.classicraft.fridge", "Fridge");
         add(ModBlocks.FRIDGE.get(), "Fridge");
         add(ModBlocks.GLISTERING_MELON.get(), "Glistering Melon");
         add(ModBlocks.CACTUS_FRUIT.get(), "Cactus Fruit");

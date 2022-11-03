@@ -20,7 +20,6 @@ public class CCBlockStatesProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        simpleSideBlock(ModBlocks.SALT_ORE);
     }
 
     public static final ResourceLocation TOP = new ResourceLocation(ClassiCraft.MODID, "block/top");
