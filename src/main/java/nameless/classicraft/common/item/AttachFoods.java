@@ -41,13 +41,15 @@ public class AttachFoods {
             .put(Items.WARPED_FUNGUS, food(1, 0.2)
                     .effect(() -> new MobEffectInstance(MobEffects.WEAKNESS, 300, 2), 1)
                     .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 300, 0), 1).build())
+            .put(ModItems.SALT.get(), food(0, 0.0)
+                    .effect(() -> new MobEffectInstance(MobEffects.HUNGER, 900, 1), 1).build())
             .put(Items.GLISTERING_MELON_SLICE, food(4, 4.8).build())
             .put(ModItems.GLISTERING_MELON.get(), food(12, 4.8).build())
             .put(ModItems.COOKED_EGG.get(), food(6, 9.6).build())
             .put(ModItems.NETHER_MUSHROOM_STEW.get(), food(6, 7.2).build())
             .put(Items.MELON, food(6, 1.2).build())
             .put(Items.PUMPKIN, food(4, 1.2).build())
-            //.put(ModItems.CACTUS_FRUIT.get(), food(2, 0.4).build())
+            .put(ModItems.CACTUS_FRUIT.get(), food(2, 0.4).build())
             .put(Items.CAKE, food(14, 2.8).build()).build();
 
     public static boolean isAttach(Item item) {

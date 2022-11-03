@@ -24,7 +24,7 @@ public class CCLanguageZhProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         add("itemGroup.classicraft.common", "天工开物丨通常");
-        add("itemGroup.classiccraft.decoration", "天工开物丨装饰");
+        add("itemGroup.classicraft.decoration", "天工开物丨装饰");
         add("level.classicraft.fresh", "新鲜的");
         add("level.classicraft.stale", "陈旧的");
         add("level.classicraft.spoiled", "变质的");
@@ -36,18 +36,15 @@ public class CCLanguageZhProvider extends LanguageProvider {
         add(ModBlocks.GLISTERING_MELON.get(), "闪烁的金西瓜");
         add(ModBlocks.CACTUS_FRUIT.get(), "仙人掌果实");
         add(ModBlocks.MUSHROOM_PLANTER.get(), "蘑菇农场");
-        add(ModBlocks.UNLIT_TORCH.get(), "熄灭的火把");
-        add(ModBlocks.UNLIT_SOUL_TORCH.get(), "熄灭的灵魂火把");
-        add(ModBlocks.UNLIT_LANTERN.get(), "熄灭的灯笼");
-        add(ModBlocks.UNLIT_SOUL_LANTERN.get(), "熄灭的灵魂灯笼");
         add(ModItems.CACTUS_FRUIT.get(), "仙人掌果实");
         add(ModItems.ROTTEN_FOOD.get(), "腐烂物");
         add(ModItems.COOKED_EGG.get(), "煎蛋");
         add(ModItems.NETHER_MUSHROOM_STEW.get(), "下界蘑菇汤");
-        add(ModItems.UNLIT_FIRE_BOWL.get(), "熄灭的火坑");
-        add(ModItems.UNLIT_SOUL_FIRE_BOWL.get(), "熄灭的灵魂火坑");
-        add(ModItems.UNLIT_LARGE_FIRE_BOWL.get(), "熄灭的火炉");
-        add(ModItems.UNLIT_LARGE_SOUL_FIRE_BOWL.get(), "熄灭的灵魂火炉");
+        add(ModItems.SALT.get(), "盐");
+        add(ModBlocks.UNLIT_TORCH.get(), "熄灭的火把");
+        add(ModBlocks.UNLIT_SOUL_TORCH.get(), "熄灭的灵魂火把");
+        add(ModBlocks.UNLIT_LANTERN.get(), "熄灭的灯笼");
+        add(ModBlocks.UNLIT_SOUL_LANTERN.get(), "熄灭的灵魂灯笼");
         add("block.classicraft.unlit_golden_white_candleholder", "Unlit Golden White Candleholder");
         add("block.classicraft.unlit_golden_orange_candleholder", "Unlit Golden Orange Candleholder");
         add("block.classicraft.unlit_golden_magenta_candleholder", "Unlit Golden Magenta Candleholder");

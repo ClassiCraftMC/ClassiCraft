@@ -25,8 +25,8 @@ public class CCLanguageProvider extends LanguageProvider {
      */
     @Override
     protected void addTranslations() {
-        add("itemGroup.classiccraft.common", "ClassicCraft Common Tab");
-        add("itemGroup.classiccraft.decoration", "ClassicCraft Decoration Tab");
+        add("itemGroup.classicraft.common", "ClassicCraft Common Tab");
+        add("itemGroup.classicraft.decoration", "ClassicCraft Decoration Tab");
         add("level.classicraft.fresh", "Fresh ");
         add("level.classicraft.stale", "Stale ");
         add("level.classicraft.spoiled", "Spoiled ");
@@ -45,7 +45,12 @@ public class CCLanguageProvider extends LanguageProvider {
         add(ModItems.CACTUS_FRUIT.get(), "Cactus Fruit");
         add(ModItems.ROTTEN_FOOD.get(), "Rotten Food");
         add(ModItems.COOKED_EGG.get(), "Cooked Egg");
+        add(ModItems.SALT.get(), "Salt");
         add(ModItems.NETHER_MUSHROOM_STEW.get(), "Nether Mushroom Stew");
+        add(ModItems.UNLIT_FIRE_BOWL.get(), "Unlit Fire Bowl");
+        add(ModItems.UNLIT_SOUL_FIRE_BOWL.get(), "Unlit Soul Fire Bowl");
+        add(ModItems.UNLIT_LARGE_FIRE_BOWL.get(), "Unlit Large Fire Bowl");
+        add(ModItems.UNLIT_LARGE_SOUL_FIRE_BOWL.get(), "Unlit Large Soul Fire Bowl");
         add("block.classicraft.unlit_golden_white_candleholder", "Unlit Golden White Candleholder");
         add("block.classicraft.unlit_golden_orange_candleholder", "Unlit Golden Orange Candleholder");
         add("block.classicraft.unlit_golden_magenta_candleholder", "Unlit Golden Magenta Candleholder");
