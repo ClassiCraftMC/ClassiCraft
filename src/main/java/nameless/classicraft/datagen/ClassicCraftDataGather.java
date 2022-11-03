@@ -1,6 +1,5 @@
 package nameless.classicraft.datagen;
 
-import nameless.classicraft.common.item.ModItems;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -21,6 +20,9 @@ public class ClassicCraftDataGather {
         event.getGenerator().addProvider(
                 event.includeClient(),
                 new CCLanguageZhProvider(event.getGenerator(), "zh_cn"));
+        event.getGenerator().addProvider(
+                event.includeClient(),
+                new CCBlockStatesProvider(event.getGenerator(), event.getExistingFileHelper()));
         event.getGenerator().addProvider(
                 event.includeClient(),
                 new CCItemModelProvider(event.getGenerator(), event.getExistingFileHelper()));

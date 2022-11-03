@@ -22,4 +22,5 @@ public class ClassiCraftHooks {
             Items.ROTTEN_FLESH.getFoodProperties().saturationModifier = 0.0F;
         }
     }
+
 }

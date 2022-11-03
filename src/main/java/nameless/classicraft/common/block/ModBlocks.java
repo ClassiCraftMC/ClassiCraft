@@ -4,8 +4,10 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import nameless.classicraft.ClassiCraft;
 import nameless.classicraft.common.block.entity.ModBlockEntities;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
@@ -36,6 +38,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> WALL_UNLIT_TORCH = BLOCKS.register("wall_unlit_torch", () -> new WallUnlitTorchBlock(torch()));
     public static final RegistryObject<Block> UNLIT_SOUL_TORCH = BLOCKS.register("unlit_soul_torch", () -> new UnlitTorchBlock(torch()));
     public static final RegistryObject<Block> WALL_UNLIT_SOUL_TORCH = BLOCKS.register("wall_unlit_soul_torch", () -> new WallUnlitTorchBlock(torch()));
+
+    public static final RegistryObject<Block> SALT_ORE = BLOCKS.register("salt_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), UniformInt.of(0, 2)));
 
     // 批量添加不同材料和颜色的烛台方块
     public static final ArrayList<RegistryObject<Block>> UNLIT_CANDLEHOLDERS = new ArrayList<RegistryObject<Block>>(){{
