@@ -14,10 +14,10 @@ import net.minecraftforge.registries.RegistryObject;
  * @author DustW
  **/
 public class ModMenuTypes {
-    public static final DeferredRegister<MenuType<?>> REGISTER =
+    public static final DeferredRegister<MenuType<?>> MENUS_TYPES =
             DeferredRegister.create(ForgeRegistries.MENU_TYPES, ClassiCraft.MODID);
 
-    public static final RegistryObject<MenuType<FridgeMenu>> FRIDGE = REGISTER.register("fridge", () -> from(FridgeMenu::new));
+    public static final RegistryObject<MenuType<FridgeMenu>> FRIDGE = MENUS_TYPES.register("fridge", () -> from(FridgeMenu::new));
 
     private interface KKBeMenuCreator<M extends AbstractContainerMenu, T extends BlockEntity> {
         M create(int windowId, Inventory inv, T blockEntity);
