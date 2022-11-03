@@ -31,7 +31,7 @@ public class CCLanguageZhProvider extends LanguageProvider {
         add("level.classicraft.rotten", "腐坏的");
         add("info.classicraft.rot", "%s天后腐烂");
         add("info.classicraft.rotting_speed", "腐烂速度：%s");
-        add(ModMenuTypes.FRIDGE.get().toString(), "冰箱");
+        add("container.classicraft.fridge", "冰箱");
         add(ModBlocks.FRIDGE.get(), "冰箱");
         add(ModBlocks.GLISTERING_MELON.get(), "闪烁的金西瓜");
         add(ModBlocks.CACTUS_FRUIT.get(), "仙人掌果实");
@@ -45,6 +45,10 @@ public class CCLanguageZhProvider extends LanguageProvider {
         add(ModBlocks.UNLIT_SOUL_TORCH.get(), "熄灭的灵魂火把");
         add(ModBlocks.UNLIT_LANTERN.get(), "熄灭的灯笼");
         add(ModBlocks.UNLIT_SOUL_LANTERN.get(), "熄灭的灵魂灯笼");
+        add(ModItems.UNLIT_FIRE_BOWL.get(), "熄灭的火坑");
+        add(ModItems.UNLIT_SOUL_FIRE_BOWL.get(), "熄灭的灵魂火坑");
+        add(ModItems.UNLIT_LARGE_FIRE_BOWL.get(), "熄灭的火炉");
+        add(ModItems.UNLIT_LARGE_SOUL_FIRE_BOWL.get(), "熄灭的灵魂火炉");
         add("block.classicraft.unlit_golden_white_candleholder", "Unlit Golden White Candleholder");
         add("block.classicraft.unlit_golden_orange_candleholder", "Unlit Golden Orange Candleholder");
         add("block.classicraft.unlit_golden_magenta_candleholder", "Unlit Golden Magenta Candleholder");
