@@ -51,6 +51,7 @@ public class CCLanguageProvider extends LanguageProvider {
         add(ModItems.UNLIT_SOUL_FIRE_BOWL.get(), "Unlit Soul Fire Bowl");
         add(ModItems.UNLIT_LARGE_FIRE_BOWL.get(), "Unlit Large Fire Bowl");
         add(ModItems.UNLIT_LARGE_SOUL_FIRE_BOWL.get(), "Unlit Large Soul Fire Bowl");
+        add(ModItems.DOUGH.get(), "Dough");
         add("block.classicraft.unlit_golden_white_candleholder", "Unlit Golden White Candleholder");
         add("block.classicraft.unlit_golden_orange_candleholder", "Unlit Golden Orange Candleholder");
         add("block.classicraft.unlit_golden_magenta_candleholder", "Unlit Golden Magenta Candleholder");

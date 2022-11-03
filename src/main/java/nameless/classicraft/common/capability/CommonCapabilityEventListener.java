@@ -3,6 +3,8 @@ package nameless.classicraft.common.capability;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import nameless.classicraft.ClassiCraft;
+import nameless.classicraft.common.capability.damp.DampCapabilityProvider;
+import nameless.classicraft.common.capability.damp.NormalDamp;
 import nameless.classicraft.common.capability.rot.EmptyRot;
 import nameless.classicraft.common.capability.rot.NormalRot;
 import nameless.classicraft.common.capability.rot.RotCapabilityProvider;
@@ -31,6 +33,9 @@ public class CommonCapabilityEventListener {
         } else if (NormalRot.canUse(event.getObject())) {
             attach(event, "rot", new RotCapabilityProvider(LazyOptional.of(() -> new NormalRot(event.getObject()))));
         }
+        if (NormalDamp.canUse(event.getObject())) {
+            attach(event, "damp", new DampCapabilityProvider(LazyOptional.of(() -> new NormalDamp(event.getObject()))));
+        }
     }
 
     static void attach(AttachCapabilitiesEvent<?> event, String name, ICapabilityProvider provider) {
@@ -42,6 +47,11 @@ public class CommonCapabilityEventListener {
         event.getItemStack().getCapability(ModCapabilities.ROT).ifPresent(rot -> {
             if (rot.isHasExMsg() && !event.getItemStack().is(Items.ROTTEN_FLESH)) {
                 event.getToolTip().addAll(rot.getMsg());
+            }
+        });
+        event.getItemStack().getCapability(ModCapabilities.DAMP).ifPresent(damp -> {
+            if (damp.isHasExMsg()) {
+                event.getToolTip().addAll(damp.getMsg());
             }
         });
     }

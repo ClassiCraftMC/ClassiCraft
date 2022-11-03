@@ -67,6 +67,7 @@ public class RotItems {
             .put(Items.GLISTERING_MELON_SLICE, 192000)
             .put(ModItems.GLISTERING_MELON.get(), 1728000)
             .put(ModItems.COOKED_EGG.get(), 72000)
+            .put(ModItems.DOUGH.get(), 72000)
             .put(ModItems.NETHER_MUSHROOM_STEW.get(), 144000)
             .put(Items.MELON, 168000)
             .put(Items.PUMPKIN, 720000)

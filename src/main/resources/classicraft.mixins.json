@@ -18,9 +18,6 @@
     "MixinSugarCaneBlock",
     "MixinTurtleEggBlock"
   ],
-  "client": [
-    "MixinItemRenderer"
-  ],
   "injectors": {
     "defaultRequire": 1
   }

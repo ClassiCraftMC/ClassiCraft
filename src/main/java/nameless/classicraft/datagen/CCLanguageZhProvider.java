@@ -48,6 +48,7 @@ public class CCLanguageZhProvider extends LanguageProvider {
         add(ModItems.UNLIT_SOUL_FIRE_BOWL.get(), "熄灭的灵魂火坑");
         add(ModItems.UNLIT_LARGE_FIRE_BOWL.get(), "熄灭的火炉");
         add(ModItems.UNLIT_LARGE_SOUL_FIRE_BOWL.get(), "熄灭的灵魂火炉");
+        add(ModItems.DOUGH.get(), "面团");
         add("block.classicraft.unlit_golden_white_candleholder", "Unlit Golden White Candleholder");
         add("block.classicraft.unlit_golden_orange_candleholder", "Unlit Golden Orange Candleholder");
         add("block.classicraft.unlit_golden_magenta_candleholder", "Unlit Golden Magenta Candleholder");
