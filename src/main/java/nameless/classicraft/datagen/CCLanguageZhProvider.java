@@ -3,7 +3,6 @@ package nameless.classicraft.datagen;
 import nameless.classicraft.ClassiCraft;
 import nameless.classicraft.common.block.ModBlocks;
 import nameless.classicraft.common.item.ModItems;
-import nameless.classicraft.common.menu.ModMenuTypes;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 
