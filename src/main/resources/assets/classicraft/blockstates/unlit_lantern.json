@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "classicraft:block/unlit_lantern"
+    },
+    "hanging=true": {
+      "model": "classicraft:block/unlit_lantern_hanging"
+    }
+  }
+}

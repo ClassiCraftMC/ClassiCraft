@@ -2,8 +2,6 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "name": "classicraft:cactus_fruit",
-      "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [
         {
@@ -14,7 +12,9 @@
           "type": "minecraft:item",
           "name": "minecraft:cactus"
         }
-      ]
+      ],
+      "name": "classicraft:cactus_fruit",
+      "rolls": 1.0
     }
   ]
 }

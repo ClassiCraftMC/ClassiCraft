@@ -18,9 +18,9 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import nameless.classicraft.common.sync.SyncDataManager;
-import nameless.classicraft.common.sync.object.ItemStackHandlerSyncData;
-import nameless.classicraft.common.sync.primitive.FloatSyncData;
+import nameless.classicraft.util.sync.SyncDataManager;
+import nameless.classicraft.util.sync.object.ItemStackHandlerSyncData;
+import nameless.classicraft.util.sync.primitive.FloatSyncData;
 
 import java.util.List;
 
@@ -85,6 +85,7 @@ public class FridgeBlockEntity extends BasicMenuBlockEntity implements ItemStack
 
     @NotNull
     @Override
+    @SuppressWarnings("removal")
     public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
         return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.orEmpty(cap, LazyOptional.of(items::get));
     }

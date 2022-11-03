@@ -50,11 +50,10 @@ public class ClassiCraft {
         }
         modEventBus.addListener(this::renderRegister);
         ModItems.ITEMS.register(modEventBus);
-        ModBlocks.REGISTER.register(modEventBus);
+        ModBlocks.BLOCKS.register(modEventBus);
         ModMenuTypes.REGISTER.register(modEventBus);
         ModBlockEntities.REGISTER.register(modEventBus);
         ClassiCraftSubcriber.init();
-
     }
 
     @SuppressWarnings("removal")
@@ -69,10 +68,10 @@ public class ClassiCraft {
             ItemBlockRenderTypes.setRenderLayer(UNLIT_CANDLEHOLDER.get(), RenderType.cutout());
         for (RegistryObject<Block> UNLIT_LARGE_CANDLEHOLDER : ModBlocks.UNLIT_LARGE_CANDLEHOLDERS)
             ItemBlockRenderTypes.setRenderLayer(UNLIT_LARGE_CANDLEHOLDER.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.UNLIT_FIRE_BOW.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.UNLIT_SOUL_FIRE_BOW.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.UNLIT_LARGE_FIRE_BOW.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.UNLIT_LARGE_SOUL_FIRE_BOW.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.UNLIT_FIRE_BOWL.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.UNLIT_SOUL_FIRE_BOWL.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.UNLIT_LARGE_FIRE_BOWL.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.UNLIT_LARGE_SOUL_FIRE_BOWL.get(), RenderType.cutout());
     }
 
 }

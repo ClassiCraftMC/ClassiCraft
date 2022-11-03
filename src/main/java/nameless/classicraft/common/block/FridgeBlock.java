@@ -3,6 +3,7 @@ package nameless.classicraft.common.block;
 import nameless.classicraft.common.block.entity.FridgeBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -92,7 +93,7 @@ public class FridgeBlock extends AbstractGuiEntityBlock<FridgeBlockEntity> {
     }
 
     @Override
-    public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, Random pRand) {
+    public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
         if (isLit(pState) && !pLevel.hasNeighborSignal(pPos)) {
             pLevel.setBlock(pPos, pState.cycle(LIT), 2);
         }

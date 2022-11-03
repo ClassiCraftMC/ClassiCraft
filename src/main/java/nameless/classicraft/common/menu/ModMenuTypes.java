@@ -23,6 +23,7 @@ public class ModMenuTypes {
         M create(int windowId, Inventory inv, T blockEntity);
     }
 
+    @SuppressWarnings("unchecked")
     private static <M extends AbstractContainerMenu, T extends BlockEntity> MenuType<M> from(KKBeMenuCreator<M, T> creator) {
         return IForgeMenuType.create((id, inv, data) ->
                 creator.create(id, inv, (T) inv.player.getLevel().getBlockEntity(data.readBlockPos())));

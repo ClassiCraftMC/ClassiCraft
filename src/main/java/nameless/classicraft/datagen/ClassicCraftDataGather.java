@@ -23,7 +23,9 @@ public class ClassicCraftDataGather {
                 new CCLanguageZhProvider(event.getGenerator(), "zh_cn"));
         event.getGenerator().addProvider(
                 event.includeClient(),
-                new CCItemModelProvider(event.getGenerator(), event.getExistingFileHelper(), ModItems.ITEMS)
-        );
+                new CCItemModelProvider(event.getGenerator(), event.getExistingFileHelper()));
+        event.getGenerator().addProvider(
+                event.includeClient(),
+                new CCLootTables(event.getGenerator()));
     }
 }

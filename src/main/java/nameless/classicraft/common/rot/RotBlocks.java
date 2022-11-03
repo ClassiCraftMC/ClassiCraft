@@ -3,6 +3,7 @@ package nameless.classicraft.common.rot;
 import com.google.common.collect.ImmutableMap;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import nameless.classicraft.common.block.ModBlocks;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
@@ -24,9 +25,9 @@ public class RotBlocks {
             .put(Blocks.RED_MUSHROOM, 168000)
             .put(Blocks.CRIMSON_FUNGUS, 48000)
             .put(Blocks.WARPED_FUNGUS, 48000)
-            //.put(ModBlocks.GLISTERING_MELON.get(), 1728000)
+            .put(ModBlocks.GLISTERING_MELON.get(), 1728000)
             .put(Blocks.MELON, 168000)
             .put(Blocks.PUMPKIN, 720000)
-            //.put(ModBlocks.CACTUS_FRUIT.get(), 24000)
+            .put(ModBlocks.CACTUS_FRUIT.get(), 24000)
             .put(Blocks.CAKE, 24000).build();
 }

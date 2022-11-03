@@ -6,8 +6,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import nameless.classicraft.common.sync.SyncDataManager;
-import nameless.classicraft.common.sync.primitive.IntSyncData;
+import nameless.classicraft.util.sync.SyncDataManager;
+import nameless.classicraft.util.sync.primitive.IntSyncData;
 
 import java.util.List;
 

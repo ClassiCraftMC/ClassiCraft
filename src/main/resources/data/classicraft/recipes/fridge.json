@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IRI",
+    "IWH",
+    "ISI"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "R": {
+      "item": "minecraft:comparator"
+    },
+    "W": {
+      "item": "minecraft:barrel"
+    },
+    "S": {
+      "item": "minecraft:snow_block"
+    },
+    "H": {
+      "item": "minecraft:iron_trapdoor"
+    }
+  },
+  "result": {
+    "item": "classicraft:fridge"
+  }
+}

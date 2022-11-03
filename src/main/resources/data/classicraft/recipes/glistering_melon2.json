@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "GMG",
+    "GGG"
+  ],
+  "key": {
+    "G": {
+      "item": "gold_ingot"
+    },
+    "M": {
+      "item": "melon"
+    }
+  },
+  "result": {
+    "item": "classicraft:glistering_melon"
+  }
+}
