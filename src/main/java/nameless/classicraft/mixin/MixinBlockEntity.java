@@ -1,8 +1,6 @@
 package nameless.classicraft.mixin;
 
-import nameless.classicraft.api.common.rot.DampReduceListener;
 import nameless.classicraft.api.common.rot.RotReduceListener;
-import nameless.classicraft.common.damp.DampManager;
 import nameless.classicraft.common.rot.RotManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.Container;
@@ -47,23 +45,6 @@ public abstract class MixinBlockEntity {
                         pWorldPosition,
                         () -> pBlockState
                 ));
-
-            if (this instanceof DampReduceListener rrl)
-                DampManager.INSTANCE.addInfoByPos(pWorldPosition, DampManager.Info.blockEntity(
-                        List.of(wrapper),
-                        this::getLevel,
-                        pWorldPosition,
-                        () -> pBlockState,
-                        rrl::onDampReduce
-                ));
-            else
-                DampManager.INSTANCE.addInfoByPos(pWorldPosition, DampManager.Info.blockEntity(
-                        List.of(wrapper),
-                        this::getLevel,
-                        pWorldPosition,
-                        () -> pBlockState
-                ));
-
         }
     }
 }

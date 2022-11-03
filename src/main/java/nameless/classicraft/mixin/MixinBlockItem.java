@@ -32,11 +32,6 @@ public abstract class MixinBlockItem extends Item {
             finalReturnValue.putFloat("rot", rot.getRotValue());
             cir.setReturnValue(finalReturnValue);
         });
-
-        stack.getCapability(ModCapabilities.DAMP).ifPresent(rot -> {
-            finalReturnValue.putFloat("damp", rot.getDampValue());
-            cir.setReturnValue(finalReturnValue);
-        });
     }
 
 }

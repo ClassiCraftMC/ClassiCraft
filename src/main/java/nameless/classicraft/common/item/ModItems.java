@@ -34,7 +34,6 @@ public class ModItems {
     public static final RegistryObject<Item> COOKED_EGG = normal("cooked_egg");
     public static final RegistryObject<Item> SALT = normal("salt");
     public static final RegistryObject<Item> ROTTEN_FOOD = normal("rotten_food", p -> p.food(new FoodProperties.Builder().build()));
-    public static final RegistryObject<Item> DOUGH = normal("dough");
     public static final RegistryObject<Item> CLASSIC_CRAFT = ITEMS.register("classic_craft", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BLOCK_ROT_VIEWER = ITEMS.register("block_rot_viewer", () -> new BlockRotViewerItem(common()));
     public static final RegistryObject<Item> UNLIT_TORCH = ITEMS.register("unlit_torch", () -> new StandingAndWallBlockItem(

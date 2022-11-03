@@ -2,7 +2,6 @@ package nameless.classicraft.common.capability;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import nameless.classicraft.common.capability.damp.AbstractDamp;
 import nameless.classicraft.common.capability.rot.AbstractRot;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -18,11 +17,9 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModCapabilities {
     public static final Capability<AbstractRot> ROT = CapabilityManager.get(new CapabilityToken<>(){});
-    public static final Capability<AbstractDamp> DAMP = CapabilityManager.get(new CapabilityToken<>(){});
 
     @SubscribeEvent
     public static void onRegisterCapabilities(RegisterCapabilitiesEvent event) {
         event.register(AbstractRot.class);
-        event.register(AbstractDamp.class);
     }
 }

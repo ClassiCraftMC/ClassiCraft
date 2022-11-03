@@ -29,8 +29,5 @@ public class ClassicCraftDataGather {
         event.getGenerator().addProvider(
                 event.includeClient(),
                 new CCLootTables(event.getGenerator()));
-        event.getGenerator().addProvider(
-                event.includeClient(),
-                new CCRecipeProvider(event.getGenerator()));
     }
 }

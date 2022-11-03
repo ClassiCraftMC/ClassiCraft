@@ -59,24 +59,6 @@ public abstract class MixinItemStack implements CCItemStack {
                 cir.setReturnValue(true);
             });
         });
-
-        other.getCapability(ModCapabilities.DAMP).ifPresent(dampOther -> {
-            int count = other.getCount();
-
-            getCapability(ModCapabilities.DAMP).ifPresent(dampSelf -> {
-                int selfCount = getCount();
-                int finalCount = Math.min(count, getMaxStackSize() - selfCount);
-
-                var finalDamp = (dampOther.getDampValue() - dampSelf.getDampValue()) * finalCount / (selfCount + finalCount);
-
-                other.shrink(finalCount);
-                grow(finalCount);
-
-                dampSelf.setDampValue(finalDamp + dampSelf.getDampValue());
-
-                cir.setReturnValue(true);
-            });
-        });
     }
 
     @Inject(method = "getHoverName", at = @At("RETURN"), cancellable = true)
@@ -87,14 +69,6 @@ public abstract class MixinItemStack implements CCItemStack {
                 cir.setReturnValue(rot.getLevelName().append(origin)
                         .setStyle(Style.EMPTY.withItalic(false)
                                 .withColor(rot.getLevelNameColor())));
-            }
-        });
-        getCapability(ModCapabilities.DAMP).ifPresent(damp -> {
-            if (damp.getHolder().getMax() > 0) {
-                Component origin = cir.getReturnValue();
-                cir.setReturnValue(damp.getLevelName().append(origin)
-                        .setStyle(Style.EMPTY.withItalic(false)
-                                .withColor(damp.getLevelNameColor())));
             }
         });
     }
