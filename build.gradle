@@ -111,9 +111,6 @@ dependencies {
 
     implementation files('lib/ToughAsNails-1.19-8.0.0.78-deobf.jar')
     implementation files('lib/SereneSeasons-1.19.2-8.1.0.24-deobf.jar')
-
-    jarJar files('lib/ToughAsNails-1.19-8.0.0.78-deobf.jar')
-    jarJar files('lib/SereneSeasons-1.19.2-8.1.0.24-deobf.jar')
 }
 
 mixin {
