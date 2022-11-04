@@ -47,12 +47,13 @@ public class AttachFoods {
             .put(ModItems.GLISTERING_MELON.get(), food(12, 4.8).build())
             .put(ModItems.COOKED_EGG.get(), food(6, 9.6).build())
             .put(ModItems.DOUGH.get(), food(6, 9.6).build())
-            .put(ModItems.RICE.get(), food(6, 1.2).build())
-            .put(ModItems.RICE_HUSK.get(), food(6, 7.2).build())
+            .put(ModItems.RICE.get(),food(2, 0.4).build())
+            .put(ModItems.RICE_HUSK.get(), food(2, 0.4).build())
             .put(ModItems.NETHER_MUSHROOM_STEW.get(), food(6, 7.2).build())
             .put(Items.MELON, food(6, 1.2).build())
             .put(Items.PUMPKIN, food(4, 1.2).build())
             .put(ModItems.CACTUS_FRUIT.get(), food(2, 0.4).build())
+            .put(ModItems.FLOUR.get(), food(2, 0.4).build())
             .put(Items.CAKE, food(14, 2.8).build()).build();
 
     public static boolean isAttach(Item item) {

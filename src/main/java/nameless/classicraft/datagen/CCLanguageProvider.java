@@ -57,6 +57,7 @@ public class CCLanguageProvider extends LanguageProvider {
         add(ModItems.RICE_HUSK.get(), "Rice Husk");
         add(ModItems.RICE_SEED.get(), "Rice Seed");
         add(ModItems.DEER_SPAWN_EGG.get(), "Deer Spawn Egg");
+        add(ModItems.FLOUR.get(), "Flour");
         add("block.classicraft.unlit_golden_white_candleholder", "Unlit Golden White Candleholder");
         add("block.classicraft.unlit_golden_orange_candleholder", "Unlit Golden Orange Candleholder");
         add("block.classicraft.unlit_golden_magenta_candleholder", "Unlit Golden Magenta Candleholder");

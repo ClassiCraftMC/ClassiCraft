@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:dough_from_wheat_stonecutting"
+        "recipe": "minecraft:flour_from_wheat_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:dough_from_wheat_stonecutting"
+      "minecraft:flour_from_wheat_stonecutting"
     ]
   }
 }

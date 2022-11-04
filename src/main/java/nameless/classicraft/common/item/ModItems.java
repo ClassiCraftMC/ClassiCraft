@@ -43,6 +43,7 @@ public class ModItems {
     public static final RegistryObject<Item> ROTTEN_FOOD = normal("rotten_food", p -> p.food(new FoodProperties.Builder().build()));
     public static final RegistryObject<Item> DOUGH = normal("dough");
     public static final RegistryObject<Item> RICE = normal("rice");
+    public static final RegistryObject<Item> FLOUR = normal("flour");
     public static final RegistryObject<Item> RICE_HUSK = normal("rice_husk");
     public static final RegistryObject<Item> RICE_SEED = ITEMS.register("rice_seed", () -> new ItemNameBlockItem(ModBlocks.RICE_CROP.get(), common()));
     public static final RegistryObject<Item> CLASSIC_CRAFT = ITEMS.register("classic_craft", () -> new Item(new Item.Properties()));
