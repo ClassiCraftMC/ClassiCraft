@@ -35,6 +35,7 @@ public class CCItemModelProvider  extends ItemModelProvider {
         simpleTexture(ModItems.DOUGH);
         simpleTexture(ModItems.RICE);
         simpleTexture(ModItems.RICE_HUSK);
+        simpleTexture(ModItems.RICE_SEED);
         block(ModBlocks.FRIDGE);
         block(ModBlocks.GLISTERING_MELON);
     }

@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_rice": {
+    "has_rice_husk": {
       "conditions": {
         "items": [
           {
             "items": [
-              "classicraft:rice"
+              "classicraft:rice_husk"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:rice_husk_from_rice_stonecutting"
+        "recipe": "minecraft:rice_from_rice_husk_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_rice",
+      "has_rice_husk",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:rice_husk_from_rice_stonecutting"
+      "minecraft:rice_from_rice_husk_stonecutting"
     ]
   }
 }

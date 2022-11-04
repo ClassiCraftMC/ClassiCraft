@@ -29,7 +29,7 @@ public class RiceCrop extends CropBlock {
 
     @Override
     protected ItemLike getBaseSeedId() {
-        return ModItems.RICE_HUSK.get();
+        return ModItems.RICE_SEED.get();
     }
 
     @Override

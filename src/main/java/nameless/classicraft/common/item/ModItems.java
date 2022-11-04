@@ -4,18 +4,24 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import nameless.classicraft.ClassiCraft;
 import nameless.classicraft.common.block.ModBlocks;
+import nameless.classicraft.common.entity.ModEntities;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.StandingAndWallBlockItem;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * @author DustW
@@ -37,7 +43,8 @@ public class ModItems {
     public static final RegistryObject<Item> ROTTEN_FOOD = normal("rotten_food", p -> p.food(new FoodProperties.Builder().build()));
     public static final RegistryObject<Item> DOUGH = normal("dough");
     public static final RegistryObject<Item> RICE = normal("rice");
-    public static final RegistryObject<Item> RICE_HUSK = ITEMS.register("rice_husk", () -> new ItemNameBlockItem(ModBlocks.RICE_CROP.get(), common()));
+    public static final RegistryObject<Item> RICE_HUSK = normal("rice_husk");
+    public static final RegistryObject<Item> RICE_SEED = ITEMS.register("rice_seed", () -> new ItemNameBlockItem(ModBlocks.RICE_CROP.get(), common()));
     public static final RegistryObject<Item> CLASSIC_CRAFT = ITEMS.register("classic_craft", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BLOCK_ROT_VIEWER = ITEMS.register("block_rot_viewer", () -> new BlockRotViewerItem(common()));
     public static final RegistryObject<Item> UNLIT_TORCH = ITEMS.register("unlit_torch", () -> new StandingAndWallBlockItem(
@@ -60,6 +67,8 @@ public class ModItems {
     public static final RegistryObject<Item> UNLIT_SOUL_FIRE_BOWL = decoration_block(ModBlocks.UNLIT_SOUL_FIRE_BOWL);
     public static final RegistryObject<Item> UNLIT_LARGE_FIRE_BOWL = decoration_block(ModBlocks.UNLIT_LARGE_FIRE_BOWL);
     public static final RegistryObject<Item> UNLIT_LARGE_SOUL_FIRE_BOWL = decoration_block(ModBlocks.UNLIT_LARGE_SOUL_FIRE_BOWL);
+
+    public static final RegistryObject<Item> DEER_SPAWN_EGG = registerSpawnEgg(ModEntities.DEER_ENEITY, 0x7b4d2e, 0x4b241d);
 
     private static RegistryObject<Item> normal(String name) {
         return normal(name, p -> p);
@@ -84,4 +93,14 @@ public class ModItems {
     private static Item.Properties decoration() {
         return new Item.Properties().tab(ClassiCraftTab.DECORATION);
     }
+
+    private static <T extends EntityType<? extends Mob>> RegistryObject<Item> registerSpawnEgg(RegistryObject<T> entity, int color1, int color2) {
+        return register("spawn_egg/" + entity.getId().getPath(), () -> new ForgeSpawnEggItem(entity, color1, color2, new Item.Properties().tab(ClassiCraftTab.COMMON)));
+    }
+
+    private static <T extends Item> RegistryObject<T> register(String name, Supplier<T> item)
+    {
+        return ITEMS.register(name.toLowerCase(Locale.ROOT), item);
+    }
+
 }

@@ -17,7 +17,7 @@ public class CCRecipeProvider extends RecipeProvider {
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
         stonecutterResultFromBase(pFinishedRecipeConsumer, ModItems.DOUGH.get(), Items.WHEAT, 3);
-        stonecutterResultFromBase(pFinishedRecipeConsumer, ModItems.RICE_HUSK.get(), ModItems.RICE.get());
+        stonecutterResultFromBase(pFinishedRecipeConsumer, ModItems.RICE.get(), ModItems.RICE_HUSK.get());
     }
 
 }

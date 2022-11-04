@@ -2,9 +2,11 @@ package nameless.classicraft;
 
 import nameless.classicraft.common.block.ModBlocks;
 import nameless.classicraft.common.block.entity.ModBlockEntities;
+import nameless.classicraft.common.entity.ModEntities;
 import nameless.classicraft.common.item.ModItems;
 import com.mojang.logging.LogUtils;
 import nameless.classicraft.common.menu.ModMenuTypes;
+import nameless.classicraft.common.sound.ModSounds;
 import nameless.classicraft.event.ClassiCraftSubcriber;
 import nameless.classicraft.event.ClassicCraftClientSubcriber;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -28,12 +30,12 @@ public class ClassiCraft {
     public ClassiCraft() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ClassiCraftHooks.handleFood();
-        modEventBus.addListener(ClassicCraftClientSubcriber::renderRegister);
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
         ModMenuTypes.MENUS_TYPES.register(modEventBus);
         ModBlockEntities.BLOCK_ENTITY_TYPES.register(modEventBus);
+        ModEntities.ENTITIES.register(modEventBus);
+        ModSounds.SOUNDS.register(modEventBus);
         ClassiCraftSubcriber.init();
     }
-
 }

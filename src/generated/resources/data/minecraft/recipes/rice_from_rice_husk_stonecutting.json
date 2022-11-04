@@ -2,7 +2,7 @@
   "type": "minecraft:stonecutting",
   "count": 1,
   "ingredient": {
-    "item": "classicraft:rice"
+    "item": "classicraft:rice_husk"
   },
-  "result": "classicraft:rice_husk"
+  "result": "classicraft:rice"
 }
