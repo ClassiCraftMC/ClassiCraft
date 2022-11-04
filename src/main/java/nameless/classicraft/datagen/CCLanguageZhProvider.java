@@ -44,6 +44,7 @@ public class CCLanguageZhProvider extends LanguageProvider {
         add(ModItems.COOKED_EGG.get(), "煎蛋");
         add(ModItems.NETHER_MUSHROOM_STEW.get(), "下界蘑菇汤");
         add(ModItems.SALT.get(), "盐");
+        add(ModItems.DOUGH.get(), "面团");
         add(ModBlocks.UNLIT_TORCH.get(), "熄灭的火把");
         add(ModBlocks.UNLIT_SOUL_TORCH.get(), "熄灭的灵魂火把");
         add(ModBlocks.UNLIT_LANTERN.get(), "熄灭的灯笼");

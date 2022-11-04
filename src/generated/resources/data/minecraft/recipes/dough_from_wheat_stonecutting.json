@@ -2,7 +2,7 @@
   "type": "minecraft:stonecutting",
   "count": 3,
   "ingredient": {
-    "item": "classicraft:dough"
+    "item": "minecraft:wheat"
   },
-  "result": "minecraft:wheat"
+  "result": "classicraft:dough"
 }

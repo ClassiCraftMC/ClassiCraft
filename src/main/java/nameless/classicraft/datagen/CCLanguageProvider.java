@@ -3,10 +3,7 @@ package nameless.classicraft.datagen;
 import nameless.classicraft.ClassiCraft;
 import nameless.classicraft.common.block.ModBlocks;
 import nameless.classicraft.common.item.ModItems;
-import nameless.classicraft.common.menu.ModMenuTypes;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.world.item.DyeColor;
-import net.minecraftforge.client.model.DynamicFluidContainerModel;
 import net.minecraftforge.common.data.LanguageProvider;
 
 /**
@@ -50,6 +47,7 @@ public class CCLanguageProvider extends LanguageProvider {
         add(ModItems.ROTTEN_FOOD.get(), "Rotten Food");
         add(ModItems.COOKED_EGG.get(), "Cooked Egg");
         add(ModItems.SALT.get(), "Salt");
+        add(ModItems.DOUGH.get(), "Dough");
         add(ModItems.NETHER_MUSHROOM_STEW.get(), "Nether Mushroom Stew");
         add(ModItems.UNLIT_FIRE_BOWL.get(), "Unlit Fire Bowl");
         add(ModItems.UNLIT_SOUL_FIRE_BOWL.get(), "Unlit Soul Fire Bowl");
