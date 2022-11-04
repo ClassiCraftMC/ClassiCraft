@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=upper": {
+      "model": "classicraft:block/wild_rice"
+    },
+    "half=lower": {
+      "model": "classicraft:block/wild_rice_bottom"
+    }
+  }
+}

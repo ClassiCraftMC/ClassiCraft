@@ -58,6 +58,8 @@ public class CCLanguageZhProvider extends LanguageProvider {
         add(ModItems.RICE_SEED.get(), "稻谷种子");
         add(ModItems.DEER_SPAWN_EGG.get(), "生成蛋丨鹿");
         add(ModItems.FLOUR.get(), "面粉");
+        add(ModBlocks.SALT_ORE.get(), "盐矿");
+        add(ModBlocks.WILD_RICE.get(), "野生稻谷");
         add("block.classicraft.unlit_golden_white_candleholder", "Unlit Golden White Candleholder");
         add("block.classicraft.unlit_golden_orange_candleholder", "Unlit Golden Orange Candleholder");
         add("block.classicraft.unlit_golden_magenta_candleholder", "Unlit Golden Magenta Candleholder");

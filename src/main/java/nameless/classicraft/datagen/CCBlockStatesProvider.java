@@ -1,7 +1,6 @@
 package nameless.classicraft.datagen;
 
 import nameless.classicraft.ClassiCraft;
-import nameless.classicraft.common.block.ModBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;

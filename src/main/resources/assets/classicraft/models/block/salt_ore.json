@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "classicraft:blocks/salt_ore",
+    "up": "classicraft:blocks/salt_ore",
+    "north": "classicraft:blocks/salt_ore",
+    "east": "classicraft:blocks/salt_ore",
+    "south": "classicraft:blocks/salt_ore",
+    "west": "classicraft:blocks/salt_ore",
+    "particle": "classicraft:blocks/salt_ore"
+  },
+  "render_type": "solid"
+}
