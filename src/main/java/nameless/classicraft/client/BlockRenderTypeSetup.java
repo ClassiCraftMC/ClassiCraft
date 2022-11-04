@@ -10,9 +10,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
-/**
- * @author DustW
- */
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class BlockRenderTypeSetup {
@@ -22,5 +19,6 @@ public class BlockRenderTypeSetup {
     public static void onEvent(FMLClientSetupEvent event) {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CACTUS_FRUIT.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.RICE_CROP.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.WILD_RICE.get(), RenderType.cutout());
     }
 }

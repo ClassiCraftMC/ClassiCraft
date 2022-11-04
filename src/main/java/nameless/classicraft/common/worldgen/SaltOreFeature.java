@@ -25,6 +25,9 @@ import net.minecraft.core.Holder;
 import java.util.Set;
 import java.util.List;
 
+/**
+ * @author wdog5
+ */
 public class SaltOreFeature extends OreFeature {
     public static SaltOreFeature FEATURE = null;
     public static Holder<ConfiguredFeature<OreConfiguration, ?>> CONFIGURED_FEATURE = null;

@@ -15,6 +15,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Material;
 
+/**
+ * @author wdog5
+ */
 public class WildRiceBlock extends Block implements net.minecraftforge.common.IPlantable {
 
     public WildRiceBlock() {

@@ -1,10 +1,8 @@
 {
   "type": "forge:add_features",
-  "biomes": [
-    "bamboo_jungle",
-    "sparse_jungle",
-    "jungle"
-  ],
+  "biomes": {
+    "type": "forge:any"
+  },
   "features": "classicraft:wild_rice",
   "step": "vegetal_decoration"
 }

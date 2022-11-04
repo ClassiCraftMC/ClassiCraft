@@ -1,13 +1,12 @@
 package nameless.classicraft.common.worldgen;
 
-import nameless.classicraft.common.block.ModBlocks;
-import net.minecraft.world.level.levelgen.placement.RarityFilter;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
-import net.minecraft.world.level.levelgen.placement.CountPlacement;
-import net.minecraft.world.level.levelgen.placement.BiomeFilter;
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.valueproviders.BiasedToBottomInt;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
+import net.minecraft.world.level.levelgen.feature.configurations.BlockColumnConfiguration;
+import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.RandomPatchFeature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
@@ -19,21 +18,18 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.core.Holder;
+import net.minecraft.world.level.material.Fluids;
 
 import java.util.Set;
-import java.util.List;
 
 public class WildRiceFeature extends RandomPatchFeature {
     public static WildRiceFeature FEATURE = null;
     public static Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> CONFIGURED_FEATURE = null;
-    public static Holder<PlacedFeature> PLACED_FEATURE = null;
 
     public static Feature<?> feature() {
         FEATURE = new WildRiceFeature();
-        CONFIGURED_FEATURE = FeatureUtils.register("classicraft:wild_rice", FEATURE, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK,
-                new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.WILD_RICE.get())), List.of(), 64));
-        PLACED_FEATURE = PlacementUtils.register("classicraft:wild_rice", CONFIGURED_FEATURE, List.of(CountPlacement.of(6),
-                RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
+        CONFIGURED_FEATURE = FeatureUtils.register("classicraft:wild_rice", Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(20, 4, 0, PlacementUtils.inlinePlaced(Feature.BLOCK_COLUMN, BlockColumnConfiguration.simple(BiasedToBottomInt.of(2, 4), BlockStateProvider.simple(Blocks.SUGAR_CANE)), BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, BlockPredicate.wouldSurvive(Blocks.SUGAR_CANE.defaultBlockState(), BlockPos.ZERO), BlockPredicate.anyOf(BlockPredicate.matchesFluids(new BlockPos(1, -1, 0), Fluids.WATER, Fluids.FLOWING_WATER), BlockPredicate.matchesFluids(new BlockPos(-1, -1, 0), Fluids.WATER, Fluids.FLOWING_WATER), BlockPredicate.matchesFluids(new BlockPos(0, -1, 1), Fluids.WATER, Fluids.FLOWING_WATER), BlockPredicate.matchesFluids(new BlockPos(0, -1, -1), Fluids.WATER, Fluids.FLOWING_WATER)))))));
         return FEATURE;
     }
 

@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "classicraft:blocks/wild_rice"
+    "layer0": "classicraft:block/wild_rice"
   }
 }
