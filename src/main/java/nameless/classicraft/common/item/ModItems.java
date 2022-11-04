@@ -7,6 +7,7 @@ import nameless.classicraft.common.block.ModBlocks;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.StandingAndWallBlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
@@ -35,6 +36,8 @@ public class ModItems {
     public static final RegistryObject<Item> SALT = normal("salt");
     public static final RegistryObject<Item> ROTTEN_FOOD = normal("rotten_food", p -> p.food(new FoodProperties.Builder().build()));
     public static final RegistryObject<Item> DOUGH = normal("dough");
+    public static final RegistryObject<Item> RICE = normal("rice");
+    public static final RegistryObject<Item> RICE_HUSK = ITEMS.register("rice_husk", () -> new ItemNameBlockItem(ModBlocks.RICE_CROP.get(), common()));
     public static final RegistryObject<Item> CLASSIC_CRAFT = ITEMS.register("classic_craft", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BLOCK_ROT_VIEWER = ITEMS.register("block_rot_viewer", () -> new BlockRotViewerItem(common()));
     public static final RegistryObject<Item> UNLIT_TORCH = ITEMS.register("unlit_torch", () -> new StandingAndWallBlockItem(

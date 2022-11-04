@@ -21,5 +21,6 @@ public class BlockRenderTypeSetup {
     @SubscribeEvent
     public static void onEvent(FMLClientSetupEvent event) {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CACTUS_FRUIT.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.RICE_CROP.get(), RenderType.cutout());
     }
 }

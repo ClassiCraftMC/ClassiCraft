@@ -4,10 +4,9 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import nameless.classicraft.ClassiCraft;
 import nameless.classicraft.common.block.entity.ModBlockEntities;
-import net.minecraft.util.valueproviders.UniformInt;
+import nameless.classicraft.common.crop.RiceCrop;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
@@ -38,6 +37,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> WALL_UNLIT_TORCH = BLOCKS.register("wall_unlit_torch", () -> new WallUnlitTorchBlock(torch()));
     public static final RegistryObject<Block> UNLIT_SOUL_TORCH = BLOCKS.register("unlit_soul_torch", () -> new UnlitTorchBlock(torch()));
     public static final RegistryObject<Block> WALL_UNLIT_SOUL_TORCH = BLOCKS.register("wall_unlit_soul_torch", () -> new WallUnlitTorchBlock(torch()));
+    public static final RegistryObject<Block> RICE_CROP = BLOCKS.register("rice_crop", () -> new RiceCrop(crop()));
 
     // 批量添加不同材料和颜色的烛台方块
     public static final ArrayList<RegistryObject<Block>> UNLIT_CANDLEHOLDERS = new ArrayList<RegistryObject<Block>>(){{
@@ -55,15 +55,19 @@ public class ModBlocks {
     public static final RegistryObject<Block> UNLIT_FIRE_BOWL = BLOCKS.register("unlit_fire_bowl", () -> new UnlitFireBowlBlock(fireBowl()));
 
 
-    public static final  RegistryObject<Block> UNLIT_SOUL_FIRE_BOWL = BLOCKS.register("unlit_soul_fire_bowl", () -> new UnlitFireBowlBlock(fireBowl()));
-    public static final RegistryObject<Block> UNLIT_LARGE_FIRE_BOWL = BLOCKS.register("unlit_large_fire_bowl", () -> new UnlitFireBowlBlock(fireBowl()));
-    public static final RegistryObject<Block> UNLIT_LARGE_SOUL_FIRE_BOWL = BLOCKS.register("unlit_large_soul_fire_bowl", () -> new UnlitLargeFireBowlBlock(fireBowl()));
+    public static final  RegistryObject<Block> UNLIT_SOUL_FIRE_BOWL = BLOCKS.register("unlit_soul_fire_bowl", () -> new UnlitFireBowlBlock(largeFireBowl()));
+    public static final RegistryObject<Block> UNLIT_LARGE_FIRE_BOWL = BLOCKS.register("unlit_large_fire_bowl", () -> new UnlitFireBowlBlock(largeFireBowl()));
+    public static final RegistryObject<Block> UNLIT_LARGE_SOUL_FIRE_BOWL = BLOCKS.register("unlit_large_soul_fire_bowl", () -> new UnlitLargeFireBowlBlock(largeFireBowl()));
     static BlockBehaviour.Properties lantern() {
         return BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN);
     }
 
     static BlockBehaviour.Properties torch() {
         return BlockBehaviour.Properties.of(Material.DECORATION).noCollission().instabreak().sound(SoundType.WOOD);
+    }
+
+    static BlockBehaviour.Properties crop() {
+        return BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP);
     }
 
     static BlockBehaviour.Properties candleholder() {
@@ -78,7 +82,7 @@ public class ModBlocks {
         return BlockBehaviour.Properties.of(Material.DECORATION).instabreak().sound(SoundType.WOOD);
     }
 
-    static BlockBehaviour.Properties largeFireBow() {
+    static BlockBehaviour.Properties largeFireBowl() {
         return BlockBehaviour.Properties.of(Material.DECORATION).instabreak().sound(SoundType.WOOD);
     }
 
