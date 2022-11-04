@@ -14,6 +14,7 @@ import java.util.Map;
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RotItems {
+
     public static final Map<Item, Integer> MAP = ImmutableMap.<Item, Integer>builder()
             .put(Items.TROPICAL_FISH, 48000)
             .put(Items.SALMON, 24000)

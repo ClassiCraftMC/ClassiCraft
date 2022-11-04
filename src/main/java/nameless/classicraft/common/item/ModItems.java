@@ -73,6 +73,8 @@ public class ModItems {
 
     public static final RegistryObject<Item> DEER_SPAWN_EGG = registerSpawnEgg(ModEntities.DEER_ENEITY, 0x7b4d2e, 0x4b241d);
 
+    public static final RegistryObject<Item> SALT_WATER_BOTTLE = ITEMS.register("salt_water_bottle", () -> new SaltWaterBottleItem(new Item.Properties().tab(ClassiCraftTab.COMMON).stacksTo(1)));
+
     private static RegistryObject<Item> normal(String name) {
         return normal(name, p -> p);
     }

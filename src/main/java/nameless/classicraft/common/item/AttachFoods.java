@@ -8,6 +8,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import toughasnails.api.potion.TANEffects;
 
 import java.util.Map;
 
@@ -42,7 +43,9 @@ public class AttachFoods {
                     .effect(() -> new MobEffectInstance(MobEffects.WEAKNESS, 300, 2), 1)
                     .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 300, 0), 1).build())
             .put(ModItems.SALT.get(), food(0, 0.0)
-                    .effect(() -> new MobEffectInstance(MobEffects.HUNGER, 900, 1), 1).build())
+                    .effect(() -> new MobEffectInstance(TANEffects.THIRST.get(), 100, 1), 1).build())
+            .put(ModItems.SALT_WATER_BOTTLE.get(), food(0, 0.0)
+                    .effect(() -> new MobEffectInstance(TANEffects.THIRST.get(), 300, 1), 1).build())
             .put(Items.GLISTERING_MELON_SLICE, food(4, 4.8).build())
             .put(ModItems.GLISTERING_MELON.get(), food(12, 4.8).build())
             .put(ModItems.COOKED_EGG.get(), food(6, 9.6).build())

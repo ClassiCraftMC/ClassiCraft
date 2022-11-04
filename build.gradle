@@ -107,6 +107,9 @@ repositories {
 dependencies {
     implementation 'org.projectlombok:lombok:1.18.22'
     minecraft 'net.minecraftforge:forge:1.19.2-43.1.47'
+
+    implementation files('lib/ToughAsNails-1.19-8.0.0.78-deobf.jar')
+    implementation files('lib/SereneSeasons-1.19.2-8.1.0.24-deobf.jar')
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
