@@ -37,6 +37,7 @@ public class ModItems {
     public static final RegistryObject<Item> MUSHROOM_PLANTER = common_block(ModBlocks.MUSHROOM_PLANTER);
     public static final RegistryObject<Item> GLISTERING_MELON = common_block(ModBlocks.GLISTERING_MELON);
     public static final RegistryObject<Item> SALT_ORE = common_block(ModBlocks.SALT_ORE);
+    public static final RegistryObject<Item> WILD_RICE = common_block(ModBlocks.WILD_RICE);
     public static final RegistryObject<Item> NETHER_MUSHROOM_STEW = normal("nether_mushroom_stew");
     public static final RegistryObject<Item> CACTUS_FRUIT = normal("cactus_fruit");
     public static final RegistryObject<Item> COOKED_EGG = normal("cooked_egg");

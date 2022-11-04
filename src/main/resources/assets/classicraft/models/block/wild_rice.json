@@ -1,8 +1,0 @@
-{
-  "parent": "block/tinted_cross",
-  "textures": {
-    "cross": "classicraft:block/wild_rice",
-    "particle": "classicraft:block/wild_rice"
-  },
-  "render_type": "cutout"
-}

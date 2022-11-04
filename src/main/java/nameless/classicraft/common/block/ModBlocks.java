@@ -42,6 +42,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> RICE_CROP = BLOCKS.register("rice_crop", () -> new RiceCrop(crop()));
     public static final RegistryObject<Block> SALT_ORE = BLOCKS.register("salt_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), UniformInt.of(0, 2)));
     public static final RegistryObject<Block> WILD_RICE = BLOCKS.register("wild_rice", WildRiceBlock::new);
+    public static final RegistryObject<Block> SALT_CRYSTAL = BLOCKS.register("salt_crystal", () -> new Block(BlockBehaviour.Properties.of(Material.STONE)));
+    public static final RegistryObject<Block> SALT_BLOCK = BLOCKS.register("salt_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE)));
 
     // 批量添加不同材料和颜色的烛台方块
     public static final ArrayList<RegistryObject<Block>> UNLIT_CANDLEHOLDERS = new ArrayList<RegistryObject<Block>>(){{
