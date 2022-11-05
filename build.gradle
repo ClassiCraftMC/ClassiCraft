@@ -102,10 +102,11 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
 
+mavenCentral()
 }
 
 dependencies {
-    implementation 'org.projectlombok:lombok:1.18.22'
+    implementation 'org.projectlombok:lombok:1.18.24'
     minecraft 'net.minecraftforge:forge:1.19.2-43.1.47'
 
     implementation files('lib/ToughAsNails-1.19-8.0.0.78-deobf.jar')
