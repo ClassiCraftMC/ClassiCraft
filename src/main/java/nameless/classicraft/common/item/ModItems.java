@@ -39,7 +39,7 @@ public class ModItems {
     public static final RegistryObject<Item> NETHER_MUSHROOM_STEW = food("nether_mushroom_stew", ModFoodDatas.NETHER_MUSHROOM_STEW);
     public static final RegistryObject<Item> CACTUS_FRUIT = food("cactus_fruit", ModFoodDatas.CACTUS_FRUIT);
     public static final RegistryObject<Item> COOKED_EGG = food("cooked_egg", ModFoodDatas.COOKED_EGG);
-    public static final RegistryObject<Item> SALT = food("salt", ModFoodDatas.SALT);
+    public static final RegistryObject<Item> SALT = normal("salt");
     public static final RegistryObject<Item> SALT_BLOCK = common_block(ModBlocks.SALT_BLOCK);
     public static final RegistryObject<Item> SALT_CRYSTAL = common_block(ModBlocks.SALT_CRYSTAL);
     public static final RegistryObject<Item> ROTTEN_FOOD = normal("rotten_food", p -> p.food(ModFoodDatas.ROTTEN_FOOD));
@@ -73,7 +73,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> DEER_SPAWN_EGG = registerSpawnEgg(ModEntities.DEER_ENEITY, 0x7b4d2e, 0x4b241d);
 
-    public static final RegistryObject<Item> SALT_WATER_BOTTLE = drink("salt_water_bottle", ModFoodDatas.SALT_WATER_BOTTLE);
+    public static final RegistryObject<Item> SALT_WATER_BOTTLE = normal("salt_water_bottle");
 
     private static RegistryObject<Item> food(String name, FoodProperties foodData) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().food(foodData).tab(ClassiCraftTab.COMMON)));

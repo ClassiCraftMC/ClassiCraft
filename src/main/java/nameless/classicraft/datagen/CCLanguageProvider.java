@@ -49,6 +49,7 @@ public class CCLanguageProvider extends LanguageProvider {
         add(ModItems.COOKED_EGG.get(), "Cooked Egg");
         add(ModItems.SALT.get(), "Salt");
         add(ModItems.DOUGH.get(), "Dough");
+        add(ModItems.SALT_WATER_BOTTLE.get(), "Salt Water Bottle");
         add(ModItems.NETHER_MUSHROOM_STEW.get(), "Nether Mushroom Stew");
         add(ModItems.UNLIT_FIRE_BOWL.get(), "Unlit Fire Bowl");
         add(ModItems.UNLIT_SOUL_FIRE_BOWL.get(), "Unlit Soul Fire Bowl");

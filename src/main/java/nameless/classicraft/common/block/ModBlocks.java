@@ -4,10 +4,12 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import nameless.classicraft.ClassiCraft;
 import nameless.classicraft.common.block.entity.ModBlockEntities;
-import nameless.classicraft.common.crop.RiceCrop;
+import nameless.classicraft.common.crop.RiceBlock;
+import nameless.classicraft.common.crop.RicePaniclesBlock;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -20,7 +22,6 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ClassiCraft.MODID);
 
@@ -36,13 +37,17 @@ public class ModBlocks {
     public static final RegistryObject<Block> WALL_UNLIT_TORCH = BLOCKS.register("wall_unlit_torch", () -> new WallUnlitTorchBlock(torch()));
     public static final RegistryObject<Block> UNLIT_SOUL_TORCH = BLOCKS.register("unlit_soul_torch", () -> new UnlitTorchBlock(torch()));
     public static final RegistryObject<Block> WALL_UNLIT_SOUL_TORCH = BLOCKS.register("wall_unlit_soul_torch", () -> new WallUnlitTorchBlock(torch()));
-    public static final RegistryObject<Block> RICE_CROP = BLOCKS.register("rice_crop", () -> new RiceCrop(crop()));
     public static final RegistryObject<Block> SALT_ORE = BLOCKS.register("salt_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.0F, 3.0F), UniformInt.of(0, 2)));
     public static final RegistryObject<Block> WILD_RICE = BLOCKS.register("wild_rice", WildRiceBlock::new);
     public static final RegistryObject<Block> SALT_CRYSTAL = BLOCKS.register("salt_crystal", SaltCrystalBlock::new);
     public static final RegistryObject<Block> SALT_BLOCK = BLOCKS.register("salt_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE)));
 
     public static final RegistryObject<Block> STONE_MORTAR_BLOCK =BLOCKS.register("stone_mortar_block", StoneMortarBlock::new);
+
+    public static final RegistryObject<Block> RICE_CROP = BLOCKS.register("rice",
+            () -> new RiceBlock(Block.Properties.copy(Blocks.WHEAT).strength(0.2F)));
+    public static final RegistryObject<Block> RICE_CROP_PANICLES = BLOCKS.register("rice_panicles",
+            () -> new RicePaniclesBlock(Block.Properties.copy(Blocks.WHEAT)));
 
     // 批量添加不同材料和颜色的烛台方块
     public static final ArrayList<RegistryObject<Block>> UNLIT_CANDLEHOLDERS = new ArrayList<RegistryObject<Block>>(){{

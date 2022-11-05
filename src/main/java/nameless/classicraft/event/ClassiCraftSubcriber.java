@@ -24,6 +24,7 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 
 public class ClassiCraftSubcriber {
@@ -32,6 +33,27 @@ public class ClassiCraftSubcriber {
         final IEventBus bus = MinecraftForge.EVENT_BUS;
         bus.addListener(ClassiCraftSubcriber::onPlayerUsingItem);
         bus.addListener(ClassiCraftSubcriber::onPlayerEatingFoods);
+        bus.addListener(ClassiCraftSubcriber::addFuelBurn);
+    }
+
+    public static void addFuelBurn(FurnaceFuelBurnTimeEvent event) {
+        ItemStack itemstack = event.getItemStack();
+        if (itemstack.getItem() == Items.OAK_LEAVES)
+            event.setBurnTime(1600);
+        if (itemstack.getItem() == Items.ACACIA_LEAVES)
+            event.setBurnTime(1600);
+        if (itemstack.getItem() == Items.AZALEA_LEAVES)
+            event.setBurnTime(1600);
+        if (itemstack.getItem() == Items.BIRCH_LEAVES)
+            event.setBurnTime(1600);
+        if (itemstack.getItem() == Items.DARK_OAK_LEAVES)
+            event.setBurnTime(1600);
+        if (itemstack.getItem() == Items.JUNGLE_LEAVES)
+            event.setBurnTime(1600);
+        if (itemstack.getItem() == Items.SPRUCE_LEAVES)
+            event.setBurnTime(1600);
+        if (itemstack.getItem() == Items.MANGROVE_LEAVES)
+            event.setBurnTime(1600);
     }
 
     public static void onPlayerUsingItem(PlayerInteractEvent.RightClickItem event) {

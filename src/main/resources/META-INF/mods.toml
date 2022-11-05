@@ -25,3 +25,17 @@ description = '''
     versionRange="[1.19.2,1.20)"
     ordering="NONE"
     side="BOTH"
+
+[[dependencies.classicraft]]
+    modId="toughasnails"
+    mandatory=true
+    versionRange="[8.0.0.78]"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.classicraft]]
+    modId="sereneseasons"
+    mandatory=true
+    versionRange="[8.1.0.24]"
+    ordering="NONE"
+    side="BOTH"
