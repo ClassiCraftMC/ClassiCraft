@@ -25,6 +25,7 @@ archivesBaseName = project.mod_id
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
+
 minecraft {
 
     mappings channel: 'parchment', version: '2022.10.16-1.19.2'
@@ -101,8 +102,10 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-
-mavenCentral()
+    maven {
+        url "https://cursemaven.com"
+    }
+    mavenCentral()
 }
 
 dependencies {
@@ -111,8 +114,9 @@ dependencies {
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
-    implementation files('lib/ToughAsNails-1.19-8.0.0.78-deobf.jar')
-    implementation files('lib/SereneSeasons-1.19.2-8.1.0.24-deobf.jar')
+    implementation fg.deobf('curse.maven:tough-as-nails-246391:3871450')
+    implementation fg.deobf('curse.maven:serene-seasons-291874:4037228')
+
 }
 
 mixin {

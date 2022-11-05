@@ -14,6 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  */
 @Mixin(Item.class)
 public abstract class MixinItem {
+
     @Shadow public abstract Item asItem();
 
     @Inject(method = "getFoodProperties", cancellable = true, at = @At("RETURN"))
