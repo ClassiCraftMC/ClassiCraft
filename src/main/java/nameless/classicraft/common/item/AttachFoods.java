@@ -8,7 +8,6 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import toughasnails.api.potion.TANEffects;
 
 import java.util.Map;
 
@@ -19,10 +18,6 @@ import java.util.Map;
 public class AttachFoods {
     static final Map<Item, FoodProperties> MAP = ImmutableMap.<Item, FoodProperties>builder()
             .put(Items.ROTTEN_FLESH, food(0, 0.0).build())
-            .put(ModItems.ROTTEN_FOOD.get(), food(0, 0.0)
-                    .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 900, 2), 1)
-                    .effect(() -> new MobEffectInstance(MobEffects.HUNGER, 900, 1), 1)
-                    .effect(() -> new MobEffectInstance(MobEffects.WEAKNESS, 900, 0), 1).build())
             .put(Items.SUGAR_CANE, food(2, 1.2).build())
             .put(Items.SUGAR, food(1, 0.6)
                     .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 80, 0), 1).build())
@@ -42,19 +37,10 @@ public class AttachFoods {
             .put(Items.WARPED_FUNGUS, food(1, 0.2)
                     .effect(() -> new MobEffectInstance(MobEffects.WEAKNESS, 300, 2), 1)
                     .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 300, 0), 1).build())
-            .put(ModItems.SALT.get(), food(0, 0.0)
-                    .effect(() -> new MobEffectInstance(TANEffects.THIRST.get(), 100, 1), 1).build())
             .put(Items.GLISTERING_MELON_SLICE, food(4, 4.8).build())
             .put(ModItems.GLISTERING_MELON.get(), food(12, 4.8).build())
-            .put(ModItems.COOKED_EGG.get(), food(6, 9.6).build())
-            .put(ModItems.DOUGH.get(), food(6, 9.6).build())
-            .put(ModItems.RICE.get(),food(2, 0.4).build())
-            .put(ModItems.RICE_HUSK.get(), food(2, 0.4).build())
-            .put(ModItems.NETHER_MUSHROOM_STEW.get(), food(6, 7.2).build())
             .put(Items.MELON, food(6, 1.2).build())
             .put(Items.PUMPKIN, food(4, 1.2).build())
-            .put(ModItems.CACTUS_FRUIT.get(), food(2, 0.4).build())
-            .put(ModItems.FLOUR.get(), food(2, 0.4).build())
             .put(Items.CAKE, food(14, 2.8).build()).build();
 
     public static boolean isAttach(Item item) {

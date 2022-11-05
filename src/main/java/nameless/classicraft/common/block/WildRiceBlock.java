@@ -1,5 +1,6 @@
 package nameless.classicraft.common.block;
 
+import nameless.classicraft.common.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -120,6 +121,6 @@ public class WildRiceBlock extends DoublePlantBlock implements SimpleWaterlogged
 
     @Override
     public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
-        popResource(level, pos, new ItemStack(this));
+        popResource(level, pos, new ItemStack(ModItems.RICE_SEED.get()));
     }
 }

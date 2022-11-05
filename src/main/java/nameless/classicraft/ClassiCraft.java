@@ -41,7 +41,7 @@ public class ClassiCraft {
         ModEntities.ENTITIES.register(modEventBus);
         ModSounds.SOUNDS.register(modEventBus);
         ClassiCraftSubcriber.init();
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ClassiCraftConfiguration.SPEC, "classicraft.toml");
         ModBiomeFeatures.FEATURES.register(modEventBus);
+        //ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ClassiCraftConfiguration.SPEC, "classicraft.toml");
     }
 }
