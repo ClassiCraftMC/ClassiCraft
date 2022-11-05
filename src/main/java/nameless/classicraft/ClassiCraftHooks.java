@@ -1,9 +1,7 @@
 package nameless.classicraft;
 
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 
 import java.util.Locale;
 

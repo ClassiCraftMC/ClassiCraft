@@ -41,6 +41,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> WILD_RICE = BLOCKS.register("wild_rice", WildRiceBlock::new);
     public static final RegistryObject<Block> SALT_CRYSTAL = BLOCKS.register("salt_crystal", SaltCrystalBlock::new);
     public static final RegistryObject<Block> SALT_BLOCK = BLOCKS.register("salt_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE)));
+    public static final RegistryObject<Block> SALT_ROCK_BLOCK = BLOCKS.register("salt_rock_block", SaltRockBlock::new);
 
     public static final RegistryObject<Block> STONE_MORTAR_BLOCK =BLOCKS.register("stone_mortar_block", StoneMortarBlock::new);
 

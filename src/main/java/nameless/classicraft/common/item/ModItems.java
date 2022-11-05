@@ -75,6 +75,8 @@ public class ModItems {
 
     public static final RegistryObject<Item> SALT_WATER_BOTTLE = normal("salt_water_bottle");
 
+    public static final RegistryObject<Item> SALT_ROCK_BLOCK = common_block(ModBlocks.SALT_ROCK_BLOCK);
+
     private static RegistryObject<Item> food(String name, FoodProperties foodData) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().food(foodData).tab(ClassiCraftTab.COMMON)));
     }
