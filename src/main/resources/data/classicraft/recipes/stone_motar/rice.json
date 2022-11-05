@@ -2,7 +2,7 @@
   "type": "classicraft:stone_mortar_type",
   "ingredients": [
     {
-      "item": "minecraft:rice_husk"
+      "item": "classicraft:rice_husk"
     }
   ],
   "output": {

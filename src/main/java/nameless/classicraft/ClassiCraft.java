@@ -8,9 +8,12 @@ import com.mojang.logging.LogUtils;
 import nameless.classicraft.common.menu.ModMenuTypes;
 import nameless.classicraft.common.recipe.ModRecipeTypes;
 import nameless.classicraft.common.sound.ModSounds;
+import nameless.classicraft.common.worldgen.*;
 import nameless.classicraft.event.ClassiCraftSubcriber;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
@@ -38,5 +41,7 @@ public class ClassiCraft {
         ModEntities.ENTITIES.register(modEventBus);
         ModSounds.SOUNDS.register(modEventBus);
         ClassiCraftSubcriber.init();
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ClassiCraftConfiguration.SPEC, "classicraft.toml");
+        ModBiomeFeatures.FEATURES.register(modEventBus);
     }
 }
