@@ -4,6 +4,7 @@
   "block.classicraft.glistering_melon": "闪烁的金西瓜",
   "block.classicraft.mushroom_planter": "蘑菇农场",
   "block.classicraft.salt_ore": "盐矿",
+  "block.classicraft.stone_mortar_block": "石臼",
   "block.classicraft.unlit_black_candleholder": "Unlit Black Candleholder",
   "block.classicraft.unlit_blue_candleholder": "Unlit Blue Candleholder",
   "block.classicraft.unlit_brown_candleholder": "Unlit Brown Candleholder",
@@ -110,8 +111,7 @@
   "block.classicraft.unlit_yellow_candleholder": "Unlit Yellow Candleholder",
   "block.classicraft.wild_rice": "野生稻谷",
   "container.classicraft.fridge": "冰桶",
-  "info.classicraft.damp": "%s天后干燥",
-  "info.classicraft.damping_speed": "干燥速度: %s",
+  "container.classicraft.stone_mortar_block": "石臼",
   "info.classicraft.rot": "%s天后腐烂",
   "info.classicraft.rotting_speed": "腐烂速度：%s",
   "item.classicraft.cactus_fruit": "仙人掌果",
@@ -127,10 +127,8 @@
   "item.classicraft.spawn_egg.deer": "生成蛋丨鹿",
   "itemGroup.classicraft.common": "天工开物丨通常",
   "itemGroup.classicraft.decoration": "天工开物丨装饰",
-  "level.classicraft.dry": "干燥的 ",
   "level.classicraft.fresh": "新鲜的",
   "level.classicraft.rotten": "腐坏的",
   "level.classicraft.spoiled": "变质的",
-  "level.classicraft.stale": "陈旧的",
-  "level.classicraft.wet": "有水分的 "
+  "level.classicraft.stale": "陈旧的"
 }

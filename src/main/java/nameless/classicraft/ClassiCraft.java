@@ -6,6 +6,7 @@ import nameless.classicraft.common.entity.ModEntities;
 import nameless.classicraft.common.item.ModItems;
 import com.mojang.logging.LogUtils;
 import nameless.classicraft.common.menu.ModMenuTypes;
+import nameless.classicraft.common.recipe.ModRecipeTypes;
 import nameless.classicraft.common.sound.ModSounds;
 import nameless.classicraft.event.ClassiCraftSubcriber;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -32,6 +33,7 @@ public class ClassiCraft {
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
         ModMenuTypes.MENUS_TYPES.register(modEventBus);
+        ModRecipeTypes.RECIPE_SERIALIZER.register(modEventBus);
         ModBlockEntities.BLOCK_ENTITY_TYPES.register(modEventBus);
         ModEntities.ENTITIES.register(modEventBus);
         ModSounds.SOUNDS.register(modEventBus);

@@ -20,9 +20,6 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/**
- * @author DustW
- */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ClassiCraft.MODID);
@@ -44,6 +41,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> WILD_RICE = BLOCKS.register("wild_rice", WildRiceBlock::new);
     public static final RegistryObject<Block> SALT_CRYSTAL = BLOCKS.register("salt_crystal", () -> new Block(BlockBehaviour.Properties.of(Material.STONE)));
     public static final RegistryObject<Block> SALT_BLOCK = BLOCKS.register("salt_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE)));
+
+    public static final RegistryObject<Block> STONE_MORTAR_BLOCK =BLOCKS.register("stone_mortar_block", StoneMortarBlock::new);
 
     // 批量添加不同材料和颜色的烛台方块
     public static final ArrayList<RegistryObject<Block>> UNLIT_CANDLEHOLDERS = new ArrayList<RegistryObject<Block>>(){{

@@ -29,4 +29,8 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<MushroomPlanterBlockEntity>> MUSHROOM_PLANTER =
             BLOCK_ENTITY_TYPES.register("mushroom_planter", () -> BlockEntityType.Builder
                     .of(MushroomPlanterBlockEntity::new, ModBlocks.MUSHROOM_PLANTER.get()).build(null));
+
+    public static RegistryObject<BlockEntityType<StoneMortarBlockEntity>> STONE_MORTAR_BLOCK_ENTITY =
+            BLOCK_ENTITY_TYPES.register("stone_mortar_block", () -> BlockEntityType.Builder.of(
+                    StoneMortarBlockEntity::new, ModBlocks.STONE_MORTAR_BLOCK.get()).build(null));
 }

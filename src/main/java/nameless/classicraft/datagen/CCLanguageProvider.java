@@ -35,6 +35,7 @@ public class CCLanguageProvider extends LanguageProvider {
         add("info.classicraft.damp", "It will dried after %s day");
         add("info.classicraft.damping_speed", "Damping Speed: %s");
         add("container.classicraft.fridge", "Fridge");
+        add("container.classicraft.stone_mortar_block", "Stone Mortar Block");
         add(ModBlocks.FRIDGE.get(), "Fridge");
         add(ModBlocks.GLISTERING_MELON.get(), "Glistering Melon");
         add(ModBlocks.CACTUS_FRUIT.get(), "Cactus Fruit");
@@ -60,6 +61,7 @@ public class CCLanguageProvider extends LanguageProvider {
         add(ModItems.FLOUR.get(), "Flour");
         add(ModBlocks.SALT_ORE.get(), "Salt Ore");
         add(ModBlocks.WILD_RICE.get(), "Wild Rice");
+        add(ModBlocks.STONE_MORTAR_BLOCK.get(), "Stone Motar");
         add("block.classicraft.unlit_golden_white_candleholder", "Unlit Golden White Candleholder");
         add("block.classicraft.unlit_golden_orange_candleholder", "Unlit Golden Orange Candleholder");
         add("block.classicraft.unlit_golden_magenta_candleholder", "Unlit Golden Magenta Candleholder");

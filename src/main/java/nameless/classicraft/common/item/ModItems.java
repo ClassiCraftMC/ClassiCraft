@@ -32,6 +32,7 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ClassiCraft.MODID);
 
     public static final RegistryObject<Item> FRIDGE = common_block(ModBlocks.FRIDGE);
+    public static final RegistryObject<Item> STONE_MORTAR_BLOCK = common_block(ModBlocks.STONE_MORTAR_BLOCK);
     public static final RegistryObject<Item> UNLIT_LANTERN = common_block(ModBlocks.UNLIT_LANTERN);
     public static final RegistryObject<Item> UNLIT_SOUL_LANTERN = common_block(ModBlocks.UNLIT_SOUL_LANTERN);
     public static final RegistryObject<Item> MUSHROOM_PLANTER = common_block(ModBlocks.MUSHROOM_PLANTER);

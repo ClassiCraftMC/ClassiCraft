@@ -7,6 +7,7 @@ import nameless.classicraft.client.renderer.CCGenericMobRenderer;
 import nameless.classicraft.common.entity.passive.DeerEntity;
 import nameless.classicraft.common.entity.ModEntities;
 import nameless.classicraft.client.ModEntityModelLayers;
+import nameless.classicraft.common.menu.ModScreen;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
@@ -16,6 +17,7 @@ import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.registries.RegistryObject;
 
 @Mod.EventBusSubscriber(modid = ClassiCraft.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -38,6 +40,7 @@ public class ClassicCraftClientSubcriber {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.UNLIT_SOUL_FIRE_BOWL.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.UNLIT_LARGE_FIRE_BOWL.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.UNLIT_LARGE_SOUL_FIRE_BOWL.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.STONE_MORTAR_BLOCK.get(), RenderType.cutout());
     }
 
     @SubscribeEvent
@@ -54,5 +57,10 @@ public class ClassicCraftClientSubcriber {
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(ModEntityModelLayers.DEER, DeerModel::create);
+    }
+
+    @SubscribeEvent
+    public static void onCommonSetup(FMLClientSetupEvent event) {
+        ModScreen.registerScreen();
     }
 }

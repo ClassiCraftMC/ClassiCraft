@@ -31,11 +31,8 @@ public class CCLanguageZhProvider extends LanguageProvider {
         add("info.classicraft.rot", "%s天后腐烂");
         add("info.classicraft.rotting_speed", "腐烂速度：%s");
         add("container.classicraft.fridge", "冰桶");
-        add("level.classicraft.dry", "干燥的 ");
-        add("level.classicraft.wet", "有水分的 ");
-        add("info.classicraft.damp", "%s天后干燥");
-        add("info.classicraft.damping_speed", "干燥速度: %s");
         add(ModBlocks.FRIDGE.get(), "冰桶");
+        add("container.classicraft.stone_mortar_block", "石臼");
         add(ModBlocks.GLISTERING_MELON.get(), "闪烁的金西瓜");
         add(ModBlocks.CACTUS_FRUIT.get(), "仙人掌果实");
         add(ModBlocks.MUSHROOM_PLANTER.get(), "蘑菇农场");
@@ -60,6 +57,7 @@ public class CCLanguageZhProvider extends LanguageProvider {
         add(ModItems.FLOUR.get(), "粗制面粉");
         add(ModBlocks.SALT_ORE.get(), "盐矿");
         add(ModBlocks.WILD_RICE.get(), "野生稻谷");
+        add(ModBlocks.STONE_MORTAR_BLOCK.get(), "石臼");
         add("block.classicraft.unlit_golden_white_candleholder", "Unlit Golden White Candleholder");
         add("block.classicraft.unlit_golden_orange_candleholder", "Unlit Golden Orange Candleholder");
         add("block.classicraft.unlit_golden_magenta_candleholder", "Unlit Golden Magenta Candleholder");

@@ -16,8 +16,6 @@ public class CCRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
-        stonecutterResultFromBase(pFinishedRecipeConsumer, ModItems.RICE.get(), ModItems.RICE_HUSK.get());
-        stonecutterResultFromBase(pFinishedRecipeConsumer, ModItems.FLOUR.get(), Items.WHEAT, 3);
         ShapelessRecipeBuilder.shapeless(ModItems.DOUGH.get(), 4)
                 .requires(Items.WATER_BUCKET)
                 .requires(ModItems.FLOUR.get())
@@ -27,6 +25,7 @@ public class CCRecipeProvider extends RecipeProvider {
                 .of(ModItems.DOUGH.get()), Items.BREAD,
                 0.35F, 200)
                 .unlockedBy("has_dough", has(ModItems.DOUGH.get())).save(pFinishedRecipeConsumer);
+
     }
 
 }
