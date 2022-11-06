@@ -43,7 +43,7 @@ minecraft {
             property 'forge.enabledGameTestNamespaces', project.mod_id
 
             mods {
-                examplemod {
+                classicraft {
                     source sourceSets.main
                 }
             }
@@ -59,7 +59,7 @@ minecraft {
             property 'forge.enabledGameTestNamespaces', project.mod_id
 
             mods {
-                examplemod {
+                classicraft {
                     source sourceSets.main
                 }
             }
@@ -75,7 +75,7 @@ minecraft {
             property 'forge.enabledGameTestNamespaces', project.mod_id
 
             mods {
-                examplemod {
+                classicraft {
                     source sourceSets.main
                 }
             }
