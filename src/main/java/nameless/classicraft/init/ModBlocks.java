@@ -3,7 +3,6 @@ package nameless.classicraft.init;
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.block.*;
 import nameless.classicraft.block.entity.ModBlockEntities;
-import nameless.classicraft.block.WallUnlitTorchBlock;
 import nameless.classicraft.block.realistic.RealisticTorchBlock;
 import nameless.classicraft.block.realistic.RealisticWallTorchBlock;
 import nameless.classicraft.crop.RiceBlock;
@@ -52,18 +51,13 @@ public class ModBlocks {
     public static final RegistryObject<Block> CACTUS_FRUIT =
             registerFood("cactus_fruit",
                     () -> new CactusFruitBlock(cactus()), ModFoodDatas.CACTUS_FRUIT);
-    /**public static final RegistryObject<Block> UNLIT_TORCH =
-           register ("unlit_torch",
-                   () -> new UnlitTorchBlock(torch()));*/
-    public static final RegistryObject<Block> WALL_UNLIT_TORCH =
-           register("wall_unlit_torch",
-                   () -> new WallUnlitTorchBlock(torch()));
+
     public static final RegistryObject<Block> UNLIT_SOUL_TORCH =
             register("unlit_soul_torch",
-                    () -> new UnlitTorchBlock(torch()));
+                    RealisticTorchBlock::new);
     public static final RegistryObject<Block> WALL_UNLIT_SOUL_TORCH =
             register("wall_unlit_soul_torch",
-                    () -> new WallUnlitTorchBlock(torch()));
+                    RealisticWallTorchBlock::new);
     public static final RegistryObject<Block> SALT_ORE =
             registerNormal("salt_ore",
                     () -> new DropExperienceBlock(BlockBehaviour

@@ -91,7 +91,6 @@ public class RealisticTorchBlock extends Block {
             if (pLevel.isRainingAt(pPos)) {
                 playExtinguishSound(pLevel, pPos);
                 changeToUnlit(pLevel, pPos, pState);
-                return;
             }
             int newBurnTime = pState.getValue(BURNTIME) - 1;
             if (newBurnTime <= 0) {

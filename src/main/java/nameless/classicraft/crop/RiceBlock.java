@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
 @SuppressWarnings("deprecation")
 public class RiceBlock extends BushBlock implements BonemealableBlock, LiquidBlockContainer {
 
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
+    public static final IntegerProperty AGE = BlockStateProperties.AGE_7;
     public static final BooleanProperty SUPPORTING = BooleanProperty.create("supporting");
     private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{
             Block.box(3.0D, 0.0D, 3.0D, 13.0D, 8.0D, 13.0D),
@@ -88,7 +88,7 @@ public class RiceBlock extends BushBlock implements BonemealableBlock, LiquidBlo
     }
 
     public int getMaxAge() {
-        return 3;
+        return 7;
     }
 
     @Override
