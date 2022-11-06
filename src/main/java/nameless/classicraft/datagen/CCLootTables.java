@@ -1,7 +1,7 @@
 package nameless.classicraft.datagen;
 
-import nameless.classicraft.common.block.ModBlocks;
-import nameless.classicraft.common.item.ModItems;
+import nameless.classicraft.init.ModBlocks;
+import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
@@ -34,7 +34,7 @@ public class CCLootTables extends BaseLootTableProvider {
         LootPool.Builder builder = LootPool.lootPool()
                 .name(ModBlocks.CACTUS_FRUIT.getId().toString())
                 .setRolls(ConstantValue.exactly(1))
-                .add(LootItem.lootTableItem(ModItems.CACTUS_FRUIT.get()))
+                .add(LootItem.lootTableItem(ModBlocks.CACTUS_FRUIT.get().asItem()))
                 .add(LootItem.lootTableItem(Items.CACTUS));
 
         for (RegistryObject<Block> UNLIT_CANDLEHOLDER: ModBlocks.UNLIT_CANDLEHOLDERS)

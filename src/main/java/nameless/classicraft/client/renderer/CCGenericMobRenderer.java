@@ -1,6 +1,7 @@
 package nameless.classicraft.client.renderer;
 
 import nameless.classicraft.ClassiCraftHooks;
+import nameless.classicraft.ClassiCraftMod;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.model.EntityModel;
@@ -17,7 +18,7 @@ public class CCGenericMobRenderer<T extends Mob, M extends EntityModel<T>> exten
         if (textureName.startsWith("textures")) {
             textureLoc = new ResourceLocation(textureName);
         } else {
-            textureLoc = ClassiCraftHooks.getModelTexture(textureName);
+            textureLoc = new ResourceLocation(ClassiCraftMod.MODID, "textures/model/" + textureName);
         }
     }
 

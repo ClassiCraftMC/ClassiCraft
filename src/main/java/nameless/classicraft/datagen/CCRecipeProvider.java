@@ -1,6 +1,6 @@
 package nameless.classicraft.datagen;
 
-import nameless.classicraft.common.item.ModItems;
+import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;

@@ -1,7 +1,7 @@
 package nameless.classicraft.mixin;
 
-import nameless.classicraft.api.common.item.CCItemStack;
-import nameless.classicraft.common.capability.ModCapabilities;
+import nameless.classicraft.api.item.CCItemStack;
+import nameless.classicraft.capability.ModCapabilities;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;

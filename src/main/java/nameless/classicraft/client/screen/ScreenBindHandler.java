@@ -2,7 +2,7 @@ package nameless.classicraft.client.screen;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import nameless.classicraft.common.menu.ModMenuTypes;
+import nameless.classicraft.init.ModMenuTypes;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

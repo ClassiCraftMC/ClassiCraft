@@ -1,8 +1,8 @@
 package nameless.classicraft.datagen;
 
-import nameless.classicraft.ClassiCraft;
-import nameless.classicraft.common.block.ModBlocks;
-import nameless.classicraft.common.item.ModItems;
+import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.init.ModBlocks;
+import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 
@@ -12,7 +12,7 @@ import net.minecraftforge.common.data.LanguageProvider;
 public class CCLanguageZhProvider extends LanguageProvider {
 
     public CCLanguageZhProvider(DataGenerator gen, String locale) {
-        super(gen, ClassiCraft.MODID, locale);
+        super(gen, ClassiCraftMod.MODID, locale);
     }
 
     /**
@@ -36,7 +36,7 @@ public class CCLanguageZhProvider extends LanguageProvider {
         add(ModBlocks.GLISTERING_MELON.get(), "闪烁的金西瓜");
         add(ModBlocks.CACTUS_FRUIT.get(), "仙人掌果实");
         add(ModBlocks.MUSHROOM_PLANTER.get(), "蘑菇农场");
-        add(ModItems.CACTUS_FRUIT.get(), "仙人掌果");
+        add(ModBlocks.CACTUS_FRUIT.get(), "仙人掌果");
         add(ModItems.ROTTEN_FOOD.get(), "腐烂物");
         add(ModItems.COOKED_EGG.get(), "煎蛋");
         add(ModItems.NETHER_MUSHROOM_STEW.get(), "下界蘑菇汤");
@@ -47,10 +47,10 @@ public class CCLanguageZhProvider extends LanguageProvider {
         add(ModBlocks.UNLIT_SOUL_TORCH.get(), "熄灭灵魂火把");
         add(ModBlocks.UNLIT_LANTERN.get(), "熄灭灯笼");
         add(ModBlocks.UNLIT_SOUL_LANTERN.get(), "熄灭灵魂灯笼");
-        add(ModItems.UNLIT_FIRE_BOWL.get(), "熄灭火盆");
-        add(ModItems.UNLIT_SOUL_FIRE_BOWL.get(), "熄灭灵魂火盆");
-        add(ModItems.UNLIT_LARGE_FIRE_BOWL.get(), "熄灭火炉");
-        add(ModItems.UNLIT_LARGE_SOUL_FIRE_BOWL.get(), "熄灭大型灵魂火炉");
+        add(ModBlocks.UNLIT_FIRE_BOWL.get(), "熄灭火盆");
+        add(ModBlocks.UNLIT_SOUL_FIRE_BOWL.get(), "熄灭灵魂火盆");
+        add(ModBlocks.UNLIT_LARGE_FIRE_BOWL.get(), "熄灭火炉");
+        add(ModBlocks.UNLIT_LARGE_SOUL_FIRE_BOWL.get(), "熄灭大型灵魂火炉");
         add(ModItems.RICE.get(), "稻米");
         add(ModItems.RICE_HUSK.get(), "稻谷");
         add(ModItems.RICE_SEED.get(), "水稻种子");

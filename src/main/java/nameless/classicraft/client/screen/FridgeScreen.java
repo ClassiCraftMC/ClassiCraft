@@ -1,9 +1,9 @@
 package nameless.classicraft.client.screen;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import nameless.classicraft.ClassiCraft;
+import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.client.screen.widget.ProgressWidget;
-import nameless.classicraft.common.menu.FridgeMenu;
+import nameless.classicraft.menu.FridgeMenu;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -12,7 +12,7 @@ import net.minecraft.world.entity.player.Inventory;
  * @author DustW
  */
 public class FridgeScreen extends AbstractScreen<FridgeMenu> {
-    static final ResourceLocation TEXTURE = new ResourceLocation(ClassiCraft.MODID, "textures/gui/icebox_gui.png");
+    static final ResourceLocation TEXTURE = new ResourceLocation(ClassiCraftMod.MODID, "textures/gui/icebox_gui.png");
 
     ProgressWidget progress = new ProgressWidget(
             this, TEXTURE,

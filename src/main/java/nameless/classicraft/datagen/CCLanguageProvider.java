@@ -1,8 +1,8 @@
 package nameless.classicraft.datagen;
 
-import nameless.classicraft.ClassiCraft;
-import nameless.classicraft.common.block.ModBlocks;
-import nameless.classicraft.common.item.ModItems;
+import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.init.ModBlocks;
+import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 
@@ -12,7 +12,7 @@ import net.minecraftforge.common.data.LanguageProvider;
 public class CCLanguageProvider extends LanguageProvider {
 
     public CCLanguageProvider(DataGenerator gen, String locale) {
-        super(gen, ClassiCraft.MODID, locale);
+        super(gen, ClassiCraftMod.MODID, locale);
     }
 
     /**
@@ -44,17 +44,13 @@ public class CCLanguageProvider extends LanguageProvider {
         add(ModBlocks.UNLIT_SOUL_TORCH.get(), "Unlit Soul Torch");
         add(ModBlocks.UNLIT_LANTERN.get(), "Unlit Lantern");
         add(ModBlocks.UNLIT_SOUL_LANTERN.get(), "Unlit Soul Lantern");
-        add(ModItems.CACTUS_FRUIT.get(), "Cactus Fruit");
+        add(ModBlocks.CACTUS_FRUIT.get(), "Cactus Fruit");
         add(ModItems.ROTTEN_FOOD.get(), "Rotten Food");
         add(ModItems.COOKED_EGG.get(), "Cooked Egg");
         add(ModItems.SALT.get(), "Salt");
         add(ModItems.DOUGH.get(), "Dough");
         add(ModItems.SALT_WATER_BOTTLE.get(), "Salt Water Bottle");
         add(ModItems.NETHER_MUSHROOM_STEW.get(), "Nether Mushroom Stew");
-        add(ModItems.UNLIT_FIRE_BOWL.get(), "Unlit Fire Bowl");
-        add(ModItems.UNLIT_SOUL_FIRE_BOWL.get(), "Unlit Soul Fire Bowl");
-        add(ModItems.UNLIT_LARGE_FIRE_BOWL.get(), "Unlit Large Fire Bowl");
-        add(ModItems.UNLIT_LARGE_SOUL_FIRE_BOWL.get(), "Unlit Large Soul Fire Bowl");
         add(ModItems.RICE.get(), "Rice");
         add(ModItems.RICE_HUSK.get(), "Rice Husk");
         add(ModItems.RICE_SEED.get(), "Rice Seed");
@@ -63,6 +59,10 @@ public class CCLanguageProvider extends LanguageProvider {
         add(ModBlocks.SALT_ORE.get(), "Salt Ore");
         add(ModBlocks.WILD_RICE.get(), "Wild Rice");
         add(ModBlocks.STONE_MORTAR_BLOCK.get(), "Stone Motar");
+        add(ModBlocks.UNLIT_FIRE_BOWL.get(), "Unlit Fire Bowl");
+        add(ModBlocks.UNLIT_SOUL_FIRE_BOWL.get(), "Unlit Soul Fire Bowl");
+        add(ModBlocks.UNLIT_LARGE_FIRE_BOWL.get(), "Unlit Large Fire Bowl");
+        add(ModBlocks.UNLIT_LARGE_SOUL_FIRE_BOWL.get(), "Unlit Large Soul Fire Bowl");
         add("block.classicraft.unlit_golden_white_candleholder", "Unlit Golden White Candleholder");
         add("block.classicraft.unlit_golden_orange_candleholder", "Unlit Golden Orange Candleholder");
         add("block.classicraft.unlit_golden_magenta_candleholder", "Unlit Golden Magenta Candleholder");

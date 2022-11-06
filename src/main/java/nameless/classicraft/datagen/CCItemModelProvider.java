@@ -1,8 +1,8 @@
 package nameless.classicraft.datagen;
 
-import nameless.classicraft.ClassiCraft;
-import nameless.classicraft.common.block.ModBlocks;
-import nameless.classicraft.common.item.ModItems;
+import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.init.ModBlocks;
+import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -22,7 +22,7 @@ import java.util.function.Supplier;
 public class CCItemModelProvider  extends ItemModelProvider {
 
     public CCItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
-        super(generator, ClassiCraft.MODID, existingFileHelper);
+        super(generator, ClassiCraftMod.MODID, existingFileHelper);
     }
 
     @Override
@@ -30,7 +30,6 @@ public class CCItemModelProvider  extends ItemModelProvider {
         simpleTexture(ModItems.ROTTEN_FOOD);
         simpleTexture(ModItems.COOKED_EGG);
         simpleTexture(ModItems.NETHER_MUSHROOM_STEW);
-        simpleTexture(ModItems.CACTUS_FRUIT);
         simpleTexture(ModItems.SALT);
         simpleTexture(ModItems.DOUGH);
         simpleTexture(ModItems.RICE);

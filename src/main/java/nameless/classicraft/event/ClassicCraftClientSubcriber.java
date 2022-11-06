@@ -1,13 +1,13 @@
 package nameless.classicraft.event;
 
-import nameless.classicraft.ClassiCraft;
+import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.client.model.DeerModel;
-import nameless.classicraft.common.block.ModBlocks;
+import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.client.renderer.CCGenericMobRenderer;
-import nameless.classicraft.common.entity.passive.DeerEntity;
-import nameless.classicraft.common.entity.ModEntities;
-import nameless.classicraft.client.ModEntityModelLayers;
-import nameless.classicraft.common.menu.ModScreen;
+import nameless.classicraft.entity.DeerEntity;
+import nameless.classicraft.init.ModEntities;
+import nameless.classicraft.init.ModEntityModelLayers;
+import nameless.classicraft.init.ModScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
@@ -17,10 +17,9 @@ import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.registries.RegistryObject;
 
-@Mod.EventBusSubscriber(modid = ClassiCraft.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = ClassiCraftMod.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ClassicCraftClientSubcriber {
 
     @SuppressWarnings("removal")
@@ -63,6 +62,6 @@ public class ClassicCraftClientSubcriber {
 
     @SubscribeEvent
     public static void onCommonSetup(FMLClientSetupEvent event) {
-        ModScreen.registerScreen();
+        ModScreens.registerScreen();
     }
 }

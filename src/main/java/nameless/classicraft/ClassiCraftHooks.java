@@ -1,13 +1,8 @@
 package nameless.classicraft;
 
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 
-import java.util.Locale;
-
 public class ClassiCraftHooks {
-
-    private static final String MODEL_DIR = "textures/model/";
 
     @SuppressWarnings("deprecation")
     public static void handleFood() {
@@ -28,11 +23,4 @@ public class ClassiCraftHooks {
         }
     }
 
-    public static ResourceLocation getModelTexture(String name) {
-        return new ResourceLocation(ClassiCraft.MODID, MODEL_DIR + name);
-    }
-
-    public static ResourceLocation prefix(String name) {
-        return new ResourceLocation(ClassiCraft.MODID, name.toLowerCase(Locale.ROOT));
-    }
 }

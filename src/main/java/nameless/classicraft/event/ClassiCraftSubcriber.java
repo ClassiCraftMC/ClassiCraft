@@ -1,8 +1,9 @@
 package nameless.classicraft.event;
 
 import com.mojang.datafixers.util.Pair;
-import nameless.classicraft.common.capability.ModCapabilities;
-import nameless.classicraft.common.item.ModItems;
+import nameless.classicraft.capability.ModCapabilities;
+import nameless.classicraft.init.ModBlocks;
+import nameless.classicraft.init.ModItems;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -148,7 +149,7 @@ public class ClassiCraftSubcriber {
         if (entity instanceof Player player) {
             if (itemStack.is(Items.GLISTERING_MELON_SLICE)) {
                 player.heal(4.0F);
-            } else if (itemStack.is(ModItems.GLISTERING_MELON.get())) {
+            } else if (itemStack.is(ModBlocks.GLISTERING_MELON.get().asItem())) {
                 player.heal(8.0F);
             } else if (itemStack.is(Items.GOLDEN_CARROT)) {
                 entity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 80, 0));
