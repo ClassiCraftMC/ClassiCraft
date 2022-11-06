@@ -1,0 +1,21 @@
+{
+  "entity.classicraft.deer.death": {
+    "subtitle": "subtitles.classicraft.entity.deer.death",
+    "sounds": [
+      "classicraft:mob/deer/death"
+    ]
+  },
+  "entity.classicraft.deer.hurt": {
+    "subtitle": "subtitles.classicraft.entity.deer.hurt",
+    "sounds": [
+      "classicraft:mob/deer/hurt1",
+      "classicraft:mob/deer/hurt2" ]
+  },
+  "entity.classicraft.deer.ambient": {
+    "subtitle": "subtitles.classicraft.entity.deer.ambient",
+    "sounds": [
+      "classicraft:mob/deer/idle1",
+      "classicraft:mob/deer/idle2",
+      "classicraft:mob/deer/idle3" ]
+  }
+}

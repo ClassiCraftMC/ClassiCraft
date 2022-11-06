@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "classicraft:block/unlit_torch"
+    }
+  }
+}

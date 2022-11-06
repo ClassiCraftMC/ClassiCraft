@@ -1,0 +1,1444 @@
+{
+  "variants": {
+    "dirt=0,facing=north,grow_state=0,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_red_mushroom_0"
+    },
+    "dirt=1,facing=north,grow_state=0,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_red_mushroom_0"
+    },
+    "dirt=0,facing=south,grow_state=0,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_red_mushroom_0",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=0,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_red_mushroom_0",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=0,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_red_mushroom_0",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=0,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_red_mushroom_0",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=0,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_red_mushroom_0",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=0,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_red_mushroom_0",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=1,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_red_mushroom_1"
+    },
+    "dirt=1,facing=north,grow_state=1,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_red_mushroom_1"
+    },
+    "dirt=0,facing=south,grow_state=1,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_red_mushroom_1",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=1,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_red_mushroom_1",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=1,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_red_mushroom_1",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=1,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_red_mushroom_1",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=1,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_red_mushroom_1",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=1,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_red_mushroom_1",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=2,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_red_mushroom_2"
+    },
+    "dirt=1,facing=north,grow_state=2,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_red_mushroom_2"
+    },
+    "dirt=0,facing=south,grow_state=2,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_red_mushroom_2",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=2,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_red_mushroom_2",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=2,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_red_mushroom_2",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=2,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_red_mushroom_2",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=2,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_red_mushroom_2",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=2,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_red_mushroom_2",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=3,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_red_mushroom_3"
+    },
+    "dirt=1,facing=north,grow_state=3,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_red_mushroom_3"
+    },
+    "dirt=0,facing=south,grow_state=3,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_red_mushroom_3",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=3,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_red_mushroom_3",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=3,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_red_mushroom_3",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=3,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_red_mushroom_3",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=3,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_red_mushroom_3",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=3,mushroom=0,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_red_mushroom_3",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=0,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_brown_mushroom_0"
+    },
+    "dirt=1,facing=north,grow_state=0,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_brown_mushroom_0"
+    },
+    "dirt=0,facing=south,grow_state=0,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_brown_mushroom_0",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=0,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_brown_mushroom_0",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=0,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_brown_mushroom_0",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=0,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_brown_mushroom_0",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=0,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_brown_mushroom_0",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=0,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_brown_mushroom_0",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=1,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_brown_mushroom_1"
+    },
+    "dirt=1,facing=north,grow_state=1,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_brown_mushroom_1"
+    },
+    "dirt=0,facing=south,grow_state=1,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_brown_mushroom_1",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=1,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_brown_mushroom_1",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=1,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_brown_mushroom_1",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=1,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_brown_mushroom_1",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=1,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_brown_mushroom_1",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=1,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_brown_mushroom_1",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=2,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_brown_mushroom_2"
+    },
+    "dirt=1,facing=north,grow_state=2,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_brown_mushroom_2"
+    },
+    "dirt=0,facing=south,grow_state=2,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_brown_mushroom_2",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=2,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_brown_mushroom_2",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=2,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_brown_mushroom_2",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=2,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_brown_mushroom_2",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=2,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_brown_mushroom_2",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=2,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_brown_mushroom_2",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=3,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_brown_mushroom_3"
+    },
+    "dirt=1,facing=north,grow_state=3,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_brown_mushroom_3"
+    },
+    "dirt=0,facing=south,grow_state=3,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_brown_mushroom_3",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=3,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_brown_mushroom_3",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=3,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_brown_mushroom_3",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=3,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_brown_mushroom_3",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=3,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_podzol_brown_mushroom_3",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=3,mushroom=1,wood=0": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_oak_log_mycelium_brown_mushroom_3",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=0,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_red_mushroom_0"
+    },
+    "dirt=1,facing=north,grow_state=0,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_red_mushroom_0"
+    },
+    "dirt=0,facing=south,grow_state=0,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_red_mushroom_0",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=0,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_red_mushroom_0",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=0,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_red_mushroom_0",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=0,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_red_mushroom_0",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=0,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_red_mushroom_0",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=0,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_red_mushroom_0",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=1,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_red_mushroom_1"
+    },
+    "dirt=1,facing=north,grow_state=1,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_red_mushroom_1"
+    },
+    "dirt=0,facing=south,grow_state=1,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_red_mushroom_1",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=1,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_red_mushroom_1",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=1,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_red_mushroom_1",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=1,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_red_mushroom_1",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=1,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_red_mushroom_1",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=1,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_red_mushroom_1",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=2,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_red_mushroom_2"
+    },
+    "dirt=1,facing=north,grow_state=2,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_red_mushroom_2"
+    },
+    "dirt=0,facing=south,grow_state=2,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_red_mushroom_2",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=2,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_red_mushroom_2",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=2,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_red_mushroom_2",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=2,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_red_mushroom_2",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=2,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_red_mushroom_2",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=2,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_red_mushroom_2",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=3,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_red_mushroom_3"
+    },
+    "dirt=1,facing=north,grow_state=3,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_red_mushroom_3"
+    },
+    "dirt=0,facing=south,grow_state=3,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_red_mushroom_3",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=3,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_red_mushroom_3",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=3,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_red_mushroom_3",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=3,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_red_mushroom_3",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=3,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_red_mushroom_3",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=3,mushroom=0,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_red_mushroom_3",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=0,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_brown_mushroom_0"
+    },
+    "dirt=1,facing=north,grow_state=0,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_brown_mushroom_0"
+    },
+    "dirt=0,facing=south,grow_state=0,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_brown_mushroom_0",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=0,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_brown_mushroom_0",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=0,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_brown_mushroom_0",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=0,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_brown_mushroom_0",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=0,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_brown_mushroom_0",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=0,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_brown_mushroom_0",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=1,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_brown_mushroom_1"
+    },
+    "dirt=1,facing=north,grow_state=1,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_brown_mushroom_1"
+    },
+    "dirt=0,facing=south,grow_state=1,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_brown_mushroom_1",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=1,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_brown_mushroom_1",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=1,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_brown_mushroom_1",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=1,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_brown_mushroom_1",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=1,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_brown_mushroom_1",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=1,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_brown_mushroom_1",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=2,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_brown_mushroom_2"
+    },
+    "dirt=1,facing=north,grow_state=2,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_brown_mushroom_2"
+    },
+    "dirt=0,facing=south,grow_state=2,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_brown_mushroom_2",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=2,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_brown_mushroom_2",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=2,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_brown_mushroom_2",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=2,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_brown_mushroom_2",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=2,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_brown_mushroom_2",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=2,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_brown_mushroom_2",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=3,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_brown_mushroom_3"
+    },
+    "dirt=1,facing=north,grow_state=3,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_brown_mushroom_3"
+    },
+    "dirt=0,facing=south,grow_state=3,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_brown_mushroom_3",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=3,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_brown_mushroom_3",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=3,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_brown_mushroom_3",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=3,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_brown_mushroom_3",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=3,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_podzol_brown_mushroom_3",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=3,mushroom=1,wood=1": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_spruce_log_mycelium_brown_mushroom_3",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=0,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_red_mushroom_0"
+    },
+    "dirt=1,facing=north,grow_state=0,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_red_mushroom_0"
+    },
+    "dirt=0,facing=south,grow_state=0,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_red_mushroom_0",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=0,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_red_mushroom_0",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=0,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_red_mushroom_0",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=0,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_red_mushroom_0",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=0,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_red_mushroom_0",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=0,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_red_mushroom_0",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=1,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_red_mushroom_1"
+    },
+    "dirt=1,facing=north,grow_state=1,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_red_mushroom_1"
+    },
+    "dirt=0,facing=south,grow_state=1,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_red_mushroom_1",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=1,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_red_mushroom_1",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=1,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_red_mushroom_1",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=1,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_red_mushroom_1",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=1,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_red_mushroom_1",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=1,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_red_mushroom_1",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=2,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_red_mushroom_2"
+    },
+    "dirt=1,facing=north,grow_state=2,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_red_mushroom_2"
+    },
+    "dirt=0,facing=south,grow_state=2,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_red_mushroom_2",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=2,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_red_mushroom_2",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=2,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_red_mushroom_2",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=2,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_red_mushroom_2",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=2,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_red_mushroom_2",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=2,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_red_mushroom_2",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=3,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_red_mushroom_3"
+    },
+    "dirt=1,facing=north,grow_state=3,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_red_mushroom_3"
+    },
+    "dirt=0,facing=south,grow_state=3,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_red_mushroom_3",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=3,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_red_mushroom_3",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=3,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_red_mushroom_3",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=3,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_red_mushroom_3",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=3,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_red_mushroom_3",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=3,mushroom=0,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_red_mushroom_3",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=0,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_brown_mushroom_0"
+    },
+    "dirt=1,facing=north,grow_state=0,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_brown_mushroom_0"
+    },
+    "dirt=0,facing=south,grow_state=0,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_brown_mushroom_0",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=0,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_brown_mushroom_0",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=0,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_brown_mushroom_0",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=0,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_brown_mushroom_0",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=0,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_brown_mushroom_0",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=0,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_brown_mushroom_0",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=1,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_brown_mushroom_1"
+    },
+    "dirt=1,facing=north,grow_state=1,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_brown_mushroom_1"
+    },
+    "dirt=0,facing=south,grow_state=1,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_brown_mushroom_1",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=1,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_brown_mushroom_1",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=1,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_brown_mushroom_1",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=1,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_brown_mushroom_1",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=1,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_brown_mushroom_1",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=1,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_brown_mushroom_1",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=2,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_brown_mushroom_2"
+    },
+    "dirt=1,facing=north,grow_state=2,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_brown_mushroom_2"
+    },
+    "dirt=0,facing=south,grow_state=2,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_brown_mushroom_2",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=2,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_brown_mushroom_2",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=2,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_brown_mushroom_2",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=2,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_brown_mushroom_2",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=2,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_brown_mushroom_2",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=2,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_brown_mushroom_2",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=3,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_brown_mushroom_3"
+    },
+    "dirt=1,facing=north,grow_state=3,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_brown_mushroom_3"
+    },
+    "dirt=0,facing=south,grow_state=3,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_brown_mushroom_3",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=3,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_brown_mushroom_3",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=3,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_brown_mushroom_3",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=3,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_brown_mushroom_3",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=3,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_podzol_brown_mushroom_3",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=3,mushroom=1,wood=2": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_birch_log_mycelium_brown_mushroom_3",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=0,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_red_mushroom_0"
+    },
+    "dirt=1,facing=north,grow_state=0,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_red_mushroom_0"
+    },
+    "dirt=0,facing=south,grow_state=0,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_red_mushroom_0",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=0,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_red_mushroom_0",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=0,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_red_mushroom_0",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=0,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_red_mushroom_0",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=0,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_red_mushroom_0",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=0,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_red_mushroom_0",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=1,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_red_mushroom_1"
+    },
+    "dirt=1,facing=north,grow_state=1,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_red_mushroom_1"
+    },
+    "dirt=0,facing=south,grow_state=1,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_red_mushroom_1",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=1,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_red_mushroom_1",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=1,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_red_mushroom_1",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=1,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_red_mushroom_1",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=1,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_red_mushroom_1",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=1,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_red_mushroom_1",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=2,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_red_mushroom_2"
+    },
+    "dirt=1,facing=north,grow_state=2,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_red_mushroom_2"
+    },
+    "dirt=0,facing=south,grow_state=2,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_red_mushroom_2",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=2,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_red_mushroom_2",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=2,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_red_mushroom_2",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=2,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_red_mushroom_2",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=2,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_red_mushroom_2",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=2,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_red_mushroom_2",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=3,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_red_mushroom_3"
+    },
+    "dirt=1,facing=north,grow_state=3,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_red_mushroom_3"
+    },
+    "dirt=0,facing=south,grow_state=3,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_red_mushroom_3",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=3,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_red_mushroom_3",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=3,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_red_mushroom_3",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=3,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_red_mushroom_3",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=3,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_red_mushroom_3",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=3,mushroom=0,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_red_mushroom_3",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=0,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_brown_mushroom_0"
+    },
+    "dirt=1,facing=north,grow_state=0,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_brown_mushroom_0"
+    },
+    "dirt=0,facing=south,grow_state=0,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_brown_mushroom_0",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=0,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_brown_mushroom_0",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=0,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_brown_mushroom_0",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=0,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_brown_mushroom_0",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=0,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_brown_mushroom_0",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=0,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_brown_mushroom_0",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=1,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_brown_mushroom_1"
+    },
+    "dirt=1,facing=north,grow_state=1,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_brown_mushroom_1"
+    },
+    "dirt=0,facing=south,grow_state=1,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_brown_mushroom_1",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=1,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_brown_mushroom_1",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=1,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_brown_mushroom_1",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=1,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_brown_mushroom_1",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=1,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_brown_mushroom_1",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=1,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_brown_mushroom_1",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=2,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_brown_mushroom_2"
+    },
+    "dirt=1,facing=north,grow_state=2,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_brown_mushroom_2"
+    },
+    "dirt=0,facing=south,grow_state=2,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_brown_mushroom_2",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=2,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_brown_mushroom_2",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=2,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_brown_mushroom_2",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=2,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_brown_mushroom_2",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=2,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_brown_mushroom_2",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=2,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_brown_mushroom_2",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=3,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_brown_mushroom_3"
+    },
+    "dirt=1,facing=north,grow_state=3,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_brown_mushroom_3"
+    },
+    "dirt=0,facing=south,grow_state=3,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_brown_mushroom_3",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=3,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_brown_mushroom_3",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=3,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_brown_mushroom_3",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=3,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_brown_mushroom_3",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=3,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_podzol_brown_mushroom_3",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=3,mushroom=1,wood=3": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_jungle_log_mycelium_brown_mushroom_3",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=0,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_red_mushroom_0"
+    },
+    "dirt=1,facing=north,grow_state=0,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_red_mushroom_0"
+    },
+    "dirt=0,facing=south,grow_state=0,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_red_mushroom_0",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=0,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_red_mushroom_0",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=0,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_red_mushroom_0",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=0,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_red_mushroom_0",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=0,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_red_mushroom_0",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=0,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_red_mushroom_0",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=1,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_red_mushroom_1"
+    },
+    "dirt=1,facing=north,grow_state=1,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_red_mushroom_1"
+    },
+    "dirt=0,facing=south,grow_state=1,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_red_mushroom_1",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=1,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_red_mushroom_1",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=1,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_red_mushroom_1",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=1,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_red_mushroom_1",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=1,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_red_mushroom_1",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=1,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_red_mushroom_1",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=2,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_red_mushroom_2"
+    },
+    "dirt=1,facing=north,grow_state=2,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_red_mushroom_2"
+    },
+    "dirt=0,facing=south,grow_state=2,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_red_mushroom_2",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=2,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_red_mushroom_2",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=2,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_red_mushroom_2",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=2,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_red_mushroom_2",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=2,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_red_mushroom_2",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=2,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_red_mushroom_2",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=3,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_red_mushroom_3"
+    },
+    "dirt=1,facing=north,grow_state=3,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_red_mushroom_3"
+    },
+    "dirt=0,facing=south,grow_state=3,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_red_mushroom_3",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=3,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_red_mushroom_3",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=3,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_red_mushroom_3",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=3,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_red_mushroom_3",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=3,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_red_mushroom_3",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=3,mushroom=0,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_red_mushroom_3",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=0,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_brown_mushroom_0"
+    },
+    "dirt=1,facing=north,grow_state=0,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_brown_mushroom_0"
+    },
+    "dirt=0,facing=south,grow_state=0,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_brown_mushroom_0",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=0,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_brown_mushroom_0",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=0,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_brown_mushroom_0",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=0,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_brown_mushroom_0",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=0,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_brown_mushroom_0",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=0,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_brown_mushroom_0",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=1,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_brown_mushroom_1"
+    },
+    "dirt=1,facing=north,grow_state=1,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_brown_mushroom_1"
+    },
+    "dirt=0,facing=south,grow_state=1,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_brown_mushroom_1",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=1,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_brown_mushroom_1",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=1,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_brown_mushroom_1",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=1,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_brown_mushroom_1",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=1,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_brown_mushroom_1",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=1,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_brown_mushroom_1",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=2,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_brown_mushroom_2"
+    },
+    "dirt=1,facing=north,grow_state=2,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_brown_mushroom_2"
+    },
+    "dirt=0,facing=south,grow_state=2,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_brown_mushroom_2",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=2,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_brown_mushroom_2",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=2,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_brown_mushroom_2",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=2,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_brown_mushroom_2",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=2,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_brown_mushroom_2",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=2,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_brown_mushroom_2",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=3,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_brown_mushroom_3"
+    },
+    "dirt=1,facing=north,grow_state=3,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_brown_mushroom_3"
+    },
+    "dirt=0,facing=south,grow_state=3,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_brown_mushroom_3",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=3,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_brown_mushroom_3",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=3,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_brown_mushroom_3",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=3,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_brown_mushroom_3",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=3,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_podzol_brown_mushroom_3",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=3,mushroom=1,wood=4": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_acacia_log_mycelium_brown_mushroom_3",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=0,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_red_mushroom_0"
+    },
+    "dirt=1,facing=north,grow_state=0,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_red_mushroom_0"
+    },
+    "dirt=0,facing=south,grow_state=0,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_red_mushroom_0",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=0,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_red_mushroom_0",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=0,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_red_mushroom_0",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=0,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_red_mushroom_0",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=0,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_red_mushroom_0",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=0,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_red_mushroom_0",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=1,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_red_mushroom_1"
+    },
+    "dirt=1,facing=north,grow_state=1,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_red_mushroom_1"
+    },
+    "dirt=0,facing=south,grow_state=1,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_red_mushroom_1",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=1,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_red_mushroom_1",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=1,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_red_mushroom_1",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=1,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_red_mushroom_1",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=1,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_red_mushroom_1",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=1,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_red_mushroom_1",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=2,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_red_mushroom_2"
+    },
+    "dirt=1,facing=north,grow_state=2,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_red_mushroom_2"
+    },
+    "dirt=0,facing=south,grow_state=2,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_red_mushroom_2",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=2,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_red_mushroom_2",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=2,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_red_mushroom_2",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=2,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_red_mushroom_2",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=2,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_red_mushroom_2",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=2,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_red_mushroom_2",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=3,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_red_mushroom_3"
+    },
+    "dirt=1,facing=north,grow_state=3,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_red_mushroom_3"
+    },
+    "dirt=0,facing=south,grow_state=3,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_red_mushroom_3",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=3,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_red_mushroom_3",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=3,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_red_mushroom_3",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=3,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_red_mushroom_3",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=3,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_red_mushroom_3",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=3,mushroom=0,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_red_mushroom_3",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=0,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_brown_mushroom_0"
+    },
+    "dirt=1,facing=north,grow_state=0,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_brown_mushroom_0"
+    },
+    "dirt=0,facing=south,grow_state=0,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_brown_mushroom_0",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=0,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_brown_mushroom_0",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=0,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_brown_mushroom_0",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=0,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_brown_mushroom_0",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=0,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_brown_mushroom_0",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=0,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_brown_mushroom_0",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=1,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_brown_mushroom_1"
+    },
+    "dirt=1,facing=north,grow_state=1,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_brown_mushroom_1"
+    },
+    "dirt=0,facing=south,grow_state=1,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_brown_mushroom_1",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=1,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_brown_mushroom_1",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=1,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_brown_mushroom_1",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=1,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_brown_mushroom_1",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=1,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_brown_mushroom_1",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=1,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_brown_mushroom_1",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=2,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_brown_mushroom_2"
+    },
+    "dirt=1,facing=north,grow_state=2,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_brown_mushroom_2"
+    },
+    "dirt=0,facing=south,grow_state=2,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_brown_mushroom_2",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=2,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_brown_mushroom_2",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=2,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_brown_mushroom_2",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=2,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_brown_mushroom_2",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=2,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_brown_mushroom_2",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=2,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_brown_mushroom_2",
+      "y": 90
+    },
+    "dirt=0,facing=north,grow_state=3,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_brown_mushroom_3"
+    },
+    "dirt=1,facing=north,grow_state=3,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_brown_mushroom_3"
+    },
+    "dirt=0,facing=south,grow_state=3,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_brown_mushroom_3",
+      "y": 180
+    },
+    "dirt=1,facing=south,grow_state=3,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_brown_mushroom_3",
+      "y": 180
+    },
+    "dirt=0,facing=west,grow_state=3,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_brown_mushroom_3",
+      "y": 270
+    },
+    "dirt=1,facing=west,grow_state=3,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_brown_mushroom_3",
+      "y": 270
+    },
+    "dirt=0,facing=east,grow_state=3,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_podzol_brown_mushroom_3",
+      "y": 90
+    },
+    "dirt=1,facing=east,grow_state=3,mushroom=1,wood=5": {
+      "model": "classicraft:block/mushroom_planter/mushroom_planter_dark_oak_log_mycelium_brown_mushroom_3",
+      "y": 90
+    }
+  }
+}

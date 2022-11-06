@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "has_energy=true": {
+      "model": "classicraft:block/icebox_side_frosted"
+    },
+    "has_energy=false": {
+      "model": "classicraft:block/fridge"
+    }
+  }
+}

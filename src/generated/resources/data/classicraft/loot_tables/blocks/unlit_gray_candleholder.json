@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "classicraft:unlit_gray_candleholder"
+        }
+      ],
+      "name": "unlit_gray_candleholder",
+      "rolls": 1.0
+    }
+  ]
+}

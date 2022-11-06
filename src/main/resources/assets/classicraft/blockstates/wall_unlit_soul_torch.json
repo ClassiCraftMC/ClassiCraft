@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "classicraft:block/unlit_wall_soul_torch"
+    },
+    "facing=north": {
+      "model": "classicraft:block/unlit_wall_soul_torch",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "classicraft:block/unlit_wall_soul_torch",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "classicraft:block/unlit_wall_soul_torch",
+      "y": 180
+    }
+  }
+}
