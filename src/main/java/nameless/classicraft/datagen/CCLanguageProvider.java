@@ -44,7 +44,6 @@ public class CCLanguageProvider extends LanguageProvider {
         add(ModBlocks.UNLIT_SOUL_TORCH.get(), "Unlit Soul Torch");
         add(ModBlocks.UNLIT_LANTERN.get(), "Unlit Lantern");
         add(ModBlocks.UNLIT_SOUL_LANTERN.get(), "Unlit Soul Lantern");
-        add(ModBlocks.CACTUS_FRUIT.get(), "Cactus Fruit");
         add(ModItems.ROTTEN_FOOD.get(), "Rotten Food");
         add(ModItems.COOKED_EGG.get(), "Cooked Egg");
         add(ModItems.SALT.get(), "Salt");

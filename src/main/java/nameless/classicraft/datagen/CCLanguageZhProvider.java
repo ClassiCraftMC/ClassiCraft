@@ -36,7 +36,6 @@ public class CCLanguageZhProvider extends LanguageProvider {
         add(ModBlocks.GLISTERING_MELON.get(), "闪烁的金西瓜");
         add(ModBlocks.CACTUS_FRUIT.get(), "仙人掌果实");
         add(ModBlocks.MUSHROOM_PLANTER.get(), "蘑菇农场");
-        add(ModBlocks.CACTUS_FRUIT.get(), "仙人掌果");
         add(ModItems.ROTTEN_FOOD.get(), "腐烂物");
         add(ModItems.COOKED_EGG.get(), "煎蛋");
         add(ModItems.NETHER_MUSHROOM_STEW.get(), "下界蘑菇汤");
