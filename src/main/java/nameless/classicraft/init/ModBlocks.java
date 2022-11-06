@@ -51,13 +51,13 @@ public class ModBlocks {
             registerFood("cactus_fruit",
                     () -> new CactusFruitBlock(cactus()), ModFoodDatas.CACTUS_FRUIT);
     public static final RegistryObject<Block> UNLIT_TORCH =
-           registerDecoration ("unlit_torch",
+           register ("unlit_torch",
                    () -> new UnlitTorchBlock(torch()));
     public static final RegistryObject<Block> WALL_UNLIT_TORCH =
            register("wall_unlit_torch",
                    () -> new WallUnlitTorchBlock(torch()));
     public static final RegistryObject<Block> UNLIT_SOUL_TORCH =
-            registerDecoration("unlit_soul_torch",
+            register("unlit_soul_torch",
                     () -> new UnlitTorchBlock(torch()));
     public static final RegistryObject<Block> WALL_UNLIT_SOUL_TORCH =
             register("wall_unlit_soul_torch",
