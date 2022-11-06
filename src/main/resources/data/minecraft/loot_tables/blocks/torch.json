@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "classicraft:torch"
+          "name": "classicraft:lit_torch"
         }
       ],
       "rolls": 1.0

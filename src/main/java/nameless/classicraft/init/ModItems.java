@@ -36,15 +36,16 @@ public class ModItems {
     public static final RegistryObject<Item> BOAR_SPAWN_EGG = registerSpawnEgg(ModEntities.BOAR_ENTITY, 0x83653b, 0xffefca);
 
     public static final RegistryObject<Item> SALT_WATER_BOTTLE = normal("salt_water_bottle");
-    /**public static final RegistryObject<Item> UNLIT_TORCH = ITEMS.register("unlit_torch", () -> new StandingAndWallBlockItem(
-            ModBlocks.UNLIT_TORCH.get(), ModBlocks.WALL_UNLIT_TORCH.get(), decoration()));*/
-    public static final RegistryObject<Item> UNLIT_SOUL_TORCH = ITEMS.register("unlit_soul_torch", () -> new StandingAndWallBlockItem(
-            ModBlocks.UNLIT_SOUL_TORCH.get(), ModBlocks.WALL_UNLIT_SOUL_TORCH.get(), decoration()));
 
     public static final RegistryObject<Item> TORCH =
             register("lit_torch", () -> new LitTorchItem(decoration()));
     public static final RegistryObject<Item> UNLIT_TORCH =
             register("unlit_torch", () -> new UnlitTorchItem(decoration()));
+
+    public static final RegistryObject<Item> SOUL_TORCH =
+            register("lit_soul_torch", () -> new LitSoulTorchItem(decoration()));
+    public static final RegistryObject<Item> UNLIT_SOUL_TORCH =
+            register("unlit_soul_torch", () -> new UnLitSoulTorchItem(decoration()));
 
     private static RegistryObject<Item> food(String name, FoodProperties foodData) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().food(foodData).tab(ClassiCraftTab.COMMON)));

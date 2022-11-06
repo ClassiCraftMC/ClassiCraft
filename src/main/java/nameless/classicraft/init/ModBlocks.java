@@ -3,6 +3,8 @@ package nameless.classicraft.init;
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.block.*;
 import nameless.classicraft.block.entity.ModBlockEntities;
+import nameless.classicraft.block.realistic.RealisticSoulTorchBlock;
+import nameless.classicraft.block.realistic.RealisticSoulWallTorchBlock;
 import nameless.classicraft.block.realistic.RealisticTorchBlock;
 import nameless.classicraft.block.realistic.RealisticWallTorchBlock;
 import nameless.classicraft.crop.RiceBlock;
@@ -22,9 +24,10 @@ import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.ObjectHolder;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
@@ -81,7 +84,7 @@ public class ModBlocks {
             register("rice_crop",
                     () -> new RiceBlock(Block.Properties.copy(Blocks.WHEAT).strength(0.2F)));
     public static final RegistryObject<Block> RICE_CROP_PANICLES =
-            registerNormal("rice_panicles",
+            register("rice_panicles",
                     () -> new RicePaniclesBlock(Block.Properties.copy(Blocks.WHEAT)));
 
     // 批量添加不同材料和颜色的烛台方块
@@ -112,8 +115,14 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> TORCH =
             register("torch", RealisticTorchBlock::new);
+
+    public static final RegistryObject<Block> SOUL_TORCH =
+            register("soul_torch", RealisticSoulTorchBlock::new);
     public static final RegistryObject<Block> WALL_TORCH =
             register("torch_wall", RealisticWallTorchBlock::new);
+
+    public static final RegistryObject<Block> SOUL_WALL_TORCH =
+            register("wall_soul_torch", RealisticSoulWallTorchBlock::new);
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockSupplier, @Nullable Function<T, ? extends BlockItem> blockItemFactory) {
         return registerBlock(ModBlocks.BLOCKS, ModItems.ITEMS, name, blockSupplier, blockItemFactory);

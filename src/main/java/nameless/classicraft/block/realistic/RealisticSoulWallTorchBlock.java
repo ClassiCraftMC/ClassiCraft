@@ -25,8 +25,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import javax.annotation.Nullable;
 import java.util.Map;
 
-
-public class RealisticWallTorchBlock extends RealisticTorchBlock {
+public class RealisticSoulWallTorchBlock extends RealisticSoulTorchBlock {
 
     public static final int TICK_RATE = 1200;
 
@@ -37,7 +36,7 @@ public class RealisticWallTorchBlock extends RealisticTorchBlock {
             Direction.WEST, box(11.0D, 3.0D, 5.5D, 16.0D, 13.0D, 10.5D),
             Direction.EAST, box(0.0D, 3.0D, 5.5D, 5.0D, 13.0D, 10.5D)));
 
-    public RealisticWallTorchBlock() {
+    public RealisticSoulWallTorchBlock() {
         super();
         stateDefinition.any().setValue(FACING, Direction.NORTH);
     }
@@ -50,9 +49,9 @@ public class RealisticWallTorchBlock extends RealisticTorchBlock {
             double d1 = (double) pPos.getY() + 0.7D;
             double d2 = (double) pPos.getZ() + 0.5D;
             Direction direction1 = direction.getOpposite();
-            pLevel.addParticle(ParticleTypes.SMOKE, d0 + 0.27D * (double) direction1.getStepX(), d1 + 0.22D,
+            pLevel.addParticle(ParticleTypes.SOUL_FIRE_FLAME, d0 + 0.27D * (double) direction1.getStepX(), d1 + 0.22D,
                     d2 + 0.27D * (double) direction1.getStepZ(), 0.0D, 0.0D, 0.0D);
-            pLevel.addParticle(ParticleTypes.FLAME, d0 + 0.27D * (double) direction1.getStepX(), d1 + 0.22D,
+            pLevel.addParticle(ParticleTypes.SOUL_FIRE_FLAME, d0 + 0.27D * (double) direction1.getStepX(), d1 + 0.22D,
                     d2 + 0.27D * (double) direction1.getStepZ(), 0.0D, 0.0D, 0.0D);
         }
     }
@@ -76,7 +75,7 @@ public class RealisticWallTorchBlock extends RealisticTorchBlock {
 
     @Override
     public void changeToLit(Level world, BlockPos pos, BlockState state) {
-        world.setBlockAndUpdate(pos, ModBlocks.WALL_TORCH.get().defaultBlockState().setValue(LITSTATE, LIT).setValue(BURNTIME, getInitialBurnTime()).setValue(FACING, state.getValue(FACING)));
+        world.setBlockAndUpdate(pos, ModBlocks.SOUL_WALL_TORCH.get().defaultBlockState().setValue(LITSTATE, LIT).setValue(BURNTIME, getInitialBurnTime()).setValue(FACING, state.getValue(FACING)));
         if (SHOULD_BURN_OUT) {
             world.scheduleTick(pos, this, TICK_RATE);
         }
@@ -85,7 +84,8 @@ public class RealisticWallTorchBlock extends RealisticTorchBlock {
     @Override
     public void changeToSmoldering(Level world, BlockPos pos, BlockState state, int newBurnTime) {
         if (SHOULD_BURN_OUT) {
-            world.setBlockAndUpdate(pos, ModBlocks.WALL_TORCH.get().defaultBlockState().setValue(LITSTATE, SMOLDERING)
+            world.setBlockAndUpdate(pos, ModBlocks.SOUL_WALL_TORCH
+                    .get().defaultBlockState().setValue(LITSTATE, SMOLDERING)
                     .setValue(BURNTIME, newBurnTime).setValue(FACING, state.getValue(FACING)));
             world.scheduleTick(pos, this, TICK_RATE);
         }
@@ -97,7 +97,7 @@ public class RealisticWallTorchBlock extends RealisticTorchBlock {
             if (ClassiCraftConfiguration.noRelightEnabled.get()) {
                 world.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
             }else {
-                world.setBlockAndUpdate(pos, ModBlocks.WALL_TORCH.get().defaultBlockState().setValue(FACING,
+                world.setBlockAndUpdate(pos, ModBlocks.SOUL_WALL_TORCH.get().defaultBlockState().setValue(FACING,
                         state.getValue(FACING)));
                 world.scheduleTick(pos, this, TICK_RATE);
             }
@@ -148,5 +148,4 @@ public class RealisticWallTorchBlock extends RealisticTorchBlock {
 
         return null;
     }
-
 }
