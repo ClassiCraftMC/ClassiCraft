@@ -21,14 +21,6 @@ public class ModSounds {
             register("entity.classicraft.deer.hurt");
     public static final RegistryObject<SoundEvent> DEER_AMBIENT =
             register("entity.classicraft.deer.ambient");
-    public static final RegistryObject<SoundEvent> BOAR_AMBIENT =
-            register("entity.classicraft.boar.ambient");
-    public static final RegistryObject<SoundEvent> BOAR_DEATH =
-            register("entity.classicraft.boar.death");
-    public static final RegistryObject<SoundEvent> BOAR_HURT =
-            register("entity.classicraft.boar.hurt");
-    public static final RegistryObject<SoundEvent> BOAR_STEP =
-            register("entity.classicraft.boar.step");
 
     private static RegistryObject<SoundEvent> register(String name) {
         return register(name, () -> new SoundEvent(new ResourceLocation(name.toLowerCase(Locale.ROOT))));

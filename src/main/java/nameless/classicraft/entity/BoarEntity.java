@@ -1,9 +1,10 @@
 package nameless.classicraft.entity;
 
-import nameless.classicraft.init.ModSounds;
+import nameless.classicraft.init.ModEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
@@ -47,27 +48,27 @@ public class BoarEntity extends Animal {
 
     @Override
     public BoarEntity getBreedOffspring(ServerLevel world, AgeableMob ageableMob) {
-        return null; //TFEntities.BOAR.get().create(world);
+        return ModEntities.BOAR_ENTITY.get().create(world);
     }
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return ModSounds.BOAR_AMBIENT.get();
+        return SoundEvents.PIG_AMBIENT;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
-        return ModSounds.BOAR_HURT.get();
+        return SoundEvents.PIG_HURT;
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return ModSounds.BOAR_DEATH.get();
+        return SoundEvents.PIG_DEATH;
     }
 
     @Override
     protected void playStepSound(BlockPos pos, BlockState state) {
-        this.playSound(ModSounds.BOAR_STEP.get(), 0.15F, 1.0F);
+        this.playSound(SoundEvents.PIG_STEP, 0.15F, 1.0F);
     }
 
     @Override
