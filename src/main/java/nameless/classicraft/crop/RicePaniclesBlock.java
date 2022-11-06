@@ -18,7 +18,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class RicePaniclesBlock extends CropBlock
 {
-    public static final IntegerProperty RICE_AGE = BlockStateProperties.AGE_7;
+    public static final IntegerProperty RICE_AGE = BlockStateProperties.AGE_3;
     private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{
             Block.box(3.0D, 0.0D, 3.0D, 13.0D, 8.0D, 13.0D),
             Block.box(3.0D, 0.0D, 3.0D, 13.0D, 10.0D, 13.0D),
@@ -42,7 +42,7 @@ public class RicePaniclesBlock extends CropBlock
 
     @Override
     public int getMaxAge() {
-        return 7;
+        return 3;
     }
 
     @Override

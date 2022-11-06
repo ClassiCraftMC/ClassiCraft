@@ -33,6 +33,7 @@ public class ModItems {
     public static final RegistryObject<Item> BLOCK_ROT_VIEWER = ITEMS.register("block_rot_viewer", () -> new BlockRotViewerItem(common()));
 
     public static final RegistryObject<Item> DEER_SPAWN_EGG = registerSpawnEgg(ModEntities.DEER_ENEITY, 0x7b4d2e, 0x4b241d);
+    public static final RegistryObject<Item> BOAR_SPAWN_EGG = registerSpawnEgg(ModEntities.BOAR_ENTITY, 0x83653b, 0xffefca);
 
     public static final RegistryObject<Item> SALT_WATER_BOTTLE = normal("salt_water_bottle");
     /**public static final RegistryObject<Item> UNLIT_TORCH = ITEMS.register("unlit_torch", () -> new StandingAndWallBlockItem(

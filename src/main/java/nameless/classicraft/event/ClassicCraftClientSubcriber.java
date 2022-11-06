@@ -1,7 +1,10 @@
 package nameless.classicraft.event;
 
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.client.model.BoarModel;
 import nameless.classicraft.client.model.DeerModel;
+import nameless.classicraft.client.renderer.BoarRenderer;
+import nameless.classicraft.entity.BoarEntity;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.client.renderer.CCGenericMobRenderer;
 import nameless.classicraft.entity.DeerEntity;
@@ -27,7 +30,6 @@ public class ClassicCraftClientSubcriber {
     public static void renderRegister(FMLClientSetupEvent event) {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.UNLIT_LANTERN.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.UNLIT_SOUL_LANTERN.get(), RenderType.cutout());
-        //ItemBlockRenderTypes.setRenderLayer(ModBlocks.UNLIT_TORCH.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.UNLIT_SOUL_TORCH.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.WALL_UNLIT_SOUL_TORCH.get(), RenderType.cutout());
         for (RegistryObject<Block> UNLIT_CANDLEHOLDER : ModBlocks.UNLIT_CANDLEHOLDERS)
@@ -46,16 +48,20 @@ public class ClassicCraftClientSubcriber {
     @SubscribeEvent
     public static void addEntityAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntities.DEER_ENEITY.get(), DeerEntity.registerAttributes().build());
+        event.put(ModEntities.BOAR_ENTITY.get(), BoarEntity.registerAttributes().build());
     }
 
     @SubscribeEvent
     public static void registerEntityRenderer(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer(ModEntities.BOAR_ENTITY.get(),
+                m -> new BoarRenderer(m, new BoarModel<>(m.bakeLayer(ModEntityModelLayers.BOAR))));
         event.registerEntityRenderer(ModEntities.DEER_ENEITY.get(),
                 m -> new CCGenericMobRenderer<>(m, new DeerModel(m.bakeLayer(ModEntityModelLayers.DEER)), 0.7F, "wilddeer.png"));
     }
 
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(ModEntityModelLayers.BOAR, BoarModel::create);
         event.registerLayerDefinition(ModEntityModelLayers.DEER, DeerModel::create);
     }
 

@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 public class ModEntityModelLayers {
 
     public static final ModelLayerLocation DEER = register("deer");
+    public static final ModelLayerLocation BOAR = register("boar");
 
     private static ModelLayerLocation register(String p_171294_) {
         return register(p_171294_, "main");
