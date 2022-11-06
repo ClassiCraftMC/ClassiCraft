@@ -15,6 +15,7 @@ import nameless.classicraft.init.ModPlacedFeatures;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLPaths;
 import org.slf4j.Logger;
 
 /**
@@ -32,6 +33,7 @@ public class ClassiCraftMod {
 
     public ClassiCraftMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        ClassiCraftConfiguration.loadConfig(ClassiCraftConfiguration.SPEC, FMLPaths.CONFIGDIR.get().resolve("classicraft.toml"));
         ClassiCraftHooks.handleFood();
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
@@ -44,6 +46,5 @@ public class ClassiCraftMod {
         ModBiomeFeatures.FEATURES.register(modEventBus);
         ModConfiguredFeatures.CONFIGURED_FEATURES.register(modEventBus);
         ModPlacedFeatures.PLACED_FEATURES.register(modEventBus);
-        //ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ClassiCraftConfiguration.SPEC, "classicraft.toml");
     }
 }

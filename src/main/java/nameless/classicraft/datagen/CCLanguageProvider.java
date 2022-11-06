@@ -40,7 +40,7 @@ public class CCLanguageProvider extends LanguageProvider {
         add(ModBlocks.GLISTERING_MELON.get(), "Glistering Melon");
         add(ModBlocks.CACTUS_FRUIT.get(), "Cactus Fruit");
         add(ModBlocks.MUSHROOM_PLANTER.get(), "Mushroom Planter");
-        add(ModBlocks.UNLIT_TORCH.get(), "Unlit Torch");
+        //add(ModBlocks.UNLIT_TORCH.get(), "Unlit Torch");
         add(ModBlocks.UNLIT_SOUL_TORCH.get(), "Unlit Soul Torch");
         add(ModBlocks.UNLIT_LANTERN.get(), "Unlit Lantern");
         add(ModBlocks.UNLIT_SOUL_LANTERN.get(), "Unlit Soul Lantern");

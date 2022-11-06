@@ -42,7 +42,7 @@ public class CCLanguageZhProvider extends LanguageProvider {
         add(ModItems.SALT.get(), "盐");
         add(ModItems.DOUGH.get(), "生面团");
         add(ModItems.SALT_WATER_BOTTLE.get(), "盐水瓶");
-        add(ModBlocks.UNLIT_TORCH.get(), "熄灭火把");
+        //add(ModBlocks.UNLIT_TORCH.get(), "熄灭火把");
         add(ModBlocks.UNLIT_SOUL_TORCH.get(), "熄灭灵魂火把");
         add(ModBlocks.UNLIT_LANTERN.get(), "熄灭灯笼");
         add(ModBlocks.UNLIT_SOUL_LANTERN.get(), "熄灭灵魂灯笼");

@@ -23,7 +23,7 @@ public class CCLootTables extends BaseLootTableProvider {
     @Override
     protected void addTables() {
         simple(ModBlocks.FRIDGE);
-        simple(ModBlocks.UNLIT_TORCH);
+        //simple(ModBlocks.UNLIT_TORCH);
         simple(ModBlocks.UNLIT_LANTERN);
         simple(ModBlocks.UNLIT_SOUL_TORCH);
         simple(ModBlocks.UNLIT_SOUL_LANTERN);

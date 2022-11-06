@@ -4,6 +4,8 @@ import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.block.*;
 import nameless.classicraft.block.entity.ModBlockEntities;
 import nameless.classicraft.block.WallUnlitTorchBlock;
+import nameless.classicraft.block.realistic.RealisticTorchBlock;
+import nameless.classicraft.block.realistic.RealisticWallTorchBlock;
 import nameless.classicraft.crop.RiceBlock;
 import nameless.classicraft.crop.RicePaniclesBlock;
 import nameless.classicraft.item.ClassiCraftTab;
@@ -50,9 +52,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> CACTUS_FRUIT =
             registerFood("cactus_fruit",
                     () -> new CactusFruitBlock(cactus()), ModFoodDatas.CACTUS_FRUIT);
-    public static final RegistryObject<Block> UNLIT_TORCH =
+    /**public static final RegistryObject<Block> UNLIT_TORCH =
            register ("unlit_torch",
-                   () -> new UnlitTorchBlock(torch()));
+                   () -> new UnlitTorchBlock(torch()));*/
     public static final RegistryObject<Block> WALL_UNLIT_TORCH =
            register("wall_unlit_torch",
                    () -> new WallUnlitTorchBlock(torch()));
@@ -113,6 +115,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> UNLIT_LARGE_SOUL_FIRE_BOWL =
             registerDecoration("unlit_large_soul_fire_bowl",
                     () -> new UnlitLargeFireBowlBlock(largeFireBowl()));
+
+    public static final RegistryObject<Block> TORCH =
+            register("torch", RealisticTorchBlock::new);
+    public static final RegistryObject<Block> WALL_TORCH =
+            register("torch_wall", RealisticWallTorchBlock::new);
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockSupplier, @Nullable Function<T, ? extends BlockItem> blockItemFactory) {
         return registerBlock(ModBlocks.BLOCKS, ModItems.ITEMS, name, blockSupplier, blockItemFactory);

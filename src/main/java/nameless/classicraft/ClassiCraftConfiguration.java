@@ -1,30 +1,45 @@
 package nameless.classicraft;
 
+import com.electronwill.nightconfig.core.file.CommentedFileConfig;
+import com.electronwill.nightconfig.core.io.WritingMode;
 import net.minecraftforge.common.ForgeConfigSpec;
+
+import java.nio.file.Path;
 
 public class ClassiCraftConfiguration {
 
     public static final ForgeConfigSpec SPEC;
     public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
-    public static final ForgeConfigSpec.IntValue WEAKNESS_EFFECT_AMPLIFIER;
-    public static final ForgeConfigSpec.DoubleValue WATER_REDUCING_RATE;
-    public static final ForgeConfigSpec.BooleanValue RESET_WATER_LEVEL_IN_DEATH;
+    public static ForgeConfigSpec.IntValue torchBurnoutTime;
+    public static ForgeConfigSpec.BooleanValue noRelightEnabled;
+
 
     static {
         BUILDER.comment("天工开物模组配置文件");
         BUILDER.push("General");
-        WEAKNESS_EFFECT_AMPLIFIER =
-                BUILDER.comment("  ", "It is the weakness effect amplifier of the effect punishment when player's water level is too low. -1 means canceling this effect. Default:0")
-                        .defineInRange("weaknessEffectAmplifier", 0, -1, 999999);
 
-        WATER_REDUCING_RATE =
-                BUILDER.comment(" ", "finalReducingValue = basicValue * waterReducingRate.(DoubleValue)", "Default:1.0")
-                        .defineInRange("waterReducingRate", 1.0D, 0d, 1000D);
+        String desc;
 
-        RESET_WATER_LEVEL_IN_DEATH =
-                BUILDER.comment(" ", "It decides if players' water level would reset in death.", "Default:true")
-                        .define("resetWaterLevelInDeath", true);
+        desc = "火把熄灭前的时间，以分钟为单位。将其设置为负值将禁用火把熄灭.";
+        torchBurnoutTime = BUILDER.comment(desc)
+                .defineInRange("torchBurnoutTime", 60, -1, 2880);
+
+        desc = "确定点燃的火把在熄灭后是否消失，而不是变成未点燃的火把.";
+        noRelightEnabled = BUILDER.comment(desc)
+                .define("torchNoRelight", false);
+
         BUILDER.pop();
         SPEC = BUILDER.build();
+    }
+
+    public static void loadConfig(ForgeConfigSpec spec, Path path) {
+        final CommentedFileConfig configData = CommentedFileConfig.builder(path)
+                .sync()
+                .autosave()
+                .writingMode(WritingMode.REPLACE)
+                .build();
+
+        configData.load();
+        spec.setConfig(configData);
     }
 }
