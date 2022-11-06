@@ -1,23 +1,20 @@
 {
+  "type": "minecraft:block",
   "pools": [
     {
       "rolls": 1,
       "entries": [
         {
-          "type": "minecraft:alternatives",
-          "children": [
+          "type": "minecraft:item",
+          "name": "classicraft:torch",
+          "weight": 1,
+          "functions": [
             {
-              "type": "minecraft:item",
-              "name": "classicraft:unlit_torch"
-            },
-            {
-              "type": "minecraft:item",
-              "name": "minecraft:torch",
-              "conditions": [
-                {
-                  "condition": "minecraft:survives_explosion"
-                }
-              ]
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 1
+              }
             }
           ]
         }
