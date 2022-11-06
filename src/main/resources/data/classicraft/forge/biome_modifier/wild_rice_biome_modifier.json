@@ -1,8 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": {
-    "type": "forge:any"
-  },
-  "features": "classicraft:wild_rice",
-  "step": "vegetal_decoration"
-}
