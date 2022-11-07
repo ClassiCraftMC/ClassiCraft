@@ -69,6 +69,7 @@ public class RotItems {
             .put(ModBlocks.CACTUS_FRUIT.get().asItem(), 24000)
             .put(ModItems.DOUGH.get(), 72000)
             .put(ModItems.RAW_PUMPKIN_PIE.get(), 710000)
+            .put(ModItems.RAW_COOKIE.get(), 710000)
             .put(ModItems.RICE.get(), 720000)
             .put(ModItems.RICE_HUSK.get(), 720000)
             .put(ModItems.RICE_SEED.get(), 720000)

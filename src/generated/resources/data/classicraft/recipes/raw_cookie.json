@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "K": {
+      "item": "minecraft:sugar"
+    },
+    "L": {
+      "item": "classicraft:dough"
+    },
+    "S": {
+      "item": "minecraft:cocoa_beans"
+    }
+  },
+  "pattern": [
+    " K ",
+    "LSL",
+    " K "
+  ],
+  "result": {
+    "count": 8,
+    "item": "classicraft:raw_cookie"
+  }
+}

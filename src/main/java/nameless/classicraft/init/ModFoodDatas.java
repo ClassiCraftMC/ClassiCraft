@@ -23,6 +23,7 @@ public class ModFoodDatas {
     public static FoodProperties CACTUS_FRUIT = food(2, 0.4).build();
     public static FoodProperties FLOUR = food(2, 0.4).build();
     public static FoodProperties RAW_PUMPKIN_PIE = food(3, 0.4).build();
+    public static FoodProperties RAW_COOKIE = food(3, 0.4).build();
 
     protected static FoodProperties.Builder food(int n, double s) {
         return new FoodProperties.Builder().nutrition(n).saturationMod((float) (s / 2 / n));

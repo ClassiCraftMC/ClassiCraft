@@ -62,6 +62,7 @@ public class CCLanguageZhProvider extends LanguageProvider {
         add(ModBlocks.LANTERN.get(), "灯笼");
         add(ModBlocks.SOUL_LANTERN.get(), "灵魂灯笼");
         add(ModItems.RAW_PUMPKIN_PIE.get(), "南瓜派面胚");
+        add(ModItems.RAW_COOKIE.get(), "生曲奇面胚");
         add("info.classicraft.stop_use_lantern", "生成模式下禁止放置原版灯笼，你可以在天工开物模组配置文件中更改.");
         add("info.classicraft.stop_use_torch", "生成模式下禁止放置原版火把，你可以在天工开物模组配置文件中更改.");
         add("block.classicraft.unlit_golden_white_candleholder", "Unlit Golden White Candleholder");

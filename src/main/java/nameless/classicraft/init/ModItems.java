@@ -37,7 +37,10 @@ public class ModItems {
 
     public static final RegistryObject<Item> SALT_WATER_BOTTLE = normal("salt_water_bottle");
 
-    public static final RegistryObject<Item> RAW_PUMPKIN_PIE = food("raw_pumpkin_pie", ModFoodDatas.RAW_PUMPKIN_PIE);
+    public static final RegistryObject<Item> RAW_PUMPKIN_PIE =
+            food("raw_pumpkin_pie", ModFoodDatas.RAW_PUMPKIN_PIE);
+    public static final RegistryObject<Item> RAW_COOKIE =
+            food("raw_cookie", ModFoodDatas.RAW_COOKIE);
 
     public static final RegistryObject<Item> TORCH =
             register("torch", () -> new StandingAndWallBlockItem(ModBlocks.TORCH.get(), ModBlocks.WALL_TORCH.get(), decoration()));
