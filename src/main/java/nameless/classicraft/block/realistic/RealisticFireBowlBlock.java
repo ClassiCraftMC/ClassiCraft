@@ -56,9 +56,9 @@ public class RealisticFireBowlBlock extends Block {
     @Override
     public void animateTick(BlockState state, Level pLevel, BlockPos pPos, RandomSource pRandom) {
         if (state.getValue(LITSTATE) == LIT || (state.getValue(LITSTATE) == SMOLDERING && pLevel.getRandom().nextInt(2) == 1)) {
-            double d0 = pPos.getX();
-            double d1 = pPos.getY() + 0.1D;
-            double d2 = (double)pPos.getZ() + 0.1D;
+            double d0 = pPos.getX() + 0.25D;
+            double d1 = pPos.getY() + 0.25D;
+            double d2 = pPos.getZ() + 0.25D;
             pLevel.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
             pLevel.addParticle(ParticleTypes.FLAME, d0, d1, d2, 0.0D, 0.0D, 0.0D);
         }
@@ -68,7 +68,7 @@ public class RealisticFireBowlBlock extends Block {
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if (pPlayer.getItemInHand(pHand).getItem() == Items.FLINT_AND_STEEL) {
             playLightingSound(pLevel, pPos);
-            if (!pPlayer.isCreative() && pPlayer.getItemInHand(pHand).getUseDuration() > 0) {
+            if (!pPlayer.isCreative()) {
                 ItemStack heldStack = pPlayer.getItemInHand(pHand);
                 heldStack.hurtAndBreak(1, pPlayer, (p_41300_) -> {
                     p_41300_.broadcastBreakEvent(pHand);

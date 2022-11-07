@@ -21,13 +21,22 @@ public class ClassiCraftConfiguration {
     public static ForgeConfigSpec.BooleanValue noVanillaTorchPlace;
     public static ForgeConfigSpec.BooleanValue noVanillaLanternPlace;
     public static ForgeConfigSpec.IntValue woodenItemBurnTime;
-
+    public static ForgeConfigSpec.BooleanValue shutupExperimentalWarning;
+    public static ForgeConfigSpec.BooleanValue removeSendFeedbackAndReportBugs;
 
     static {
         BUILDER.comment("天工开物模组配置文件");
         BUILDER.push("general");
 
         String desc;
+
+        desc = "确定是否禁用提供反馈，报告漏洞选项";
+        removeSendFeedbackAndReportBugs = BUILDER.comment(desc)
+                .define("removeSendFeedbackAndReportBugs", true);
+
+        desc = "确定是否禁止实验性设置警告";
+        shutupExperimentalWarning = BUILDER.comment(desc)
+                .define("shutupExperimentalWarning", true);
 
         desc = "设置木质物品树苗、树叶的燃烧时间";
         woodenItemBurnTime = BUILDER.comment(desc)
