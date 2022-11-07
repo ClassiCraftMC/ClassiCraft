@@ -12,7 +12,10 @@ public class ClassiCraftConfiguration {
     public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
     public static ForgeConfigSpec.IntValue torchBurnoutTime;
     public static ForgeConfigSpec.IntValue lanternBurnoutTime;
+    public static ForgeConfigSpec.IntValue fireBowlBurnoutTime;
     public static ForgeConfigSpec.IntValue wildRiceGenerateChance;
+    public static ForgeConfigSpec.IntValue saltOreGenerateCount;
+    public static ForgeConfigSpec.IntValue saltOreGenerateSize;
     public static ForgeConfigSpec.IntValue saltCaveGenerateChance;
     public static ForgeConfigSpec.BooleanValue noRelightEnabled;
     public static ForgeConfigSpec.BooleanValue noVanillaTorchPlace;
@@ -30,13 +33,17 @@ public class ClassiCraftConfiguration {
         woodenItemBurnTime = BUILDER.comment(desc)
                 .defineInRange("woodenItemBurnTime", 100, -1, 2800);
 
+        desc = "火盆熄灭耗费的时间，以分钟为单位。将其设置为负值将禁用火盆熄灭.";
+        fireBowlBurnoutTime = BUILDER.comment(desc)
+                .defineInRange("fireBowlBurnoutTime", 90, -1, 2880);
+
         desc = "灯笼熄灭耗费的时间，以分钟为单位。将其设置为负值将禁用灯笼熄灭.";
         lanternBurnoutTime = BUILDER.comment(desc)
                 .defineInRange("lanternBurnoutTime", 80, -1, 2880);
 
         desc = "火把熄灭耗费的时间，以分钟为单位。将其设置为负值将禁用火把熄灭.";
         torchBurnoutTime = BUILDER.comment(desc)
-                .defineInRange("torchBurnoutTime", 60, -1, 2880);
+                .defineInRange("torchBurnoutTime", 500, -1, 2880);
 
         desc = "确定点燃的火把在熄灭后是否消失，而不是变成未点燃的火把.";
         noRelightEnabled = BUILDER.comment(desc)
@@ -54,9 +61,17 @@ public class ClassiCraftConfiguration {
         saltCaveGenerateChance = BUILDER.comment(desc)
                 .defineInRange("saltCaveGenerateChance", 26, -1, 100);
 
+        desc = "设置区块中盐矿生成数值, 将其设置为负值将禁用区块中盐矿生成.";
+        saltOreGenerateSize = BUILDER.comment(desc)
+                .defineInRange("saltOreGenerateSize", 16, -1, 100);
+
+        desc = "设置盐矿的生成数量, 将其设置为负值将禁用盐矿生成.";
+        saltOreGenerateCount = BUILDER.comment(desc)
+                .defineInRange("saltOreGenerateCount", 26, -1, 100);
+
         desc = "设置野生稻谷的生成率, 将其设置为负值将禁用野生稻谷生成.";
         wildRiceGenerateChance = BUILDER.comment(desc)
-                .defineInRange("wildRiceGenerateChance", 25, -1, 100);
+                .defineInRange("wildRiceGenerateChance", 10, -1, 100);
 
         BUILDER.pop();
         SPEC = BUILDER.build();

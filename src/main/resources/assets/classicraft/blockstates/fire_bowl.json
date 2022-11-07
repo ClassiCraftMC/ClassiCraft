@@ -1,0 +1,7 @@
+{
+	"variants": {
+		"litstate=2": {"model": "classicraft:block/firebowl/fire_bowl"},
+		"litstate=1": {"model": "classicraft:block/firebowl/fire_bowl"},
+		"litstate=0": {"model": "classicraft:block/firebowl/unlit_fire_bowl"}
+	}
+}

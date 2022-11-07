@@ -14,10 +14,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DropExperienceBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
@@ -59,12 +56,49 @@ public class ModBlocks {
                             UniformInt.of(0, 2)));
     public static final RegistryObject<Block> WILD_RICE =
             registerNormal("wild_rice", WildRiceBlock::new);
-    public static final RegistryObject<Block> SALT_CRYSTAL =
-            registerNormal("salt_crystal", SaltCrystalBlock::new);
+
+    public static final RegistryObject<Block> SALT_STALACTITE =
+            registerNormal("salt_stalactite", () -> new PointedDripstoneBlock(
+                    BlockBehaviour.Properties
+                            .of(Material.STONE, MaterialColor.SNOW)
+                            .noOcclusion()
+                            .sound(SoundType.POINTED_DRIPSTONE)
+                            .randomTicks()
+                            .strength(1.5F, 3.0F).
+                            dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ)));
+
+    public static final RegistryObject<Block> BUDDING_SALT =
+            registerNormal("budding_salt", () ->new BuddingAmethystBlock(
+                    BlockBehaviour.Properties
+                            .of(Material.AMETHYST)
+                            .randomTicks()
+                            .strength(1.5F)
+                            .sound(SoundType.AMETHYST)
+                            .requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> LARGE_SALT_BUD =
+            registerNormal("large_salt_bud", () -> new AmethystClusterBlock(
+                    5, 3, BlockBehaviour.Properties.copy(Blocks.STONE)
+                    .sound(SoundType.MEDIUM_AMETHYST_BUD).lightLevel((p_152629_) -> {
+                return 4;
+            })));
+
+    public static final RegistryObject<Block> MEDIUM_SALT_BUD =
+            registerNormal("medium_salt_bud", () -> new AmethystClusterBlock(
+                    4, 3, BlockBehaviour.Properties.copy(Blocks.STONE)
+                    .sound(SoundType.LARGE_AMETHYST_BUD).lightLevel((p_152617_) -> {
+                return 2;
+            })));
+    public static final RegistryObject<Block> SMALL_SALT_BUD =
+            registerNormal("small_salt_bud", () -> new AmethystClusterBlock(
+                    3, 4, BlockBehaviour.Properties.copy(Blocks.STONE)
+                    .sound(SoundType.SMALL_AMETHYST_BUD).lightLevel((p_187409_) -> {
+                return 1;
+            })));
+
     public static final RegistryObject<Block> SALT_BLOCK =
-            registerNormal("salt_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE)));
+            registerNormal("salt_block", () -> new AmethystBlock(BlockBehaviour.Properties.of(Material.STONE)));
     public static final RegistryObject<Block> SALT_ROCK_BLOCK =
-            registerNormal("salt_rock_block", SaltRockBlock::new);
+            registerNormal("salt_rock_block", () -> new AmethystBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.SNOW).requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
 
     public static final RegistryObject<Block> STONE_MORTAR_BLOCK =
             registerNormal("stone_mortar_block", StoneMortarBlock::new);
@@ -89,18 +123,16 @@ public class ModBlocks {
                 add(registerDecoration("unlit_large_" + material + dyeColor.getName() + "_candleholder", () -> new UnlitLargeCandleholderBlock(largeCandleholder())));
     }};
 
-    public static final RegistryObject<Block> UNLIT_FIRE_BOWL =
-            registerDecoration("unlit_fire_bowl",
-                    () -> new UnlitFireBowlBlock(fireBowl()));
-    public static final  RegistryObject<Block> UNLIT_SOUL_FIRE_BOWL =
-            registerDecoration("unlit_soul_fire_bowl",
-                    () -> new UnlitFireBowlBlock(largeFireBowl()));
+    public static final RegistryObject<Block> FIRE_BOWL =
+            registerDecoration("fire_bowl", RealisticFireBowlBlock::new);
+    public static final RegistryObject<Block> SOUL_FIRE_BOWL =
+            registerDecoration("soul_fire_bowl", RealisticSoulFireBowlBlock::new);
+
     public static final RegistryObject<Block> UNLIT_LARGE_FIRE_BOWL =
-            registerDecoration("unlit_large_fire_bowl",
-                    () -> new UnlitFireBowlBlock(largeFireBowl()));
+            registerDecoration("unlit_large_fire_bowl", RealisticFireBowlBlock::new);
     public static final RegistryObject<Block> UNLIT_LARGE_SOUL_FIRE_BOWL =
             registerDecoration("unlit_large_soul_fire_bowl",
-                    () -> new UnlitLargeFireBowlBlock(largeFireBowl()));
+                    () -> new UnlitLargeFireBowlBlock(largeCandleholder()));
 
     public static final RegistryObject<Block> TORCH =
             register("torch", RealisticTorchBlock::new);
@@ -156,14 +188,6 @@ public class ModBlocks {
     }
 
     private static BlockBehaviour.Properties largeCandleholder() {
-        return BlockBehaviour.Properties.of(Material.DECORATION).instabreak().sound(SoundType.WOOD);
-    }
-
-    private static BlockBehaviour.Properties fireBowl() {
-        return BlockBehaviour.Properties.of(Material.DECORATION).instabreak().sound(SoundType.WOOD);
-    }
-
-    private static BlockBehaviour.Properties largeFireBowl() {
         return BlockBehaviour.Properties.of(Material.DECORATION).instabreak().sound(SoundType.WOOD);
     }
 

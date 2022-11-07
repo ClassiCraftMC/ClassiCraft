@@ -70,6 +70,7 @@ public class RotItems {
             .put(ModItems.DOUGH.get(), 72000)
             .put(ModItems.RAW_PUMPKIN_PIE.get(), 710000)
             .put(ModItems.RAW_COOKIE.get(), 710000)
+            .put(ModItems.RAW_CAKE.get(), 710000)
             .put(ModItems.RICE.get(), 720000)
             .put(ModItems.RICE_HUSK.get(), 720000)
             .put(ModItems.RICE_SEED.get(), 720000)

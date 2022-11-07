@@ -28,7 +28,7 @@ public class ModItems {
     public static final RegistryObject<Item> RICE = food("rice", ModFoodDatas.RICE);
     public static final RegistryObject<Item> FLOUR = food("flour", ModFoodDatas.FLOUR);
     public static final RegistryObject<Item> RICE_HUSK = food("rice_husk", ModFoodDatas.RICE_HUSK);
-    public static final RegistryObject<Item> RICE_SEED = ITEMS.register("rice_seed", () -> new ItemNameBlockItem(ModBlocks.RICE_CROP.get(), common()));
+    public static final RegistryObject<Item> RICE_SEED = ITEMS.register("rice_seed", () -> new ItemNameBlockItem(ModBlocks.RICE_CROP.get(), common().food(ModFoodDatas.RICE_SEED)));
     public static final RegistryObject<Item> CLASSIC_CRAFT = ITEMS.register("classic_craft", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BLOCK_ROT_VIEWER = ITEMS.register("block_rot_viewer", () -> new BlockRotViewerItem(common()));
 
@@ -41,6 +41,11 @@ public class ModItems {
             food("raw_pumpkin_pie", ModFoodDatas.RAW_PUMPKIN_PIE);
     public static final RegistryObject<Item> RAW_COOKIE =
             food("raw_cookie", ModFoodDatas.RAW_COOKIE);
+    public static final RegistryObject<Item> RAW_CAKE =
+            food("raw_cake", ModFoodDatas.RAW_CAKE);
+
+    public static final RegistryObject<Item> RAW_SALT =
+            normal("raw_salt");
 
     public static final RegistryObject<Item> TORCH =
             register("torch", () -> new StandingAndWallBlockItem(ModBlocks.TORCH.get(), ModBlocks.WALL_TORCH.get(), decoration()));

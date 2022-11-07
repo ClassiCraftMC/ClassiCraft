@@ -20,5 +20,10 @@ public class BlockRenderTypeSetup {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.WALL_TORCH.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.SOUL_TORCH.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.SOUL_WALL_TORCH.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.SALT_STALACTITE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.LARGE_SALT_BUD.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.SMALL_SALT_BUD.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.MEDIUM_SALT_BUD.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.FIRE_BOWL.get(), RenderType.cutoutMipped());
     }
 }

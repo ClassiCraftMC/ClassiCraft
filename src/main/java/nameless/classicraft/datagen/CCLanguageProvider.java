@@ -51,8 +51,6 @@ public class CCLanguageProvider extends LanguageProvider {
         add(ModBlocks.SALT_ORE.get(), "Salt Ore");
         add(ModBlocks.WILD_RICE.get(), "Wild Rice");
         add(ModBlocks.STONE_MORTAR_BLOCK.get(), "Stone Motar");
-        add(ModBlocks.UNLIT_FIRE_BOWL.get(), "Unlit Fire Bowl");
-        add(ModBlocks.UNLIT_SOUL_FIRE_BOWL.get(), "Unlit Soul Fire Bowl");
         add(ModBlocks.UNLIT_LARGE_FIRE_BOWL.get(), "Unlit Large Fire Bowl");
         add(ModBlocks.UNLIT_LARGE_SOUL_FIRE_BOWL.get(), "Unlit Large Soul Fire Bowl");
         add(ModBlocks.TORCH.get(), "Torch");
@@ -63,6 +61,11 @@ public class CCLanguageProvider extends LanguageProvider {
         add(ModBlocks.SOUL_LANTERN.get(), "Soul Lantern");
         add(ModItems.RAW_PUMPKIN_PIE.get(), "Raw Pumpkin Pie");
         add(ModItems.RAW_COOKIE.get(), "Raw Cookie");
+        add(ModItems.RAW_CAKE.get(), "Raw Cake");
+        add(ModBlocks.SALT_STALACTITE.get(), "Salt Stalactite");
+        add(ModBlocks.LARGE_SALT_BUD.get(), "Large Salt Bud");
+        add(ModBlocks.MEDIUM_SALT_BUD.get(), "Medium Salt Bud");
+        add(ModBlocks.SMALL_SALT_BUD.get(), "Small Salt Bud");
         add("info.classicraft.stop_use_lantern", "Could't place the Vanilla Lantern Block in survival mode, you can configured it in ClassisCraft Mod Config.");
         add("info.classicraft.stop_use_torch", "Could't place the Vanilla Torch Block in survival mode, you can configured it in ClassisCraft Mod Config.");
         add("block.classicraft.unlit_golden_white_candleholder", "Unlit Golden White Candleholder");

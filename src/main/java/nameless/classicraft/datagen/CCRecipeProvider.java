@@ -4,7 +4,6 @@ import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
@@ -27,6 +26,7 @@ public class CCRecipeProvider extends RecipeProvider {
        simpleSmelting(ModItems.DOUGH.get(), Items.BREAD, pFinishedRecipeConsumer);
        simpleSmelting(ModItems.RAW_PUMPKIN_PIE.get(), Items.PUMPKIN, pFinishedRecipeConsumer);
        simpleSmelting(ModItems.RAW_COOKIE.get(), Items.COOKIE, pFinishedRecipeConsumer);
+       simpleSmelting(ModItems.RAW_CAKE.get(), Items.CAKE, pFinishedRecipeConsumer);
        ShapedRecipeBuilder.shaped(ModItems.RAW_PUMPKIN_PIE.get(), 2)
                 .define('K', Blocks.PUMPKIN)
                 .define('S', Items.EGG)
@@ -43,6 +43,15 @@ public class CCRecipeProvider extends RecipeProvider {
                .pattern("LSL")
                .pattern(" K ")
                .unlockedBy("has_dough", has(ModItems.DOUGH.get())).save(pFinishedRecipeConsumer);
+       ShapedRecipeBuilder.shaped(ModItems.RAW_CAKE.get(), 2)
+               .define('K', Items.SUGAR)
+               .define('S', Items.MILK_BUCKET)
+               .define('P', Items.EGG)
+               .define('L', ModItems.FLOUR.get())
+               .pattern("SSS")
+               .pattern("KPK")
+               .pattern("LLL")
+               .unlockedBy("has_flour", has(ModItems.FLOUR.get())).save(pFinishedRecipeConsumer);
 
     }
 

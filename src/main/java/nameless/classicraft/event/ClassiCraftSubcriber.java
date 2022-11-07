@@ -47,6 +47,23 @@ public class ClassiCraftSubcriber {
         bus.addListener(ClassiCraftSubcriber::onPlayerEatingFoods);
         bus.addListener(ClassiCraftSubcriber::addFuelBurn);
         bus.addListener(ClassiCraftSubcriber::stopBlockPlace);
+        bus.addListener(ClassiCraftSubcriber::addOnPlaceBlock);
+    }
+
+    public static void addOnPlaceBlock(BlockEvent.EntityPlaceEvent event) {
+        Entity entity = event.getEntity();
+        Block block = event.getPlacedBlock().getBlock();
+        ItemStack itemStack = block.asItem().getDefaultInstance();
+        if (entity instanceof Player) {
+            if (itemStack.is(Items.TORCH) || itemStack.is(Items.SOUL_TORCH)) {
+                assert itemStack.getEntityRepresentation() != null;
+                event.getLevel().addFreshEntity(itemStack.getEntityRepresentation());
+            }
+            if (itemStack.is(Items.LANTERN) || itemStack.is(Items.SOUL_LANTERN)) {
+                assert itemStack.getEntityRepresentation() != null;
+                event.getLevel().addFreshEntity(itemStack.getEntityRepresentation());
+            }
+        }
     }
 
     public static void stopBlockPlace(BlockEvent.EntityPlaceEvent event) {
@@ -57,20 +74,16 @@ public class ClassiCraftSubcriber {
         if (entity instanceof Player && block instanceof TorchBlock && !item.getDefaultInstance().is(Items.REDSTONE_TORCH)
                 && ClassiCraftConfiguration.noVanillaTorchPlace.get()) {
             if (!((Player) entity).isCreative()) {
-                ItemStack torchStack = block.asItem().getDefaultInstance();
                 level.playSound(null, event.getPos(), SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1, 1);
                 level.setBlock(event.getPos(), Blocks.AIR.defaultBlockState(), 1);
                 entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_torch"));
-                ((Player) entity).getInventory().add(torchStack.split(1));
             }
         }
         if (entity instanceof Player && block instanceof LanternBlock && ClassiCraftConfiguration.noVanillaLanternPlace.get()) {
             if (!((Player) entity).isCreative()) {
-                ItemStack lanternStack = block.asItem().getDefaultInstance();
                 level.playSound(null, event.getPos(), SoundEvents.LANTERN_PLACE, SoundSource.BLOCKS, 1, 1);
                 level.setBlock(event.getPos(), Blocks.AIR.defaultBlockState(), 1);
                 entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_lantern"));
-                ((Player) entity).getInventory().add(lanternStack.split(1));
             }
         }
     }

@@ -1,5 +1,6 @@
 package nameless.classicraft.worldgen;
 
+import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.init.ModBlocks;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -28,9 +29,9 @@ public class SaltOreFeature extends OreFeature {
     public static Feature<?> feature() {
         FEATURE = new SaltOreFeature();
         CONFIGURED_FEATURE = FeatureUtils.register("classicraft:salt_ore", FEATURE, new OreConfiguration(List.of(OreConfiguration
-                .target(new BlockStateMatchTest(Blocks.STONE.defaultBlockState()), ModBlocks.SALT_ORE.get().defaultBlockState())), 16));
+                .target(new BlockStateMatchTest(Blocks.STONE.defaultBlockState()), ModBlocks.SALT_ORE.get().defaultBlockState())), ClassiCraftConfiguration.saltOreGenerateSize.get()));
         PLACED_FEATURE = PlacementUtils.register("classicraft:salt_ore", CONFIGURED_FEATURE,
-                List.of(CountPlacement.of(10), InSquarePlacement.spread(),
+                List.of(CountPlacement.of(ClassiCraftConfiguration.saltOreGenerateCount.get()), InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(64)), BiomeFilter.biome()));
         return FEATURE;
     }

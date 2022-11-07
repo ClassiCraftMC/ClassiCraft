@@ -74,6 +74,12 @@ public class RealisticLanternBlock extends Block implements SimpleWaterloggedBlo
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if (pPlayer.getItemInHand(pHand).getItem() == Items.FLINT_AND_STEEL) {
             playLightingSound(pLevel, pPos);
+            if (!pPlayer.isCreative() && pPlayer.getItemInHand(pHand).getUseDuration() > 0) {
+                ItemStack heldStack = pPlayer.getItemInHand(pHand);
+                heldStack.hurtAndBreak(1, pPlayer, (p_41300_) -> {
+                    p_41300_.broadcastBreakEvent(pHand);
+                });
+            }
             if (pLevel.isRainingAt(pPos)) {
                 playExtinguishSound(pLevel, pPos);
             } else {

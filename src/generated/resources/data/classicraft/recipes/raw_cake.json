@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "K": {
+      "item": "minecraft:sugar"
+    },
+    "L": {
+      "item": "classicraft:flour"
+    },
+    "P": {
+      "item": "minecraft:egg"
+    },
+    "S": {
+      "item": "minecraft:milk_bucket"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "KPK",
+    "LLL"
+  ],
+  "result": {
+    "count": 2,
+    "item": "classicraft:raw_cake"
+  }
+}

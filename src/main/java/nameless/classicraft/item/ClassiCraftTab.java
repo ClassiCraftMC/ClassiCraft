@@ -27,7 +27,7 @@ public class ClassiCraftTab {
         @NotNull
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(ModBlocks.UNLIT_FIRE_BOWL.get());
+            return new ItemStack(ModBlocks.FIRE_BOWL.get());
         }
     };
 }

@@ -35,8 +35,6 @@ public class CCLootTables extends BaseLootTableProvider {
             simple(UNLIT_CANDLEHOLDER);
         for (RegistryObject<Block> UNLIT_LARGE_CANDLEHOLDER: ModBlocks.UNLIT_LARGE_CANDLEHOLDERS)
             simple(UNLIT_LARGE_CANDLEHOLDER);
-        simple(ModBlocks.UNLIT_FIRE_BOWL);
-        simple(ModBlocks.UNLIT_SOUL_FIRE_BOWL);
         simple(ModBlocks.UNLIT_LARGE_FIRE_BOWL);
         simple(ModBlocks.UNLIT_LARGE_SOUL_FIRE_BOWL);
 
