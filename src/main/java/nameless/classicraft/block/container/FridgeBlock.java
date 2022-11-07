@@ -1,5 +1,6 @@
-package nameless.classicraft.block;
+package nameless.classicraft.block.container;
 
+import nameless.classicraft.block.entityblock.AbstractGuiEntityBlock;
 import nameless.classicraft.block.entity.FridgeBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;

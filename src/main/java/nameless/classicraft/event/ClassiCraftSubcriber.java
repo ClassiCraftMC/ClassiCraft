@@ -60,8 +60,8 @@ public class ClassiCraftSubcriber {
                 level.playSound(null, event.getPos(), SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1, 1);
                 level.setBlock(event.getPos(), Blocks.AIR.defaultBlockState(), 1);
                 entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_torch"));
-                ((Player) entity).getInventory().add(item.getDefaultInstance().split(1));
             }
+            item.getDefaultInstance().shrink(1);
         }
     }
 

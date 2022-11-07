@@ -1,4 +1,4 @@
-package nameless.classicraft.block;
+package nameless.classicraft.block.entityblock;
 
 import nameless.classicraft.block.entity.BasicMenuBlockEntity;
 import nameless.classicraft.block.entity.BasicBlockEntity;

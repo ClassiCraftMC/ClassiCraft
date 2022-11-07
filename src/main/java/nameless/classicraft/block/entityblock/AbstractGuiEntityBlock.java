@@ -1,7 +1,8 @@
-package nameless.classicraft.block;
+package nameless.classicraft.block.entityblock;
 
 import nameless.classicraft.block.entity.BasicBlockEntity;
 import nameless.classicraft.block.entity.BasicMenuBlockEntity;
+import nameless.classicraft.block.entityblock.AbstractEntityBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;

@@ -1,4 +1,4 @@
-package nameless.classicraft.block;
+package nameless.classicraft.block.container;
 
 import nameless.classicraft.block.entity.ModBlockEntities;
 import nameless.classicraft.block.entity.StoneMortarBlockEntity;

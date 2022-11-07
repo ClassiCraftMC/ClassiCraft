@@ -2,11 +2,10 @@ package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.block.*;
+import nameless.classicraft.block.container.FridgeBlock;
+import nameless.classicraft.block.container.StoneMortarBlock;
 import nameless.classicraft.block.entity.ModBlockEntities;
-import nameless.classicraft.block.realistic.RealisticSoulTorchBlock;
-import nameless.classicraft.block.realistic.RealisticSoulWallTorchBlock;
-import nameless.classicraft.block.realistic.RealisticTorchBlock;
-import nameless.classicraft.block.realistic.RealisticWallTorchBlock;
+import nameless.classicraft.block.realistic.*;
 import nameless.classicraft.crop.RiceBlock;
 import nameless.classicraft.crop.RicePaniclesBlock;
 import nameless.classicraft.item.ClassiCraftTab;
@@ -24,7 +23,6 @@ import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.ObjectHolder;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 
@@ -44,10 +42,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> MUSHROOM_PLANTER =
             registerNormal("mushroom_planter",
             () -> new MushroomPlanterBlock(wood().noOcclusion(), ModBlockEntities.MUSHROOM_PLANTER));
-    public static final RegistryObject<Block> UNLIT_LANTERN =
-            registerDecoration("unlit_lantern", () -> new UnlitLanternBlock(lantern()));
-    public static final RegistryObject<Block> UNLIT_SOUL_LANTERN =
-            registerDecoration("unlit_soul_lantern", () -> new UnlitLanternBlock(lantern()));
+
     public static final RegistryObject<Block> GLISTERING_MELON =
             registerNormal("glistering_melon",
                     () -> new GlisteringMelonBlock(melon()));
@@ -109,14 +104,18 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> TORCH =
             register("torch", RealisticTorchBlock::new);
-
-    public static final RegistryObject<Block> SOUL_TORCH =
-            register("soul_torch", RealisticSoulTorchBlock::new);
     public static final RegistryObject<Block> WALL_TORCH =
             register("torch_wall", RealisticWallTorchBlock::new);
-
+    public static final RegistryObject<Block> SOUL_TORCH =
+            register("soul_torch", RealisticSoulTorchBlock::new);
     public static final RegistryObject<Block> SOUL_WALL_TORCH =
             register("wall_soul_torch", RealisticSoulWallTorchBlock::new);
+
+    public static final RegistryObject<Block> LANTERN =
+            registerDecoration("lantern", RealisticLanternBlock::new);
+    public static final RegistryObject<Block> SOUL_LANTERN =
+            registerDecoration("soul_lantern", RealisticSoulLanternBlock::new);
+
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockSupplier, @Nullable Function<T, ? extends BlockItem> blockItemFactory) {
         return registerBlock(ModBlocks.BLOCKS, ModItems.ITEMS, name, blockSupplier, blockItemFactory);
@@ -150,10 +149,6 @@ public class ModBlocks {
 
     private static BlockBehaviour.Properties lantern() {
         return BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN);
-    }
-
-    private static BlockBehaviour.Properties torch() {
-        return BlockBehaviour.Properties.of(Material.DECORATION).noCollission().instabreak().sound(SoundType.WOOD);
     }
 
     private static BlockBehaviour.Properties candleholder() {

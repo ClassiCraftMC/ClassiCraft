@@ -6,10 +6,10 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "classicraft:unlit_lantern"
+          "name": "classicraft:soul_torch"
         }
       ],
-      "name": "unlit_lantern",
+      "name": "soul_torch",
       "rolls": 1.0
     }
   ]

@@ -1,7 +1,6 @@
 package nameless.classicraft.datagen;
 
 import nameless.classicraft.init.ModBlocks;
-import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
@@ -11,9 +10,6 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraftforge.registries.RegistryObject;
 
-/**
- * @author DustW
- **/
 public class CCLootTables extends BaseLootTableProvider {
 
     public CCLootTables(DataGenerator dataGeneratorIn) {
@@ -23,10 +19,12 @@ public class CCLootTables extends BaseLootTableProvider {
     @Override
     protected void addTables() {
         simple(ModBlocks.FRIDGE);
-        simple(ModBlocks.UNLIT_LANTERN);
-        simple(ModBlocks.UNLIT_SOUL_LANTERN);
         simple(ModBlocks.GLISTERING_MELON);
         simple(ModBlocks.SALT_ORE);
+        simple(ModBlocks.TORCH);
+        simple(ModBlocks.SOUL_TORCH);
+        simple(ModBlocks.LANTERN);
+        simple(ModBlocks.SOUL_LANTERN);
         LootPool.Builder builder = LootPool.lootPool()
                 .name(ModBlocks.CACTUS_FRUIT.getId().toString())
                 .setRolls(ConstantValue.exactly(1))

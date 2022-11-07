@@ -42,8 +42,6 @@ public class CCLanguageZhProvider extends LanguageProvider {
         add(ModItems.SALT.get(), "盐");
         add(ModItems.DOUGH.get(), "生面团");
         add(ModItems.SALT_WATER_BOTTLE.get(), "盐水瓶");
-        add(ModBlocks.UNLIT_LANTERN.get(), "熄灭灯笼");
-        add(ModBlocks.UNLIT_SOUL_LANTERN.get(), "熄灭灵魂灯笼");
         add(ModBlocks.UNLIT_FIRE_BOWL.get(), "熄灭火盆");
         add(ModBlocks.UNLIT_SOUL_FIRE_BOWL.get(), "熄灭灵魂火盆");
         add(ModBlocks.UNLIT_LARGE_FIRE_BOWL.get(), "熄灭火炉");
@@ -52,10 +50,17 @@ public class CCLanguageZhProvider extends LanguageProvider {
         add(ModItems.RICE_HUSK.get(), "稻谷");
         add(ModItems.RICE_SEED.get(), "水稻种子");
         add(ModItems.DEER_SPAWN_EGG.get(), "生成蛋丨鹿");
+        add(ModItems.BOAR_SPAWN_EGG.get(), "生成蛋丨野猪");
         add(ModItems.FLOUR.get(), "粗制面粉");
         add(ModBlocks.SALT_ORE.get(), "盐矿");
         add(ModBlocks.WILD_RICE.get(), "野生稻谷");
         add(ModBlocks.STONE_MORTAR_BLOCK.get(), "石臼");
+        add(ModBlocks.TORCH.get(), "火把");
+        add(ModBlocks.SOUL_TORCH.get(), "灵魂火把");
+        add(ModBlocks.SALT_ROCK_BLOCK.get(), "粗盐块");
+        add(ModBlocks.SALT_BLOCK.get(), "盐块");
+        add(ModBlocks.LANTERN.get(), "灯笼");
+        add(ModBlocks.SOUL_LANTERN.get(), "灵魂灯笼");
         add("info.classicraft.stop_use_torch", "生成模式下禁止放置原版火把，你可以在天工开物模组配置文件中更改.");
         add("block.classicraft.unlit_golden_white_candleholder", "Unlit Golden White Candleholder");
         add("block.classicraft.unlit_golden_orange_candleholder", "Unlit Golden Orange Candleholder");

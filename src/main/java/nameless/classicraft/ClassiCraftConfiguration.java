@@ -11,6 +11,7 @@ public class ClassiCraftConfiguration {
     public static final ForgeConfigSpec SPEC;
     public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
     public static ForgeConfigSpec.IntValue torchBurnoutTime;
+    public static ForgeConfigSpec.IntValue lanternBurnoutTime;
     public static ForgeConfigSpec.IntValue wildRiceGenerateChance;
     public static ForgeConfigSpec.IntValue saltCaveGenerateChance;
     public static ForgeConfigSpec.BooleanValue noRelightEnabled;
@@ -26,7 +27,11 @@ public class ClassiCraftConfiguration {
 
         desc = "设置木质物品树苗、树叶的燃烧时间";
         woodenItemBurnTime = BUILDER.comment(desc)
-                .defineInRange("woodenItemBurnTime", 400, -1, 2800);
+                .defineInRange("woodenItemBurnTime", 100, -1, 2800);
+
+        desc = "灯笼熄灭耗费的时间，以分钟为单位。将其设置为负值将禁用灯笼熄灭.";
+        lanternBurnoutTime = BUILDER.comment(desc)
+                .defineInRange("lanternBurnoutTime", 80, -1, 2880);
 
         desc = "火把熄灭耗费的时间，以分钟为单位。将其设置为负值将禁用火把熄灭.";
         torchBurnoutTime = BUILDER.comment(desc)
