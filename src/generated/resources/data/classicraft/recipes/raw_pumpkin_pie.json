@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "minecraft:sugar"
+    },
+    "K": {
+      "item": "minecraft:pumpkin"
+    },
+    "L": {
+      "item": "classicraft:flour"
+    },
+    "S": {
+      "item": "minecraft:egg"
+    }
+  },
+  "pattern": [
+    "KS",
+    "#L"
+  ],
+  "result": {
+    "count": 2,
+    "item": "classicraft:raw_pumpkin_pie"
+  }
+}

@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item.classicraft.dough": {
+    "has_item.classicraft.raw_pumpkin_pie": {
       "conditions": {
         "items": [
           {
             "items": [
-              "classicraft:dough"
+              "classicraft:raw_pumpkin_pie"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:bread"
+        "recipe": "minecraft:pumpkin"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_item.classicraft.dough",
+      "has_item.classicraft.raw_pumpkin_pie",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:bread"
+      "minecraft:pumpkin"
     ]
   }
 }

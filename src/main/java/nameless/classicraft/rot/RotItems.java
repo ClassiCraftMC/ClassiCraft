@@ -1,8 +1,6 @@
 package nameless.classicraft.rot;
 
 import com.google.common.collect.ImmutableMap;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.world.item.Item;
@@ -10,10 +8,6 @@ import net.minecraft.world.item.Items;
 
 import java.util.Map;
 
-/**
- * @author DustW
- */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RotItems {
 
     public static final Map<Item, Integer> MAP = ImmutableMap.<Item, Integer>builder()
@@ -74,6 +68,7 @@ public class RotItems {
             .put(Items.PUMPKIN, 720000)
             .put(ModBlocks.CACTUS_FRUIT.get().asItem(), 24000)
             .put(ModItems.DOUGH.get(), 72000)
+            .put(ModItems.RAW_PUMPKIN_PIE.get(), 710000)
             .put(ModItems.RICE.get(), 720000)
             .put(ModItems.RICE_HUSK.get(), 720000)
             .put(ModItems.RICE_SEED.get(), 720000)

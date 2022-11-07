@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item.classicraft.dough": {
+    "has_dough": {
       "conditions": {
         "items": [
           {
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:bread"
+        "recipe": "classicraft:raw_pumpkin_pie"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_item.classicraft.dough",
+      "has_dough",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:bread"
+      "classicraft:raw_pumpkin_pie"
     ]
   }
 }

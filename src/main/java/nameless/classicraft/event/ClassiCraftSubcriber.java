@@ -16,7 +16,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Turtle;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrownEgg;
 import net.minecraft.world.food.FoodProperties;
@@ -27,6 +26,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LanternBlock;
 import net.minecraft.world.level.block.TorchBlock;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
@@ -46,10 +46,10 @@ public class ClassiCraftSubcriber {
         bus.addListener(ClassiCraftSubcriber::onPlayerUsingItem);
         bus.addListener(ClassiCraftSubcriber::onPlayerEatingFoods);
         bus.addListener(ClassiCraftSubcriber::addFuelBurn);
-        bus.addListener(ClassiCraftSubcriber::stopTorchBlockPlace);
+        bus.addListener(ClassiCraftSubcriber::stopBlockPlace);
     }
 
-    public static void stopTorchBlockPlace(BlockEvent.EntityPlaceEvent event) {
+    public static void stopBlockPlace(BlockEvent.EntityPlaceEvent event) {
         Entity entity = event.getEntity();
         Block block = event.getPlacedBlock().getBlock();
         LevelAccessor level = event.getLevel();
@@ -57,11 +57,21 @@ public class ClassiCraftSubcriber {
         if (entity instanceof Player && block instanceof TorchBlock && !item.getDefaultInstance().is(Items.REDSTONE_TORCH)
                 && ClassiCraftConfiguration.noVanillaTorchPlace.get()) {
             if (!((Player) entity).isCreative()) {
+                ItemStack torchStack = block.asItem().getDefaultInstance();
                 level.playSound(null, event.getPos(), SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1, 1);
                 level.setBlock(event.getPos(), Blocks.AIR.defaultBlockState(), 1);
                 entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_torch"));
+                ((Player) entity).getInventory().add(torchStack.split(1));
             }
-            item.getDefaultInstance().shrink(1);
+        }
+        if (entity instanceof Player && block instanceof LanternBlock && ClassiCraftConfiguration.noVanillaLanternPlace.get()) {
+            if (!((Player) entity).isCreative()) {
+                ItemStack lanternStack = block.asItem().getDefaultInstance();
+                level.playSound(null, event.getPos(), SoundEvents.LANTERN_PLACE, SoundSource.BLOCKS, 1, 1);
+                level.setBlock(event.getPos(), Blocks.AIR.defaultBlockState(), 1);
+                entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_lantern"));
+                ((Player) entity).getInventory().add(lanternStack.split(1));
+            }
         }
     }
 

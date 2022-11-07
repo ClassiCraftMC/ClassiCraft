@@ -30,10 +30,6 @@ public class CCLanguageProvider extends LanguageProvider {
         add("level.classicraft.rotten", "Rotten ");
         add("info.classicraft.rot", "It will rotten after %s day");
         add("info.classicraft.rotting_speed", "Rotting Speed: %s");
-        add("level.classicraft.dry", "Dry ");
-        add("level.classicraft.wet", "Wet ");
-        add("info.classicraft.damp", "It will dried after %s day");
-        add("info.classicraft.damping_speed", "Damping Speed: %s");
         add("container.classicraft.fridge", "Fridge");
         add("container.classicraft.stone_mortar_block", "Stone Mortar Block");
         add(ModBlocks.FRIDGE.get(), "Fridge");
@@ -65,6 +61,8 @@ public class CCLanguageProvider extends LanguageProvider {
         add(ModBlocks.SALT_BLOCK.get(), "Salt Block");
         add(ModBlocks.LANTERN.get(), "Lantern");
         add(ModBlocks.SOUL_LANTERN.get(), "Soul Lantern");
+        add(ModItems.RAW_PUMPKIN_PIE.get(), "Raw Pumpkin Pie");
+        add("info.classicraft.stop_use_lantern", "Could't place the Vanilla Lantern Block in survival mode, you can configured it in ClassisCraft Mod Config.");
         add("info.classicraft.stop_use_torch", "Could't place the Vanilla Torch Block in survival mode, you can configured it in ClassisCraft Mod Config.");
         add("block.classicraft.unlit_golden_white_candleholder", "Unlit Golden White Candleholder");
         add("block.classicraft.unlit_golden_orange_candleholder", "Unlit Golden Orange Candleholder");

@@ -16,6 +16,7 @@ public class ClassiCraftConfiguration {
     public static ForgeConfigSpec.IntValue saltCaveGenerateChance;
     public static ForgeConfigSpec.BooleanValue noRelightEnabled;
     public static ForgeConfigSpec.BooleanValue noVanillaTorchPlace;
+    public static ForgeConfigSpec.BooleanValue noVanillaLanternPlace;
     public static ForgeConfigSpec.IntValue woodenItemBurnTime;
 
 
@@ -44,6 +45,10 @@ public class ClassiCraftConfiguration {
         desc = "确定是否禁止生存模式放置原版火把（相关火把模组也将禁止放置火把）.";
         noVanillaTorchPlace = BUILDER.comment(desc)
                 .define("noVanillaTorchPlace", true);
+
+        desc = "确定是否禁止生存模式放置原版灯笼（相关灯笼模组也将禁止放置灯笼）.";
+        noVanillaLanternPlace = BUILDER.comment(desc)
+                .define("noVanillaLanternPlace", true);
 
         desc = "设置盐洞的生成率, 将其设置为负值将禁用盐洞生成.";
         saltCaveGenerateChance = BUILDER.comment(desc)
