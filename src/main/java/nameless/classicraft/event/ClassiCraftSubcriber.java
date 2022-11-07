@@ -1,23 +1,31 @@
 package nameless.classicraft.event;
 
 import com.mojang.datafixers.util.Pair;
+import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.capability.ModCapabilities;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Turtle;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrownEgg;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.TorchBlock;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
@@ -26,6 +34,7 @@ import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
+import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 
 public class ClassiCraftSubcriber {
@@ -35,6 +44,22 @@ public class ClassiCraftSubcriber {
         bus.addListener(ClassiCraftSubcriber::onPlayerUsingItem);
         bus.addListener(ClassiCraftSubcriber::onPlayerEatingFoods);
         bus.addListener(ClassiCraftSubcriber::addFuelBurn);
+        bus.addListener(ClassiCraftSubcriber::stopTorchBlockPlace);
+    }
+
+    public static void stopTorchBlockPlace(BlockEvent.EntityPlaceEvent event) {
+        Entity entity = event.getEntity();
+        Block block = event.getPlacedBlock().getBlock();
+        ItemStack heldStack = block.asItem().getDefaultInstance();
+        LevelAccessor level = event.getLevel();
+        if (entity instanceof Player && block instanceof TorchBlock && ClassiCraftConfiguration.noVanillaTorchPlace.get()) {
+            if (!((Player) entity).isCreative()) {
+                level.playSound(null, event.getPos(), SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1, 1);
+                level.setBlock(event.getPos(), Blocks.AIR.defaultBlockState(), 1);
+                entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_torch"));
+                heldStack.split(1);
+            }
+        }
     }
 
     public static void addFuelBurn(FurnaceFuelBurnTimeEvent event) {

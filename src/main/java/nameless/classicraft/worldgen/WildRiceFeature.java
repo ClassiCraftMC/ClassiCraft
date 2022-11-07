@@ -1,5 +1,6 @@
 package nameless.classicraft.worldgen;
 
+import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.block.WildRiceBlock;
 import net.minecraft.core.BlockPos;
@@ -39,7 +40,7 @@ public class WildRiceFeature extends RandomPatchFeature {
         CONFIGURED_FEATURE = FeatureUtils.register("classicraft:wild_rice", FEATURE, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK,
                 new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.WILD_RICE.get())), List.of(Blocks.DIRT), 20));
         PLACED_FEATURE = PlacementUtils.register("classicraft:wild_rice", CONFIGURED_FEATURE, List.of(CountPlacement.of(8),
-                RarityFilter.onAverageOnceEvery(20), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
+                RarityFilter.onAverageOnceEvery(ClassiCraftConfiguration.wildRiceGenerateChance.get()), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
         return FEATURE;
     }
 

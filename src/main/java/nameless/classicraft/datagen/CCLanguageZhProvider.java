@@ -42,8 +42,6 @@ public class CCLanguageZhProvider extends LanguageProvider {
         add(ModItems.SALT.get(), "盐");
         add(ModItems.DOUGH.get(), "生面团");
         add(ModItems.SALT_WATER_BOTTLE.get(), "盐水瓶");
-        //add(ModBlocks.UNLIT_TORCH.get(), "熄灭火把");
-        add(ModBlocks.UNLIT_SOUL_TORCH.get(), "熄灭灵魂火把");
         add(ModBlocks.UNLIT_LANTERN.get(), "熄灭灯笼");
         add(ModBlocks.UNLIT_SOUL_LANTERN.get(), "熄灭灵魂灯笼");
         add(ModBlocks.UNLIT_FIRE_BOWL.get(), "熄灭火盆");
@@ -58,6 +56,7 @@ public class CCLanguageZhProvider extends LanguageProvider {
         add(ModBlocks.SALT_ORE.get(), "盐矿");
         add(ModBlocks.WILD_RICE.get(), "野生稻谷");
         add(ModBlocks.STONE_MORTAR_BLOCK.get(), "石臼");
+        add("info.classicraft.stop_use_torch", "生成模式下禁止放置原版火把，你可以在天工开物模组配置文件中更改.");
         add("block.classicraft.unlit_golden_white_candleholder", "Unlit Golden White Candleholder");
         add("block.classicraft.unlit_golden_orange_candleholder", "Unlit Golden Orange Candleholder");
         add("block.classicraft.unlit_golden_magenta_candleholder", "Unlit Golden Magenta Candleholder");

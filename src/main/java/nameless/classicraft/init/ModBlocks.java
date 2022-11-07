@@ -55,12 +55,6 @@ public class ModBlocks {
             registerFood("cactus_fruit",
                     () -> new CactusFruitBlock(cactus()), ModFoodDatas.CACTUS_FRUIT);
 
-    public static final RegistryObject<Block> UNLIT_SOUL_TORCH =
-            register("unlit_soul_torch",
-                    RealisticTorchBlock::new);
-    public static final RegistryObject<Block> WALL_UNLIT_SOUL_TORCH =
-            register("wall_unlit_soul_torch",
-                    RealisticWallTorchBlock::new);
     public static final RegistryObject<Block> SALT_ORE =
             registerNormal("salt_ore",
                     () -> new DropExperienceBlock(BlockBehaviour

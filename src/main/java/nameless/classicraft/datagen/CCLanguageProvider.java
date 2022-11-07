@@ -40,8 +40,6 @@ public class CCLanguageProvider extends LanguageProvider {
         add(ModBlocks.GLISTERING_MELON.get(), "Glistering Melon");
         add(ModBlocks.CACTUS_FRUIT.get(), "Cactus Fruit");
         add(ModBlocks.MUSHROOM_PLANTER.get(), "Mushroom Planter");
-        //add(ModBlocks.UNLIT_TORCH.get(), "Unlit Torch");
-        add(ModBlocks.UNLIT_SOUL_TORCH.get(), "Unlit Soul Torch");
         add(ModBlocks.UNLIT_LANTERN.get(), "Unlit Lantern");
         add(ModBlocks.UNLIT_SOUL_LANTERN.get(), "Unlit Soul Lantern");
         add(ModItems.ROTTEN_FOOD.get(), "Rotten Food");
@@ -62,6 +60,7 @@ public class CCLanguageProvider extends LanguageProvider {
         add(ModBlocks.UNLIT_SOUL_FIRE_BOWL.get(), "Unlit Soul Fire Bowl");
         add(ModBlocks.UNLIT_LARGE_FIRE_BOWL.get(), "Unlit Large Fire Bowl");
         add(ModBlocks.UNLIT_LARGE_SOUL_FIRE_BOWL.get(), "Unlit Large Soul Fire Bowl");
+        add("info.classicraft.stop_use_torch", "Could't place the Vanilla Torch Block in survival mode, you can configured it in ClassisCraft Mod Config.");
         add("block.classicraft.unlit_golden_white_candleholder", "Unlit Golden White Candleholder");
         add("block.classicraft.unlit_golden_orange_candleholder", "Unlit Golden Orange Candleholder");
         add("block.classicraft.unlit_golden_magenta_candleholder", "Unlit Golden Magenta Candleholder");
