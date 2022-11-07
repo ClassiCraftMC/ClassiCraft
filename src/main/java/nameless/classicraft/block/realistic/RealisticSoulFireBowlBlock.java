@@ -12,9 +12,9 @@ public class RealisticSoulFireBowlBlock extends RealisticFireBowlBlock {
     @Override
     public void animateTick(BlockState state, Level pLevel, BlockPos pPos, RandomSource pRandom) {
         if (state.getValue(LITSTATE) == LIT || (state.getValue(LITSTATE) == SMOLDERING && pLevel.getRandom().nextInt(2) == 1)) {
-            double d0 = pPos.getX() + 0.25D;
-            double d1 = pPos.getY() + 0.25D;
-            double d2 = pPos.getZ() + 0.25D;
+            double d0 = pPos.getX() + 0.3D;
+            double d1 = pPos.getY() + 0.3D;
+            double d2 = pPos.getZ() + 0.3D;
             pLevel.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
             pLevel.addParticle(ParticleTypes.SOUL_FIRE_FLAME, d0, d1, d2, 0.0D, 0.0D, 0.0D);
         }
