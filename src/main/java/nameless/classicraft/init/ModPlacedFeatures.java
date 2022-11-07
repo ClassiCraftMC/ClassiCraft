@@ -1,5 +1,6 @@
 package nameless.classicraft.init;
 
+import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.ClassiCraftMod;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -21,7 +22,7 @@ public class ModPlacedFeatures {
     public static final RegistryObject<PlacedFeature> SALT_CAVE_PLACED =
             register("salt_cave_placed",
                     ModConfiguredFeatures.SALT_CAVE.getHolder().get(),
-                    6, 30, 26);
+                    6, 30, ClassiCraftConfiguration.saltCaveGenerateChance.get());
 
     private static RegistryObject<PlacedFeature> register(String name, Holder<ConfiguredFeature<?, ?>> feature, int aboveBottem, int absolute, int chance) {
         return register(name,

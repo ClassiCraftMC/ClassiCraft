@@ -2,6 +2,7 @@ package nameless.classicraft.event;
 
 import com.mojang.datafixers.util.Pair;
 import nameless.classicraft.ClassiCraftConfiguration;
+import nameless.classicraft.ClassiCraftHooks;
 import nameless.classicraft.capability.ModCapabilities;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
@@ -15,6 +16,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Turtle;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrownEgg;
 import net.minecraft.world.food.FoodProperties;
@@ -50,37 +52,38 @@ public class ClassiCraftSubcriber {
     public static void stopTorchBlockPlace(BlockEvent.EntityPlaceEvent event) {
         Entity entity = event.getEntity();
         Block block = event.getPlacedBlock().getBlock();
-        ItemStack heldStack = block.asItem().getDefaultInstance();
         LevelAccessor level = event.getLevel();
-        if (entity instanceof Player && block instanceof TorchBlock && ClassiCraftConfiguration.noVanillaTorchPlace.get()) {
+        Item item = block.asItem();
+        if (entity instanceof Player && block instanceof TorchBlock && !item.getDefaultInstance().is(Items.REDSTONE_TORCH)
+                && ClassiCraftConfiguration.noVanillaTorchPlace.get()) {
             if (!((Player) entity).isCreative()) {
                 level.playSound(null, event.getPos(), SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1, 1);
                 level.setBlock(event.getPos(), Blocks.AIR.defaultBlockState(), 1);
                 entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_torch"));
-                heldStack.split(1);
+                ((Player) entity).getInventory().add(item.getDefaultInstance().split(1));
             }
         }
     }
 
     public static void addFuelBurn(FurnaceFuelBurnTimeEvent event) {
-        ItemStack itemstack = event.getItemStack();
-        if (itemstack.getItem() == Items.OAK_LEAVES)
-            event.setBurnTime(1600);
-        if (itemstack.getItem() == Items.ACACIA_LEAVES)
-            event.setBurnTime(1600);
-        if (itemstack.getItem() == Items.AZALEA_LEAVES)
-            event.setBurnTime(1600);
-        if (itemstack.getItem() == Items.BIRCH_LEAVES)
-            event.setBurnTime(1600);
-        if (itemstack.getItem() == Items.DARK_OAK_LEAVES)
-            event.setBurnTime(1600);
-        if (itemstack.getItem() == Items.JUNGLE_LEAVES)
-            event.setBurnTime(1600);
-        if (itemstack.getItem() == Items.SPRUCE_LEAVES)
-            event.setBurnTime(1600);
-        if (itemstack.getItem() == Items.MANGROVE_LEAVES)
-            event.setBurnTime(1600);
+        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.OAK_LEAVES);
+        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.ACACIA_LEAVES);
+        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.AZALEA_LEAVES);
+        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.BIRCH_LEAVES);
+        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.DARK_OAK_LEAVES);
+        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.JUNGLE_LEAVES);
+        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.SPRUCE_LEAVES);
+        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.MANGROVE_LEAVES);
+        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.OAK_SAPLING);
+        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.ACACIA_SAPLING);
+        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.AZALEA);
+        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.BIRCH_SAPLING);
+        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.DARK_OAK_SAPLING);
+        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.JUNGLE_SAPLING);
+        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.SPRUCE_SAPLING);
+        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.MANGROVE_ROOTS);
     }
+
 
     public static void onPlayerUsingItem(PlayerInteractEvent.RightClickItem event) {
         Player player = event.getEntity();

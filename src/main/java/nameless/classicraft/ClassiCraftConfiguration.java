@@ -12,19 +12,21 @@ public class ClassiCraftConfiguration {
     public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
     public static ForgeConfigSpec.IntValue torchBurnoutTime;
     public static ForgeConfigSpec.IntValue wildRiceGenerateChance;
+    public static ForgeConfigSpec.IntValue saltCaveGenerateChance;
     public static ForgeConfigSpec.BooleanValue noRelightEnabled;
     public static ForgeConfigSpec.BooleanValue noVanillaTorchPlace;
+    public static ForgeConfigSpec.IntValue woodenItemBurnTime;
 
 
     static {
         BUILDER.comment("天工开物模组配置文件");
-        BUILDER.push("General");
+        BUILDER.push("general");
 
         String desc;
 
-        desc = "设置野生稻谷的生成率, 将其设置为负值将禁用野生稻谷生成.";
-        wildRiceGenerateChance = BUILDER.comment(desc)
-                .defineInRange("wildRiceGenerateChance", 25, -1, 100);
+        desc = "设置木质物品树苗、树叶的燃烧时间";
+        woodenItemBurnTime = BUILDER.comment(desc)
+                .defineInRange("woodenItemBurnTime", 400, -1, 2800);
 
         desc = "火把熄灭耗费的时间，以分钟为单位。将其设置为负值将禁用火把熄灭.";
         torchBurnoutTime = BUILDER.comment(desc)
@@ -37,6 +39,14 @@ public class ClassiCraftConfiguration {
         desc = "确定是否禁止生存模式放置原版火把（相关火把模组也将禁止放置火把）.";
         noVanillaTorchPlace = BUILDER.comment(desc)
                 .define("noVanillaTorchPlace", true);
+
+        desc = "设置盐洞的生成率, 将其设置为负值将禁用盐洞生成.";
+        saltCaveGenerateChance = BUILDER.comment(desc)
+                .defineInRange("saltCaveGenerateChance", 26, -1, 100);
+
+        desc = "设置野生稻谷的生成率, 将其设置为负值将禁用野生稻谷生成.";
+        wildRiceGenerateChance = BUILDER.comment(desc)
+                .defineInRange("wildRiceGenerateChance", 25, -1, 100);
 
         BUILDER.pop();
         SPEC = BUILDER.build();

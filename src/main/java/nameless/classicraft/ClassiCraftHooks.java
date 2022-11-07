@@ -1,8 +1,18 @@
 package nameless.classicraft;
 
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 
 public class ClassiCraftHooks {
+
+    public static void handleWoodenItemBurnTime(FurnaceFuelBurnTimeEvent event, Item item) {
+        int woodenItemBurnTime = ClassiCraftConfiguration.woodenItemBurnTime.get();
+        ItemStack itemstack = event.getItemStack();
+        if (itemstack.getItem() == item)
+            event.setBurnTime(woodenItemBurnTime);
+    }
 
     @SuppressWarnings("deprecation")
     public static void handleFood() {

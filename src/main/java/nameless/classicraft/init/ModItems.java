@@ -37,11 +37,11 @@ public class ModItems {
 
     public static final RegistryObject<Item> SALT_WATER_BOTTLE = normal("salt_water_bottle");
 
-    public static final RegistryObject<Item> UNLIT_TORCH =
-            register("torch", () -> new UnlitTorchItem(decoration()));
+    public static final RegistryObject<Item> TORCH =
+            register("torch", () -> new StandingAndWallBlockItem(ModBlocks.TORCH.get(), ModBlocks.WALL_TORCH.get(), decoration()));
 
-    public static final RegistryObject<Item> UNLIT_SOUL_TORCH =
-            register("soul_torch", () -> new UnLitSoulTorchItem(decoration()));
+    public static final RegistryObject<Item> SOUL_TORCH =
+            register("soul_torch", () -> new StandingAndWallBlockItem(ModBlocks.SOUL_TORCH.get(), ModBlocks.SOUL_WALL_TORCH.get(), decoration()));
 
     private static RegistryObject<Item> food(String name, FoodProperties foodData) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().food(foodData).tab(ClassiCraftTab.COMMON)));
