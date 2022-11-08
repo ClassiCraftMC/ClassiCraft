@@ -128,11 +128,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> SOUL_FIRE_BOWL =
             registerDecoration("soul_fire_bowl", RealisticSoulFireBowlBlock::new);
 
-    public static final RegistryObject<Block> UNLIT_LARGE_FIRE_BOWL =
-            registerDecoration("unlit_large_fire_bowl", RealisticFireBowlBlock::new);
-    public static final RegistryObject<Block> UNLIT_LARGE_SOUL_FIRE_BOWL =
-            registerDecoration("unlit_large_soul_fire_bowl",
-                    () -> new UnlitLargeFireBowlBlock(largeCandleholder()));
+    public static final RegistryObject<Block> LARGE_FIRE_BOWL =
+            registerDecoration("large_fire_bowl", RealisticLargeFireBowlBlock::new);
+
+    public static final RegistryObject<Block> LARGE_SOUL_FIRE_BOWL =
+            registerDecoration("large_soul_fire_bowl", RealisticLargeSoulFireBowl::new);
 
     public static final RegistryObject<Block> TORCH =
             register("torch", RealisticTorchBlock::new);

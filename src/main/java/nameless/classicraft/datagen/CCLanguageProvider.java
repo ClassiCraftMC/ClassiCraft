@@ -51,8 +51,8 @@ public class CCLanguageProvider extends LanguageProvider {
         add(ModBlocks.SALT_ORE.get(), "Salt Ore");
         add(ModBlocks.WILD_RICE.get(), "Wild Rice");
         add(ModBlocks.STONE_MORTAR_BLOCK.get(), "Stone Motar");
-        add(ModBlocks.UNLIT_LARGE_FIRE_BOWL.get(), "Unlit Large Fire Bowl");
-        add(ModBlocks.UNLIT_LARGE_SOUL_FIRE_BOWL.get(), "Unlit Large Soul Fire Bowl");
+        add(ModBlocks.LARGE_FIRE_BOWL.get(), "Large Fire Bowl");
+        add(ModBlocks.LARGE_SOUL_FIRE_BOWL.get(), "Large Soul Fire Bowl");
         add(ModBlocks.TORCH.get(), "Torch");
         add(ModBlocks.SOUL_TORCH.get(), "Soul Torch");
         add(ModBlocks.SALT_ROCK_BLOCK.get(), "Salt Rock");

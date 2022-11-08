@@ -42,8 +42,8 @@ public class CCLanguageZhProvider extends LanguageProvider {
         add(ModItems.SALT.get(), "盐");
         add(ModItems.DOUGH.get(), "生面团");
         add(ModItems.SALT_WATER_BOTTLE.get(), "盐水瓶");
-        add(ModBlocks.UNLIT_LARGE_FIRE_BOWL.get(), "熄灭火炉");
-        add(ModBlocks.UNLIT_LARGE_SOUL_FIRE_BOWL.get(), "熄灭大型灵魂火炉");
+        add(ModBlocks.LARGE_FIRE_BOWL.get(), "大型火炉");
+        add(ModBlocks.LARGE_SOUL_FIRE_BOWL.get(), "大型灵魂火炉");
         add(ModItems.RICE.get(), "稻米");
         add(ModItems.RICE_HUSK.get(), "稻谷");
         add(ModItems.RICE_SEED.get(), "水稻种子");

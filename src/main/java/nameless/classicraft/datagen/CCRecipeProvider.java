@@ -18,15 +18,20 @@ public class CCRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
+       simpleSmelting(ModItems.DOUGH.get(), Items.BREAD, pFinishedRecipeConsumer);
+       simpleSmelting(ModItems.RAW_PUMPKIN_PIE.get(), Items.PUMPKIN, pFinishedRecipeConsumer);
+       simpleSmelting(ModItems.RAW_COOKIE.get(), Items.COOKIE, pFinishedRecipeConsumer);
+       simpleSmelting(ModItems.RAW_CAKE.get(), Items.CAKE, pFinishedRecipeConsumer);
+
+        ShapelessRecipeBuilder.shapeless(Items.TORCH, 1)
+                .requires(ModItems.TORCH.get())
+                .unlockedBy("has_torch", has(ModItems.TORCH.get()));
         ShapelessRecipeBuilder.shapeless(ModItems.DOUGH.get(), 4)
                 .requires(Items.WATER_BUCKET)
                 .requires(ModItems.FLOUR.get())
                 .unlockedBy("has_flour", has(ModItems.FLOUR.get()))
                 .save(pFinishedRecipeConsumer);
-       simpleSmelting(ModItems.DOUGH.get(), Items.BREAD, pFinishedRecipeConsumer);
-       simpleSmelting(ModItems.RAW_PUMPKIN_PIE.get(), Items.PUMPKIN, pFinishedRecipeConsumer);
-       simpleSmelting(ModItems.RAW_COOKIE.get(), Items.COOKIE, pFinishedRecipeConsumer);
-       simpleSmelting(ModItems.RAW_CAKE.get(), Items.CAKE, pFinishedRecipeConsumer);
+
        ShapedRecipeBuilder.shaped(ModItems.RAW_PUMPKIN_PIE.get(), 2)
                 .define('K', Blocks.PUMPKIN)
                 .define('S', Items.EGG)
