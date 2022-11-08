@@ -11,9 +11,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class StoneMortarBlockMenu extends AbstractContainerMenu {
 
@@ -59,12 +63,13 @@ public class StoneMortarBlockMenu extends AbstractContainerMenu {
     private static final int VANILLA_FIRST_SLOT_INDEX = 0;
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
-    private static final int TE_INVENTORY_SLOT_COUNT = 2;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 2;
 
     @Override
+    @NotNull
     public ItemStack quickMoveStack(Player playerIn, int index) {
         Slot sourceSlot = slots.get(index);
-        if (sourceSlot == null || !sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
+        if (!sourceSlot.hasItem()) return ItemStack.EMPTY;
         ItemStack sourceStack = sourceSlot.getItem();
         ItemStack copyOfSourceStack = sourceStack.copy();
 
@@ -93,7 +98,15 @@ public class StoneMortarBlockMenu extends AbstractContainerMenu {
     }
 
     public boolean allow() {
-        return this.data.get(0) > 0;
+        AtomicBoolean flag = new AtomicBoolean(false);
+        LazyOptional<IItemHandler> capability =
+                this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER);
+        capability.ifPresent(res -> {
+            if (!res.getStackInSlot(0).isEmpty()) {
+                flag.set(true);
+            }
+        });
+        return flag.get();
     }
 
     public int getScaledProgress() {

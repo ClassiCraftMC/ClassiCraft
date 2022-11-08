@@ -165,7 +165,7 @@ public class StoneMortarBlockEntity extends BlockEntity implements MenuProvider 
     private static void run(Level level, SimpleContainer inv, StoneMortarBlockEntity entity, BlockPos pos,
                             BlockState state) {
         Optional<StoneMortarRecipe> recipe =
-                level.getRecipeManager().getRecipeFor(StoneMortarRecipe.ModRecipeType.INSTANCE, inv,
+                level.getRecipeManager().getRecipeFor(StoneMortarRecipe.StoneMortarRecipeType.STONE_MORTAR, inv,
                         level);
         if (recipe.isPresent() && canInsertItem(inv, recipe.get().getResultItem())) {
             entity.progress++;

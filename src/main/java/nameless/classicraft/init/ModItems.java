@@ -2,10 +2,13 @@ package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.item.*;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.MobBucketItem;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -31,8 +34,16 @@ public class ModItems {
     public static final RegistryObject<Item> RICE_SEED = ITEMS.register("rice_seed", () -> new ItemNameBlockItem(ModBlocks.RICE_CROP.get(), common().food(ModFoodDatas.RICE_SEED)));
     public static final RegistryObject<Item> CLASSIC_CRAFT = ITEMS.register("classic_craft", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> DEER_SPAWN_EGG = registerSpawnEgg(ModEntities.DEER_ENEITY, 0x7b4d2e, 0x4b241d);
-    public static final RegistryObject<Item> BOAR_SPAWN_EGG = registerSpawnEgg(ModEntities.BOAR_ENTITY, 0x83653b, 0xffefca);
+    public static final RegistryObject<Item> DEER_SPAWN_EGG =
+            registerSpawnEgg(ModEntities.DEER_ENEITY, 0x7b4d2e, 0x4b241d);
+    public static final RegistryObject<Item> BOAR_SPAWN_EGG =
+            registerSpawnEgg(ModEntities.BOAR_ENTITY, 0x83653b, 0xffefca);
+
+    public static final RegistryObject<Item> LIONFISH_SPAWN_EGG =
+            registerSpawnEgg(ModEntities.LIONFISH_ENTITY, 15281931, 16111310);
+
+    public static final RegistryObject<Item> LIONFISH_BUCKET =
+            registerMobBuckteItem(ModEntities.LIONFISH_ENTITY);
 
     public static final RegistryObject<Item> SALT_WATER_BOTTLE = normal("salt_water_bottle");
 
@@ -78,6 +89,14 @@ public class ModItems {
 
     private static <T extends EntityType<? extends Mob>> RegistryObject<Item> registerSpawnEgg(RegistryObject<T> entity, int color1, int color2) {
         return register("spawn_egg/" + entity.getId().getPath(), () -> new ForgeSpawnEggItem(entity, color1, color2, new Item.Properties().tab(ClassiCraftTab.COMMON)));
+    }
+
+    private static <T extends EntityType<? extends Mob>> RegistryObject<Item> registerMobBuckteItem(RegistryObject<T> entity) {
+            return register("bucket/" + entity.getId().getPath(), () ->
+                    new MobBucketItem(entity,
+                    () -> Fluids.WATER,
+                    () -> SoundEvents.BUCKET_EMPTY_FISH,
+                    new Item.Properties().tab(ClassiCraftTab.COMMON).stacksTo(1)));
     }
 
     private static <T extends Item> RegistryObject<T> register(String name, Supplier<T> item)

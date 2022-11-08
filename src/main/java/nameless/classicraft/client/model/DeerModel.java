@@ -11,10 +11,6 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-/**
- * ModelWildDeer - MCVinnyq
- * Created using Tabula 8.0.0
- */
 @OnlyIn(Dist.CLIENT)
 public class DeerModel extends QuadrupedModel<DeerEntity> {
     private final ModelPart neck;

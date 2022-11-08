@@ -29,6 +29,8 @@ public class CCLootTables extends BaseLootTableProvider {
         simple(ModBlocks.SOUL_FIRE_BOWL);
         simple(ModBlocks.LARGE_FIRE_BOWL);
         simple(ModBlocks.LARGE_SOUL_FIRE_BOWL);
+        simple(ModBlocks.SALT_BLOCK);
+        simple(ModBlocks.SALT_ROCK_BLOCK);
         LootPool.Builder builder = LootPool.lootPool()
                 .name(ModBlocks.CACTUS_FRUIT.getId().toString())
                 .setRolls(ConstantValue.exactly(1))

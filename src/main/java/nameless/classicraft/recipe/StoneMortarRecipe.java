@@ -50,6 +50,11 @@ public class StoneMortarRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
+    public NonNullList<Ingredient> getIngredients() {
+        return recipeItems;
+    }
+
+    @Override
     public ItemStack getToastSymbol() {
         return new ItemStack(ModBlocks.STONE_MORTAR_BLOCK.get());
     }
@@ -71,18 +76,18 @@ public class StoneMortarRecipe implements Recipe<SimpleContainer> {
 
     @Override
     public RecipeType<?> getType() {
-        return ModRecipeType.INSTANCE;
+        return StoneMortarRecipeType.STONE_MORTAR;
     }
 
     public FluidStack getFluid() {
         return fluidStack;
     }
 
-    public static class ModRecipeType implements RecipeType<StoneMortarRecipe> {
-        private ModRecipeType() {
+    public static class StoneMortarRecipeType implements RecipeType<StoneMortarRecipe> {
+        private StoneMortarRecipeType() {
         }
 
-        public static final ModRecipeType INSTANCE = new ModRecipeType();
+        public static final StoneMortarRecipeType STONE_MORTAR = new StoneMortarRecipeType();
     }
 
     public static class Serializer implements RecipeSerializer<StoneMortarRecipe> {
