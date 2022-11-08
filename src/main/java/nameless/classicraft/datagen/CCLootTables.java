@@ -39,8 +39,6 @@ public class CCLootTables extends BaseLootTableProvider {
             simple(UNLIT_CANDLEHOLDER);
         for (RegistryObject<Block> UNLIT_LARGE_CANDLEHOLDER: ModBlocks.UNLIT_LARGE_CANDLEHOLDERS)
             simple(UNLIT_LARGE_CANDLEHOLDER);
-        for (RegistryObject<Block> CANDLEHOLDER: ModBlocks.CANDLEHOLDERS)
-            simple(CANDLEHOLDER);
 
         lootTables.put(ModBlocks.CACTUS_FRUIT.get(), LootTable.lootTable().withPool(builder));
     }

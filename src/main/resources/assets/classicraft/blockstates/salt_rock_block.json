@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "classicraft:block/salt_rock_block",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "classicraft:block/salt_rock_block",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "classicraft:block/salt_rock_block",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "classicraft:block/salt_rock_block",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "classicraft:block/salt_rock_block"
+    },
+    "facing=west": {
+      "model": "classicraft:block/salt_rock_block",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

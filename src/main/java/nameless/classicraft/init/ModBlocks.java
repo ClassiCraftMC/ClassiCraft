@@ -67,6 +67,17 @@ public class ModBlocks {
                             .strength(1.5F, 3.0F).
                             dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ)));
 
+    public static final RegistryObject<Block> SALT_CLUSTER =
+            registerNormal("salt_cluster", () -> new AmethystClusterBlock(
+                    7, 3,
+                    BlockBehaviour.Properties
+                            .of(Material.AMETHYST)
+                            .noOcclusion()
+                            .randomTicks()
+                            .sound(SoundType.AMETHYST_CLUSTER)
+                            .strength(1.5F).lightLevel((p_152632_) -> {return 5;
+            })));
+
     public static final RegistryObject<Block> BUDDING_SALT =
             registerNormal("budding_salt", () ->new BuddingAmethystBlock(
                     BlockBehaviour.Properties
@@ -121,18 +132,6 @@ public class ModBlocks {
         for (String material : Arrays.asList("golden_","","copper_"))
             for (DyeColor dyeColor: DyeColor.values())
                 add(registerDecoration("unlit_large_" + material + dyeColor.getName() + "_candleholder", () -> new UnlitLargeCandleholderBlock(largeCandleholder())));
-    }};
-
-    public static final ArrayList<RegistryObject<Block>> CANDLEHOLDERS = new ArrayList<RegistryObject<Block>>(){{
-        for (String material : Arrays.asList("golden_","iron_","copper_"))//铁制烛台的命名空间不带有iron
-            for (DyeColor dyeColor: DyeColor.values())
-                add(register(material + dyeColor.getName() + "_candleholder", RealisticCandleholderBlock::new));
-    }};
-
-    public static final ArrayList<RegistryObject<Block>> CANDLEHOLDERS_WALL = new ArrayList<RegistryObject<Block>>(){{
-        for (String material : Arrays.asList("golden_","iron","copper_"))
-            for (DyeColor dyeColor: DyeColor.values())
-                add(register(material + dyeColor.getName() + "_candleholder_wall", RealisticCandleholderWallBlock::new));
     }};
 
     public static final RegistryObject<Block> FIRE_BOWL =

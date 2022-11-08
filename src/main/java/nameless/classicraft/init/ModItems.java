@@ -1,20 +1,16 @@
 package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
-import nameless.classicraft.block.realistic.RealisticCandleholderBlock;
 import nameless.classicraft.item.*;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Locale;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -56,14 +52,7 @@ public class ModItems {
     public static final RegistryObject<Item> SOUL_TORCH =
             register("soul_torch", () -> new StandingAndWallBlockItem(ModBlocks.SOUL_TORCH.get(), ModBlocks.SOUL_WALL_TORCH.get(), decoration()));
 
-    public static final ArrayList<RegistryObject<Item>> CANDLEHOLDERS = new ArrayList<RegistryObject<Item>>(){{
-        for (String material : Arrays.asList("golden_","iron_","copper_"))
-            for (DyeColor dyeColor: DyeColor.values())
-                add(register(material + dyeColor.getName() + "_candleholder",
-                        () -> new StandingAndWallBlockItem(ModBlocks.CANDLEHOLDERS.get(dyeColor.getId()).get(), ModBlocks.CANDLEHOLDERS_WALL.get(dyeColor.getId()).get(), decoration())));
-    }};
-
-    private static RegistryObject<Item> food(String name, FoodProperties foodData) {
+        private static RegistryObject<Item> food(String name, FoodProperties foodData) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().food(foodData).tab(ClassiCraftTab.COMMON)));
     }
 

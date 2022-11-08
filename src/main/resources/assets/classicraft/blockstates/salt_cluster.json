@@ -1,28 +1,28 @@
 {
   "variants": {
     "facing=down": {
-      "model":  "classicraft:block/large_salt_bud",
+      "model": "classicraft:block/salt_cluster",
       "x": 180
     },
     "facing=east": {
-      "model": "classicraft:block/large_salt_bud",
+      "model": "classicraft:block/salt_cluster",
       "x": 90,
       "y": 90
     },
     "facing=north": {
-      "model": "classicraft:block/large_salt_bud",
+      "model": "classicraft:block/salt_cluster",
       "x": 90
     },
     "facing=south": {
-      "model": "classicraft:block/large_salt_bud",
+      "model": "classicraft:block/salt_cluster",
       "x": 90,
       "y": 180
     },
     "facing=up": {
-      "model": "classicraft:block/large_salt_bud"
+      "model": "classicraft:block/salt_cluster"
     },
     "facing=west": {
-      "model": "classicraft:block/large_salt_bud",
+      "model": "classicraft:block/salt_cluster",
       "x": 90,
       "y": 270
     }

@@ -19,10 +19,6 @@ public class BlockRenderTypeSetup {
             ItemBlockRenderTypes.setRenderLayer(UNLIT_CANDLEHOLDER.get(), RenderType.cutout());
         for (RegistryObject<Block> UNLIT_LARGE_CANDLEHOLDER : ModBlocks.UNLIT_LARGE_CANDLEHOLDERS)
             ItemBlockRenderTypes.setRenderLayer(UNLIT_LARGE_CANDLEHOLDER.get(), RenderType.cutout());
-        for (RegistryObject<Block> CANDLEHOLDER : ModBlocks.CANDLEHOLDERS)
-            ItemBlockRenderTypes.setRenderLayer(CANDLEHOLDER.get(), RenderType.cutout());
-        for (RegistryObject<Block> CANDLEHOLDER_WALL : ModBlocks.CANDLEHOLDERS_WALL)
-            ItemBlockRenderTypes.setRenderLayer(CANDLEHOLDER_WALL.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CACTUS_FRUIT.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.RICE_CROP.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.WILD_RICE.get(), RenderType.cutout());
@@ -42,5 +38,6 @@ public class BlockRenderTypeSetup {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.RICE_CROP_PANICLES.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.LANTERN.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.SOUL_LANTERN.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.SALT_CLUSTER.get(), RenderType.cutout());
     }
 }

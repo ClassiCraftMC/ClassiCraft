@@ -28,7 +28,9 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
@@ -45,6 +47,14 @@ public class RealisticLargeFireBowlBlock extends Block {
     public static final int LIT = 2;
     public static final int SMOLDERING = 1;
     public static final int UNLIT = 0;
+
+    //TODO 完善碰撞箱
+    protected static final VoxelShape AABB =
+            Shapes.join(Shapes.block(), Shapes.or(
+                    box(6.0D, 0.0D, 6.0D, 10.0D, 10.0D, 10.0D),
+                    box(6.0D, 0.0D, 6.0D, 10.0D, 10.0D, 10.0D),
+                    box(6.0D, 0.0D, 6.0D, 10.0D, 10.0D, 10.0D)),
+                    BooleanOp.ONLY_FIRST);
 
     public RealisticLargeFireBowlBlock() {
         super(BlockBehaviour.Properties.of(Material.METAL).lightLevel(getLightValueFromState()).strength(1.5F, 6.0F).sound(SoundType.WOOD));
@@ -128,6 +138,10 @@ public class RealisticLargeFireBowlBlock extends Block {
         return canSupportCenter(pLevel, pPos.below(), Direction.UP);
     }
 
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return AABB;
+    }
 
     public static IntegerProperty getBurnTime() {
         return BURNTIME;
