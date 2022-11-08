@@ -11,7 +11,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import toughasnails.api.thirst.ThirstHelper;
 
-public class DrinkItem extends Item {
+public class DrinkItem extends BottleItem {
 
     public DrinkItem(Properties properties) {
         super(properties);

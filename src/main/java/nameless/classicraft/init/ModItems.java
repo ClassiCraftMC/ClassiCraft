@@ -45,7 +45,7 @@ public class ModItems {
     public static final RegistryObject<Item> LIONFISH_BUCKET =
             registerMobBuckteItem(ModEntities.LIONFISH_ENTITY);
 
-    public static final RegistryObject<Item> SALT_WATER_BOTTLE = normal("salt_water_bottle");
+    public static final RegistryObject<Item> SALT_WATER_BOTTLE = drink("salt_water_bottle");
 
     public static final RegistryObject<Item> RAW_PUMPKIN_PIE =
             food("raw_pumpkin_pie", ModFoodDatas.RAW_PUMPKIN_PIE);
@@ -63,12 +63,12 @@ public class ModItems {
     public static final RegistryObject<Item> SOUL_TORCH =
             register("soul_torch", () -> new StandingAndWallBlockItem(ModBlocks.SOUL_TORCH.get(), ModBlocks.SOUL_WALL_TORCH.get(), decoration()));
 
-        private static RegistryObject<Item> food(String name, FoodProperties foodData) {
+    private static RegistryObject<Item> food(String name, FoodProperties foodData) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().food(foodData).tab(ClassiCraftTab.COMMON)));
     }
 
-    private static RegistryObject<Item> drink(String name, FoodProperties drinkData) {
-        return ITEMS.register(name, () -> new DrinkItem(new Item.Properties().food(drinkData).tab(ClassiCraftTab.COMMON).stacksTo(1)));
+    private static RegistryObject<Item> drink(String name) {
+        return ITEMS.register(name, () -> new DrinkItem(new Item.Properties().tab(ClassiCraftTab.COMMON).stacksTo(1)));
     }
 
     private static RegistryObject<Item> normal(String name) {
