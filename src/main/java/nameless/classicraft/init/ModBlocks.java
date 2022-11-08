@@ -123,6 +123,18 @@ public class ModBlocks {
                 add(registerDecoration("unlit_large_" + material + dyeColor.getName() + "_candleholder", () -> new UnlitLargeCandleholderBlock(largeCandleholder())));
     }};
 
+    public static final ArrayList<RegistryObject<Block>> CANDLEHOLDERS = new ArrayList<RegistryObject<Block>>(){{
+        for (String material : Arrays.asList("golden_","iron_","copper_"))//铁制烛台的命名空间不带有iron
+            for (DyeColor dyeColor: DyeColor.values())
+                add(register(material + dyeColor.getName() + "_candleholder", RealisticCandleholderBlock::new));
+    }};
+
+    public static final ArrayList<RegistryObject<Block>> CANDLEHOLDERS_WALL = new ArrayList<RegistryObject<Block>>(){{
+        for (String material : Arrays.asList("golden_","iron","copper_"))
+            for (DyeColor dyeColor: DyeColor.values())
+                add(register(material + dyeColor.getName() + "_candleholder_wall", RealisticCandleholderWallBlock::new));
+    }};
+
     public static final RegistryObject<Block> FIRE_BOWL =
             registerDecoration("fire_bowl", RealisticFireBowlBlock::new);
     public static final RegistryObject<Block> SOUL_FIRE_BOWL =

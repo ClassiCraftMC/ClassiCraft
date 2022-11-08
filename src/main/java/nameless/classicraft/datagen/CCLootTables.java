@@ -25,6 +25,8 @@ public class CCLootTables extends BaseLootTableProvider {
         simple(ModBlocks.SOUL_TORCH);
         simple(ModBlocks.LANTERN);
         simple(ModBlocks.SOUL_LANTERN);
+        simple(ModBlocks.FIRE_BOWL);
+        simple(ModBlocks.SOUL_FIRE_BOWL);
         simple(ModBlocks.LARGE_FIRE_BOWL);
         simple(ModBlocks.LARGE_SOUL_FIRE_BOWL);
         LootPool.Builder builder = LootPool.lootPool()
@@ -37,7 +39,8 @@ public class CCLootTables extends BaseLootTableProvider {
             simple(UNLIT_CANDLEHOLDER);
         for (RegistryObject<Block> UNLIT_LARGE_CANDLEHOLDER: ModBlocks.UNLIT_LARGE_CANDLEHOLDERS)
             simple(UNLIT_LARGE_CANDLEHOLDER);
-
+        for (RegistryObject<Block> CANDLEHOLDER: ModBlocks.CANDLEHOLDERS)
+            simple(CANDLEHOLDER);
 
         lootTables.put(ModBlocks.CACTUS_FRUIT.get(), LootTable.lootTable().withPool(builder));
     }

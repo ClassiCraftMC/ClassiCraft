@@ -37,7 +37,7 @@ import java.util.function.ToIntFunction;
 public class RealisticLargeFireBowlBlock extends Block {
 
     public static final int TICK_INTERVAL = 1200;
-    protected static final int INITIAL_BURN_TIME = ClassiCraftConfiguration.fireBowlBurnoutTime.get();
+    protected static final int INITIAL_BURN_TIME = ClassiCraftConfiguration.largeFireBowlBurnoutTime.get();
     protected static final boolean SHOULD_BURN_OUT = INITIAL_BURN_TIME > 0;
     protected static final IntegerProperty BURNTIME = IntegerProperty.create("burntime", 0, SHOULD_BURN_OUT ? INITIAL_BURN_TIME : 1);
     protected static final IntegerProperty LITSTATE = IntegerProperty.create("litstate", 0, 2);
@@ -45,8 +45,6 @@ public class RealisticLargeFireBowlBlock extends Block {
     public static final int LIT = 2;
     public static final int SMOLDERING = 1;
     public static final int UNLIT = 0;
-
-    protected static final VoxelShape AABB = net.minecraft.world.level.block.Block.box(6.0D, 0.0D, 6.0D, 10.0D, 10.0D, 10.0D);
 
     public RealisticLargeFireBowlBlock() {
         super(BlockBehaviour.Properties.of(Material.METAL).lightLevel(getLightValueFromState()).strength(1.5F, 6.0F).sound(SoundType.WOOD));
@@ -120,10 +118,6 @@ public class RealisticLargeFireBowlBlock extends Block {
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState>  pBuilder) {
         pBuilder.add(BURNTIME);
         pBuilder.add(LITSTATE);
-    }
-
-    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return AABB;
     }
 
     public BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {

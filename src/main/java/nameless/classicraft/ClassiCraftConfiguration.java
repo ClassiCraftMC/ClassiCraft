@@ -13,6 +13,8 @@ public class ClassiCraftConfiguration {
     public static ForgeConfigSpec.IntValue torchBurnoutTime;
     public static ForgeConfigSpec.IntValue lanternBurnoutTime;
     public static ForgeConfigSpec.IntValue fireBowlBurnoutTime;
+    public static ForgeConfigSpec.IntValue largeFireBowlBurnoutTime;
+    public static ForgeConfigSpec.IntValue candleholderBurnoutTime;
     public static ForgeConfigSpec.IntValue wildRiceGenerateChance;
     public static ForgeConfigSpec.IntValue saltOreGenerateCount;
     public static ForgeConfigSpec.IntValue saltOreGenerateSize;
@@ -41,6 +43,14 @@ public class ClassiCraftConfiguration {
         desc = "设置木质物品树苗、树叶的燃烧时间";
         woodenItemBurnTime = BUILDER.comment(desc)
                 .defineInRange("woodenItemBurnTime", 100, -1, 2800);
+
+        desc = "烛台熄灭耗费的时间，以分钟为单位。将其设置为负值将禁用烛台熄灭.";
+        candleholderBurnoutTime = BUILDER.comment(desc)
+                .defineInRange("candleholderBurnoutTime", 60, -1, 2880);
+
+        desc = "大型火盆熄灭耗费的时间，以分钟为单位。将其设置为负值将禁用大型火盆熄灭.";
+        largeFireBowlBurnoutTime = BUILDER.comment(desc)
+                .defineInRange("largeFireBowlBurnoutTime", 90, -1, 2880);
 
         desc = "火盆熄灭耗费的时间，以分钟为单位。将其设置为负值将禁用火盆熄灭.";
         fireBowlBurnoutTime = BUILDER.comment(desc)
