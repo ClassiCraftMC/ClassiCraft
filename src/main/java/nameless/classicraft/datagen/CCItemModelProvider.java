@@ -40,6 +40,7 @@ public class CCItemModelProvider  extends ItemModelProvider {
         simpleTexture(ModItems.RAW_PUMPKIN_PIE);
         simpleTexture(ModItems.RAW_COOKIE);
         simpleTexture(ModItems.RAW_CAKE);
+        simpleTexture(ModItems.RAW_SALT);
         block(ModBlocks.SALT_BLOCK);
         block(ModBlocks.SALT_ROCK_BLOCK);
         block(ModBlocks.FRIDGE);
