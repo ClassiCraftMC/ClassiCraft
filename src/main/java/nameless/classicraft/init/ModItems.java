@@ -83,6 +83,18 @@ public class ModItems {
     public static final RegistryObject<Item> LIT_TORCH =
             register("lit_torch", LitTorchItem::new);
 
+    public static final RegistryObject<Item> LIT_LANTERN =
+            register("lit_lantern", () -> new LitLanternItem(new Item.Properties()));
+
+    public static final RegistryObject<Item> LIT_SOUL_LANTERN =
+            register("lit_soul_lantern", () -> new LitSoulLanternItem(new Item.Properties()));
+
+    public static final RegistryObject<Item> LANTERN =
+            register("lantern", () -> new BlockItem(ModBlocks.LANTERN.get(), decoration()));
+
+    public static final RegistryObject<Item> SOUL_LANTERN =
+            register("soul_lantern", () -> new BlockItem(ModBlocks.SOUL_LANTERN.get(), decoration()));
+
     public static final RegistryObject<Item> SOUL_TORCH =
             register("soul_torch", () -> new StandingAndWallBlockItem(ModBlocks.SOUL_TORCH.get(), ModBlocks.SOUL_WALL_TORCH.get(), decoration()));
 

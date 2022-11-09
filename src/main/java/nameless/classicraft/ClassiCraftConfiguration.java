@@ -36,8 +36,8 @@ public class ClassiCraftConfiguration {
 
         String desc;
 
-        desc = "决定是否火把会导致易燃物燃烧(True 是 开启)(仅限点燃的火把不包含阴燃的火把)";
-        torchCauseFire = BUILDER.comment(desc).define("torchCauseFire",true);
+        desc = "决定是否火把会导致易燃物燃烧(仅限点燃的火把)";
+        torchCauseFire = BUILDER.comment(desc).define("torchCauseFire",false);
 
         desc = "*困难*决定是否背包里的点燃的方块会熄灭";
         hardcore = BUILDER.comment(desc).define("hardcore",true);

@@ -86,7 +86,9 @@ public class RealisticTorchBlock extends Block {
             ModBlockProperties.playLightingSound(pLevel, pPos);
             if (!pPlayer.isCreative()) {
                 ItemStack heldStack = pPlayer.getItemInHand(pHand);
-                heldStack.setDamageValue(1);
+                heldStack.hurtAndBreak(1, pPlayer, (p_41300_) -> {
+                    p_41300_.broadcastBreakEvent(pHand);
+                });
                 if (pLevel.isRainingAt(pPos.above())) {
                     changeToSmoldering(pLevel,pPos,pState,getInitialBurnTime());
                     ModBlockProperties.playExtinguishSound(pLevel, pPos);
