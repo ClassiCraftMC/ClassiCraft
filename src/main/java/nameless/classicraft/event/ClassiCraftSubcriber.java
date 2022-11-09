@@ -13,6 +13,7 @@ import net.minecraft.client.gui.screens.PauseScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.contents.TranslatableContents;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -21,6 +22,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Turtle;
 import net.minecraft.world.entity.player.Player;
@@ -70,8 +72,10 @@ public class ClassiCraftSubcriber {
         ItemStack itemStack = event.getCrafting();
         if (itemStack.is(ModItems.LIT_TORCH.get())) {
             ItemStack returnStack = new ItemStack(Items.FLINT_AND_STEEL);
+            returnStack.hurtAndBreak(2, event.getEntity(), (p_41007_) -> {
+                p_41007_.broadcastBreakEvent(p_41007_.getUsedItemHand());
+            });
             event.getEntity().getInventory().add(returnStack);
-            returnStack.setDamageValue(1);
             returnStack.grow(1);
         }
     }
