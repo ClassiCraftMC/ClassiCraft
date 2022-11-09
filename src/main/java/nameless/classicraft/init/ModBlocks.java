@@ -125,7 +125,7 @@ public class ModBlocks {
             register("torch", RealisticTorchBlock::new);
 
     public static final RegistryObject<Block> WALL_TORCH =
-            register("torch_wall", RealisticWallTorchBlock::new);
+            register("torch_wall.json", RealisticWallTorchBlock::new);
 
     public static final RegistryObject<Block> IRON_CANDLEHOLDER =
             register("iron_candleholder", RealisticIronCandleholderBlock::new);

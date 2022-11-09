@@ -1,13 +1,12 @@
 package nameless.classicraft.block.realistic;
 
 import nameless.classicraft.ClassiCraftConfiguration;
-import nameless.classicraft.api.item.ItemStackAPI;
-import nameless.classicraft.init.ModBlockProperties;
 import nameless.classicraft.init.ModBlocks;
-import nameless.classicraft.init.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -46,15 +45,14 @@ import java.util.function.ToIntFunction;
 @SuppressWarnings("deprecation")
 public class RealisticLanternBlock extends Block implements SimpleWaterloggedBlock {
 
-    public static final int TICK_INTERVAL = ModBlockProperties.TICK_INTERVAL;
-
-    public static final int LIT = ModBlockProperties.LIT;
-    public static final int SMOLDERING = ModBlockProperties.SMOLDERING;
-    public static final int UNLIT = ModBlockProperties.UNLIT;
+    public static final int TICK_INTERVAL = 1200;
     protected static final int INITIAL_BURN_TIME = ClassiCraftConfiguration.lanternBurnoutTime.get();
     protected static final boolean SHOULD_BURN_OUT = INITIAL_BURN_TIME > 0;
-    protected static final IntegerProperty LITSTATE = ModBlockProperties.LITSTATE;
-    public static final IntegerProperty BURNTIME = IntegerProperty.create("burntime", 0, SHOULD_BURN_OUT ? INITIAL_BURN_TIME : 1);
+    protected static final IntegerProperty BURNTIME = IntegerProperty.create("burntime", 0, SHOULD_BURN_OUT ? INITIAL_BURN_TIME : 1);
+    protected static final IntegerProperty LITSTATE = IntegerProperty.create("litstate", 0, 2);
+    public static final int LIT = 2;
+    public static final int SMOLDERING = 1;
+    public static final int UNLIT = 0;
     public static final BooleanProperty HANGING = BlockStateProperties.HANGING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     protected static final VoxelShape AABB = Shapes.or(
@@ -75,95 +73,38 @@ public class RealisticLanternBlock extends Block implements SimpleWaterloggedBlo
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if (pPlayer.getItemInHand(pHand).getItem() == Items.FLINT_AND_STEEL) {
-            ModBlockProperties.playLightingSound(pLevel, pPos);
+            playLightingSound(pLevel, pPos);
             if (!pPlayer.isCreative()) {
                 ItemStack heldStack = pPlayer.getItemInHand(pHand);
                 heldStack.hurtAndBreak(1, pPlayer, (p_41300_) -> {
                     p_41300_.broadcastBreakEvent(pHand);
                 });
+            }
+            if (pLevel.isRainingAt(pPos)) {
+                playExtinguishSound(pLevel, pPos);
+            } else {
                 changeToLit(pLevel, pPos, pState);
-                ModBlockProperties.playLightingSound(pLevel, pPos);
-                pLevel.updateNeighborsAt(pPos, this);
             }
-            return InteractionResult.SUCCESS;
-        }
-        if (pPlayer.getItemInHand(pHand).getItem() == ModItems.MATCHBOX.get()) {
-            ModBlockProperties.playLightingSound(pLevel, pPos);
-            if (!pPlayer.isCreative()) {
-                ItemStack heldStack = pPlayer.getItemInHand(pHand);
-                heldStack.shrink(1);
-                if (pLevel.isRainingAt(pPos.above())) {
-                    changeToSmoldering(pLevel,pPos,pState,getInitialBurnTime());
-                    ModBlockProperties.playExtinguishSound(pLevel, pPos);
-                } else {
-                    if(pLevel.isRainingAt(pPos.above()))
-                    {
-                        changeToSmoldering(pLevel,pPos,pState,getInitialBurnTime());
-                        ModBlockProperties.playExtinguishSound(pLevel, pPos);
-                    }
-                    else
-                    {
-                        changeToLit(pLevel, pPos, pState);
-                        ModBlockProperties.playLightingSound(pLevel,pPos);
-                    }
-                    pLevel.updateNeighborsAt(pPos,this);
-                }
-            }
-            else
-            {
-                if(pLevel.isRainingAt(pPos.above()))
-                {
-                    changeToSmoldering(pLevel,pPos,pState,getInitialBurnTime());
-                    ModBlockProperties.playExtinguishSound(pLevel,pPos);
-                }
-                else
-                {
-                    changeToLit(pLevel, pPos, pState);
-                }
-                pLevel.updateNeighborsAt(pPos,this);
-            }
-            return InteractionResult.SUCCESS;
-        }
-        else if( pState.getValue(LITSTATE) == 2 && pPlayer.getItemInHand(pHand).is(ModItems.LANTERN.get()))
-        {
-            pPlayer.setItemInHand(pHand, ItemStackAPI.replaceItemWithCopyNBTTagAndCountButResetBurnTime(pPlayer.getItemInHand(pHand),ModItems.LIT_LANTERN.get(),INITIAL_BURN_TIME));
             return InteractionResult.SUCCESS;
         }
         return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
     }
 
     @Override
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if(!level.isClientSide() && SHOULD_BURN_OUT && state.getValue(LITSTATE) > UNLIT)
-        {
-            int newBurnTime = state.getValue(BURNTIME) -1;
-            if(level.isRainingAt(pos.above()))
-            {
-                ModBlockProperties.playExtinguishSound(level,pos);
-                newBurnTime -= random.nextInt(20,35);
-                if(newBurnTime <= 0)
-                    changeToUnlit(level,pos,state);
-                else
-                    changeToSmoldering(level,pos,state,newBurnTime);
-                level.updateNeighborsAt(pos,this);
-                return;
+    public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
+        if (!pLevel.isClientSide && SHOULD_BURN_OUT && pState.getValue(LITSTATE) > UNLIT) {
+            int newBurnTime = pState.getValue(BURNTIME) - 1;
+            if (newBurnTime <= 0) {
+                playExtinguishSound(pLevel, pPos);
+                changeToUnlit(pLevel, pPos, pState);
+                pLevel.updateNeighborsAt(pPos, this);
+            } else if (pState.getValue(LITSTATE) == LIT && (newBurnTime <= INITIAL_BURN_TIME / 10 || newBurnTime <= 1)) {
+                changeToSmoldering(pLevel, pPos, pState, newBurnTime);
+                pLevel.updateNeighborsAt(pPos, this);
+            }else {
+                pLevel.setBlockAndUpdate(pPos, pState.setValue(BURNTIME, newBurnTime));
+                pLevel.scheduleTick(pPos, this, TICK_INTERVAL);
             }
-            if(newBurnTime <= 0)
-            {
-                ModBlockProperties.playExtinguishSound(level,pos);
-                changeToUnlit(level,pos,state);
-                level.updateNeighborsAt(pos,this);
-            }
-            else if(state.getValue(LITSTATE) == LIT &&(newBurnTime <= INITIAL_BURN_TIME / 10 || newBurnTime <=1))
-            {
-                changeToSmoldering(level,pos,state,newBurnTime);
-                level.updateNeighborsAt(pos,this);
-            }
-            else {
-                level.setBlockAndUpdate(pos,state.setValue(BURNTIME,state.getValue(BURNTIME) -1 ));
-                level.scheduleTick(pos,this, TICK_INTERVAL);
-            }
-
         }
     }
 
@@ -175,62 +116,26 @@ public class RealisticLanternBlock extends Block implements SimpleWaterloggedBlo
 
     @Override
     public void onPlace(BlockState pState, Level pLevel, BlockPos pPos, BlockState pOldState, boolean pIsMoving) {
-        if(!pIsMoving && pState.getBlock() != pOldState.getBlock())
-        {
-            defaultBlockState().updateIndirectNeighbourShapes(pLevel,pPos,3);
+        if (!pIsMoving && pOldState.getBlock() != pState.getBlock()) {
+            defaultBlockState().updateNeighbourShapes(pLevel, pPos, 3);
         }
-        if(SHOULD_BURN_OUT&&pState.getBlock() instanceof RealisticLanternBlock&&pState.getValue(LITSTATE) > UNLIT)
-            pLevel.scheduleTick(pPos, this, TICK_INTERVAL);
-        super.onPlace(pState,pLevel,pPos,pOldState,pIsMoving);
+        super.onPlace(pState, pLevel, pPos, pOldState, pIsMoving);
     }
 
     @Nullable
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        BlockState state =Blocks.LANTERN.getStateForPlacement(pContext);
-        ItemStack placeStack = pContext.getPlayer().getItemInHand(pContext.getHand());
-        if(!placeStack.is(ModItems.LIT_LANTERN.get())) return state == null ? null:this.defaultBlockState();
-        if(placeStack.getOrCreateTag().contains("burnTime"))
-        {
-
-            int burnTime = placeStack.getTag().getInt("burnTime");
-            if(pContext.getLevel().isRainingAt(pContext.getClickedPos().above()))
-            {
-                if(burnTime > INITIAL_BURN_TIME)
-                {
-                    return  state == null ? null:this.defaultBlockState().setValue(BURNTIME,INITIAL_BURN_TIME).setValue(LITSTATE,1);
-                }
-                else if(burnTime <= 0)
-                {
-                    return  state == null ? null:this.defaultBlockState();
-                }
-                else
-                {
-                    return state == null ? null:this.defaultBlockState().setValue(BURNTIME,burnTime).setValue(LITSTATE,1);
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
+        for(Direction direction : context.getNearestLookingDirections()) {
+            if (direction.getAxis() == Direction.Axis.Y) {
+                BlockState state = this.defaultBlockState().setValue(HANGING, direction == Direction.UP);
+                if (state.canSurvive(context.getLevel(), context.getClickedPos())) {
+                    return state.setValue(WATERLOGGED, fluidState.getType() == Fluids.WATER);
                 }
             }
-            if(burnTime > INITIAL_BURN_TIME)
-            {
-                return  state == null ? null:this.defaultBlockState().setValue(BURNTIME,INITIAL_BURN_TIME).setValue(LITSTATE,2);
-            }
-            else if(burnTime <= 0)
-            {
-                return  state == null ? null:this.defaultBlockState();
-            }
-            else
-            {
-                return state == null ? null:this.defaultBlockState().setValue(BURNTIME,burnTime).setValue(LITSTATE,2);
-            }
-
         }
-        else
-        {
-            if(pContext.getLevel().isRainingAt(pContext.getClickedPos().above()))
-            {
-                return  state == null ? null:this.defaultBlockState().setValue(BURNTIME,INITIAL_BURN_TIME).setValue(LITSTATE,1);
-            }
-            return state == null ? null:this.defaultBlockState().setValue(BURNTIME,INITIAL_BURN_TIME).setValue(LITSTATE,2);
-        }
+
+        return null;
     }
 
     @Override
@@ -291,28 +196,34 @@ public class RealisticLanternBlock extends Block implements SimpleWaterloggedBlo
         return SHOULD_BURN_OUT ? INITIAL_BURN_TIME : 0;
     }
 
-    public void changeToLit(Level pLevel, BlockPos pPos, BlockState pState)
-    {
-        pLevel.setBlockAndUpdate(pPos, ModBlocks.LANTERN.get().defaultBlockState().setValue(LITSTATE,2).setValue(BURNTIME,INITIAL_BURN_TIME));
-        if(SHOULD_BURN_OUT)
-        {
-            pLevel.scheduleTick(pPos,this, TICK_INTERVAL);
+    public void changeToLit(Level level, BlockPos pos, BlockState state) {
+        level.setBlockAndUpdate(pos, ModBlocks.LANTERN.get().defaultBlockState().setValue(LITSTATE, LIT).setValue(BURNTIME, getInitialBurnTime()));
+        if (SHOULD_BURN_OUT) {
+            level.scheduleTick(pos, this, TICK_INTERVAL);
         }
     }
 
-    public void changeToSmoldering(Level pLevel, BlockPos pPos, BlockState pState, int burnTime)
-    {
-        pLevel.setBlockAndUpdate(pPos,ModBlocks.LANTERN.get().defaultBlockState().setValue(LITSTATE,1).setValue(BURNTIME,burnTime));
-        if(SHOULD_BURN_OUT)
-        {
-            pLevel.scheduleTick(pPos, this, TICK_INTERVAL);
+    public void changeToSmoldering(Level level, BlockPos pos, BlockState state, int newBurnTime) {
+        if (SHOULD_BURN_OUT) {
+            level.setBlockAndUpdate(pos, ModBlocks.LANTERN.get().defaultBlockState().setValue(LITSTATE, SMOLDERING).setValue(BURNTIME, newBurnTime));
+            level.scheduleTick(pos, this, TICK_INTERVAL);
         }
     }
 
-    public void changeToUnlit(Level pLevel,BlockPos pPos,BlockState pState)
-    {
-        pLevel.setBlockAndUpdate(pPos, ModBlocks.LANTERN.get().defaultBlockState());
-        pLevel.scheduleTick(pPos,this, TICK_INTERVAL);
+    public void changeToUnlit(Level level, BlockPos pos, BlockState state) {
+        if (SHOULD_BURN_OUT) {
+            level.setBlockAndUpdate(pos, ModBlocks.LANTERN.get().defaultBlockState());
+            level.scheduleTick(pos, this, TICK_INTERVAL);
+        }
+
+    }
+
+    public void playLightingSound(Level level, BlockPos pos) {
+        level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
+    }
+
+    public void playExtinguishSound(Level level, BlockPos pos) {
+        level.playSound(null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
     }
 
     private static ToIntFunction<BlockState> getLightValueFromState() {

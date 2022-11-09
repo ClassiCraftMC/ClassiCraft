@@ -6,10 +6,10 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "classicraft:lit_soul_torch"
+          "name": "classicraft:torch"
         }
       ],
-      "name": "soul_torch",
+      "name": "torch_wall",
       "rolls": 1.0
     }
   ]
