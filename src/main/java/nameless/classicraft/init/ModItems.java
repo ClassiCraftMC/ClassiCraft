@@ -89,9 +89,6 @@ public class ModItems {
     public static final RegistryObject<Item> LIT_SOUL_LANTERN =
             register("lit_soul_lantern", () -> new LitSoulLanternItem(new Item.Properties()));
 
-    public static final RegistryObject<Item> LANTERN =
-            register("lantern", () -> new BlockItem(ModBlocks.LANTERN.get(), decoration()));
-
     public static final RegistryObject<Item> SOUL_LANTERN =
             register("soul_lantern", () -> new BlockItem(ModBlocks.SOUL_LANTERN.get(), decoration()));
 
