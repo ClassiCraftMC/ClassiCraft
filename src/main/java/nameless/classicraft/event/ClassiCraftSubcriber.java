@@ -43,6 +43,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.event.entity.living.BabyEntitySpawnEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
@@ -62,6 +63,17 @@ public class ClassiCraftSubcriber {
         bus.addListener(ClassiCraftSubcriber::stopBlockPlace);
         bus.addListener(ClassiCraftSubcriber::onScreenLoad);
         bus.addListener(ClassiCraftSubcriber::onRanchuBreed);
+        bus.addListener(ClassiCraftSubcriber::onCraftTorch);
+    }
+
+    public static void onCraftTorch(PlayerEvent.ItemCraftedEvent event) {
+        ItemStack itemStack = event.getCrafting();
+        if (itemStack.is(ModItems.LIT_TORCH.get())) {
+            ItemStack returnStack = new ItemStack(Items.FLINT_AND_STEEL);
+            event.getEntity().getInventory().add(returnStack);
+            returnStack.setDamageValue(1);
+            returnStack.grow(1);
+        }
     }
 
     @OnlyIn(Dist.CLIENT)
