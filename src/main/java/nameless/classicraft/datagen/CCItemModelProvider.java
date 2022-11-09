@@ -45,7 +45,6 @@ public class CCItemModelProvider  extends ItemModelProvider {
         simpleTexture(ModItems.LIONFISH);
         simpleTexture(ModItems.COOKED_PERCH);
         simpleTexture(ModItems.COOKED_LIONFISH);
-        simpleTexture(ModItems.LIT_TORCH);
         block(ModBlocks.SALT_BLOCK);
         block(ModBlocks.SALT_ROCK_BLOCK);
         block(ModBlocks.FRIDGE);
