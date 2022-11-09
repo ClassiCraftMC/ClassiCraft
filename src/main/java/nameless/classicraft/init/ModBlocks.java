@@ -12,7 +12,6 @@ import nameless.classicraft.item.ClassiCraftTab;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -23,8 +22,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Locale;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -121,19 +118,6 @@ public class ModBlocks {
             register("rice_panicles",
                     () -> new RicePaniclesBlock(Block.Properties.copy(Blocks.WHEAT)));
 
-    // 批量添加不同材料和颜色的烛台方块
-    public static final ArrayList<RegistryObject<Block>> UNLIT_CANDLEHOLDERS = new ArrayList<RegistryObject<Block>>(){{
-        for (String material : Arrays.asList("golden_","","copper_"))//铁制烛台的命名空间不带有iron
-           for (DyeColor dyeColor: DyeColor.values())
-                add(registerDecoration("unlit_" + material + dyeColor.getName() + "_candleholder", () -> new UnlitCandleholderBlock(candleholder())));
-    }};
-
-    public static final ArrayList<RegistryObject<Block>> UNLIT_LARGE_CANDLEHOLDERS = new ArrayList<RegistryObject<Block>>(){{
-        for (String material : Arrays.asList("golden_","","copper_"))
-            for (DyeColor dyeColor: DyeColor.values())
-                add(registerDecoration("unlit_large_" + material + dyeColor.getName() + "_candleholder", () -> new UnlitLargeCandleholderBlock(largeCandleholder())));
-    }};
-
     public static final RegistryObject<Block> FIRE_BOWL =
             registerDecoration("fire_bowl", RealisticFireBowlBlock::new);
     public static final RegistryObject<Block> SOUL_FIRE_BOWL =
@@ -188,18 +172,6 @@ public class ModBlocks {
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> block) {
         return BLOCKS.register(name.toLowerCase(Locale.ROOT), block);
-    }
-
-    private static BlockBehaviour.Properties lantern() {
-        return BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN);
-    }
-
-    private static BlockBehaviour.Properties candleholder() {
-        return BlockBehaviour.Properties.of(Material.DECORATION).instabreak().sound(SoundType.WOOD);
-    }
-
-    private static BlockBehaviour.Properties largeCandleholder() {
-        return BlockBehaviour.Properties.of(Material.DECORATION).instabreak().sound(SoundType.WOOD);
     }
 
     private static BlockBehaviour.Properties wood() {
