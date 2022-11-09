@@ -25,7 +25,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> NETHER_MUSHROOM_STEW = food("nether_mushroom_stew", ModFoodDatas.NETHER_MUSHROOM_STEW);
     public static final RegistryObject<Item> COOKED_EGG = food("cooked_egg", ModFoodDatas.COOKED_EGG);
-    public static final RegistryObject<Item> SALT = normal("salt");
+    public static final RegistryObject<Item> SALT = food("salt", ModFoodDatas.NONE);
     public static final RegistryObject<Item> ROTTEN_FOOD = normal("rotten_food", p -> p.food(ModFoodDatas.ROTTEN_FOOD));
     public static final RegistryObject<Item> DOUGH = food("dough", ModFoodDatas.DOUGH);
     public static final RegistryObject<Item> RICE = food("rice", ModFoodDatas.RICE);
@@ -45,7 +45,8 @@ public class ModItems {
     public static final RegistryObject<Item> LIONFISH_BUCKET =
             registerMobBuckteItem(ModEntities.LIONFISH_ENTITY);
 
-    public static final RegistryObject<Item> SALT_WATER_BOTTLE = drink("salt_water_bottle");
+    public static final RegistryObject<Item> SALT_WATER_BOTTLE =
+            register("salt_water_bottle", () -> new SaltWaterBottleItem(common()));
 
     public static final RegistryObject<Item> RAW_PUMPKIN_PIE =
             food("raw_pumpkin_pie", ModFoodDatas.RAW_PUMPKIN_PIE);
@@ -55,7 +56,7 @@ public class ModItems {
             food("raw_cake", ModFoodDatas.RAW_CAKE);
 
     public static final RegistryObject<Item> RAW_SALT =
-            normal("raw_salt");
+            food("raw_salt", ModFoodDatas.NONE);
 
     public static final RegistryObject<Item> TORCH =
             register("torch", () -> new StandingAndWallBlockItem(ModBlocks.TORCH.get(), ModBlocks.WALL_TORCH.get(), decoration()));
@@ -65,10 +66,6 @@ public class ModItems {
 
     private static RegistryObject<Item> food(String name, FoodProperties foodData) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().food(foodData).tab(ClassiCraftTab.COMMON)));
-    }
-
-    private static RegistryObject<Item> drink(String name) {
-        return ITEMS.register(name, () -> new DrinkItem(new Item.Properties().tab(ClassiCraftTab.COMMON).stacksTo(1)));
     }
 
     private static RegistryObject<Item> normal(String name) {

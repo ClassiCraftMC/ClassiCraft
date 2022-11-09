@@ -1,6 +1,5 @@
 package nameless.classicraft;
 
-import nameless.classicraft.event.ClassiCraftCompatHandler;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.block.entity.ModBlockEntities;
 import nameless.classicraft.init.ModEntities;
@@ -44,7 +43,6 @@ public class ClassiCraftMod {
         ModEntities.ENTITIES.register(modEventBus);
         ModSounds.SOUNDS.register(modEventBus);
         ClassiCraftSubcriber.init();
-        ClassiCraftCompatHandler.initCompats();
         ModBiomeFeatures.FEATURES.register(modEventBus);
         ModConfiguredFeatures.CONFIGURED_FEATURES.register(modEventBus);
         ModPlacedFeatures.PLACED_FEATURES.register(modEventBus);
