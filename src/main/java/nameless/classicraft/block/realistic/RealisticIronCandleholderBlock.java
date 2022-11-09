@@ -21,43 +21,38 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.function.ToIntFunction;
 
-public class RealisticTorchBlock extends Block {
+public class RealisticIronCandleholderBlock extends Block {
 
     public static final int TICK_INTERVAL = 1200;
-    public static final int INITIAL_BURN_TIME = ClassiCraftConfiguration.torchBurnoutTime.get();
-    public static final boolean SHOULD_BURN_OUT = INITIAL_BURN_TIME > 0;
-    public static final IntegerProperty BURNTIME = IntegerProperty.create("burntime", 0, SHOULD_BURN_OUT ? INITIAL_BURN_TIME : 1);
-    public static final IntegerProperty LITSTATE = IntegerProperty.create("litstate", 0, 2);
-
+    protected static final int INITIAL_BURN_TIME = ClassiCraftConfiguration.lanternBurnoutTime.get();
+    protected static final boolean SHOULD_BURN_OUT = INITIAL_BURN_TIME > 0;
+    protected static final IntegerProperty BURNTIME = IntegerProperty.create("burntime", 0, SHOULD_BURN_OUT ? INITIAL_BURN_TIME : 1);
+    protected static final IntegerProperty LITSTATE = IntegerProperty.create("litstate", 0, 2);
     public static final int LIT = 2;
     public static final int SMOLDERING = 1;
     public static final int UNLIT = 0;
 
-    protected static final VoxelShape AABB = Block.box(6.0D, 0.0D, 6.0D, 10.0D, 10.0D, 10.0D);
+    protected static final VoxelShape AABB =
+            Block.box(7.0D, 0.0D, 7.0D, 9.0D, 9.0D, 9.0D);
 
-    public RealisticTorchBlock() {
-        super(Block.Properties.copy(Blocks.TORCH).lightLevel(getLightValueFromState()));
+    public RealisticIronCandleholderBlock() {
+        super(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.CANDLE).lightLevel(getLightValueFromState()));
         this.stateDefinition.any().setValue(LITSTATE, 0).setValue(BURNTIME, 0);
-    }
-
-    @Override
-    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return AABB;
-    }
-
-    @Override
-    public BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {
-        return pFacing == Direction.DOWN && !this.canSurvive(pState, pLevel, pCurrentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
     }
 
     @Override
@@ -94,10 +89,6 @@ public class RealisticTorchBlock extends Block {
     @Override
     public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
         if (!pLevel.isClientSide && SHOULD_BURN_OUT && pState.getValue(LITSTATE) > UNLIT) {
-            if (pLevel.isRainingAt(pPos)) {
-                playExtinguishSound(pLevel, pPos);
-                changeToUnlit(pLevel, pPos, pState);
-            }
             int newBurnTime = pState.getValue(BURNTIME) - 1;
             if (newBurnTime <= 0) {
                 playExtinguishSound(pLevel, pPos);
@@ -128,15 +119,9 @@ public class RealisticTorchBlock extends Block {
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        super.createBlockStateDefinition(pBuilder);
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState>  pBuilder) {
         pBuilder.add(BURNTIME);
         pBuilder.add(LITSTATE);
-    }
-
-    @Override
-    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
-        return canSupportCenter(pLevel, pPos.below(), Direction.UP);
     }
 
     public static IntegerProperty getBurnTime() {
@@ -151,8 +136,20 @@ public class RealisticTorchBlock extends Block {
         return SHOULD_BURN_OUT ? INITIAL_BURN_TIME : 0;
     }
 
+    private static void addParticlesAndSound(Level pLevel, Vec3 pOffset, RandomSource pRandom) {
+        float f = pRandom.nextFloat();
+        if (f < 0.3F) {
+            pLevel.addParticle(ParticleTypes.SMOKE, pOffset.x, pOffset.y, pOffset.z, 0.0D, 0.0D, 0.0D);
+            if (f < 0.17F) {
+                pLevel.playLocalSound(pOffset.x + 0.5D, pOffset.y + 0.5D, pOffset.z + 0.5D, SoundEvents.CANDLE_AMBIENT, SoundSource.BLOCKS, 1.0F + pRandom.nextFloat(), pRandom.nextFloat() * 0.7F + 0.3F, false);
+            }
+        }
+
+        pLevel.addParticle(ParticleTypes.SMALL_FLAME, pOffset.x, pOffset.y, pOffset.z, 0.0D, 0.0D, 0.0D);
+    }
+
     public void changeToLit(Level level, BlockPos pos, BlockState state) {
-        level.setBlockAndUpdate(pos, ModBlocks.TORCH.get().defaultBlockState().setValue(LITSTATE, LIT).setValue(BURNTIME, getInitialBurnTime()));
+        level.setBlockAndUpdate(pos, ModBlocks.IRON_CANDLEHOLDER.get().defaultBlockState().setValue(LITSTATE, LIT).setValue(BURNTIME, getInitialBurnTime()));
         if (SHOULD_BURN_OUT) {
             level.scheduleTick(pos, this, TICK_INTERVAL);
         }
@@ -160,20 +157,17 @@ public class RealisticTorchBlock extends Block {
 
     public void changeToSmoldering(Level level, BlockPos pos, BlockState state, int newBurnTime) {
         if (SHOULD_BURN_OUT) {
-            level.setBlockAndUpdate(pos, ModBlocks.TORCH.get().defaultBlockState().setValue(LITSTATE, SMOLDERING).setValue(BURNTIME, newBurnTime));
+            level.setBlockAndUpdate(pos, ModBlocks.IRON_CANDLEHOLDER.get().defaultBlockState().setValue(LITSTATE, SMOLDERING).setValue(BURNTIME, newBurnTime));
             level.scheduleTick(pos, this, TICK_INTERVAL);
         }
     }
 
     public void changeToUnlit(Level level, BlockPos pos, BlockState state) {
         if (SHOULD_BURN_OUT) {
-            if (ClassiCraftConfiguration.noRelightEnabled.get()) {
-                level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
-            } else {
-                level.setBlockAndUpdate(pos, ModBlocks.TORCH.get().defaultBlockState());
-                level.scheduleTick(pos, this, TICK_INTERVAL);
-            }
+            level.setBlockAndUpdate(pos, ModBlocks.IRON_CANDLEHOLDER.get().defaultBlockState());
+            level.scheduleTick(pos, this, TICK_INTERVAL);
         }
+
     }
 
     public void playLightingSound(Level level, BlockPos pos) {
@@ -186,12 +180,25 @@ public class RealisticTorchBlock extends Block {
 
     private static ToIntFunction<BlockState> getLightValueFromState() {
         return (state) -> {
-            if (state.getValue(RealisticTorchBlock.LITSTATE) == RealisticTorchBlock.LIT) {
-                return 14;
-            } else if (state.getValue(RealisticTorchBlock.LITSTATE) == RealisticTorchBlock.SMOLDERING) {
+            if (state.getValue(RealisticIronCandleholderBlock.LITSTATE) == RealisticIronCandleholderBlock.LIT) {
+                return 16;
+            } else if (state.getValue(RealisticIronCandleholderBlock.LITSTATE) == RealisticIronCandleholderBlock.SMOLDERING) {
                 return 12;
             }
             return 0;
         };
     }
+
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return AABB;
+    }
+
+    public BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {
+        return pFacing == Direction.DOWN && !this.canSurvive(pState, pLevel, pCurrentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
+    }
+
+    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+        return canSupportCenter(pLevel, pPos.below(), Direction.UP);
+    }
 }
+

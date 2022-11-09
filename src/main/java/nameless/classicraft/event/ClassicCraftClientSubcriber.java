@@ -4,12 +4,15 @@ import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.client.model.BoarModel;
 import nameless.classicraft.client.model.DeerModel;
 import nameless.classicraft.client.model.LionfishModel;
+import nameless.classicraft.client.model.PerchModel;
 import nameless.classicraft.client.renderer.BoarRenderer;
 import nameless.classicraft.client.renderer.LionfishRenderer;
+import nameless.classicraft.client.renderer.PerchRenderer;
 import nameless.classicraft.entity.BoarEntity;
 import nameless.classicraft.client.renderer.CCGenericMobRenderer;
 import nameless.classicraft.entity.DeerEntity;
 import nameless.classicraft.entity.LionfishEntity;
+import nameless.classicraft.entity.PerchEntity;
 import nameless.classicraft.init.ModEntities;
 import nameless.classicraft.init.ModEntityModelLayers;
 import nameless.classicraft.init.ModScreens;
@@ -28,6 +31,7 @@ public class ClassicCraftClientSubcriber {
         event.put(ModEntities.DEER_ENEITY.get(), DeerEntity.registerAttributes().build());
         event.put(ModEntities.BOAR_ENTITY.get(), BoarEntity.registerAttributes().build());
         event.put(ModEntities.LIONFISH_ENTITY.get(), LionfishEntity.registerAttributes().build());
+        event.put(ModEntities.PERCH_ENTITY.get(), PerchEntity.registerAttributes().build());
     }
 
     @SubscribeEvent
@@ -38,6 +42,8 @@ public class ClassicCraftClientSubcriber {
                 m -> new CCGenericMobRenderer<>(m, new DeerModel(m.bakeLayer(ModEntityModelLayers.DEER)), 0.7F, "wilddeer.png"));
         event.registerEntityRenderer(ModEntities.LIONFISH_ENTITY.get(),
                 LionfishRenderer::new);
+        event.registerEntityRenderer(ModEntities.PERCH_ENTITY.get(),
+                PerchRenderer::new);
     }
 
     @SubscribeEvent
@@ -45,6 +51,7 @@ public class ClassicCraftClientSubcriber {
         event.registerLayerDefinition(ModEntityModelLayers.BOAR, BoarModel::create);
         event.registerLayerDefinition(ModEntityModelLayers.DEER, DeerModel::create);
         event.registerLayerDefinition(ModEntityModelLayers.LIONFISH, LionfishModel::create);
+        event.registerLayerDefinition(ModEntityModelLayers.PERCH, PerchModel::create);
     }
 
     @SubscribeEvent

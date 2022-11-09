@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "classicraft:item/small_salt_bud"
+    "layer0": "classicraft:item/lit_torch"
   }
 }

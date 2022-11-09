@@ -247,7 +247,7 @@ public class LionfishEntity extends BucketableWaterAnimal {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.PUFFER_FISH_AMBIENT;
+        return SoundEvents.FIRE_AMBIENT;
     }
 
     @Override

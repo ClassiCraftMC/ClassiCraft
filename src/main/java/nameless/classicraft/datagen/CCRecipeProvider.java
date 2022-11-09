@@ -22,6 +22,8 @@ public class CCRecipeProvider extends RecipeProvider {
        simpleSmelting(ModItems.RAW_PUMPKIN_PIE.get(), Items.PUMPKIN, pFinishedRecipeConsumer);
        simpleSmelting(ModItems.RAW_COOKIE.get(), Items.COOKIE, pFinishedRecipeConsumer);
        simpleSmelting(ModItems.RAW_CAKE.get(), Items.CAKE, pFinishedRecipeConsumer);
+       simpleSmelting(ModItems.LIONFISH.get(), ModItems.COOKED_LIONFISH.get(), pFinishedRecipeConsumer);
+       simpleSmelting(ModItems.PERCH.get(), ModItems.COOKED_PERCH.get(), pFinishedRecipeConsumer);
 
         ShapelessRecipeBuilder.shapeless(Items.TORCH, 1)
                 .requires(ModItems.TORCH.get())

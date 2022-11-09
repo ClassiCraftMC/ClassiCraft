@@ -6,6 +6,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.MobBucketItem;
 import net.minecraft.world.level.material.Fluids;
@@ -45,6 +46,12 @@ public class ModItems {
     public static final RegistryObject<Item> LIONFISH_BUCKET =
             registerMobBuckteItem(ModEntities.LIONFISH_ENTITY);
 
+    public static final RegistryObject<Item> PERCH_SPAWN_EGG =
+            registerSpawnEgg(ModEntities.PERCH_ENTITY, 7764021, 12555079);
+
+    public static final RegistryObject<Item> PERCH_BUCKET =
+            registerMobBuckteItem(ModEntities.PERCH_ENTITY);
+
     public static final RegistryObject<Item> SALT_WATER_BOTTLE =
             register("salt_water_bottle", () -> new SaltWaterBottleItem(common()));
 
@@ -55,14 +62,32 @@ public class ModItems {
     public static final RegistryObject<Item> RAW_CAKE =
             food("raw_cake", ModFoodDatas.RAW_CAKE);
 
+    public static final RegistryObject<Item> PERCH =
+            food("perch", Foods.TROPICAL_FISH);
+
+    public static final RegistryObject<Item> LIONFISH =
+            food("lionfish", Foods.TROPICAL_FISH);
+
+    public static final RegistryObject<Item> COOKED_PERCH =
+            food("cooked_perch", Foods.COOKED_COD);
+
+    public static final RegistryObject<Item> COOKED_LIONFISH =
+            food("cooked_lionfish", Foods.COOKED_COD);
+
     public static final RegistryObject<Item> RAW_SALT =
             food("raw_salt", ModFoodDatas.NONE);
 
     public static final RegistryObject<Item> TORCH =
             register("torch", () -> new StandingAndWallBlockItem(ModBlocks.TORCH.get(), ModBlocks.WALL_TORCH.get(), decoration()));
 
+    public static final RegistryObject<Item> LIT_TORCH =
+            normal("lit_torch");
+
     public static final RegistryObject<Item> SOUL_TORCH =
             register("soul_torch", () -> new StandingAndWallBlockItem(ModBlocks.SOUL_TORCH.get(), ModBlocks.SOUL_WALL_TORCH.get(), decoration()));
+
+    public static final RegistryObject<Item> IRON_CANDLEHOLDER =
+            register("iron_candleholder", () -> new StandingAndWallBlockItem(ModBlocks.IRON_CANDLEHOLDER.get(), ModBlocks.IRON_CANDLEHOLDER_WALL.get(), decoration()));
 
     private static RegistryObject<Item> food(String name, FoodProperties foodData) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().food(foodData).tab(ClassiCraftTab.COMMON)));

@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "litstate=2": {"model": "classicraft:block/candleholder/iron_candlerholder_wall"},
+        "litstate=1": {"model": "classicraft:block/candleholder/iron_candlerholder_wall"},
+        "litstate=0": {"model": "classicraft:block/candleholder/unlit_iron_candlerholder_wall"}
+    }
+}

@@ -66,6 +66,16 @@ public class CCLanguageProvider extends LanguageProvider {
         add(ModBlocks.LARGE_SALT_BUD.get(), "Large Salt Bud");
         add(ModBlocks.MEDIUM_SALT_BUD.get(), "Medium Salt Bud");
         add(ModBlocks.SMALL_SALT_BUD.get(), "Small Salt Bud");
+        add(ModBlocks.SALT_CLUSTER.get(), "Salt Cluster");
+        add(ModItems.LIONFISH_BUCKET.get(), "Lionfish Bucket");
+        add(ModItems.LIONFISH.get(), "Lionfish");
+        add(ModItems.LIONFISH_SPAWN_EGG.get(), "Lionfish Spawn Egg");
+        add(ModItems.COOKED_LIONFISH.get(), "Cooked Lionfish");
+        add(ModItems.PERCH_BUCKET.get(), "Perch Bucket");
+        add(ModItems.PERCH.get(), "Perch");
+        add(ModItems.PERCH_SPAWN_EGG.get(), "Perch Spawn Egg");
+        add(ModItems.COOKED_PERCH.get(), "Cooked Perch");
+        add(ModItems.RAW_SALT.get(), "Raw Salt");
         add("info.classicraft.stop_use_lantern", "Could't place the Vanilla Lantern Block in survival mode, you can configured it in ClassisCraft Mod Config.");
         add("info.classicraft.stop_use_torch", "Could't place the Vanilla Torch Block in survival mode, you can configured it in ClassisCraft Mod Config.");
     }

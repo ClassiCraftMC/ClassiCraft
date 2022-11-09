@@ -75,14 +75,6 @@ public class ModBlocks {
                             .strength(1.5F).lightLevel((p_152632_) -> {return 5;
             })));
 
-    public static final RegistryObject<Block> BUDDING_SALT =
-            registerNormal("budding_salt", () ->new BuddingAmethystBlock(
-                    BlockBehaviour.Properties
-                            .of(Material.AMETHYST)
-                            .randomTicks()
-                            .strength(1.5F)
-                            .sound(SoundType.AMETHYST)
-                            .requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> LARGE_SALT_BUD =
             registerNormal("large_salt_bud", () -> new AmethystClusterBlock(
                     5, 3, BlockBehaviour.Properties.copy(Blocks.STONE)
@@ -131,6 +123,13 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> TORCH =
             register("torch", RealisticTorchBlock::new);
+
+    public static final RegistryObject<Block> IRON_CANDLEHOLDER =
+            register("iron_candleholder", RealisticIronCandleholderBlock::new);
+
+    public static final RegistryObject<Block> IRON_CANDLEHOLDER_WALL =
+            register("iron_candleholder_wall", RealisticIronCandleholderBlock::new);
+
     public static final RegistryObject<Block> WALL_TORCH =
             register("torch_wall", RealisticWallTorchBlock::new);
     public static final RegistryObject<Block> SOUL_TORCH =

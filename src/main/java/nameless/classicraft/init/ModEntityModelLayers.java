@@ -6,6 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class ModEntityModelLayers {
 
+    public static final ModelLayerLocation PERCH =  register("perch");
     public static final ModelLayerLocation DEER = register("deer");
     public static final ModelLayerLocation BOAR = register("boar");
     public static final ModelLayerLocation LIONFISH = register("lionfish");
