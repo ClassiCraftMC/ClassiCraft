@@ -2,7 +2,7 @@ package nameless.classicraft.item;
 
 import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.api.item.ItemStackAPI;
-import nameless.classicraft.block.realistic.RealisticTorchBlock;
+import nameless.classicraft.block.realistic.RealisticSoulTorchBlock;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import nameless.classicraft.init.ModTags;
@@ -21,19 +21,20 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-public class LitTorchItem extends StandingAndWallBlockItem {
+public class LitSoulTorchItem extends StandingAndWallBlockItem {
 
     public static final boolean HARDCORE = ClassiCraftConfiguration.hardcore.get();
 
     public static final Boolean WATER_BURNT = ClassiCraftConfiguration.waterBurnt.get();
 
-    public LitTorchItem() {
-        super(ModBlocks.TORCH.get(),ModBlocks.WALL_TORCH.get(),new Item.Properties().stacksTo(64));
+
+    public LitSoulTorchItem() {
+        super(ModBlocks.SOUL_TORCH.get(),ModBlocks.SOUL_WALL_TORCH.get(),new Item.Properties().stacksTo(64));
     }
 
     @Override
     public String getDescriptionId() {
-        return "item.classicraft.lit_torch";
+        return "item.classicraft.lit_soul_torch";
     }
 
     @Nullable
@@ -43,7 +44,7 @@ public class LitTorchItem extends StandingAndWallBlockItem {
         int burnTime;
         if(!pStack.getOrCreateTag().contains("burnTime"))
         {
-            burnTime = RealisticTorchBlock.getInitialBurnTime();
+            burnTime = RealisticSoulTorchBlock.getInitialBurnTime();
             pStack.getTag().putInt("burnTime",burnTime);
         }
         else
@@ -56,10 +57,10 @@ public class LitTorchItem extends StandingAndWallBlockItem {
             if(pContext.getLevel().isRainingAt(pContext.getClickedPos().above()))
             {
                 pContext.getLevel().playSound(null,pContext.getClickedPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS,0.3f, pContext.getLevel().random.nextFloat() * 0.1F + 0.6F);
-                return state.setValue(RealisticTorchBlock.getLitState(), RealisticTorchBlock.SMOLDERING).setValue(RealisticTorchBlock.BURNTIME,burnTime);
+                return state.setValue(RealisticSoulTorchBlock.getLitState(), RealisticSoulTorchBlock.SMOLDERING).setValue(RealisticSoulTorchBlock.BURNTIME,burnTime);
             }
             else
-                return state.setValue(RealisticTorchBlock.getLitState(), RealisticTorchBlock.LIT).setValue(RealisticTorchBlock.BURNTIME,burnTime);
+                return state.setValue(RealisticSoulTorchBlock.getLitState(), RealisticSoulTorchBlock.LIT).setValue(RealisticSoulTorchBlock.BURNTIME,burnTime);
         }
         return null;
     }
@@ -70,12 +71,12 @@ public class LitTorchItem extends StandingAndWallBlockItem {
 //        }
         if(pLevel.isRainingAt(player.getOnPos().above(2)) && pIsSelected)
         {
-            changeTorch(player,pStack, ItemStackAPI.replaceItemWithCopyNBTTagAndCount(pStack,ModItems.TORCH.get()),pSlotId);
+            changeTorch(player,pStack, ItemStackAPI.replaceItemWithCopyNBTTagAndCount(pStack, ModItems.SOUL_TORCH.get()),pSlotId);
             pLevel.playSound(null,player.getOnPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS,0.3f, pLevel.random.nextFloat() * 0.1F + 0.6F);
         }
         if(inWater(player.getOnPos(),pLevel) && WATER_BURNT)
         {
-            changeTorch(player,pStack,ItemStackAPI.replaceItemWithCopyNBTTagAndCount(pStack,ModItems.TORCH.get()),pSlotId);
+            changeTorch(player,pStack,ItemStackAPI.replaceItemWithCopyNBTTagAndCount(pStack,ModItems.SOUL_TORCH.get()),pSlotId);
             pLevel.playSound(null,player.getOnPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS,0.3f, pLevel.random.nextFloat() * 0.1F + 0.6F);
         }
     }
@@ -109,3 +110,4 @@ public class LitTorchItem extends StandingAndWallBlockItem {
         return false;
     }
 }
+

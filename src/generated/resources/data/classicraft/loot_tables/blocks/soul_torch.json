@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "classicraft:soul_torch"
+          "name": "classicraft:lit_soul_torch"
         }
       ],
       "name": "soul_torch",

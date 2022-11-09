@@ -2,14 +2,16 @@ package nameless.classicraft.block.realistic;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import nameless.classicraft.ClassiCraftConfiguration;
+import nameless.classicraft.init.ModBlockProperties;
 import nameless.classicraft.init.ModBlocks;
+import nameless.classicraft.init.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -28,7 +30,7 @@ import java.util.Map;
 
 public class RealisticWallTorchBlock extends RealisticTorchBlock {
 
-    public static final int TICK_RATE = 1200;
+    public static final int TICK_RATE = ModBlockProperties.TICK_RATE;
 
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     private static final Map<Direction, VoxelShape> AABBS = Maps.newEnumMap(ImmutableMap.of(
@@ -37,71 +39,67 @@ public class RealisticWallTorchBlock extends RealisticTorchBlock {
             Direction.WEST, box(11.0D, 3.0D, 5.5D, 16.0D, 13.0D, 10.5D),
             Direction.EAST, box(0.0D, 3.0D, 5.5D, 5.0D, 13.0D, 10.5D)));
 
-    public RealisticWallTorchBlock() {
+    public RealisticWallTorchBlock()
+    {
         super();
-        stateDefinition.any().setValue(FACING, Direction.NORTH);
+        registerDefaultState(defaultBlockState().setValue(FACING, Direction.NORTH));
     }
 
     @Override
-    public void animateTick(BlockState state, Level pLevel, BlockPos pPos, RandomSource pRandom) {
-        if (state.getValue(LITSTATE) == LIT || (state.getValue(LITSTATE) == SMOLDERING && pLevel.getRandom().nextInt(2) == 1)) {
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource source) {
+        if(state.getValue(LITSTATE) == LIT && level.getRandom().nextInt(2) == 1)
+        {
             Direction direction = state.getValue(FACING);
-            double d0 = (double) pPos.getX() + 0.5D;
-            double d1 = (double) pPos.getY() + 0.7D;
-            double d2 = (double) pPos.getZ() + 0.5D;
+            double d0 = (double)pos.getX() + 0.5D;
+            double d1 = (double)pos.getY() + 0.7D;
+            double d2 = (double)pos.getZ() + 0.5D;
+            double d3 = 0.22D;
+            double d4 = 0.27D;
             Direction direction1 = direction.getOpposite();
-            pLevel.addParticle(ParticleTypes.SMOKE, d0 + 0.27D * (double) direction1.getStepX(), d1 + 0.22D,
-                    d2 + 0.27D * (double) direction1.getStepZ(), 0.0D, 0.0D, 0.0D);
-            pLevel.addParticle(ParticleTypes.FLAME, d0 + 0.27D * (double) direction1.getStepX(), d1 + 0.22D,
-                    d2 + 0.27D * (double) direction1.getStepZ(), 0.0D, 0.0D, 0.0D);
+            level.addParticle(ParticleTypes.SMOKE, d0 + 0.27D * (double)direction1.getStepX(), d1 + 0.22D, d2 + 0.27D * (double)direction1.getStepZ(), 0.0D, 0.0D, 0.0D);
+            level.addParticle(ParticleTypes.FLAME, d0 + 0.27D * (double)direction1.getStepX(), d1 + 0.22D, d2 + 0.27D * (double)direction1.getStepZ(), 0.0D, 0.0D, 0.0D);
+        }
+        else if(state.getValue(LITSTATE) == SMOLDERING && level.getRandom().nextInt(2) == 1 )
+        {
+            Direction direction = state.getValue(FACING);
+            double d0 = (double)pos.getX() + 0.5D;
+            double d1 = (double)pos.getY() + 0.7D;
+            double d2 = (double)pos.getZ() + 0.5D;
+            double d3 = 0.22D;
+            double d4 = 0.27D;
+            Direction direction1 = direction.getOpposite();
+            level.addParticle(ParticleTypes.SMOKE, d0 + 0.27D * (double)direction1.getStepX(), d1 + 0.22D, d2 + 0.27D * (double)direction1.getStepZ(), 0.0D, 0.0D, 0.0D);
         }
     }
 
     @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return getShape(pState);
-    }
-
-    public static VoxelShape getShape(BlockState state) {
-        return AABBS.get(state.getValue(FACING));
-    }
-
-    @Override
-    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
-        Direction direction = pState.getValue(FACING);
-        BlockPos blockpos = pPos.relative(direction.getOpposite());
-        BlockState blockstate = pLevel.getBlockState(blockpos);
-        return blockstate.isFaceSturdy(pLevel, blockpos, direction);
-    }
-
-    @Override
-    public void changeToLit(Level world, BlockPos pos, BlockState state) {
-        world.setBlockAndUpdate(pos, ModBlocks.WALL_TORCH.get().defaultBlockState().setValue(LITSTATE, LIT).setValue(BURNTIME, getInitialBurnTime()).setValue(FACING, state.getValue(FACING)));
-        if (SHOULD_BURN_OUT) {
-            world.scheduleTick(pos, this, TICK_RATE);
+    public void changeToLit(Level pLevel, BlockPos pPos, BlockState pState) {
+        pLevel.setBlockAndUpdate(pPos, ModBlocks.WALL_TORCH.get().defaultBlockState().
+                setValue(LITSTATE,LIT).
+                setValue(BURNTIME,getInitialBurnTime()).
+                setValue(FACING,pState.getValue(FACING)));
+        if(SHOULD_BURN_OUT){
+            pLevel.scheduleTick(pPos,this,TICK_RATE);
         }
     }
 
     @Override
-    public void changeToSmoldering(Level world, BlockPos pos, BlockState state, int newBurnTime) {
-        if (SHOULD_BURN_OUT) {
-            world.setBlockAndUpdate(pos, ModBlocks.WALL_TORCH.get().defaultBlockState().setValue(LITSTATE, SMOLDERING)
-                    .setValue(BURNTIME, newBurnTime).setValue(FACING, state.getValue(FACING)));
-            world.scheduleTick(pos, this, TICK_RATE);
+    public void changeToSmoldering(Level pLevel, BlockPos pPos, BlockState pState, int burnTime) {
+        pLevel.setBlockAndUpdate(pPos,ModBlocks.WALL_TORCH.get().defaultBlockState().
+                setValue(LITSTATE,SMOLDERING).
+                setValue(BURNTIME,burnTime).
+                setValue(FACING,pState.getValue(FACING)));
+        if(SHOULD_BURN_OUT){
+            pLevel.scheduleTick(pPos,this,TICK_RATE);
         }
     }
 
     @Override
-    public void changeToUnlit(Level world, BlockPos pos, BlockState state) {
-        if (SHOULD_BURN_OUT) {
-            if (ClassiCraftConfiguration.noRelightEnabled.get()) {
-                world.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
-            }else {
-                world.setBlockAndUpdate(pos, ModBlocks.WALL_TORCH.get().defaultBlockState().setValue(FACING,
-                        state.getValue(FACING)));
-                world.scheduleTick(pos, this, TICK_RATE);
-            }
-        }
+    public void changeToUnlit(Level pLevel, BlockPos pPos, BlockState pState) {
+        pLevel.setBlockAndUpdate(pPos,ModBlocks.WALL_TORCH.get().defaultBlockState().
+                setValue(FACING,pState.getValue(FACING)));
+        if(SHOULD_BURN_OUT)
+            pLevel.scheduleTick(pPos,this,TICK_RATE);
     }
 
     @Override
@@ -111,42 +109,81 @@ public class RealisticWallTorchBlock extends RealisticTorchBlock {
     }
 
     @Override
-    public BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {
-        return pFacing.getOpposite() == pState.getValue(FACING) && !pState.canSurvive(pLevel, pCurrentPos) ? Blocks.AIR.defaultBlockState() : pState;
-    }
-
-    @Override
-    public BlockState rotate(BlockState state, Rotation rotation) {
-        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-    }
-
-    @Override
-    public BlockState mirror(BlockState state, Mirror mirror) {
-        return state.rotate(mirror.getRotation(state.getValue(FACING)));
+    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+        return net.minecraft.world.level.block.WallTorchBlock.getShape(pState);
     }
 
     @Override
     public boolean isValidSpawn(BlockState state, BlockGetter level, BlockPos pos, SpawnPlacements.Type type, EntityType<?> entityType) {
-        return Blocks.WALL_TORCH.isValidSpawn(state, level, pos, type, entityType);
+        return Blocks.WALL_TORCH.isValidSpawn(state,level,pos,type,entityType);
+    }
+
+    //let it can be placed in the wall
+    @Override
+    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+        return Blocks.WALL_TORCH.canSurvive(pState,pLevel,pPos);
     }
 
     @Nullable
-    public BlockState getStateForPlacement(BlockPlaceContext context) {
-        BlockState blockstate = this.defaultBlockState();
-        LevelReader levelreader = context.getLevel();
-        BlockPos blockpos = context.getClickedPos();
-        Direction[] directions = context.getNearestLookingDirections();
-        for(Direction direction : directions) {
-            if (direction.getAxis().isHorizontal()) {
-                Direction direction1 = direction.getOpposite();
-                blockstate = blockstate.setValue(FACING, direction1);
-                if (blockstate.canSurvive(levelreader, blockpos)) {
-                    return blockstate;
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext pContext) {
+        BlockState state =Blocks.WALL_TORCH.getStateForPlacement(pContext);
+        ItemStack placeStack = pContext.getPlayer().getItemInHand(pContext.getHand());
+        if(!placeStack.is(ModItems.LIT_TORCH.get())) return state == null ? null:this.defaultBlockState().setValue(FACING,state.getValue(FACING));
+        if(placeStack.getOrCreateTag().contains("burnTime"))
+        {
+            int burnTime = placeStack.getTag().getInt("burnTime");
+            if(pContext.getLevel().isRainingAt(pContext.getClickedPos().above()))
+            {
+                if(burnTime > INITIAL_BURN_TIME)
+                {
+                    return  state == null ? null:this.defaultBlockState().setValue(FACING,state.getValue(FACING)).setValue(BURNTIME,INITIAL_BURN_TIME).setValue(LITSTATE,1);
+                }
+                else if(burnTime <= 0)
+                {
+                    return  state == null ? null:this.defaultBlockState().setValue(FACING,state.getValue(FACING));
+                }
+                else
+                {
+                    return state == null ? null:this.defaultBlockState().setValue(FACING,state.getValue(FACING)).setValue(BURNTIME,burnTime).setValue(LITSTATE,1);
                 }
             }
-        }
+            if(burnTime > INITIAL_BURN_TIME)
+            {
+                return  state == null ? null:this.defaultBlockState().setValue(FACING,state.getValue(FACING)).setValue(BURNTIME,INITIAL_BURN_TIME).setValue(LITSTATE,2);
+            }
+            else if(burnTime <= 0)
+            {
+                return  state == null ? null:this.defaultBlockState().setValue(FACING,state.getValue(FACING));
+            }
+            else
+            {
+                return state == null ? null:this.defaultBlockState().setValue(FACING,state.getValue(FACING)).setValue(BURNTIME,burnTime).setValue(LITSTATE,2);
+            }
 
-        return null;
+        }
+        else
+        {
+            if(pContext.getLevel().isRainingAt(pContext.getClickedPos().above()))
+            {
+                return  state == null ? null:this.defaultBlockState().setValue(FACING,state.getValue(FACING)).setValue(BURNTIME,INITIAL_BURN_TIME).setValue(LITSTATE,1);
+            }
+            return state == null ? null:this.defaultBlockState().setValue(FACING,state.getValue(FACING)).setValue(BURNTIME,INITIAL_BURN_TIME).setValue(LITSTATE,2);
+        }
     }
 
+    @Override
+    public BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {
+        return Blocks.WALL_TORCH.updateShape(pState,pFacing,pFacingState,pLevel,pCurrentPos,pFacingPos);
+    }
+
+    @Override
+    public BlockState rotate(BlockState pState, Rotation pRotation) {
+        return Blocks.WALL_TORCH.rotate(pState,pRotation);
+    }
+
+    @Override
+    public BlockState mirror(BlockState pState, Mirror pMirror) {
+        return Blocks.WALL_TORCH.mirror(pState,pMirror);
+    }
 }

@@ -28,6 +28,10 @@ public class CCRecipeProvider extends RecipeProvider {
         ShapelessRecipeBuilder.shapeless(Items.TORCH, 1)
                 .requires(ModItems.TORCH.get())
                 .unlockedBy("has_torch", has(ModItems.TORCH.get()));
+        ShapelessRecipeBuilder.shapeless(ModItems.LIT_TORCH.get(), 1)
+                .requires(ModItems.TORCH.get())
+                .requires(Items.FLINT_AND_STEEL)
+                .unlockedBy("has_torch", has(ModItems.TORCH.get()));
         ShapelessRecipeBuilder.shapeless(ModItems.DOUGH.get(), 4)
                 .requires(Items.WATER_BUCKET)
                 .requires(ModItems.FLOUR.get())

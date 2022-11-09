@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "classicraft:soul_torch"
+          "name": "classicraft:lit_soul_torch"
         }
       ],
       "rolls": 1.0

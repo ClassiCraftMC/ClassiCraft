@@ -23,14 +23,27 @@ public class ClassiCraftConfiguration {
     public static ForgeConfigSpec.BooleanValue noVanillaTorchPlace;
     public static ForgeConfigSpec.BooleanValue noVanillaLanternPlace;
     public static ForgeConfigSpec.IntValue woodenItemBurnTime;
+    public static ForgeConfigSpec.BooleanValue torchCauseFire;
     public static ForgeConfigSpec.BooleanValue shutupExperimentalWarning;
     public static ForgeConfigSpec.BooleanValue removeSendFeedbackAndReportBugs;
+    public static ForgeConfigSpec.BooleanValue hardcore;
+    public static ForgeConfigSpec.BooleanValue waterBurnt;
+
 
     static {
         BUILDER.comment("天工开物模组配置文件");
         BUILDER.push("general");
 
         String desc;
+
+        desc = "决定是否火把会导致易燃物燃烧(True 是 开启)(仅限点燃的火把不包含阴燃的火把)";
+        torchCauseFire = BUILDER.comment(desc).define("torchCauseFire",true);
+
+        desc = "*困难*决定是否背包里的点燃的方块会熄灭";
+        hardcore = BUILDER.comment(desc).define("hardcore",true);
+
+        desc = "决定当你进入水中时是否你背包里点燃的火把会被熄灭";
+        waterBurnt = BUILDER.comment(desc).define("water_burnt",true);
 
         desc = "确定是否禁用提供反馈，报告漏洞选项";
         removeSendFeedbackAndReportBugs = BUILDER.comment(desc)
