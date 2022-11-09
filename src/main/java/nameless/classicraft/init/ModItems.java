@@ -78,10 +78,7 @@ public class ModItems {
             food("raw_salt", ModFoodDatas.NONE);
 
     public static final RegistryObject<Item> TORCH =
-            register("torch", () -> new StandingAndWallBlockItem(ModBlocks.TORCH.get(), ModBlocks.WALL_TORCH.get(), decoration()));
-
-    public static final RegistryObject<Item> LIT_TORCH =
-            normal("lit_torch");
+            register("torch", () -> new RealisticTorchItem(decoration()));
 
     public static final RegistryObject<Item> SOUL_TORCH =
             register("soul_torch", () -> new StandingAndWallBlockItem(ModBlocks.SOUL_TORCH.get(), ModBlocks.SOUL_WALL_TORCH.get(), decoration()));
