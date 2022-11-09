@@ -90,7 +90,20 @@ public class ModItems {
             register("lit_soul_torch", LitSoulTorchItem::new);
 
     public static final RegistryObject<Item> MATCHBOX =
-            normal("matchbox");
+            register("matchbox", () ->new Item(new Item.Properties().tab(ClassiCraftTab.COMMON)));
+
+    public static final RegistryObject<Item> RANCHU =
+            food("ranchu", Foods.TROPICAL_FISH);
+
+    public static final RegistryObject<Item> RANCHU_BUCKET =
+            register("ranchu_bucket", () ->
+                    new RanchuBucketItem(ModEntities.RANCHU_ENTITY,
+                            () -> Fluids.WATER, Items.BUCKET,
+                            false, new Item.Properties()
+                            .tab(ClassiCraftTab.COMMON).stacksTo(1)));
+
+    public static final RegistryObject<Item> RANCHU_SPAWN_EGG =
+            registerSpawnEgg(ModEntities.RANCHU_ENTITY, 0x736036, 0xd1a965);
 
     private static RegistryObject<Item> food(String name, FoodProperties foodData) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().food(foodData).tab(ClassiCraftTab.COMMON)));

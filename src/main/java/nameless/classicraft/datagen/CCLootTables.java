@@ -21,7 +21,6 @@ public class CCLootTables extends BaseLootTableProvider {
         simple(ModBlocks.FRIDGE);
         simple(ModBlocks.GLISTERING_MELON);
         simple(ModBlocks.SALT_ORE);
-        simple(ModBlocks.TORCH);
         simple(ModBlocks.SOUL_TORCH);
         simple(ModBlocks.LANTERN);
         simple(ModBlocks.SOUL_LANTERN);
@@ -31,8 +30,6 @@ public class CCLootTables extends BaseLootTableProvider {
         simple(ModBlocks.LARGE_SOUL_FIRE_BOWL);
         simple(ModBlocks.SALT_BLOCK);
         simple(ModBlocks.SALT_ROCK_BLOCK);
-        simple(ModBlocks.TORCH);
-        simple(ModBlocks.WALL_TORCH);
         simple(ModBlocks.SOUL_TORCH);
         simple(ModBlocks.SOUL_WALL_TORCH);
         simple(ModBlocks.LANTERN);

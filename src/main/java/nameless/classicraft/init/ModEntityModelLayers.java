@@ -10,6 +10,7 @@ public class ModEntityModelLayers {
     public static final ModelLayerLocation DEER = register("deer");
     public static final ModelLayerLocation BOAR = register("boar");
     public static final ModelLayerLocation LIONFISH = register("lionfish");
+    public static final ModelLayerLocation RANCHU = new ModelLayerLocation(new ResourceLocation(ClassiCraftMod.MODID, "ranchu"), "ranchu");
 
     private static ModelLayerLocation register(String p_171294_) {
         return register(p_171294_, "main");

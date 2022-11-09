@@ -1,10 +1,7 @@
 package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
-import nameless.classicraft.entity.BoarEntity;
-import nameless.classicraft.entity.DeerEntity;
-import nameless.classicraft.entity.LionfishEntity;
-import nameless.classicraft.entity.PerchEntity;
+import nameless.classicraft.entity.*;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -19,6 +16,9 @@ public class ModEntities {
     public static final DeferredRegister<EntityType<?>> ENTITIES =
             DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, ClassiCraftMod.MODID);
 
+    public static final RegistryObject<EntityType<RanchuEntity>> RANCHU_ENTITY =
+            register("ranchu", EntityType.Builder.of(RanchuEntity::new, MobCategory.WATER_AMBIENT)
+                    .sized(0.5F, 0.5F));
     public static final RegistryObject<EntityType<LionfishEntity>> LIONFISH_ENTITY =
             register("lionfish", EntityType.Builder.of(LionfishEntity::new, MobCategory.WATER_AMBIENT)
                     .sized(0.6F, 0.5F));

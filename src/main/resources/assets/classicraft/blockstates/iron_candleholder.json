@@ -1,10 +1,16 @@
 {
     "variants": {
-        "hanging=false,litstate=2": {"model": "classicraft::block/candleholder/iron_candleholder"},
-        "hanging=false,litstate=1": {"model": "classicraft:block/candleholder/iron_candleholder"},
-        "hanging=false,litstate=0": {"model": "classicraft:block/candleholder/unlit_iron_candleholder"},
-        "hanging=true,litstate=2": {"model": "classicraft:block/candleholder/iron_candleholder_hanging"},
-        "hanging=true,litstate=1": {"model": "classicraft:block/candleholder/iron_candleholder_hanging"},
-        "hanging=true,litstate=0": {"model": "classicraft:block/candleholder/unlit_iron_candleholder_hanging"}
+        "hanging=false,litstate=2,waterlogged=false": {"model": "classicraft::block/candleholder/iron_candleholder"},
+        "hanging=false,litstate=1,waterlogged=false": {"model": "classicraft:block/candleholder/iron_candleholder"},
+        "hanging=false,litstate=0,waterlogged=false": {"model": "classicraft:block/candleholder/unlit_iron_candleholder"},
+        "hanging=false,litstate=2,waterlogged=true": {"model": "classicraft::block/candleholder/iron_candleholder"},
+        "hanging=false,litstate=1,waterlogged=true": {"model": "classicraft:block/candleholder/iron_candleholder"},
+        "hanging=false,litstate=0,waterlogged=true": {"model": "classicraft:block/candleholder/unlit_iron_candleholder"},
+        "hanging=true,litstate=2,waterlogged=false": {"model": "classicraft:block/candleholder/iron_candleholder_hanging"},
+        "hanging=true,litstate=1,waterlogged=false": {"model": "classicraft:block/candleholder/iron_candleholder_hanging"},
+        "hanging=true,litstate=0,waterlogged=false": {"model": "classicraft:block/candleholder/unlit_iron_candleholder_hanging"},
+        "hanging=true,litstate=2,waterlogged=true": {"model": "classicraft:block/candleholder/iron_candleholder_hanging"},
+        "hanging=true,litstate=1,waterlogged=true": {"model": "classicraft:block/candleholder/iron_candleholder_hanging"},
+        "hanging=true,litstate=0,waterlogged=true": {"model": "classicraft:block/candleholder/unlit_iron_candleholder_hanging"}
     }
 }
