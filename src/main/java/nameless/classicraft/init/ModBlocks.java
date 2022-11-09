@@ -111,7 +111,7 @@ public class ModBlocks {
                     () -> new RicePaniclesBlock(Block.Properties.copy(Blocks.WHEAT)));
 
     public static final RegistryObject<Block> FIRE_BOWL =
-            register("fire_bowl", RealisticFireBowlBlock::new);
+            registerDecoration("fire_bowl", RealisticFireBowlBlock::new);
     public static final RegistryObject<Block> SOUL_FIRE_BOWL =
             registerDecoration("soul_fire_bowl", RealisticSoulFireBowlBlock::new);
 
@@ -139,7 +139,7 @@ public class ModBlocks {
             register("wall_soul_torch", RealisticSoulWallTorchBlock::new);
 
     public static final RegistryObject<Block> LANTERN =
-            register("lantern", RealisticLanternBlock::new);
+            registerDecoration("lantern", RealisticLanternBlock::new);
     public static final RegistryObject<Block> SOUL_LANTERN =
             registerDecoration("soul_lantern", RealisticSoulLanternBlock::new);
 
