@@ -3,12 +3,10 @@ package nameless.classicraft.item;
 import com.google.common.collect.ImmutableMap;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
-import nameless.classicraft.init.ModTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import toughasnails.api.potion.TANEffects;
 
@@ -48,12 +46,9 @@ public class AttachFoods {
             .put(Items.CAKE, food(14, 2.8).build()).build();
 
     public static boolean isAttach(Item item) {
-        ItemStack itemStack = new ItemStack(item);
-        if (itemStack.is(ModTags.ATTACH_ITEMS)) {
-            return true;
-        }
         return MAP.containsKey(item);
     }
+
 
     public static FoodProperties getFood(Item item) {
         return MAP.get(item);
