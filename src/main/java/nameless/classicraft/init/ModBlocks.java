@@ -139,7 +139,7 @@ public class ModBlocks {
             register("wall_soul_torch", RealisticSoulWallTorchBlock::new);
 
     public static final RegistryObject<Block> LANTERN =
-            registerDecoration("lantern", RealisticLanternBlock::new);
+            register("lantern", RealisticLanternBlock::new);
     public static final RegistryObject<Block> SOUL_LANTERN =
             registerDecoration("soul_lantern", RealisticSoulLanternBlock::new);
 
