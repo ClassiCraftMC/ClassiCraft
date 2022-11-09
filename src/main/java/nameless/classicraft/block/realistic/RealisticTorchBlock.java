@@ -21,9 +21,11 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -92,9 +94,28 @@ public class RealisticTorchBlock extends Block {
     }
 
     @Override
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+
+        if(pos.getY() == level.getHeight() -2 ) return;
+        if(level.getBlockState(pos.above()).getMaterial() == Material.WOOD || level.getBlockState(pos.above()).getMaterial() == Material.WOOL || level.getBlockState(pos.above()).getMaterial() == Material.LEAVES)
+        {
+            if(level.getBlockState(new BlockPos(pos.getX(),pos.getY()+2,pos.getZ())).getMaterial() == Material.WOOD||level.getBlockState(new BlockPos(pos.getX(),pos.getY()+2,pos.getZ())).getMaterial() == Material.WOOL||level.getBlockState(new BlockPos(pos.getX(),pos.getY()+2,pos.getZ())).getMaterial() == Material.LEAVES || level.getBlockState(new BlockPos(pos.getX(),pos.getY()+2,pos.getZ())).getMaterial() == Material.AIR)
+                level.setBlockAndUpdate(new BlockPos(pos.getX(),pos.getY()+2,pos.getZ()),Blocks.FIRE.defaultBlockState());
+            else
+                level.setBlockAndUpdate(pos.above(),Blocks.AIR.defaultBlockState());
+        }
+        else if(level.getBlockState(pos.above()).getMaterial() == Material.AIR)
+        {
+            if(level.getBlockState(new BlockPos(pos.getX(),pos.getY()+2,pos.getZ())).getMaterial() != Material.AIR)
+                level.setBlockAndUpdate(pos.above(),Blocks.FIRE.defaultBlockState().setValue(FireBlock.UP,true));
+        }
+
+    }
+
+    @Override
     public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
         if (!pLevel.isClientSide && SHOULD_BURN_OUT && pState.getValue(LITSTATE) > UNLIT) {
-            if (pLevel.isRainingAt(pPos)) {
+            if (pLevel.isRainingAt(pPos.above())) {
                 playExtinguishSound(pLevel, pPos);
                 changeToUnlit(pLevel, pPos, pState);
             }
