@@ -92,9 +92,6 @@ public class ModItems {
     public static final RegistryObject<Item> MATCHBOX =
             normal("matchbox");
 
-    public static final RegistryObject<Item> IRON_CANDLEHOLDER =
-            register("iron_candleholder", () -> new StandingAndWallBlockItem(ModBlocks.IRON_CANDLEHOLDER.get(), ModBlocks.IRON_CANDLEHOLDER_WALL.get(), decoration()));
-
     private static RegistryObject<Item> food(String name, FoodProperties foodData) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().food(foodData).tab(ClassiCraftTab.COMMON)));
     }

@@ -4,7 +4,6 @@ import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.init.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -15,6 +14,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -25,45 +25,47 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
 import java.util.function.ToIntFunction;
 
 public class RealisticIronCandleholderBlock extends Block {
 
     public static final int TICK_INTERVAL = 1200;
-    protected static final int INITIAL_BURN_TIME = ClassiCraftConfiguration.lanternBurnoutTime.get();
+    protected static final int INITIAL_BURN_TIME = ClassiCraftConfiguration.candleholderBurnoutTime.get();
     protected static final boolean SHOULD_BURN_OUT = INITIAL_BURN_TIME > 0;
     protected static final IntegerProperty BURNTIME = IntegerProperty.create("burntime", 0, SHOULD_BURN_OUT ? INITIAL_BURN_TIME : 1);
     protected static final IntegerProperty LITSTATE = IntegerProperty.create("litstate", 0, 2);
     public static final int LIT = 2;
     public static final int SMOLDERING = 1;
     public static final int UNLIT = 0;
-
-    protected static final VoxelShape AABB =
-            Block.box(7.0D, 0.0D, 7.0D, 9.0D, 9.0D, 9.0D);
+    public static final BooleanProperty HANGING = BlockStateProperties.HANGING;
+    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+    protected static final VoxelShape AABB = Shapes.or(
+            Block.box(5.0D, 0.0D, 5.0D, 11.0D, 7.0D, 11.0D),
+            Block.box(6.0D, 7.0D, 6.0D, 10.0D, 9.0D, 10.0D));
+    protected static final VoxelShape HANGING_AABB = Shapes.or(
+            Block.box(5.0D, 1.0D, 5.0D, 11.0D, 8.0D, 11.0D),
+            Block.box(6.0D, 8.0D, 6.0D, 10.0D, 10.0D, 10.0D));
 
     public RealisticIronCandleholderBlock() {
         super(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.CANDLE).lightLevel(getLightValueFromState()));
-        this.stateDefinition.any().setValue(LITSTATE, 0).setValue(BURNTIME, 0);
-    }
-
-    @Override
-    public void animateTick(BlockState state, Level pLevel, BlockPos pPos, RandomSource pRandom) {
-        if (state.getValue(LITSTATE) == LIT || (state.getValue(LITSTATE) == SMOLDERING && pLevel.getRandom().nextInt(2) == 1)) {
-            double d0 = (double)pPos.getX() + 0.5D;
-            double d1 = (double)pPos.getY() + 0.7D;
-            double d2 = (double)pPos.getZ() + 0.5D;
-            pLevel.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-            pLevel.addParticle(ParticleTypes.FLAME, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-        }
+        this.registerDefaultState(this.stateDefinition.any()
+                .setValue(HANGING, Boolean.FALSE)
+                .setValue(WATERLOGGED, Boolean.FALSE)
+                .setValue(LITSTATE, 0).setValue(BURNTIME, 0));
     }
 
     @Override
@@ -118,10 +120,66 @@ public class RealisticIronCandleholderBlock extends Block {
         super.onPlace(pState, pLevel, pPos, pOldState, pIsMoving);
     }
 
+    @Nullable
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
+        for(Direction direction : context.getNearestLookingDirections()) {
+            if (direction.getAxis() == Direction.Axis.Y) {
+                BlockState state = this.defaultBlockState().setValue(HANGING, direction == Direction.UP);
+                if (state.canSurvive(context.getLevel(), context.getClickedPos())) {
+                    return state.setValue(WATERLOGGED, fluidState.getType() == Fluids.WATER);
+                }
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState p_153474_, BlockGetter p_153475_, BlockPos p_153476_, CollisionContext p_153477_) {
+        return p_153474_.getValue(HANGING) ? HANGING_AABB : AABB;
+    }
+
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState>  pBuilder) {
+        pBuilder.add(HANGING, WATERLOGGED);
         pBuilder.add(BURNTIME);
         pBuilder.add(LITSTATE);
+    }
+
+    @Override
+    public boolean canSurvive(BlockState p_153479_, LevelReader p_153480_, BlockPos p_153481_) {
+        Direction direction = getConnectedDirection(p_153479_).getOpposite();
+        return Block.canSupportCenter(p_153480_, p_153481_.relative(direction), direction.getOpposite());
+    }
+
+    protected static Direction getConnectedDirection(BlockState state) {
+        return state.getValue(HANGING) ? Direction.DOWN : Direction.UP;
+    }
+
+    @Override
+    public PushReaction getPistonPushReaction(BlockState state) {
+        return PushReaction.DESTROY;
+    }
+
+    @Override
+    public BlockState updateShape(BlockState p_153483_, Direction p_153484_, BlockState p_153485_, LevelAccessor p_153486_, BlockPos p_153487_, BlockPos p_153488_) {
+        if (p_153483_.getValue(WATERLOGGED)) {
+            p_153486_.scheduleTick(p_153487_, Fluids.WATER, Fluids.WATER.getTickDelay(p_153486_));
+        }
+
+        return getConnectedDirection(p_153483_).getOpposite() == p_153484_ && !p_153483_.canSurvive(p_153486_, p_153487_) ? Blocks.AIR.defaultBlockState() : super.updateShape(p_153483_, p_153484_, p_153485_, p_153486_, p_153487_, p_153488_);
+    }
+
+    @Override
+    public FluidState getFluidState(BlockState state) {
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+    }
+
+    @Override
+    public boolean isPathfindable(BlockState p_153469_, BlockGetter p_153470_, BlockPos p_153471_, PathComputationType p_153472_) {
+        return false;
     }
 
     public static IntegerProperty getBurnTime() {
@@ -134,18 +192,6 @@ public class RealisticIronCandleholderBlock extends Block {
 
     public static int getInitialBurnTime() {
         return SHOULD_BURN_OUT ? INITIAL_BURN_TIME : 0;
-    }
-
-    private static void addParticlesAndSound(Level pLevel, Vec3 pOffset, RandomSource pRandom) {
-        float f = pRandom.nextFloat();
-        if (f < 0.3F) {
-            pLevel.addParticle(ParticleTypes.SMOKE, pOffset.x, pOffset.y, pOffset.z, 0.0D, 0.0D, 0.0D);
-            if (f < 0.17F) {
-                pLevel.playLocalSound(pOffset.x + 0.5D, pOffset.y + 0.5D, pOffset.z + 0.5D, SoundEvents.CANDLE_AMBIENT, SoundSource.BLOCKS, 1.0F + pRandom.nextFloat(), pRandom.nextFloat() * 0.7F + 0.3F, false);
-            }
-        }
-
-        pLevel.addParticle(ParticleTypes.SMALL_FLAME, pOffset.x, pOffset.y, pOffset.z, 0.0D, 0.0D, 0.0D);
     }
 
     public void changeToLit(Level level, BlockPos pos, BlockState state) {
@@ -188,17 +234,4 @@ public class RealisticIronCandleholderBlock extends Block {
             return 0;
         };
     }
-
-    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return AABB;
-    }
-
-    public BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {
-        return pFacing == Direction.DOWN && !this.canSurvive(pState, pLevel, pCurrentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
-    }
-
-    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
-        return canSupportCenter(pLevel, pPos.below(), Direction.UP);
-    }
 }
-
