@@ -55,27 +55,27 @@ public class ClassiCraftConfiguration {
 
         desc = "设置木质物品树苗、树叶的燃烧时间";
         woodenItemBurnTime = BUILDER.comment(desc)
-                .defineInRange("woodenItemBurnTime", 100, -1, 2800);
+                .defineInRange("woodenItemBurnTime", 100, -1, 2880);
 
         desc = "烛台熄灭耗费的时间，以分钟为单位。将其设置为负值将禁用烛台熄灭.";
         candleholderBurnoutTime = BUILDER.comment(desc)
-                .defineInRange("candleholderBurnoutTime", 60, -1, 2880);
+                .defineInRange("candleholderBurnoutTime", 60, -1, 100);
 
         desc = "大型火盆熄灭耗费的时间，以分钟为单位。将其设置为负值将禁用大型火盆熄灭.";
         largeFireBowlBurnoutTime = BUILDER.comment(desc)
-                .defineInRange("largeFireBowlBurnoutTime", 90, -1, 2880);
+                .defineInRange("largeFireBowlBurnoutTime", 90, -1, 100);
 
         desc = "火盆熄灭耗费的时间，以分钟为单位。将其设置为负值将禁用火盆熄灭.";
         fireBowlBurnoutTime = BUILDER.comment(desc)
-                .defineInRange("fireBowlBurnoutTime", 90, -1, 2880);
+                .defineInRange("fireBowlBurnoutTime", 90, -1, 100);
 
         desc = "灯笼熄灭耗费的时间，以分钟为单位。将其设置为负值将禁用灯笼熄灭.";
         lanternBurnoutTime = BUILDER.comment(desc)
-                .defineInRange("lanternBurnoutTime", 80, -1, 2880);
+                .defineInRange("lanternBurnoutTime", 80, -1, 100);
 
         desc = "火把熄灭耗费的时间，以分钟为单位。将其设置为负值将禁用火把熄灭.";
         torchBurnoutTime = BUILDER.comment(desc)
-                .defineInRange("torchBurnoutTime", 60, -1, 100);
+                .defineInRange("torchBurnoutTime", 2, -1, 100);
 
         desc = "确定点燃的火把在熄灭后是否消失，而不是变成未点燃的火把.";
         noRelightEnabled = BUILDER.comment(desc)

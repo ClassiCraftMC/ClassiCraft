@@ -55,6 +55,8 @@ public class CCLanguageZhProvider extends LanguageProvider {
         add(ModBlocks.STONE_MORTAR_BLOCK.get(), "石臼");
         add(ModBlocks.TORCH.get(), "火把");
         add(ModBlocks.SOUL_TORCH.get(), "灵魂火把");
+        add("item.classicraft.lit_soul_torch", "点燃的灵魂火把");
+        add("item.classicraft.lit_torch", "点燃的火把");
         add(ModBlocks.SALT_ROCK_BLOCK.get(), "粗盐块");
         add(ModBlocks.SALT_BLOCK.get(), "盐块");
         add(ModBlocks.LANTERN.get(), "灯笼");

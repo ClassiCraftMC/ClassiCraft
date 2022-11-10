@@ -3,7 +3,6 @@ package nameless.classicraft.item;
 import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.api.item.ItemStackAPI;
 import nameless.classicraft.block.realistic.RealisticSoulTorchBlock;
-import nameless.classicraft.block.realistic.RealisticTorchBlock;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import nameless.classicraft.init.ModTags;
@@ -14,7 +13,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.StandingAndWallBlockItem;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -28,9 +26,8 @@ public class LitSoulTorchItem extends StandingAndWallBlockItem {
 
     public static final Boolean WATER_BURNT = ClassiCraftConfiguration.waterBurnt.get();
 
-
     public LitSoulTorchItem() {
-        super(ModBlocks.SOUL_TORCH.get(),ModBlocks.SOUL_WALL_TORCH.get(),new Item.Properties().stacksTo(64));
+        super(ModBlocks.SOUL_TORCH.get(),ModBlocks.SOUL_WALL_TORCH.get(), new Properties());
     }
 
     @Override
@@ -67,10 +64,9 @@ public class LitSoulTorchItem extends StandingAndWallBlockItem {
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
         if(!HARDCORE || pLevel.isClientSide() || !(pEntity instanceof Player player)) return;
-
         if(pLevel.isRainingAt(player.getOnPos().above(2)) && pIsSelected)
         {
-            changeTorch(player,pStack, ItemStackAPI.replaceItemWithCopyNBTTagAndCount(pStack, ModItems.SOUL_TORCH.get()),pSlotId);
+            changeTorch(player,pStack, ItemStackAPI.replaceItemWithCopyNBTTagAndCount(pStack,ModItems.SOUL_TORCH.get()),pSlotId);
             pLevel.playSound(null,player.getOnPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS,0.3f, pLevel.random.nextFloat() * 0.1F + 0.6F);
         }
         if(inWater(player.getOnPos(),pLevel) && WATER_BURNT)
@@ -109,4 +105,3 @@ public class LitSoulTorchItem extends StandingAndWallBlockItem {
         return false;
     }
 }
-

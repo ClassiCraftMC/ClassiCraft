@@ -110,8 +110,8 @@ repositories {
 
 dependencies {
     implementation 'org.projectlombok:lombok:1.18.24'
-    implementation 'org.jetbrains:annotations:20.1.0'
-    minecraft 'net.minecraftforge:forge:1.19.2-43.1.47'
+    implementation 'org.jetbrains:annotations:23.0.0'
+    minecraft 'net.minecraftforge:forge:1.19.2-43.1.52'
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
