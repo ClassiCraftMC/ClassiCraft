@@ -16,11 +16,14 @@ public class ModSounds {
             DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, ClassiCraftMod.MODID);
 
     public static final RegistryObject<SoundEvent> DEER_DEATH =
-            register("entity.classicraft.deer.death");
+            register("deer_death");
     public static final RegistryObject<SoundEvent> DEER_HURT =
-            register("entity.classicraft.deer.hurt");
+            register("deer_hurt");
     public static final RegistryObject<SoundEvent> DEER_AMBIENT =
-            register("entity.classicraft.deer.ambient");
+            register("deer_ambient");
+
+    public static final RegistryObject<SoundEvent> GIEGIE =
+            register("giegie");
 
     private static RegistryObject<SoundEvent> register(String name) {
         return register(name, () -> new SoundEvent(new ResourceLocation(name.toLowerCase(Locale.ROOT))));

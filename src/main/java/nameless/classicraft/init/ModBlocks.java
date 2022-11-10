@@ -106,6 +106,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> RICE_CROP =
             register("rice_crop",
                     () -> new RiceBlock(Block.Properties.copy(Blocks.WHEAT).strength(0.2F)));
+
+    public static final RegistryObject<Block> LVCHA_CROP =
+            register("lvcha_crop",
+                    () -> new RiceBlock(Block.Properties.copy(Blocks.WHEAT).strength(0.2F)));
+
     public static final RegistryObject<Block> RICE_CROP_PANICLES =
             register("rice_panicles",
                     () -> new RicePaniclesBlock(Block.Properties.copy(Blocks.WHEAT)));

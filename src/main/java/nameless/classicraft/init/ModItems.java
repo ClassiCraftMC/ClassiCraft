@@ -32,8 +32,8 @@ public class ModItems {
     public static final RegistryObject<Item> RICE = food("rice", ModFoodDatas.RICE);
     public static final RegistryObject<Item> FLOUR = food("flour", ModFoodDatas.FLOUR);
     public static final RegistryObject<Item> RICE_HUSK = food("rice_husk", ModFoodDatas.RICE_HUSK);
-    public static final RegistryObject<Item> RICE_SEED = ITEMS.register("rice_seed", () -> new ItemNameBlockItem(ModBlocks.RICE_CROP.get(), common().food(ModFoodDatas.RICE_SEED)));
-    public static final RegistryObject<Item> CLASSIC_CRAFT = ITEMS.register("classic_craft", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RICE_SEED = register("rice_seed", () -> new ItemNameBlockItem(ModBlocks.RICE_CROP.get(), common().food(ModFoodDatas.RICE_SEED)));
+    public static final RegistryObject<Item> CLASSIC_CRAFT = register("classic_craft", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> DEER_SPAWN_EGG =
             registerSpawnEgg(ModEntities.DEER_ENEITY, 0x7b4d2e, 0x4b241d);
@@ -88,6 +88,12 @@ public class ModItems {
 
     public static final RegistryObject<Item> LIT_SOUL_TORCH =
             register("lit_soul_torch", LitSoulTorchItem::new);
+
+    public static final RegistryObject<Item> LVCHA_CYSTAL =
+            register("lvcha_crystal", () -> new LvChaCrystal(common().food(ModFoodDatas.ROTTEN_FOOD)));
+
+    public static final RegistryObject<Item> LVCHA_SEED =
+            register("lvcha_seed", () -> new ItemNameBlockItem(ModBlocks.LVCHA_CROP.get(), common().food(ModFoodDatas.ROTTEN_FOOD)));
 
     public static final RegistryObject<Item> MATCHBOX =
             register("matchbox", () ->new Item(new Item.Properties().tab(ClassiCraftTab.COMMON)));
