@@ -107,10 +107,6 @@ public class ModBlocks {
             register("rice_crop",
                     () -> new RiceBlock(Block.Properties.copy(Blocks.WHEAT).strength(0.2F)));
 
-    public static final RegistryObject<Block> LVCHA_CROP =
-            register("lvcha_crop",
-                    () -> new RiceBlock(Block.Properties.copy(Blocks.WHEAT).strength(0.2F)));
-
     public static final RegistryObject<Block> RICE_CROP_PANICLES =
             register("rice_panicles",
                     () -> new RicePaniclesBlock(Block.Properties.copy(Blocks.WHEAT)));
@@ -132,9 +128,6 @@ public class ModBlocks {
     public static final RegistryObject<Block> WALL_TORCH =
             register("torch_wall", RealisticWallTorchBlock::new);
 
-    public static final RegistryObject<Block> IRON_CANDLEHOLDER =
-            registerDecoration("iron_candleholder", RealisticIronCandleholderBlock::new);
-
     public static final RegistryObject<Block> SOUL_TORCH =
             register("soul_torch", RealisticSoulTorchBlock::new);
     public static final RegistryObject<Block> SOUL_WALL_TORCH =
@@ -144,7 +137,6 @@ public class ModBlocks {
             registerDecoration("lantern", RealisticLanternBlock::new);
     public static final RegistryObject<Block> SOUL_LANTERN =
             registerDecoration("soul_lantern", RealisticSoulLanternBlock::new);
-
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockSupplier, @Nullable Function<T, ? extends BlockItem> blockItemFactory) {
         return registerBlock(ModBlocks.BLOCKS, ModItems.ITEMS, name, blockSupplier, blockItemFactory);

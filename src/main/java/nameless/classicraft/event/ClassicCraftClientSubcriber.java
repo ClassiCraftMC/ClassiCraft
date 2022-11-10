@@ -24,6 +24,9 @@ public class ClassicCraftClientSubcriber {
         event.put(ModEntities.LIONFISH_ENTITY.get(), LionfishEntity.registerAttributes().build());
         event.put(ModEntities.PERCH_ENTITY.get(), PerchEntity.registerAttributes().build());
         event.put(ModEntities.RANCHU_ENTITY.get(), RanchuEntity.registerAttributes().build());
+        event.put(ModEntities.ANGLEFISH_ENTITY.get(), AngleFishEntity.registerAttributes().build());
+        event.put(ModEntities.ARAPAIMA_ENTITY.get(), ArapaimaEntity.registerAttributes().build());
+        event.put(ModEntities.BELUGA_STURGEON_ENTITY.get(), BelugaSturgeonEntity.registerAttributes().build());
     }
 
     @SubscribeEvent
@@ -38,6 +41,12 @@ public class ClassicCraftClientSubcriber {
                 PerchRenderer::new);
         event.registerEntityRenderer(ModEntities.RANCHU_ENTITY.get(),
                 RanchuRenderer::new);
+        event.registerEntityRenderer(ModEntities.ANGLEFISH_ENTITY.get(),
+                AngleFishRenderer::new);
+        event.registerEntityRenderer(ModEntities.ARAPAIMA_ENTITY.get(),
+                ArapaimaRenderer::new);
+        event.registerEntityRenderer(ModEntities.BELUGA_STURGEON_ENTITY.get(),
+                BelugaSturgeonRenderer::new);
     }
 
     @SubscribeEvent
@@ -47,6 +56,9 @@ public class ClassicCraftClientSubcriber {
         event.registerLayerDefinition(ModEntityModelLayers.LIONFISH, LionfishModel::create);
         event.registerLayerDefinition(ModEntityModelLayers.PERCH, PerchModel::create);
         event.registerLayerDefinition(ModEntityModelLayers.RANCHU, RanchuModel::create);
+        event.registerLayerDefinition(ModEntityModelLayers.ANGELFISH, AngleFishModel::create);
+        event.registerLayerDefinition(ModEntityModelLayers.ARAPAIMA, ArapaimaModel::create);
+        event.registerLayerDefinition(ModEntityModelLayers.BELUGA_STURGEON, BelugaSturgeonModel::create);
     }
 
     @SubscribeEvent

@@ -1,17 +1,9 @@
 package nameless.classicraft;
 
-import nameless.classicraft.init.ModBlocks;
+import nameless.classicraft.init.*;
 import nameless.classicraft.block.entity.ModBlockEntities;
-import nameless.classicraft.init.ModEntities;
-import nameless.classicraft.init.ModItems;
 import com.mojang.logging.LogUtils;
-import nameless.classicraft.init.ModMenuTypes;
-import nameless.classicraft.init.ModRecipeTypes;
-import nameless.classicraft.init.ModSounds;
 import nameless.classicraft.event.ClassiCraftSubcriber;
-import nameless.classicraft.init.ModBiomeFeatures;
-import nameless.classicraft.init.ModConfiguredFeatures;
-import nameless.classicraft.init.ModPlacedFeatures;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -43,7 +35,9 @@ public class ClassiCraftMod {
         ModEntities.ENTITIES.register(modEventBus);
         ModSounds.SOUNDS.register(modEventBus);
         ClassiCraftSubcriber.init();
+        ModEffects.MOB_EFFECTS.register(modEventBus);
         ModBiomeFeatures.FEATURES.register(modEventBus);
+        ModPotions.POTIONS.register(modEventBus);
         ModConfiguredFeatures.CONFIGURED_FEATURES.register(modEventBus);
         ModPlacedFeatures.PLACED_FEATURES.register(modEventBus);
     }

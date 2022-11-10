@@ -52,6 +52,12 @@ public class ModItems {
     public static final RegistryObject<Item> PERCH_BUCKET =
             registerMobBuckteItem(ModEntities.PERCH_ENTITY);
 
+    public static final RegistryObject<Item> ANGLEFISH_BUCKET =
+            registerMobBuckteItem(ModEntities.ANGLEFISH_ENTITY);
+
+    public static final RegistryObject<Item> ANGLEFISH_SPAWN_EGG =
+            registerSpawnEgg(ModEntities.ANGLEFISH_ENTITY, 0xf8c243, 0xEB1965);
+
     public static final RegistryObject<Item> SALT_WATER_BOTTLE =
             register("salt_water_bottle", () -> new SaltWaterBottleItem(common()));
 
@@ -89,17 +95,29 @@ public class ModItems {
     public static final RegistryObject<Item> LIT_SOUL_TORCH =
             register("lit_soul_torch", LitSoulTorchItem::new);
 
-    public static final RegistryObject<Item> LVCHA_CYSTAL =
-            register("lvcha_crystal", () -> new LvChaCrystal(common().food(ModFoodDatas.ROTTEN_FOOD)));
-
-    public static final RegistryObject<Item> LVCHA_SEED =
-            register("lvcha_seed", () -> new ItemNameBlockItem(ModBlocks.LVCHA_CROP.get(), common().food(ModFoodDatas.ROTTEN_FOOD)));
-
     public static final RegistryObject<Item> MATCHBOX =
             register("matchbox", () ->new Item(new Item.Properties().tab(ClassiCraftTab.COMMON)));
 
     public static final RegistryObject<Item> RANCHU =
             food("ranchu", Foods.TROPICAL_FISH);
+
+    public static final RegistryObject<Item> ANGLEFISH =
+            food("anglefish", Foods.TROPICAL_FISH);
+
+    public static final RegistryObject<Item> ARAPAIMA =
+            food("arapaima", Foods.TROPICAL_FISH);
+
+    public static final RegistryObject<Item> ARAPAIMA_SPAWN_EGG =
+            registerSpawnEgg(ModEntities.ARAPAIMA_ENTITY, 0x706e6a, 0x860505);
+
+    public static final RegistryObject<Item> BELUGA_STURGEON_SPAWN_EGG =
+            registerSpawnEgg(ModEntities.BELUGA_STURGEON_ENTITY, 0x98a2a9, 0xeadacf);
+
+    public static final RegistryObject<Item> ARAPAIMA_BUCKET =
+            registerMobBuckteItem(ModEntities.ARAPAIMA_ENTITY);
+
+    public static final RegistryObject<Item> DROWN_ITEM =
+            normal("drown_item");
 
     public static final RegistryObject<Item> RANCHU_BUCKET =
             register("ranchu_bucket", () ->
@@ -110,6 +128,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> RANCHU_SPAWN_EGG =
             registerSpawnEgg(ModEntities.RANCHU_ENTITY, 0x736036, 0xd1a965);
+
 
     private static RegistryObject<Item> food(String name, FoodProperties foodData) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().food(foodData).tab(ClassiCraftTab.COMMON)));

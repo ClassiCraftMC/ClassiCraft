@@ -23,6 +23,17 @@ public class ModEntities {
             register("lionfish", EntityType.Builder.of(LionfishEntity::new, MobCategory.WATER_AMBIENT)
                     .sized(0.6F, 0.5F));
 
+    public static final RegistryObject<EntityType<AngleFishEntity>> ANGLEFISH_ENTITY =
+            register("anglefish", EntityType.Builder.of(AngleFishEntity::new, MobCategory.WATER_AMBIENT)
+                    .sized(0.6f,0.6f));
+
+    public static final RegistryObject<EntityType<ArapaimaEntity>> ARAPAIMA_ENTITY =
+            register("arapaima", EntityType.Builder.of(ArapaimaEntity::new, MobCategory.WATER_AMBIENT)
+                    .sized(1.0f,0.6f));
+
+    public static final RegistryObject<EntityType<BelugaSturgeonEntity>> BELUGA_STURGEON_ENTITY =
+            register("beluga_sturgeon", EntityType.Builder.of(BelugaSturgeonEntity::new, MobCategory.WATER_AMBIENT)
+                    .sized(1.4f,1.1f));
 
     public static final RegistryObject<EntityType<PerchEntity>> PERCH_ENTITY =
             register("perch", EntityType.Builder.of(PerchEntity::new, MobCategory.WATER_AMBIENT)

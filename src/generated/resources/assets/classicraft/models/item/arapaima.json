@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "classicraft:item/lvcha_crystal"
+    "layer0": "classicraft:item/arapaima"
   }
 }

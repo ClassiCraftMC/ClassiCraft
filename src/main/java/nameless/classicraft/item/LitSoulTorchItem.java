@@ -51,12 +51,7 @@ public class LitSoulTorchItem extends StandingAndWallBlockItem {
         }
         BlockState state = super.getPlacementState(pContext);
         if(state != null) {
-            if (pContext.getLevel().isRainingAt(pContext.getClickedPos().above())) {
-                pContext.getLevel().playSound(null, pContext.getClickedPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.3f, pContext.getLevel().random.nextFloat() * 0.1F + 0.6F);
-                return state.setValue(RealisticSoulTorchBlock.getLitState(), RealisticSoulTorchBlock.SMOLDERING).setValue(RealisticSoulTorchBlock.getBurnTime(), burnTime);
-            } else {
-                return state.setValue(RealisticSoulTorchBlock.getLitState(), 2).setValue(RealisticSoulTorchBlock.getBurnTime(), RealisticSoulTorchBlock.getInitialBurnTime());
-            }
+            return state.setValue(RealisticSoulTorchBlock.getLitState(), 2).setValue(RealisticSoulTorchBlock.getBurnTime(), RealisticSoulTorchBlock.getInitialBurnTime());
         }
         return null;
     }
@@ -64,11 +59,6 @@ public class LitSoulTorchItem extends StandingAndWallBlockItem {
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
         if(!HARDCORE || pLevel.isClientSide() || !(pEntity instanceof Player player)) return;
-        if(pLevel.isRainingAt(player.getOnPos().above(2)) && pIsSelected)
-        {
-            changeTorch(player,pStack, ItemStackAPI.replaceItemWithCopyNBTTagAndCount(pStack,ModItems.SOUL_TORCH.get()),pSlotId);
-            pLevel.playSound(null,player.getOnPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS,0.3f, pLevel.random.nextFloat() * 0.1F + 0.6F);
-        }
         if(inWater(player.getOnPos(),pLevel) && WATER_BURNT)
         {
             changeTorch(player,pStack,ItemStackAPI.replaceItemWithCopyNBTTagAndCount(pStack,ModItems.SOUL_TORCH.get()),pSlotId);

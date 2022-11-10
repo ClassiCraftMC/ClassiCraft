@@ -261,7 +261,7 @@ public class RanchuEntity extends Animal implements Bucketable {
                 for(int k = 0; k <= j; k = k > 0 ? -k : 1 - k) {
                     for(int l = k < j && k > -j ? j : 0; l <= j; l = l > 0 ? -l : 1 - l) {
                         blockpos$mutable.setWithOffset(blockpos, k, i, l);
-                        if (level.getBlockState(blockpos$mutable).is(ModBlocks.WILD_RICE.get())) {
+                        if (level.getBlockState(blockpos$mutable).is(Blocks.SEAGRASS)) {
                             return true;
                         }
                     }

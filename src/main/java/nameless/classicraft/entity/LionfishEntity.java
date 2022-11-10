@@ -38,6 +38,7 @@ import java.util.Random;
 import java.util.function.Predicate;
 
 public class LionfishEntity extends BucketableWaterAnimal {
+
     private static final Predicate<LivingEntity> ENEMY_MATCHER = (entity) -> {
         if (entity == null) {
             return false;
