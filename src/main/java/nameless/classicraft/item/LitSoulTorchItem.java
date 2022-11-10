@@ -3,6 +3,7 @@ package nameless.classicraft.item;
 import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.api.item.ItemStackAPI;
 import nameless.classicraft.block.realistic.RealisticSoulTorchBlock;
+import nameless.classicraft.block.realistic.RealisticTorchBlock;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import nameless.classicraft.init.ModTags;
@@ -52,15 +53,13 @@ public class LitSoulTorchItem extends StandingAndWallBlockItem {
             burnTime = pStack.getTag().getInt("burnTime");
         }
         BlockState state = super.getPlacementState(pContext);
-        if(state != null)
-        {
-            if(pContext.getLevel().isRainingAt(pContext.getClickedPos().above()))
-            {
-                pContext.getLevel().playSound(null,pContext.getClickedPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS,0.3f, pContext.getLevel().random.nextFloat() * 0.1F + 0.6F);
-                return state.setValue(RealisticSoulTorchBlock.getLitState(), RealisticSoulTorchBlock.SMOLDERING).setValue(RealisticSoulTorchBlock.BURNTIME,burnTime);
+        if(state != null) {
+            if (pContext.getLevel().isRainingAt(pContext.getClickedPos().above())) {
+                pContext.getLevel().playSound(null, pContext.getClickedPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.3f, pContext.getLevel().random.nextFloat() * 0.1F + 0.6F);
+                return state.setValue(RealisticSoulTorchBlock.getLitState(), RealisticSoulTorchBlock.SMOLDERING).setValue(RealisticSoulTorchBlock.getBurnTime(), burnTime);
+            } else {
+                return state.setValue(RealisticSoulTorchBlock.getLitState(), 2).setValue(RealisticSoulTorchBlock.getBurnTime(), RealisticSoulTorchBlock.getInitialBurnTime());
             }
-            else
-                return state.setValue(RealisticSoulTorchBlock.getLitState(), RealisticSoulTorchBlock.LIT).setValue(RealisticSoulTorchBlock.BURNTIME,burnTime);
         }
         return null;
     }
@@ -68,7 +67,7 @@ public class LitSoulTorchItem extends StandingAndWallBlockItem {
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
         if(!HARDCORE || pLevel.isClientSide() || !(pEntity instanceof Player player)) return;
-//        }
+
         if(pLevel.isRainingAt(player.getOnPos().above(2)) && pIsSelected)
         {
             changeTorch(player,pStack, ItemStackAPI.replaceItemWithCopyNBTTagAndCount(pStack, ModItems.SOUL_TORCH.get()),pSlotId);

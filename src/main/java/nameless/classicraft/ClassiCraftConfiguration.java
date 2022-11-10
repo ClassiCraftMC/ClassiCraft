@@ -75,7 +75,7 @@ public class ClassiCraftConfiguration {
 
         desc = "火把熄灭耗费的时间，以分钟为单位。将其设置为负值将禁用火把熄灭.";
         torchBurnoutTime = BUILDER.comment(desc)
-                .defineInRange("torchBurnoutTime", 500, -1, 2880);
+                .defineInRange("torchBurnoutTime", 60, -1, 100);
 
         desc = "确定点燃的火把在熄灭后是否消失，而不是变成未点燃的火把.";
         noRelightEnabled = BUILDER.comment(desc)

@@ -51,15 +51,13 @@ public class LitTorchItem extends StandingAndWallBlockItem {
             burnTime = pStack.getTag().getInt("burnTime");
         }
         BlockState state = super.getPlacementState(pContext);
-        if(state != null)
-        {
-            if(pContext.getLevel().isRainingAt(pContext.getClickedPos().above()))
-            {
-                pContext.getLevel().playSound(null,pContext.getClickedPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS,0.3f, pContext.getLevel().random.nextFloat() * 0.1F + 0.6F);
-                return state.setValue(RealisticTorchBlock.getLitState(), RealisticTorchBlock.SMOLDERING).setValue(RealisticTorchBlock.BURNTIME,burnTime);
+        if(state != null) {
+            if (pContext.getLevel().isRainingAt(pContext.getClickedPos().above())) {
+                pContext.getLevel().playSound(null, pContext.getClickedPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.3f, pContext.getLevel().random.nextFloat() * 0.1F + 0.6F);
+                return state.setValue(RealisticTorchBlock.getLitState(), RealisticTorchBlock.SMOLDERING).setValue(RealisticTorchBlock.getBurnTime(), burnTime);
+            } else {
+                return state.setValue(RealisticTorchBlock.getLitState(), 2).setValue(RealisticTorchBlock.getBurnTime(), RealisticTorchBlock.getInitialBurnTime());
             }
-            else
-                return state.setValue(RealisticTorchBlock.getLitState(), RealisticTorchBlock.LIT).setValue(RealisticTorchBlock.BURNTIME,burnTime);
         }
         return null;
     }

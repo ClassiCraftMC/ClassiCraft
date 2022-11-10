@@ -79,6 +79,8 @@ public class CCLanguageProvider extends LanguageProvider {
         add(ModItems.RANCHU.get(), "Ranchu");
         add(ModItems.RANCHU_BUCKET.get(), "Ranchu Bucket");
         add(ModItems.RANCHU_SPAWN_EGG.get(), "Ranchu Spawn Egg");
+        add("item.classicraft.lit_soul_torch", "Lit Soul Torch");
+        add("item.classicraft.lit_torch", "Lit Torch");
         add("info.classicraft.stop_use_lantern", "Could't place the Vanilla Lantern Block in survival mode, you can configured it in ClassisCraft Mod Config.");
         add("info.classicraft.stop_use_torch", "Could't place the Vanilla Torch Block in survival mode, you can configured it in ClassisCraft Mod Config.");
     }

@@ -38,11 +38,11 @@ import java.util.function.ToIntFunction;
 
 public class RealisticTorchBlock extends Block {
 
-    public static final int TICK_INTERVAL = 1200;
+    public static final int TICK_INTERVAL = ModBlockProperties.TICK_INTERVAL;
 
-    public static final int LIT = 2;
-    public static final int SMOLDERING = 1;
-    public static final int UNLIT = 0;
+    public static final int LIT = ModBlockProperties.LIT;
+    public static final int SMOLDERING = ModBlockProperties.SMOLDERING;
+    public static final int UNLIT = ModBlockProperties.UNLIT;
     protected static final int INITIAL_BURN_TIME = ClassiCraftConfiguration.torchBurnoutTime.get();
     protected static final boolean CAUSE_FIRE = ClassiCraftConfiguration.torchCauseFire.get();
     protected static final boolean SHOULD_BURN_OUT = INITIAL_BURN_TIME >= 0;
