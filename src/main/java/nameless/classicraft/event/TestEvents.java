@@ -2,7 +2,6 @@ package nameless.classicraft.event;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.api.event.ItemSpawnEvent;
-import nameless.classicraft.api.event.ItemEntityTickEvent;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraftforge.common.MinecraftForge;
@@ -13,7 +12,6 @@ public class TestEvents {
     public static void init() {
         final IEventBus bus = MinecraftForge.EVENT_BUS;
         bus.addListener(TestEvents::testSpawnEvent);
-        bus.addListener(TestEvents::testTickEvent);
     }
 
     public static void testSpawnEvent(ItemSpawnEvent event) {
@@ -23,10 +21,4 @@ public class TestEvents {
         }
     }
 
-    public static void testTickEvent(ItemEntityTickEvent event) {
-        if (event.getEntity().getItem().is(ModItems.SALT.get())) {
-            ClassiCraftMod.LOGGER.info("ItemTickEvent test Successfully!");
-        }
-        event.setCanceled(true);
-    }
 }

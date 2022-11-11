@@ -31,6 +31,10 @@ public class ModEntities {
             register("foxface_fish", EntityType.Builder.of(FoxFaceFishEntity::new, MobCategory.WATER_AMBIENT)
                     .sized(0.4f,0.3f));
 
+    public static final RegistryObject<EntityType<BaskingSharkEntity>> BASKING_SHARK_ENTITY =
+            register("basking_shark", EntityType.Builder.of(BaskingSharkEntity::new, MobCategory.WATER_AMBIENT)
+                    .sized(1.5f,1.8f));
+
     public static final RegistryObject<EntityType<ArapaimaEntity>> ARAPAIMA_ENTITY =
             register("arapaima", EntityType.Builder.of(ArapaimaEntity::new, MobCategory.WATER_AMBIENT)
                     .sized(1.0f,0.6f));

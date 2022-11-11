@@ -138,6 +138,9 @@ public class ModItems {
     public static final RegistryObject<Item> LIT_SOUL_LANTERN =
             register("lit_soul_lantern", LitSoulLantern::new);
 
+    public static final RegistryObject<Item> BASKING_SHARK_SPAWN_EGG =
+            registerSpawnEgg(ModEntities.BASKING_SHARK_ENTITY, 0x302521, 0xe4edf2);
+
     public static final RegistryObject<Item> ARAPAIMA =
             food("arapaima", Foods.TROPICAL_FISH);
 
