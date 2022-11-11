@@ -134,9 +134,9 @@ public class ModBlocks {
             register("wall_soul_torch", RealisticSoulWallTorchBlock::new);
 
     public static final RegistryObject<Block> LANTERN =
-            registerDecoration("lantern", RealisticLanternBlock::new);
+            register("lantern", RealisticLanternBlock::new);
     public static final RegistryObject<Block> SOUL_LANTERN =
-            registerDecoration("soul_lantern", RealisticSoulLanternBlock::new);
+            register("soul_lantern", RealisticSoulLanternBlock::new);
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockSupplier, @Nullable Function<T, ? extends BlockItem> blockItemFactory) {
         return registerBlock(ModBlocks.BLOCKS, ModItems.ITEMS, name, blockSupplier, blockItemFactory);

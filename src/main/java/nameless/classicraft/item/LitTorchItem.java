@@ -97,6 +97,7 @@ public class LitTorchItem extends StandingAndWallBlockItem {
         }
         player.getInventory().setItem(slot,newStack);
     }
+
     @Override
     public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
         if(oldStack.getOrCreateTag().contains("burnTime") && newStack.getOrCreateTag().contains("burnTime"))

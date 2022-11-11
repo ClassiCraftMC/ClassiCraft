@@ -126,6 +126,18 @@ public class ModItems {
     public static final RegistryObject<Item> FOOTBALLFISH =
             food("footballfish", Foods.TROPICAL_FISH);
 
+    public static final RegistryObject<Item> LANTERN =
+            register("lantern", LanternItem::new);
+
+    public static final RegistryObject<Item> SOUL_LANTERN =
+            register("soul_lantern", () -> new BlockItem(ModBlocks.SOUL_LANTERN.get(), decoration()));
+
+    public static final RegistryObject<Item> LIT_LANTERN =
+            register("lit_lantern", LitLantern::new);
+
+    public static final RegistryObject<Item> LIT_SOUL_LANTERN =
+            register("lit_soul_lantern", LitSoulLantern::new);
+
     public static final RegistryObject<Item> ARAPAIMA =
             food("arapaima", Foods.TROPICAL_FISH);
 

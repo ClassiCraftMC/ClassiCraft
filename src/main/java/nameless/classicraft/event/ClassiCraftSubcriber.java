@@ -66,10 +66,10 @@ public class ClassiCraftSubcriber {
         bus.addListener(ClassiCraftSubcriber::onScreenLoad);
         bus.addListener(ClassiCraftSubcriber::onRanchuBreed);
         bus.addListener(ClassiCraftSubcriber::onCraftTorch);
-        bus.addListener(ClassiCraftSubcriber::onTorchInWater);
+        bus.addListener(ClassiCraftSubcriber::onItemInWater);
     }
 
-    public static void onTorchInWater(ItemEntityTickEvent event) {
+    public static void onItemInWater(ItemEntityTickEvent event) {
         ItemEntity itemEntity = event.getEntity();
         if (itemEntity.getItem().is(ModItems.LIT_TORCH.get()) && itemEntity.isInWater()) {
             int oldCount = itemEntity.getItem().getCount();
@@ -79,6 +79,17 @@ public class ClassiCraftSubcriber {
                     itemEntity.getX(), itemEntity.getY(),
                     itemEntity.getZ(),
                     ModItems.TORCH.get().getDefaultInstance());
+            newItem.getItem().setCount(oldCount);
+            itemEntity.getLevel().addFreshEntity(newItem);
+        }
+        if (itemEntity.getItem().is(ModItems.LIT_LANTERN.get()) && itemEntity.isInWater()) {
+            int oldCount = itemEntity.getItem().getCount();
+            itemEntity.remove(Entity.RemovalReason.KILLED);
+            ItemEntity newItem = new ItemEntity(
+                    itemEntity.getLevel(),
+                    itemEntity.getX(), itemEntity.getY(),
+                    itemEntity.getZ(),
+                    ModItems.LANTERN.get().getDefaultInstance());
             newItem.getItem().setCount(oldCount);
             itemEntity.getLevel().addFreshEntity(newItem);
         }
@@ -187,6 +198,8 @@ public class ClassiCraftSubcriber {
         if (entity instanceof Player
                 && block instanceof LanternBlock
                 && !item.getDefaultInstance().is(Items.SOUL_LANTERN)
+                && !item.getDefaultInstance().is(ModItems.SOUL_LANTERN.get().asItem())
+                && !item.getDefaultInstance().is(ModItems.LIT_SOUL_LANTERN.get())
                 && ClassiCraftConfiguration.noVanillaLanternPlace.get()) {
             if (!((Player) entity).isCreative()) {
                 level.playSound(null, event.getPos(), SoundEvents.LANTERN_PLACE, SoundSource.BLOCKS, 1, 1);
@@ -197,6 +210,8 @@ public class ClassiCraftSubcriber {
         if (entity instanceof Player
                 && block instanceof LanternBlock
                 && !item.getDefaultInstance().is(Items.LANTERN)
+                && !item.getDefaultInstance().is(ModItems.LANTERN.get().asItem())
+                && !item.getDefaultInstance().is(ModItems.LIT_LANTERN.get())
                 && ClassiCraftConfiguration.noVanillaLanternPlace.get()) {
             if (!((Player) entity).isCreative()) {
                 level.playSound(null, event.getPos(), SoundEvents.LANTERN_PLACE, SoundSource.BLOCKS, 1, 1);
