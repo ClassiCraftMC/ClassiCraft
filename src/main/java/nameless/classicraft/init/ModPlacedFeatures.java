@@ -4,6 +4,10 @@ import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.ClassiCraftMod;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.data.worldgen.features.CaveFeatures;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.util.valueproviders.ClampedNormalInt;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
@@ -23,6 +27,11 @@ public class ModPlacedFeatures {
             register("salt_cave_placed",
                     ModConfiguredFeatures.SALT_CAVE.getHolder().get(),
                     6, 30, ClassiCraftConfiguration.saltCaveGenerateChance.get());
+
+    public static final RegistryObject<PlacedFeature> SALT_STALACTITE_CAVE =
+            register("salt_stalactite_cave",
+                    ModConfiguredFeatures.SALT_STALACTITE_CAVE.getHolder().get(),
+                    6, 30, 60);
 
     private static RegistryObject<PlacedFeature> register(String name, Holder<ConfiguredFeature<?, ?>> feature, int aboveBottem, int absolute, int chance) {
         return register(name,

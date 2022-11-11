@@ -3,6 +3,8 @@ package nameless.classicraft.init;
 import nameless.classicraft.ClassiCraftMod;
 import net.minecraft.core.Registry;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.valueproviders.ClampedNormalFloat;
+import net.minecraft.util.valueproviders.UniformFloat;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.GeodeBlockSettings;
@@ -10,6 +12,7 @@ import net.minecraft.world.level.levelgen.GeodeCrackSettings;
 import net.minecraft.world.level.levelgen.GeodeLayerSettings;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.DripstoneClusterConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.GeodeConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraftforge.registries.DeferredRegister;
@@ -23,6 +26,17 @@ public class ModConfiguredFeatures {
 
     public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES =
             DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, ClassiCraftMod.MODID);
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> SALT_STALACTITE_CAVE =
+            register("salt_stalactite_cave",
+                    () -> new ConfiguredFeature<>(Feature.DRIPSTONE_CLUSTER,
+                            new DripstoneClusterConfiguration(12,
+                                    UniformInt.of(3, 6),
+                                    UniformInt.of(2, 8), 1, 3,
+                                    UniformInt.of(2, 4),
+                                    UniformFloat.of(0.3F, 0.7F),
+                                    ClampedNormalFloat.of(0.1F, 0.3F, 0.1F, 0.9F),
+                                    0.1F, 3, 8)));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> SALT_CAVE =
             register("salt_cave",
