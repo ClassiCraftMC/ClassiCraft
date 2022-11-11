@@ -1,5 +1,6 @@
 package nameless.classicraft;
 
+import nameless.classicraft.event.TestEvents;
 import nameless.classicraft.init.*;
 import nameless.classicraft.block.entity.ModBlockEntities;
 import com.mojang.logging.LogUtils;
@@ -21,7 +22,7 @@ import org.slf4j.Logger;
 public class ClassiCraftMod {
 
     public static final String MODID = "classicraft";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public ClassiCraftMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -40,5 +41,6 @@ public class ClassiCraftMod {
         ModPotions.POTIONS.register(modEventBus);
         ModConfiguredFeatures.CONFIGURED_FEATURES.register(modEventBus);
         ModPlacedFeatures.PLACED_FEATURES.register(modEventBus);
+        TestEvents.init();
     }
 }

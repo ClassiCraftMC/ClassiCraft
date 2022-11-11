@@ -6,8 +6,10 @@
   "refmap": "classicraft.refmap.json",
   "mixins": [
     "MixinItem",
+    "MixinItemEntity",
     "MixinItemStack",
-    "MixinPrimaryLevelData"
+    "MixinPrimaryLevelData",
+    "MixinServerLevel"
   ],
   "client": [
     "MixinWorldSelectionList"

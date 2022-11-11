@@ -3,6 +3,7 @@ package nameless.classicraft.event;
 import com.mojang.datafixers.util.Pair;
 import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.ClassiCraftHooks;
+import nameless.classicraft.api.event.ItemEntityTickEvent;
 import nameless.classicraft.capability.ModCapabilities;
 import nameless.classicraft.entity.RanchuEntity;
 import nameless.classicraft.init.ModBlocks;
@@ -23,6 +24,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Turtle;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrownEgg;
 import net.minecraft.world.food.FoodProperties;
@@ -64,6 +66,22 @@ public class ClassiCraftSubcriber {
         bus.addListener(ClassiCraftSubcriber::onScreenLoad);
         bus.addListener(ClassiCraftSubcriber::onRanchuBreed);
         bus.addListener(ClassiCraftSubcriber::onCraftTorch);
+        bus.addListener(ClassiCraftSubcriber::onTorchInWater);
+    }
+
+    public static void onTorchInWater(ItemEntityTickEvent event) {
+        ItemEntity itemEntity = event.getEntity();
+        if (itemEntity.getItem().is(ModItems.LIT_TORCH.get()) && itemEntity.isInWater()) {
+            int oldCount = itemEntity.getItem().getCount();
+            itemEntity.remove(Entity.RemovalReason.KILLED);
+            ItemEntity newItem = new ItemEntity(
+                    itemEntity.getLevel(),
+                    itemEntity.getX(), itemEntity.getY(),
+                    itemEntity.getZ(),
+                    ModItems.TORCH.get().getDefaultInstance());
+            newItem.getItem().setCount(oldCount);
+            itemEntity.getLevel().addFreshEntity(newItem);
+        }
     }
 
     public static void onCraftTorch(PlayerEvent.ItemCraftedEvent event) {
