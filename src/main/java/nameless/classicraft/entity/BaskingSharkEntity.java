@@ -1,6 +1,5 @@
 package nameless.classicraft.entity;
 
-import nameless.classicraft.entity.goal.SharkAttackGoal;
 import nameless.classicraft.entity.goal.SharkJumpGoal;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -13,6 +12,7 @@ import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.AbstractSchoolingFish;
+import net.minecraft.world.entity.animal.Cow;
 import net.minecraft.world.entity.animal.Pig;
 import net.minecraft.world.entity.animal.TropicalFish;
 import net.minecraft.world.entity.player.Player;
@@ -45,6 +45,7 @@ public class BaskingSharkEntity extends AbstractSchoolingFish {
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true, false));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Pig.class, true, false));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Boat.class, true, false));
+        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Cow.class, true));
         this.targetSelector.addGoal(2, new HurtByTargetGoal(this));
         super.registerGoals();
     }
