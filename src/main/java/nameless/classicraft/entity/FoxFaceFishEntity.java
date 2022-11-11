@@ -26,20 +26,34 @@ import net.minecraft.world.level.ServerLevelAccessor;
 
 import javax.annotation.Nullable;
 
-public class BoxfishEntity extends AbstractSchoolingFish {
+public class FoxFaceFishEntity  extends AbstractSchoolingFish {
 
     public static final EntityDataAccessor<Integer> VARIANT = SynchedEntityData.defineId(BoxfishEntity.class, EntityDataSerializers.INT);
 
-    public BoxfishEntity(EntityType<? extends AbstractSchoolingFish> pEntityType, Level pLevel) {
+    public FoxFaceFishEntity(EntityType<? extends AbstractSchoolingFish> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new PanicGoal(this, 1.25D));
-        this.goalSelector.addGoal(1, new BoxfishEntity.SwimGoal(this));
+        this.goalSelector.addGoal(1, new FoxFaceFishEntity.SwimGoal(this));
         this.targetSelector.addGoal(2, new HurtByTargetGoal(this));
         this.goalSelector.addGoal(3, new AvoidEntityGoal<>(this, LionfishEntity.class, 6.0F, 1.0D, 1.2D));
+    }
+
+    @Override
+    public void aiStep() {
+        if (!this.isInWater() && this.onGround && this.verticalCollision) {
+            this.setDeltaMovement(this.getDeltaMovement().add((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F, 0.4F, (this.random.nextFloat() * 2.0F - 1.0F) * 0.05F));
+            this.onGround = false;
+            this.hasImpulse = true;
+            this.playSound(this.getFlopSound(), this.getSoundVolume(), this.getVoicePitch());
+        }
+
+        long time = level.getLevelData().getDayTime();
+
+        super.aiStep();
     }
 
     @Override
@@ -49,6 +63,12 @@ public class BoxfishEntity extends AbstractSchoolingFish {
         if (this.hasCustomName()) {
             bucket.setHoverName(this.getCustomName());
         }
+    }
+
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(VARIANT, 0);
     }
 
     @Override
@@ -66,16 +86,20 @@ public class BoxfishEntity extends AbstractSchoolingFish {
     @Nullable
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType reason, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag) {
-        if(this.random.nextInt(2) == 0) {
+        if(this.random.nextInt(2) == 0){
             this.setVariant(1);
+        }else if(random.nextInt(2) == 0){
+            this.setVariant(2);
+        }else if(random.nextInt(2) == 0){
+            this.setVariant(3);
         }
         return super.finalizeSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
     }
 
     static class SwimGoal extends RandomSwimmingGoal {
-        private final BoxfishEntity fish;
+        private final FoxFaceFishEntity fish;
 
-        public SwimGoal(BoxfishEntity fish) {
+        public SwimGoal(FoxFaceFishEntity fish) {
             super(fish, 2.0D, 40);
             this.fish = fish;
         }
@@ -85,32 +109,12 @@ public class BoxfishEntity extends AbstractSchoolingFish {
         }
     }
 
-    @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(VARIANT, 0);
-    }
-
     public int getVariant() {
         return this.entityData.get(VARIANT);
     }
 
     private void setVariant(int variant) {
         this.entityData.set(VARIANT, variant);
-    }
-
-    @Override
-    public void aiStep() {
-        if (!this.isInWater() && this.onGround && this.verticalCollision) {
-            this.setDeltaMovement(this.getDeltaMovement().add((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F, 0.4F, (this.random.nextFloat() * 2.0F - 1.0F) * 0.05F));
-            this.onGround = false;
-            this.hasImpulse = true;
-            this.playSound(this.getFlopSound(), this.getSoundVolume(), this.getVoicePitch());
-        }
-
-        long time = level.getLevelData().getDayTime();
-
-        super.aiStep();
     }
 
     public static AttributeSupplier.Builder registerAttributes() {
@@ -147,3 +151,4 @@ public class BoxfishEntity extends AbstractSchoolingFish {
         return SoundEvents.FISH_SWIM;
     }
 }
+

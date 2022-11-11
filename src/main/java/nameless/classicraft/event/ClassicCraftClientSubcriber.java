@@ -29,6 +29,7 @@ public class ClassicCraftClientSubcriber {
         event.put(ModEntities.BELUGA_STURGEON_ENTITY.get(), BelugaSturgeonEntity.registerAttributes().build());
         event.put(ModEntities.BOXFISH_ENTITY.get(), BoxfishEntity.registerAttributes().build());
         event.put(ModEntities.FOOTBALLFISH_ENTITY.get(), FootballFishEntity.registerAttributes().build());
+        event.put(ModEntities.FOXFACE_FISH_ENTITY.get(), FoxFaceFishEntity.registerAttributes().build());
     }
 
     @SubscribeEvent
@@ -53,6 +54,8 @@ public class ClassicCraftClientSubcriber {
                 BoxfishRenderer::new);
         event.registerEntityRenderer(ModEntities.FOOTBALLFISH_ENTITY.get(),
                 FootbalFishRenderer::new);
+        event.registerEntityRenderer(ModEntities.FOXFACE_FISH_ENTITY.get(),
+                FoxFaceFishRenderer::new);
     }
 
     @SubscribeEvent
@@ -67,6 +70,7 @@ public class ClassicCraftClientSubcriber {
         event.registerLayerDefinition(ModEntityModelLayers.BELUGA_STURGEON, BelugaSturgeonModel::create);
         event.registerLayerDefinition(ModEntityModelLayers.BOXFISH, BoxfishModel::create);
         event.registerLayerDefinition(ModEntityModelLayers.FOOTBALLFISH, FootballFishModel::create);
+        event.registerLayerDefinition(ModEntityModelLayers.FOXFACE_FISH, FoxFaceFishModel::create);
     }
 
     @SubscribeEvent

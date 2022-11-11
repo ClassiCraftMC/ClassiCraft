@@ -64,6 +64,13 @@ public class ModItems {
     public static final RegistryObject<Item> ANGLEFISH_SPAWN_EGG =
             registerSpawnEgg(ModEntities.ANGLEFISH_ENTITY, 0xf8c243, 0xEB1965);
 
+
+    public static final RegistryObject<Item> FOXFACE_FISH_BUCKET =
+            registerMobBuckteItem(ModEntities.FOXFACE_FISH_ENTITY);
+
+    public static final RegistryObject<Item> FOXFACE_FISH_SPAWN_EGG =
+            registerSpawnEgg(ModEntities.FOXFACE_FISH_ENTITY, 0xdebb21, 0x292824);
+
     public static final RegistryObject<Item> FOOTBALLFISH_BUCKET =
             registerMobBuckteItem(ModEntities.FOOTBALLFISH_ENTITY);
 
