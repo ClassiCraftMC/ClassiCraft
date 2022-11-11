@@ -78,7 +78,7 @@ public class ClassiCraftSubcriber {
                     itemEntity.getLevel(),
                     itemEntity.getX(), itemEntity.getY(),
                     itemEntity.getZ(),
-                    ModItems.TORCH.get().getDefaultInstance());
+                    Items.STICK.getDefaultInstance());
             newItem.getItem().setCount(oldCount);
             itemEntity.getLevel().addFreshEntity(newItem);
         }

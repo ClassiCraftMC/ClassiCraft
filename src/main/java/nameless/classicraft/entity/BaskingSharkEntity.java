@@ -16,7 +16,6 @@ import net.minecraft.world.entity.animal.Cow;
 import net.minecraft.world.entity.animal.Pig;
 import net.minecraft.world.entity.animal.TropicalFish;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
@@ -36,7 +35,7 @@ public class BaskingSharkEntity extends AbstractSchoolingFish {
         this.goalSelector.addGoal(4, new RandomSwimmingGoal(this, 1.0D, 10));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F));
-        this.goalSelector.addGoal(6, new SharkJumpGoal( this, 10));
+        this.goalSelector.addGoal(6, new SharkJumpGoal( this, 40));
         this.goalSelector.addGoal(8, new FollowBoatGoal(this));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, TropicalFish.class, true, false));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, PerchEntity.class, true, false));
@@ -44,7 +43,6 @@ public class BaskingSharkEntity extends AbstractSchoolingFish {
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, LionfishEntity.class, true, false));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true, false));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Pig.class, true, false));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Boat.class, true, false));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Cow.class, true));
         this.targetSelector.addGoal(2, new HurtByTargetGoal(this));
         super.registerGoals();
