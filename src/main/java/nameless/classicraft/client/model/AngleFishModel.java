@@ -87,4 +87,9 @@ public class AngleFishModel<T extends Entity> extends EntityModel<T> {
         this.right_fin.zRot = Mth.cos(limbSwing * speed * 0.4F) * degree * 1.8F * limbSwingAmount;
     }
 
+    public void setRotationAngle(ModelPart modelPart, float x, float y, float z) {
+        modelPart.xRot = x;
+        modelPart.yRot = y;
+        modelPart.zRot = z;
+    }
 }

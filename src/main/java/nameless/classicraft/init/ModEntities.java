@@ -39,6 +39,14 @@ public class ModEntities {
             register("perch", EntityType.Builder.of(PerchEntity::new, MobCategory.WATER_AMBIENT)
                     .sized(0.6F, 0.5F));
 
+    public static final RegistryObject<EntityType<BoxfishEntity>> BOXFISH_ENTITY =
+            register("boxfish", EntityType.Builder.of(BoxfishEntity::new, MobCategory.WATER_AMBIENT)
+                    .sized(0.4f,0.3f));
+
+    public static final RegistryObject<EntityType<FootballFishEntity>> FOOTBALLFISH_ENTITY =
+            register("footballfish", EntityType.Builder.of(FootballFishEntity::new, MobCategory.WATER_AMBIENT)
+                    .sized(1.0f, 0.8f));
+
     public static RegistryObject<EntityType<DeerEntity>> DEER_ENEITY =
             register("deer", EntityType.Builder.of(DeerEntity::new, MobCategory.CREATURE)
                     .sized(0.7F, 1.8F));

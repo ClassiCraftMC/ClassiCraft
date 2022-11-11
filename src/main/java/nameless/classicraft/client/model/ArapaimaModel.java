@@ -107,4 +107,10 @@ public class ArapaimaModel<T extends Entity> extends EntityModel<T> {
             modelRenderer.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
         });
     }
+
+    public void setRotationAngle(ModelPart modelPart, float x, float y, float z) {
+        modelPart.xRot = x;
+        modelPart.yRot = y;
+        modelPart.zRot = z;
+    }
 }

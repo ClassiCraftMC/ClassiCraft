@@ -16,6 +16,6 @@ public class BoarRenderer extends MobRenderer<BoarEntity, BoarModel<BoarEntity>>
 
     @Override
     public ResourceLocation getTextureLocation(BoarEntity entity) {
-        return new ResourceLocation(ClassiCraftMod.MODID, "textures/model/wildboar.png");
+        return new ResourceLocation(ClassiCraftMod.MODID, "textures/entity/wildboar.png");
     }
 }

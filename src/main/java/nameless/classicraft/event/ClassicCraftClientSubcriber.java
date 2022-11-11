@@ -27,6 +27,8 @@ public class ClassicCraftClientSubcriber {
         event.put(ModEntities.ANGLEFISH_ENTITY.get(), AngleFishEntity.registerAttributes().build());
         event.put(ModEntities.ARAPAIMA_ENTITY.get(), ArapaimaEntity.registerAttributes().build());
         event.put(ModEntities.BELUGA_STURGEON_ENTITY.get(), BelugaSturgeonEntity.registerAttributes().build());
+        event.put(ModEntities.BOXFISH_ENTITY.get(), BoxfishEntity.registerAttributes().build());
+        event.put(ModEntities.FOOTBALLFISH_ENTITY.get(), FootballFishEntity.registerAttributes().build());
     }
 
     @SubscribeEvent
@@ -47,6 +49,10 @@ public class ClassicCraftClientSubcriber {
                 ArapaimaRenderer::new);
         event.registerEntityRenderer(ModEntities.BELUGA_STURGEON_ENTITY.get(),
                 BelugaSturgeonRenderer::new);
+        event.registerEntityRenderer(ModEntities.BOXFISH_ENTITY.get(),
+                BoxfishRenderer::new);
+        event.registerEntityRenderer(ModEntities.FOOTBALLFISH_ENTITY.get(),
+                FootbalFishRenderer::new);
     }
 
     @SubscribeEvent
@@ -59,6 +65,8 @@ public class ClassicCraftClientSubcriber {
         event.registerLayerDefinition(ModEntityModelLayers.ANGELFISH, AngleFishModel::create);
         event.registerLayerDefinition(ModEntityModelLayers.ARAPAIMA, ArapaimaModel::create);
         event.registerLayerDefinition(ModEntityModelLayers.BELUGA_STURGEON, BelugaSturgeonModel::create);
+        event.registerLayerDefinition(ModEntityModelLayers.BOXFISH, BoxfishModel::create);
+        event.registerLayerDefinition(ModEntityModelLayers.FOOTBALLFISH, FootballFishModel::create);
     }
 
     @SubscribeEvent

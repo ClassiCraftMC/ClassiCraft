@@ -3,18 +3,18 @@ package nameless.classicraft.client.renderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
 import nameless.classicraft.ClassiCraftMod;
-import nameless.classicraft.client.model.AngleFishModel;
-import nameless.classicraft.entity.AngleFishEntity;
+import nameless.classicraft.client.model.FootballFishModel;
+import nameless.classicraft.entity.FootballFishEntity;
 import nameless.classicraft.init.ModEntityModelLayers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
-public class AngleFishRenderer<T extends AngleFishEntity> extends MobRenderer<T, AngleFishModel<T>> {
+public class FootbalFishRenderer<T extends FootballFishEntity> extends MobRenderer<T, FootballFishModel<T>> {
 
-    public AngleFishRenderer(EntityRendererProvider.Context pContext) {
-        super(pContext, new AngleFishModel<>(pContext.bakeLayer(ModEntityModelLayers.ANGELFISH)), 0.2F);
+    public FootbalFishRenderer(EntityRendererProvider.Context pContext) {
+        super(pContext, new FootballFishModel<>(pContext.bakeLayer(ModEntityModelLayers.FOOTBALLFISH)), 0.2F);
     }
 
     @Override
@@ -29,7 +29,8 @@ public class AngleFishRenderer<T extends AngleFishEntity> extends MobRenderer<T,
     }
 
     @Override
-    public ResourceLocation getTextureLocation(AngleFishEntity pEntity) {
+    public ResourceLocation getTextureLocation(FootballFishEntity pEntity) {
         return new ResourceLocation(ClassiCraftMod.MODID, "textures/entity/anglefish.png");
     }
 }
+

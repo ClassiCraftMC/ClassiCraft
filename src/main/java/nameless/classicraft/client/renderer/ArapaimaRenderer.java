@@ -30,6 +30,6 @@ public class ArapaimaRenderer <T extends ArapaimaEntity> extends MobRenderer<T, 
 
     @Override
     public ResourceLocation getTextureLocation(T pEntity) {
-        return new ResourceLocation(ClassiCraftMod.MODID, "textures/model/arapaima.png");
+        return new ResourceLocation(ClassiCraftMod.MODID, "textures/entity/arapaima.png");
     }
 }

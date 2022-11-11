@@ -17,6 +17,6 @@ public class BelugaSturgeonRenderer <T extends BelugaSturgeonEntity> extends Mob
 
     @Override
     public ResourceLocation getTextureLocation(T pEntity) {
-        return new ResourceLocation(ClassiCraftMod.MODID, "textures/model/beluga_sturgeon.png");
+        return new ResourceLocation(ClassiCraftMod.MODID, "textures/entity/beluga_sturgeon.png");
     }
 }

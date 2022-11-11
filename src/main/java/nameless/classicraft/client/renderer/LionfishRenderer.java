@@ -22,7 +22,7 @@ public class LionfishRenderer extends MobRenderer<LionfishEntity, LionfishModel<
 
     @Override
     public ResourceLocation getTextureLocation(LionfishEntity entity) {
-        return new ResourceLocation(ClassiCraftMod.MODID, "textures/model/lionfish.png");
+        return new ResourceLocation(ClassiCraftMod.MODID, "textures/entity/lionfish.png");
     }
 
     @Override

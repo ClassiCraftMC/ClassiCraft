@@ -18,7 +18,7 @@ public class PerchRenderer extends MobRenderer<PerchEntity, PerchModel<PerchEnti
     }
 
     public ResourceLocation getTextureLocation(PerchEntity entity) {
-        return new ResourceLocation(ClassiCraftMod.MODID, "textures/model/perch.png");
+        return new ResourceLocation(ClassiCraftMod.MODID, "textures/entity/perch.png");
     }
 
     protected void setupRotations(PerchEntity entityLiving, PoseStack matrixStackIn, float ageInTicks, float rotationYaw, float partialTicks) {

@@ -52,11 +52,23 @@ public class ModItems {
     public static final RegistryObject<Item> PERCH_BUCKET =
             registerMobBuckteItem(ModEntities.PERCH_ENTITY);
 
+    public static final RegistryObject<Item> BOXFISH_SPAWN_EGG =
+            registerSpawnEgg(ModEntities.BOXFISH_ENTITY, 0xf0ddad, 0xfacd5a);
+
+    public static final RegistryObject<Item> BOXFISH_BUCKET =
+            registerMobBuckteItem(ModEntities.BOXFISH_ENTITY);
+
     public static final RegistryObject<Item> ANGLEFISH_BUCKET =
             registerMobBuckteItem(ModEntities.ANGLEFISH_ENTITY);
 
     public static final RegistryObject<Item> ANGLEFISH_SPAWN_EGG =
             registerSpawnEgg(ModEntities.ANGLEFISH_ENTITY, 0xf8c243, 0xEB1965);
+
+    public static final RegistryObject<Item> FOOTBALLFISH_BUCKET =
+            registerMobBuckteItem(ModEntities.FOOTBALLFISH_ENTITY);
+
+    public static final RegistryObject<Item> FOOTBALLFISH_SPAWN_EGG =
+            registerSpawnEgg(ModEntities.FOOTBALLFISH_ENTITY, 0x501c3d, 0xf1f2ff);
 
     public static final RegistryObject<Item> SALT_WATER_BOTTLE =
             register("salt_water_bottle", () -> new SaltWaterBottleItem(common()));
@@ -103,6 +115,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> ANGLEFISH =
             food("anglefish", Foods.TROPICAL_FISH);
+
+    public static final RegistryObject<Item> FOOTBALLFISH =
+            food("footballfish", Foods.TROPICAL_FISH);
 
     public static final RegistryObject<Item> ARAPAIMA =
             food("arapaima", Foods.TROPICAL_FISH);
