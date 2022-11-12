@@ -11,6 +11,8 @@ import nameless.classicraft.init.ModItems;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.screens.PauseScreen;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -35,6 +37,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LanternBlock;
@@ -72,14 +75,28 @@ public class ClassiCraftSubcriber {
         bus.addListener(ClassiCraftSubcriber::onCraftTorch);
         bus.addListener(ClassiCraftSubcriber::onItemInWater);
         bus.addListener(ClassiCraftSubcriber::onItemInRaining);
+        bus.addListener(ClassiCraftSubcriber::onRightClickWater);
         //bus.addListener(ClassiCraftSubcriber::onItemTicking);
     }
 
     public static void onRightClickWater(PlayerInteractEvent.RightClickBlock event) {
         Level level = event.getLevel();
         ItemStack itemStack = event.getEntity().getItemInHand(event.getHand());
-        if (level.getBiome(event.getPos()).is(Biomes.OCEAN)) {
+        Holder<Biome> biome = level.getBiome(event.getPos());
+        if (biome.is(Biomes.OCEAN)
+                || biome.is(Biomes.COLD_OCEAN)
+                || biome.is(Biomes.DEEP_COLD_OCEAN)
+                || biome.is(Biomes.DEEP_OCEAN)
+                || biome.is(Biomes.FROZEN_OCEAN)
+                || biome.is(Biomes.DEEP_FROZEN_OCEAN)
+                || biome.is(Biomes.LUKEWARM_OCEAN)
+                || biome.is(Biomes.DEEP_LUKEWARM_OCEAN)
+                || biome.is(Biomes.WARM_OCEAN)) {
             if (itemStack.is(Items.GLASS_BOTTLE)) {
+                ItemStack newItemStack = new ItemStack(ModItems.SALT_WATER_BOTTLE.get());
+                itemStack.shrink(1);
+                event.getEntity().getInventory().add(newItemStack);
+                newItemStack.grow(1);
             }
         }
     }
