@@ -141,6 +141,9 @@ public class ModItems {
     public static final RegistryObject<Item> BASKING_SHARK_SPAWN_EGG =
             registerSpawnEgg(ModEntities.BASKING_SHARK_ENTITY, 0x302521, 0xe4edf2);
 
+    public static final RegistryObject<Item> OCEAN_SHARK_SPAWN_EGG =
+            registerSpawnEgg(ModEntities.OCEAN_SHARK_ENTITY, 0x302521, 0xe4edf2);
+
     public static final RegistryObject<Item> ARAPAIMA =
             food("arapaima", Foods.TROPICAL_FISH);
 

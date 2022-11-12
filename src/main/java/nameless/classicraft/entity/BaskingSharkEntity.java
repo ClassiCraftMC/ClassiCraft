@@ -217,7 +217,6 @@ public class BaskingSharkEntity extends AbstractSchoolingFish {
         this.goalSelector.addGoal(5, new SharkJumpGoal(this, 10));
         this.goalSelector.addGoal(6, new MeleeAttackGoal(this, (double)1.2F, true));
         this.goalSelector.addGoal(8, new FollowBoatGoal(this));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, TropicalFish.class, true, false));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, PerchEntity.class, true, false));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, RanchuEntity.class, true, false));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, LionfishEntity.class, true, false));
