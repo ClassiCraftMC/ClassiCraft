@@ -3,6 +3,7 @@ package nameless.classicraft.datagen;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -57,6 +58,31 @@ public class CCRecipeProvider extends RecipeProvider {
                .pattern("LLL")
                .unlockedBy("has_flour", has(ModItems.FLOUR.get())).save(pFinishedRecipeConsumer);
 
+        ShapedRecipeBuilder.shaped(Blocks.SOUL_CAMPFIRE, 1)
+                .define('#', Items.STICK)
+                .define('X', Ingredient.of(Items.COAL, Items.CHARCOAL))
+                .define('O', Ingredient.of(
+                        Items.ACACIA_LOG,
+                        Items.BIRCH_LOG,
+                        Items.DARK_OAK_LOG,
+                        Items.JUNGLE_LOG,
+                        Items.SPRUCE_LOG,
+                        Items.OAK_LOG,
+                        Items.MANGROVE_LOG,
+                        Items.STRIPPED_ACACIA_LOG,
+                        Items.STRIPPED_BIRCH_LOG,
+                        Items.STRIPPED_DARK_OAK_LOG,
+                        Items.STRIPPED_JUNGLE_LOG,
+                        Items.STRIPPED_SPRUCE_LOG,
+                        Items.STRIPPED_OAK_LOG,
+                        Items.STRIPPED_MANGROVE_LOG))
+                .define('L', Items.SOUL_SAND)
+                .pattern(" # ")
+                .pattern("#X#")
+                .pattern("OLO")
+                .unlockedBy("has_stick", has(Items.STICK))
+                .unlockedBy("has_soul_sand", has(ItemTags.SOUL_FIRE_BASE_BLOCKS))
+                .save(pFinishedRecipeConsumer);
     }
 
     private static void simpleSmelting(Item material, Item finalItem, Consumer<FinishedRecipe> pFinishedRecipeConsumer) {

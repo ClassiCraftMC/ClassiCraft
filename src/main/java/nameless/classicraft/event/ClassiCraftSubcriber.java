@@ -26,6 +26,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.animal.Squid;
 import net.minecraft.world.entity.animal.Turtle;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -46,11 +47,13 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.event.entity.living.BabyEntitySpawnEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -75,7 +78,16 @@ public class ClassiCraftSubcriber {
         bus.addListener(ClassiCraftSubcriber::onItemInWater);
         bus.addListener(ClassiCraftSubcriber::onItemInRaining);
         bus.addListener(ClassiCraftSubcriber::onRightClickWater);
+        bus.addListener(ClassiCraftSubcriber::onDamageSquid);
         //bus.addListener(ClassiCraftSubcriber::onItemTicking);
+    }
+
+    public static void onDamageSquid(AttackEntityEvent event) {
+        Player player = event.getEntity();
+        Entity entity = event.getTarget();
+        if (entity instanceof Squid && entity.distanceTo(player) == 4) {
+            ((Squid) entity).addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 70, 1));
+        }
     }
 
     public static void onRightClickWater(PlayerRightClickBlockEvent event) {

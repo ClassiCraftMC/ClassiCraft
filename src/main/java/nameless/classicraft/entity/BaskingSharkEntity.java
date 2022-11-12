@@ -196,7 +196,6 @@ public class BaskingSharkEntity extends AbstractSchoolingFish implements Enemy {
 
     public void attack(LivingEntity entity) {
         if (entity.hurt(DamageSource.mobAttack(this), 2.0F) && entity.isInWater()) {
-            entity.addEffect(new MobEffectInstance(MobEffects.POISON, 70, 1));
             this.playSound(SoundEvents.PUFFER_FISH_STING, 1.0F, 1.0F);
             if (entity instanceof Player) {
                 this.setTarget(entity);
