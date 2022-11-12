@@ -9,6 +9,7 @@
     "MixinItemEntity",
     "MixinItemStack",
     "MixinPrimaryLevelData",
+    "MixinBlockBehaviour",
     "MixinServerLevel"
   ],
   "client": [

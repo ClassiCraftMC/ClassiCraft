@@ -21,6 +21,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -37,7 +38,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LanternBlock;
@@ -79,10 +79,21 @@ public class ClassiCraftSubcriber {
         //bus.addListener(ClassiCraftSubcriber::onItemTicking);
     }
 
-    public static void onRightClickWater(PlayerInteractEvent.RightClickBlock event) {
+    public static void onRightClickWater(PlayerInteractEvent.RightClickEmpty event) {
         Level level = event.getLevel();
         ItemStack itemStack = event.getEntity().getItemInHand(event.getHand());
         Holder<Biome> biome = level.getBiome(event.getPos());
+        Player player = event.getEntity();
+        if (event.getEntity() == null) {
+            return;
+        }
+        if (event.getHand() != InteractionHand.MAIN_HAND) {
+            return;
+        }
+        if (event.getEntity().swinging) {
+            return;
+        }
+
         if (biome.is(Biomes.OCEAN)
                 || biome.is(Biomes.COLD_OCEAN)
                 || biome.is(Biomes.DEEP_COLD_OCEAN)
