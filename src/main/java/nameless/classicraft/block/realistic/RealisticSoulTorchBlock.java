@@ -1,5 +1,6 @@
 package nameless.classicraft.block.realistic;
 
+import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.api.item.ItemStackAPI;
 import nameless.classicraft.init.ModBlockProperties;
 import nameless.classicraft.init.ModBlocks;
@@ -9,6 +10,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -187,7 +189,17 @@ public class RealisticSoulTorchBlock extends RealisticTorchBlock {
 
     public void changeToUnlit(Level pLevel,BlockPos pPos,BlockState pState)
     {
-        pLevel.setBlockAndUpdate(pPos, ModBlocks.SOUL_TORCH.get().defaultBlockState());
+        if (SHOULD_BURN_OUT) {
+            if (ClassiCraftConfiguration.noRelightEnabled.get() || ClassiCraftConfiguration.turnToStickEnabled.get()) {
+                pLevel.setBlockAndUpdate(pPos, Blocks.AIR.defaultBlockState());
+            }
+            if (ClassiCraftConfiguration.turnToStickEnabled.get()) {
+                ItemEntity itemEntity = new ItemEntity(pLevel, pPos.getX(), pPos.getY(), pPos.getZ(), Items.STICK.getDefaultInstance());
+                pLevel.addFreshEntity(itemEntity);
+            }
+        }else {
+            pLevel.setBlockAndUpdate(pPos, ModBlocks.SOUL_TORCH.get().defaultBlockState());
+        }
         pLevel.scheduleTick(pPos,this, TICK_INTERVAL);
     }
 }

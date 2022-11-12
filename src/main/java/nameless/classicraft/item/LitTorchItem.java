@@ -3,6 +3,7 @@ package nameless.classicraft.item;
 import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.api.item.ItemStackAPI;
 import nameless.classicraft.block.realistic.RealisticTorchBlock;
+import nameless.classicraft.init.ModBlockProperties;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModTags;
 import net.minecraft.core.BlockPos;
@@ -65,6 +66,11 @@ public class LitTorchItem extends StandingAndWallBlockItem {
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
         if(!HARDCORE || pLevel.isClientSide() || !(pEntity instanceof Player player)) return;
+        int newBurnTime = ModBlocks.TORCH.get().defaultBlockState().getValue(RealisticTorchBlock.getBurnTime()) -1;
+        if(newBurnTime <= 0) {
+            changeTorch(player,pStack,ItemStackAPI.replaceItemWithCopyNBTTagAndCount(pStack, Items.STICK),pSlotId);
+            pLevel.playSound(null,player.getOnPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS,0.3f, pLevel.random.nextFloat() * 0.1F + 0.6F);
+        }
         if(pLevel.isRainingAt(player.getOnPos().above(2)) && pIsSelected)
         {
             changeTorch(player,pStack, ItemStackAPI.replaceItemWithCopyNBTTagAndCount(pStack, Items.STICK),pSlotId);

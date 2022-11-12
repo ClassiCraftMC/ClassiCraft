@@ -28,6 +28,7 @@ public class ClassiCraftConfiguration {
     public static ForgeConfigSpec.BooleanValue removeSendFeedbackAndReportBugs;
     public static ForgeConfigSpec.BooleanValue hardcore;
     public static ForgeConfigSpec.BooleanValue waterBurnt;
+    public static ForgeConfigSpec.BooleanValue turnToStickEnabled;
 
 
     static {
@@ -35,6 +36,8 @@ public class ClassiCraftConfiguration {
         BUILDER.push("general");
 
         String desc;
+        desc = "决定是否火把熄灭会变成木棍";
+        turnToStickEnabled = BUILDER.comment(desc).define("turnToStickEnabled",true);
 
         desc = "决定是否火把会导致易燃物燃烧(仅限点燃的火把)";
         torchCauseFire = BUILDER.comment(desc).define("torchCauseFire",false);

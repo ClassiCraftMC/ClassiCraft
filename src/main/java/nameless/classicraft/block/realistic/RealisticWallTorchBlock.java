@@ -2,6 +2,7 @@ package nameless.classicraft.block.realistic;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
+import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.init.ModBlockProperties;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
@@ -11,7 +12,9 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -94,14 +97,21 @@ public class RealisticWallTorchBlock extends RealisticTorchBlock {
         }
     }
 
-    @Override
-    public void changeToUnlit(Level pLevel, BlockPos pPos, BlockState pState) {
-        pLevel.setBlockAndUpdate(pPos,ModBlocks.WALL_TORCH.get().defaultBlockState().
-                setValue(FACING,pState.getValue(FACING)));
-        if(SHOULD_BURN_OUT)
-            pLevel.scheduleTick(pPos,this,TICK_RATE);
+    public void changeToUnlit(Level pLevel,BlockPos pPos,BlockState pState)
+    {
+        if (SHOULD_BURN_OUT) {
+            if (ClassiCraftConfiguration.noRelightEnabled.get() || ClassiCraftConfiguration.turnToStickEnabled.get()) {
+                pLevel.setBlockAndUpdate(pPos, Blocks.AIR.defaultBlockState());
+            }
+            if (ClassiCraftConfiguration.turnToStickEnabled.get()) {
+                ItemEntity itemEntity = new ItemEntity(pLevel, pPos.getX(), pPos.getY(), pPos.getZ(), Items.STICK.getDefaultInstance());
+                pLevel.addFreshEntity(itemEntity);
+            }
+        }else {
+            pLevel.setBlockAndUpdate(pPos, ModBlocks.TORCH.get().defaultBlockState());
+        }
+        pLevel.scheduleTick(pPos,this, TICK_INTERVAL);
     }
-
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         super.createBlockStateDefinition(pBuilder);
