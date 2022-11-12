@@ -1,43 +1,35 @@
 package nameless.classicraft.entity.goal;
 
+import nameless.classicraft.entity.BaskingSharkEntity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.player.Player;
 
 public class SharkAttackGoal extends MeleeAttackGoal {
-    private final PathfinderMob mob;
-    private int raiseArmTicks;
 
-    public SharkAttackGoal(PathfinderMob mob, double pSpeedModifier, boolean pFollowingTargetEvenIfNotSeen) {
-        super(mob, pSpeedModifier, pFollowingTargetEvenIfNotSeen);
-        this.mob = mob;
+    public SharkAttackGoal(PathfinderMob creature, double speedIn, boolean useLongMemory) {
+        super(creature, speedIn, useLongMemory);
     }
 
-    /**
-     * Execute a one shot task or start executing a continuous task
-     */
-    public void start() {
-        super.start();
-        this.raiseArmTicks = 0;
+    @Override
+    public boolean canContinueToUse() {
+        return super.canContinueToUse() && mob.isInWater();
     }
 
-    /**
-     * Reset the task's internal state. Called when this task is interrupted by another one
-     */
-    public void stop() {
-        super.stop();
-        this.mob.setAggressive(false);
-    }
-
-    /**
-     * Keep ticking a continuous task that has already been started
-     */
-    public void tick() {
-            super.tick();
-            ++this.raiseArmTicks;
-            if (this.raiseArmTicks >= 5 && this.getTicksUntilNextAttack() < this.getAttackInterval() / 2) {
-                this.mob.setAggressive(true);
-            } else {
-                this.mob.setAggressive(false);
+    @Override
+    protected void checkAndPerformAttack(LivingEntity enemy, double distToEnemySqr) {
+        double d0 = this.getAttackReachSqr(enemy);
+        if (distToEnemySqr <= d0 && this.getTicksUntilNextAttack() <= 0) {
+            this.resetAttackCooldown();
+            ((BaskingSharkEntity) this.mob).attack(enemy);
+            ((BaskingSharkEntity) this.mob).setHungry(false);
+            ((BaskingSharkEntity) this.mob).setTimeTillHungry(mob.getRandom().nextInt(300) + 300);
+            if (enemy instanceof Player) {
+                mob.setTarget(null);
+                this.stop();
             }
+        }
     }
+
 }

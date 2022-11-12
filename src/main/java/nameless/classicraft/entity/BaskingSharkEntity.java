@@ -13,6 +13,8 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -36,6 +38,9 @@ public class BaskingSharkEntity extends AbstractSchoolingFish implements Enemy {
     private static final EntityDataAccessor<Boolean> GOT_FISH = SynchedEntityData.defineId(BaskingSharkEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> MOISTNESS_LEVEL = SynchedEntityData.defineId(BaskingSharkEntity.class, EntityDataSerializers.INT);
     public static final TargetingConditions SWIM_WITH_PLAYER_TARGETING = TargetingConditions.forNonCombat().range(10.0D).ignoreLineOfSight();
+    private static final EntityDataAccessor<Boolean> HUNGY = SynchedEntityData.defineId(BaskingSharkEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> TIME_TILL_HUNGRY = SynchedEntityData.defineId(BaskingSharkEntity.class, EntityDataSerializers.INT);
+    int lastTimeSinceHungry;
 
     public BaskingSharkEntity(EntityType<? extends AbstractSchoolingFish> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -75,18 +80,39 @@ public class BaskingSharkEntity extends AbstractSchoolingFish implements Enemy {
         super.defineSynchedData();
         this.entityData.define(GOT_FISH, false);
         this.entityData.define(MOISTNESS_LEVEL, 2400);
+        this.entityData.define(HUNGY, true);
+        this.entityData.define(TIME_TILL_HUNGRY, 0);
     }
 
+    public boolean isHungry() {
+        return this.entityData.get(HUNGY);
+    }
+
+    public void setHungry(boolean hungry) {
+        this.entityData.set(HUNGY, hungry);
+    }
+
+    public int getTimeTillHungry() {
+        return this.entityData.get(TIME_TILL_HUNGRY);
+    }
+
+    public void setTimeTillHungry(int ticks) {
+        this.entityData.set(TIME_TILL_HUNGRY, ticks);
+    }
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
         pCompound.putBoolean("GotFish", this.gotFish());
         pCompound.putInt("Moistness", this.getMoistnessLevel());
+        pCompound.putBoolean("IsHungry", this.isHungry());
+        pCompound.putInt("TimeTillHungry", this.getTimeTillHungry());
     }
 
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
         this.setGotFish(pCompound.getBoolean("GotFish"));
         this.setMoisntessLevel(pCompound.getInt("Moistness"));
+        this.setHungry(pCompound.getBoolean("IsHungry"));
+        this.setTimeTillHungry(pCompound.getInt("TimeTillHungry"));
     }
 
     protected PathNavigation createNavigation(Level pLevel) {
@@ -158,7 +184,23 @@ public class BaskingSharkEntity extends AbstractSchoolingFish implements Enemy {
                     this.level.addParticle(ParticleTypes.DOLPHIN, this.getX() - vec3.x * (double)f2 - (double)f, this.getY() - vec3.y, this.getZ() - vec3.z * (double)f2 - (double)f1, 0.0D, 0.0D, 0.0D);
                 }
             }
+            if (!this.isHungry() && lastTimeSinceHungry < this.getTimeTillHungry()) {
+                lastTimeSinceHungry++;
+            }
+            if (lastTimeSinceHungry >= this.getTimeTillHungry()) {
+                this.setHungry(true);
+                lastTimeSinceHungry = 0;
+            }
+        }
+    }
 
+    public void attack(LivingEntity entity) {
+        if (entity.hurt(DamageSource.mobAttack(this), 2.0F) && entity.isInWater()) {
+            entity.addEffect(new MobEffectInstance(MobEffects.POISON, 70, 1));
+            this.playSound(SoundEvents.PUFFER_FISH_STING, 1.0F, 1.0F);
+            if (entity instanceof Player) {
+                this.setTarget(entity);
+            }
         }
     }
 
@@ -206,19 +248,14 @@ public class BaskingSharkEntity extends AbstractSchoolingFish implements Enemy {
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F));
         this.goalSelector.addGoal(5, new SharkJumpGoal(this, 10));
-        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.2, true) {
-            @Override
-            protected double getAttackReachSqr(LivingEntity entity) {
-                return (double) (4.0 + entity.getBbWidth() * entity.getBbWidth());
-            }
-        });
+        this.goalSelector.addGoal(2, new SharkAttackGoal(this, 1.2, true));
         this.goalSelector.addGoal(8, new FollowBoatGoal(this));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, PerchEntity.class, true, false));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, RanchuEntity.class, true, false));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, LionfishEntity.class, true, false));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true, false));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Pig.class, true, false));
-        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Cow.class, true, false));
+        this.targetSelector.addGoal(3, new SharkNearestAttackableTargetGoal(this, PerchEntity.class, true, false));
+        this.targetSelector.addGoal(3, new SharkNearestAttackableTargetGoal(this, RanchuEntity.class, true, false));
+        this.targetSelector.addGoal(3, new SharkNearestAttackableTargetGoal(this, LionfishEntity.class, true, false));
+        this.targetSelector.addGoal(3, new SharkNearestAttackableTargetGoal(this, Player.class, true, false));
+        this.targetSelector.addGoal(3, new SharkNearestAttackableTargetGoal(this, Pig.class, true, false));
+        this.targetSelector.addGoal(1, new SharkNearestAttackableTargetGoal(this, Cow.class, true, false));
         super.registerGoals();
     }
 
