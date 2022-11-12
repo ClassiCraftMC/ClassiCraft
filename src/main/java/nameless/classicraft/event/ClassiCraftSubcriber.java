@@ -4,6 +4,7 @@ import com.mojang.datafixers.util.Pair;
 import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.ClassiCraftHooks;
 import nameless.classicraft.api.event.ItemEntityTickEvent;
+import nameless.classicraft.api.event.PlayerInteractBlockEvent;
 import nameless.classicraft.capability.ModCapabilities;
 import nameless.classicraft.entity.RanchuEntity;
 import nameless.classicraft.init.ModBlocks;
@@ -40,6 +41,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LanternBlock;
 import net.minecraft.world.level.block.TorchBlock;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -79,11 +81,11 @@ public class ClassiCraftSubcriber {
         //bus.addListener(ClassiCraftSubcriber::onItemTicking);
     }
 
-    public static void onRightClickWater(PlayerInteractEvent.RightClickEmpty event) {
+    public static void onRightClickWater(PlayerInteractBlockEvent event) {
         Level level = event.getLevel();
         ItemStack itemStack = event.getEntity().getItemInHand(event.getHand());
         Holder<Biome> biome = level.getBiome(event.getPos());
-        Player player = event.getEntity();
+        Block block = event.getBlock();
         if (event.getEntity() == null) {
             return;
         }
@@ -102,10 +104,10 @@ public class ClassiCraftSubcriber {
                 || biome.is(Biomes.DEEP_FROZEN_OCEAN)
                 || biome.is(Biomes.LUKEWARM_OCEAN)
                 || biome.is(Biomes.DEEP_LUKEWARM_OCEAN)
-                || biome.is(Biomes.WARM_OCEAN)) {
+                || biome.is(Biomes.WARM_OCEAN)
+                && block.defaultBlockState().is(Blocks.WATER)) {
             if (itemStack.is(Items.GLASS_BOTTLE)) {
                 ItemStack newItemStack = new ItemStack(ModItems.SALT_WATER_BOTTLE.get());
-                itemStack.shrink(1);
                 event.getEntity().getInventory().add(newItemStack);
                 newItemStack.grow(1);
             }
