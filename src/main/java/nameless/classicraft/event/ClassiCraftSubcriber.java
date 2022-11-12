@@ -4,7 +4,7 @@ import com.mojang.datafixers.util.Pair;
 import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.ClassiCraftHooks;
 import nameless.classicraft.api.event.ItemEntityTickEvent;
-import nameless.classicraft.api.event.PlayerInteractBlockEvent;
+import nameless.classicraft.api.event.PlayerRightClickBlockEvent;
 import nameless.classicraft.capability.ModCapabilities;
 import nameless.classicraft.entity.RanchuEntity;
 import nameless.classicraft.init.ModBlocks;
@@ -12,9 +12,7 @@ import nameless.classicraft.init.ModItems;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.screens.PauseScreen;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.contents.TranslatableContents;
@@ -62,7 +60,6 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModList;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class ClassiCraftSubcriber {
 
@@ -81,7 +78,7 @@ public class ClassiCraftSubcriber {
         //bus.addListener(ClassiCraftSubcriber::onItemTicking);
     }
 
-    public static void onRightClickWater(PlayerInteractBlockEvent event) {
+    public static void onRightClickWater(PlayerRightClickBlockEvent event) {
         Level level = event.getLevel();
         ItemStack itemStack = event.getEntity().getItemInHand(event.getHand());
         Holder<Biome> biome = level.getBiome(event.getPos());

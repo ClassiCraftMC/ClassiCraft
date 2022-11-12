@@ -1,9 +1,7 @@
 package nameless.classicraft.event;
 
 import nameless.classicraft.ClassiCraftMod;
-import nameless.classicraft.api.event.ItemSpawnEvent;
-import nameless.classicraft.api.event.PlayerInteractBlockEvent;
-import net.minecraft.world.InteractionHand;
+import nameless.classicraft.api.event.PlayerRightClickBlockEvent;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -16,7 +14,7 @@ public class TestEvents {
         bus.addListener(TestEvents::testEvent);
     }
 
-    public static void testEvent(PlayerInteractBlockEvent event) {
+    public static void testEvent(PlayerRightClickBlockEvent event) {
         Block block = event.getBlock();
         if (block.defaultBlockState().is(Blocks.IRON_BLOCK) && event.getEntity().getItemInHand(event.getHand()).isEmpty()) {
             ClassiCraftMod.LOGGER.info("PlayerInteractBlockEvent test successfully!");

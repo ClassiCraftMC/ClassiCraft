@@ -1,6 +1,6 @@
 package nameless.classicraft.mixin;
 
-import nameless.classicraft.api.event.PlayerInteractBlockEvent;
+import nameless.classicraft.api.event.PlayerRightClickBlockEvent;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -20,7 +20,7 @@ public class MixinBlockBehaviour {
 
     @Inject(method = "use", at = @At("HEAD"))
     private void callPlayerInteractBlockEvent(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, CallbackInfoReturnable<InteractionResult> cir) {
-        PlayerInteractBlockEvent event = new PlayerInteractBlockEvent(pState, pLevel, pPos, pPlayer, pHand, pHit);
+        PlayerRightClickBlockEvent event = new PlayerRightClickBlockEvent(pState, pLevel, pPos, pPlayer, pHand, pHit);
         MinecraftForge.EVENT_BUS.post(event);
     }
 }

@@ -13,7 +13,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
  * Called when a Block is clicked by player
  * Try to make a better event than Forge's ClickEvent
  */
-public class PlayerInteractBlockEvent extends PlayerEvent {
+public class PlayerRightClickBlockEvent extends PlayerEvent {
 
     private final BlockHitResult hit;
     private final BlockState state;
@@ -22,7 +22,7 @@ public class PlayerInteractBlockEvent extends PlayerEvent {
     private final Block block;
     private final InteractionHand hand;
 
-    public PlayerInteractBlockEvent(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public PlayerRightClickBlockEvent(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         super(player);
         this.hit = hit;
         this.state = state;
