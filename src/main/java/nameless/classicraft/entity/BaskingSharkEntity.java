@@ -199,7 +199,6 @@ public class BaskingSharkEntity extends AbstractSchoolingFish implements Enemy {
     }
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, new FollowMobGoal(this, (float) 1, 10, 5));
         this.goalSelector.addGoal(0, new BreathAirGoal(this));
         this.goalSelector.addGoal(0, new TryFindWaterGoal(this));
         this.goalSelector.addGoal(2, new SharkSwimWithPlayerGoal(this, 4.0D));
