@@ -55,14 +55,7 @@ public class ModBlocks {
             registerNormal("wild_rice", WildRiceBlock::new);
 
     public static final RegistryObject<Block> SALT_STALACTITE =
-            registerNormal("salt_stalactite", () -> new PointedDripstoneBlock(
-                    BlockBehaviour.Properties
-                            .of(Material.STONE, MaterialColor.SNOW)
-                            .noOcclusion()
-                            .sound(SoundType.POINTED_DRIPSTONE)
-                            .randomTicks()
-                            .strength(1.5F, 3.0F).
-                            dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ)));
+            registerNormal("salt_stalactite", SaltStalactiteBlock::new);
 
     public static final RegistryObject<Block> SALT_CLUSTER =
             registerNormal("salt_cluster", () -> new AmethystClusterBlock(

@@ -66,11 +66,6 @@ public class LitTorchItem extends StandingAndWallBlockItem {
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
         if(!HARDCORE || pLevel.isClientSide() || !(pEntity instanceof Player player)) return;
-        int newBurnTime = pLevel.getRandom().nextInt(20,35);
-        if(newBurnTime <= 0) {
-            changeTorch(player,pStack,ItemStackAPI.replaceItemWithCopyNBTTagAndCount(pStack, Items.STICK),pSlotId);
-            pLevel.playSound(null,player.getOnPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS,0.3f, pLevel.random.nextFloat() * 0.1F + 0.6F);
-        }
         if(pLevel.isRainingAt(player.getOnPos().above(2)) && pIsSelected)
         {
             changeTorch(player,pStack, ItemStackAPI.replaceItemWithCopyNBTTagAndCount(pStack, Items.STICK),pSlotId);

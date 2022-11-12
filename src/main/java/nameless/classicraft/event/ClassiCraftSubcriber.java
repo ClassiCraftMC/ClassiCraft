@@ -67,6 +67,61 @@ public class ClassiCraftSubcriber {
         bus.addListener(ClassiCraftSubcriber::onRanchuBreed);
         bus.addListener(ClassiCraftSubcriber::onCraftTorch);
         bus.addListener(ClassiCraftSubcriber::onItemInWater);
+        bus.addListener(ClassiCraftSubcriber::onItemInRaining);
+        //bus.addListener(ClassiCraftSubcriber::onItemTicking);
+    }
+
+    public static void onItemTicking(ItemEntityTickEvent event) {
+        ItemEntity itemEntity = event.getEntity();
+        if (itemEntity.getItem().is(ModItems.LIT_TORCH.get())) {
+                int oldCount = itemEntity.getItem().getCount();
+                itemEntity.remove(Entity.RemovalReason.KILLED);
+                ItemEntity newItem = new ItemEntity(
+                        itemEntity.getLevel(),
+                        itemEntity.getX(), itemEntity.getY(),
+                        itemEntity.getZ(),
+                        Items.STICK.getDefaultInstance());
+                newItem.getItem().setCount(oldCount);
+                itemEntity.getLevel().addFreshEntity(newItem);
+        }
+        if (itemEntity.getItem().is(ModItems.LIT_SOUL_TORCH.get())) {
+            int oldCount = itemEntity.getItem().getCount();
+            itemEntity.remove(Entity.RemovalReason.KILLED);
+            ItemEntity newItem = new ItemEntity(
+                    itemEntity.getLevel(),
+                    itemEntity.getX(), itemEntity.getY(),
+                    itemEntity.getZ(),
+                    Items.STICK.getDefaultInstance());
+            newItem.getItem().setCount(oldCount);
+            itemEntity.getLevel().addFreshEntity(newItem);
+        }
+    }
+
+    public static void onItemInRaining(ItemEntityTickEvent event) {
+        ItemEntity itemEntity = event.getEntity();
+        Level level = itemEntity.getLevel();
+        if (itemEntity.getItem().is(ModItems.LIT_TORCH.get()) && level.isRainingAt(itemEntity.getOnPos().above())) {
+            int oldCount = itemEntity.getItem().getCount();
+            itemEntity.remove(Entity.RemovalReason.KILLED);
+            ItemEntity newItem = new ItemEntity(
+                    itemEntity.getLevel(),
+                    itemEntity.getX(), itemEntity.getY(),
+                    itemEntity.getZ(),
+                    Items.STICK.getDefaultInstance());
+            newItem.getItem().setCount(oldCount);
+            itemEntity.getLevel().addFreshEntity(newItem);
+        }
+        if (itemEntity.getItem().is(ModItems.LIT_SOUL_TORCH.get()) && level.isRainingAt(itemEntity.getOnPos().above())) {
+            int oldCount = itemEntity.getItem().getCount();
+            itemEntity.remove(Entity.RemovalReason.KILLED);
+            ItemEntity newItem = new ItemEntity(
+                    itemEntity.getLevel(),
+                    itemEntity.getX(), itemEntity.getY(),
+                    itemEntity.getZ(),
+                    Items.STICK.getDefaultInstance());
+            newItem.getItem().setCount(oldCount);
+            itemEntity.getLevel().addFreshEntity(newItem);
+        }
     }
 
     public static void onItemInWater(ItemEntityTickEvent event) {
@@ -82,14 +137,14 @@ public class ClassiCraftSubcriber {
             newItem.getItem().setCount(oldCount);
             itemEntity.getLevel().addFreshEntity(newItem);
         }
-        if (itemEntity.getItem().is(ModItems.LIT_LANTERN.get()) && itemEntity.isInWater()) {
+        if (itemEntity.getItem().is(ModItems.LIT_SOUL_TORCH.get()) && itemEntity.isInWater()) {
             int oldCount = itemEntity.getItem().getCount();
             itemEntity.remove(Entity.RemovalReason.KILLED);
             ItemEntity newItem = new ItemEntity(
                     itemEntity.getLevel(),
                     itemEntity.getX(), itemEntity.getY(),
                     itemEntity.getZ(),
-                    ModItems.LANTERN.get().getDefaultInstance());
+                    Items.STICK.getDefaultInstance());
             newItem.getItem().setCount(oldCount);
             itemEntity.getLevel().addFreshEntity(newItem);
         }
