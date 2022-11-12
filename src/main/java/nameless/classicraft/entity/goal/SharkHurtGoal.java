@@ -10,10 +10,6 @@ public class SharkHurtGoal extends MeleeAttackGoal {
         super(mob, 1.0D, true);
     }
 
-    public boolean canUse() {
-        return super.canUse() && !this.mob.isVehicle();
-    }
-
     public boolean canContinueToUse() {
 
         if (this.mob.getRandom().nextInt(100) == 0) {

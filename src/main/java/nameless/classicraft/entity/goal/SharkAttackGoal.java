@@ -1,7 +1,5 @@
 package nameless.classicraft.entity.goal;
 
-import nameless.classicraft.entity.BaskingSharkEntity;
-import nameless.classicraft.entity.OceanSharkEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 
@@ -18,10 +16,8 @@ public class SharkAttackGoal extends MeleeAttackGoal {
      * Execute a one shot task or start executing a continuous task
      */
     public void start() {
-        if (!(mob instanceof BaskingSharkEntity) || mob instanceof OceanSharkEntity) {
-            super.start();
-            this.raiseArmTicks = 0;
-        }
+        super.start();
+        this.raiseArmTicks = 0;
     }
 
     /**
@@ -36,7 +32,6 @@ public class SharkAttackGoal extends MeleeAttackGoal {
      * Keep ticking a continuous task that has already been started
      */
     public void tick() {
-        if (!(mob instanceof BaskingSharkEntity) || mob instanceof OceanSharkEntity) {
             super.tick();
             ++this.raiseArmTicks;
             if (this.raiseArmTicks >= 5 && this.getTicksUntilNextAttack() < this.getAttackInterval() / 2) {
@@ -44,6 +39,5 @@ public class SharkAttackGoal extends MeleeAttackGoal {
             } else {
                 this.mob.setAggressive(false);
             }
-        }
     }
 }

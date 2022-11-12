@@ -22,6 +22,7 @@ import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.animal.*;
+import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -29,22 +30,12 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.Nullable;
-import java.util.function.Predicate;
 
-public class BaskingSharkEntity extends AbstractSchoolingFish {
+public class BaskingSharkEntity extends AbstractSchoolingFish implements Enemy {
 
     private static final EntityDataAccessor<Boolean> GOT_FISH = SynchedEntityData.defineId(BaskingSharkEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> MOISTNESS_LEVEL = SynchedEntityData.defineId(BaskingSharkEntity.class, EntityDataSerializers.INT);
     public static final TargetingConditions SWIM_WITH_PLAYER_TARGETING = TargetingConditions.forNonCombat().range(10.0D).ignoreLineOfSight();
-    public static final Predicate<LivingEntity> PREY_SELECTOR = (p_30437_) -> {
-        EntityType<?> entitytype = p_30437_.getType();
-        return entitytype ==
-                EntityType.PLAYER
-                || entitytype == EntityType.RABBIT
-                || entitytype == EntityType.FOX
-                || entitytype == EntityType.PIG
-                || entitytype == EntityType.COW;
-    };
 
     public BaskingSharkEntity(EntityType<? extends AbstractSchoolingFish> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -208,6 +199,7 @@ public class BaskingSharkEntity extends AbstractSchoolingFish {
     }
     @Override
     protected void registerGoals() {
+        this.goalSelector.addGoal(1, new FollowMobGoal(this, (float) 1, 10, 5));
         this.goalSelector.addGoal(0, new BreathAirGoal(this));
         this.goalSelector.addGoal(0, new TryFindWaterGoal(this));
         this.goalSelector.addGoal(2, new SharkSwimWithPlayerGoal(this, 4.0D));
@@ -215,16 +207,19 @@ public class BaskingSharkEntity extends AbstractSchoolingFish {
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F));
         this.goalSelector.addGoal(5, new SharkJumpGoal(this, 10));
-        this.goalSelector.addGoal(6, new MeleeAttackGoal(this, (double)1.2F, true));
+        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.2, true) {
+            @Override
+            protected double getAttackReachSqr(LivingEntity entity) {
+                return (double) (4.0 + entity.getBbWidth() * entity.getBbWidth());
+            }
+        });
         this.goalSelector.addGoal(8, new FollowBoatGoal(this));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, PerchEntity.class, true, false));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, RanchuEntity.class, true, false));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, LionfishEntity.class, true, false));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true, false));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Pig.class, true, false));
-        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Cow.class, true));
-        this.targetSelector.addGoal(5, new SharkRandomTargetGoal<>(this, LivingEntity.class, false, PREY_SELECTOR));
-        this.targetSelector.addGoal(6, new SharkAttackGoal(this,1.0D, false));
+        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Cow.class, true, false));
         super.registerGoals();
     }
 
