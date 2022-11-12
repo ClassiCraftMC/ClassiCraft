@@ -1,20 +1,30 @@
 package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.worldgen.SaltStalactiteConfiguration;
+import net.minecraft.core.Direction;
+import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ClampedNormalFloat;
+import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformFloat;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.GeodeBlockSettings;
 import net.minecraft.world.level.levelgen.GeodeCrackSettings;
 import net.minecraft.world.level.levelgen.GeodeLayerSettings;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.DripstoneClusterConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.GeodeConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.PointedDripstoneConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.SimpleRandomFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.placement.EnvironmentScanPlacement;
+import net.minecraft.world.level.levelgen.placement.RandomOffsetPlacement;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -29,14 +39,17 @@ public class ModConfiguredFeatures {
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> SALT_STALACTITE_CAVE =
             register("salt_stalactite_cave",
-                    () -> new ConfiguredFeature<>(Feature.DRIPSTONE_CLUSTER,
-                            new DripstoneClusterConfiguration(12,
-                                    UniformInt.of(3, 6),
-                                    UniformInt.of(2, 8), 1, 3,
-                                    UniformInt.of(2, 4),
-                                    UniformFloat.of(0.3F, 0.7F),
-                                    ClampedNormalFloat.of(0.1F, 0.3F, 0.1F, 0.9F),
-                                    0.1F, 3, 8)));
+                    () -> new ConfiguredFeature<>( Feature.SIMPLE_RANDOM_SELECTOR,
+                            new SimpleRandomFeatureConfiguration(HolderSet.direct(PlacementUtils.inlinePlaced(Feature.POINTED_DRIPSTONE,
+                                    new PointedDripstoneConfiguration(0.2F, 0.7F, 0.5F, 0.5F),
+                                    EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(),
+                                            BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE, 12),
+                                    RandomOffsetPlacement.vertical(ConstantInt.of(1))),
+                                    PlacementUtils.inlinePlaced(Feature.POINTED_DRIPSTONE,
+                                            new PointedDripstoneConfiguration(0.2F, 0.7F, 0.5F, 0.5F),
+                                            EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.solid(),
+                                                    BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE, 12),
+                                            RandomOffsetPlacement.vertical(ConstantInt.of(-1)))))));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> SALT_CAVE =
             register("salt_cave",

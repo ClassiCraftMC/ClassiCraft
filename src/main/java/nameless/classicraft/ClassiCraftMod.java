@@ -41,6 +41,7 @@ public class ClassiCraftMod {
         ModPotions.POTIONS.register(modEventBus);
         ModConfiguredFeatures.CONFIGURED_FEATURES.register(modEventBus);
         ModPlacedFeatures.PLACED_FEATURES.register(modEventBus);
+        ModFeatures.FEATURES.register(modEventBus);
         TestEvents.init();
     }
 }
