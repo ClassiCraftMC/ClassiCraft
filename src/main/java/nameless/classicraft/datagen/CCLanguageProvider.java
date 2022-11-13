@@ -81,6 +81,27 @@ public class CCLanguageProvider extends LanguageProvider {
         add(ModItems.RANCHU_SPAWN_EGG.get(), "Ranchu Spawn Egg");
         add("item.classicraft.lit_soul_torch", "Lit Soul Torch");
         add("item.classicraft.lit_torch", "Lit Torch");
+        add(ModItems.BOXFISH_BUCKET.get(), "Boxfish Bucket");
+        add(ModItems.BOXFISH_SPAWN_EGG.get(), "Boxfish Spawn Egg");
+        add(ModItems.ANGLEFISH_BUCKET.get(), "AngleFish Bucket");
+        add(ModItems.ANGLEFISH_SPAWN_EGG.get(), "AngleFish Spawn Egg");
+        add(ModItems.FOXFACE_FISH_BUCKET.get(), "FoxFace Fish Bucket");
+        add(ModItems.FOXFACE_FISH_SPAWN_EGG.get(), "FoxFace Fish Spawn Egg");
+        add(ModItems.FOOTBALLFISH_BUCKET.get(), "Football Fish Bucket");
+        add(ModItems.FOOTBALLFISH_SPAWN_EGG.get(), "Football Fish Spawn Egg");
+        add(ModItems.ANGLEFISH.get(), "Anglefish");
+        add(ModItems.FOOTBALLFISH.get(), "FootBall Fish");
+        add(ModItems.BASKING_SHARK_SPAWN_EGG.get(), "Basking Shark Spawn Egg");
+        add(ModItems.OCEAN_SHARK_SPAWN_EGG.get(), "Ocean Shark Spawn Egg");
+        add(ModItems.ARAPAIMA.get(), "Arapaima");
+        add(ModItems.ARAPAIMA_SPAWN_EGG.get(), "Arapaima Spawn Egg");
+        add(ModItems.ARAPAIMA_BUCKET.get(), "Arapaima Bucket");
+        add(ModItems.BELUGA_STURGEON_SPAWN_EGG.get(), "Beluga Sturgeon Spawn Egg");
+        add(ModBlocks.AZALEA.get(), "Azelea");
+        add(ModBlocks.CHRYSANTHEMUM.get(), "Chrysanthemum");
+        add(ModBlocks.PEONY.get(), "Peony");
+        add(ModBlocks.ROSE.get(), "Rose");
+        add(ModItems.BULL_SPAWN_EGG.get(), "Bull Shark Spawn Egg");
         add("info.classicraft.stop_use_lantern", "Could't place the Vanilla Lantern Block in survival mode, you can configured it in ClassisCraft Mod Config.");
         add("info.classicraft.stop_use_torch", "Could't place the Vanilla Torch Block in survival mode, you can configured it in ClassisCraft Mod Config.");
     }

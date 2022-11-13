@@ -32,6 +32,7 @@ public class ClassicCraftClientSubcriber {
         event.put(ModEntities.FOXFACE_FISH_ENTITY.get(), FoxFaceFishEntity.registerAttributes().build());
         event.put(ModEntities.BASKING_SHARK_ENTITY.get(), BaskingSharkEntity.registerAttributes().build());
         event.put(ModEntities.OCEAN_SHARK_ENTITY.get(), OceanSharkEntity.registerAttributes().build());
+        event.put(ModEntities.BULL_SHARK_ENTITY.get(), BullSharkEntity.registerAttributes().build());
     }
 
     @SubscribeEvent
@@ -62,6 +63,8 @@ public class ClassicCraftClientSubcriber {
                 BaskingSharkRenderer::new);
         event.registerEntityRenderer(ModEntities.OCEAN_SHARK_ENTITY.get(),
                 OceanSharkRenderer::new);
+        event.registerEntityRenderer(ModEntities.BULL_SHARK_ENTITY.get(),
+                BullSharkRenderer::new);
     }
 
     @SubscribeEvent
@@ -79,6 +82,7 @@ public class ClassicCraftClientSubcriber {
         event.registerLayerDefinition(ModEntityModelLayers.FOXFACE_FISH, FoxFaceFishModel::create);
         event.registerLayerDefinition(ModEntityModelLayers.BASKINGSHARK, BaskingSharkModel::create);
         event.registerLayerDefinition(ModEntityModelLayers.OCEANSHARK, OceanSharkModel::create);
+        event.registerLayerDefinition(ModEntityModelLayers.BASKINGSHARK, BullSharkModel::create);
     }
 
     @SubscribeEvent
