@@ -51,10 +51,8 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ScreenEvent;
-import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.BabyEntitySpawnEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -84,18 +82,6 @@ public class ClassiCraftSubcriber {
         bus.addListener(ClassiCraftSubcriber::onDamageSquid);
         bus.addListener(ClassiCraftSubcriber::onItemTicking);
         bus.addListener(ClassiCraftSubcriber::addTooltip);
-        bus.addListener(ClassiCraftSubcriber::disableHealthRegen);
-    }
-
-    public static void disableHealthRegen(EntityJoinLevelEvent event) {
-        Entity entity = event.getEntity();
-        if (entity instanceof Player) {
-            if (!entity.getLevel().getGameRules().getRule(GameRules.RULE_NATURAL_REGENERATION).get()) {
-                entity.getLevel().getGameRules()
-                        .getRule(GameRules.RULE_NATURAL_REGENERATION)
-                        .set(false, entity.getServer());
-            }
-        }
     }
 
     public static void addTooltip(ItemTooltipEvent event) {
