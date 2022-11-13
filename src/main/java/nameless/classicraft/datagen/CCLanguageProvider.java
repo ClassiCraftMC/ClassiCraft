@@ -104,6 +104,10 @@ public class CCLanguageProvider extends LanguageProvider {
         add(ModItems.BULL_SHARK_SPAWN_EGG.get(), "Bull Shark Spawn Egg");
         add(ModItems.LEMON_SHARK_SPAWN_EGG.get(), "Lemon Shark Spawn Egg");
         add(ModItems.SLEEPER_SHARK_SPAWN_EGG.get(), "Sleeper Shark Spawn Egg");
+        add(ModItems.TROUT_SPAWN_EGG.get(), "Trout Spawn Egg");
+        add(ModItems.COOKED_TROUT.get(), "Cooked Trout");
+        add(ModItems.TROUT.get(), "Trout");
+        add(ModItems.TROUT_BUCKET.get(), "Trout Bucket");
         add("info.classicraft.stop_use_lantern", "Could't place the Vanilla Lantern Block in survival mode, you can configured it in ClassisCraft Mod Config.");
         add("info.classicraft.stop_use_torch", "Could't place the Vanilla Torch Block in survival mode, you can configured it in ClassisCraft Mod Config.");
     }

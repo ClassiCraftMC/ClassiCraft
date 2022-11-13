@@ -23,6 +23,11 @@ public class ModEntities {
             register("lionfish", EntityType.Builder.of(LionfishEntity::new, MobCategory.WATER_AMBIENT)
                     .sized(0.6F, 0.5F));
 
+    public static final RegistryObject<EntityType<TroutEntity>> TROUT_ENTITY =
+            register("trout", EntityType.Builder.of(TroutEntity::new, MobCategory.WATER_AMBIENT)
+                    .sized(0.5F, 0.3F)
+                    .clientTrackingRange(4));
+
     public static final RegistryObject<EntityType<AngleFishEntity>> ANGLEFISH_ENTITY =
             register("anglefish", EntityType.Builder.of(AngleFishEntity::new, MobCategory.WATER_AMBIENT)
                     .sized(0.6f,0.6f));

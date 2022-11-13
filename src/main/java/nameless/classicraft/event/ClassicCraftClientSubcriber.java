@@ -7,6 +7,7 @@ import nameless.classicraft.entity.*;
 import nameless.classicraft.init.ModEntities;
 import nameless.classicraft.init.ModEntityModelLayers;
 import nameless.classicraft.init.ModScreens;
+import net.minecraft.client.model.CodModel;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -35,6 +36,7 @@ public class ClassicCraftClientSubcriber {
         event.put(ModEntities.BULL_SHARK_ENTITY.get(), BullSharkEntity.registerAttributes().build());
         event.put(ModEntities.LEMON_SHARK_ENTITY.get(), LemonSharkEntity.registerAttributes().build());
         event.put(ModEntities.SLEEPER_SHARK_ENTITY.get(), SleeperSharkEntity.registerAttributes().build());
+        event.put(ModEntities.TROUT_ENTITY.get(), TroutEntity.registerAttributes().build());
     }
 
     @SubscribeEvent
@@ -71,6 +73,8 @@ public class ClassicCraftClientSubcriber {
                 LemonSharkRenderer::new);
         event.registerEntityRenderer(ModEntities.SLEEPER_SHARK_ENTITY.get(),
                 SleeperSharkRenderer::new);
+        event.registerEntityRenderer(ModEntities.TROUT_ENTITY.get(),
+                TroutRenderer::new);
     }
 
     @SubscribeEvent
@@ -91,6 +95,7 @@ public class ClassicCraftClientSubcriber {
         event.registerLayerDefinition(ModEntityModelLayers.BULLSHARK, BullSharkModel::create);
         event.registerLayerDefinition(ModEntityModelLayers.LEMONSHARK, LemonSharkModel::create);
         event.registerLayerDefinition(ModEntityModelLayers.SLEEPERSHARK, SleeperSharkModel::create);
+        event.registerLayerDefinition(ModEntityModelLayers.TROUT, CodModel::createBodyLayer);
     }
 
     @SubscribeEvent

@@ -35,6 +35,12 @@ public class ModItems {
     public static final RegistryObject<Item> RICE_SEED = register("rice_seed", () -> new ItemNameBlockItem(ModBlocks.RICE_CROP.get(), common().food(ModFoodDatas.RICE_SEED)));
     public static final RegistryObject<Item> CLASSIC_CRAFT = register("classic_craft", () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> TROUT =
+            food("trout", Foods.COD);
+
+    public static final RegistryObject<Item> COOKED_TROUT =
+            food("cooked_trout", Foods.COOKED_COD);
+
     public static final RegistryObject<Item> DEER_SPAWN_EGG =
             registerSpawnEgg(ModEntities.DEER_ENEITY, 0x7b4d2e, 0x4b241d);
     public static final RegistryObject<Item> BOAR_SPAWN_EGG =
@@ -72,9 +78,15 @@ public class ModItems {
 
     public static final RegistryObject<Item> SLEEPER_SHARK_SPAWN_EGG =
             registerSpawnEgg(ModEntities.SLEEPER_SHARK_ENTITY, 0x847c7a, 0xffffff);
+
+    public static final RegistryObject<Item> TROUT_BUCKET =
+            registerMobBuckteItem(ModEntities.TROUT_ENTITY);
+
     public static final RegistryObject<Item> FOXFACE_FISH_BUCKET =
             registerMobBuckteItem(ModEntities.FOXFACE_FISH_ENTITY);
 
+    public static final RegistryObject<Item> TROUT_SPAWN_EGG =
+            registerSpawnEgg(ModEntities.TROUT_ENTITY, 0x5a867c, 0x6b9f93);
     public static final RegistryObject<Item> FOXFACE_FISH_SPAWN_EGG =
             registerSpawnEgg(ModEntities.FOXFACE_FISH_ENTITY, 0xdebb21, 0x292824);
 
