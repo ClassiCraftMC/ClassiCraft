@@ -10,6 +10,7 @@ import nameless.classicraft.crop.RiceBlock;
 import nameless.classicraft.crop.RicePaniclesBlock;
 import nameless.classicraft.item.ClassiCraftTab;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -130,6 +131,18 @@ public class ModBlocks {
             register("lantern", RealisticLanternBlock::new);
     public static final RegistryObject<Block> SOUL_LANTERN =
             register("soul_lantern", RealisticSoulLanternBlock::new);
+
+    public static final RegistryObject<Block> AZALEA = registerDecoration("azalea", () -> new FlowerBlock(MobEffects.DIG_SPEED,
+                    2, BlockBehaviour.Properties.copy(Blocks.DANDELION)));
+
+    public static final RegistryObject<Block> PEONY = registerDecoration("peony", () -> new FlowerBlock(MobEffects.DIG_SPEED, 2
+                    , BlockBehaviour.Properties.copy(Blocks.DANDELION)));
+
+    public static final RegistryObject<Block> ROSE = registerDecoration("rose", () -> new FlowerBlock(MobEffects.DIG_SPEED, 2
+            , BlockBehaviour.Properties.copy(Blocks.DANDELION)));
+
+    public static final RegistryObject<Block> CHRYSANTHEMUM = registerDecoration("chrysanthemum",
+            () -> new FlowerBlock(MobEffects.DIG_SPEED, 2, BlockBehaviour.Properties.copy(Blocks.DANDELION)));
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockSupplier, @Nullable Function<T, ? extends BlockItem> blockItemFactory) {
         return registerBlock(ModBlocks.BLOCKS, ModItems.ITEMS, name, blockSupplier, blockItemFactory);

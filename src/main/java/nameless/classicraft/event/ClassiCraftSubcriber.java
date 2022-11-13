@@ -178,12 +178,13 @@ public class ClassiCraftSubcriber {
             if (itemEntity.getItem().is(ModItems.LIT_TORCH.get())
                     && level.isRainingAt(itemEntity.getOnPos().above())
                     && itemEntity.getAge()
-                    == ClassiCraftConfiguration.torchEntityBurnOutTimeInRain.get() * 10) {
+                    == ClassiCraftConfiguration.torchEntityBurnOutTimeInRain.get() * 2) {
                 int oldCount = itemEntity.getItem().getCount();
                 itemEntity.remove(Entity.RemovalReason.KILLED);
                 ItemEntity newItem = new ItemEntity(
                         itemEntity.getLevel(),
-                        itemEntity.getX(), itemEntity.getY(),
+                        itemEntity.getX(),
+                        itemEntity.getY(),
                         itemEntity.getZ(),
                         Items.STICK.getDefaultInstance());
                 newItem.getItem().setCount(oldCount);

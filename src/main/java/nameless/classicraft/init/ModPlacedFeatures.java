@@ -4,6 +4,7 @@ import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.ClassiCraftMod;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
@@ -18,6 +19,23 @@ public class ModPlacedFeatures {
 
     public static final DeferredRegister<PlacedFeature> PLACED_FEATURES =
             DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, ClassiCraftMod.MODID);
+
+    public static final RegistryObject<PlacedFeature> AZALEA_FLOWER_PLACED = register("azalea_flower_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.AZALEA_FLOWER.getHolder().get(), List.of(RarityFilter.onAverageOnceEvery(16),
+                    InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> PEONY_FLOWER_PLACED = register("peony_flower_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.PEONY_FLOWER.getHolder().get(), List.of(RarityFilter.onAverageOnceEvery(16),
+                    InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> ROSE_PLACED = register("rose_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.ROSE.getHolder().get(), List.of(RarityFilter.onAverageOnceEvery(16),
+                    InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> CHRYSANTHEMUM_FLOWER_PLACED = register("chrysanthemum_flower_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.CHRYSANTHEMUM_FLOWER.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(16),
+                            InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome())));
 
     public static final RegistryObject<PlacedFeature> SALT_CAVE_PLACED =
             register("salt_cave_placed",

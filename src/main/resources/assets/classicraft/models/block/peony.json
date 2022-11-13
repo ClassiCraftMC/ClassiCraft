@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "classicraft:block/peony"
+  },
+  "render_type": "cutout"
+}

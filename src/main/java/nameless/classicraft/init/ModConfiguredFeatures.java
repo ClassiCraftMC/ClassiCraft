@@ -18,10 +18,7 @@ import net.minecraft.world.level.levelgen.GeodeLayerSettings;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.DripstoneClusterConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.GeodeConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.PointedDripstoneConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SimpleRandomFeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.placement.EnvironmentScanPlacement;
 import net.minecraft.world.level.levelgen.placement.RandomOffsetPlacement;
@@ -36,6 +33,26 @@ public class ModConfiguredFeatures {
 
     public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES =
             DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, ClassiCraftMod.MODID);
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> PEONY_FLOWER = register("peony_flower",
+            () -> new ConfiguredFeature<>(Feature.FLOWER,
+                    new RandomPatchConfiguration(16, 3, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                            new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.PEONY.get()))))));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> CHRYSANTHEMUM_FLOWER = register("chrysanthemum_flower",
+            () -> new ConfiguredFeature<>(Feature.FLOWER,
+                    new RandomPatchConfiguration(16, 3, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                            new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.CHRYSANTHEMUM.get()))))));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> AZALEA_FLOWER = register("azalea_flower",
+            () -> new ConfiguredFeature<>(Feature.FLOWER,
+                    new RandomPatchConfiguration(16, 3, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                            new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.AZALEA.get()))))));
+
+    public static final RegistryObject<ConfiguredFeature<?, ?>> ROSE = register("rose",
+            () -> new ConfiguredFeature<>(Feature.FLOWER,
+                    new RandomPatchConfiguration(16, 3, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                            new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.ROSE.get()))))));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> SALT_STALACTITE_CAVE =
             register("salt_stalactite_cave",
