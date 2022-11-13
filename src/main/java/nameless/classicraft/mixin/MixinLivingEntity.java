@@ -8,13 +8,13 @@ import net.minecraftforge.common.MinecraftForge;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(LivingEntity.class)
-public class MixinLivingEntity {
+public abstract class MixinLivingEntity {
 
-    @Inject(method = "eat", at = @At("TAIL"))
-    private void callLivingEatEvent(Level pLevel, ItemStack pFood, CallbackInfoReturnable<ItemStack> cir) {
+    @Inject(method = "addEatEffect", at = @At("HEAD"))
+    private void callLivingEatEvent(ItemStack pFood, Level pLevel, LivingEntity pLivingEntity, CallbackInfo ci) {
         LivingEatEvent event = new LivingEatEvent(((LivingEntity) (Object) this), pLevel, pFood);
         if (pFood == null || !pFood.isEdible()) {
             event.setCanceled(true);
