@@ -35,6 +35,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.biome.Biome;
@@ -47,13 +48,15 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ScreenEvent;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.BabyEntitySpawnEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
-import net.minecraftforge.event.entity.player.AttackEntityEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -79,14 +82,40 @@ public class ClassiCraftSubcriber {
         bus.addListener(ClassiCraftSubcriber::onItemInRaining);
         bus.addListener(ClassiCraftSubcriber::onRightClickWater);
         bus.addListener(ClassiCraftSubcriber::onDamageSquid);
-        //bus.addListener(ClassiCraftSubcriber::onItemTicking);
+        bus.addListener(ClassiCraftSubcriber::onItemTicking);
+        bus.addListener(ClassiCraftSubcriber::addTooltip);
+        bus.addListener(ClassiCraftSubcriber::disableHealthRegen);
     }
 
-    public static void onDamageSquid(AttackEntityEvent event) {
-        Player player = event.getEntity();
-        Entity entity = event.getTarget();
-        if (entity instanceof Squid && entity.distanceTo(player) == 4) {
-            ((Squid) entity).addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 70, 1));
+    public static void disableHealthRegen(EntityJoinLevelEvent event) {
+        Entity entity = event.getEntity();
+        if (entity instanceof Player) {
+            if (!entity.getLevel().getGameRules().getRule(GameRules.RULE_NATURAL_REGENERATION).get()) {
+                entity.getLevel().getGameRules()
+                        .getRule(GameRules.RULE_NATURAL_REGENERATION)
+                        .set(false, entity.getServer());
+            }
+        }
+    }
+
+    public static void addTooltip(ItemTooltipEvent event) {
+        ItemStack itemStack = event.getItemStack();
+        if (itemStack.isEdible()) {
+            ClassiCraftHooks.addFoodComponentEffectTooltip(itemStack, event.getToolTip());
+        }
+    }
+
+    public static void onDamageSquid(LivingHurtEvent event) {
+        LivingEntity entity = event.getEntity();
+        LivingEntity attackedEntity = entity.getLastHurtByMob();
+        if (entity instanceof Squid
+                && attackedEntity!= null
+                && entity.isInWater()
+                && attackedEntity.isInWater()
+                && entity.getLastDamageSource() != null
+                && !entity.getLastDamageSource().isProjectile()
+                && ClassiCraftConfiguration.enableSquidBlind.get()) {
+            attackedEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 70, 1));
         }
     }
 
@@ -115,7 +144,7 @@ public class ClassiCraftSubcriber {
                 || biome.is(Biomes.DEEP_LUKEWARM_OCEAN)
                 || biome.is(Biomes.WARM_OCEAN)
                 && block.defaultBlockState().is(Blocks.WATER)) {
-            if (itemStack.is(Items.GLASS_BOTTLE)) {
+            if (itemStack.is(Items.BUCKET)) {
                 ItemStack newItemStack = new ItemStack(ModItems.SALT_WATER_BOTTLE.get());
                 event.getEntity().getInventory().add(newItemStack);
                 newItemStack.grow(1);
@@ -126,8 +155,24 @@ public class ClassiCraftSubcriber {
     public static void onItemTicking(ItemEntityTickEvent event) {
         ItemEntity itemEntity = event.getEntity();
         ItemStack itemStack = itemEntity.getItem();
-        if (itemStack.is(ModItems.LIT_TORCH.get())) {
+        if (ClassiCraftConfiguration.enableEntityTorchBurnOut.get()) {
+        if (itemStack.is(ModItems.LIT_TORCH.get())
+                && itemEntity.getAge()
+                == ClassiCraftConfiguration.torchEntityBurnOutTime.get() * 1200) {
             int oldCount = itemEntity.getItem().getCount();
+            itemEntity.remove(Entity.RemovalReason.KILLED);
+                ItemEntity newItem = new ItemEntity(
+                        itemEntity.getLevel(),
+                        itemEntity.getX(), itemEntity.getY(),
+                        itemEntity.getZ(),
+                        Items.STICK.getDefaultInstance());
+                newItem.getItem().setCount(oldCount);
+                itemEntity.getLevel().addFreshEntity(newItem);
+            }
+            if (itemStack.is(ModItems.LIT_SOUL_TORCH.get())
+                    && itemEntity.getAge()
+                    == ClassiCraftConfiguration.torchEntityBurnOutTime.get() * 1200) {
+                int oldCount = itemEntity.getItem().getCount();
                 itemEntity.remove(Entity.RemovalReason.KILLED);
                 ItemEntity newItem = new ItemEntity(
                         itemEntity.getLevel(),
@@ -136,6 +181,7 @@ public class ClassiCraftSubcriber {
                         Items.STICK.getDefaultInstance());
                 newItem.getItem().setCount(oldCount);
                 itemEntity.getLevel().addFreshEntity(newItem);
+            }
         }
     }
 

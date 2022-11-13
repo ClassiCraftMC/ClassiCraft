@@ -1,5 +1,6 @@
 package nameless.classicraft.mixin;
 
+import nameless.classicraft.init.ModTags;
 import nameless.classicraft.item.AttachFoods;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
@@ -16,13 +17,13 @@ public abstract class MixinItem {
 
     @Inject(method = "getFoodProperties", cancellable = true, at = @At("RETURN"))
     private void getFoodPropertiesCC(CallbackInfoReturnable<FoodProperties> cir) {
-        if (cir.getReturnValue() == null && AttachFoods.isAttach(((Item) (Object) this))) {
+        if (cir.getReturnValue() == null && (((Item) (Object) this)).getDefaultInstance().is(ModTags.Items.ATTACH_FOODS)) {
             cir.setReturnValue(AttachFoods.getFood(((Item) (Object) this)));
         }
     }
 
     @Inject(method = "isEdible", cancellable = true, at = @At("RETURN"))
     private void isEdibleCC(CallbackInfoReturnable<Boolean> cir) {
-        cir.setReturnValue(cir.getReturnValue() || AttachFoods.isAttach(((Item) (Object) this)));
+        cir.setReturnValue(cir.getReturnValue() || (((Item) (Object) this)).getDefaultInstance().is(ModTags.Items.ATTACH_FOODS));
     }
 }

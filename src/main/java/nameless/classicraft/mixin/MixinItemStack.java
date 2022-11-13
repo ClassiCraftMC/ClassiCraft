@@ -20,7 +20,7 @@ import java.util.Objects;
 /**
  * @author DustW
  */
-@Mixin(value = ItemStack.class)
+@Mixin(ItemStack.class)
 public abstract class MixinItemStack implements CCItemStack {
 
     @Inject(method = "overrideOtherStackedOnMe", cancellable = true, at = @At("HEAD"))
