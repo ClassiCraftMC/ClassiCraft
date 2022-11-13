@@ -6,6 +6,7 @@ import net.minecraft.world.level.Level;
 
 /**
  * @author Thaumstrial
+ *
  */
 public interface DampBlock {
     default DampAbleBlockEntity getBlockEntity(Level level, BlockPos pos) {
