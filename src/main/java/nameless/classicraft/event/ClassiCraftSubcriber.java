@@ -92,7 +92,8 @@ public class ClassiCraftSubcriber {
                 && attackedEntity!= null
                 && entity.isInWater()
                 && attackedEntity.isInWater()
-                && !Objects.requireNonNull(entity.getLastDamageSource()).isProjectile()
+                && entity.getLastDamageSource() != null
+                && !entity.getLastDamageSource().isProjectile()
                 && ClassiCraftConfiguration.enableSquidBlind.get()) {
             attackedEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 70, 1));
         }

@@ -1,9 +1,8 @@
 package nameless.classicraft.event;
 
 import nameless.classicraft.ClassiCraftMod;
-import nameless.classicraft.api.event.PlayerRightClickBlockEvent;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
+import nameless.classicraft.api.event.LivingEatEvent;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 
@@ -14,10 +13,9 @@ public class TestEvents {
         bus.addListener(TestEvents::testEvent);
     }
 
-    public static void testEvent(PlayerRightClickBlockEvent event) {
-        Block block = event.getBlock();
-        if (block.defaultBlockState().is(Blocks.IRON_BLOCK) && event.getEntity().getItemInHand(event.getHand()).isEmpty()) {
-            ClassiCraftMod.LOGGER.info("PlayerInteractBlockEvent test successfully!");
+    public static void testEvent(LivingEatEvent event) {
+        if (event.getFood().is(Items.CARROT)) {
+            ClassiCraftMod.LOGGER.info("LivingEatEvent test successfully!");
         }
     }
 

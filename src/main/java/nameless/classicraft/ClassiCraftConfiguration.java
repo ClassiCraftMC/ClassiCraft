@@ -19,7 +19,6 @@ public class ClassiCraftConfiguration {
     public static ForgeConfigSpec.IntValue saltOreGenerateCount;
     public static ForgeConfigSpec.IntValue saltOreGenerateSize;
     public static ForgeConfigSpec.IntValue saltCaveGenerateChance;
-    public static ForgeConfigSpec.IntValue distanceToSquidBlind;
     public static ForgeConfigSpec.BooleanValue noRelightEnabled;
     public static ForgeConfigSpec.BooleanValue noVanillaTorchPlace;
     public static ForgeConfigSpec.BooleanValue noVanillaLanternPlace;
@@ -43,9 +42,6 @@ public class ClassiCraftConfiguration {
 
         desc = "决定是否开启鱿鱼喷墨造成实体失明";
         enableSquidBlind = BUILDER.comment(desc).define("enableSquidBlind", true);
-
-        desc = "决定实体靠近鱿鱼被鱿鱼喷墨造成失明效果的距离";
-        distanceToSquidBlind = BUILDER.comment(desc).defineInRange("distanceToSquidBlind", 4, 1, 5);
 
         desc = "决定是否火把会导致易燃物燃烧(仅限点燃的火把)";
         torchCauseFire = BUILDER.comment(desc).define("torchCauseFire",false);
