@@ -82,9 +82,7 @@ public class LitTorchItem extends StandingAndWallBlockItem {
             ItemStack newStack = Items.STICK.getDefaultInstance();
             newStack.setCount(oldCount);
             player.getInventory().add(newStack);
-            if (this.getDefaultInstance().getCount() >= oldCount) {
-                this.getDefaultInstance().setCount(0);
-            }
+            player.getInventory().removeItem(this.getDefaultInstance());
             pLevel.playSound(null,player.getOnPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS,0.3f, pLevel.random.nextFloat() * 0.1F + 0.6F);
         }
     }
