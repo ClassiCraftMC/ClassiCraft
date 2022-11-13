@@ -174,27 +174,21 @@ public class ClassiCraftSubcriber {
     public static void onItemInRaining(ItemEntityTickEvent event) {
         ItemEntity itemEntity = event.getEntity();
         Level level = itemEntity.getLevel();
-        if (itemEntity.getItem().is(ModItems.LIT_TORCH.get()) && level.isRainingAt(itemEntity.getOnPos().above())) {
-            int oldCount = itemEntity.getItem().getCount();
-            itemEntity.remove(Entity.RemovalReason.KILLED);
-            ItemEntity newItem = new ItemEntity(
-                    itemEntity.getLevel(),
-                    itemEntity.getX(), itemEntity.getY(),
-                    itemEntity.getZ(),
-                    Items.STICK.getDefaultInstance());
-            newItem.getItem().setCount(oldCount);
-            itemEntity.getLevel().addFreshEntity(newItem);
-        }
-        if (itemEntity.getItem().is(ModItems.LIT_SOUL_TORCH.get()) && level.isRainingAt(itemEntity.getOnPos().above())) {
-            int oldCount = itemEntity.getItem().getCount();
-            itemEntity.remove(Entity.RemovalReason.KILLED);
-            ItemEntity newItem = new ItemEntity(
-                    itemEntity.getLevel(),
-                    itemEntity.getX(), itemEntity.getY(),
-                    itemEntity.getZ(),
-                    Items.STICK.getDefaultInstance());
-            newItem.getItem().setCount(oldCount);
-            itemEntity.getLevel().addFreshEntity(newItem);
+        if (ClassiCraftConfiguration.enableEntityTorchBurnOut.get()) {
+            if (itemEntity.getItem().is(ModItems.LIT_TORCH.get())
+                    && level.isRainingAt(itemEntity.getOnPos().above())
+                    && itemEntity.getAge()
+                    == ClassiCraftConfiguration.torchEntityBurnOutTimeInRain.get() * 10) {
+                int oldCount = itemEntity.getItem().getCount();
+                itemEntity.remove(Entity.RemovalReason.KILLED);
+                ItemEntity newItem = new ItemEntity(
+                        itemEntity.getLevel(),
+                        itemEntity.getX(), itemEntity.getY(),
+                        itemEntity.getZ(),
+                        Items.STICK.getDefaultInstance());
+                newItem.getItem().setCount(oldCount);
+                itemEntity.getLevel().addFreshEntity(newItem);
+            }
         }
     }
 
