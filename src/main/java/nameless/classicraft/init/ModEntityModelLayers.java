@@ -19,6 +19,8 @@ public class ModEntityModelLayers {
     public static final ModelLayerLocation BOXFISH = register("boxfish");
     public static final ModelLayerLocation OCEANSHARK = register("ocean_shark");
     public static final ModelLayerLocation BULLSHARK = register("bull_shark");
+    public static final ModelLayerLocation LEMONSHARK = register("lemon_shark");
+    public static final ModelLayerLocation SLEEPERSHARK = register("sleeper_shark");
 
     public static final ModelLayerLocation RANCHU = new ModelLayerLocation(new ResourceLocation(ClassiCraftMod.MODID, "ranchu"), "ranchu");
 

@@ -33,6 +33,8 @@ public class ClassicCraftClientSubcriber {
         event.put(ModEntities.BASKING_SHARK_ENTITY.get(), BaskingSharkEntity.registerAttributes().build());
         event.put(ModEntities.OCEAN_SHARK_ENTITY.get(), OceanSharkEntity.registerAttributes().build());
         event.put(ModEntities.BULL_SHARK_ENTITY.get(), BullSharkEntity.registerAttributes().build());
+        event.put(ModEntities.LEMON_SHARK_ENTITY.get(), LemonSharkEntity.registerAttributes().build());
+        event.put(ModEntities.SLEEPER_SHARK_ENTITY.get(), SleeperSharkEntity.registerAttributes().build());
     }
 
     @SubscribeEvent
@@ -65,6 +67,10 @@ public class ClassicCraftClientSubcriber {
                 OceanSharkRenderer::new);
         event.registerEntityRenderer(ModEntities.BULL_SHARK_ENTITY.get(),
                 BullSharkRenderer::new);
+        event.registerEntityRenderer(ModEntities.LEMON_SHARK_ENTITY.get(),
+                LemonSharkRenderer::new);
+        event.registerEntityRenderer(ModEntities.SLEEPER_SHARK_ENTITY.get(),
+                SleeperSharkRenderer::new);
     }
 
     @SubscribeEvent
@@ -83,6 +89,8 @@ public class ClassicCraftClientSubcriber {
         event.registerLayerDefinition(ModEntityModelLayers.BASKINGSHARK, BaskingSharkModel::create);
         event.registerLayerDefinition(ModEntityModelLayers.OCEANSHARK, OceanSharkModel::create);
         event.registerLayerDefinition(ModEntityModelLayers.BULLSHARK, BullSharkModel::create);
+        event.registerLayerDefinition(ModEntityModelLayers.LEMONSHARK, LemonSharkModel::create);
+        event.registerLayerDefinition(ModEntityModelLayers.SLEEPERSHARK, SleeperSharkModel::create);
     }
 
     @SubscribeEvent

@@ -43,6 +43,14 @@ public class ModEntities {
             register("ocean_shark", EntityType.Builder.of(OceanSharkEntity::new, MobCategory.WATER_AMBIENT)
                     .sized(1.4f,1.1f));
 
+    public static final RegistryObject<EntityType<LemonSharkEntity>> LEMON_SHARK_ENTITY =
+            register("lemon_shark", EntityType.Builder.of(LemonSharkEntity::new, MobCategory.WATER_AMBIENT)
+                    .sized(1.4f,1.1f));
+
+    public static final RegistryObject<EntityType<SleeperSharkEntity>> SLEEPER_SHARK_ENTITY =
+            register("sleeper_shark", EntityType.Builder.of(SleeperSharkEntity::new, MobCategory.WATER_AMBIENT)
+                    .sized(1.4f,1.1f));
+
     public static final RegistryObject<EntityType<ArapaimaEntity>> ARAPAIMA_ENTITY =
             register("arapaima", EntityType.Builder.of(ArapaimaEntity::new, MobCategory.WATER_AMBIENT)
                     .sized(1.0f,0.6f));

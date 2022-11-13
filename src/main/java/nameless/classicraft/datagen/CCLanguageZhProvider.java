@@ -101,7 +101,9 @@ public class CCLanguageZhProvider extends LanguageProvider {
         add(ModBlocks.CHRYSANTHEMUM.get(), "菊花");
         add(ModBlocks.PEONY.get(), "牡丹");
         add(ModBlocks.ROSE.get(), "玫瑰");
-        add(ModItems.BULL_SPAWN_EGG.get(), "牛鲨刷怪蛋");
+        add(ModItems.BULL_SHARK_SPAWN_EGG.get(), "牛鲨刷怪蛋");
+        add(ModItems.LEMON_SHARK_SPAWN_EGG.get(), "短吻基齿鲨刷怪蛋");
+        add(ModItems.SLEEPER_SHARK_SPAWN_EGG.get(), "睡鲨刷怪蛋");
         add("info.classicraft.stop_use_lantern", "生存模式下放置原版灯笼将替换为模组灯笼，你可以在天工开物模组配置文件中更改.");
         add("info.classicraft.stop_use_torch", "生存模式下放置原版火把将替换为模组火把，你可以在天工开物模组配置文件中更改.");
     }
