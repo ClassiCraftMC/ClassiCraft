@@ -82,7 +82,7 @@ public class ClassicCraftClientSubcriber {
         event.registerLayerDefinition(ModEntityModelLayers.FOXFACE_FISH, FoxFaceFishModel::create);
         event.registerLayerDefinition(ModEntityModelLayers.BASKINGSHARK, BaskingSharkModel::create);
         event.registerLayerDefinition(ModEntityModelLayers.OCEANSHARK, OceanSharkModel::create);
-        event.registerLayerDefinition(ModEntityModelLayers.BASKINGSHARK, BullSharkModel::create);
+        event.registerLayerDefinition(ModEntityModelLayers.BULLSHARK, BullSharkModel::create);
     }
 
     @SubscribeEvent
