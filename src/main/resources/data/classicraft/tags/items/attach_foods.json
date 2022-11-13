@@ -1,0 +1,20 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:rotten_flesh",
+    "minecraft:sugar_cane",
+    "minecraft:sugar",
+    "minecraft:fermented_spider_eye",
+    "minecraft:turtle_egg",
+    "minecraft:brown_mushroom",
+    "minecraft:red_mushroom",
+    "minecraft:crimson_fungus",
+    "minecraft:warped_fungus",
+    "minecraft:glistering_melon_slice",
+    "classicraft:glistering_melon",
+    "minecraft:melon",
+    "minecraft:pumpkin",
+    "minecraft:cake",
+    "minecraft:egg"
+  ]
+}
