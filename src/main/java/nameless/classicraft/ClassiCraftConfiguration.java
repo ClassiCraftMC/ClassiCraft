@@ -30,6 +30,8 @@ public class ClassiCraftConfiguration {
     public static ForgeConfigSpec.BooleanValue waterBurnt;
     public static ForgeConfigSpec.BooleanValue turnToStickEnabled;
     public static ForgeConfigSpec.BooleanValue enableSquidBlind;
+    public static ForgeConfigSpec.IntValue torchEntityBurnOutTime;
+    public static ForgeConfigSpec.BooleanValue enableEntityTorchBurnOut;
 
 
     static {
@@ -37,6 +39,15 @@ public class ClassiCraftConfiguration {
         BUILDER.push("general");
 
         String desc;
+
+        desc = "决定火把掉落物形式是否会熄灭";
+        enableEntityTorchBurnOut = BUILDER.comment(desc)
+                .define("enableEntityTorchBurnOut", true);
+
+        desc = "决定火把掉落物形式熄灭的时间，以分钟为单位";
+        torchEntityBurnOutTime = BUILDER.comment(desc)
+                .defineInRange("torchEntityBurnOutTime", 2, 1, 5);
+
         desc = "决定是否火把熄灭会变成木棍";
         turnToStickEnabled = BUILDER.comment(desc).define("turnToStickEnabled",true);
 

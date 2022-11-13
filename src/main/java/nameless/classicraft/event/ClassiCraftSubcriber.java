@@ -79,12 +79,14 @@ public class ClassiCraftSubcriber {
         bus.addListener(ClassiCraftSubcriber::onItemInRaining);
         bus.addListener(ClassiCraftSubcriber::onRightClickWater);
         bus.addListener(ClassiCraftSubcriber::onDamageSquid);
-        //bus.addListener(ClassiCraftSubcriber::onItemTicking);
+        bus.addListener(ClassiCraftSubcriber::onItemTicking);
+        bus.addListener(ClassiCraftSubcriber::addTooltip);
     }
 
     public static void addTooltip(ItemTooltipEvent event) {
         ItemStack itemStack = event.getItemStack();
         if (itemStack.isEdible()) {
+            ClassiCraftHooks.addFoodComponentEffectTooltip(itemStack, event.getToolTip());
         }
     }
 
@@ -138,8 +140,24 @@ public class ClassiCraftSubcriber {
     public static void onItemTicking(ItemEntityTickEvent event) {
         ItemEntity itemEntity = event.getEntity();
         ItemStack itemStack = itemEntity.getItem();
-        if (itemStack.is(ModItems.LIT_TORCH.get())) {
+        if (ClassiCraftConfiguration.enableEntityTorchBurnOut.get()) {
+        if (itemStack.is(ModItems.LIT_TORCH.get())
+                && itemEntity.getAge()
+                == ClassiCraftConfiguration.torchEntityBurnOutTime.get() * 1200) {
             int oldCount = itemEntity.getItem().getCount();
+            itemEntity.remove(Entity.RemovalReason.KILLED);
+                ItemEntity newItem = new ItemEntity(
+                        itemEntity.getLevel(),
+                        itemEntity.getX(), itemEntity.getY(),
+                        itemEntity.getZ(),
+                        Items.STICK.getDefaultInstance());
+                newItem.getItem().setCount(oldCount);
+                itemEntity.getLevel().addFreshEntity(newItem);
+            }
+            if (itemStack.is(ModItems.LIT_SOUL_TORCH.get())
+                    && itemEntity.getAge()
+                    == ClassiCraftConfiguration.torchEntityBurnOutTime.get() * 1200) {
+                int oldCount = itemEntity.getItem().getCount();
                 itemEntity.remove(Entity.RemovalReason.KILLED);
                 ItemEntity newItem = new ItemEntity(
                         itemEntity.getLevel(),
@@ -148,6 +166,7 @@ public class ClassiCraftSubcriber {
                         Items.STICK.getDefaultInstance());
                 newItem.getItem().setCount(oldCount);
                 itemEntity.getLevel().addFreshEntity(newItem);
+            }
         }
     }
 
