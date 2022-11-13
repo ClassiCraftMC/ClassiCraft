@@ -14,9 +14,6 @@ public class TestEvents {
     }
 
     public static void testEvent(LivingEatEvent event) {
-        if (event.getFood().is(Items.CARROT)) {
-            ClassiCraftMod.LOGGER.info("LivingEatEvent test successfully!");
-        }
     }
 
 }
