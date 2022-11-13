@@ -21,6 +21,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -53,6 +54,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.event.entity.living.BabyEntitySpawnEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -63,6 +65,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModList;
 
 import java.util.List;
+import java.util.Objects;
 
 public class ClassiCraftSubcriber {
 
@@ -82,11 +85,16 @@ public class ClassiCraftSubcriber {
         //bus.addListener(ClassiCraftSubcriber::onItemTicking);
     }
 
-    public static void onDamageSquid(AttackEntityEvent event) {
-        Player player = event.getEntity();
-        Entity entity = event.getTarget();
-        if (entity instanceof Squid && entity.distanceTo(player) == 4) {
-            ((Squid) entity).addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 70, 1));
+    public static void onDamageSquid(LivingHurtEvent event) {
+        LivingEntity entity = event.getEntity();
+        LivingEntity attackedEntity = entity.getLastHurtByMob();
+        if (entity instanceof Squid
+                && attackedEntity!= null
+                && entity.isInWater()
+                && attackedEntity.isInWater()
+                && !Objects.requireNonNull(entity.getLastDamageSource()).isProjectile()
+                && ClassiCraftConfiguration.enableSquidBlind.get()) {
+            attackedEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 70, 1));
         }
     }
 
@@ -115,7 +123,7 @@ public class ClassiCraftSubcriber {
                 || biome.is(Biomes.DEEP_LUKEWARM_OCEAN)
                 || biome.is(Biomes.WARM_OCEAN)
                 && block.defaultBlockState().is(Blocks.WATER)) {
-            if (itemStack.is(Items.GLASS_BOTTLE)) {
+            if (itemStack.is(Items.BUCKET)) {
                 ItemStack newItemStack = new ItemStack(ModItems.SALT_WATER_BOTTLE.get());
                 event.getEntity().getInventory().add(newItemStack);
                 newItemStack.grow(1);
