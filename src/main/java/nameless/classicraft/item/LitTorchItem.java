@@ -76,13 +76,16 @@ public class LitTorchItem extends StandingAndWallBlockItem {
             changeTorch(player,pStack,ItemStackAPI.replaceItemWithCopyNBTTagAndCount(pStack, Items.STICK),pSlotId);
             pLevel.playSound(null,player.getOnPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS,0.3f, pLevel.random.nextFloat() * 0.1F + 0.6F);
         }
-        if (!pStack.getOrCreateTag().contains("burTime")) {
-            pStack.getOrCreateTag().putInt("burnTime", 10);
-        }
-        int newBurnTime = pStack.getOrCreateTag().getInt("burnTime");
-        newBurnTime -= pLevel.getRandom().nextInt(1, 6);
-        if (newBurnTime <= 0) {
-            changeTorch(player,pStack,ItemStackAPI.replaceItemWithCopyNBTTagAndCount(pStack, Items.STICK),pSlotId);
+        if (pLevel.isRainingAt(player.getOnPos().above(2)) && player.getInventory().contains(this.getDefaultInstance()))
+        {
+            int oldCount = this.getDefaultInstance().getCount();
+            ItemStack newStack = Items.STICK.getDefaultInstance();
+            newStack.setCount(oldCount);
+            player.getInventory().add(newStack);
+            if (this.getDefaultInstance().getCount() >= oldCount) {
+                this.getDefaultInstance().setCount(0);
+            }
+            pLevel.playSound(null,player.getOnPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS,0.3f, pLevel.random.nextFloat() * 0.1F + 0.6F);
         }
     }
 

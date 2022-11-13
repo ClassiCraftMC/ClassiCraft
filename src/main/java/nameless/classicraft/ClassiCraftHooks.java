@@ -31,7 +31,7 @@ public class ClassiCraftHooks {
     }
 
     public static void buildFoodEffectTooltip(List<Component> tooltip, List<Pair<MobEffectInstance, Float>> effectsWithChance) {
-        if (!effectsWithChance.isEmpty()) {
+        if (effectsWithChance.isEmpty()) {
             return;
         }
         List<Pair<Attribute, AttributeModifier>> modifiersList = Lists.newArrayList();
@@ -60,13 +60,13 @@ public class ClassiCraftHooks {
                 translatableText = Component.translatable("potion.withDuration", translatableText, StringUtil.formatTickDuration(statusEffectInstance.getDuration()));
             }
             if(chance < 1.0F) {
-                translatableText = Component.translatable("foodeffecttooltips.food.withChance", translatableText, Math.round(chance * 100));
+                translatableText = Component.translatable("classicraft.food.withChance", translatableText, Math.round(chance * 100));
             }
         }
 
         if (!modifiersList.isEmpty()) {
             tooltip.add(CommonComponents.EMPTY);
-            tooltip.add((Component.translatable("foodeffecttooltips.food.whenEaten")).withStyle(ChatFormatting.DARK_PURPLE));
+            tooltip.add((Component.translatable("classicraft.food.whenEaten")).withStyle(ChatFormatting.DARK_PURPLE));
 
             for (Pair<Attribute, AttributeModifier> entityAttributeEntityAttributeModifierPair : modifiersList) {
                 AttributeModifier entityAttributeModifier3 = entityAttributeEntityAttributeModifierPair.getSecond();

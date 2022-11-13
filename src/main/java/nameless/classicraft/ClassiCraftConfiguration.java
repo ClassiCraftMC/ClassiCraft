@@ -33,6 +33,7 @@ public class ClassiCraftConfiguration {
     public static ForgeConfigSpec.IntValue torchEntityBurnOutTime;
     public static ForgeConfigSpec.BooleanValue enableEntityTorchBurnOut;
     public static ForgeConfigSpec.IntValue torchEntityBurnOutTimeInRain;
+    public static ForgeConfigSpec.BooleanValue enableShowFoodEffect;
 
 
     static {
@@ -41,13 +42,17 @@ public class ClassiCraftConfiguration {
 
         String desc;
 
+        desc = "决定是否显示食品的食用效果";
+        enableShowFoodEffect = BUILDER.comment(desc)
+                .define("enableShowFoodEffect", true);
+
         desc = "决定火把掉落物形式是否会熄灭";
         enableEntityTorchBurnOut = BUILDER.comment(desc)
                 .define("enableEntityTorchBurnOut", true);
 
-        desc = "决定火把掉落物在雨中熄灭的时间， 以秒为单位";
+        desc = "决定火把掉落物在雨中熄灭的时间， 以分钟为单位";
         torchEntityBurnOutTimeInRain = BUILDER.comment(desc)
-                .defineInRange("torchEntityBurnOutTimeInRain", 30, 1, 5);
+                .defineInRange("torchEntityBurnOutTimeInRain", 5, 1, 5);
 
         desc = "决定火把掉落物形式熄灭的时间，以分钟为单位";
         torchEntityBurnOutTime = BUILDER.comment(desc)
@@ -98,7 +103,7 @@ public class ClassiCraftConfiguration {
 
         desc = "火把熄灭耗费的时间，以分钟为单位。将其设置为负值将禁用火把熄灭.";
         torchBurnoutTime = BUILDER.comment(desc)
-                .defineInRange("torchBurnoutTime", 2, -1, 100);
+                .defineInRange("torchBurnoutTime", 9, -1, 100);
 
         desc = "确定点燃的火把在熄灭后是否消失，而不是变成未点燃的火把.";
         noRelightEnabled = BUILDER.comment(desc)

@@ -108,6 +108,10 @@ public class CCLanguageProvider extends LanguageProvider {
         add(ModItems.COOKED_TROUT.get(), "Cooked Trout");
         add(ModItems.TROUT.get(), "Trout");
         add(ModItems.TROUT_BUCKET.get(), "Trout Bucket");
+        add(ModBlocks.FIRE_BOWL.get(), "Fire Bowl");
+        add(ModBlocks.SOUL_FIRE_BOWL.get(), "Soul Fire Bowl");
+        add("item.classicraft.lit_soul_lantern", "Lit Soul Lantern");
+        add("item.classicraft.lit_lantern", "Lit Lantern");
         add("info.classicraft.stop_use_lantern", "Could't place the Vanilla Lantern Block in survival mode, you can configured it in ClassisCraft Mod Config.");
         add("info.classicraft.stop_use_torch", "Could't place the Vanilla Torch Block in survival mode, you can configured it in ClassisCraft Mod Config.");
     }
