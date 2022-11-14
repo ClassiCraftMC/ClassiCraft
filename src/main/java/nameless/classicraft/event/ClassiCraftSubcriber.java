@@ -159,7 +159,8 @@ public class ClassiCraftSubcriber {
             BlockPos pos = event.getPos();
             if (itemStack.is(Items.FLINT_AND_STEEL)
                     && firstItem.is(ModItems.TORCH.get())
-                    && firstItem.getCount() == 1) {
+                    && firstItem.getCount() == 1
+                    && !event.getLevel().isRainingAt(event.getPos().above(2))) {
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
                 itemStack.setDamageValue(1);
                 ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
@@ -168,7 +169,8 @@ public class ClassiCraftSubcriber {
             }
             if (itemStack.is(ModItems.TORCH.get())
                     && firstItem.is(Items.FLINT_AND_STEEL)
-                    && itemStack.getCount() == 1) {
+                    && itemStack.getCount() == 1
+                    && !event.getLevel().isRainingAt(event.getPos().above(2))) {
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
                 itemStack.setDamageValue(1);
                 ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
@@ -178,7 +180,8 @@ public class ClassiCraftSubcriber {
             }
             if (itemStack.is(Items.FLINT_AND_STEEL)
                     && firstItem.is(ModItems.SOUL_TORCH.get())
-                    && firstItem.getCount() == 1) {
+                    && firstItem.getCount() == 1
+                    && !event.getLevel().isRainingAt(event.getPos().above(2))) {
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
                 itemStack.setDamageValue(1);
                 ItemStack newItem = new ItemStack(ModItems.LIT_SOUL_TORCH.get());
@@ -187,7 +190,8 @@ public class ClassiCraftSubcriber {
             }
             if (itemStack.is(ModItems.SOUL_TORCH.get())
                     && firstItem.is(Items.FLINT_AND_STEEL)
-                    && itemStack.getCount() == 1) {
+                    && itemStack.getCount() == 1
+                    && !event.getLevel().isRainingAt(event.getPos().above(2))) {
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
                 itemStack.setDamageValue(1);
                 ItemStack newItem = new ItemStack(ModItems.LIT_SOUL_TORCH.get());
@@ -197,7 +201,8 @@ public class ClassiCraftSubcriber {
             }
             if (itemStack.is(ModItems.LIT_TORCH.get())
                     && firstItem.is(ModItems.TORCH.get())
-                    && firstItem.getCount() == 1) {
+                    && firstItem.getCount() == 1
+                    && !event.getLevel().isRainingAt(event.getPos().above(2))) {
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
                 ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
                 EquipmentSlot pSlot = EquipmentSlot.OFFHAND;
@@ -205,7 +210,8 @@ public class ClassiCraftSubcriber {
             }
             if (itemStack.is(ModItems.TORCH.get())
                     && firstItem.is(ModItems.LIT_TORCH.get())
-                    && itemStack.getCount() == 1) {
+                    && itemStack.getCount() == 1
+                    && !event.getLevel().isRainingAt(event.getPos().above(2))) {
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
                 ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
                 EquipmentSlot pSlot = EquipmentSlot.MAINHAND;
@@ -214,7 +220,8 @@ public class ClassiCraftSubcriber {
             }
             if (itemStack.is(ModItems.LIT_SOUL_TORCH.get())
                     && firstItem.is(ModItems.TORCH.get())
-                    && firstItem.getCount() == 1) {
+                    && firstItem.getCount() == 1
+                    && !event.getLevel().isRainingAt(event.getPos().above(2))) {
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
                 ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
                 EquipmentSlot pSlot = EquipmentSlot.OFFHAND;
@@ -222,7 +229,8 @@ public class ClassiCraftSubcriber {
             }
             if (itemStack.is(ModItems.TORCH.get())
                     && firstItem.is(ModItems.LIT_SOUL_TORCH.get())
-                    && itemStack.getCount() == 1) {
+                    && itemStack.getCount() == 1
+                    && !event.getLevel().isRainingAt(event.getPos().above(2))) {
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
                 ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
                 EquipmentSlot pSlot = EquipmentSlot.MAINHAND;

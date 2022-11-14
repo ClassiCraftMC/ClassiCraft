@@ -92,24 +92,12 @@ public class RealisticTorchBlock extends Block {
                     p_41300_.broadcastBreakEvent(pHand);
                 });
                 if (pLevel.isRainingAt(pPos.above())) {
-                    pLevel.setBlockAndUpdate(pPos, Blocks.AIR.defaultBlockState());
-                    ItemEntity newItem = new ItemEntity(
-                            pLevel,
-                            pPos.getX(), pPos.getY(),
-                            pPos.getZ(),
-                            Items.STICK.getDefaultInstance());
-                    pLevel.addFreshEntity(newItem);
+                    changeToUnlit(pLevel, pPos, pState);
                     ModBlockProperties.playExtinguishSound(pLevel, pPos);
                 } else {
                     if(pLevel.isRainingAt(pPos.above()))
                     {
-                        pLevel.setBlockAndUpdate(pPos, Blocks.AIR.defaultBlockState());
-                        ItemEntity newItem = new ItemEntity(
-                                pLevel,
-                                pPos.getX(), pPos.getY(),
-                                pPos.getZ(),
-                                Items.STICK.getDefaultInstance());
-                        pLevel.addFreshEntity(newItem);
+                        changeToUnlit(pLevel, pPos, pState);
                         ModBlockProperties.playExtinguishSound(pLevel, pPos);
                     }
                     else
@@ -124,13 +112,7 @@ public class RealisticTorchBlock extends Block {
             {
                 if(pLevel.isRainingAt(pPos.above()))
                 {
-                    pLevel.setBlockAndUpdate(pPos, Blocks.AIR.defaultBlockState());
-                    ItemEntity newItem = new ItemEntity(
-                            pLevel,
-                            pPos.getX(), pPos.getY(),
-                            pPos.getZ(),
-                            Items.STICK.getDefaultInstance());
-                    pLevel.addFreshEntity(newItem);
+                    changeToUnlit(pLevel, pPos, pState);
                     ModBlockProperties.playExtinguishSound(pLevel,pPos);
                 }
                 else
@@ -147,24 +129,12 @@ public class RealisticTorchBlock extends Block {
                 ItemStack heldStack = pPlayer.getItemInHand(pHand);
                 heldStack.shrink(1);
                 if (pLevel.isRainingAt(pPos.above())) {
-                    pLevel.setBlockAndUpdate(pPos, Blocks.AIR.defaultBlockState());
-                    ItemEntity newItem = new ItemEntity(
-                            pLevel,
-                            pPos.getX(), pPos.getY(),
-                            pPos.getZ(),
-                            Items.STICK.getDefaultInstance());
-                    pLevel.addFreshEntity(newItem);
+                    changeToUnlit(pLevel, pPos, pState);
                     ModBlockProperties.playExtinguishSound(pLevel, pPos);
                 } else {
                     if(pLevel.isRainingAt(pPos.above()))
                     {
-                        pLevel.setBlockAndUpdate(pPos, Blocks.AIR.defaultBlockState());
-                        ItemEntity newItem = new ItemEntity(
-                                pLevel,
-                                pPos.getX(), pPos.getY(),
-                                pPos.getZ(),
-                                Items.STICK.getDefaultInstance());
-                        pLevel.addFreshEntity(newItem);
+                        changeToUnlit(pLevel, pPos, pState);
                         ModBlockProperties.playExtinguishSound(pLevel, pPos);
                     }
                     else
@@ -179,13 +149,7 @@ public class RealisticTorchBlock extends Block {
             {
                 if(pLevel.isRainingAt(pPos.above()))
                 {
-                    pLevel.setBlockAndUpdate(pPos, Blocks.AIR.defaultBlockState());
-                    ItemEntity newItem = new ItemEntity(
-                            pLevel,
-                            pPos.getX(), pPos.getY(),
-                            pPos.getZ(),
-                            Items.STICK.getDefaultInstance());
-                    pLevel.addFreshEntity(newItem);
+                    changeToUnlit(pLevel, pPos, pState);
                     ModBlockProperties.playExtinguishSound(pLevel,pPos);
                 }
                 else
