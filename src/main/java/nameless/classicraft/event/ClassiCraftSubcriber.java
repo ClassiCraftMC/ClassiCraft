@@ -5,9 +5,12 @@ import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.ClassiCraftHooks;
 import nameless.classicraft.api.event.ItemEntityTickEvent;
 import nameless.classicraft.api.event.PlayerRightClickBlockEvent;
+import nameless.classicraft.api.event.ProjectileHitEvent;
+import nameless.classicraft.block.realistic.RealisticSoulTorchBlock;
 import nameless.classicraft.block.realistic.RealisticTorchBlock;
 import nameless.classicraft.capability.ModCapabilities;
 import nameless.classicraft.entity.RanchuEntity;
+import nameless.classicraft.init.ModBlockProperties;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.client.gui.components.Button;
@@ -84,6 +87,36 @@ public class ClassiCraftSubcriber {
         bus.addListener(ClassiCraftSubcriber::changeTorch);
         bus.addListener(ClassiCraftSubcriber::shiftTorch);
         bus.addListener(ClassiCraftSubcriber::rightClickTorch);
+        bus.addListener(ClassiCraftSubcriber::projectileFireOnTorch);
+    }
+
+    public static void projectileFireOnTorch(ProjectileHitEvent event) {
+        Block block = event.getHitBlock();
+        Entity entity = event.getEntity();
+        if (block != null
+                && block.defaultBlockState().is(ModBlocks.TORCH.get())
+                && entity.isOnFire()
+                && block.defaultBlockState().getValue(RealisticTorchBlock.getLitState())
+                != RealisticTorchBlock.LIT) {
+            ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
+            entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
+                    ModBlocks.TORCH.get().defaultBlockState()
+                            .setValue(RealisticTorchBlock.getLitState(),2)
+                            .setValue(RealisticTorchBlock.BURNTIME,
+                                    RealisticTorchBlock.getInitialBurnTime()));
+        }
+        if (block != null
+                && block.defaultBlockState().is(ModBlocks.SOUL_TORCH.get())
+                && entity.isOnFire()
+                && block.defaultBlockState().getValue(RealisticSoulTorchBlock.getLitState())
+                != RealisticSoulTorchBlock.LIT) {
+            ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
+            entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
+                    ModBlocks.SOUL_TORCH.get().defaultBlockState()
+                            .setValue(RealisticSoulTorchBlock.getLitState(),2)
+                            .setValue(RealisticSoulTorchBlock.BURNTIME,
+                                    RealisticSoulTorchBlock.getInitialBurnTime()));
+        }
     }
 
     public static void rightClickTorch(PlayerRightClickBlockEvent event) {

@@ -74,9 +74,9 @@ public class RealisticTorchBlock extends Block {
     @Override
     public void animateTick(BlockState state, Level pLevel, BlockPos pPos, RandomSource pRandom) {
         if (state.getValue(LITSTATE) == LIT || (state.getValue(LITSTATE) == SMOLDERING && pLevel.getRandom().nextInt(2) == 1)) {
-            double d0 = (double)pPos.getX() + 0.5D;
-            double d1 = (double)pPos.getY() + 0.7D;
-            double d2 = (double)pPos.getZ() + 0.5D;
+            double d0 = (double) pPos.getX() + 0.5D;
+            double d1 = (double) pPos.getY() + 0.7D;
+            double d2 = (double) pPos.getZ() + 0.5D;
             pLevel.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
             pLevel.addParticle(ParticleTypes.FLAME, d0, d1, d2, 0.0D, 0.0D, 0.0D);
         }
@@ -91,37 +91,21 @@ public class RealisticTorchBlock extends Block {
                 heldStack.hurtAndBreak(1, pPlayer, (p_41300_) -> {
                     p_41300_.broadcastBreakEvent(pHand);
                 });
-                if (pLevel.isRainingAt(pPos.above())) {
-                    changeToSmoldering(pLevel,pPos,pState,getInitialBurnTime());
-                    ModBlockProperties.playExtinguishSound(pLevel, pPos);
-                } else {
-                    if(pLevel.isRainingAt(pPos.above()))
-                    {
-                        changeToSmoldering(pLevel,pPos,pState,getInitialBurnTime());
-                        ModBlockProperties.playExtinguishSound(pLevel, pPos);
-                    }
-                    else
-                    {
-                        changeToLit(pLevel, pPos, pState);
-                        ModBlockProperties.playLightingSound(pLevel,pPos);
-                    }
-                    pLevel.updateNeighborsAt(pPos,this);
-                }
+            if (pLevel.isRainingAt(pPos.above())) {
+                ModBlockProperties.playExtinguishSound(pLevel, pPos);
+                pLevel.setBlockAndUpdate(pPos, Blocks.AIR.defaultBlockState());
+                ItemEntity newItem = new ItemEntity(
+                        pLevel,
+                        pPos.getX(), pPos.getY(),
+                        pPos.getZ(),
+                        Items.STICK.getDefaultInstance());
+                pLevel.addFreshEntity(newItem);
+            } else {
+                changeToLit(pLevel, pPos, pState);
             }
-            else
-            {
-                if(pLevel.isRainingAt(pPos.above()))
-                {
-                    changeToSmoldering(pLevel,pPos,pState,getInitialBurnTime());
-                    ModBlockProperties.playExtinguishSound(pLevel,pPos);
-                }
-                else
-                {
-                    changeToLit(pLevel, pPos, pState);
-                }
-                pLevel.updateNeighborsAt(pPos,this);
-            }
-            return InteractionResult.SUCCESS;
+            pLevel.updateNeighborsAt(pPos, this);
+        }
+        return InteractionResult.SUCCESS;
         }
         else if (pPlayer.getItemInHand(pHand).getItem() == ModItems.MATCHBOX.get()) {
             ModBlockProperties.playLightingSound(pLevel, pPos);
@@ -196,17 +180,17 @@ public class RealisticTorchBlock extends Block {
         if(!level.isClientSide() && SHOULD_BURN_OUT && state.getValue(LITSTATE) > UNLIT)
         {
             int newBurnTime = state.getValue(BURNTIME) -1;
+            /**
             if(level.isRainingAt(pos.above()))
             {
-                ModBlockProperties.playExtinguishSound(level,pos);
-                newBurnTime -= random.nextInt(20,35);
-                if(newBurnTime <= 0)
-                    changeToUnlit(level,pos,state);
-                else
-                    changeToSmoldering(level,pos,state,newBurnTime);
-                level.updateNeighborsAt(pos,this);
-                return;
-            }
+               level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
+                ItemEntity newItem = new ItemEntity(
+                        level,
+                        pos.getX(), pos.getY(),
+                        pos.getZ(),
+                        Items.STICK.getDefaultInstance());
+                level.addFreshEntity(newItem);
+            }*/
             if(newBurnTime <= 0)
             {
                 ModBlockProperties.playExtinguishSound(level,pos);
