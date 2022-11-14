@@ -1,6 +1,7 @@
 package nameless.classicraft.item;
 
 import nameless.classicraft.ClassiCraftConfiguration;
+import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.api.item.ItemStackAPI;
 import nameless.classicraft.block.realistic.RealisticTorchBlock;
 import nameless.classicraft.init.ModBlockProperties;
@@ -21,6 +22,9 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class LitTorchItem extends StandingAndWallBlockItem {
 
@@ -63,9 +67,29 @@ public class LitTorchItem extends StandingAndWallBlockItem {
         return null;
     }
 
+    long burnTime = 6000;
+
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
         if(!HARDCORE || pLevel.isClientSide() || !(pEntity instanceof Player player)) return;
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                --burnTime;
+                long ss = burnTime;
+                ClassiCraftMod.LOGGER.info("Test time!" + ss);
+                if (burnTime <=0) {
+                    timer.cancel();
+                    timer.purge();
+                }
+            }
+        };
+        timer.schedule(task, 20, 1200);
+        if(burnTime <= 0) {
+            changeTorch(player,pStack, ItemStackAPI.replaceItemWitchNoNBT(pStack, Items.STICK), pSlotId);
+            pLevel.playSound(null,player.getOnPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS,0.3f, pLevel.random.nextFloat() * 0.1F + 0.6F);
+        }
         if(pLevel.isRainingAt(player.getOnPos().above(2)))
         {
             changeTorch(player,pStack, ItemStackAPI.replaceItemWitchNoNBT(pStack, Items.STICK), pSlotId);

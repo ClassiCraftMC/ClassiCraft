@@ -62,7 +62,7 @@ public class LitSoulTorchItem extends StandingAndWallBlockItem {
         if(!HARDCORE || pLevel.isClientSide() || !(pEntity instanceof Player player)) return;
         if(inWater(player.getOnPos(),pLevel) && WATER_BURNT)
         {
-            changeTorch(player,pStack,ItemStackAPI.replaceItemWithCopyNBTTagAndCount(pStack, Items.STICK),pSlotId);
+            changeTorch(player,pStack, ItemStackAPI.replaceItemWitchNoNBT(pStack, Items.STICK),pSlotId);
             pLevel.playSound(null,player.getOnPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS,0.3f, pLevel.random.nextFloat() * 0.1F + 0.6F);
         }
     }

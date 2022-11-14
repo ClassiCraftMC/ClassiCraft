@@ -37,6 +37,7 @@ public class ClassicCraftClientSubcriber {
         event.put(ModEntities.LEMON_SHARK_ENTITY.get(), LemonSharkEntity.registerAttributes().build());
         event.put(ModEntities.SLEEPER_SHARK_ENTITY.get(), SleeperSharkEntity.registerAttributes().build());
         event.put(ModEntities.TROUT_ENTITY.get(), TroutEntity.registerAttributes().build());
+        event.put(ModEntities.BUTTERFLY_ENTITY.get(), ButterflyEntity.registerAttributes().build());
     }
 
     @SubscribeEvent
@@ -75,6 +76,8 @@ public class ClassicCraftClientSubcriber {
                 SleeperSharkRenderer::new);
         event.registerEntityRenderer(ModEntities.TROUT_ENTITY.get(),
                 TroutRenderer::new);
+        event.registerEntityRenderer(ModEntities.BUTTERFLY_ENTITY.get(),
+                ButterflyRenderer::new);
     }
 
     @SubscribeEvent
@@ -96,6 +99,7 @@ public class ClassicCraftClientSubcriber {
         event.registerLayerDefinition(ModEntityModelLayers.LEMONSHARK, LemonSharkModel::create);
         event.registerLayerDefinition(ModEntityModelLayers.SLEEPERSHARK, SleeperSharkModel::create);
         event.registerLayerDefinition(ModEntityModelLayers.TROUT, CodModel::createBodyLayer);
+        event.registerLayerDefinition(ModEntityModelLayers.BUTTERFLY, ButterflyModel::create);
     }
 
     @SubscribeEvent
