@@ -48,7 +48,6 @@ public class TestEvents {
                 ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
                 EquipmentSlot pSlot = EquipmentSlot.MAINHAND;
                 player.setItemSlot(pSlot, newItem);
-                newItem.grow(1);
             }
         }
     }
