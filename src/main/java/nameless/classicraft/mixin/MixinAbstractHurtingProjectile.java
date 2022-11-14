@@ -42,7 +42,7 @@ public abstract class MixinAbstractHurtingProjectile extends Projectile {
 
             Entity hitEntity = null;
             if (pResult.getType() == HitResult.Type.ENTITY) {
-                hitEntity = this.getOwner();
+                hitEntity = ((Projectile)(Object)this).getOwner();
             }
 
             ProjectileHitEvent event = new ProjectileHitEvent(((Projectile) (Object) this), hitEntity, hitBlock, hitFace);
