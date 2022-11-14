@@ -22,6 +22,13 @@ public class ItemStackAPI {
         return itemStack;
     }
 
+    public static ItemStack replaceItemWitchNoNBT(ItemStack oldStack, Item newItem)
+    {
+        ItemStack itemStack = new ItemStack(newItem);
+        itemStack.setCount(oldStack.getCount());
+        return itemStack;
+    }
+
     public static ItemStack replaceItemWithCopyNBTTagAndCountButResetBurnTime(ItemStack oldStack, Item newItem,int burnTime)
     {
         CompoundTag compoundTag = oldStack.getOrCreateTag();

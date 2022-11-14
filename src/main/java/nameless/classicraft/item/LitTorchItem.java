@@ -66,25 +66,14 @@ public class LitTorchItem extends StandingAndWallBlockItem {
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
         if(!HARDCORE || pLevel.isClientSide() || !(pEntity instanceof Player player)) return;
-        if(pLevel.isRainingAt(player.getOnPos().above(2)) && pIsSelected)
+        if(pLevel.isRainingAt(player.getOnPos().above(2)))
         {
-            changeTorch(player,pStack, ItemStackAPI.replaceItemWithCopyNBTTagAndCount(pStack, Items.STICK),pSlotId);
+            changeTorch(player,pStack, ItemStackAPI.replaceItemWitchNoNBT(pStack, Items.STICK), pSlotId);
             pLevel.playSound(null,player.getOnPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS,0.3f, pLevel.random.nextFloat() * 0.1F + 0.6F);
         }
         if(inWater(player.getOnPos(),pLevel) && WATER_BURNT)
         {
-            changeTorch(player,pStack,ItemStackAPI.replaceItemWithCopyNBTTagAndCount(pStack, Items.STICK),pSlotId);
-            pLevel.playSound(null,player.getOnPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS,0.3f, pLevel.random.nextFloat() * 0.1F + 0.6F);
-        }
-        if (pLevel.isRainingAt(player.getOnPos().above(2)) && player.getInventory().contains(this.getDefaultInstance()))
-        {
-            int oldCount = this.getDefaultInstance().getCount();
-            ItemStack newStack = Items.STICK.getDefaultInstance();
-            newStack.setCount(oldCount);
-            player.getInventory().removeItem(this.getDefaultInstance());
-            if (!(this.getDefaultInstance().getCount() == oldCount)) {
-                player.getInventory().add(newStack);
-            }
+            changeTorch(player,pStack, ItemStackAPI.replaceItemWitchNoNBT(pStack, Items.STICK), pSlotId);
             pLevel.playSound(null,player.getOnPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS,0.3f, pLevel.random.nextFloat() * 0.1F + 0.6F);
         }
     }

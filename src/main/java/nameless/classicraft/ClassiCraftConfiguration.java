@@ -52,7 +52,7 @@ public class ClassiCraftConfiguration {
 
         desc = "决定火把掉落物在雨中熄灭的时间， 以分钟为单位";
         torchEntityBurnOutTimeInRain = BUILDER.comment(desc)
-                .defineInRange("torchEntityBurnOutTimeInRain", 5, 1, 5);
+                .defineInRange("torchEntityBurnOutTimeInRain", 30, 1, 6000);
 
         desc = "决定火把掉落物形式熄灭的时间，以分钟为单位";
         torchEntityBurnOutTime = BUILDER.comment(desc)
