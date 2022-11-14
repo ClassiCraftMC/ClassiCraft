@@ -12,6 +12,7 @@ import nameless.classicraft.init.ModItems;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.screens.PauseScreen;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -25,6 +26,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Squid;
 import net.minecraft.world.entity.animal.Turtle;
@@ -81,6 +83,105 @@ public class ClassiCraftSubcriber {
         bus.addListener(ClassiCraftSubcriber::onDamageSquid);
         bus.addListener(ClassiCraftSubcriber::onItemTicking);
         bus.addListener(ClassiCraftSubcriber::addTooltip);
+        bus.addListener(ClassiCraftSubcriber::changeTorch);
+        bus.addListener(ClassiCraftSubcriber::shiftTorch);
+    }
+
+    public static void shiftTorch(PlayerInteractEvent.RightClickItem event) {
+        Player player = event.getEntity();
+        ItemStack itemStack = event.getItemStack();
+        if (itemStack.is(ModItems.LIT_TORCH.get()) || itemStack.is(ModItems.LIT_SOUL_TORCH.get())) {
+            if (player.isShiftKeyDown()
+                    && itemStack.getCount() == 1
+                    && itemStack.getItem()!= player.getOffhandItem().getItem()) {
+                event.getLevel().playSound(null, event.getPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0F, event.getLevel().getRandom().nextFloat() * 0.1F + 0.9F);
+                ItemStack newItem = new ItemStack(Items.STICK);
+                EquipmentSlot pSlot = EquipmentSlot.MAINHAND;
+                player.setItemSlot(pSlot, newItem);
+            }
+        }
+    }
+
+    public static void changeTorch(PlayerInteractEvent.RightClickItem event) {
+        Player player = event.getEntity();
+        if (player != null) {
+            ItemStack firstItem = player.getOffhandItem();
+            ItemStack itemStack = event.getItemStack();
+            Level level = event.getLevel();
+            BlockPos pos = event.getPos();
+            if (itemStack.is(Items.FLINT_AND_STEEL)
+                    && firstItem.is(ModItems.TORCH.get())
+                    && firstItem.getCount() == 1) {
+                level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
+                itemStack.setDamageValue(1);
+                ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
+                EquipmentSlot pSlot = EquipmentSlot.OFFHAND;
+                player.setItemSlot(pSlot, newItem);
+            }
+            if (itemStack.is(ModItems.TORCH.get())
+                    && firstItem.is(Items.FLINT_AND_STEEL)
+                    && itemStack.getCount() == 1) {
+                level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
+                itemStack.setDamageValue(1);
+                ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
+                EquipmentSlot pSlot = EquipmentSlot.MAINHAND;
+                player.setItemSlot(pSlot, newItem);
+                newItem.grow(1);
+            }
+            if (itemStack.is(Items.FLINT_AND_STEEL)
+                    && firstItem.is(ModItems.SOUL_TORCH.get())
+                    && firstItem.getCount() == 1) {
+                level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
+                itemStack.setDamageValue(1);
+                ItemStack newItem = new ItemStack(ModItems.LIT_SOUL_TORCH.get());
+                EquipmentSlot pSlot = EquipmentSlot.OFFHAND;
+                player.setItemSlot(pSlot, newItem);
+            }
+            if (itemStack.is(ModItems.SOUL_TORCH.get())
+                    && firstItem.is(Items.FLINT_AND_STEEL)
+                    && itemStack.getCount() == 1) {
+                level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
+                itemStack.setDamageValue(1);
+                ItemStack newItem = new ItemStack(ModItems.LIT_SOUL_TORCH.get());
+                EquipmentSlot pSlot = EquipmentSlot.MAINHAND;
+                player.setItemSlot(pSlot, newItem);
+                newItem.grow(1);
+            }
+            if (itemStack.is(ModItems.LIT_TORCH.get())
+                    && firstItem.is(ModItems.TORCH.get())
+                    && firstItem.getCount() == 1) {
+                level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
+                ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
+                EquipmentSlot pSlot = EquipmentSlot.OFFHAND;
+                player.setItemSlot(pSlot, newItem);
+            }
+            if (itemStack.is(ModItems.TORCH.get())
+                    && firstItem.is(ModItems.LIT_TORCH.get())
+                    && itemStack.getCount() == 1) {
+                level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
+                ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
+                EquipmentSlot pSlot = EquipmentSlot.MAINHAND;
+                player.setItemSlot(pSlot, newItem);
+                newItem.grow(1);
+            }
+            if (itemStack.is(ModItems.LIT_SOUL_TORCH.get())
+                    && firstItem.is(ModItems.TORCH.get())
+                    && firstItem.getCount() == 1) {
+                level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
+                ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
+                EquipmentSlot pSlot = EquipmentSlot.OFFHAND;
+                player.setItemSlot(pSlot, newItem);
+            }
+            if (itemStack.is(ModItems.TORCH.get())
+                    && firstItem.is(ModItems.LIT_SOUL_TORCH.get())
+                    && itemStack.getCount() == 1) {
+                level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
+                ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
+                EquipmentSlot pSlot = EquipmentSlot.MAINHAND;
+                player.setItemSlot(pSlot, newItem);
+                newItem.grow(1);
+            }
+        }
     }
 
     public static void addTooltip(ItemTooltipEvent event) {
