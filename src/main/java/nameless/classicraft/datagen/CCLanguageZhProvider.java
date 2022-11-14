@@ -48,7 +48,7 @@ public class CCLanguageZhProvider extends LanguageProvider {
         add(ModItems.RICE_HUSK.get(), "稻谷");
         add(ModItems.RICE_SEED.get(), "水稻种子");
         add(ModItems.DEER_SPAWN_EGG.get(), "鹿刷怪蛋");
-        add(ModItems.BOAR_SPAWN_EGG.get(), "野猪刷怪蛋");
+        add(ModItems.BOAR_SPAWN_EGG.get(), "野豕刷怪蛋");
         add(ModItems.FLOUR.get(), "粗制面粉");
         add(ModBlocks.SALT_ORE.get(), "盐矿");
         add(ModBlocks.WILD_RICE.get(), "野生稻谷");

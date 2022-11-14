@@ -91,6 +91,9 @@ public class ModItems {
     public static final RegistryObject<Item> BUTTERFLY_SPAWN_EGG =
             registerSpawnEgg(ModEntities.BUTTERFLY_ENTITY, 0x282828, 0xEF6F1F);
 
+    public static final RegistryObject<Item> SWINE_SPAWN_EGG =
+            registerSpawnEgg(ModEntities.SWINE_ENTITY, 0x282828, 0xEF6F1F);
+
     public static final RegistryObject<Item> FOXFACE_FISH_SPAWN_EGG =
             registerSpawnEgg(ModEntities.FOXFACE_FISH_ENTITY, 0xdebb21, 0x292824);
 

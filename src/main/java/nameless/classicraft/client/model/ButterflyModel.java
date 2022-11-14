@@ -66,8 +66,11 @@ public class ButterflyModel<T extends Entity> extends EntityModel<T> {
     }
 
     @Override
-    public void setupAnim(T pEntity, float pLimbSwing, float pLimbSwingAmount, float pAgeInTicks, float pNetHeadYaw, float pHeadPitch) {
+    public void setupAnim(T pState, float pLimbSwing, float pLimbSwingAmount, float pAgeInTicks, float pNetHeadYaw, float pHeadPitch) {
+        this.rightwing.x = -1.5F;
+        this.leftwing.x = 1.5F;
         rightwing.zRot = -(Mth.cos(pLimbSwing * 1.7F) * (float)Math.PI * 0.2F);
         leftwing.zRot= Mth.cos(pLimbSwing * 1.7F) * (float)Math.PI * 0.2F;
     }
+
 }

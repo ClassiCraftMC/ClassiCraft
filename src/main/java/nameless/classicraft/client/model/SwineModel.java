@@ -33,7 +33,7 @@ public class SwineModel<T extends Entity> extends EntityModel<T> {
         this.leg4 = root.getChild("leg4");
     }
 
-    public static LayerDefinition createBodyLayer() {
+    public static LayerDefinition create() {
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
 
