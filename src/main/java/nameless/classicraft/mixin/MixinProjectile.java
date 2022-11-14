@@ -21,8 +21,6 @@ import javax.annotation.Nullable;
 @Mixin(Projectile.class)
 public abstract class MixinProjectile extends Entity {
 
-    @Nullable public abstract Entity getOwner();
-
     public MixinProjectile(EntityType<?> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
