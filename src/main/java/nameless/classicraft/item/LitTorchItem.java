@@ -77,19 +77,20 @@ public class LitTorchItem extends StandingAndWallBlockItem {
             @Override
             public void run() {
                 --burnTime;
-                long ss = burnTime;
-                ClassiCraftMod.LOGGER.info("Test time!" + ss);
-                if (burnTime <=0) {
-                    timer.cancel();
-                    timer.purge();
+                ClassiCraftMod.LOGGER.info("--Time" + burnTime);
+                if (burnTime <= 0) {
+                    changeTorch(player,pStack, ItemStackAPI.replaceItemWitchNoNBT(pStack, Items.STICK), pSlotId);
+                    pLevel.playSound(null,player.getOnPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS,0.3f, pLevel.random.nextFloat() * 0.1F + 0.6F);
+                    ++burnTime;
+                    ClassiCraftMod.LOGGER.info("++Time" + burnTime);
+                }
+                if (burnTime == 5000) {
+                    --burnTime;
                 }
             }
         };
-        timer.schedule(task, 20, 1200);
-        if(burnTime <= 0) {
-            changeTorch(player,pStack, ItemStackAPI.replaceItemWitchNoNBT(pStack, Items.STICK), pSlotId);
-            pLevel.playSound(null,player.getOnPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS,0.3f, pLevel.random.nextFloat() * 0.1F + 0.6F);
-        }
+        timer.schedule(task, 20, 6000);
+
         if(pLevel.isRainingAt(player.getOnPos().above(2)))
         {
             changeTorch(player,pStack, ItemStackAPI.replaceItemWitchNoNBT(pStack, Items.STICK), pSlotId);
