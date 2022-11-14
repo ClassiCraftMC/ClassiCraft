@@ -2,6 +2,7 @@ package nameless.classicraft.datagen;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.init.ModBlocks;
+import nameless.classicraft.init.ModEntities;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
@@ -111,6 +112,9 @@ public class CCLanguageProvider extends LanguageProvider {
         add(ModBlocks.FIRE_BOWL.get(), "Fire Bowl");
         add(ModBlocks.SOUL_FIRE_BOWL.get(), "Soul Fire Bowl");
         add("item.classicraft.lit_soul_lantern", "Lit Soul Lantern");
+        add(ModEntities.ANGLEFISH_ENTITY.get(), "Anglefish");
+        add(ModEntities.ARAPAIMA_ENTITY.get(), "Arapaima");
+        add(ModEntities.BOAR_ENTITY.get(), "Boar");
         add("item.classicraft.lit_lantern", "Lit Lantern");
         add("info.classicraft.stop_use_lantern", "Could't place the Vanilla Lantern Block in survival mode, you can configured it in ClassisCraft Mod Config.");
         add("info.classicraft.stop_use_torch", "Could't place the Vanilla Torch Block in survival mode, you can configured it in ClassisCraft Mod Config.");
