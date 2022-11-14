@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "classicraft:torch"
+          "name": "minecraft:stick"
         }
       ],
       "name": "torch",
