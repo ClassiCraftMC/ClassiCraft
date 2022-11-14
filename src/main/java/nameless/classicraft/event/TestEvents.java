@@ -11,11 +11,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-
-import javax.swing.text.html.parser.Entity;
 
 public class TestEvents {
 
@@ -35,7 +32,6 @@ public class TestEvents {
                     && firstItem.is(ModItems.TORCH.get())
                     && firstItem.getCount() == 1) {
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
-                firstItem.split(1);
                 ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
                 EquipmentSlot pSlot = EquipmentSlot.OFFHAND;
                 player.setItemSlot(pSlot, newItem);
@@ -44,7 +40,6 @@ public class TestEvents {
                     && firstItem.is(Items.FLINT_AND_STEEL)
                     && itemStack.getCount() == 1) {
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
-                itemStack.split(1);
                 ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
                 EquipmentSlot pSlot = EquipmentSlot.MAINHAND;
                 player.setItemSlot(pSlot, newItem);
