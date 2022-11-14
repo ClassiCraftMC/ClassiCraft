@@ -1,10 +1,8 @@
 package nameless.classicraft.item;
 
 import nameless.classicraft.ClassiCraftConfiguration;
-import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.api.item.ItemStackAPI;
 import nameless.classicraft.block.realistic.RealisticTorchBlock;
-import nameless.classicraft.init.ModBlockProperties;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModTags;
 import net.minecraft.core.BlockPos;
@@ -22,9 +20,6 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class LitTorchItem extends StandingAndWallBlockItem {
 
@@ -72,25 +67,11 @@ public class LitTorchItem extends StandingAndWallBlockItem {
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
         if(!HARDCORE || pLevel.isClientSide() || !(pEntity instanceof Player player)) return;
-        Timer timer = new Timer();
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                --burnTime;
-                ClassiCraftMod.LOGGER.info("--Time" + burnTime);
-                if (burnTime <= 0) {
-                    changeTorch(player,pStack, ItemStackAPI.replaceItemWitchNoNBT(pStack, Items.STICK), pSlotId);
-                    pLevel.playSound(null,player.getOnPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS,0.3f, pLevel.random.nextFloat() * 0.1F + 0.6F);
-                    ++burnTime;
-                    ClassiCraftMod.LOGGER.info("++Time" + burnTime);
-                }
-                if (burnTime == 5000) {
-                    --burnTime;
-                }
-            }
-        };
-        timer.schedule(task, 20, 6000);
-
+        if (this.getDefaultInstance().getEquipmentSlot() != EquipmentSlot.OFFHAND
+                || this.getDefaultInstance().getEquipmentSlot() != EquipmentSlot.MAINHAND) {
+            changeTorch(player,pStack, ItemStackAPI.replaceItemWitchNoNBT(pStack, Items.STICK), pSlotId);
+            pLevel.playSound(null,player.getOnPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS,0.3f, pLevel.random.nextFloat() * 0.1F + 0.6F);
+        }
         if(pLevel.isRainingAt(player.getOnPos().above(2)))
         {
             changeTorch(player,pStack, ItemStackAPI.replaceItemWitchNoNBT(pStack, Items.STICK), pSlotId);
