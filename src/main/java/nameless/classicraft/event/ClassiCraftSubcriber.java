@@ -5,6 +5,7 @@ import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.ClassiCraftHooks;
 import nameless.classicraft.api.event.ItemEntityTickEvent;
 import nameless.classicraft.api.event.PlayerRightClickBlockEvent;
+import nameless.classicraft.block.realistic.RealisticTorchBlock;
 import nameless.classicraft.capability.ModCapabilities;
 import nameless.classicraft.entity.RanchuEntity;
 import nameless.classicraft.init.ModBlocks;
@@ -41,10 +42,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LanternBlock;
-import net.minecraft.world.level.block.TorchBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
@@ -85,6 +83,23 @@ public class ClassiCraftSubcriber {
         bus.addListener(ClassiCraftSubcriber::addTooltip);
         bus.addListener(ClassiCraftSubcriber::changeTorch);
         bus.addListener(ClassiCraftSubcriber::shiftTorch);
+        bus.addListener(ClassiCraftSubcriber::rightClickTorch);
+    }
+
+    public static void rightClickTorch(PlayerRightClickBlockEvent event) {
+        Block block = event.getBlock();
+        if (event.getEntity().isShiftKeyDown()) {
+            if (block instanceof RealisticTorchBlock) {
+                event.getLevel().setBlockAndUpdate(event.getPos(), Blocks.AIR.defaultBlockState());
+                ItemEntity itemEntity = new ItemEntity(
+                        event.getLevel(),
+                        event.getPos().getX(),
+                        event.getPos().getY(),
+                        event.getPos().getZ(),
+                        Items.STICK.getDefaultInstance());
+                event.getLevel().addFreshEntity(itemEntity);
+            }
+        }
     }
 
     public static void shiftTorch(PlayerInteractEvent.RightClickItem event) {

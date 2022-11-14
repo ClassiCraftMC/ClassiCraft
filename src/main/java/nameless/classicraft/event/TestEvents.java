@@ -1,7 +1,9 @@
 package nameless.classicraft.event;
 
+import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.api.event.ProjectileHitEvent;
+import net.minecraft.core.Direction;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 
 public class TestEvents {
@@ -11,8 +13,10 @@ public class TestEvents {
         bus.addListener(TestEvents::testEvent);
     }
 
-    public static void testEvent(PlayerInteractEvent.RightClickItem event) {
-
+    public static void testEvent(ProjectileHitEvent event) {
+        if (event.getHitBlockFace() == Direction.UP) {
+            ClassiCraftMod.LOGGER.info("ProjectileHitEvent test successfully!");
+        }
     }
 
 }
