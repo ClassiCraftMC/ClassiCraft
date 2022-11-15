@@ -53,7 +53,7 @@ public class RealisticSoulLanternBlock extends LanternBlock {
                 return InteractionResult.FAIL;
             }
             return useAsFlint(pState,pLevel,pPos,pPlayer,pHand);
-        } else if(heldStack.is(Items.COAL) || heldStack.is(Items.CHARCOAL))
+        } else if(heldStack.is(Items.HONEYCOMB))
         {
             if(pState.getValue(OIL) >= 3) return InteractionResult.PASS;
             if(!pPlayer.isCreative()){

@@ -96,6 +96,9 @@ public class ClassiCraftSubcriber {
         bus.addListener(ClassiCraftSubcriber::projectileFireOnTorch);
         bus.addListener(ClassiCraftSubcriber::extinguishTorchByPotion);
         bus.addListener(ClassiCraftSubcriber::projetileFireOnLantern);
+        bus.addListener(ClassiCraftSubcriber::onLanternTicking);
+        bus.addListener(ClassiCraftSubcriber::extinguishLanternByPotion);
+        bus.addListener(ClassiCraftSubcriber::shiftLantern);
     }
 
     public static void extinguishTorchByPotion(ProjectileHitEvent event) {
@@ -129,40 +132,77 @@ public class ClassiCraftSubcriber {
         }
     }
 
+    public static void extinguishLanternByPotion(ProjectileHitEvent event) {
+        Block block = event.getHitBlock();
+        Projectile projectile = event.getEntity();
+        if ((block != null
+                && projectile instanceof ThrownPotion
+                && block.defaultBlockState().is(ModBlocks.LANTERN.get()))) {
+            ModBlockProperties.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
+            projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
+                    ModBlocks.LANTERN.get().defaultBlockState()
+                            .setValue(RealisticLanternBlock.getLitState(),0)
+                            .setValue(RealisticLanternBlock.BURNTIME,
+                                    RealisticLanternBlock.TOTAL_BURN_TIME)
+                            .setValue(RealisticLanternBlock.HANGING,
+                                    block.defaultBlockState().getValue(RealisticLanternBlock.HANGING))
+                            .setValue(RealisticLanternBlock.WATERLOGGED,
+                                    block.defaultBlockState().getValue(RealisticSoulLanternBlock.WATERLOGGED)));
+            projectile.getLevel().updateNeighborsAt(projectile.getOnPos(), block);
+        }
+        if ((block != null
+                && projectile instanceof ThrownPotion
+                && block.defaultBlockState().is(ModBlocks.SOUL_LANTERN.get()))) {
+            ModBlockProperties.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
+            projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
+                    ModBlocks.SOUL_LANTERN.get().defaultBlockState()
+                            .setValue(RealisticLanternBlock.getLitState(),0)
+                            .setValue(RealisticLanternBlock.BURNTIME,
+                                    RealisticLanternBlock.TOTAL_BURN_TIME)
+                            .setValue(RealisticLanternBlock.HANGING,
+                                    block.defaultBlockState().getValue(RealisticLanternBlock.HANGING))
+                            .setValue(RealisticLanternBlock.WATERLOGGED,
+                                    block.defaultBlockState().getValue(RealisticSoulLanternBlock.WATERLOGGED)));
+            projectile.getLevel().updateNeighborsAt(projectile.getOnPos(), block);
+        }
+    }
+
     public static void projetileFireOnLantern(ProjectileHitEvent event) {
         Block block = event.getHitBlock();
-        Entity entity = event.getEntity();
-        Level level = event.getEntity().getLevel();
-        BlockPos pos = event.getEntity().getOnPos();
-        if (block !=null
+        Projectile entity = event.getEntity();
+        if (block != null
                 && block.defaultBlockState().is(ModBlocks.LANTERN.get())
                 && entity.isOnFire()
-                && block.defaultBlockState().getValue(RealisticLanternBlock.OIL) == 1) {
+                && block.defaultBlockState().getValue(RealisticLanternBlock.getLitState())
+                != RealisticLanternBlock.LIT) {
             ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
-            level.setBlockAndUpdate(pos, ModBlocks.LANTERN.get().defaultBlockState()
-                    .setValue(RealisticLanternBlock.getBurnTime(), RealisticLanternBlock.TOTAL_BURN_TIME)
-                    .setValue(RealisticLanternBlock.HANGING,
-                            block.defaultBlockState().getValue(RealisticLanternBlock.HANGING))
-                    .setValue(RealisticLanternBlock.WATERLOGGED,
-                            block.defaultBlockState().getValue(RealisticLanternBlock.WATERLOGGED))
-                    .setValue(RealisticLanternBlock.getLitState(), RealisticLanternBlock.LIT)
-                    .setValue(RealisticLanternBlock.OIL, 1));
-            level.updateNeighborsAt(pos,block);
+            entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
+                    ModBlocks.LANTERN.get().defaultBlockState()
+                            .setValue(RealisticLanternBlock.getLitState(),1)
+                            .setValue(RealisticLanternBlock.BURNTIME,
+                                    RealisticLanternBlock.TOTAL_BURN_TIME)
+                            .setValue(RealisticLanternBlock.HANGING,
+                                    block.defaultBlockState().getValue(RealisticLanternBlock.HANGING))
+                            .setValue(RealisticLanternBlock.WATERLOGGED,
+                                    block.defaultBlockState().getValue(RealisticSoulLanternBlock.WATERLOGGED)));
+            entity.getLevel().updateNeighborsAt(entity.getOnPos(), block);
         }
-        if (block !=null
+        if (block != null
                 && block.defaultBlockState().is(ModBlocks.SOUL_LANTERN.get())
                 && entity.isOnFire()
-                && block.defaultBlockState().getValue(RealisticSoulLanternBlock.OIL) == 1) {
+                && block.defaultBlockState().getValue(RealisticSoulLanternBlock.getLitState())
+                != RealisticSoulLanternBlock.LIT) {
             ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
-            level.setBlockAndUpdate(pos, ModBlocks.SOUL_LANTERN.get().defaultBlockState()
-                    .setValue(RealisticSoulLanternBlock.getBurnTime(), RealisticSoulLanternBlock.TOTAL_BURN_TIME)
-                    .setValue(RealisticSoulLanternBlock.HANGING,
-                            block.defaultBlockState().getValue(RealisticSoulLanternBlock.HANGING))
-                    .setValue(RealisticSoulLanternBlock.WATERLOGGED,
-                            block.defaultBlockState().getValue(RealisticSoulLanternBlock.WATERLOGGED))
-                    .setValue(RealisticSoulLanternBlock.getLitState(), RealisticSoulLanternBlock.LIT)
-                    .setValue(RealisticLanternBlock.OIL, 1));
-            level.updateNeighborsAt(pos,block);
+            entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
+                    ModBlocks.SOUL_LANTERN.get().defaultBlockState()
+                            .setValue(RealisticSoulLanternBlock.getLitState(), 1)
+                            .setValue(RealisticSoulLanternBlock.BURNTIME,
+                                    RealisticSoulLanternBlock.TOTAL_BURN_TIME)
+                            .setValue(RealisticSoulLanternBlock.HANGING,
+                                    block.defaultBlockState().getValue(RealisticSoulLanternBlock.HANGING))
+                            .setValue(RealisticSoulLanternBlock.WATERLOGGED,
+                                    block.defaultBlockState().getValue(RealisticSoulLanternBlock.WATERLOGGED)));
+            entity.getLevel().updateNeighborsAt(entity.getOnPos(), block);
         }
     }
 
@@ -207,6 +247,33 @@ public class ClassiCraftSubcriber {
                         event.getPos().getZ(),
                         Items.STICK.getDefaultInstance());
                 event.getLevel().addFreshEntity(itemEntity);
+            }
+        }
+    }
+
+    public static void shiftLantern(PlayerInteractEvent.RightClickItem event) {
+        Player player = event.getEntity();
+        ItemStack itemStack = event.getItemStack();
+        if (itemStack.is(ModItems.LIT_LANTERN.get())) {
+            if (player.isShiftKeyDown()
+                    && itemStack.getItem()!= player.getOffhandItem().getItem()) {
+                event.getLevel().playSound(null, event.getPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0F, event.getLevel().getRandom().nextFloat() * 0.1F + 0.9F);
+                ItemStack newItem = new ItemStack(ModItems.LANTERN.get());
+                int oldCount = itemStack.getCount();
+                player.getInventory().removeItem(itemStack);
+                newItem.setCount(oldCount);
+                player.getInventory().add(newItem);
+            }
+            if (itemStack.is(ModItems.LIT_SOUL_LANTERN.get())) {
+                if (player.isShiftKeyDown()
+                        && itemStack.getItem() != player.getOffhandItem().getItem()) {
+                    event.getLevel().playSound(null, event.getPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0F, event.getLevel().getRandom().nextFloat() * 0.1F + 0.9F);
+                    ItemStack newItem = new ItemStack(ModItems.SOUL_LANTERN.get());
+                    int oldCount = itemStack.getCount();
+                    player.getInventory().removeItem(itemStack);
+                    newItem.setCount(oldCount);
+                    player.getInventory().add(newItem);
+                }
             }
         }
     }
@@ -412,6 +479,37 @@ public class ClassiCraftSubcriber {
                 event.getEntity().getInventory().add(newItemStack);
                 newItemStack.grow(1);
             }
+        }
+    }
+
+    public static void onLanternTicking(ItemEntityTickEvent event) {
+        ItemEntity itemEntity = event.getEntity();
+        ItemStack itemStack = itemEntity.getItem();
+            if (itemStack.is(ModItems.LIT_LANTERN.get())
+                    && itemEntity.getAge()
+                    == 4 * 1200) {
+                int oldCount = itemEntity.getItem().getCount();
+                itemEntity.remove(Entity.RemovalReason.KILLED);
+                ItemEntity newItem = new ItemEntity(
+                        itemEntity.getLevel(),
+                        itemEntity.getX(), itemEntity.getY(),
+                        itemEntity.getZ(),
+                        ModItems.LANTERN.get().getDefaultInstance());
+                newItem.getItem().setCount(oldCount);
+                itemEntity.getLevel().addFreshEntity(newItem);
+            }
+        if (itemStack.is(ModItems.LIT_SOUL_LANTERN.get())
+                && itemEntity.getAge()
+                == 4 * 1200) {
+            int oldCount = itemEntity.getItem().getCount();
+            itemEntity.remove(Entity.RemovalReason.KILLED);
+            ItemEntity newItem = new ItemEntity(
+                    itemEntity.getLevel(),
+                    itemEntity.getX(), itemEntity.getY(),
+                    itemEntity.getZ(),
+                    ModItems.SOUL_LANTERN.get().getDefaultInstance());
+            newItem.getItem().setCount(oldCount);
+            itemEntity.getLevel().addFreshEntity(newItem);
         }
     }
 
