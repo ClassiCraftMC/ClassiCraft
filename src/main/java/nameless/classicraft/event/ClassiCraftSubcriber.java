@@ -98,6 +98,7 @@ public class ClassiCraftSubcriber {
         bus.addListener(ClassiCraftSubcriber::projetileFireOnLantern);
         bus.addListener(ClassiCraftSubcriber::onLanternTicking);
         bus.addListener(ClassiCraftSubcriber::extinguishLanternByPotion);
+        bus.addListener(ClassiCraftSubcriber::shiftLantern);
     }
 
     public static void extinguishTorchByPotion(ProjectileHitEvent event) {
@@ -246,6 +247,33 @@ public class ClassiCraftSubcriber {
                         event.getPos().getZ(),
                         Items.STICK.getDefaultInstance());
                 event.getLevel().addFreshEntity(itemEntity);
+            }
+        }
+    }
+
+    public static void shiftLantern(PlayerInteractEvent.RightClickItem event) {
+        Player player = event.getEntity();
+        ItemStack itemStack = event.getItemStack();
+        if (itemStack.is(ModItems.LIT_LANTERN.get())) {
+            if (player.isShiftKeyDown()
+                    && itemStack.getItem()!= player.getOffhandItem().getItem()) {
+                event.getLevel().playSound(null, event.getPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0F, event.getLevel().getRandom().nextFloat() * 0.1F + 0.9F);
+                ItemStack newItem = new ItemStack(ModItems.LANTERN.get());
+                int oldCount = itemStack.getCount();
+                player.getInventory().removeItem(itemStack);
+                newItem.setCount(oldCount);
+                player.getInventory().add(newItem);
+            }
+            if (itemStack.is(ModItems.LIT_SOUL_LANTERN.get())) {
+                if (player.isShiftKeyDown()
+                        && itemStack.getItem() != player.getOffhandItem().getItem()) {
+                    event.getLevel().playSound(null, event.getPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0F, event.getLevel().getRandom().nextFloat() * 0.1F + 0.9F);
+                    ItemStack newItem = new ItemStack(ModItems.SOUL_LANTERN.get());
+                    int oldCount = itemStack.getCount();
+                    player.getInventory().removeItem(itemStack);
+                    newItem.setCount(oldCount);
+                    player.getInventory().add(newItem);
+                }
             }
         }
     }
