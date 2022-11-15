@@ -28,7 +28,7 @@ public class RealisticLanternBlock extends LanternBlock {
     public static final int LIT = 1;
     public static final int UNLIT = 0;
     public static final int TICK_INTERVAL = 1200;
-    private static final int TOTAL_BURN_TIME = ClassiCraftConfiguration.lanternBurnoutTime.get();
+    public static final int TOTAL_BURN_TIME = ClassiCraftConfiguration.lanternBurnoutTime.get();
     protected static final boolean SHOUD_BURN_OUT = TOTAL_BURN_TIME >= 0;
     public static final IntegerProperty BURNTIME = IntegerProperty.create("burntime",0,SHOUD_BURN_OUT ? TOTAL_BURN_TIME:1);
     public static final IntegerProperty LITSTATE = IntegerProperty.create("litstate",0,1);

@@ -7,6 +7,7 @@ import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.api.event.ItemEntityTickEvent;
 import nameless.classicraft.api.event.PlayerRightClickBlockEvent;
 import nameless.classicraft.api.event.ProjectileHitEvent;
+import nameless.classicraft.block.realistic.RealisticLanternBlock;
 import nameless.classicraft.block.realistic.RealisticSoulTorchBlock;
 import nameless.classicraft.block.realistic.RealisticTorchBlock;
 import nameless.classicraft.capability.ModCapabilities;
@@ -49,6 +50,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
@@ -92,6 +94,7 @@ public class ClassiCraftSubcriber {
         bus.addListener(ClassiCraftSubcriber::rightClickTorch);
         bus.addListener(ClassiCraftSubcriber::projectileFireOnTorch);
         bus.addListener(ClassiCraftSubcriber::extinguishTorchByPotion);
+        bus.addListener(ClassiCraftSubcriber::projetileFireOnLantern);
     }
 
     public static void extinguishTorchByPotion(ProjectileHitEvent event) {
@@ -122,6 +125,45 @@ public class ClassiCraftSubcriber {
                     projectile.getZ(),
                     Items.STICK.getDefaultInstance());
             projectile.getLevel().addFreshEntity(newItem);
+        }
+    }
+
+    public static void projetileFireOnLantern(ProjectileHitEvent event) {
+        Block block = event.getHitBlock();
+        Entity entity = event.getEntity();
+        Level level = event.getEntity().getLevel();
+        BlockPos pos = event.getEntity().getOnPos();
+        if (block !=null
+                && block.defaultBlockState().is(ModBlocks.LANTERN.get())
+                && entity.isOnFire()
+                && block.defaultBlockState().getValue(RealisticLanternBlock.getLitState())
+                != RealisticLanternBlock.LIT
+                && block.defaultBlockState().getValue(RealisticLanternBlock.OIL) != 0) {
+            ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
+            level.setBlockAndUpdate(pos, ModBlocks.LANTERN.get().defaultBlockState()
+                    .setValue(RealisticLanternBlock.getBurnTime(), RealisticLanternBlock.TOTAL_BURN_TIME)
+                    .setValue(RealisticLanternBlock.HANGING,
+                            block.defaultBlockState().getValue(RealisticLanternBlock.HANGING))
+                    .setValue(RealisticLanternBlock.WATERLOGGED,
+                            block.defaultBlockState().getValue(RealisticLanternBlock.WATERLOGGED))
+                    .setValue(RealisticLanternBlock.getLitState(), RealisticLanternBlock.LIT));
+            level.updateNeighborsAt(pos,block);
+        }
+        if (block !=null
+                && block.defaultBlockState().is(ModBlocks.SOUL_LANTERN.get())
+                && entity.isOnFire()
+                && block.defaultBlockState().getValue(RealisticLanternBlock.getLitState())
+                != RealisticLanternBlock.LIT
+                && block.defaultBlockState().getValue(RealisticLanternBlock.OIL) != 0) {
+            ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
+            level.setBlockAndUpdate(pos, ModBlocks.SOUL_LANTERN.get().defaultBlockState()
+                    .setValue(RealisticLanternBlock.getBurnTime(), RealisticLanternBlock.TOTAL_BURN_TIME)
+                    .setValue(RealisticLanternBlock.HANGING,
+                            block.defaultBlockState().getValue(RealisticLanternBlock.HANGING))
+                    .setValue(RealisticLanternBlock.WATERLOGGED,
+                            block.defaultBlockState().getValue(RealisticLanternBlock.WATERLOGGED))
+                    .setValue(RealisticLanternBlock.getLitState(), RealisticLanternBlock.LIT));
+            level.updateNeighborsAt(pos,block);
         }
     }
 
