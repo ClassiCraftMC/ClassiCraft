@@ -11,6 +11,7 @@
     "MixinItemEntity",
     "MixinItemStack",
     "MixinLivingEntity",
+    "MixinMob",
     "MixinPrimaryLevelData",
     "MixinProjectile",
     "MixinServerLevel"

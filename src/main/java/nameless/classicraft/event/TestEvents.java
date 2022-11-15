@@ -1,17 +1,12 @@
 package nameless.classicraft.event;
 
-import nameless.classicraft.ClassiCraftMod;
-import nameless.classicraft.api.event.ProjectileHitEvent;
-import nameless.classicraft.block.realistic.RealisticTorchBlock;
-import nameless.classicraft.init.ModBlockProperties;
-import nameless.classicraft.init.ModBlocks;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.ThrownPotion;
+import nameless.classicraft.api.event.MobInitGoalEvent;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.ai.goal.TemptGoal;
+import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 
@@ -22,8 +17,11 @@ public class TestEvents {
         bus.addListener(TestEvents::testEvent);
     }
 
-    public static void testEvent(ProjectileHitEvent event) {
-
+    public static void testEvent(MobInitGoalEvent event) {
+        Mob mob = event.getMob();
+        if (mob instanceof Sheep) {
+            event.getGoalSelector().addGoal(2, new TemptGoal((PathfinderMob) mob, 1.25D, Ingredient.of(Items.BREAD), false));
+        }
     }
 
 }
