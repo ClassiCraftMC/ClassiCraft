@@ -217,8 +217,8 @@ public class ClassiCraftSubcriber {
                     && !event.getLevel().isRainingAt(event.getPos().above(2))) {
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
                 ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
-                int oldCount = firstItem.getCount();
-                player.getInventory().removeItem(firstItem);
+                int oldCount = itemStack.getCount();
+                player.getInventory().removeItem(itemStack);
                 newItem.setCount(oldCount);
                 player.getInventory().add(newItem);
             }
@@ -226,7 +226,7 @@ public class ClassiCraftSubcriber {
                     && firstItem.is(ModItems.TORCH.get())
                     && !event.getLevel().isRainingAt(event.getPos().above(2))) {
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
-                ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
+                ItemStack newItem = new ItemStack(ModItems.LIT_SOUL_TORCH.get());
                 int oldCount = itemStack.getCount();
                 player.getInventory().removeItem(itemStack);
                 newItem.setCount(oldCount);
@@ -237,8 +237,8 @@ public class ClassiCraftSubcriber {
                     && !event.getLevel().isRainingAt(event.getPos().above(2))) {
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
                 ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
-                int oldCount = firstItem.getCount();
-                player.getInventory().removeItem(firstItem);
+                int oldCount = itemStack.getCount();
+                player.getInventory().removeItem(itemStack);
                 newItem.setCount(oldCount);
                 player.getInventory().add(newItem);
             }
