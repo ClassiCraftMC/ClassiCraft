@@ -1,7 +1,9 @@
 package nameless.classicraft.event;
 
 import nameless.classicraft.api.event.MobInitGoalEvent;
+import nameless.classicraft.entity.goal.PanicSoulLanternGoal;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.animal.Sheep;
@@ -19,8 +21,10 @@ public class TestEvents {
 
     public static void testEvent(MobInitGoalEvent event) {
         Mob mob = event.getMob();
-        if (mob instanceof Sheep) {
-            event.getGoalSelector().addGoal(2, new TemptGoal((PathfinderMob) mob, 1.25D, Ingredient.of(Items.BREAD), false));
+        if (mob.getMobType() == MobType.UNDEAD
+                || mob.getMobType() == MobType.ARTHROPOD
+                || mob.getMobType() == MobType.ILLAGER) {
+            event.getGoalSelector().addGoal(3, new PanicSoulLanternGoal((PathfinderMob) mob, 1.25D));
         }
     }
 
