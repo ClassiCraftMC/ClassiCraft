@@ -132,37 +132,23 @@ public class ClassiCraftSubcriber {
     public static void projetileFireOnLantern(ProjectileHitEvent event) {
         Block block = event.getHitBlock();
         Entity entity = event.getEntity();
-        Level level = event.getEntity().getLevel();
-        BlockPos pos = event.getEntity().getOnPos();
-        if (block !=null
+        if (block != null
                 && block.defaultBlockState().is(ModBlocks.LANTERN.get())
                 && entity.isOnFire()
-                && block.defaultBlockState().getValue(RealisticLanternBlock.OIL) == 1) {
+                && block.defaultBlockState().getValue(RealisticLanternBlock.getLitState())
+                != RealisticLanternBlock.LIT) {
+            ClassiCraftMod.LOGGER.info("Test!");
             ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
-            level.setBlockAndUpdate(pos, ModBlocks.LANTERN.get().defaultBlockState()
-                    .setValue(RealisticLanternBlock.getBurnTime(), RealisticLanternBlock.TOTAL_BURN_TIME)
-                    .setValue(RealisticLanternBlock.HANGING,
-                            block.defaultBlockState().getValue(RealisticLanternBlock.HANGING))
-                    .setValue(RealisticLanternBlock.WATERLOGGED,
-                            block.defaultBlockState().getValue(RealisticLanternBlock.WATERLOGGED))
-                    .setValue(RealisticLanternBlock.getLitState(), RealisticLanternBlock.LIT)
-                    .setValue(RealisticLanternBlock.OIL, 1));
-            level.updateNeighborsAt(pos,block);
-        }
-        if (block !=null
-                && block.defaultBlockState().is(ModBlocks.SOUL_LANTERN.get())
-                && entity.isOnFire()
-                && block.defaultBlockState().getValue(RealisticSoulLanternBlock.OIL) == 1) {
-            ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
-            level.setBlockAndUpdate(pos, ModBlocks.SOUL_LANTERN.get().defaultBlockState()
-                    .setValue(RealisticSoulLanternBlock.getBurnTime(), RealisticSoulLanternBlock.TOTAL_BURN_TIME)
-                    .setValue(RealisticSoulLanternBlock.HANGING,
-                            block.defaultBlockState().getValue(RealisticSoulLanternBlock.HANGING))
-                    .setValue(RealisticSoulLanternBlock.WATERLOGGED,
-                            block.defaultBlockState().getValue(RealisticSoulLanternBlock.WATERLOGGED))
-                    .setValue(RealisticSoulLanternBlock.getLitState(), RealisticSoulLanternBlock.LIT)
-                    .setValue(RealisticLanternBlock.OIL, 1));
-            level.updateNeighborsAt(pos,block);
+            entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
+                    ModBlocks.LANTERN.get().defaultBlockState()
+                            .setValue(RealisticLanternBlock.getLitState(),1)
+                            .setValue(RealisticLanternBlock.BURNTIME,
+                                    RealisticLanternBlock.TOTAL_BURN_TIME)
+                            .setValue(RealisticLanternBlock.HANGING,
+                                    block.defaultBlockState().getValue(RealisticLanternBlock.HANGING))
+                            .setValue(RealisticLanternBlock.WATERLOGGED,
+                                    block.defaultBlockState().getValue(RealisticSoulLanternBlock.WATERLOGGED)));
+            entity.getLevel().updateNeighborsAt(entity.getOnPos(), block);
         }
     }
 
