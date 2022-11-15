@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "classicraft:lit_soul_torch"
+          "name": "minecraft:stick"
         }
       ],
       "name": "wall_soul_torch",
