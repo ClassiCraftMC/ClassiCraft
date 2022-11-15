@@ -31,24 +31,12 @@ public class RealisticSoulTorchBlock extends RealisticTorchBlock {
                 ItemStack heldStack = pPlayer.getItemInHand(pHand);
                 heldStack.setDamageValue(1);
                 if (pLevel.isRainingAt(pPos.above())) {
-                    pLevel.setBlockAndUpdate(pPos, Blocks.AIR.defaultBlockState());
-                    ItemEntity newItem = new ItemEntity(
-                            pLevel,
-                            pPos.getX(), pPos.getY(),
-                            pPos.getZ(),
-                            Items.STICK.getDefaultInstance());
-                    pLevel.addFreshEntity(newItem);
+                    changeToSmoldering(pLevel,pPos,pState,getInitialBurnTime());
                     ModBlockProperties.playExtinguishSound(pLevel, pPos);
                 } else {
                     if(pLevel.isRainingAt(pPos.above()))
                     {
-                        pLevel.setBlockAndUpdate(pPos, Blocks.AIR.defaultBlockState());
-                        ItemEntity newItem = new ItemEntity(
-                                pLevel,
-                                pPos.getX(), pPos.getY(),
-                                pPos.getZ(),
-                                Items.STICK.getDefaultInstance());
-                        pLevel.addFreshEntity(newItem);
+                        changeToSmoldering(pLevel,pPos,pState,getInitialBurnTime());
                         ModBlockProperties.playExtinguishSound(pLevel, pPos);
                     }
                     else
@@ -63,13 +51,7 @@ public class RealisticSoulTorchBlock extends RealisticTorchBlock {
             {
                 if(pLevel.isRainingAt(pPos.above()))
                 {
-                    pLevel.setBlockAndUpdate(pPos, Blocks.AIR.defaultBlockState());
-                    ItemEntity newItem = new ItemEntity(
-                            pLevel,
-                            pPos.getX(), pPos.getY(),
-                            pPos.getZ(),
-                            Items.STICK.getDefaultInstance());
-                    pLevel.addFreshEntity(newItem);
+                    changeToSmoldering(pLevel,pPos,pState,getInitialBurnTime());
                     ModBlockProperties.playExtinguishSound(pLevel,pPos);
                 }
                 else
@@ -86,24 +68,12 @@ public class RealisticSoulTorchBlock extends RealisticTorchBlock {
                 ItemStack heldStack = pPlayer.getItemInHand(pHand);
                 heldStack.shrink(1);
                 if (pLevel.isRainingAt(pPos.above())) {
-                    pLevel.setBlockAndUpdate(pPos, Blocks.AIR.defaultBlockState());
-                    ItemEntity newItem = new ItemEntity(
-                            pLevel,
-                            pPos.getX(), pPos.getY(),
-                            pPos.getZ(),
-                            Items.STICK.getDefaultInstance());
-                    pLevel.addFreshEntity(newItem);
+                    changeToSmoldering(pLevel,pPos,pState,getInitialBurnTime());
                     ModBlockProperties.playExtinguishSound(pLevel, pPos);
                 } else {
                     if(pLevel.isRainingAt(pPos.above()))
                     {
-                        pLevel.setBlockAndUpdate(pPos, Blocks.AIR.defaultBlockState());
-                        ItemEntity newItem = new ItemEntity(
-                                pLevel,
-                                pPos.getX(), pPos.getY(),
-                                pPos.getZ(),
-                                Items.STICK.getDefaultInstance());
-                        pLevel.addFreshEntity(newItem);
+                        changeToSmoldering(pLevel,pPos,pState,getInitialBurnTime());
                         ModBlockProperties.playExtinguishSound(pLevel, pPos);
                     }
                     else
@@ -118,13 +88,7 @@ public class RealisticSoulTorchBlock extends RealisticTorchBlock {
             {
                 if(pLevel.isRainingAt(pPos.above()))
                 {
-                    pLevel.setBlockAndUpdate(pPos, Blocks.AIR.defaultBlockState());
-                    ItemEntity newItem = new ItemEntity(
-                            pLevel,
-                            pPos.getX(), pPos.getY(),
-                            pPos.getZ(),
-                            Items.STICK.getDefaultInstance());
-                    pLevel.addFreshEntity(newItem);
+                    changeToSmoldering(pLevel,pPos,pState,getInitialBurnTime());
                     ModBlockProperties.playExtinguishSound(pLevel,pPos);
                 }
                 else

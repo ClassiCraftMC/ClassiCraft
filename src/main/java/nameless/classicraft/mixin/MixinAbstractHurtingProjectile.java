@@ -24,7 +24,7 @@ public abstract class MixinAbstractHurtingProjectile extends Projectile {
         super(pEntityType, pLevel);
     }
 
-    @Inject(method = "tick", at = @At(value = "HEAD", target = "Lnet/minecraft/world/entity/projectile/AbstractHurtingProjectile;checkInsideBlocks()V"))
+    @Inject(method = "tick", at = @At(value = "HEAD", target = "Lnet/minecraft/world/entity/projectile/AbstractHurtingProjectile;checkInsideBlocks()V"), cancellable = true)
     private void callProjectileHitEvent(CallbackInfo ci) {
         HitResult pResult = ProjectileUtil.getHitResult(this, this::canHitEntity);
         if (pResult.getType() != HitResult.Type.MISS) {
