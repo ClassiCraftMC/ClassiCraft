@@ -23,24 +23,6 @@ public class TestEvents {
     }
 
     public static void testEvent(ProjectileHitEvent event) {
-        Block block = event.getHitBlock();
-        Projectile projectile = event.getEntity();
-        if ((block != null
-                && projectile instanceof ThrownPotion
-                && block.defaultBlockState().is(ModBlocks.TORCH.get())
-                && block.defaultBlockState().getValue(RealisticTorchBlock.getLitState())
-                 != RealisticTorchBlock.UNLIT)) {
-            ClassiCraftMod.LOGGER.info("Test 2");
-            ModBlockProperties.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
-            projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
-                    Blocks.AIR.defaultBlockState());
-            ItemEntity newItem = new ItemEntity(
-                    projectile.getLevel(),
-                    projectile.getX(), projectile.getY(),
-                    projectile.getZ(),
-                    Items.STICK.getDefaultInstance());
-            projectile.getLevel().addFreshEntity(newItem);
-        }
 
     }
 

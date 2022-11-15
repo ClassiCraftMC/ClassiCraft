@@ -3,6 +3,7 @@ package nameless.classicraft.event;
 import com.mojang.datafixers.util.Pair;
 import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.ClassiCraftHooks;
+import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.api.event.ItemEntityTickEvent;
 import nameless.classicraft.api.event.PlayerRightClickBlockEvent;
 import nameless.classicraft.api.event.ProjectileHitEvent;
@@ -36,7 +37,9 @@ import net.minecraft.world.entity.animal.Squid;
 import net.minecraft.world.entity.animal.Turtle;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ThrownEgg;
+import net.minecraft.world.entity.projectile.ThrownPotion;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -88,6 +91,38 @@ public class ClassiCraftSubcriber {
         bus.addListener(ClassiCraftSubcriber::shiftTorch);
         bus.addListener(ClassiCraftSubcriber::rightClickTorch);
         bus.addListener(ClassiCraftSubcriber::projectileFireOnTorch);
+        bus.addListener(ClassiCraftSubcriber::extinguishTorchByPotion);
+    }
+
+    public static void extinguishTorchByPotion(ProjectileHitEvent event) {
+        Block block = event.getHitBlock();
+        Projectile projectile = event.getEntity();
+        if ((block != null
+                && projectile instanceof ThrownPotion
+                && block.defaultBlockState().is(ModBlocks.TORCH.get()))) {
+            ModBlockProperties.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
+            projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
+                    Blocks.AIR.defaultBlockState());
+            ItemEntity newItem = new ItemEntity(
+                    projectile.getLevel(),
+                    projectile.getX(), projectile.getY(),
+                    projectile.getZ(),
+                    Items.STICK.getDefaultInstance());
+            projectile.getLevel().addFreshEntity(newItem);
+        }
+        if ((block != null
+                && projectile instanceof ThrownPotion
+                && block.defaultBlockState().is(ModBlocks.SOUL_TORCH.get()))) {
+            ModBlockProperties.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
+            projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
+                    Blocks.AIR.defaultBlockState());
+            ItemEntity newItem = new ItemEntity(
+                    projectile.getLevel(),
+                    projectile.getX(), projectile.getY(),
+                    projectile.getZ(),
+                    Items.STICK.getDefaultInstance());
+            projectile.getLevel().addFreshEntity(newItem);
+        }
     }
 
     public static void projectileFireOnTorch(ProjectileHitEvent event) {
@@ -206,8 +241,38 @@ public class ClassiCraftSubcriber {
                     && firstItem.is(ModItems.TORCH.get())
                     && !event.getLevel().isRainingAt(event.getPos().above(2))) {
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
-                ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
                 int oldCount = firstItem.getCount();
+                ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
+                player.getInventory().removeItem(firstItem);
+                newItem.setCount(oldCount);
+                player.getInventory().add(newItem);
+            }
+            if (itemStack.is(ModItems.LIT_TORCH.get())
+                    && firstItem.is(ModItems.SOUL_TORCH.get())
+                    && !event.getLevel().isRainingAt(event.getPos().above(2))) {
+                level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
+                int oldCount = firstItem.getCount();
+                ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
+                player.getInventory().removeItem(firstItem);
+                newItem.setCount(oldCount);
+                player.getInventory().add(newItem);
+            }
+            if (itemStack.is(ModItems.LIT_SOUL_TORCH.get())
+                    && firstItem.is(ModItems.TORCH.get())
+                    && !event.getLevel().isRainingAt(event.getPos().above(2))) {
+                level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
+                int oldCount = firstItem.getCount();
+                ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
+                player.getInventory().removeItem(firstItem);
+                newItem.setCount(oldCount);
+                player.getInventory().add(newItem);
+            }
+            if (itemStack.is(ModItems.LIT_SOUL_TORCH.get())
+                    && firstItem.is(ModItems.SOUL_TORCH.get())
+                    && !event.getLevel().isRainingAt(event.getPos().above(2))) {
+                level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
+                int oldCount = firstItem.getCount();
+                ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
                 player.getInventory().removeItem(firstItem);
                 newItem.setCount(oldCount);
                 player.getInventory().add(newItem);
@@ -216,18 +281,18 @@ public class ClassiCraftSubcriber {
                     && firstItem.is(ModItems.LIT_TORCH.get())
                     && !event.getLevel().isRainingAt(event.getPos().above(2))) {
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
-                ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
                 int oldCount = itemStack.getCount();
+                ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
                 player.getInventory().removeItem(itemStack);
                 newItem.setCount(oldCount);
                 player.getInventory().add(newItem);
             }
-            if (itemStack.is(ModItems.LIT_SOUL_TORCH.get())
-                    && firstItem.is(ModItems.TORCH.get())
+            if (itemStack.is(ModItems.SOUL_TORCH.get())
+                    && firstItem.is(ModItems.LIT_TORCH.get())
                     && !event.getLevel().isRainingAt(event.getPos().above(2))) {
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
-                ItemStack newItem = new ItemStack(ModItems.LIT_SOUL_TORCH.get());
                 int oldCount = itemStack.getCount();
+                ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
                 player.getInventory().removeItem(itemStack);
                 newItem.setCount(oldCount);
                 player.getInventory().add(newItem);
@@ -236,8 +301,18 @@ public class ClassiCraftSubcriber {
                     && firstItem.is(ModItems.LIT_SOUL_TORCH.get())
                     && !event.getLevel().isRainingAt(event.getPos().above(2))) {
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
-                ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
                 int oldCount = itemStack.getCount();
+                ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
+                player.getInventory().removeItem(itemStack);
+                newItem.setCount(oldCount);
+                player.getInventory().add(newItem);
+            }
+            if (itemStack.is(ModItems.SOUL_TORCH.get())
+                    && firstItem.is(ModItems.LIT_SOUL_TORCH.get())
+                    && !event.getLevel().isRainingAt(event.getPos().above(2))) {
+                level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
+                int oldCount = itemStack.getCount();
+                ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
                 player.getInventory().removeItem(itemStack);
                 newItem.setCount(oldCount);
                 player.getInventory().add(newItem);
