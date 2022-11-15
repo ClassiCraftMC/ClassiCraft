@@ -47,7 +47,7 @@ public class RealisticSoulLanternBlock extends LanternBlock {
         ItemStack heldStack = pPlayer.getItemInHand(pHand);
         if (heldStack.getItem() == Items.FLINT_AND_STEEL) {
             return useAsFlint(pState,pLevel,pPos,pPlayer,pHand);
-        } else if(heldStack.is(Items.COAL) || heldStack.is(Items.CHARCOAL))
+        } else if(heldStack.is(Items.HONEYCOMB))
         {
             if(pState.getValue(OIL) >= 3) return InteractionResult.PASS;
             if(!pPlayer.isCreative()){

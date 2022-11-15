@@ -136,7 +136,8 @@ public class ClassiCraftSubcriber {
                 && block.defaultBlockState().is(ModBlocks.LANTERN.get())
                 && entity.isOnFire()
                 && block.defaultBlockState().getValue(RealisticLanternBlock.getLitState())
-                != RealisticLanternBlock.LIT) {
+                != RealisticLanternBlock.LIT
+                && block.defaultBlockState().getValue(RealisticLanternBlock.OIL) !=0) {
             ClassiCraftMod.LOGGER.info("Test!");
             ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
             entity.getLevel().setBlockAndUpdate(entity.getOnPos(),

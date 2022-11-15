@@ -1,5 +1,9 @@
 package nameless.classicraft.entity;
 
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -23,6 +27,9 @@ public class SwineEntity extends Animal implements NeutralMob {
     @Nullable
     private UUID persistentAngerTarget;
     private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
+    private static final EntityDataAccessor<Boolean> HUNGY = SynchedEntityData.defineId(SwineEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> TIME_TILL_HUNGRY = SynchedEntityData.defineId(SwineEntity.class, EntityDataSerializers.INT);
+    int lastTimeSinceHungry;
 
     public SwineEntity(EntityType<? extends Animal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -46,6 +53,40 @@ public class SwineEntity extends Animal implements NeutralMob {
         this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, this::isAngryAt));
         this.targetSelector.addGoal(4, new ResetUniversalAngerTargetGoal<>(this, false));
+    }
+
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(HUNGY, true);
+        this.entityData.define(TIME_TILL_HUNGRY, 0);
+    }
+
+    public boolean isHungry() {
+        return this.entityData.get(HUNGY);
+    }
+
+    public void setHungry(boolean hungry) {
+        this.entityData.set(HUNGY, hungry);
+    }
+
+    public int getTimeTillHungry() {
+        return this.entityData.get(TIME_TILL_HUNGRY);
+    }
+
+    public void setTimeTillHungry(int ticks) {
+        this.entityData.set(TIME_TILL_HUNGRY, ticks);
+    }
+
+    public void addAdditionalSaveData(CompoundTag pCompound) {
+        super.addAdditionalSaveData(pCompound);
+        pCompound.putBoolean("IsHungry", this.isHungry());
+        pCompound.putInt("TimeTillHungry", this.getTimeTillHungry());
+    }
+
+    public void readAdditionalSaveData(CompoundTag pCompound) {
+        super.readAdditionalSaveData(pCompound);
+        this.setHungry(pCompound.getBoolean("IsHungry"));
+        this.setTimeTillHungry(pCompound.getInt("TimeTillHungry"));
     }
 
     public void startPersistentAngerTimer() {
