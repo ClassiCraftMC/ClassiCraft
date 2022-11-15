@@ -37,6 +37,11 @@ public class ModPlacedFeatures {
                     List.of(RarityFilter.onAverageOnceEvery(16),
                             InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome())));
 
+    public static final RegistryObject<PlacedFeature> CACTUS_BALL_PLACED = register("cactus_ball_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.CACTUS_BALL.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(16),
+                            InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome())));
+
     public static final RegistryObject<PlacedFeature> SALT_CAVE_PLACED =
             register("salt_cave_placed",
                     ModConfiguredFeatures.SALT_CAVE.getHolder().get(),

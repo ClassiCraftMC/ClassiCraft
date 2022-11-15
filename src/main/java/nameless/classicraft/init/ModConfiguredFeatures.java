@@ -54,6 +54,11 @@ public class ModConfiguredFeatures {
                     new RandomPatchConfiguration(16, 3, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
                             new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.ROSE.get()))))));
 
+    public static final RegistryObject<ConfiguredFeature<?, ?>> CACTUS_BALL = register("cactus_ball",
+            () -> new ConfiguredFeature<>(Feature.FLOWER,
+                    new RandomPatchConfiguration(16, 3, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                            new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.CACTUS_BALL.get()))))));
+
     public static final RegistryObject<ConfiguredFeature<?, ?>> SALT_STALACTITE_CAVE =
             register("salt_stalactite_cave",
                     () -> new ConfiguredFeature<>( Feature.SIMPLE_RANDOM_SELECTOR,

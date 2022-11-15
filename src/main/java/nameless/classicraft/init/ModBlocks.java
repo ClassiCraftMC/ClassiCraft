@@ -144,6 +144,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> CHRYSANTHEMUM = registerDecoration("chrysanthemum",
             () -> new FlowerBlock(MobEffects.DIG_SPEED, 2, BlockBehaviour.Properties.copy(Blocks.DANDELION)));
 
+    public static final RegistryObject<Block> CACTUS_BALL = registerDecoration("cactus_ball", () -> new CactusBallBlock(MobEffects.DIG_SPEED, 2
+            , BlockBehaviour.Properties.copy(Blocks.DANDELION)));
+
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockSupplier, @Nullable Function<T, ? extends BlockItem> blockItemFactory) {
         return registerBlock(ModBlocks.BLOCKS, ModItems.ITEMS, name, blockSupplier, blockItemFactory);
     }
