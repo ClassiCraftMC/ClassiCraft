@@ -9,20 +9,20 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.CauldronBlock;
 import net.minecraft.world.level.block.LayeredCauldronBlock;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
 public class BlockEvents {
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onCauldronInteract(PlayerRightClickBlockEvent event) {
         Block block = event.getBlock();
         Player player = event.getEntity();
         ItemStack itemStack = player.getMainHandItem();
-        if (block instanceof CauldronBlock) {
+        if (block.defaultBlockState().is(Blocks.CAULDRON)) {
             ClassiCraftMod.LOGGER.info("Test!");
             if (itemStack.is(Items.BLACK_WOOL)
                     && block.defaultBlockState().getValue(LayeredCauldronBlock.LEVEL) == 3) {
