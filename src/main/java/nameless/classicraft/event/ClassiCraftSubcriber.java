@@ -140,12 +140,13 @@ public class ClassiCraftSubcriber {
         ItemStack itemStack = event.getItemStack();
         if (itemStack.is(ModItems.LIT_TORCH.get()) || itemStack.is(ModItems.LIT_SOUL_TORCH.get())) {
             if (player.isShiftKeyDown()
-                    && itemStack.getCount() == 1
                     && itemStack.getItem()!= player.getOffhandItem().getItem()) {
                 event.getLevel().playSound(null, event.getPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0F, event.getLevel().getRandom().nextFloat() * 0.1F + 0.9F);
                 ItemStack newItem = new ItemStack(Items.STICK);
-                EquipmentSlot pSlot = EquipmentSlot.MAINHAND;
-                player.setItemSlot(pSlot, newItem);
+                int oldCount = itemStack.getCount();
+                player.getInventory().removeItem(itemStack);
+                newItem.setCount(oldCount);
+                player.getInventory().add(newItem);
             }
         }
     }
@@ -159,83 +160,87 @@ public class ClassiCraftSubcriber {
             BlockPos pos = event.getPos();
             if (itemStack.is(Items.FLINT_AND_STEEL)
                     && firstItem.is(ModItems.TORCH.get())
-                    && firstItem.getCount() == 1
                     && !event.getLevel().isRainingAt(event.getPos().above(2))) {
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
                 itemStack.setDamageValue(1);
                 ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
-                EquipmentSlot pSlot = EquipmentSlot.OFFHAND;
-                player.setItemSlot(pSlot, newItem);
+                int oldCount = firstItem.getCount();
+                player.getInventory().removeItem(firstItem);
+                newItem.setCount(oldCount);
+                player.getInventory().add(newItem);
             }
             if (itemStack.is(ModItems.TORCH.get())
                     && firstItem.is(Items.FLINT_AND_STEEL)
-                    && itemStack.getCount() == 1
                     && !event.getLevel().isRainingAt(event.getPos().above(2))) {
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
                 itemStack.setDamageValue(1);
                 ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
-                EquipmentSlot pSlot = EquipmentSlot.MAINHAND;
-                player.setItemSlot(pSlot, newItem);
-                newItem.grow(1);
+                int oldCount = itemStack.getCount();
+                player.getInventory().removeItem(itemStack);
+                newItem.setCount(oldCount);
+                player.getInventory().add(newItem);
             }
             if (itemStack.is(Items.FLINT_AND_STEEL)
                     && firstItem.is(ModItems.SOUL_TORCH.get())
-                    && firstItem.getCount() == 1
                     && !event.getLevel().isRainingAt(event.getPos().above(2))) {
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
                 itemStack.setDamageValue(1);
                 ItemStack newItem = new ItemStack(ModItems.LIT_SOUL_TORCH.get());
-                EquipmentSlot pSlot = EquipmentSlot.OFFHAND;
-                player.setItemSlot(pSlot, newItem);
+                int oldCount = firstItem.getCount();
+                player.getInventory().removeItem(firstItem);
+                newItem.setCount(oldCount);
+                player.getInventory().add(newItem);
             }
             if (itemStack.is(ModItems.SOUL_TORCH.get())
                     && firstItem.is(Items.FLINT_AND_STEEL)
-                    && itemStack.getCount() == 1
                     && !event.getLevel().isRainingAt(event.getPos().above(2))) {
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
                 itemStack.setDamageValue(1);
                 ItemStack newItem = new ItemStack(ModItems.LIT_SOUL_TORCH.get());
-                EquipmentSlot pSlot = EquipmentSlot.MAINHAND;
-                player.setItemSlot(pSlot, newItem);
-                newItem.grow(1);
+                int oldCount = itemStack.getCount();
+                player.getInventory().removeItem(itemStack);
+                newItem.setCount(oldCount);
+                player.getInventory().add(newItem);
             }
             if (itemStack.is(ModItems.LIT_TORCH.get())
                     && firstItem.is(ModItems.TORCH.get())
-                    && firstItem.getCount() == 1
                     && !event.getLevel().isRainingAt(event.getPos().above(2))) {
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
                 ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
-                EquipmentSlot pSlot = EquipmentSlot.OFFHAND;
-                player.setItemSlot(pSlot, newItem);
+                int oldCount = firstItem.getCount();
+                player.getInventory().removeItem(firstItem);
+                newItem.setCount(oldCount);
+                player.getInventory().add(newItem);
             }
             if (itemStack.is(ModItems.TORCH.get())
                     && firstItem.is(ModItems.LIT_TORCH.get())
-                    && itemStack.getCount() == 1
                     && !event.getLevel().isRainingAt(event.getPos().above(2))) {
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
                 ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
-                EquipmentSlot pSlot = EquipmentSlot.MAINHAND;
-                player.setItemSlot(pSlot, newItem);
-                newItem.grow(1);
+                int oldCount = firstItem.getCount();
+                player.getInventory().removeItem(firstItem);
+                newItem.setCount(oldCount);
+                player.getInventory().add(newItem);
             }
             if (itemStack.is(ModItems.LIT_SOUL_TORCH.get())
                     && firstItem.is(ModItems.TORCH.get())
-                    && firstItem.getCount() == 1
                     && !event.getLevel().isRainingAt(event.getPos().above(2))) {
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
                 ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
-                EquipmentSlot pSlot = EquipmentSlot.OFFHAND;
-                player.setItemSlot(pSlot, newItem);
+                int oldCount = itemStack.getCount();
+                player.getInventory().removeItem(itemStack);
+                newItem.setCount(oldCount);
+                player.getInventory().add(newItem);
             }
             if (itemStack.is(ModItems.TORCH.get())
                     && firstItem.is(ModItems.LIT_SOUL_TORCH.get())
-                    && itemStack.getCount() == 1
                     && !event.getLevel().isRainingAt(event.getPos().above(2))) {
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
                 ItemStack newItem = new ItemStack(ModItems.LIT_TORCH.get());
-                EquipmentSlot pSlot = EquipmentSlot.MAINHAND;
-                player.setItemSlot(pSlot, newItem);
-                newItem.grow(1);
+                int oldCount = firstItem.getCount();
+                player.getInventory().removeItem(firstItem);
+                newItem.setCount(oldCount);
+                player.getInventory().add(newItem);
             }
         }
     }
