@@ -55,6 +55,17 @@ public class SwineEntity extends Animal implements NeutralMob {
         this.targetSelector.addGoal(4, new ResetUniversalAngerTargetGoal<>(this, false));
     }
 
+    public void tick() {
+        super.tick();
+        if (!this.isHungry() && lastTimeSinceHungry < this.getTimeTillHungry()) {
+            lastTimeSinceHungry++;
+        }
+        if (lastTimeSinceHungry >= this.getTimeTillHungry()) {
+            this.setHungry(true);
+            lastTimeSinceHungry = 0;
+        }
+    }
+
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(HUNGY, true);

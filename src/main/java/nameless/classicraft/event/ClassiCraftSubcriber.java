@@ -99,6 +99,7 @@ public class ClassiCraftSubcriber {
         bus.addListener(ClassiCraftSubcriber::onLanternTicking);
         bus.addListener(ClassiCraftSubcriber::extinguishLanternByPotion);
         bus.addListener(ClassiCraftSubcriber::shiftLantern);
+        bus.addListener(ClassiCraftSubcriber::onLanternInWater);
     }
 
     public static void extinguishTorchByPotion(ProjectileHitEvent event) {
@@ -501,6 +502,32 @@ public class ClassiCraftSubcriber {
         if (itemStack.is(ModItems.LIT_SOUL_LANTERN.get())
                 && itemEntity.getAge()
                 == 4 * 1200) {
+            int oldCount = itemEntity.getItem().getCount();
+            itemEntity.remove(Entity.RemovalReason.KILLED);
+            ItemEntity newItem = new ItemEntity(
+                    itemEntity.getLevel(),
+                    itemEntity.getX(), itemEntity.getY(),
+                    itemEntity.getZ(),
+                    ModItems.SOUL_LANTERN.get().getDefaultInstance());
+            newItem.getItem().setCount(oldCount);
+            itemEntity.getLevel().addFreshEntity(newItem);
+        }
+    }
+
+    public static void onLanternInWater(ItemEntityTickEvent event) {
+        ItemEntity itemEntity = event.getEntity();
+        if (itemEntity.getItem().is(ModItems.LIT_LANTERN.get()) && itemEntity.isInWater()) {
+            int oldCount = itemEntity.getItem().getCount();
+            itemEntity.remove(Entity.RemovalReason.KILLED);
+            ItemEntity newItem = new ItemEntity(
+                    itemEntity.getLevel(),
+                    itemEntity.getX(), itemEntity.getY(),
+                    itemEntity.getZ(),
+                    ModItems.LANTERN.get().getDefaultInstance());
+            newItem.getItem().setCount(oldCount);
+            itemEntity.getLevel().addFreshEntity(newItem);
+        }
+        if (itemEntity.getItem().is(ModItems.LIT_SOUL_LANTERN.get()) && itemEntity.isInWater()) {
             int oldCount = itemEntity.getItem().getCount();
             itemEntity.remove(Entity.RemovalReason.KILLED);
             ItemEntity newItem = new ItemEntity(
