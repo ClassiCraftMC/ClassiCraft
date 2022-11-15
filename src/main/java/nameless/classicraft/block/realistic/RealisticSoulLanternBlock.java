@@ -49,8 +49,8 @@ public class RealisticSoulLanternBlock extends LanternBlock {
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         ItemStack heldStack = pPlayer.getItemInHand(pHand);
         if (heldStack.getItem() == Items.FLINT_AND_STEEL) {
-            if (Objects.requireNonNull(Minecraft.getInstance().level).isRaining()){
-                return InteractionResult.FAIL;
+            if (pLevel.isRainingAt(pPos.above(1))){
+                replaceLantern(pPos,pLevel,pState,pState.getValue(BURNTIME), UNLIT, pState.getValue(OIL));
             }
             return useAsFlint(pState,pLevel,pPos,pPlayer,pHand);
         } else if(heldStack.is(Items.HONEYCOMB))
