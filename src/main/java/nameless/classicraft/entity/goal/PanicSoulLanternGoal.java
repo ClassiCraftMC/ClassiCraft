@@ -38,7 +38,8 @@ public class PanicSoulLanternGoal extends Goal {
     }
 
     protected boolean shouldPanic() {
-        BlockPos blockpos = this.mob.blockPosition().immutable();
+        BlockPos blockpos =
+                this.mob.getOnPos().immutable();
         return IS_SOUL_LANTERN.test(mob.getLevel().getBlockState(blockpos));
     }
 
