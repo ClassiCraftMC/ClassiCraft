@@ -25,10 +25,6 @@ public class SharkAttackGoal extends MeleeAttackGoal {
             ((BaskingSharkEntity) this.mob).attack(enemy);
             ((BaskingSharkEntity) this.mob).setHungry(false);
             ((BaskingSharkEntity) this.mob).setTimeTillHungry(mob.getRandom().nextInt(300) + 300);
-            if (enemy instanceof Player) {
-                mob.setTarget(null);
-                this.stop();
-            }
         }
     }
 
