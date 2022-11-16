@@ -1,12 +1,12 @@
 modLoader="javafml"
 loaderVersion="[43,)"
-license="LGPLv2.1"
+license="GPLv2.0"
 [[mods]]
 modId="classicraft"
 version="${file.jarVersion}"
 displayName="Classicraft Mod"
 logoFile="classicraft.png"
-authors="Nameless, 1798643961"
+authors="Nameless, 1798643961, Thaumstrial, Vapour_Beatle"
 
 description = '''
 
