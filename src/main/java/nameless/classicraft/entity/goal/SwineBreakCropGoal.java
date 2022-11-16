@@ -35,11 +35,11 @@ import java.util.ArrayList;
 
 public class SwineBreakCropGoal extends MoveToBlockGoal {
     private final Block blockToRemove;
-    private final Mob removerMob;
+    private final SwineEntity removerMob;
     private int ticksSinceReachedGoal;
     private static final int WAIT_AFTER_BLOCK_FOUND = 20;
 
-    public SwineBreakCropGoal(PathfinderMob pRemoverMob, double pSpeedModifier, int pSearchRange) {
+    public SwineBreakCropGoal(SwineEntity pRemoverMob, double pSpeedModifier, int pSearchRange) {
         super(pRemoverMob, pSpeedModifier, 24, pSearchRange);
         this.blockToRemove = Blocks.FARMLAND;
         this.removerMob = pRemoverMob;
@@ -147,7 +147,7 @@ public class SwineBreakCropGoal extends MoveToBlockGoal {
 
     protected boolean isValidTarget(LevelReader pLevel, BlockPos pPos) {
         ChunkAccess chunkaccess = pLevel.getChunk(SectionPos.blockToSectionCoord(pPos.getX()), SectionPos.blockToSectionCoord(pPos.getZ()), ChunkStatus.FULL, false);
-        if (chunkaccess == null) {
+        if (chunkaccess == null || !this.removerMob.isHungry()) {
             return false;
         } else if (!chunkaccess.getBlockState(pPos).canEntityDestroy(pLevel, pPos, this.removerMob)) {
             return false;
