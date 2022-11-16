@@ -145,7 +145,7 @@ public class RealisticLanternBlock extends LanternBlock {
         if(state.getValue(RealisticLanternBlock.LITSTATE) == 0) {
             return 0;
         } else {
-            return 15;
+            return 9;
         }
     }
 
