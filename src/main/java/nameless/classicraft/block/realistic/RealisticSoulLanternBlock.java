@@ -23,6 +23,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -88,8 +89,9 @@ public class RealisticSoulLanternBlock extends LanternBlock {
         replaceLantern(pPos,pLevel,pState,TOTAL_BURN_TIME,LIT,pState.getValue(OIL));
         pLevel.updateNeighborsAt(pPos,this);
         pLevel.playSound(pPlayer,pPos,SoundEvents.FLINTANDSTEEL_USE,SoundSource.PLAYERS,1,0.9f);
-        if(!pPlayer.isCreative())
+        if(!pPlayer.isCreative()) {
             pPlayer.getItemInHand(pHand).setDamageValue(pPlayer.getItemInHand(pHand).getDamageValue() + 1);
+        }
         return InteractionResult.SUCCESS;
     }
 
