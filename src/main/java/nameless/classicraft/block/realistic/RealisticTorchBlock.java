@@ -294,7 +294,7 @@ public class RealisticTorchBlock extends Block {
         return (state) ->{
             if(state.getValue(RealisticTorchBlock.LITSTATE) == 2)
             {
-                return 14;
+                return 12;
             }
             else if(state.getValue(RealisticTorchBlock.LITSTATE) == 1)
             {

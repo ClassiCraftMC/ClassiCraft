@@ -107,9 +107,7 @@ public class ClassiCraftSubcriber {
         Projectile projectile = event.getEntity();
         if ((block != null
                 && projectile instanceof ThrownPotion
-                && block.defaultBlockState().is(ModBlocks.TORCH.get()))
-                && block.defaultBlockState().getValue(RealisticTorchBlock.getLitState())
-                != RealisticTorchBlock.UNLIT) {
+                && block.defaultBlockState().is(ModBlocks.TORCH.get()))) {
             ModBlockProperties.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
             projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
                     Blocks.AIR.defaultBlockState());
@@ -122,9 +120,7 @@ public class ClassiCraftSubcriber {
         }
         if ((block != null
                 && projectile instanceof ThrownPotion
-                && block.defaultBlockState().is(ModBlocks.SOUL_TORCH.get()))
-                && block.defaultBlockState().getValue(RealisticSoulTorchBlock.getLitState())
-                != RealisticSoulTorchBlock.UNLIT) {
+                && block.defaultBlockState().is(ModBlocks.SOUL_TORCH.get()))) {
             ModBlockProperties.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
             projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
                     Blocks.AIR.defaultBlockState());
