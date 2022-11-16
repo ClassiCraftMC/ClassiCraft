@@ -23,6 +23,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -39,9 +40,7 @@ public class RealisticSoulLanternBlock extends LanternBlock {
     public static final IntegerProperty OIL = IntegerProperty.create("oil",0,3);
 
     public RealisticSoulLanternBlock() {
-        super(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> {
-            return RealisticSoulLanternBlock.getLitState(state);
-        }).noOcclusion());
+        super(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel(RealisticSoulLanternBlock::getLitState).noOcclusion());
         registerDefaultState(defaultBlockState().setValue(LITSTATE,0).setValue(BURNTIME,0).setValue(OIL,0).setValue(OIL,0));
     }
 
@@ -90,8 +89,9 @@ public class RealisticSoulLanternBlock extends LanternBlock {
         replaceLantern(pPos,pLevel,pState,TOTAL_BURN_TIME,LIT,pState.getValue(OIL));
         pLevel.updateNeighborsAt(pPos,this);
         pLevel.playSound(pPlayer,pPos,SoundEvents.FLINTANDSTEEL_USE,SoundSource.PLAYERS,1,0.9f);
-        if(!pPlayer.isCreative())
+        if(!pPlayer.isCreative()) {
             pPlayer.getItemInHand(pHand).setDamageValue(pPlayer.getItemInHand(pHand).getDamageValue() + 1);
+        }
         return InteractionResult.SUCCESS;
     }
 
@@ -147,7 +147,7 @@ public class RealisticSoulLanternBlock extends LanternBlock {
         if(state.getValue(RealisticSoulLanternBlock.LITSTATE) == 0) {
             return 0;
         } else {
-            return 15;
+            return 9;
         }
     }
 
