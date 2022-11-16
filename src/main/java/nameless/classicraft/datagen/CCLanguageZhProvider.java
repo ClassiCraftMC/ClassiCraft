@@ -110,6 +110,7 @@ public class CCLanguageZhProvider extends LanguageProvider {
         add(ModItems.TROUT_BUCKET.get(), "鳟鱼桶");
         add(ModBlocks.FIRE_BOWL.get(), "火坑");
         add(ModBlocks.SOUL_FIRE_BOWL.get(), "灵魂火坑");
+        add(ModBlocks.LANTERN.get(), "灯笼");
         add("item.classicraft.lit_soul_lantern", "点燃的灵魂灯笼");
         add("item.classicraft.lit_lantern", "点燃的灯笼");
         add("info.classicraft.stop_use_lantern", "生存模式下放置原版灯笼将替换为模组灯笼，你可以在天工开物模组配置文件中更改.");

@@ -39,9 +39,7 @@ public class RealisticLanternBlock extends LanternBlock {
     public static final IntegerProperty OIL = IntegerProperty.create("oil",0,3);
 
     public RealisticLanternBlock() {
-        super(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> {
-            return RealisticLanternBlock.getLitState(state);
-        }).noOcclusion());
+        super(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel(RealisticLanternBlock::getLitState).noOcclusion());
         registerDefaultState(defaultBlockState().setValue(LITSTATE,0).setValue(BURNTIME,0).setValue(OIL,0).setValue(OIL,0));
     }
 
