@@ -17,5 +17,6 @@ public class CCBlockStatesProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         simpleBlock(ModBlocks.SALT_BLOCK.get());
         simpleBlock(ModBlocks.SALT_ROCK_BLOCK.get());
+        simpleBlock(ModBlocks.ALGAE.get());
     }
 }
