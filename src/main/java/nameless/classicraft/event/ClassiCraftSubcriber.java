@@ -3,10 +3,10 @@ package nameless.classicraft.event;
 import com.mojang.datafixers.util.Pair;
 import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.ClassiCraftHooks;
-import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.api.event.ItemEntityTickEvent;
 import nameless.classicraft.api.event.PlayerRightClickBlockEvent;
 import nameless.classicraft.api.event.ProjectileHitEvent;
+import nameless.classicraft.api.light.LightAPI;
 import nameless.classicraft.block.realistic.RealisticLanternBlock;
 import nameless.classicraft.block.realistic.RealisticSoulLanternBlock;
 import nameless.classicraft.block.realistic.RealisticSoulTorchBlock;
@@ -33,7 +33,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Squid;
 import net.minecraft.world.entity.animal.Turtle;
@@ -51,7 +50,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
@@ -142,9 +140,9 @@ public class ClassiCraftSubcriber {
             ModBlockProperties.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
             projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
                     ModBlocks.LANTERN.get().defaultBlockState()
-                            .setValue(RealisticLanternBlock.getLitState(),0)
-                            .setValue(RealisticLanternBlock.BURNTIME,
-                                    RealisticLanternBlock.TOTAL_BURN_TIME)
+                            .setValue(LightAPI.getLitState(),0)
+                            .setValue(RealisticLanternBlock.LANTERN_BURNTIME,
+                                    RealisticLanternBlock.LANTERN_TOTAL_BURN_TIME)
                             .setValue(RealisticLanternBlock.HANGING,
                                     block.defaultBlockState().getValue(RealisticLanternBlock.HANGING))
                             .setValue(RealisticLanternBlock.WATERLOGGED,
@@ -157,9 +155,9 @@ public class ClassiCraftSubcriber {
             ModBlockProperties.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
             projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
                     ModBlocks.SOUL_LANTERN.get().defaultBlockState()
-                            .setValue(RealisticLanternBlock.getLitState(),0)
-                            .setValue(RealisticLanternBlock.BURNTIME,
-                                    RealisticLanternBlock.TOTAL_BURN_TIME)
+                            .setValue(LightAPI.getLitState(),0)
+                            .setValue(RealisticLanternBlock.LANTERN_BURNTIME,
+                                    RealisticLanternBlock.LANTERN_TOTAL_BURN_TIME)
                             .setValue(RealisticLanternBlock.HANGING,
                                     block.defaultBlockState().getValue(RealisticLanternBlock.HANGING))
                             .setValue(RealisticLanternBlock.WATERLOGGED,
@@ -174,14 +172,14 @@ public class ClassiCraftSubcriber {
         if (block != null
                 && block.defaultBlockState().is(ModBlocks.LANTERN.get())
                 && entity.isOnFire()
-                && block.defaultBlockState().getValue(RealisticLanternBlock.getLitState())
+                && block.defaultBlockState().getValue(LightAPI.getLitState())
                 != RealisticLanternBlock.LIT) {
             ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
             entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
                     ModBlocks.LANTERN.get().defaultBlockState()
-                            .setValue(RealisticLanternBlock.getLitState(),1)
-                            .setValue(RealisticLanternBlock.BURNTIME,
-                                    RealisticLanternBlock.TOTAL_BURN_TIME)
+                            .setValue(LightAPI.getLitState(),1)
+                            .setValue(RealisticLanternBlock.LANTERN_BURNTIME,
+                                    RealisticLanternBlock.LANTERN_TOTAL_BURN_TIME)
                             .setValue(RealisticLanternBlock.HANGING,
                                     block.defaultBlockState().getValue(RealisticLanternBlock.HANGING))
                             .setValue(RealisticLanternBlock.WATERLOGGED,
