@@ -292,8 +292,8 @@ public interface LightAPI {
         pLevel.scheduleTick(pPos,block, TICK_INTERVAL);
     }
 
-    default BlockState getTorchStateForPlacement(BlockPlaceContext pContext, Block block) {
-        BlockState state =Blocks.TORCH.getStateForPlacement(pContext);
+    default BlockState getTorchStateForPlacement(BlockPlaceContext pContext, Block baseBlock, Block block) {
+        BlockState state = baseBlock.getStateForPlacement(pContext);
         ItemStack placeStack = pContext.getPlayer().getItemInHand(pContext.getHand());
         if(!placeStack.is(ModItems.LIT_TORCH.get())) return state == null ? null:block.defaultBlockState();
         if(placeStack.getOrCreateTag().contains("burnTime"))

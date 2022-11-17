@@ -96,7 +96,7 @@ public class RealisticTorchBlock extends TorchBlock implements LightAPI {
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-     getTorchStateForPlacement(pContext, this);
+     getTorchStateForPlacement(pContext, Blocks.TORCH, this);
      return super.getStateForPlacement(pContext);
     }
 

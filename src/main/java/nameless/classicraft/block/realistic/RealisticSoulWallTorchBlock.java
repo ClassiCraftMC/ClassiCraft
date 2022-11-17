@@ -2,16 +2,12 @@ package nameless.classicraft.block.realistic;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import nameless.classicraft.ClassiCraftConfiguration;
-import nameless.classicraft.init.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.SpawnPlacements;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -76,40 +72,6 @@ public class RealisticSoulWallTorchBlock extends RealisticSoulTorchBlock {
     }
 
     @Override
-    public void changeToLit(Level world, BlockPos pos, BlockState state) {
-        world.setBlockAndUpdate(pos, ModBlocks.SOUL_WALL_TORCH.get().defaultBlockState().setValue(LITSTATE, LIT).setValue(BURNTIME, getInitialBurnTime()).setValue(FACING, state.getValue(FACING)));
-        if (SHOULD_BURN_OUT) {
-            world.scheduleTick(pos, this, TICK_RATE);
-        }
-    }
-
-    @Override
-    public void changeToSmoldering(Level world, BlockPos pos, BlockState state, int newBurnTime) {
-        if (SHOULD_BURN_OUT) {
-            world.setBlockAndUpdate(pos, ModBlocks.SOUL_WALL_TORCH
-                    .get().defaultBlockState().setValue(LITSTATE, SMOLDERING)
-                    .setValue(BURNTIME, newBurnTime).setValue(FACING, state.getValue(FACING)));
-            world.scheduleTick(pos, this, TICK_RATE);
-        }
-    }
-
-    public void changeToUnlit(Level pLevel,BlockPos pPos,BlockState pState)
-    {
-        if (SHOULD_BURN_OUT) {
-            if (ClassiCraftConfiguration.noRelightEnabled.get() || ClassiCraftConfiguration.turnToStickEnabled.get()) {
-                pLevel.setBlockAndUpdate(pPos, Blocks.AIR.defaultBlockState());
-            }
-            if (ClassiCraftConfiguration.turnToStickEnabled.get()) {
-                ItemEntity itemEntity = new ItemEntity(pLevel, pPos.getX(), pPos.getY(), pPos.getZ(), Items.STICK.getDefaultInstance());
-                pLevel.addFreshEntity(itemEntity);
-            }
-        }else {
-            pLevel.setBlockAndUpdate(pPos, ModBlocks.SOUL_TORCH.get().defaultBlockState());
-        }
-        pLevel.scheduleTick(pPos,this, TICK_INTERVAL);
-    }
-
-    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         super.createBlockStateDefinition(pBuilder);
         pBuilder.add(FACING);
@@ -136,21 +98,9 @@ public class RealisticSoulWallTorchBlock extends RealisticSoulTorchBlock {
     }
 
     @Nullable
-    public BlockState getStateForPlacement(BlockPlaceContext context) {
-        BlockState blockstate = this.defaultBlockState();
-        LevelReader levelreader = context.getLevel();
-        BlockPos blockpos = context.getClickedPos();
-        Direction[] directions = context.getNearestLookingDirections();
-        for(Direction direction : directions) {
-            if (direction.getAxis().isHorizontal()) {
-                Direction direction1 = direction.getOpposite();
-                blockstate = blockstate.setValue(FACING, direction1);
-                if (blockstate.canSurvive(levelreader, blockpos)) {
-                    return blockstate;
-                }
-            }
-        }
-
-        return null;
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext pContext) {
+        getTorchStateForPlacement(pContext, Blocks.WALL_TORCH, this);
+        return super.getStateForPlacement(pContext);
     }
 }

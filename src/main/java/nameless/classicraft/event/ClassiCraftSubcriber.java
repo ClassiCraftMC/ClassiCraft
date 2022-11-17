@@ -167,7 +167,8 @@ public class ClassiCraftSubcriber {
                 && block.defaultBlockState().is(ModBlocks.LANTERN.get())
                 && entity.isOnFire()
                 && block.defaultBlockState().getValue(LightAPI.getLitState())
-                != RealisticLanternBlock.LIT) {
+                != RealisticLanternBlock.LIT
+                && block.defaultBlockState().getValue(LightAPI.OIL) != 0) {
             ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
             entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
                     ModBlocks.LANTERN.get().defaultBlockState()
@@ -184,7 +185,8 @@ public class ClassiCraftSubcriber {
                 && block.defaultBlockState().is(ModBlocks.SOUL_LANTERN.get())
                 && entity.isOnFire()
                 && block.defaultBlockState().getValue(LightAPI.getLitState())
-                != RealisticSoulLanternBlock.LIT) {
+                != RealisticSoulLanternBlock.LIT
+                && block.defaultBlockState().getValue(LightAPI.OIL) != 0) {
             ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
             entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
                     ModBlocks.SOUL_LANTERN.get().defaultBlockState()
