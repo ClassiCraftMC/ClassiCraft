@@ -1,4 +1,4 @@
-package nameless.classicraft.mixin;
+package nameless.classicraft.mixin.event;
 
 import nameless.classicraft.api.event.MobInitGoalEvent;
 import net.minecraft.world.entity.EntityType;

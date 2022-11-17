@@ -1,4 +1,4 @@
-package nameless.classicraft.mixin;
+package nameless.classicraft.mixin.event;
 
 import nameless.classicraft.api.event.ItemEntityTickEvent;
 import net.minecraft.world.entity.item.ItemEntity;

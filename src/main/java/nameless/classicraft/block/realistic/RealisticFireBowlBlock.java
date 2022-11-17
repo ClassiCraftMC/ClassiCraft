@@ -53,7 +53,7 @@ public class RealisticFireBowlBlock extends Block implements LightAPI {
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-       return useBlockNeedFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, this, Items.COAL, Items.CHARCOAL);
+       return useBlockNeedFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, this, Items.COAL, Items.CHARCOAL, FIRE_BOWL_BURNTIME);
     }
 
     @Override
@@ -94,6 +94,7 @@ public class RealisticFireBowlBlock extends Block implements LightAPI {
     public static int getInitialBurnTime() {
         return FIRE_BOWL_SHOULD_BURN_OUT ? FIRE_BOWL_INITIAL_BURN_TIME : 0;
     }
+
     private static ToIntFunction<BlockState> getLightValueFromState() {
         return (state) -> {
             if (state.getValue(RealisticFireBowlBlock.LITSTATE) == RealisticFireBowlBlock.LIT) {

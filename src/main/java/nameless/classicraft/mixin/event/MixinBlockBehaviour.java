@@ -1,4 +1,4 @@
-package nameless.classicraft.mixin;
+package nameless.classicraft.mixin.event;
 
 import nameless.classicraft.api.event.PlayerRightClickBlockEvent;
 import net.minecraft.core.BlockPos;

@@ -52,11 +52,11 @@ public interface LightAPI {
         return LITSTATE;
     }
 
-    default InteractionResult useBlockNeedFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, Block block, Item fuelItem, Item fuelItem2) {
+    default InteractionResult useBlockNeedFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, Block block, Item fuelItem, Item fuelItem2, IntegerProperty burnTime) {
         ItemStack heldStack = pPlayer.getItemInHand(pHand);
         if (heldStack.getItem() == Items.FLINT_AND_STEEL) {
             if (pLevel.isRainingAt(pPos.above(1))){
-                replaceLantern(pPos,pLevel,pState,pState.getValue(LANTERN_BURNTIME), UNLIT, pState.getValue(OIL), block);
+                replaceLantern(pPos,pLevel,pState,pState.getValue(burnTime), UNLIT, pState.getValue(OIL), block);
             }
             return useAsFlint(pState,pLevel,pPos,pPlayer,pHand, block);
         } else if(heldStack.is(fuelItem) || heldStack.is(fuelItem2))
@@ -65,7 +65,7 @@ public interface LightAPI {
             if(!pPlayer.isCreative()){
                 heldStack.getItem().getDefaultInstance().shrink(1);
             }
-            replaceLantern(pPos,pLevel,pState,pState.getValue(LANTERN_BURNTIME),pState.getValue(LITSTATE),pState.getValue(OIL) + 1, block);
+            replaceLantern(pPos,pLevel,pState,pState.getValue(burnTime),pState.getValue(LITSTATE),pState.getValue(OIL) + 1, block);
             pLevel.playSound(null,pPos, SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS,1,0.3f*pLevel.random.nextFloat()*0.1f);
             return InteractionResult.SUCCESS;
         }
