@@ -726,7 +726,7 @@ public class ClassiCraftSubcriber {
             if (!((Player) entity).isCreative()) {
                 level.playSound(null, event.getPos(), SoundEvents.LANTERN_PLACE, SoundSource.BLOCKS, 1, 1);
                 level.setBlock(event.getPos(), ModBlocks.LANTERN.get().defaultBlockState(), 1);
-                entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_lantern"));
+                //entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_lantern"));
             }
         }
         if (entity instanceof Player
@@ -738,7 +738,7 @@ public class ClassiCraftSubcriber {
             if (!((Player) entity).isCreative()) {
                 level.playSound(null, event.getPos(), SoundEvents.LANTERN_PLACE, SoundSource.BLOCKS, 1, 1);
                 level.setBlock(event.getPos(), ModBlocks.SOUL_LANTERN.get().defaultBlockState(), 1);
-                entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_lantern"));
+                //entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_lantern"));
             }
         }
     }
