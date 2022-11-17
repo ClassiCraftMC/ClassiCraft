@@ -2,7 +2,7 @@ package nameless.classicraft;
 
 import com.mojang.logging.LogUtils;
 import nameless.classicraft.block.entity.ModBlockEntities;
-import nameless.classicraft.event.ClassiCraftSubcriber;
+import nameless.classicraft.event.ClientEvents;
 import nameless.classicraft.event.TestEvents;
 import nameless.classicraft.init.*;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -35,13 +35,13 @@ public class ClassiCraftMod {
         ModBlockEntities.BLOCK_ENTITY_TYPES.register(modEventBus);
         ModEntities.ENTITIES.register(modEventBus);
         ModSounds.SOUNDS.register(modEventBus);
-        ClassiCraftSubcriber.init();
         ModEffects.MOB_EFFECTS.register(modEventBus);
         ModBiomeFeatures.FEATURES.register(modEventBus);
         ModPotions.POTIONS.register(modEventBus);
         ModConfiguredFeatures.CONFIGURED_FEATURES.register(modEventBus);
         ModPlacedFeatures.PLACED_FEATURES.register(modEventBus);
         ModFeatures.FEATURES.register(modEventBus);
+        ClientEvents.initClient();
         TestEvents.init();
     }
 }

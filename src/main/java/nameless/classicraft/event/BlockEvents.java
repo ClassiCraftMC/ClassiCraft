@@ -3,10 +3,13 @@ package nameless.classicraft.event;
 import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.api.event.PlayerRightClickBlockEvent;
+import nameless.classicraft.api.event.ProjectileHitEvent;
+import nameless.classicraft.api.light.LightAPI;
 import nameless.classicraft.block.realistic.RealisticLanternBlock;
 import nameless.classicraft.block.realistic.RealisticSoulLanternBlock;
 import nameless.classicraft.block.realistic.RealisticSoulTorchBlock;
 import nameless.classicraft.block.realistic.RealisticTorchBlock;
+import nameless.classicraft.init.ModBlockProperties;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.network.chat.Component;
@@ -15,6 +18,8 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.entity.projectile.ThrownPotion;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -27,6 +32,148 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
 public class BlockEvents {
+
+    @SubscribeEvent
+    public static void extinguishTorchByPotion(ProjectileHitEvent event) {
+        Block block = event.getHitBlock();
+        Projectile projectile = event.getEntity();
+        if ((block != null
+                && projectile instanceof ThrownPotion
+                && block.defaultBlockState().is(ModBlocks.TORCH.get()))) {
+            ModBlockProperties.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
+            projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
+                    Blocks.AIR.defaultBlockState());
+            ItemEntity newItem = new ItemEntity(
+                    projectile.getLevel(),
+                    projectile.getX(), projectile.getY(),
+                    projectile.getZ(),
+                    Items.STICK.getDefaultInstance());
+            projectile.getLevel().addFreshEntity(newItem);
+        }
+        if ((block != null
+                && projectile instanceof ThrownPotion
+                && block.defaultBlockState().is(ModBlocks.SOUL_TORCH.get()))) {
+            ModBlockProperties.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
+            projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
+                    Blocks.AIR.defaultBlockState());
+            ItemEntity newItem = new ItemEntity(
+                    projectile.getLevel(),
+                    projectile.getX(), projectile.getY(),
+                    projectile.getZ(),
+                    Items.STICK.getDefaultInstance());
+            projectile.getLevel().addFreshEntity(newItem);
+        }
+    }
+
+    @SubscribeEvent
+    public static void extinguishLanternByPotion(ProjectileHitEvent event) {
+        Block block = event.getHitBlock();
+        Projectile projectile = event.getEntity();
+        if ((block != null
+                && projectile instanceof ThrownPotion
+                && block.defaultBlockState().is(ModBlocks.LANTERN.get()))) {
+            ModBlockProperties.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
+            projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
+                    ModBlocks.LANTERN.get().defaultBlockState()
+                            .setValue(LightAPI.getLitState(),0)
+                            .setValue(RealisticLanternBlock.LANTERN_BURNTIME,
+                                    RealisticLanternBlock.LANTERN_TOTAL_BURN_TIME)
+                            .setValue(RealisticLanternBlock.HANGING,
+                                    block.defaultBlockState().getValue(RealisticLanternBlock.HANGING))
+                            .setValue(RealisticLanternBlock.WATERLOGGED,
+                                    block.defaultBlockState().getValue(RealisticSoulLanternBlock.WATERLOGGED)));
+            projectile.getLevel().updateNeighborsAt(projectile.getOnPos(), block);
+        }
+        if ((block != null
+                && projectile instanceof ThrownPotion
+                && block.defaultBlockState().is(ModBlocks.SOUL_LANTERN.get()))) {
+            ModBlockProperties.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
+            projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
+                    ModBlocks.SOUL_LANTERN.get().defaultBlockState()
+                            .setValue(LightAPI.getLitState(),0)
+                            .setValue(RealisticLanternBlock.LANTERN_BURNTIME,
+                                    RealisticLanternBlock.LANTERN_TOTAL_BURN_TIME)
+                            .setValue(RealisticLanternBlock.HANGING,
+                                    block.defaultBlockState().getValue(RealisticLanternBlock.HANGING))
+                            .setValue(RealisticLanternBlock.WATERLOGGED,
+                                    block.defaultBlockState().getValue(RealisticSoulLanternBlock.WATERLOGGED)));
+            projectile.getLevel().updateNeighborsAt(projectile.getOnPos(), block);
+        }
+    }
+
+    @SubscribeEvent
+    public static void projetileFireOnLantern(ProjectileHitEvent event) {
+        Block block = event.getHitBlock();
+        Projectile entity = event.getEntity();
+        if (block != null
+                && block.defaultBlockState().is(ModBlocks.LANTERN.get())
+                && entity.isOnFire()
+                && block.defaultBlockState().getValue(LightAPI.getLitState())
+                != RealisticLanternBlock.LIT
+                && block.defaultBlockState().getValue(LightAPI.OIL) != 0
+                && entity.getLevel().isRainingAt(event.getEntity().getOnPos().above())) {
+            ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
+            entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
+                    ModBlocks.LANTERN.get().defaultBlockState()
+                            .setValue(LightAPI.getLitState(),1)
+                            .setValue(RealisticLanternBlock.LANTERN_BURNTIME,
+                                    RealisticLanternBlock.LANTERN_TOTAL_BURN_TIME)
+                            .setValue(RealisticLanternBlock.HANGING,
+                                    block.defaultBlockState().getValue(RealisticLanternBlock.HANGING))
+                            .setValue(RealisticLanternBlock.WATERLOGGED,
+                                    block.defaultBlockState().getValue(RealisticSoulLanternBlock.WATERLOGGED)));
+            entity.getLevel().updateNeighborsAt(entity.getOnPos(), block);
+        }
+        if (block != null
+                && block.defaultBlockState().is(ModBlocks.SOUL_LANTERN.get())
+                && entity.isOnFire()
+                && block.defaultBlockState().getValue(LightAPI.getLitState())
+                != RealisticSoulLanternBlock.LIT
+                && block.defaultBlockState().getValue(LightAPI.OIL) != 0
+                && entity.getLevel().isRainingAt(event.getEntity().getOnPos().above())) {
+            ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
+            entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
+                    ModBlocks.SOUL_LANTERN.get().defaultBlockState()
+                            .setValue(LightAPI.getLitState(), 1)
+                            .setValue(RealisticSoulLanternBlock.LANTERN_BURNTIME,
+                                    RealisticSoulLanternBlock.LANTERN_TOTAL_BURN_TIME)
+                            .setValue(RealisticSoulLanternBlock.HANGING,
+                                    block.defaultBlockState().getValue(RealisticSoulLanternBlock.HANGING))
+                            .setValue(RealisticSoulLanternBlock.WATERLOGGED,
+                                    block.defaultBlockState().getValue(RealisticSoulLanternBlock.WATERLOGGED)));
+            entity.getLevel().updateNeighborsAt(entity.getOnPos(), block);
+        }
+    }
+
+    @SubscribeEvent
+    public static void projectileFireOnTorch(ProjectileHitEvent event) {
+        Block block = event.getHitBlock();
+        Entity entity = event.getEntity();
+        if (block != null
+                && block.defaultBlockState().is(ModBlocks.TORCH.get())
+                && entity.isOnFire()
+                && block.defaultBlockState().getValue(RealisticTorchBlock.getLitState())
+                != RealisticTorchBlock.LIT) {
+            ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
+            entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
+                    ModBlocks.TORCH.get().defaultBlockState()
+                            .setValue(RealisticTorchBlock.getLitState(),2)
+                            .setValue(RealisticTorchBlock.TORCH_BURNTIME,
+                                    RealisticTorchBlock.getInitialBurnTime()));
+        }
+        if (block != null
+                && block.defaultBlockState().is(ModBlocks.SOUL_TORCH.get())
+                && entity.isOnFire()
+                && block.defaultBlockState().getValue(RealisticSoulTorchBlock.getLitState())
+                != RealisticSoulTorchBlock.LIT) {
+            ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
+            entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
+                    ModBlocks.SOUL_TORCH.get().defaultBlockState()
+                            .setValue(RealisticSoulTorchBlock.getLitState(),2)
+                            .setValue(RealisticSoulTorchBlock.TORCH_BURNTIME,
+                                    RealisticSoulTorchBlock.getInitialBurnTime()));
+        }
+    }
 
     @SubscribeEvent
     public static void rightClickTorch(PlayerRightClickBlockEvent event) {
