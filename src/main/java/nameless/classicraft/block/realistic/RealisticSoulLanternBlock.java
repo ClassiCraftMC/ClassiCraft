@@ -57,15 +57,15 @@ public class RealisticSoulLanternBlock extends LanternBlock implements LightAPI 
     public static ToIntFunction<BlockState> getLitState()
     {
         return (state) ->{
-            if(state.getValue(LITSTATE) == 3)
+            if(state.getValue(LITSTATE) > 0 && state.getValue(OIL) == 3)
             {
                 return 5;
             }
-            else if(state.getValue(LITSTATE) == 2)
+            else if(state.getValue(LITSTATE) > 0 && state.getValue(OIL) == 2)
             {
                 return 3;
             }
-            else if(state.getValue(LITSTATE) == 1)
+            else if(state.getValue(LITSTATE) > 0 && state.getValue(OIL) == 1)
             {
                 return 1;
             }

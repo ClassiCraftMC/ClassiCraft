@@ -91,18 +91,11 @@ public class RealisticSoulTorchBlock extends TorchBlock implements LightAPI {
 
     public static ToIntFunction<BlockState> getLightLevelFromState()
     {
-        return (state) ->{
-            if(state.getValue(RealisticTorchBlock.LITSTATE) == 2)
-            {
-                return 7;
-            }
-            else if(state.getValue(RealisticTorchBlock.LITSTATE) == 1)
-            {
-                return 5;
-            }
-            else
-            {
+        return (state) -> {
+            if (state.getValue(RealisticLanternBlock.LITSTATE) == 0) {
                 return 0;
+            }else {
+                return 7;
             }
         };
     }
