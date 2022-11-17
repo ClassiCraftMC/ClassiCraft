@@ -1,6 +1,5 @@
 package nameless.classicraft.block.realistic;
 
-import nameless.classicraft.init.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
@@ -20,27 +19,4 @@ public class RealisticSoulFireBowlBlock extends RealisticFireBowlBlock {
         }
     }
 
-    @Override
-    public void changeToLit(Level level, BlockPos pos, BlockState state) {
-        level.setBlockAndUpdate(pos, ModBlocks.SOUL_FIRE_BOWL.get().defaultBlockState().setValue(LITSTATE, LIT).setValue(BURNTIME, getInitialBurnTime()));
-        if (SHOULD_BURN_OUT) {
-            level.scheduleTick(pos, this, TICK_INTERVAL);
-        }
-    }
-
-    @Override
-    public void changeToSmoldering(Level level, BlockPos pos, BlockState state, int newBurnTime) {
-        if (SHOULD_BURN_OUT) {
-            level.setBlockAndUpdate(pos, ModBlocks.SOUL_FIRE_BOWL.get().defaultBlockState().setValue(LITSTATE, SMOLDERING).setValue(BURNTIME, newBurnTime));
-            level.scheduleTick(pos, this, TICK_INTERVAL);
-        }
-    }
-
-    @Override
-    public void changeToUnlit(Level level, BlockPos pos, BlockState state) {
-        if (SHOULD_BURN_OUT) {
-            level.setBlockAndUpdate(pos, ModBlocks.SOUL_FIRE_BOWL.get().defaultBlockState());
-            level.scheduleTick(pos, this, TICK_INTERVAL);
-        }
-    }
 }

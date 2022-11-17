@@ -34,29 +34,32 @@ public interface LightAPI {
     int UNLIT = 0;
     int TICK_INTERVAL = 1200;
     int TICK_RATE = 1200;
-    int INITIAL_BURN_TIME = ClassiCraftConfiguration.torchBurnoutTime.get();
+    int TORCH_INITIAL_BURN_TIME = ClassiCraftConfiguration.torchBurnoutTime.get();
     boolean CAUSE_FIRE = ClassiCraftConfiguration.torchCauseFire.get();
-    boolean TORCH_SHOULD_BURN_OUT = INITIAL_BURN_TIME >= 0;
+    boolean TORCH_SHOULD_BURN_OUT = TORCH_INITIAL_BURN_TIME >= 0;
     IntegerProperty LITSTATE = IntegerProperty.create("litstate", 0, 3);
     int LANTERN_TOTAL_BURN_TIME = ClassiCraftConfiguration.lanternBurnoutTime.get();
-    IntegerProperty TORCH_BURNTIME = IntegerProperty.create("burntime", 0, TORCH_SHOULD_BURN_OUT ? INITIAL_BURN_TIME : 1);
+    IntegerProperty TORCH_BURNTIME = IntegerProperty.create("burntime", 0, TORCH_SHOULD_BURN_OUT ? TORCH_INITIAL_BURN_TIME : 1);
     boolean LANTERN_SHOUD_BURN_OUT = LANTERN_TOTAL_BURN_TIME >= 0;
     IntegerProperty LANTERN_BURNTIME = IntegerProperty.create("burntime",0, LANTERN_SHOUD_BURN_OUT ? LANTERN_TOTAL_BURN_TIME:1);
     IntegerProperty OIL = IntegerProperty.create("oil",0,3);
+    int FIRE_BOWL_INITIAL_BURN_TIME = ClassiCraftConfiguration.fireBowlBurnoutTime.get();
+    boolean FIRE_BOWL_SHOULD_BURN_OUT = FIRE_BOWL_INITIAL_BURN_TIME > 0;
+    IntegerProperty FIRE_BOWL_BURNTIME = IntegerProperty.create("burntime", 0, FIRE_BOWL_SHOULD_BURN_OUT ? FIRE_BOWL_INITIAL_BURN_TIME : 1);
 
     static IntegerProperty getLitState()
     {
         return LITSTATE;
     }
 
-    default InteractionResult useLantern(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, Block block) {
+    default InteractionResult useBlockNeedFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, Block block, Item fuelItem, Item fuelItem2) {
         ItemStack heldStack = pPlayer.getItemInHand(pHand);
         if (heldStack.getItem() == Items.FLINT_AND_STEEL) {
             if (pLevel.isRainingAt(pPos.above(1))){
                 replaceLantern(pPos,pLevel,pState,pState.getValue(LANTERN_BURNTIME), UNLIT, pState.getValue(OIL), block);
             }
             return useAsFlint(pState,pLevel,pPos,pPlayer,pHand, block);
-        } else if(heldStack.is(Items.HONEYCOMB))
+        } else if(heldStack.is(fuelItem) || heldStack.is(fuelItem2))
         {
             if(pState.getValue(OIL) >= 3) return InteractionResult.PASS;
             if(!pPlayer.isCreative()){
@@ -74,7 +77,7 @@ public interface LightAPI {
         return LANTERN_BURNTIME;
     }
 
-    default void tickLantern(BlockState state, ServerLevel level, BlockPos pos, RandomSource random, Block block) {
+    default void tickBlockNeedFuel(BlockState state, ServerLevel level, BlockPos pos, RandomSource random, Block block) {
         if(!level.isClientSide() && LANTERN_SHOUD_BURN_OUT && state.getValue(LITSTATE) > UNLIT)
         {
             int newBurnTime = state.getValue(LANTERN_BURNTIME) -1;
@@ -201,7 +204,7 @@ public interface LightAPI {
         }
         else if( pState.getValue(LITSTATE) == 2 && pPlayer.getItemInHand(pHand).is(unlit))
         {
-            pPlayer.setItemInHand(pHand, ItemStackAPI.replaceItemWithCopyNBTTagAndCountButResetBurnTime(pPlayer.getItemInHand(pHand), lit, INITIAL_BURN_TIME));
+            pPlayer.setItemInHand(pHand, ItemStackAPI.replaceItemWithCopyNBTTagAndCountButResetBurnTime(pPlayer.getItemInHand(pHand), lit, TORCH_INITIAL_BURN_TIME));
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.PASS;
@@ -247,7 +250,7 @@ public interface LightAPI {
                 ModBlockProperties.playExtinguishSound(level, pos);
                 changeToUnlit(level, pos, state, block);
                 level.updateNeighborsAt(pos, block);
-            } else if (state.getValue(LITSTATE) == LIT && (newBurnTime <= INITIAL_BURN_TIME / 10 || newBurnTime <= 1)) {
+            } else if (state.getValue(LITSTATE) == LIT && (newBurnTime <= TORCH_INITIAL_BURN_TIME / 10 || newBurnTime <= 1)) {
                 changeToSmoldering(level, pos, state, newBurnTime, block);
                 level.updateNeighborsAt(pos, block);
             } else {
@@ -260,7 +263,7 @@ public interface LightAPI {
 
     default void changeToLit(Level pLevel, BlockPos pPos, BlockState pState, Block block)
     {
-        pLevel.setBlockAndUpdate(pPos, block.defaultBlockState().setValue(LITSTATE,2).setValue(TORCH_BURNTIME,INITIAL_BURN_TIME));
+        pLevel.setBlockAndUpdate(pPos, block.defaultBlockState().setValue(LITSTATE,2).setValue(TORCH_BURNTIME, TORCH_INITIAL_BURN_TIME));
         if(TORCH_SHOULD_BURN_OUT)
         {
             pLevel.scheduleTick(pPos, block, TICK_INTERVAL);
@@ -302,9 +305,9 @@ public interface LightAPI {
             int burnTime = placeStack.getTag().getInt("burnTime");
             if(pContext.getLevel().isRainingAt(pContext.getClickedPos().above()))
             {
-                if(burnTime > INITIAL_BURN_TIME)
+                if(burnTime > TORCH_INITIAL_BURN_TIME)
                 {
-                    return  state == null ? null:block.defaultBlockState().setValue(TORCH_BURNTIME,INITIAL_BURN_TIME).setValue(LITSTATE,1);
+                    return  state == null ? null:block.defaultBlockState().setValue(TORCH_BURNTIME, TORCH_INITIAL_BURN_TIME).setValue(LITSTATE,1);
                 }
                 else if(burnTime <= 0)
                 {
@@ -315,9 +318,9 @@ public interface LightAPI {
                     return state == null ? null:block.defaultBlockState().setValue(TORCH_BURNTIME,burnTime).setValue(LITSTATE,1);
                 }
             }
-            if(burnTime > INITIAL_BURN_TIME)
+            if(burnTime > TORCH_INITIAL_BURN_TIME)
             {
-                return  state == null ? null:block.defaultBlockState().setValue(TORCH_BURNTIME,INITIAL_BURN_TIME).setValue(LITSTATE,2);
+                return  state == null ? null:block.defaultBlockState().setValue(TORCH_BURNTIME, TORCH_INITIAL_BURN_TIME).setValue(LITSTATE,2);
             }
             else if(burnTime <= 0)
             {
@@ -333,9 +336,9 @@ public interface LightAPI {
         {
             if(pContext.getLevel().isRainingAt(pContext.getClickedPos().above()))
             {
-                return  state == null ? null:block.defaultBlockState().setValue(TORCH_BURNTIME,INITIAL_BURN_TIME).setValue(LITSTATE,1);
+                return  state == null ? null:block.defaultBlockState().setValue(TORCH_BURNTIME, TORCH_INITIAL_BURN_TIME).setValue(LITSTATE,1);
             }
-            return state == null ? null:block.defaultBlockState().setValue(TORCH_BURNTIME,INITIAL_BURN_TIME).setValue(LITSTATE,2);
+            return state == null ? null:block.defaultBlockState().setValue(TORCH_BURNTIME, TORCH_INITIAL_BURN_TIME).setValue(LITSTATE,2);
         }
     }
 }

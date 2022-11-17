@@ -7,6 +7,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LanternBlock;
@@ -29,13 +30,13 @@ public class RealisticSoulLanternBlock extends LanternBlock implements LightAPI 
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        useLantern(pState, pLevel, pPos, pPlayer, pHand, pHit, this);
+        useBlockNeedFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, this, Items.HONEYCOMB, null);
         return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
     }
 
     @Override
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        tickLantern(state, level, pos, random, this);
+        tickBlockNeedFuel(state, level, pos, random, this);
     }
 
     @Override

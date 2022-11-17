@@ -94,7 +94,7 @@ public interface LitItemAPI {
         int burnTime;
         if(!pStack.getOrCreateTag().contains("burnTime"))
         {
-            burnTime = LightAPI.TORCH_SHOULD_BURN_OUT ? LightAPI.INITIAL_BURN_TIME : 0;
+            burnTime = LightAPI.TORCH_SHOULD_BURN_OUT ? LightAPI.TORCH_INITIAL_BURN_TIME : 0;
             pStack.getTag().putInt("burnTime",burnTime);
         }
         else
