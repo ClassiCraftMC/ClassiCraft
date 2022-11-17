@@ -46,7 +46,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.*;
@@ -65,7 +64,6 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
-import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModList;
 
@@ -78,7 +76,6 @@ public class ClassiCraftSubcriber {
         bus.addListener(ClassiCraftSubcriber::onPlayerUsingItem);
         bus.addListener(ClassiCraftSubcriber::onPlayerEatingFoods);
         bus.addListener(ClassiCraftSubcriber::addFuelBurn);
-        bus.addListener(ClassiCraftSubcriber::stopBlockPlace);
         bus.addListener(ClassiCraftSubcriber::onScreenLoad);
         bus.addListener(ClassiCraftSubcriber::onRanchuBreed);
         bus.addListener(ClassiCraftSubcriber::onCraftTorch);
@@ -90,7 +87,6 @@ public class ClassiCraftSubcriber {
         bus.addListener(ClassiCraftSubcriber::addTooltip);
         bus.addListener(ClassiCraftSubcriber::changeTorch);
         bus.addListener(ClassiCraftSubcriber::shiftTorch);
-        bus.addListener(ClassiCraftSubcriber::rightClickTorch);
         bus.addListener(ClassiCraftSubcriber::projectileFireOnTorch);
         bus.addListener(ClassiCraftSubcriber::extinguishTorchByPotion);
         bus.addListener(ClassiCraftSubcriber::projetileFireOnLantern);
@@ -231,22 +227,6 @@ public class ClassiCraftSubcriber {
                             .setValue(RealisticSoulTorchBlock.getLitState(),2)
                             .setValue(RealisticSoulTorchBlock.BURNTIME,
                                     RealisticSoulTorchBlock.getInitialBurnTime()));
-        }
-    }
-
-    public static void rightClickTorch(PlayerRightClickBlockEvent event) {
-        Block block = event.getBlock();
-        if (event.getEntity().isShiftKeyDown()) {
-            if (block instanceof RealisticTorchBlock) {
-                event.getLevel().setBlockAndUpdate(event.getPos(), Blocks.AIR.defaultBlockState());
-                ItemEntity itemEntity = new ItemEntity(
-                        event.getLevel(),
-                        event.getPos().getX(),
-                        event.getPos().getY(),
-                        event.getPos().getZ(),
-                        Items.STICK.getDefaultInstance());
-                event.getLevel().addFreshEntity(itemEntity);
-            }
         }
     }
 
@@ -690,57 +670,6 @@ public class ClassiCraftSubcriber {
             }
         }
         return null;
-    }
-
-    public static void stopBlockPlace(BlockEvent.EntityPlaceEvent event) {
-        Entity entity = event.getEntity();
-        Block block = event.getPlacedBlock().getBlock();
-        LevelAccessor level = event.getLevel();
-        Item item = block.asItem();
-        if (entity instanceof Player && block instanceof TorchBlock
-                && !item.getDefaultInstance().is(Items.REDSTONE_TORCH)
-                && !item.getDefaultInstance().is(Items.SOUL_TORCH)
-                && ClassiCraftConfiguration.noVanillaTorchPlace.get()) {
-            if (!((Player) entity).isCreative()) {
-                level.playSound(null, event.getPos(), SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1, 1);
-                level.setBlock(event.getPos(), ModBlocks.TORCH.get().defaultBlockState(), 1);
-                entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_torch"));
-            }
-        }
-        if (entity instanceof Player && block instanceof TorchBlock
-                && !item.getDefaultInstance().is(Items.REDSTONE_TORCH)
-                && !item.getDefaultInstance().is(Items.TORCH)
-                && ClassiCraftConfiguration.noVanillaTorchPlace.get()) {
-            if (!((Player) entity).isCreative()) {
-                level.playSound(null, event.getPos(), SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1, 1);
-                level.setBlock(event.getPos(), ModBlocks.SOUL_TORCH.get().defaultBlockState(), 1);
-                entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_torch"));
-            }
-        }
-        if (entity instanceof Player
-                && block instanceof LanternBlock
-                && !item.getDefaultInstance().is(Items.SOUL_LANTERN)
-                && !item.getDefaultInstance().is(ModItems.SOUL_LANTERN.get().asItem())
-                && !item.getDefaultInstance().is(ModItems.LIT_SOUL_LANTERN.get())
-                && ClassiCraftConfiguration.noVanillaLanternPlace.get()) {
-            if (!((Player) entity).isCreative()) {
-                level.playSound(null, event.getPos(), SoundEvents.LANTERN_PLACE, SoundSource.BLOCKS, 1, 1);
-                level.setBlock(event.getPos(), ModBlocks.LANTERN.get().defaultBlockState(), 1);
-                //entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_lantern"));
-            }
-        }
-        if (entity instanceof Player
-                && block instanceof LanternBlock
-                && !item.getDefaultInstance().is(Items.LANTERN)
-                && !item.getDefaultInstance().is(ModItems.LANTERN.get().asItem())
-                && !item.getDefaultInstance().is(ModItems.LIT_LANTERN.get())
-                && ClassiCraftConfiguration.noVanillaLanternPlace.get()) {
-            if (!((Player) entity).isCreative()) {
-                level.playSound(null, event.getPos(), SoundEvents.LANTERN_PLACE, SoundSource.BLOCKS, 1, 1);
-                level.setBlock(event.getPos(), ModBlocks.SOUL_LANTERN.get().defaultBlockState(), 1);
-                //entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_lantern"));
-            }
-        }
     }
 
     public static void addFuelBurn(FurnaceFuelBurnTimeEvent event) {
