@@ -20,7 +20,7 @@ public interface CandleLightAPI {
 
     int TICK_INTERVAL = 1200;
     int CANDLE_INITIAL_BURN_TIME = 30;
-    boolean CANDLE_SHOULD_BURN_OUT =CANDLE_INITIAL_BURN_TIME > 0;
+    boolean CANDLE_SHOULD_BURN_OUT = CANDLE_INITIAL_BURN_TIME > 0;
     IntegerProperty CANDLE_BURNTIME = IntegerProperty.create("burntime", 0, CANDLE_SHOULD_BURN_OUT ? CANDLE_INITIAL_BURN_TIME : 1);
 
     default void tickCandle(BlockState state, ServerLevel level, BlockPos pos, RandomSource random, Block block) {
