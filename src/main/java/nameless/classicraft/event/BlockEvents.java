@@ -9,6 +9,7 @@ import nameless.classicraft.block.realistic.RealisticSoulTorchBlock;
 import nameless.classicraft.block.realistic.RealisticTorchBlock;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
@@ -68,16 +69,18 @@ public class BlockEvents {
         if (entity instanceof Player && block instanceof TorchBlock
                 && !item.getDefaultInstance().is(Items.REDSTONE_TORCH)
                 && !item.getDefaultInstance().is(Items.SOUL_TORCH)
+                && block.defaultBlockState().is(ModBlocks.SOUL_TORCH.get())
                 && !item.getDefaultInstance().is(ModItems.SOUL_TORCH.get())
                 && !item.getDefaultInstance().is(ModItems.LIT_SOUL_TORCH.get())
                 && ClassiCraftConfiguration.noVanillaTorchPlace.get()) {
             if (!((Player) entity).isCreative()) {
                 level.playSound(null, event.getPos(), SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1, 1);
                 level.setBlock(event.getPos(), ModBlocks.TORCH.get().defaultBlockState(), 1);
-                //entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_torch"));
+                entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_torch"));
             }
         }
         if (entity instanceof Player && block instanceof TorchBlock
+                && block.defaultBlockState().is(ModBlocks.TORCH.get())
                 && !item.getDefaultInstance().is(Items.REDSTONE_TORCH)
                 && !item.getDefaultInstance().is(Items.TORCH)
                 && !item.getDefaultInstance().is(ModItems.TORCH.get())
@@ -86,11 +89,12 @@ public class BlockEvents {
             if (!((Player) entity).isCreative()) {
                 level.playSound(null, event.getPos(), SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1, 1);
                 level.setBlock(event.getPos(), ModBlocks.SOUL_TORCH.get().defaultBlockState(), 1);
-                //entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_torch"));
+                entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_torch"));
             }
         }
         if (entity instanceof Player
                 && block instanceof LanternBlock
+                && block.defaultBlockState().is(ModBlocks.SOUL_LANTERN.get())
                 && !item.getDefaultInstance().is(Items.SOUL_LANTERN)
                 && !item.getDefaultInstance().is(ModItems.SOUL_LANTERN.get().asItem())
                 && !item.getDefaultInstance().is(ModItems.LIT_SOUL_LANTERN.get())
@@ -98,11 +102,12 @@ public class BlockEvents {
             if (!((Player) entity).isCreative()) {
                 level.playSound(null, event.getPos(), SoundEvents.LANTERN_PLACE, SoundSource.BLOCKS, 1, 1);
                 level.setBlock(event.getPos(), ModBlocks.LANTERN.get().defaultBlockState(), 1);
-                //entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_lantern"));
+                entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_lantern"));
             }
         }
         if (entity instanceof Player
                 && block instanceof LanternBlock
+                && block.defaultBlockState().is(ModBlocks.LANTERN.get())
                 && !item.getDefaultInstance().is(Items.LANTERN)
                 && !item.getDefaultInstance().is(ModItems.LANTERN.get().asItem())
                 && !item.getDefaultInstance().is(ModItems.LIT_LANTERN.get())
@@ -110,7 +115,7 @@ public class BlockEvents {
             if (!((Player) entity).isCreative()) {
                 level.playSound(null, event.getPos(), SoundEvents.LANTERN_PLACE, SoundSource.BLOCKS, 1, 1);
                 level.setBlock(event.getPos(), ModBlocks.SOUL_LANTERN.get().defaultBlockState(), 1);
-                //entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_lantern"));
+                entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_lantern"));
             }
         }
     }
