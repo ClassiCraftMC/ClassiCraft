@@ -110,7 +110,6 @@ public class BlockEvents {
                 && entity.isOnFire()
                 && block.defaultBlockState().getValue(LightAPI.getLitState())
                 != RealisticLanternBlock.LIT
-                && block.defaultBlockState().getValue(LightAPI.OIL) != 0
                 && entity.getLevel().isRainingAt(event.getEntity().getOnPos().above())) {
             ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
             entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
@@ -129,7 +128,6 @@ public class BlockEvents {
                 && entity.isOnFire()
                 && block.defaultBlockState().getValue(LightAPI.getLitState())
                 != RealisticSoulLanternBlock.LIT
-                && block.defaultBlockState().getValue(LightAPI.OIL) != 0
                 && entity.getLevel().isRainingAt(event.getEntity().getOnPos().above())) {
             ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
             entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
