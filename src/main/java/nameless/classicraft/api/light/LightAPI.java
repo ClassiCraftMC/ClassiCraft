@@ -37,7 +37,7 @@ public interface LightAPI {
     int INITIAL_BURN_TIME = ClassiCraftConfiguration.torchBurnoutTime.get();
     boolean CAUSE_FIRE = ClassiCraftConfiguration.torchCauseFire.get();
     boolean TORCH_SHOULD_BURN_OUT = INITIAL_BURN_TIME >= 0;
-    IntegerProperty LITSTATE = IntegerProperty.create("litstate", 0, 2);
+    IntegerProperty LITSTATE = IntegerProperty.create("litstate", 0, 3);
     int LANTERN_TOTAL_BURN_TIME = ClassiCraftConfiguration.lanternBurnoutTime.get();
     IntegerProperty TORCH_BURNTIME = IntegerProperty.create("burntime", 0, TORCH_SHOULD_BURN_OUT ? INITIAL_BURN_TIME : 1);
     boolean LANTERN_SHOUD_BURN_OUT = LANTERN_TOTAL_BURN_TIME >= 0;

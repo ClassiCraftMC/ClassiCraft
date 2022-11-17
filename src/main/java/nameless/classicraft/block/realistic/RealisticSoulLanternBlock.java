@@ -15,10 +15,12 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 
+import java.util.function.ToIntFunction;
+
 public class RealisticSoulLanternBlock extends LanternBlock implements LightAPI {
 
     public RealisticSoulLanternBlock() {
-        super(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.LANTERN).lightLevel(RealisticSoulLanternBlock::getLitState).noOcclusion());
+        super(BlockBehaviour.Properties.of(Material.METAL).strength(3.5F).sound(SoundType.LANTERN).lightLevel(getLitState()).noOcclusion());
         registerDefaultState(defaultBlockState().setValue(LITSTATE,0).setValue(LANTERN_BURNTIME,0).setValue(OIL,0).setValue(OIL,0));
     }
 
@@ -48,19 +50,26 @@ public class RealisticSoulLanternBlock extends LanternBlock implements LightAPI 
         super.onPlace(pState, pLevel, pPos, pOldState, pIsMoving);
     }
 
-    public static int getLitState(BlockState state)
+    public static ToIntFunction<BlockState> getLitState()
     {
-        if(state.getValue(OIL) == 0 && state.getValue(LITSTATE) == 0) {
-            return 0;
-        }
-        if (state.getValue(OIL) == 1 && state.getValue(LITSTATE) > 0) {
-            return 1;
-        }
-        if (state.getValue(OIL) == 2 && state.getValue(LITSTATE) > 0) {
-            return 3;
-        } else {
-            return 5;
-        }
+        return (state) ->{
+            if(state.getValue(LITSTATE) == 3)
+            {
+                return 5;
+            }
+            else if(state.getValue(LITSTATE) == 2)
+            {
+                return 3;
+            }
+            else if(state.getValue(LITSTATE) == 1)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        };
     }
 
     @Override

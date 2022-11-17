@@ -78,13 +78,17 @@ public class RealisticTorchBlock extends TorchBlock implements LightAPI {
     public static ToIntFunction<BlockState> getLightLevelFromState()
     {
         return (state) ->{
-            if(state.getValue(RealisticTorchBlock.LITSTATE) == 2)
+            if(state.getValue(RealisticTorchBlock.LITSTATE) == 3)
             {
                 return 12;
             }
-            else if(state.getValue(RealisticTorchBlock.LITSTATE) == 1)
+            else if(state.getValue(RealisticTorchBlock.LITSTATE) == 2)
             {
                 return 8;
+            }
+            else if(state.getValue(RealisticTorchBlock.LITSTATE) == 1)
+            {
+                return 6;
             }
             else
             {
@@ -98,6 +102,17 @@ public class RealisticTorchBlock extends TorchBlock implements LightAPI {
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
      getTorchStateForPlacement(pContext, Blocks.TORCH, this);
      return super.getStateForPlacement(pContext);
+    }
+
+    @Override
+    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
+        if (pState.getValue(LITSTATE) == LIT || (pState.getValue(LITSTATE) == SMOLDERING && pLevel.getRandom().nextInt(2) == 1)) {
+            double d0 = (double)pPos.getX() + 0.5D;
+            double d1 = (double)pPos.getY() + 0.7D;
+            double d2 = (double)pPos.getZ() + 0.5D;
+            pLevel.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+            pLevel.addParticle(this.flameParticle, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+        }
     }
 
     @Override

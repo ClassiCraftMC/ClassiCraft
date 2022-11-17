@@ -1,8 +1,10 @@
 {
   "variants": {
+    "hanging=false,litstate=3": {"model": "minecraft:block/soul_lantern"},
     "hanging=false,litstate=2": {"model": "minecraft:block/soul_lantern"},
     "hanging=false,litstate=1": {"model": "minecraft:block/soul_lantern"},
     "hanging=false,litstate=0": {"model": "classicraft:block/unlit_soul_lantern"},
+    "hanging=true,litstate=3": {"model": "minecraft:block/soul_lantern_hanging"},
     "hanging=true,litstate=2": {"model": "minecraft:block/soul_lantern_hanging"},
     "hanging=true,litstate=1": {"model": "minecraft:block/soul_lantern_hanging"},
     "hanging=true,litstate=0": {"model": "classicraft:block/unlit_soul_lantern_hanging"}

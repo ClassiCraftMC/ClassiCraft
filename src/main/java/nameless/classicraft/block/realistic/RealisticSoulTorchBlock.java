@@ -30,7 +30,7 @@ import java.util.function.ToIntFunction;
 public class RealisticSoulTorchBlock extends TorchBlock implements LightAPI {
 
     public RealisticSoulTorchBlock() {
-        super(BlockBehaviour.Properties.of(Material.ICE).noCollission().instabreak().lightLevel(getLightLevelFromState()).sound(SoundType.WOOD), ParticleTypes.FLAME);
+        super(BlockBehaviour.Properties.of(Material.ICE).noCollission().instabreak().lightLevel(getLightLevelFromState()).sound(SoundType.WOOD), ParticleTypes.SOUL_FIRE_FLAME);
         this.registerDefaultState(this.defaultBlockState().setValue(LITSTATE, 0).setValue(TORCH_BURNTIME, 0));
     }
 
@@ -38,6 +38,17 @@ public class RealisticSoulTorchBlock extends TorchBlock implements LightAPI {
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         useTorch(pState, pLevel, pPos, pPlayer, pHand, pHit, this, ModItems.MATCHBOX.get(), ModBlocks.TORCH.get().asItem(), ModItems.LIT_TORCH.get());
         return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
+    }
+
+    @Override
+    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
+        if (pState.getValue(LITSTATE) == LIT || (pState.getValue(LITSTATE) == SMOLDERING && pLevel.getRandom().nextInt(2) == 1)) {
+            double d0 = (double)pPos.getX() + 0.5D;
+            double d1 = (double)pPos.getY() + 0.7D;
+            double d2 = (double)pPos.getZ() + 0.5D;
+            pLevel.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+            pLevel.addParticle(this.flameParticle, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+        }
     }
 
     @Override
