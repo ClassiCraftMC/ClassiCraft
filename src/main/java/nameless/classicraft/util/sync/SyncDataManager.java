@@ -1,6 +1,5 @@
 package nameless.classicraft.util.sync;
 
-import nameless.classicraft.util.sync.SyncData;
 import net.minecraft.nbt.CompoundTag;
 
 import java.util.ArrayList;

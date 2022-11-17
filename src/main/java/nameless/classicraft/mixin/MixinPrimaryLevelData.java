@@ -2,7 +2,6 @@ package nameless.classicraft.mixin;
 
 import nameless.classicraft.ClassiCraftConfiguration;
 import net.minecraft.world.level.storage.PrimaryLevelData;
-
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

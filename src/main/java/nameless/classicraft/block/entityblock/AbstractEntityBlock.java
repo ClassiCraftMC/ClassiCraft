@@ -1,7 +1,7 @@
 package nameless.classicraft.block.entityblock;
 
-import nameless.classicraft.block.entity.BasicMenuBlockEntity;
 import nameless.classicraft.block.entity.BasicBlockEntity;
+import nameless.classicraft.block.entity.BasicMenuBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.Containers;
 import net.minecraft.world.item.ItemStack;

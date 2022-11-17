@@ -3,7 +3,6 @@ package nameless.classicraft.block;
 import nameless.classicraft.api.block.entity.RotAbleEntityBlock;
 import nameless.classicraft.block.entity.ModBlockEntities;
 import nameless.classicraft.init.ModBlocks;
-import nameless.classicraft.init.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;

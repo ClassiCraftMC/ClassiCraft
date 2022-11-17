@@ -3,7 +3,7 @@ package nameless.classicraft.datagen;
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.init.ModBlocks;
 import net.minecraft.data.DataGenerator;
-import net.minecraftforge.client.model.generators.*;
+import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class CCBlockStatesProvider extends BlockStateProvider {

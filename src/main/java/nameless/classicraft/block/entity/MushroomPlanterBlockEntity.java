@@ -1,13 +1,13 @@
 package nameless.classicraft.block.entity;
 
 import nameless.classicraft.block.MushroomPlanterBlock;
+import nameless.classicraft.util.sync.SyncDataManager;
+import nameless.classicraft.util.sync.primitive.IntSyncData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import nameless.classicraft.util.sync.SyncDataManager;
-import nameless.classicraft.util.sync.primitive.IntSyncData;
 
 import java.util.List;
 

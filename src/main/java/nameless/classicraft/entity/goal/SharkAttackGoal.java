@@ -4,7 +4,6 @@ import nameless.classicraft.entity.BaskingSharkEntity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.player.Player;
 
 public class SharkAttackGoal extends MeleeAttackGoal {
 

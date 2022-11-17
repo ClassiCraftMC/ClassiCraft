@@ -1,7 +1,6 @@
 package nameless.classicraft.entity;
 
 import nameless.classicraft.entity.goal.RanchuBreedGoal;
-import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModEntities;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.core.BlockPos;
@@ -18,13 +17,7 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.MobType;
-import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.SmoothSwimmingLookControl;

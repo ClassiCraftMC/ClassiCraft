@@ -1,8 +1,8 @@
 package nameless.classicraft.worldgen;
 
 import nameless.classicraft.ClassiCraftConfiguration;
-import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.block.WildRiceBlock;
+import nameless.classicraft.init.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.features.FeatureUtils;

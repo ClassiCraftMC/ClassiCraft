@@ -5,6 +5,9 @@ import nameless.classicraft.api.rot.RotReduceListener;
 import nameless.classicraft.block.container.FridgeBlock;
 import nameless.classicraft.menu.FridgeMenu;
 import nameless.classicraft.util.ContainerUtils;
+import nameless.classicraft.util.sync.SyncDataManager;
+import nameless.classicraft.util.sync.object.ItemStackHandlerSyncData;
+import nameless.classicraft.util.sync.primitive.FloatSyncData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Inventory;
@@ -18,9 +21,6 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import nameless.classicraft.util.sync.SyncDataManager;
-import nameless.classicraft.util.sync.object.ItemStackHandlerSyncData;
-import nameless.classicraft.util.sync.primitive.FloatSyncData;
 
 import java.util.List;
 

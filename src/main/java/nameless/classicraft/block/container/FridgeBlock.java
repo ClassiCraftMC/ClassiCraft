@@ -1,7 +1,7 @@
 package nameless.classicraft.block.container;
 
-import nameless.classicraft.block.entityblock.AbstractGuiEntityBlock;
 import nameless.classicraft.block.entity.FridgeBlockEntity;
+import nameless.classicraft.block.entityblock.AbstractGuiEntityBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;

@@ -32,7 +32,7 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
-import static net.minecraft.world.level.storage.loot.LootTable.*;
+import static net.minecraft.world.level.storage.loot.LootTable.Builder;
 
 public abstract class BaseLootTableProvider extends LootTableProvider {
 

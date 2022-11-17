@@ -1,7 +1,7 @@
 package nameless.classicraft.menu;
 
-import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.block.entity.StoneMortarBlockEntity;
+import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;

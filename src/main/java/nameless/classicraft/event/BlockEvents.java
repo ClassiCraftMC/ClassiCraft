@@ -3,7 +3,6 @@ package nameless.classicraft.event;
 import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.api.event.PlayerRightClickBlockEvent;
-import nameless.classicraft.api.light.LightAPI;
 import nameless.classicraft.block.realistic.RealisticLanternBlock;
 import nameless.classicraft.block.realistic.RealisticSoulLanternBlock;
 import nameless.classicraft.block.realistic.RealisticSoulTorchBlock;

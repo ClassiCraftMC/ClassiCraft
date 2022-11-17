@@ -1,9 +1,9 @@
 package nameless.classicraft.entity.goal;
 
+import nameless.classicraft.entity.PerchEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.phys.Vec3;
-import nameless.classicraft.entity.PerchEntity;
 
 import javax.annotation.Nullable;
 

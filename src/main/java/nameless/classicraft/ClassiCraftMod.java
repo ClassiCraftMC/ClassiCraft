@@ -1,10 +1,10 @@
 package nameless.classicraft;
 
+import com.mojang.logging.LogUtils;
+import nameless.classicraft.block.entity.ModBlockEntities;
+import nameless.classicraft.event.ClassiCraftSubcriber;
 import nameless.classicraft.event.TestEvents;
 import nameless.classicraft.init.*;
-import nameless.classicraft.block.entity.ModBlockEntities;
-import com.mojang.logging.LogUtils;
-import nameless.classicraft.event.ClassiCraftSubcriber;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;

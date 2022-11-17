@@ -2,7 +2,9 @@ package nameless.classicraft.api.light;
 
 import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.api.item.ItemStackAPI;
-import nameless.classicraft.block.realistic.RealisticLanternBlock;
+import nameless.classicraft.block.realistic.RealisticTorchBlock;
+import nameless.classicraft.init.ModTags;
+import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -11,6 +13,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -33,7 +36,7 @@ public interface LitItemAPI {
         BlockState state = getSuperPlacementState(pContext, block);
         if(state != null)
         {
-            return state.setValue(LightAPI.LITSTATE, pStack.getOrCreateTag().getInt("lit_state")).setValue(RealisticLanternBlock.LANTERN_BURNTIME,pContext.getItemInHand().getOrCreateTag().getInt("burnTime")).setValue(RealisticLanternBlock.OIL,pContext.getItemInHand().getOrCreateTag().getInt("oil"));
+            return state.setValue(LightAPI.LITSTATE, pStack.getOrCreateTag().getInt("lit_state")).setValue(LightAPI.LANTERN_BURNTIME,pContext.getItemInHand().getOrCreateTag().getInt("burnTime")).setValue(LightAPI.OIL,pContext.getItemInHand().getOrCreateTag().getInt("oil"));
         }
         return null;
     }
@@ -84,5 +87,81 @@ public interface LitItemAPI {
 
     default boolean mustBeSurvive() {
         return true;
+    }
+
+    default BlockState getTorchPlacementState(BlockPlaceContext pContext, Block block) {
+        ItemStack pStack = pContext.getItemInHand();
+        int burnTime;
+        if(!pStack.getOrCreateTag().contains("burnTime"))
+        {
+            burnTime = LightAPI.TORCH_SHOULD_BURN_OUT ? LightAPI.INITIAL_BURN_TIME : 0;
+            pStack.getTag().putInt("burnTime",burnTime);
+        }
+        else
+        {
+            burnTime = pStack.getTag().getInt("burnTime");
+        }
+        BlockState state = getSuperPlacementState(pContext, block);
+        if(state != null) {
+            if (pContext.getLevel().isRainingAt(pContext.getClickedPos().above())) {
+                pContext.getLevel().playSound(null, pContext.getClickedPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.3f, pContext.getLevel().random.nextFloat() * 0.1F + 0.6F);
+                return state.setValue(LightAPI.LITSTATE, LightAPI.SMOLDERING).setValue(LightAPI.TORCH_BURNTIME, burnTime);
+            } else {
+                return state.setValue(LightAPI.getLitState(), 2).setValue(LightAPI.TORCH_BURNTIME, RealisticTorchBlock.getInitialBurnTime());
+            }
+        }
+        return null;
+    }
+
+    default void inventoryTorchTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
+        if(!HARDCORE || pLevel.isClientSide() || !(pEntity instanceof Player player)) return;
+        if(pLevel.isRainingAt(player.getOnPos().above(2)))
+        {
+            changeTorch(player,pStack, ItemStackAPI.replaceItemWitchNoNBT(pStack, Items.STICK), pSlotId);
+            pLevel.playSound(null,player.getOnPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS,0.3f, pLevel.random.nextFloat() * 0.1F + 0.6F);
+        }
+        if(inWater(player.getOnPos(),pLevel) && WATER_BURNT)
+        {
+            changeTorch(player,pStack, ItemStackAPI.replaceItemWitchNoNBT(pStack, Items.STICK), pSlotId);
+            pLevel.playSound(null,player.getOnPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS,0.3f, pLevel.random.nextFloat() * 0.1F + 0.6F);
+        }
+    }
+
+    default void inventorySoulTorchTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
+        if(!HARDCORE || pLevel.isClientSide() || !(pEntity instanceof Player player)) return;
+        if(inWater(player.getOnPos(),pLevel) && WATER_BURNT)
+        {
+            changeTorch(player,pStack, ItemStackAPI.replaceItemWitchNoNBT(pStack, Items.STICK), pSlotId);
+            pLevel.playSound(null,player.getOnPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS,0.3f, pLevel.random.nextFloat() * 0.1F + 0.6F);
+        }
+    }
+
+    default boolean inWater(BlockPos pos, Level level)
+    {
+        return level.getBlockState(pos).is(ModTags.Blocks.TORCH_CAN_BE_BURNT_OUT);
+    }
+
+    default void changeTorch(Player player,ItemStack stack,ItemStack newStack,int slot)
+    {
+        if(player.getItemInHand(InteractionHand.MAIN_HAND) == stack)
+        {
+            EquipmentSlot pSlot = EquipmentSlot.MAINHAND;
+            player.setItemSlot(pSlot,newStack);
+            return;
+        }
+        else if(player.getItemInHand(InteractionHand.OFF_HAND) == stack )
+        {
+            player.setItemSlot(EquipmentSlot.OFFHAND,newStack);
+            return;
+        }
+        player.getInventory().setItem(slot,newStack);
+    }
+
+    default boolean shouldTorchCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
+        if(oldStack.getOrCreateTag().contains("burnTime") && newStack.getOrCreateTag().contains("burnTime"))
+        {
+            return oldStack.getOrCreateTag().getInt("burnTime") != oldStack.getOrCreateTag().getInt("burnTime");
+        }
+        return false;
     }
 }

@@ -1,9 +1,8 @@
 package nameless.classicraft.mixin;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import nameless.classicraft.ClassiCraftConfiguration;
 import net.minecraft.client.gui.screens.worldselection.WorldSelectionList;
-
-import com.mojang.blaze3d.vertex.PoseStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
