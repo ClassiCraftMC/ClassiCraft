@@ -44,6 +44,7 @@ public class SwineEntity extends Animal implements NeutralMob {
     }
 
     protected void registerGoals() {
+        this.goalSelector.addGoal(1, new SwineBreakCropGoal(this, 1.0D, 24));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0D, true));
         this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
         this.goalSelector.addGoal(4, new GolemRandomStrollInVillageGoal(this, 0.6D));
@@ -53,9 +54,7 @@ public class SwineEntity extends Animal implements NeutralMob {
         this.goalSelector.addGoal(5, new FollowParentGoal(this, 1.1D));
         this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, this::isAngryAt));
-        this.targetSelector.addGoal(4, new ResetUniversalAngerTargetGoal<>(this, false));
-        this.goalSelector.addGoal(3, new SwineBreakCropGoal(this, 1.0D, 24));
-    }
+        this.targetSelector.addGoal(4, new ResetUniversalAngerTargetGoal<>(this, false));}
 
     public void tick() {
         super.tick();

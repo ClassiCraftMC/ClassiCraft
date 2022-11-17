@@ -27,7 +27,7 @@ public class SwineBreakCropGoal extends MoveToBlockGoal {
     private int ticksSinceReachedGoal;
 
     public SwineBreakCropGoal(SwineEntity pRemoverMob, double pSpeedModifier, int pSearchRange) {
-        super(pRemoverMob, pSpeedModifier, 24, pSearchRange);
+        super(pRemoverMob, pSpeedModifier, pSearchRange);
         this.removerMob = pRemoverMob;
     }
 
@@ -53,6 +53,8 @@ public class SwineBreakCropGoal extends MoveToBlockGoal {
     public void stop() {
         super.stop();
         this.removerMob.fallDistance = 1.0F;
+        ((SwineEntity) this.mob).setHungry(false);
+        ((SwineEntity) this.mob).setTimeTillHungry(mob.getRandom().nextInt(300) + 300);
     }
 
     public void start() {
