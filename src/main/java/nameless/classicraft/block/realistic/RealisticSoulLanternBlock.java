@@ -48,17 +48,17 @@ public class RealisticSoulLanternBlock extends LanternBlock implements LightAPI 
         super.onPlace(pState, pLevel, pPos, pOldState, pIsMoving);
     }
 
-    private static int getLitState(BlockState state)
+    public static int getLitState(BlockState state)
     {
-        if(state.getValue(RealisticSoulLanternBlock.LITSTATE) == 0) {
+        if(state.getValue(OIL) == 0 && state.getValue(LITSTATE) == 0) {
             return 0;
         }
-        if(state.getValue(RealisticSoulLanternBlock.LITSTATE) == 1) {
+        if (state.getValue(OIL) == 1 && state.getValue(LITSTATE) > 0) {
             return 1;
         }
-        if(state.getValue(RealisticSoulLanternBlock.LITSTATE) == 2) {
+        if (state.getValue(OIL) == 2 && state.getValue(LITSTATE) > 0) {
             return 3;
-        }else {
+        } else {
             return 5;
         }
     }

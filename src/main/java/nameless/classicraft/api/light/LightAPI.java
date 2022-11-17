@@ -25,7 +25,7 @@ public interface LightAPI {
     int UNLIT = 0;
     int TICK_INTERVAL = 1200;
     int TICK_RATE = 1200;
-    IntegerProperty LITSTATE = IntegerProperty.create("litstate", 0, 3);
+    IntegerProperty LITSTATE = IntegerProperty.create("litstate", 0, 2);
     int LANTERN_TOTAL_BURN_TIME = ClassiCraftConfiguration.lanternBurnoutTime.get();
     boolean LANTERN_SHOUD_BURN_OUT = LANTERN_TOTAL_BURN_TIME >= 0;
     IntegerProperty LANTERN_BURNTIME = IntegerProperty.create("burntime",0, LANTERN_SHOUD_BURN_OUT ? LANTERN_TOTAL_BURN_TIME:1);

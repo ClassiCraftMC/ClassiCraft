@@ -5,13 +5,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 public class ItemStackAPI {
-    public static ItemStack replaceItemWithCopyNBTTag(ItemStack oldStack, Item newItem)
-    {
-        CompoundTag compoundTag = oldStack.getOrCreateTag();
-        ItemStack itemStack = new ItemStack(newItem);
-        itemStack.setTag(compoundTag);
-        return itemStack;
-    }
 
     public static ItemStack replaceItemWithCopyNBTTagAndCount(ItemStack oldStack, Item newItem)
     {
