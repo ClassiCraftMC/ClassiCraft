@@ -4,11 +4,12 @@ import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.api.event.PlayerRightClickBlockEvent;
 import nameless.classicraft.api.light.LightAPI;
+import nameless.classicraft.block.realistic.RealisticLanternBlock;
+import nameless.classicraft.block.realistic.RealisticSoulLanternBlock;
 import nameless.classicraft.block.realistic.RealisticSoulTorchBlock;
 import nameless.classicraft.block.realistic.RealisticTorchBlock;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
-import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
@@ -48,12 +49,12 @@ public class BlockEvents {
     public static void rightClickLantern(PlayerRightClickBlockEvent event) {
         Block block = event.getBlock();
         if (event.getEntity().isShiftKeyDown()) {
-            if (block.defaultBlockState().is(ModBlocks.LANTERN.get())
+            if (block instanceof RealisticLanternBlock
                     && block.defaultBlockState().getValue(LightAPI.LITSTATE) > 0) {
                 event.getLevel().setBlockAndUpdate(event.getPos(), ModBlocks.LANTERN.get().defaultBlockState());
                 event.getLevel().updateNeighborsAt(event.getPos(), block);
             }
-            if (block.defaultBlockState().is(ModBlocks.SOUL_LANTERN.get())
+            if (block instanceof RealisticSoulLanternBlock
                     && block.defaultBlockState().getValue(LightAPI.LITSTATE) > 0) {
                 event.getLevel().setBlockAndUpdate(event.getPos(), ModBlocks.SOUL_LANTERN.get().defaultBlockState());
                 event.getLevel().updateNeighborsAt(event.getPos(), block);
