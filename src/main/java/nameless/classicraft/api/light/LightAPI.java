@@ -9,14 +9,11 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
@@ -28,7 +25,7 @@ public interface LightAPI {
     int UNLIT = 0;
     int TICK_INTERVAL = 1200;
     int TICK_RATE = 1200;
-    IntegerProperty LITSTATE = IntegerProperty.create("litstate", 0, 2);
+    IntegerProperty LITSTATE = IntegerProperty.create("litstate", 0, 3);
     int LANTERN_TOTAL_BURN_TIME = ClassiCraftConfiguration.lanternBurnoutTime.get();
     boolean LANTERN_SHOUD_BURN_OUT = LANTERN_TOTAL_BURN_TIME >= 0;
     IntegerProperty LANTERN_BURNTIME = IntegerProperty.create("burntime",0, LANTERN_SHOUD_BURN_OUT ? LANTERN_TOTAL_BURN_TIME:1);
@@ -39,7 +36,7 @@ public interface LightAPI {
         return LITSTATE;
     }
 
-    default InteractionResult useLantern(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, Block block, Item lit, Item unlit) {
+    default InteractionResult useLantern(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, Block block) {
         ItemStack heldStack = pPlayer.getItemInHand(pHand);
         if (heldStack.getItem() == Items.FLINT_AND_STEEL) {
             if (pLevel.isRainingAt(pPos.above(1))){
@@ -55,21 +52,6 @@ public interface LightAPI {
             replaceLantern(pPos,pLevel,pState,pState.getValue(LANTERN_BURNTIME),pState.getValue(LITSTATE),pState.getValue(OIL) + 1, block);
             pLevel.playSound(null,pPos, SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS,1,0.3f*pLevel.random.nextFloat()*0.1f);
             return InteractionResult.SUCCESS;
-        }
-        else if(pPlayer.getMainHandItem().getItem() == Items.AIR) {
-            ItemStack stack;
-            if (pState.getValue(LITSTATE) == LIT) {
-                stack = new ItemStack(lit);
-            } else {
-                stack = new ItemStack(unlit);
-                stack.getOrCreateTag().putInt("oil", pState.getValue(OIL));
-                stack.getOrCreateTag().putInt("burnTime", pState.getValue(LANTERN_BURNTIME));
-                stack.getOrCreateTag().putInt("lit_state", pState.getValue(LITSTATE));
-                pPlayer.setItemSlot(EquipmentSlot.MAINHAND, stack);
-                pLevel.setBlockAndUpdate(pPos, Blocks.AIR.defaultBlockState());
-                pLevel.playSound(null, pPos, SoundEvents.LANTERN_BREAK, SoundSource.BLOCKS, 1, 0.9f * pLevel.random.nextFloat() * 0.1f);
-                pLevel.updateNeighborsAt(pPos, block);
-            }
         }
         return InteractionResult.PASS;
     }

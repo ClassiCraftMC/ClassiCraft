@@ -1,31 +1,19 @@
 package nameless.classicraft.block.realistic;
 
-import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.api.light.LightAPI;
-import nameless.classicraft.init.ModBlocks;
-import nameless.classicraft.init.ModItems;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
-
-import java.util.Objects;
 
 public class RealisticLanternBlock extends LanternBlock implements LightAPI {
 
@@ -41,14 +29,17 @@ public class RealisticLanternBlock extends LanternBlock implements LightAPI {
         }
         if (state.getValue(LITSTATE) == 1) {
             return 3;
-        } else {
+        }
+        if (state.getValue(LITSTATE) == 2) {
+            return 6;
+        }else {
             return 9;
         }
     }
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        useLantern(pState, pLevel, pPos, pPlayer, pHand, pHit, this, ModItems.LIT_LANTERN.get(), ModItems.LANTERN.get());
+        useLantern(pState, pLevel, pPos, pPlayer, pHand, pHit, this);
         return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
     }
 
