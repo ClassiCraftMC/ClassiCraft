@@ -38,7 +38,7 @@ public class SwineBreakCropGoal extends MoveToBlockGoal {
             --this.nextStartTick;
             return false;
         } else if (this.tryFindBlock()) {
-            this.nextStartTick = reducedTickDelay(20);
+            this.nextStartTick = reducedTickDelay(2);
             return true;
         } else {
             this.nextStartTick = this.nextStartTick(this.mob);
@@ -119,11 +119,9 @@ public class SwineBreakCropGoal extends MoveToBlockGoal {
             return pPos;
         } else {
             BlockPos[] ablockpos = new BlockPos[]{pPos.below(), pPos.west(), pPos.east(), pPos.north(), pPos.south(), pPos.below().below()};
-            BlockPos[] var4 = ablockpos;
             int var5 = ablockpos.length;
 
-            for(int var6 = 0; var6 < var5; ++var6) {
-                BlockPos blockpos = var4[var6];
+            for (BlockPos blockpos : ablockpos) {
                 if (pLevel.getBlockState(blockpos).is(ModTags.Blocks.DESTROY_CROPS)) {
                     return blockpos;
                 }
