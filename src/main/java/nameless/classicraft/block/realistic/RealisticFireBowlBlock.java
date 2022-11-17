@@ -80,6 +80,7 @@ public class RealisticFireBowlBlock extends Block implements LightAPI {
         super.createBlockStateDefinition(pBuilder);
         pBuilder.add(FIRE_BOWL_BURNTIME);
         pBuilder.add(LITSTATE);
+        pBuilder.add(OIL);
     }
 
     public static IntegerProperty getBurnTime() {

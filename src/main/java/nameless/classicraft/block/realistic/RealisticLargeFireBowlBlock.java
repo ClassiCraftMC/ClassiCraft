@@ -179,9 +179,9 @@ public class RealisticLargeFireBowlBlock extends Block {
 
     private static ToIntFunction<BlockState> getLightValueFromState() {
         return (state) -> {
-            if (state.getValue(RealisticFireBowlBlock.LITSTATE) == RealisticFireBowlBlock.LIT) {
+            if (state.getValue(RealisticLargeFireBowlBlock.LITSTATE) == RealisticLargeFireBowlBlock.LIT) {
                 return 14;
-            } else if (state.getValue(RealisticFireBowlBlock.LITSTATE) == RealisticFireBowlBlock.SMOLDERING) {
+            } else if (state.getValue(RealisticLargeFireBowlBlock.LITSTATE) == RealisticLargeFireBowlBlock.SMOLDERING) {
                 return 12;
             }
             return 0;
