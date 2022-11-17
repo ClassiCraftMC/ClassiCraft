@@ -23,6 +23,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
@@ -46,26 +48,30 @@ public interface LightAPI {
     int FIRE_BOWL_INITIAL_BURN_TIME = ClassiCraftConfiguration.fireBowlBurnoutTime.get();
     boolean FIRE_BOWL_SHOULD_BURN_OUT = FIRE_BOWL_INITIAL_BURN_TIME > 0;
     IntegerProperty FIRE_BOWL_BURNTIME = IntegerProperty.create("burntime", 0, FIRE_BOWL_SHOULD_BURN_OUT ? FIRE_BOWL_INITIAL_BURN_TIME : 1);
-
+    int LARGE_FIRE_BOWL_INITIAL_BURN_TIME = ClassiCraftConfiguration.largeFireBowlBurnoutTime.get();
+    boolean LARGE_FIRE_BOWL_SHOULD_BURN_OUT = LARGE_FIRE_BOWL_INITIAL_BURN_TIME > 0;
+    IntegerProperty LARGE_FIRE_BOWL_BURNTIME = IntegerProperty.create("burntime", 0, LARGE_FIRE_BOWL_SHOULD_BURN_OUT ? LARGE_FIRE_BOWL_INITIAL_BURN_TIME : 1);
+    BooleanProperty BE_HANGING = BlockStateProperties.HANGING;
+    BooleanProperty BE_WATERLOGGED = BooleanProperty.create("waterlogged");
     static IntegerProperty getLitState()
     {
         return LITSTATE;
     }
 
-    default InteractionResult useBlockNeedFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, Block block, Item fuelItem, Item fuelItem2, IntegerProperty burnTime) {
+    default InteractionResult useBlockNeedFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, Block block, Item fuelItem, Item fuelItem2, IntegerProperty burnTime, int initialBurnTime) {
         ItemStack heldStack = pPlayer.getItemInHand(pHand);
         if (heldStack.getItem() == Items.FLINT_AND_STEEL) {
             if (pLevel.isRainingAt(pPos.above(1))){
-                replaceLantern(pPos,pLevel,pState,pState.getValue(burnTime), UNLIT, pState.getValue(OIL), block);
+                replaceBlockNeedFuel(pPos,pLevel,pState,pState.getValue(burnTime), UNLIT, pState.getValue(OIL), block, burnTime);
             }
-            return useAsFlint(pState,pLevel,pPos,pPlayer,pHand, block);
+            return useAsFlint(pState,pLevel,pPos,pPlayer,pHand, block, burnTime, initialBurnTime);
         } else if(heldStack.is(fuelItem) || heldStack.is(fuelItem2))
         {
             if(pState.getValue(OIL) >= 3) return InteractionResult.PASS;
             if(!pPlayer.isCreative()){
                 heldStack.getItem().getDefaultInstance().shrink(1);
             }
-            replaceLantern(pPos,pLevel,pState,pState.getValue(burnTime),pState.getValue(LITSTATE),pState.getValue(OIL) + 1, block);
+            replaceBlockNeedFuel(pPos,pLevel,pState,pState.getValue(burnTime),pState.getValue(LITSTATE),pState.getValue(OIL) + 1, block, burnTime);
             pLevel.playSound(null,pPos, SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS,1,0.3f*pLevel.random.nextFloat()*0.1f);
             return InteractionResult.SUCCESS;
         }
@@ -77,33 +83,33 @@ public interface LightAPI {
         return LANTERN_BURNTIME;
     }
 
-    default void tickBlockNeedFuel(BlockState state, ServerLevel level, BlockPos pos, RandomSource random, Block block) {
-        if(!level.isClientSide() && LANTERN_SHOUD_BURN_OUT && state.getValue(LITSTATE) > UNLIT)
+    default void tickBlockNeedFuel(BlockState state, ServerLevel level, BlockPos pos, RandomSource random, Block block, boolean shouldBurnOut, IntegerProperty totalBurnTime, int initialBurnTime) {
+        if(!level.isClientSide() && shouldBurnOut && state.getValue(LITSTATE) > UNLIT)
         {
-            int newBurnTime = state.getValue(LANTERN_BURNTIME) -1;
+            int newBurnTime = state.getValue(totalBurnTime) -1;
 
-            if(state.getValue(LANTERN_BURNTIME) <= 0) {
+            if(state.getValue(totalBurnTime) <= 0) {
                 if(state.getValue(OIL)>0)
                 {
-                    replaceLantern(pos,level,state,LANTERN_TOTAL_BURN_TIME,LIT,state.getValue(OIL)-1, block);
+                    replaceBlockNeedFuel(pos,level,state, LIT,state.getValue(OIL)-1, initialBurnTime, block, totalBurnTime);
                     level.scheduleTick(pos,block,TICK_INTERVAL);
                     return;
                 }
-                replaceLantern(pos,level,state,UNLIT,0,state.getValue(OIL), block);
+                replaceBlockNeedFuel(pos,level,state,UNLIT,0,state.getValue(OIL), block, totalBurnTime);
                 playExtinguishSound(level, pos);
                 return;
             }
-            replaceLantern(pos,level,state,newBurnTime,LIT,state.getValue(OIL), block);
+            replaceBlockNeedFuel(pos,level,state,newBurnTime,LIT,state.getValue(OIL), block, totalBurnTime);
             level.scheduleTick(pos,block,TICK_INTERVAL);
         }
     }
 
-    default InteractionResult useAsFlint(BlockState pState,Level pLevel,BlockPos pPos, Player pPlayer,InteractionHand pHand, Block block) {
+    default InteractionResult useAsFlint(BlockState pState,Level pLevel,BlockPos pPos, Player pPlayer,InteractionHand pHand, Block block, IntegerProperty totalBurnTime, int initialBurnTime) {
         if(pState.getValue(OIL)<=0) {
             pLevel.playSound(null,pPos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.PLAYERS,1,pLevel.random.nextFloat() * 0.1F + 0.3F);
             return InteractionResult.SUCCESS;
         }
-        replaceLantern(pPos,pLevel,pState, LANTERN_TOTAL_BURN_TIME,LIT,pState.getValue(OIL), block);
+        replaceBlockNeedFuel(pPos,pLevel,pState, initialBurnTime, LIT,pState.getValue(OIL), block, totalBurnTime);
         pLevel.updateNeighborsAt(pPos,block);
         pLevel.playSound(pPlayer,pPos,SoundEvents.FLINTANDSTEEL_USE,SoundSource.PLAYERS,1,0.9f);
         if(!pPlayer.isCreative()) {
@@ -112,8 +118,8 @@ public interface LightAPI {
         return InteractionResult.SUCCESS;
     }
 
-    default void replaceLantern(BlockPos pos, Level level, BlockState state, int burnTime, int litState, int oil, Block block) {
-        level.setBlockAndUpdate(pos, block.defaultBlockState().setValue(LANTERN_BURNTIME,burnTime).setValue(RealisticLanternBlock.HANGING,state.getValue(RealisticLanternBlock.HANGING)).setValue(RealisticLanternBlock.WATERLOGGED,state.getValue(RealisticLanternBlock.WATERLOGGED)).setValue(LITSTATE,litState).setValue(OIL,oil));
+    default void replaceBlockNeedFuel(BlockPos pos, Level level, BlockState state, int initialBurnTime, int litState, int oil, Block block, IntegerProperty burnTime) {
+        level.setBlockAndUpdate(pos, block.defaultBlockState().setValue(burnTime, initialBurnTime).setValue(RealisticLanternBlock.HANGING,state.getValue(RealisticLanternBlock.HANGING)).setValue(RealisticLanternBlock.WATERLOGGED,state.getValue(RealisticLanternBlock.WATERLOGGED)).setValue(LITSTATE,litState).setValue(OIL,oil));
         level.updateNeighborsAt(pos,block);
     }
 

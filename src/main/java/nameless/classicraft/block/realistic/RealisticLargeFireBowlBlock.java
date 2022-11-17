@@ -1,13 +1,10 @@
 package nameless.classicraft.block.realistic;
 
-import nameless.classicraft.ClassiCraftConfiguration;
-import nameless.classicraft.init.ModBlocks;
+import nameless.classicraft.api.light.LightAPI;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -34,24 +31,14 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.ToIntFunction;
 
-public class RealisticLargeFireBowlBlock extends Block {
-
-    public static final int TICK_INTERVAL = 1200;
-    protected static final int INITIAL_BURN_TIME = ClassiCraftConfiguration.largeFireBowlBurnoutTime.get();
-    protected static final boolean SHOULD_BURN_OUT = INITIAL_BURN_TIME > 0;
-    protected static final IntegerProperty BURNTIME = IntegerProperty.create("burntime", 0, SHOULD_BURN_OUT ? INITIAL_BURN_TIME : 1);
-    protected static final IntegerProperty LITSTATE = IntegerProperty.create("litstate", 0, 2);
-
-    public static final int LIT = 2;
-    public static final int SMOLDERING = 1;
-    public static final int UNLIT = 0;
+public class RealisticLargeFireBowlBlock extends Block implements LightAPI {
 
     //TODO 完善碰撞箱
     protected static final VoxelShape AABB = box(6.0D, 0.0D, 6.0D, 10.0D, 10.0D, 10.0D);
 
     public RealisticLargeFireBowlBlock() {
         super(BlockBehaviour.Properties.of(Material.METAL).lightLevel(getLightValueFromState()).strength(1.5F, 6.0F).sound(SoundType.WOOD));
-        this.stateDefinition.any().setValue(LITSTATE, 0).setValue(BURNTIME, 0);
+        this.stateDefinition.any().setValue(LITSTATE, 0).setValue(LARGE_FIRE_BOWL_BURNTIME, 0);
     }
 
     @Override
@@ -67,40 +54,12 @@ public class RealisticLargeFireBowlBlock extends Block {
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        if (pPlayer.getItemInHand(pHand).getItem() == Items.FLINT_AND_STEEL) {
-            playLightingSound(pLevel, pPos);
-            if (!pPlayer.isCreative()) {
-                ItemStack heldStack = pPlayer.getItemInHand(pHand);
-                heldStack.hurtAndBreak(1, pPlayer, (p_41300_) -> {
-                    p_41300_.broadcastBreakEvent(pHand);
-                });
-            }
-            if (pLevel.isRainingAt(pPos)) {
-                playExtinguishSound(pLevel, pPos);
-            } else {
-                changeToLit(pLevel, pPos, pState);
-            }
-            return InteractionResult.SUCCESS;
-        }
-        return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
+        return useBlockNeedFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, this, Items.COAL, Items.CHARCOAL, LARGE_FIRE_BOWL_BURNTIME, LARGE_FIRE_BOWL_INITIAL_BURN_TIME);
     }
 
     @Override
     public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
-        if (!pLevel.isClientSide && SHOULD_BURN_OUT && pState.getValue(LITSTATE) > UNLIT) {
-            int newBurnTime = pState.getValue(BURNTIME) - 1;
-            if (newBurnTime <= 0) {
-                playExtinguishSound(pLevel, pPos);
-                changeToUnlit(pLevel, pPos, pState);
-                pLevel.updateNeighborsAt(pPos, this);
-            } else if (pState.getValue(LITSTATE) == LIT && (newBurnTime <= INITIAL_BURN_TIME / 10 || newBurnTime <= 1)) {
-                changeToSmoldering(pLevel, pPos, pState, newBurnTime);
-                pLevel.updateNeighborsAt(pPos, this);
-            }else {
-                pLevel.setBlockAndUpdate(pPos, pState.setValue(BURNTIME, newBurnTime));
-                pLevel.scheduleTick(pPos, this, TICK_INTERVAL);
-            }
-        }
+        tickBlockNeedFuel(pState, pLevel, pPos, pRandom, this, LARGE_FIRE_BOWL_SHOULD_BURN_OUT, LARGE_FIRE_BOWL_BURNTIME, LARGE_FIRE_BOWL_INITIAL_BURN_TIME);
     }
 
     @Override
@@ -119,8 +78,11 @@ public class RealisticLargeFireBowlBlock extends Block {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState>  pBuilder) {
-        pBuilder.add(BURNTIME);
+        pBuilder.add(LARGE_FIRE_BOWL_BURNTIME);
         pBuilder.add(LITSTATE);
+        pBuilder.add(OIL);
+        pBuilder.add(BE_HANGING);
+        pBuilder.add(BE_WATERLOGGED);
     }
 
     public BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {
@@ -137,7 +99,7 @@ public class RealisticLargeFireBowlBlock extends Block {
     }
 
     public static IntegerProperty getBurnTime() {
-        return BURNTIME;
+        return LARGE_FIRE_BOWL_BURNTIME;
     }
 
     public static IntegerProperty getLitState() {
@@ -145,43 +107,14 @@ public class RealisticLargeFireBowlBlock extends Block {
     }
 
     public static int getInitialBurnTime() {
-        return SHOULD_BURN_OUT ? INITIAL_BURN_TIME : 0;
-    }
-
-    public void changeToLit(Level level, BlockPos pos, BlockState state) {
-        level.setBlockAndUpdate(pos, ModBlocks.LARGE_FIRE_BOWL.get().defaultBlockState().setValue(LITSTATE, LIT).setValue(BURNTIME, getInitialBurnTime()));
-        if (SHOULD_BURN_OUT) {
-            level.scheduleTick(pos, this, TICK_INTERVAL);
-        }
-    }
-
-    public void changeToSmoldering(Level level, BlockPos pos, BlockState state, int newBurnTime) {
-        if (SHOULD_BURN_OUT) {
-            level.setBlockAndUpdate(pos, ModBlocks.LARGE_FIRE_BOWL.get().defaultBlockState().setValue(LITSTATE, SMOLDERING).setValue(BURNTIME, newBurnTime));
-            level.scheduleTick(pos, this, TICK_INTERVAL);
-        }
-    }
-
-    public void changeToUnlit(Level level, BlockPos pos, BlockState state) {
-        if (SHOULD_BURN_OUT) {
-            level.setBlockAndUpdate(pos, ModBlocks.LARGE_FIRE_BOWL.get().defaultBlockState());
-            level.scheduleTick(pos, this, TICK_INTERVAL);
-        }
-    }
-
-    public void playLightingSound(Level level, BlockPos pos) {
-        level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
-    }
-
-    public void playExtinguishSound(Level level, BlockPos pos) {
-        level.playSound(null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
+        return LARGE_FIRE_BOWL_SHOULD_BURN_OUT ? LARGE_FIRE_BOWL_INITIAL_BURN_TIME : 0;
     }
 
     private static ToIntFunction<BlockState> getLightValueFromState() {
         return (state) -> {
-            if (state.getValue(RealisticLargeFireBowlBlock.LITSTATE) == RealisticLargeFireBowlBlock.LIT) {
+            if (state.getValue(RealisticFireBowlBlock.LITSTATE) == RealisticFireBowlBlock.LIT) {
                 return 14;
-            } else if (state.getValue(RealisticLargeFireBowlBlock.LITSTATE) == RealisticLargeFireBowlBlock.SMOLDERING) {
+            } else if (state.getValue(RealisticFireBowlBlock.LITSTATE) == RealisticFireBowlBlock.SMOLDERING) {
                 return 12;
             }
             return 0;

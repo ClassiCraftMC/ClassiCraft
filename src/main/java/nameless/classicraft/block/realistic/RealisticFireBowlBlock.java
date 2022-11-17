@@ -53,12 +53,12 @@ public class RealisticFireBowlBlock extends Block implements LightAPI {
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-       return useBlockNeedFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, this, Items.COAL, Items.CHARCOAL, FIRE_BOWL_BURNTIME);
+       return useBlockNeedFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, this, Items.COAL, Items.CHARCOAL, FIRE_BOWL_BURNTIME, FIRE_BOWL_INITIAL_BURN_TIME);
     }
 
     @Override
     public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
-        tickBlockNeedFuel(pState, pLevel, pPos, pRandom, this);
+        tickBlockNeedFuel(pState, pLevel, pPos, pRandom, this, FIRE_BOWL_SHOULD_BURN_OUT, FIRE_BOWL_BURNTIME, FIRE_BOWL_INITIAL_BURN_TIME);
     }
 
     @Override
@@ -81,6 +81,8 @@ public class RealisticFireBowlBlock extends Block implements LightAPI {
         pBuilder.add(FIRE_BOWL_BURNTIME);
         pBuilder.add(LITSTATE);
         pBuilder.add(OIL);
+        pBuilder.add(BE_HANGING);
+        pBuilder.add(BE_WATERLOGGED);
     }
 
     public static IntegerProperty getBurnTime() {

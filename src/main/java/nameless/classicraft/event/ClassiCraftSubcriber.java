@@ -96,6 +96,10 @@ public class ClassiCraftSubcriber {
     }
 
     public static void extinguishTorchByPotion(ProjectileHitEvent event) {
+        Projectile projectile = event.getEntity();
+        ClassiCraftHooks.extinguishTorchThroughPotion(ModBlocks.TORCH.get(), projectile);
+        ClassiCraftHooks.extinguishTorchThroughPotion(ModBlocks.SOUL_TORCH.get(), projectile);
+        /**
         Block block = event.getHitBlock();
         Projectile projectile = event.getEntity();
         if ((block != null
@@ -123,7 +127,7 @@ public class ClassiCraftSubcriber {
                     projectile.getZ(),
                     Items.STICK.getDefaultInstance());
             projectile.getLevel().addFreshEntity(newItem);
-        }
+        }*/
     }
 
     public static void extinguishLanternByPotion(ProjectileHitEvent event) {

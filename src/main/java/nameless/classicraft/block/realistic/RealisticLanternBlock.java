@@ -52,7 +52,7 @@ public class RealisticLanternBlock extends LanternBlock implements LightAPI {
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        useBlockNeedFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, this, Items.HONEYCOMB, null, LANTERN_BURNTIME);
+        useBlockNeedFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, this, Items.HONEYCOMB, null, LANTERN_BURNTIME, LANTERN_TOTAL_BURN_TIME);
         return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
     }
 
@@ -63,7 +63,7 @@ public class RealisticLanternBlock extends LanternBlock implements LightAPI {
 
     @Override
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        tickBlockNeedFuel(state, level, pos, random, this);
+        tickBlockNeedFuel(state, level, pos, random, this, LANTERN_SHOUD_BURN_OUT, LANTERN_BURNTIME, LANTERN_TOTAL_BURN_TIME);
     }
 
     @Override

@@ -5,14 +5,14 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "classicraft.refmap.json",
   "mixins": [
+    "MixinItem",
+    "MixinItemStack",
+    "MixinPrimaryLevelData",
     "event.MixinAbstractHurtingProjectile",
     "event.MixinBlockBehaviour",
-    "MixinItem",
     "event.MixinItemEntity",
-    "MixinItemStack",
     "event.MixinLivingEntity",
     "event.MixinMob",
-    "MixinPrimaryLevelData",
     "event.MixinProjectile",
     "event.MixinServerLevel"
   ],
