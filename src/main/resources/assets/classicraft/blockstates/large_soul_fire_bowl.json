@@ -1,5 +1,6 @@
 {
   "variants": {
+    "litstate=3": {"model": "classicraft:block/firebowl/large_fire_bowl"},
     "litstate=2": {"model": "classicraft:block/firebowl/large_soul_fire_bowl"},
     "litstate=1": {"model": "classicraft:block/firebowl/large_soul_fire_bowl"},
     "litstate=0": {"model": "classicraft:block/firebowl/unlit_large_soul_fire_bowl"}

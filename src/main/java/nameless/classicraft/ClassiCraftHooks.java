@@ -2,8 +2,6 @@ package nameless.classicraft;
 
 import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
-import nameless.classicraft.init.ModBlockProperties;
-import nameless.classicraft.init.ModBlocks;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
@@ -13,15 +11,10 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.ThrownPotion;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 
 import java.util.Iterator;
@@ -29,22 +22,6 @@ import java.util.List;
 import java.util.Map;
 
 public class ClassiCraftHooks {
-
-    public static void extinguishTorchThroughPotion(Block block, Projectile projectile) {
-        if ((block != null
-                && projectile instanceof ThrownPotion
-                && block.defaultBlockState().is(block))) {
-            ModBlockProperties.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
-            projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
-                    Blocks.AIR.defaultBlockState());
-            ItemEntity newItem = new ItemEntity(
-                    projectile.getLevel(),
-                    projectile.getX(), projectile.getY(),
-                    projectile.getZ(),
-                    Items.STICK.getDefaultInstance());
-            projectile.getLevel().addFreshEntity(newItem);
-        }
-    }
 
     public static void addFoodComponentEffectTooltip(ItemStack stack, List<Component> tooltip) {
         FoodProperties foodComponent = stack.getItem().getFoodProperties();
