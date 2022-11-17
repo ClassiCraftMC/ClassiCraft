@@ -118,7 +118,7 @@ dependencies {
     implementation fg.deobf('curse.maven:tough-as-nails-246391:3871450')
     implementation fg.deobf('curse.maven:serene-seasons-291874:4037228')
     implementation fg.deobf('curse.maven:jei-238222:4068188')
-
+    implementation fg.deobf('curse.maven:lucent-493280:4085139')
 }
 
 mixin {
