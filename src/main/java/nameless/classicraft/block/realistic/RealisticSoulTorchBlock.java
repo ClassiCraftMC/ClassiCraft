@@ -1,205 +1,110 @@
 package nameless.classicraft.block.realistic;
 
-import nameless.classicraft.ClassiCraftConfiguration;
-import nameless.classicraft.api.item.ItemStackAPI;
-import nameless.classicraft.init.ModBlockProperties;
+import nameless.classicraft.api.light.LightAPI;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.TorchBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
-public class RealisticSoulTorchBlock extends RealisticTorchBlock {
+import java.util.Random;
+import java.util.function.ToIntFunction;
+
+public class RealisticSoulTorchBlock extends TorchBlock implements LightAPI {
+
+    public RealisticSoulTorchBlock() {
+        super(BlockBehaviour.Properties.of(Material.ICE).noCollission().instabreak().lightLevel(getLightLevelFromState()).sound(SoundType.WOOD), ParticleTypes.FLAME);
+        this.registerDefaultState(this.defaultBlockState().setValue(LITSTATE, 0).setValue(TORCH_BURNTIME, 0));
+    }
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        if (pPlayer.getItemInHand(pHand).getItem() == Items.FLINT_AND_STEEL) {
-            ModBlockProperties.playLightingSound(pLevel, pPos);
-            if (!pPlayer.isCreative()) {
-                ItemStack heldStack = pPlayer.getItemInHand(pHand);
-                heldStack.setDamageValue(1);
-                if (pLevel.isRainingAt(pPos.above())) {
-                    changeToSmoldering(pLevel,pPos,pState,getInitialBurnTime());
-                    ModBlockProperties.playExtinguishSound(pLevel, pPos);
-                } else {
-                    if(pLevel.isRainingAt(pPos.above()))
-                    {
-                        changeToSmoldering(pLevel,pPos,pState,getInitialBurnTime());
-                        ModBlockProperties.playExtinguishSound(pLevel, pPos);
-                    }
-                    else
-                    {
-                        changeToLit(pLevel, pPos, pState);
-                        ModBlockProperties.playLightingSound(pLevel,pPos);
-                    }
-                    pLevel.updateNeighborsAt(pPos,this);
-                }
-            }
-            else
-            {
-                if(pLevel.isRainingAt(pPos.above()))
-                {
-                    changeToSmoldering(pLevel,pPos,pState,getInitialBurnTime());
-                    ModBlockProperties.playExtinguishSound(pLevel,pPos);
-                }
-                else
-                {
-                    changeToLit(pLevel, pPos, pState);
-                }
-                pLevel.updateNeighborsAt(pPos,this);
-            }
-            return InteractionResult.SUCCESS;
-        }
-        else if (pPlayer.getItemInHand(pHand).getItem() == ModItems.MATCHBOX.get()) {
-            ModBlockProperties.playLightingSound(pLevel, pPos);
-            if (!pPlayer.isCreative()) {
-                ItemStack heldStack = pPlayer.getItemInHand(pHand);
-                heldStack.shrink(1);
-                if (pLevel.isRainingAt(pPos.above())) {
-                    changeToSmoldering(pLevel,pPos,pState,getInitialBurnTime());
-                    ModBlockProperties.playExtinguishSound(pLevel, pPos);
-                } else {
-                    if(pLevel.isRainingAt(pPos.above()))
-                    {
-                        changeToSmoldering(pLevel,pPos,pState,getInitialBurnTime());
-                        ModBlockProperties.playExtinguishSound(pLevel, pPos);
-                    }
-                    else
-                    {
-                        changeToLit(pLevel, pPos, pState);
-                        ModBlockProperties.playLightingSound(pLevel,pPos);
-                    }
-                    pLevel.updateNeighborsAt(pPos,this);
-                }
-            }
-            else
-            {
-                if(pLevel.isRainingAt(pPos.above()))
-                {
-                    changeToSmoldering(pLevel,pPos,pState,getInitialBurnTime());
-                    ModBlockProperties.playExtinguishSound(pLevel,pPos);
-                }
-                else
-                {
-                    changeToLit(pLevel, pPos, pState);
-                }
-                pLevel.updateNeighborsAt(pPos,this);
-            }
-            return InteractionResult.SUCCESS;
-        }
-        else if( pState.getValue(LITSTATE) == 2 && pPlayer.getItemInHand(pHand).is(ModItems.SOUL_TORCH.get()))
-        {
-            pPlayer.setItemInHand(pHand, ItemStackAPI.replaceItemWithCopyNBTTagAndCountButResetBurnTime(pPlayer.getItemInHand(pHand),ModItems.LIT_SOUL_TORCH.get(),INITIAL_BURN_TIME));
-            return InteractionResult.SUCCESS;
-        }
+        useTorch(pState, pLevel, pPos, pPlayer, pHand, pHit, this, ModItems.MATCHBOX.get(), ModBlocks.TORCH.get().asItem(), ModItems.LIT_TORCH.get());
         return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
     }
 
+    @Override
+    public boolean isRandomlyTicking(BlockState pState) {
+        return CAUSE_FIRE &&pState.getValue(LITSTATE) == LIT  && new Random().nextInt(9) == 0;
+    }
+
+    @Override
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        randomTickTorch(state, level, pos, random);
+    }
+
+    @Override
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        tickTorch(state, level, pos, random, this);
+    }
+
+    @Override
+    public void onPlace(BlockState pState, Level pLevel, BlockPos pPos, BlockState pOldState, boolean pIsMoving) {
+        if(!pIsMoving && pState.getBlock() != pOldState.getBlock())
+        {
+            defaultBlockState().updateIndirectNeighbourShapes(pLevel,pPos,3);
+        }
+        if(TORCH_SHOULD_BURN_OUT&&pState.getBlock() instanceof RealisticSoulTorchBlock&&pState.getValue(LITSTATE) > UNLIT)
+            pLevel.scheduleTick(pPos, this, TICK_INTERVAL);
+        super.onPlace(pState,pLevel,pPos,pOldState,pIsMoving);
+    }
+
+    public static IntegerProperty getBurnTime() {
+        return TORCH_BURNTIME;
+    }
+
+    public static IntegerProperty getLitState() {
+        return LITSTATE;
+    }
+
+    public static int getInitialBurnTime() {
+        return TORCH_SHOULD_BURN_OUT ? INITIAL_BURN_TIME : 0;
+    }
+
+    public static ToIntFunction<BlockState> getLightLevelFromState()
+    {
+        return (state) ->{
+            if(state.getValue(RealisticTorchBlock.LITSTATE) == 2)
+            {
+                return 12;
+            }
+            else if(state.getValue(RealisticTorchBlock.LITSTATE) == 1)
+            {
+                return 8;
+            }
+            else
+            {
+                return 0;
+            }
+        };
+    }
 
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        BlockState state =Blocks.SOUL_TORCH.getStateForPlacement(pContext);
-        ItemStack placeStack = pContext.getPlayer().getItemInHand(pContext.getHand());
-        if(!placeStack.is(ModItems.LIT_SOUL_TORCH.get())) return state == null ? null:this.defaultBlockState();
-        if(placeStack.getOrCreateTag().contains("burnTime"))
-        {
-
-            int burnTime = placeStack.getTag().getInt("burnTime");
-            if(pContext.getLevel().isRainingAt(pContext.getClickedPos().above()))
-            {
-                if(burnTime > INITIAL_BURN_TIME)
-                {
-                    return  state == null ? null:this.defaultBlockState().setValue(BURNTIME,INITIAL_BURN_TIME).setValue(LITSTATE,1);
-                }
-                else if(burnTime <= 0)
-                {
-                    return  state == null ? null:this.defaultBlockState();
-                }
-                else
-                {
-                    return state == null ? null:this.defaultBlockState().setValue(BURNTIME,burnTime).setValue(LITSTATE,1);
-                }
-            }
-            if(burnTime > INITIAL_BURN_TIME)
-            {
-                return  state == null ? null:this.defaultBlockState().setValue(BURNTIME,INITIAL_BURN_TIME).setValue(LITSTATE,2);
-            }
-            else if(burnTime <= 0)
-            {
-                return  state == null ? null:this.defaultBlockState();
-            }
-            else
-            {
-                return state == null ? null:this.defaultBlockState().setValue(BURNTIME,burnTime).setValue(LITSTATE,2);
-            }
-
-        }
-        else
-        {
-            if(pContext.getLevel().isRainingAt(pContext.getClickedPos().above()))
-            {
-                return  state == null ? null:this.defaultBlockState().setValue(BURNTIME,INITIAL_BURN_TIME).setValue(LITSTATE,1);
-            }
-            return state == null ? null:this.defaultBlockState().setValue(BURNTIME,INITIAL_BURN_TIME).setValue(LITSTATE,2);
-        }
+        getTorchStateForPlacement(pContext, this);
+        return super.getStateForPlacement(pContext);
     }
-
 
     @Override
-    public void animateTick(BlockState state, Level pLevel, BlockPos pPos, RandomSource pRandom) {
-        if (state.getValue(LITSTATE) == LIT || (state.getValue(LITSTATE) == SMOLDERING && pLevel.getRandom().nextInt(2) == 1)) {
-            double d0 = (double)pPos.getX() + 0.5D;
-            double d1 = (double)pPos.getY() + 0.7D;
-            double d2 = (double)pPos.getZ() + 0.5D;
-            pLevel.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-            pLevel.addParticle(ParticleTypes.SOUL_FIRE_FLAME, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-        }
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
+        pBuilder.add(LITSTATE, TORCH_BURNTIME);
     }
 
-    public void changeToLit(Level pLevel, BlockPos pPos, BlockState pState)
-    {
-        pLevel.setBlockAndUpdate(pPos, ModBlocks.SOUL_TORCH.get().defaultBlockState().setValue(LITSTATE,2).setValue(BURNTIME,INITIAL_BURN_TIME));
-        if(SHOULD_BURN_OUT)
-        {
-            pLevel.scheduleTick(pPos,this, TICK_INTERVAL);
-        }
-    }
-
-    public void changeToSmoldering(Level pLevel, BlockPos pPos, BlockState pState, int burnTime)
-    {
-        pLevel.setBlockAndUpdate(pPos,ModBlocks.SOUL_TORCH.get().defaultBlockState().setValue(LITSTATE,1).setValue(BURNTIME,burnTime));
-        if(SHOULD_BURN_OUT)
-        {
-            pLevel.scheduleTick(pPos, this, TICK_INTERVAL);
-        }
-    }
-
-    public void changeToUnlit(Level pLevel,BlockPos pPos,BlockState pState)
-    {
-        if (SHOULD_BURN_OUT) {
-            if (ClassiCraftConfiguration.noRelightEnabled.get() || ClassiCraftConfiguration.turnToStickEnabled.get()) {
-                pLevel.setBlockAndUpdate(pPos, Blocks.AIR.defaultBlockState());
-            }
-            if (ClassiCraftConfiguration.turnToStickEnabled.get()) {
-                ItemEntity itemEntity = new ItemEntity(pLevel, pPos.getX(), pPos.getY(), pPos.getZ(), Items.STICK.getDefaultInstance());
-                pLevel.addFreshEntity(itemEntity);
-            }
-        }else {
-            pLevel.setBlockAndUpdate(pPos, ModBlocks.SOUL_TORCH.get().defaultBlockState());
-        }
-        pLevel.scheduleTick(pPos,this, TICK_INTERVAL);
-    }
 }

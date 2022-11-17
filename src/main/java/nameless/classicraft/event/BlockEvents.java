@@ -4,6 +4,7 @@ import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.api.event.PlayerRightClickBlockEvent;
 import nameless.classicraft.api.light.LightAPI;
+import nameless.classicraft.block.realistic.RealisticSoulTorchBlock;
 import nameless.classicraft.block.realistic.RealisticTorchBlock;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
@@ -30,7 +31,7 @@ public class BlockEvents {
     public static void rightClickTorch(PlayerRightClickBlockEvent event) {
         Block block = event.getBlock();
         if (event.getEntity().isShiftKeyDown()) {
-            if (block instanceof RealisticTorchBlock) {
+            if (block instanceof RealisticTorchBlock || block instanceof RealisticSoulTorchBlock) {
                 event.getLevel().setBlockAndUpdate(event.getPos(), Blocks.AIR.defaultBlockState());
                 ItemEntity itemEntity = new ItemEntity(
                         event.getLevel(),
@@ -69,21 +70,25 @@ public class BlockEvents {
         if (entity instanceof Player && block instanceof TorchBlock
                 && !item.getDefaultInstance().is(Items.REDSTONE_TORCH)
                 && !item.getDefaultInstance().is(Items.SOUL_TORCH)
+                && !item.getDefaultInstance().is(ModItems.SOUL_TORCH.get())
+                && !item.getDefaultInstance().is(ModItems.LIT_SOUL_TORCH.get())
                 && ClassiCraftConfiguration.noVanillaTorchPlace.get()) {
             if (!((Player) entity).isCreative()) {
                 level.playSound(null, event.getPos(), SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1, 1);
                 level.setBlock(event.getPos(), ModBlocks.TORCH.get().defaultBlockState(), 1);
-                entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_torch"));
+                //entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_torch"));
             }
         }
         if (entity instanceof Player && block instanceof TorchBlock
                 && !item.getDefaultInstance().is(Items.REDSTONE_TORCH)
                 && !item.getDefaultInstance().is(Items.TORCH)
+                && !item.getDefaultInstance().is(ModItems.TORCH.get())
+                && !item.getDefaultInstance().is(ModItems.LIT_TORCH.get())
                 && ClassiCraftConfiguration.noVanillaTorchPlace.get()) {
             if (!((Player) entity).isCreative()) {
                 level.playSound(null, event.getPos(), SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1, 1);
                 level.setBlock(event.getPos(), ModBlocks.SOUL_TORCH.get().defaultBlockState(), 1);
-                entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_torch"));
+                //entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_torch"));
             }
         }
         if (entity instanceof Player

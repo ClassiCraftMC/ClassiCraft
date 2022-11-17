@@ -21,7 +21,6 @@ import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.screens.PauseScreen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.sounds.SoundEvents;
@@ -42,7 +41,6 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ThrownEgg;
 import net.minecraft.world.entity.projectile.ThrownPotion;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -213,7 +211,7 @@ public class ClassiCraftSubcriber {
             entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
                     ModBlocks.TORCH.get().defaultBlockState()
                             .setValue(RealisticTorchBlock.getLitState(),2)
-                            .setValue(RealisticTorchBlock.BURNTIME,
+                            .setValue(RealisticTorchBlock.TORCH_BURNTIME,
                                     RealisticTorchBlock.getInitialBurnTime()));
         }
         if (block != null
@@ -225,7 +223,7 @@ public class ClassiCraftSubcriber {
             entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
                     ModBlocks.SOUL_TORCH.get().defaultBlockState()
                             .setValue(RealisticSoulTorchBlock.getLitState(),2)
-                            .setValue(RealisticSoulTorchBlock.BURNTIME,
+                            .setValue(RealisticSoulTorchBlock.TORCH_BURNTIME,
                                     RealisticSoulTorchBlock.getInitialBurnTime()));
         }
     }
