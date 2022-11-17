@@ -245,16 +245,16 @@ public class ClassiCraftSubcriber {
                 newItem.setCount(oldCount);
                 player.getInventory().add(newItem);
             }
-            if (itemStack.is(ModItems.LIT_SOUL_LANTERN.get())) {
-                if (player.isShiftKeyDown()
-                        && itemStack.getItem() != player.getOffhandItem().getItem()) {
-                    event.getLevel().playSound(null, event.getPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0F, event.getLevel().getRandom().nextFloat() * 0.1F + 0.9F);
-                    ItemStack newItem = new ItemStack(ModItems.SOUL_LANTERN.get());
-                    int oldCount = itemStack.getCount();
-                    player.getInventory().removeItem(itemStack);
-                    newItem.setCount(oldCount);
-                    player.getInventory().add(newItem);
-                }
+        }
+        if (itemStack.is(ModItems.LIT_SOUL_LANTERN.get())) {
+            if (player.isShiftKeyDown()
+                    && itemStack.getItem() != player.getOffhandItem().getItem()) {
+                event.getLevel().playSound(null, event.getPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0F, event.getLevel().getRandom().nextFloat() * 0.1F + 0.9F);
+                ItemStack newItem = new ItemStack(ModItems.SOUL_LANTERN.get());
+                int oldCount = itemStack.getCount();
+                player.getInventory().removeItem(itemStack);
+                newItem.setCount(oldCount);
+                player.getInventory().add(newItem);
             }
         }
     }

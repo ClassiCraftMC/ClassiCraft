@@ -31,13 +31,11 @@ public class LitLantern extends BlockItem implements LitItemAPI {
     @Nullable
     @Override
     protected BlockState getPlacementState(BlockPlaceContext pContext) {
-        getLanternPlacementState(pContext, this.getBlock());
-        return null;
+        return getLanternPlacementState(pContext, this.getBlock());
     }
 
     @Override
     public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
-        shouldLanternCauseReequipAnimation(oldStack, newStack, slotChanged);
-        return false;
+        return shouldLanternCauseReequipAnimation(oldStack, newStack, slotChanged);
     }
 }

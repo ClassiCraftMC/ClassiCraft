@@ -49,13 +49,11 @@ public class BlockEvents {
     public static void rightClickLantern(PlayerRightClickBlockEvent event) {
         Block block = event.getBlock();
         if (event.getEntity().isShiftKeyDown()) {
-            if (block instanceof RealisticLanternBlock
-                    && block.defaultBlockState().getValue(LightAPI.LITSTATE) > 0) {
+            if (block instanceof RealisticLanternBlock) {
                 event.getLevel().setBlockAndUpdate(event.getPos(), ModBlocks.LANTERN.get().defaultBlockState());
                 event.getLevel().updateNeighborsAt(event.getPos(), block);
             }
-            if (block instanceof RealisticSoulLanternBlock
-                    && block.defaultBlockState().getValue(LightAPI.LITSTATE) > 0) {
+            if (block instanceof RealisticSoulLanternBlock) {
                 event.getLevel().setBlockAndUpdate(event.getPos(), ModBlocks.SOUL_LANTERN.get().defaultBlockState());
                 event.getLevel().updateNeighborsAt(event.getPos(), block);
             }
