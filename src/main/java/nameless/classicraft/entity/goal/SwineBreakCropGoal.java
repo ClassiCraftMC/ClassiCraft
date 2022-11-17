@@ -1,6 +1,7 @@
 package nameless.classicraft.entity.goal;
 
 import nameless.classicraft.entity.SwineEntity;
+import nameless.classicraft.init.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.SectionPos;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -22,14 +23,11 @@ import net.minecraftforge.event.ForgeEventFactory;
 import javax.annotation.Nullable;
 
 public class SwineBreakCropGoal extends MoveToBlockGoal {
-    private final Block blockToRemove;
     private final SwineEntity removerMob;
     private int ticksSinceReachedGoal;
-    private static final int WAIT_AFTER_BLOCK_FOUND = 20;
 
     public SwineBreakCropGoal(SwineEntity pRemoverMob, double pSpeedModifier, int pSearchRange) {
         super(pRemoverMob, pSpeedModifier, 24, pSearchRange);
-        this.blockToRemove = Blocks.FARMLAND;
         this.removerMob = pRemoverMob;
     }
 
@@ -82,7 +80,7 @@ public class SwineBreakCropGoal extends MoveToBlockGoal {
                 this.removerMob.setDeltaMovement(vec31.x, 0.3, vec31.z);
                 if (!level.isClientSide) {
                     d3 = 0.08;
-                    ((ServerLevel)level).sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.FARMLAND.defaultBlockState()), (double)blockpos1.getX() + 0.5, (double)blockpos1.getY() + 0.7, (double)blockpos1.getZ() + 0.5, 3, ((double)randomsource.nextFloat() - 0.5) * 0.08, ((double)randomsource.nextFloat() - 0.5) * 0.08, ((double)randomsource.nextFloat() - 0.5) * 0.08, 0.15000000596046448);
+                    ((ServerLevel)level).sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.CARROTS.defaultBlockState()), (double)blockpos1.getX() + 0.5, (double)blockpos1.getY() + 0.7, (double)blockpos1.getZ() + 0.5, 3, ((double)randomsource.nextFloat() - 0.5) * 0.08, ((double)randomsource.nextFloat() - 0.5) * 0.08, ((double)randomsource.nextFloat() - 0.5) * 0.08, 0.15000000596046448);
                 }
             }
 
@@ -115,7 +113,7 @@ public class SwineBreakCropGoal extends MoveToBlockGoal {
 
     @Nullable
     private BlockPos getPosWithBlock(BlockPos pPos, BlockGetter pLevel) {
-        if (pLevel.getBlockState(pPos).is(this.blockToRemove)) {
+        if (pLevel.getBlockState(pPos).is(ModTags.Blocks.DESTROY_CROPS)) {
             return pPos;
         } else {
             BlockPos[] ablockpos = new BlockPos[]{pPos.below(), pPos.west(), pPos.east(), pPos.north(), pPos.south(), pPos.below().below()};
@@ -124,7 +122,7 @@ public class SwineBreakCropGoal extends MoveToBlockGoal {
 
             for(int var6 = 0; var6 < var5; ++var6) {
                 BlockPos blockpos = var4[var6];
-                if (pLevel.getBlockState(blockpos).is(this.blockToRemove)) {
+                if (pLevel.getBlockState(blockpos).is(ModTags.Blocks.DESTROY_CROPS)) {
                     return blockpos;
                 }
             }
@@ -140,7 +138,7 @@ public class SwineBreakCropGoal extends MoveToBlockGoal {
         } else if (!chunkaccess.getBlockState(pPos).canEntityDestroy(pLevel, pPos, this.removerMob)) {
             return false;
         } else {
-            return chunkaccess.getBlockState(pPos).is(this.blockToRemove) && chunkaccess.getBlockState(pPos.above()).isAir() && chunkaccess.getBlockState(pPos.above(2)).isAir();
+            return chunkaccess.getBlockState(pPos).is(ModTags.Blocks.DESTROY_CROPS) && chunkaccess.getBlockState(pPos.above()).isAir() && chunkaccess.getBlockState(pPos.above(2)).isAir();
         }
     }
 
