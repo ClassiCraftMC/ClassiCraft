@@ -17,7 +17,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ThrownPotion;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.*;
@@ -28,28 +27,6 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
 public class BlockEvents {
-
-    @SubscribeEvent
-    public static void doNotGenFire(PlayerRightClickBlockEvent event) {
-        ItemStack itemStack = event.getEntity().getMainHandItem();
-        BlockState blockState = event.getBlock().defaultBlockState();
-        if (itemStack.is(Items.FLINT_AND_STEEL)
-                && blockState.is(ModBlocks.LANTERN.get())) {
-            return;
-        }
-        if (itemStack.is(Items.FLINT_AND_STEEL)
-                && blockState.is(ModBlocks.SOUL_LANTERN.get())) {
-            return;
-        }
-        if (itemStack.is(Items.FLINT_AND_STEEL)
-                && blockState.is(ModBlocks.TORCH.get())) {
-            return;
-        }
-        if (itemStack.is(Items.FLINT_AND_STEEL)
-                && blockState.is(ModBlocks.SOUL_TORCH.get())) {
-            return;
-        }
-    }
 
     @SubscribeEvent
     public static void extinguishLargeFireBowlByPotion(ProjectileHitEvent event) {

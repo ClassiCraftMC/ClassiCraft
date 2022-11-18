@@ -11,9 +11,10 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "classicraft:torch"
+          "name": "minecraft:stick"
         }
       ],
+      "name": "torch",
       "rolls": 1.0
     }
   ]

@@ -71,6 +71,7 @@ public interface LightAPI {
             if(!pPlayer.isCreative()){
                 heldStack.getItem().getDefaultInstance().shrink(1);
             }
+            pPlayer.swing(pHand);
             replaceBlockNeedFuel(pPos,pLevel,pState,pState.getValue(burnTime),pState.getValue(LITSTATE),pState.getValue(OIL) + 1, block, burnTime);
             pLevel.playSound(null,pPos, SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS,1,0.3f*pLevel.random.nextFloat()*0.1f);
             return InteractionResult.SUCCESS;
@@ -107,6 +108,7 @@ public interface LightAPI {
     default InteractionResult useAsFlint(BlockState pState,Level pLevel,BlockPos pPos, Player pPlayer,InteractionHand pHand, Block block, IntegerProperty totalBurnTime, int initialBurnTime) {
         if(pState.getValue(OIL)<=0) {
             pLevel.playSound(null,pPos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.PLAYERS,1,pLevel.random.nextFloat() * 0.1F + 0.3F);
+            pPlayer.swing(pHand);
             return InteractionResult.SUCCESS;
         }
         replaceBlockNeedFuel(pPos,pLevel,pState, initialBurnTime, LIT,pState.getValue(OIL), block, totalBurnTime);
@@ -115,6 +117,7 @@ public interface LightAPI {
         if(!pPlayer.isCreative()) {
             pPlayer.getItemInHand(pHand).setDamageValue(pPlayer.getItemInHand(pHand).getDamageValue() + 1);
         }
+        pPlayer.swing(pHand);
         return InteractionResult.SUCCESS;
     }
 
@@ -133,25 +136,29 @@ public interface LightAPI {
 
     default InteractionResult useTorch(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, Block block, Item starter, Item unlit, Item lit) {
         if (pPlayer.getItemInHand(pHand).getItem() == Items.FLINT_AND_STEEL) {
-            ModBlockProperties.playLightingSound(pLevel, pPos);
+            playLightingSound(pLevel, pPos);
             if (!pPlayer.isCreative()) {
                 ItemStack heldStack = pPlayer.getItemInHand(pHand);
                 heldStack.hurtAndBreak(1, pPlayer, (p_41300_) -> {
                     p_41300_.broadcastBreakEvent(pHand);
                 });
+                pPlayer.swing(pHand);
                 if (pLevel.isRainingAt(pPos.above())) {
                     changeToUnlit(pLevel, pPos, pState, block);
-                    ModBlockProperties.playExtinguishSound(pLevel, pPos);
+                    playExtinguishSound(pLevel, pPos);
+                    pPlayer.swing(pHand);
                 } else {
                     if(pLevel.isRainingAt(pPos.above()))
                     {
                         changeToUnlit(pLevel, pPos, pState, block);
-                        ModBlockProperties.playExtinguishSound(pLevel, pPos);
+                        playExtinguishSound(pLevel, pPos);
+                        pPlayer.swing(pHand);
                     }
                     else
                     {
                         changeToLit(pLevel, pPos, pState, block);
-                        ModBlockProperties.playLightingSound(pLevel,pPos);
+                        playLightingSound(pLevel,pPos);
+                        pPlayer.swing(pHand);
                     }
                     pLevel.updateNeighborsAt(pPos,block);
                 }
@@ -161,34 +168,40 @@ public interface LightAPI {
                 if(pLevel.isRainingAt(pPos.above()))
                 {
                     changeToUnlit(pLevel, pPos, pState, block);
-                    ModBlockProperties.playExtinguishSound(pLevel,pPos);
+                    playExtinguishSound(pLevel,pPos);
+                    pPlayer.swing(pHand);
                 }
                 else
                 {
                     changeToLit(pLevel, pPos, pState, block);
+                    pPlayer.swing(pHand);
                 }
                 pLevel.updateNeighborsAt(pPos,block);
             }
             return InteractionResult.SUCCESS;
         }
         else if (pPlayer.getItemInHand(pHand).getItem() == starter) {
-            ModBlockProperties.playLightingSound(pLevel, pPos);
+            playLightingSound(pLevel, pPos);
+            pPlayer.swing(pHand);
             if (!pPlayer.isCreative()) {
                 ItemStack heldStack = pPlayer.getItemInHand(pHand);
                 heldStack.shrink(1);
                 if (pLevel.isRainingAt(pPos.above())) {
                     changeToUnlit(pLevel, pPos, pState, block);
-                    ModBlockProperties.playExtinguishSound(pLevel, pPos);
+                    playExtinguishSound(pLevel, pPos);
+                    pPlayer.swing(pHand);
                 } else {
                     if(pLevel.isRainingAt(pPos.above()))
                     {
                         changeToUnlit(pLevel, pPos, pState, block);
-                        ModBlockProperties.playExtinguishSound(pLevel, pPos);
+                        playExtinguishSound(pLevel, pPos);
+                        pPlayer.swing(pHand);
                     }
                     else
                     {
                         changeToLit(pLevel, pPos, pState, block);
-                        ModBlockProperties.playLightingSound(pLevel,pPos);
+                        playLightingSound(pLevel,pPos);
+                        pPlayer.swing(pHand);
                     }
                     pLevel.updateNeighborsAt(pPos,block);
                 }
@@ -198,11 +211,13 @@ public interface LightAPI {
                 if(pLevel.isRainingAt(pPos.above()))
                 {
                     changeToUnlit(pLevel, pPos, pState, block);
-                    ModBlockProperties.playExtinguishSound(pLevel,pPos);
+                    playExtinguishSound(pLevel,pPos);
+                    pPlayer.swing(pHand);
                 }
                 else
                 {
                     changeToLit(pLevel, pPos, pState, block);
+                    pPlayer.swing(pHand);
                 }
                 pLevel.updateNeighborsAt(pPos, block);
             }
@@ -211,6 +226,7 @@ public interface LightAPI {
         else if( pState.getValue(LITSTATE) == 2 && pPlayer.getItemInHand(pHand).is(unlit))
         {
             pPlayer.setItemInHand(pHand, ItemStackAPI.replaceItemWithCopyNBTTagAndCountButResetBurnTime(pPlayer.getItemInHand(pHand), lit, TORCH_INITIAL_BURN_TIME));
+            pPlayer.swing(pHand);
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.PASS;
