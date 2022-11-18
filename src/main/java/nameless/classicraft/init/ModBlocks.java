@@ -152,6 +152,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> CANDLE =
             registerDecoration("candle", RealisticCandleBlock::new);
 
+    public static final RegistryObject<Block> CAMPFIRE =
+            registerDecoration("campfire", RealisticCampFireBlock::new);
+
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockSupplier, @Nullable Function<T, ? extends BlockItem> blockItemFactory) {
         return registerBlock(ModBlocks.BLOCKS, ModItems.ITEMS, name, blockSupplier, blockItemFactory);
     }

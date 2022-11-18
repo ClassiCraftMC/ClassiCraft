@@ -52,6 +52,10 @@ public interface LightAPI {
     IntegerProperty LARGE_FIRE_BOWL_BURNTIME = IntegerProperty.create("burntime", 0, LARGE_FIRE_BOWL_SHOULD_BURN_OUT ? LARGE_FIRE_BOWL_INITIAL_BURN_TIME : 1);
     BooleanProperty BE_HANGING = BlockStateProperties.HANGING;
     BooleanProperty BE_WATERLOGGED = BooleanProperty.create("waterlogged");
+    int CAMPFIRE_INITIAL_BURN_TIME = ClassiCraftConfiguration.campfireBurnoutTime.get();
+    boolean CAMPFIRE_SHOULD_BURN_OUT = CAMPFIRE_INITIAL_BURN_TIME > 0;
+    IntegerProperty CAMPFIRE_BURNTIME = IntegerProperty.create("burntime", 0, CAMPFIRE_SHOULD_BURN_OUT ? CAMPFIRE_INITIAL_BURN_TIME : 1);
+
     static IntegerProperty getLitState()
     {
         return LITSTATE;

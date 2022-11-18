@@ -33,6 +33,7 @@ public class ClassiCraftConfiguration {
     public static ForgeConfigSpec.IntValue torchEntityBurnOutTime;
     public static ForgeConfigSpec.BooleanValue enableEntityTorchBurnOut;
     public static ForgeConfigSpec.BooleanValue enableShowFoodEffect;
+    public static ForgeConfigSpec.IntValue campfireBurnoutTime;
 
 
     static {
@@ -92,6 +93,9 @@ public class ClassiCraftConfiguration {
         fireBowlBurnoutTime = BUILDER.comment(desc)
                 .defineInRange("fireBowlBurnoutTime", 90, -1, 100);
 
+        desc = "营火熄灭耗费的时间，以分钟为单位。将其设置为负值将禁用营火熄灭.";
+        campfireBurnoutTime = BUILDER.comment(desc)
+                .defineInRange("campfireBurnoutTime", 60, -1, 100);
         desc = "灯笼熄灭耗费的时间，以分钟为单位。将其设置为负值将禁用灯笼熄灭.";
         lanternBurnoutTime = BUILDER.comment(desc)
                 .defineInRange("lanternBurnoutTime", 80, -1, 100);
