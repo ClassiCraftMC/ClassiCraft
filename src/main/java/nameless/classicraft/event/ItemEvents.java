@@ -256,8 +256,8 @@ public class ItemEvents {
                 if (foodData != null) {
                     int nutrition = foodData.getNutrition();
                     float satur = foodData.getSaturationModifier();
-                    toolTip.add(Component.translatable("营养价值:" + nutrition).withStyle(ChatFormatting.GREEN));
-                    toolTip.add(Component.translatable("恢复价值:" + satur).withStyle(ChatFormatting.GOLD));
+                    toolTip.add(Component.translatable("营养价值:" + nutrition).withStyle(ChatFormatting.WHITE));
+                    toolTip.add(Component.translatable("恢复价值:" + satur).withStyle(ChatFormatting.WHITE));
                 }
             }
         }

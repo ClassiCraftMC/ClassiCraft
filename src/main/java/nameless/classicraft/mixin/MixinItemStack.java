@@ -2,6 +2,7 @@ package nameless.classicraft.mixin;
 
 import nameless.classicraft.api.item.CCItemStack;
 import nameless.classicraft.capability.ModCapabilities;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.world.entity.SlotAccess;
@@ -53,14 +54,15 @@ public abstract class MixinItemStack implements CCItemStack {
 
     @Inject(method = "getHoverName", at = @At("RETURN"), cancellable = true)
     private void getHoverNameCC(CallbackInfoReturnable<Component> cir) {
-        getCapability(ModCapabilities.ROT).ifPresent(rot -> {
-            if (rot.getHolder().getMax() > 0 && (((ItemStack) (Object) this).getItem() != Items.ROTTEN_FLESH)) {
-                Component origin = cir.getReturnValue();
-                cir.setReturnValue(rot.getLevelName().append(origin)
-                        .setStyle(Style.EMPTY.withItalic(false)
-                                .withColor(rot.getLevelNameColor())));
-            }
-        });
+        if (Screen.hasShiftDown()) {
+            getCapability(ModCapabilities.ROT).ifPresent(rot -> {
+                if (rot.getHolder().getMax() > 0 && (((ItemStack) (Object) this).getItem() != Items.ROTTEN_FLESH)) {
+                    Component origin = cir.getReturnValue();
+                    cir.setReturnValue(rot.getLevelName().append(origin)
+                            .setStyle(Style.EMPTY.withItalic(false)
+                                    .withColor(rot.getLevelNameColor())));
+                }
+            });
+        }
     }
-
 }
