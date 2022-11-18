@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "classicraft:unlit_torch",
-    "classicraft:unlit_soul_torch"
+    "classicraft:torch",
+    "classicraft:soul_torch"
   ]
 }
