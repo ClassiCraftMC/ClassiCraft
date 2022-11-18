@@ -6,7 +6,9 @@ import nameless.classicraft.ClassiCraftHooks;
 import nameless.classicraft.capability.ModCapabilities;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -18,6 +20,7 @@ import net.minecraft.world.entity.animal.Turtle;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrownEgg;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -31,6 +34,8 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.List;
 
 @Mod.EventBusSubscriber
 public class ItemEvents {
@@ -238,8 +243,26 @@ public class ItemEvents {
     @SubscribeEvent
     public static void addTooltip(ItemTooltipEvent event) {
         ItemStack itemStack = event.getItemStack();
-        if (itemStack.isEdible() && ClassiCraftConfiguration.enableShowFoodEffect.get()) {
-            ClassiCraftHooks.addFoodComponentEffectTooltip(itemStack, event.getToolTip());
+        List<Component> toolTip = event.getToolTip();
+        Player player = event.getEntity();
+        Item food = itemStack.getItem();
+        FoodProperties foodData = food.getFoodProperties();
+        if (itemStack.isEdible()) {
+            toolTip.add(Component.translatable("按下shift键显示更多信息").withStyle(ChatFormatting.WHITE));
+            if (player == null) {
+                return;
+            }
+            if (player.isShiftKeyDown()) {
+                if (ClassiCraftConfiguration.enableShowFoodEffect.get()) {
+                    ClassiCraftHooks.addFoodComponentEffectTooltip(itemStack, event.getToolTip());
+                }
+                if (foodData != null) {
+                    int nutrition = foodData.getNutrition();
+                    float satur = foodData.getSaturationModifier();
+                    toolTip.add(Component.translatable("营养价值:" + nutrition).withStyle(ChatFormatting.GREEN));
+                    toolTip.add(Component.translatable("恢复价值:" + satur).withStyle(ChatFormatting.GOLD));
+                }
+            }
         }
     }
 
