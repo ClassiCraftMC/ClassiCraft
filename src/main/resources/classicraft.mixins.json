@@ -12,7 +12,6 @@
     "event.MixinBlockBehaviour",
     "event.MixinItemEntity",
     "event.MixinLivingEntity",
-    "event.MixinMob",
     "event.MixinProjectile",
     "event.MixinServerLevel"
   ],

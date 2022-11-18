@@ -1,27 +1,20 @@
 package nameless.classicraft.event;
 
-import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.api.event.PlayerRightClickBlockEvent;
 import nameless.classicraft.api.event.ProjectileHitEvent;
 import nameless.classicraft.api.light.LightAPI;
 import nameless.classicraft.block.realistic.*;
-import nameless.classicraft.init.ModBlockProperties;
 import nameless.classicraft.init.ModBlocks;
-import nameless.classicraft.init.ModItems;
-import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ThrownPotion;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.event.level.BlockEvent;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.HitResult;
+import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -101,38 +94,6 @@ public class BlockEvents {
     }
 
     @SubscribeEvent
-    public static void extinguishTorchByPotion(ProjectileHitEvent event) {
-        Block block = event.getHitBlock();
-        Projectile projectile = event.getEntity();
-        if ((block != null
-                && projectile instanceof ThrownPotion
-                && block.defaultBlockState().is(ModBlocks.TORCH.get()))) {
-            LightAPI.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
-            projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
-                    Blocks.AIR.defaultBlockState());
-            ItemEntity newItem = new ItemEntity(
-                    projectile.getLevel(),
-                    projectile.getX(), projectile.getY(),
-                    projectile.getZ(),
-                    Items.STICK.getDefaultInstance());
-            projectile.getLevel().addFreshEntity(newItem);
-        }
-        if ((block != null
-                && projectile instanceof ThrownPotion
-                && block.defaultBlockState().is(ModBlocks.SOUL_TORCH.get()))) {
-            LightAPI.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
-            projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
-                    Blocks.AIR.defaultBlockState());
-            ItemEntity newItem = new ItemEntity(
-                    projectile.getLevel(),
-                    projectile.getX(), projectile.getY(),
-                    projectile.getZ(),
-                    Items.STICK.getDefaultInstance());
-            projectile.getLevel().addFreshEntity(newItem);
-        }
-    }
-
-    @SubscribeEvent
     public static void extinguishLanternByPotion(ProjectileHitEvent event) {
         Block block = event.getHitBlock();
         Projectile projectile = event.getEntity();
@@ -168,36 +129,74 @@ public class BlockEvents {
         }
     }
 
+
     @SubscribeEvent
-    public static void projectileFireOnTorch(ProjectileHitEvent event) {
-        Block block = event.getHitBlock();
-        Entity entity = event.getEntity();
-        if (block != null
-                && block.defaultBlockState().is(ModBlocks.TORCH.get())
-                && entity.isOnFire()
-                && block.defaultBlockState().getValue(RealisticTorchBlock.getLitState())
-                != RealisticTorchBlock.LIT) {
-            LightAPI.playLightingSound(entity.getLevel(), entity.getOnPos());
-            entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
-                    ModBlocks.TORCH.get().defaultBlockState()
-                            .setValue(RealisticTorchBlock.getLitState(),2)
-                            .setValue(RealisticTorchBlock.TORCH_BURNTIME,
-                                    RealisticTorchBlock.getInitialBurnTime()));
+    public static void extinguishTorchByPotion(ProjectileImpactEvent event) {
+        Projectile projectile = event.getProjectile();
+        Block block = projectile.getBlockStateOn().getBlock();
+        BlockState state = block.defaultBlockState();
+        Level level = event.getProjectile().getLevel();
+        if (projectile instanceof ThrownPotion
+                && state.is(ModBlocks.TORCH.get())) {
+                LightAPI.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
+                projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
+                        Blocks.AIR.defaultBlockState());
+                ItemEntity newItem = new ItemEntity(
+                        projectile.getLevel(),
+                        projectile.getX(), projectile.getY(),
+                        projectile.getZ(),
+                        Items.STICK.getDefaultInstance());
+                projectile.getLevel().addFreshEntity(newItem);
+                level.updateNeighborsAt(event.getProjectile().getOnPos(), block);
+                projectile.gameEvent(GameEvent.BLOCK_CHANGE);
         }
-        if (block != null
-                && block.defaultBlockState().is(ModBlocks.SOUL_TORCH.get())
-                && entity.isOnFire()
-                && block.defaultBlockState().getValue(RealisticSoulTorchBlock.getLitState())
-                != RealisticSoulTorchBlock.LIT) {
-            LightAPI.playLightingSound(entity.getLevel(), entity.getOnPos());
-            entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
-                    ModBlocks.SOUL_TORCH.get().defaultBlockState()
-                            .setValue(RealisticSoulTorchBlock.getLitState(),2)
-                            .setValue(RealisticSoulTorchBlock.TORCH_BURNTIME,
-                                    RealisticSoulTorchBlock.getInitialBurnTime()));
+        if ((projectile instanceof ThrownPotion
+                && state.is(ModBlocks.SOUL_TORCH.get()))) {
+            LightAPI.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
+            projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
+                    Blocks.AIR.defaultBlockState());
+            ItemEntity newItem = new ItemEntity(
+                    projectile.getLevel(),
+                    projectile.getX(), projectile.getY(),
+                    projectile.getZ(),
+                    Items.STICK.getDefaultInstance());
+            projectile.getLevel().addFreshEntity(newItem);
+            level.updateNeighborsAt(event.getProjectile().getOnPos(), block);
+            projectile.gameEvent(GameEvent.BLOCK_CHANGE);
         }
     }
 
+    @SubscribeEvent
+    public static void projectileFireOnTorch(ProjectileImpactEvent event) {
+        Projectile projectile = event.getProjectile();
+        HitResult result = event.getRayTraceResult();
+        Block block = projectile.getBlockStateOn().getBlock();
+        BlockState state = block.defaultBlockState();
+        if (result.getType() == HitResult.Type.BLOCK
+                && projectile.isOnFire()
+                && state.is(ModBlocks.TORCH.get())
+                && state.getValue(LightAPI.getLitState())
+                != LightAPI.LIT) {
+            LightAPI.playLightingSound(projectile.getLevel(), projectile.getOnPos());
+            projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
+                    ModBlocks.TORCH.get().defaultBlockState()
+                            .setValue(LightAPI.getLitState(),2)
+                            .setValue(LightAPI.TORCH_BURNTIME,
+                                    RealisticTorchBlock.getInitialBurnTime()));
+        }
+        if (result.getType() == HitResult.Type.BLOCK
+                && projectile.isOnFire()
+                && state.is(ModBlocks.SOUL_TORCH.get())
+                && state.getValue(LightAPI.getLitState())
+                != LightAPI.LIT) {
+            LightAPI.playLightingSound(projectile.getLevel(), projectile.getOnPos());
+            projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
+                    ModBlocks.SOUL_TORCH.get().defaultBlockState()
+                            .setValue(LightAPI.getLitState(), 2)
+                            .setValue(LightAPI.TORCH_BURNTIME,
+                                    RealisticTorchBlock.getInitialBurnTime()));
+        }
+    }
 
     @SubscribeEvent
     public static void rightClickTorch(PlayerRightClickBlockEvent event) {

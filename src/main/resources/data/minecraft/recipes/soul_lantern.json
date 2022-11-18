@@ -1,19 +1,7 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "key": {
-    "#": {
-      "item": "classicraft:soul_torch"
-    },
-    "X": {
-      "item": "minecraft:iron_nugget"
+  "conditions": [
+    {
+      "type": "forge:false"
     }
-  },
-  "pattern": [
-    "XXX",
-    "X#X",
-    "XXX"
-  ],
-  "result": {
-    "item": "classicraft:soul_lantern"
-  }
+  ]
 }

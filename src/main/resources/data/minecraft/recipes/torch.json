@@ -1,24 +1,7 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "C",
-    "S"
-  ],
-  "key": {
-    "C": [
-      {
-        "item": "minecraft:coal"
-      },
-      {
-        "item": "minecraft:charcoal"
-      }
-    ],
-    "S": {
-      "item": "minecraft:stick"
+  "conditions": [
+    {
+      "type": "forge:false"
     }
-  },
-  "result": {
-    "item": "classicraft:torch",
-    "count": 4
-  }
+  ]
 }

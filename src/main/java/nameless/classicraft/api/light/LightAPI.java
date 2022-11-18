@@ -3,7 +3,6 @@ package nameless.classicraft.api.light;
 import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.api.item.ItemStackAPI;
 import nameless.classicraft.block.realistic.RealisticLanternBlock;
-import nameless.classicraft.init.ModBlockProperties;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -39,7 +38,7 @@ public interface LightAPI {
     int TORCH_INITIAL_BURN_TIME = ClassiCraftConfiguration.torchBurnoutTime.get();
     boolean CAUSE_FIRE = ClassiCraftConfiguration.torchCauseFire.get();
     boolean TORCH_SHOULD_BURN_OUT = TORCH_INITIAL_BURN_TIME >= 0;
-    IntegerProperty LITSTATE = IntegerProperty.create("litstate", 0, 3);
+    IntegerProperty LITSTATE = IntegerProperty.create("litstate", 0, 2);
     int LANTERN_TOTAL_BURN_TIME = ClassiCraftConfiguration.lanternBurnoutTime.get();
     IntegerProperty TORCH_BURNTIME = IntegerProperty.create("burntime", 0, TORCH_SHOULD_BURN_OUT ? TORCH_INITIAL_BURN_TIME : 1);
     boolean LANTERN_SHOUD_BURN_OUT = LANTERN_TOTAL_BURN_TIME >= 0;
@@ -253,7 +252,7 @@ public interface LightAPI {
         if (!level.isClientSide() && TORCH_SHOULD_BURN_OUT && state.getValue(LITSTATE) > UNLIT) {
             int newBurnTime = state.getValue(TORCH_BURNTIME) - 1;
             if (level.isRainingAt(pos.above())) {
-                ModBlockProperties.playExtinguishSound(level, pos);
+                playExtinguishSound(level, pos);
                 newBurnTime -= random.nextInt(20, 35);
                 if (newBurnTime <= 0)
                     changeToUnlit(level, pos, state, block);
@@ -269,7 +268,7 @@ public interface LightAPI {
                 return;
             }
             if (newBurnTime <= 0) {
-                ModBlockProperties.playExtinguishSound(level, pos);
+                playExtinguishSound(level, pos);
                 changeToUnlit(level, pos, state, block);
                 level.updateNeighborsAt(pos, block);
             } else if (state.getValue(LITSTATE) == LIT && (newBurnTime <= TORCH_INITIAL_BURN_TIME / 10 || newBurnTime <= 1)) {

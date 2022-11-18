@@ -2,7 +2,6 @@ package nameless.classicraft.block.realistic;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import nameless.classicraft.init.ModBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -26,8 +25,6 @@ import java.util.Map;
 
 
 public class RealisticWallTorchBlock extends RealisticTorchBlock {
-
-    public static final int TICK_RATE = ModBlockProperties.TICK_RATE;
 
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     private static final Map<Direction, VoxelShape> AABBS = Maps.newEnumMap(ImmutableMap.of(

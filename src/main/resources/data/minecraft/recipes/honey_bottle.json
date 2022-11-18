@@ -1,15 +1,7 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
+  "conditions": [
     {
-      "item": "minecraft:honey_block"
-    },
-    {
-      "item": "minecraft:glass_bottle"
+      "type": "forge:false"
     }
-  ],
-  "result": {
-    "item": "minecraft:honey_bottle",
-    "count": 1
-  }
+  ]
 }

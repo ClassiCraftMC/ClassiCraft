@@ -1,6 +1,5 @@
 {
   "variants": {
-    "litstate=3": { "model": "minecraft:block/soul_torch" },
     "litstate=2": { "model": "minecraft:block/soul_torch" },
     "litstate=1": { "model": "minecraft:block/soul_torch"},
     "litstate=0": { "model": "classicraft:block/unlit_soul_torch"}

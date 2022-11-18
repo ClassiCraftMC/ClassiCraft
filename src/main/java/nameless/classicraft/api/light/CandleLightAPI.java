@@ -1,7 +1,6 @@
 package nameless.classicraft.api.light;
 
 import nameless.classicraft.ClassiCraftConfiguration;
-import nameless.classicraft.init.ModBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -27,7 +26,7 @@ public interface CandleLightAPI {
         if (!level.isClientSide() && CANDLE_SHOULD_BURN_OUT && state.getValue(AbstractCandleBlock.LIT)) {
             int newBurnTime = state.getValue(CANDLE_BURNTIME) - 1;
             if (level.isRainingAt(pos.above())) {
-                ModBlockProperties.playExtinguishSound(level, pos);
+                LightAPI.playExtinguishSound(level, pos);
                 newBurnTime -= random.nextInt(20, 35);
                 if (newBurnTime <= 0)
                     changeToUnlit(level, pos, state, block);
@@ -43,7 +42,7 @@ public interface CandleLightAPI {
                 return;
             }
             if (newBurnTime <= 0) {
-                ModBlockProperties.playExtinguishSound(level, pos);
+                LightAPI.playExtinguishSound(level, pos);
                 changeToUnlit(level, pos, state, block);
                 level.updateNeighborsAt(pos, block);
             } else if (state.getValue(AbstractCandleBlock.LIT) && (newBurnTime <= CANDLE_INITIAL_BURN_TIME / 10 || newBurnTime <= 1)) {

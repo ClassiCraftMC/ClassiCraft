@@ -4,6 +4,7 @@ import nameless.classicraft.api.light.LightAPI;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -11,27 +12,47 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.TorchBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 import java.util.function.ToIntFunction;
 
-public class RealisticTorchBlock extends TorchBlock implements LightAPI {
+public class RealisticTorchBlock extends Block implements LightAPI {
+
+    protected static final int AABB_STANDING_OFFSET = 2;
+    protected static final VoxelShape AABB = Block.box(6.0D, 0.0D, 6.0D, 10.0D, 10.0D, 10.0D);
 
     public RealisticTorchBlock() {
-        super(BlockBehaviour.Properties.of(Material.ICE).noCollission().instabreak().lightLevel(getLightLevelFromState()).sound(SoundType.WOOD), ParticleTypes.FLAME);
+        super(BlockBehaviour.Properties.of(Material.ICE).noCollission().instabreak().lightLevel(getLightLevelFromState()).sound(SoundType.WOOD));
         this.registerDefaultState(this.defaultBlockState().setValue(LITSTATE, 0).setValue(TORCH_BURNTIME, 0));
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+        return AABB;
+    }
+
+    public BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {
+        return pFacing == Direction.DOWN && !this.canSurvive(pState, pLevel, pCurrentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
+    }
+
+    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+        return canSupportCenter(pLevel, pPos.below(), Direction.UP);
     }
 
     @Override
@@ -63,6 +84,7 @@ public class RealisticTorchBlock extends TorchBlock implements LightAPI {
         }
         if(TORCH_SHOULD_BURN_OUT&&pState.getBlock() instanceof RealisticTorchBlock&&pState.getValue(LITSTATE) > UNLIT)
             pLevel.scheduleTick(pPos, this, TICK_INTERVAL);
+        pLevel.updateNeighborsAt(pPos, this);
         super.onPlace(pState,pLevel,pPos,pOldState,pIsMoving);
     }
 
@@ -103,7 +125,7 @@ public class RealisticTorchBlock extends TorchBlock implements LightAPI {
             double d1 = (double)pPos.getY() + 0.7D;
             double d2 = (double)pPos.getZ() + 0.5D;
             pLevel.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-            pLevel.addParticle(this.flameParticle, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+            pLevel.addParticle(ParticleTypes.FLAME, d0, d1, d2, 0.0D, 0.0D, 0.0D);
         }
     }
 

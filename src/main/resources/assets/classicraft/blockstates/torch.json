@@ -1,6 +1,5 @@
 {
     "variants": {
-        "litstate=3": { "model": "classicraft:block/torch_lit" },
         "litstate=2": { "model": "classicraft:block/torch_lit" },
         "litstate=1": { "model": "classicraft:block/torch_smoldering"},
         "litstate=0": { "model": "classicraft:block/torch_unlit"}
