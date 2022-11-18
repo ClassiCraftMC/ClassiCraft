@@ -1,7 +1,7 @@
 package nameless.classicraft.block.container;
 
-import nameless.classicraft.init.ModBlockEntities;
 import nameless.classicraft.block.entity.StoneMortarBlockEntity;
+import nameless.classicraft.init.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
