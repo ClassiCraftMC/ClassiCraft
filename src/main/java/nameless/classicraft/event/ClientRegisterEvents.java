@@ -4,6 +4,7 @@ import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.client.model.*;
 import nameless.classicraft.client.renderer.*;
 import nameless.classicraft.entity.*;
+import nameless.classicraft.init.ModBlockEntities;
 import nameless.classicraft.init.ModEntities;
 import nameless.classicraft.init.ModEntityModelLayers;
 import nameless.classicraft.init.ModScreens;
@@ -81,6 +82,8 @@ public class ClientRegisterEvents {
                 ButterflyRenderer::new);
         event.registerEntityRenderer(ModEntities.SWINE_ENTITY.get(),
                 SwineRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.CAMPFIRE.get(),
+                RealisticCampfireRenderer::new);
     }
 
     @SubscribeEvent
