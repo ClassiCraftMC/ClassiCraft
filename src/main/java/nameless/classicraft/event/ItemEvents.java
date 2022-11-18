@@ -36,6 +36,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import java.util.List;
+import java.util.Objects;
 
 @Mod.EventBusSubscriber
 public class ItemEvents {
@@ -244,15 +245,11 @@ public class ItemEvents {
     public static void addTooltip(ItemTooltipEvent event) {
         ItemStack itemStack = event.getItemStack();
         List<Component> toolTip = event.getToolTip();
-        Player player = event.getEntity();
         Item food = itemStack.getItem();
         FoodProperties foodData = food.getFoodProperties();
         if (itemStack.isEdible()) {
             toolTip.add(Component.translatable("按下shift键显示更多信息").withStyle(ChatFormatting.WHITE));
-            if (player == null) {
-                return;
-            }
-            if (player.isShiftKeyDown()) {
+            if (Objects.requireNonNull(event.getEntity()).isShiftKeyDown()) {
                 if (ClassiCraftConfiguration.enableShowFoodEffect.get()) {
                     ClassiCraftHooks.addFoodComponentEffectTooltip(itemStack, event.getToolTip());
                 }
