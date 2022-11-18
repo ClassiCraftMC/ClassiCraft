@@ -26,7 +26,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 
@@ -106,17 +105,15 @@ public interface LightAPI {
     }
 
     default InteractionResult useAsFlint(BlockState pState,Level pLevel,BlockPos pPos, Player pPlayer,InteractionHand pHand, Block block, IntegerProperty totalBurnTime, int initialBurnTime) {
-        if(pState.getValue(OIL)<=0 && pPlayer.getAbilities().mayBuild && pPlayer.getItemInHand(pHand).isEmpty()) {
+        if(pState.getValue(OIL)<=0) {
             pLevel.playSound(null,pPos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.PLAYERS,1,pLevel.random.nextFloat() * 0.1F + 0.3F);
-            pLevel.gameEvent(pPlayer, GameEvent.BLOCK_CHANGE, pPos);
-            return InteractionResult.sidedSuccess(pLevel.isClientSide);
-        }else {
-            replaceBlockNeedFuel(pPos, pLevel, pState, initialBurnTime, LIT, pState.getValue(OIL), block, totalBurnTime);
-            pLevel.updateNeighborsAt(pPos, block);
-            pLevel.playSound(pPlayer, pPos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.PLAYERS, 1, 0.9f);
-            if (!pPlayer.isCreative()) {
-                pPlayer.getItemInHand(pHand).setDamageValue(pPlayer.getItemInHand(pHand).getDamageValue() + 1);
-            }
+            return InteractionResult.SUCCESS;
+        }
+        replaceBlockNeedFuel(pPos,pLevel,pState, initialBurnTime, LIT,pState.getValue(OIL), block, totalBurnTime);
+        pLevel.updateNeighborsAt(pPos,block);
+        pLevel.playSound(pPlayer,pPos,SoundEvents.FLINTANDSTEEL_USE,SoundSource.PLAYERS,1,0.9f);
+        if(!pPlayer.isCreative()) {
+            pPlayer.getItemInHand(pHand).setDamageValue(pPlayer.getItemInHand(pHand).getDamageValue() + 1);
         }
         return InteractionResult.SUCCESS;
     }
@@ -135,11 +132,8 @@ public interface LightAPI {
     }
 
     default InteractionResult useTorch(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, Block block, Item starter, Item unlit, Item lit) {
-        if (pPlayer.getItemInHand(pHand).getItem() == Items.FLINT_AND_STEEL
-                && !pPlayer.getAbilities().mayBuild
-                && !pPlayer.getItemInHand(pHand).isEmpty()) {
-            playLightingSound(pLevel, pPos);
-            pLevel.gameEvent(pPlayer, GameEvent.BLOCK_CHANGE, pPos);
+        if (pPlayer.getItemInHand(pHand).getItem() == Items.FLINT_AND_STEEL) {
+            ModBlockProperties.playLightingSound(pLevel, pPos);
             if (!pPlayer.isCreative()) {
                 ItemStack heldStack = pPlayer.getItemInHand(pHand);
                 heldStack.hurtAndBreak(1, pPlayer, (p_41300_) -> {
@@ -147,17 +141,17 @@ public interface LightAPI {
                 });
                 if (pLevel.isRainingAt(pPos.above())) {
                     changeToUnlit(pLevel, pPos, pState, block);
-                   playExtinguishSound(pLevel, pPos);
+                    ModBlockProperties.playExtinguishSound(pLevel, pPos);
                 } else {
                     if(pLevel.isRainingAt(pPos.above()))
                     {
                         changeToUnlit(pLevel, pPos, pState, block);
-                        playExtinguishSound(pLevel, pPos);
+                        ModBlockProperties.playExtinguishSound(pLevel, pPos);
                     }
                     else
                     {
                         changeToLit(pLevel, pPos, pState, block);
-                        playLightingSound(pLevel,pPos);
+                        ModBlockProperties.playLightingSound(pLevel,pPos);
                     }
                     pLevel.updateNeighborsAt(pPos,block);
                 }
@@ -167,7 +161,7 @@ public interface LightAPI {
                 if(pLevel.isRainingAt(pPos.above()))
                 {
                     changeToUnlit(pLevel, pPos, pState, block);
-                    playExtinguishSound(pLevel,pPos);
+                    ModBlockProperties.playExtinguishSound(pLevel,pPos);
                 }
                 else
                 {
@@ -178,23 +172,23 @@ public interface LightAPI {
             return InteractionResult.SUCCESS;
         }
         else if (pPlayer.getItemInHand(pHand).getItem() == starter) {
-            playLightingSound(pLevel, pPos);
+            ModBlockProperties.playLightingSound(pLevel, pPos);
             if (!pPlayer.isCreative()) {
                 ItemStack heldStack = pPlayer.getItemInHand(pHand);
                 heldStack.shrink(1);
                 if (pLevel.isRainingAt(pPos.above())) {
                     changeToUnlit(pLevel, pPos, pState, block);
-                    playExtinguishSound(pLevel, pPos);
+                    ModBlockProperties.playExtinguishSound(pLevel, pPos);
                 } else {
                     if(pLevel.isRainingAt(pPos.above()))
                     {
                         changeToUnlit(pLevel, pPos, pState, block);
-                        playExtinguishSound(pLevel, pPos);
+                        ModBlockProperties.playExtinguishSound(pLevel, pPos);
                     }
                     else
                     {
                         changeToLit(pLevel, pPos, pState, block);
-                        playLightingSound(pLevel,pPos);
+                        ModBlockProperties.playLightingSound(pLevel,pPos);
                     }
                     pLevel.updateNeighborsAt(pPos,block);
                 }
@@ -204,7 +198,7 @@ public interface LightAPI {
                 if(pLevel.isRainingAt(pPos.above()))
                 {
                     changeToUnlit(pLevel, pPos, pState, block);
-                    playExtinguishSound(pLevel,pPos);
+                    ModBlockProperties.playExtinguishSound(pLevel,pPos);
                 }
                 else
                 {
