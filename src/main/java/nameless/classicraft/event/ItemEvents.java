@@ -7,11 +7,9 @@ import nameless.classicraft.capability.ModCapabilities;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.screens.controls.KeyBindsList;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.contents.KeybindContents;
-import net.minecraft.network.chat.contents.KeybindResolver;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -38,9 +36,7 @@ import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import javax.swing.text.JTextComponent;
 import java.util.List;
-import java.util.Objects;
 
 @Mod.EventBusSubscriber
 public class ItemEvents {
@@ -252,14 +248,17 @@ public class ItemEvents {
         Item food = itemStack.getItem();
         FoodProperties foodData = food.getFoodProperties();
         if (itemStack.isEdible()) {
-            if (ClassiCraftConfiguration.enableShowFoodEffect.get()) {
-                ClassiCraftHooks.addFoodComponentEffectTooltip(itemStack, event.getToolTip());
-            }
-            if (foodData != null) {
-                int nutrition = foodData.getNutrition();
-                float satur = foodData.getSaturationModifier();
-                toolTip.add(Component.translatable("营养价值:" + nutrition).withStyle(ChatFormatting.GREEN));
-                toolTip.add(Component.translatable("恢复价值:" + satur).withStyle(ChatFormatting.GOLD));
+            toolTip.add(Component.translatable("按下shift键显示更多信息").withStyle(ChatFormatting.WHITE));
+            if (Screen.hasShiftDown()) {
+                if (ClassiCraftConfiguration.enableShowFoodEffect.get()) {
+                    ClassiCraftHooks.addFoodComponentEffectTooltip(itemStack, event.getToolTip());
+                }
+                if (foodData != null) {
+                    int nutrition = foodData.getNutrition();
+                    float satur = foodData.getSaturationModifier();
+                    toolTip.add(Component.translatable("营养价值:" + nutrition).withStyle(ChatFormatting.GREEN));
+                    toolTip.add(Component.translatable("恢复价值:" + satur).withStyle(ChatFormatting.GOLD));
+                }
             }
         }
     }
