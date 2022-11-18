@@ -1,7 +1,6 @@
 package nameless.classicraft.event;
 
 import nameless.classicraft.ClassiCraftConfiguration;
-import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.api.event.PlayerRightClickBlockEvent;
 import nameless.classicraft.api.event.ProjectileHitEvent;
 import nameless.classicraft.api.light.LightAPI;
@@ -18,12 +17,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ThrownPotion;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.event.level.BlockEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -171,132 +168,6 @@ public class BlockEvents {
     }
 
     @SubscribeEvent
-    public static void projetileFireOnLantern(ProjectileHitEvent event) {
-        Block block = event.getHitBlock();
-        Projectile entity = event.getEntity();
-        if (block != null
-                && block.defaultBlockState().is(ModBlocks.LANTERN.get())
-                && entity.isOnFire()
-                && block.defaultBlockState().getValue(LightAPI.getLitState())
-                != RealisticLanternBlock.LIT
-                && entity.getLevel().isRainingAt(event.getEntity().getOnPos().above())) {
-            ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
-            entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
-                    ModBlocks.LANTERN.get().defaultBlockState()
-                            .setValue(LightAPI.getLitState(),1)
-                            .setValue(RealisticLanternBlock.LANTERN_BURNTIME,
-                                    RealisticLanternBlock.LANTERN_TOTAL_BURN_TIME)
-                            .setValue(RealisticLanternBlock.HANGING,
-                                    block.defaultBlockState().getValue(RealisticLanternBlock.HANGING))
-                            .setValue(RealisticLanternBlock.WATERLOGGED,
-                                    block.defaultBlockState().getValue(RealisticSoulLanternBlock.WATERLOGGED)));
-            entity.getLevel().updateNeighborsAt(entity.getOnPos(), block);
-        }
-        if (block != null
-                && block.defaultBlockState().is(ModBlocks.SOUL_LANTERN.get())
-                && entity.isOnFire()
-                && block.defaultBlockState().getValue(LightAPI.getLitState())
-                != RealisticSoulLanternBlock.LIT
-                && entity.getLevel().isRainingAt(event.getEntity().getOnPos().above())) {
-            ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
-            entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
-                    ModBlocks.SOUL_LANTERN.get().defaultBlockState()
-                            .setValue(LightAPI.getLitState(), 1)
-                            .setValue(RealisticSoulLanternBlock.LANTERN_BURNTIME,
-                                    RealisticSoulLanternBlock.LANTERN_TOTAL_BURN_TIME)
-                            .setValue(RealisticSoulLanternBlock.HANGING,
-                                    block.defaultBlockState().getValue(RealisticSoulLanternBlock.HANGING))
-                            .setValue(RealisticSoulLanternBlock.WATERLOGGED,
-                                    block.defaultBlockState().getValue(RealisticSoulLanternBlock.WATERLOGGED)));
-            entity.getLevel().updateNeighborsAt(entity.getOnPos(), block);
-        }
-    }
-
-    @SubscribeEvent
-    public static void projetileFireBowlOnLantern(ProjectileHitEvent event) {
-        Block block = event.getHitBlock();
-        Projectile entity = event.getEntity();
-        if (block != null
-                && block.defaultBlockState().is(ModBlocks.FIRE_BOWL.get())
-                && entity.isOnFire()
-                && block.defaultBlockState().getValue(LightAPI.getLitState())
-                != LightAPI.LIT
-                && entity.getLevel().isRainingAt(event.getEntity().getOnPos().above())) {
-            ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
-            entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
-                    ModBlocks.FIRE_BOWL.get().defaultBlockState()
-                            .setValue(LightAPI.getLitState(),1)
-                            .setValue(LightAPI.FIRE_BOWL_BURNTIME,
-                                    LightAPI.FIRE_BOWL_INITIAL_BURN_TIME)
-                            .setValue(LightAPI.BE_HANGING,
-                                    block.defaultBlockState().getValue(LightAPI.BE_HANGING))
-                            .setValue(LightAPI.BE_WATERLOGGED,
-                                    block.defaultBlockState().getValue(LightAPI.BE_WATERLOGGED)));
-            entity.getLevel().updateNeighborsAt(entity.getOnPos(), block);
-        }
-        if (block != null
-                && block.defaultBlockState().is(ModBlocks.SOUL_FIRE_BOWL.get())
-                && entity.isOnFire()
-                && block.defaultBlockState().getValue(LightAPI.getLitState())
-                != LightAPI.LIT
-                && entity.getLevel().isRainingAt(event.getEntity().getOnPos().above())) {
-            ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
-            entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
-                    ModBlocks.SOUL_FIRE_BOWL.get().defaultBlockState()
-                            .setValue(LightAPI.getLitState(),1)
-                            .setValue(LightAPI.FIRE_BOWL_BURNTIME,
-                                    LightAPI.FIRE_BOWL_INITIAL_BURN_TIME)
-                            .setValue(LightAPI.BE_HANGING,
-                                    block.defaultBlockState().getValue(LightAPI.BE_HANGING))
-                            .setValue(LightAPI.BE_WATERLOGGED,
-                                    block.defaultBlockState().getValue(LightAPI.BE_WATERLOGGED)));
-            entity.getLevel().updateNeighborsAt(entity.getOnPos(), block);
-        }
-    }
-
-    @SubscribeEvent
-    public static void  projectileFireOnLargeFireBowl(ProjectileHitEvent event) {
-        Block block = event.getHitBlock();
-        Projectile entity = event.getEntity();
-        if (block != null
-                && block.defaultBlockState().is(ModBlocks.LARGE_FIRE_BOWL.get())
-                && entity.isOnFire()
-                && block.defaultBlockState().getValue(LightAPI.getLitState())
-                != LightAPI.LIT
-                && entity.getLevel().isRainingAt(event.getEntity().getOnPos().above())) {
-            ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
-            entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
-                    ModBlocks.LARGE_FIRE_BOWL.get().defaultBlockState()
-                            .setValue(LightAPI.getLitState(),1)
-                            .setValue(LightAPI.LARGE_FIRE_BOWL_BURNTIME,
-                                    LightAPI.LARGE_FIRE_BOWL_INITIAL_BURN_TIME)
-                            .setValue(LightAPI.BE_HANGING,
-                                    block.defaultBlockState().getValue(LightAPI.BE_HANGING))
-                            .setValue(LightAPI.BE_WATERLOGGED,
-                                    block.defaultBlockState().getValue(LightAPI.BE_WATERLOGGED)));
-            entity.getLevel().updateNeighborsAt(entity.getOnPos(), block);
-        }
-        if (block != null
-                && block.defaultBlockState().is(ModBlocks.LARGE_SOUL_FIRE_BOWL.get())
-                && entity.isOnFire()
-                && block.defaultBlockState().getValue(LightAPI.getLitState())
-                != LightAPI.LIT
-                && entity.getLevel().isRainingAt(event.getEntity().getOnPos().above())) {
-            ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
-            entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
-                    ModBlocks.LARGE_SOUL_FIRE_BOWL.get().defaultBlockState()
-                            .setValue(LightAPI.getLitState(),1)
-                            .setValue(LightAPI.LARGE_FIRE_BOWL_BURNTIME,
-                                    LightAPI.LARGE_FIRE_BOWL_INITIAL_BURN_TIME)
-                            .setValue(LightAPI.BE_HANGING,
-                                    block.defaultBlockState().getValue(LightAPI.BE_HANGING))
-                            .setValue(LightAPI.BE_WATERLOGGED,
-                                    block.defaultBlockState().getValue(LightAPI.BE_WATERLOGGED)));
-            entity.getLevel().updateNeighborsAt(entity.getOnPos(), block);
-        }
-    }
-
-    @SubscribeEvent
     public static void projectileFireOnTorch(ProjectileHitEvent event) {
         Block block = event.getHitBlock();
         Entity entity = event.getEntity();
@@ -325,6 +196,7 @@ public class BlockEvents {
                                     RealisticSoulTorchBlock.getInitialBurnTime()));
         }
     }
+
 
     @SubscribeEvent
     public static void rightClickTorch(PlayerRightClickBlockEvent event) {
@@ -414,27 +286,6 @@ public class BlockEvents {
                 level.playSound(null, event.getPos(), SoundEvents.LANTERN_PLACE, SoundSource.BLOCKS, 1, 1);
                 level.setBlock(event.getPos(), ModBlocks.SOUL_LANTERN.get().defaultBlockState(), 1);
                 entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_lantern"));
-            }
-        }
-    }
-
-    @SubscribeEvent(priority = EventPriority.HIGHEST)
-    public static void onCauldronInteract(PlayerRightClickBlockEvent event) {
-        Block block = event.getBlock();
-        Player player = event.getEntity();
-        ItemStack itemStack = player.getMainHandItem();
-        if (block.defaultBlockState().is(Blocks.CAULDRON)) {
-            ClassiCraftMod.LOGGER.info("Test!");
-            if (itemStack.is(Items.BLACK_WOOL)
-                    && block.defaultBlockState().getValue(LayeredCauldronBlock.LEVEL) == 3) {
-                itemStack.split(1);
-                ItemStack newItem = new ItemStack(Items.WHITE_WOOL);
-                player.getInventory().add(newItem);
-                event.getLevel().setBlockAndUpdate(
-                        event.getPos(),
-                        block.defaultBlockState().setValue(LayeredCauldronBlock.LEVEL, 2)
-                );
-                event.getLevel().playSound(null, event.getPos(), SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, event.getLevel().getRandom().nextFloat() * 0.1F + 0.9F);
             }
         }
     }
