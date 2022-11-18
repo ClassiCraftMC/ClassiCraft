@@ -24,7 +24,7 @@ import java.util.function.ToIntFunction;
 public class RealisticSoulLanternBlock extends LanternBlock implements LightAPI {
 
     public RealisticSoulLanternBlock() {
-        super(BlockBehaviour.Properties.of(Material.METAL).strength(1.2F).sound(SoundType.LANTERN).lightLevel(getLitState()).noOcclusion());
+        super(BlockBehaviour.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(1.2F).sound(SoundType.LANTERN).lightLevel(getLitState()).noOcclusion());
         registerDefaultState(defaultBlockState().setValue(LITSTATE,0).setValue(LANTERN_BURNTIME,0).setValue(OIL,0).setValue(OIL,0));
     }
 
