@@ -23,6 +23,9 @@ public class ModTags {
     public static class Items {
 
         public static final TagKey<Item> ATTACH_FOODS = register("attach_foods");
+        public static final TagKey<Item> WOOD_FUEL = register("wood_fuel");
+        public static final TagKey<Item> OIL_FUEL = register("oil_fuel");
+
 
         private static TagKey<Item> register(String name)
         {

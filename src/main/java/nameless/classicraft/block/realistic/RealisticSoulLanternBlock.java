@@ -1,6 +1,7 @@
 package nameless.classicraft.block.realistic;
 
 import nameless.classicraft.api.light.LightAPI;
+import nameless.classicraft.init.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -30,7 +31,7 @@ public class RealisticSoulLanternBlock extends LanternBlock implements LightAPI 
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        useBlockNeedFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, this, Items.HONEYCOMB, null, LANTERN_BURNTIME, LANTERN_TOTAL_BURN_TIME);
+        useBlockNeedFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, this, ModTags.Items.OIL_FUEL, LANTERN_BURNTIME, LANTERN_TOTAL_BURN_TIME);
         return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
     }
 

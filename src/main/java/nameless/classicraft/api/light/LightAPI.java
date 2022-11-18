@@ -8,6 +8,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -61,14 +62,14 @@ public interface LightAPI {
         return LITSTATE;
     }
 
-    default InteractionResult useBlockNeedFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, Block block, Item fuelItem, Item fuelItem2, IntegerProperty burnTime, int initialBurnTime) {
+    default InteractionResult useBlockNeedFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, Block block, TagKey fuelItem, IntegerProperty burnTime, int initialBurnTime) {
         ItemStack heldStack = pPlayer.getItemInHand(pHand);
         if (heldStack.getItem() == Items.FLINT_AND_STEEL) {
             if (pLevel.isRainingAt(pPos.above(1))){
                 replaceBlockNeedFuel(pPos,pLevel,pState,pState.getValue(burnTime), UNLIT, pState.getValue(OIL), block, burnTime);
             }
             return useAsFlint(pState,pLevel,pPos,pPlayer,pHand, block, burnTime, initialBurnTime);
-        } else if(heldStack.is(fuelItem) || heldStack.is(fuelItem2))
+        } else if(heldStack.is(fuelItem))
         {
             if(!pPlayer.isCreative() && pState.getValue(OIL) != 3){
                 heldStack.shrink(1);

@@ -1,5 +1,6 @@
 package nameless.classicraft.datagen;
 
+import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
@@ -59,6 +60,31 @@ public class CCRecipeProvider extends RecipeProvider {
                .pattern("LLL")
                .unlockedBy("has_flour", has(ModItems.FLOUR.get())).save(pFinishedRecipeConsumer);
 
+        ShapedRecipeBuilder.shaped(ModBlocks.CAMPFIRE.get(), 1)
+                .define('#', Items.STICK)
+                .define('L', Items.COBBLESTONE)
+                .define('O', Ingredient.of(
+                        Items.ACACIA_LOG,
+                        Items.BIRCH_LOG,
+                        Items.DARK_OAK_LOG,
+                        Items.JUNGLE_LOG,
+                        Items.SPRUCE_LOG,
+                        Items.OAK_LOG,
+                        Items.MANGROVE_LOG,
+                        Items.STRIPPED_ACACIA_LOG,
+                        Items.STRIPPED_BIRCH_LOG,
+                        Items.STRIPPED_DARK_OAK_LOG,
+                        Items.STRIPPED_JUNGLE_LOG,
+                        Items.STRIPPED_SPRUCE_LOG,
+                        Items.STRIPPED_OAK_LOG,
+                        Items.STRIPPED_MANGROVE_LOG))
+                .pattern(" # ")
+                .pattern("# #")
+                .pattern("OLO")
+                .unlockedBy("has_stick", has(Items.STICK))
+                .save(pFinishedRecipeConsumer);
+
+       /**
         ShapedRecipeBuilder.shaped(Blocks.SOUL_CAMPFIRE, 1)
                 .define('#', Items.STICK)
                 .define('X', Ingredient.of(Items.COAL, Items.CHARCOAL))
@@ -83,7 +109,7 @@ public class CCRecipeProvider extends RecipeProvider {
                 .pattern("OLO")
                 .unlockedBy("has_stick", has(Items.STICK))
                 .unlockedBy("has_soul_sand", has(ItemTags.SOUL_FIRE_BASE_BLOCKS))
-                .save(pFinishedRecipeConsumer);
+                .save(pFinishedRecipeConsumer);*/
     }
 
     private static void simpleSmelting(Item material, Item finalItem, Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
