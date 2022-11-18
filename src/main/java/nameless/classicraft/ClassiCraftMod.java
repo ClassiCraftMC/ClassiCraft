@@ -37,9 +37,7 @@ public class ClassiCraftMod {
         ModBlockEntities.BLOCK_ENTITY_TYPES.register(modEventBus);
         ModEntities.ENTITIES.register(modEventBus);
         ModSounds.SOUNDS.register(modEventBus);
-        ModEffects.MOB_EFFECTS.register(modEventBus);
         ModBiomeFeatures.FEATURES.register(modEventBus);
-        ModPotions.POTIONS.register(modEventBus);
         ModConfiguredFeatures.CONFIGURED_FEATURES.register(modEventBus);
         ModPlacedFeatures.PLACED_FEATURES.register(modEventBus);
         ModFeatures.FEATURES.register(modEventBus);
