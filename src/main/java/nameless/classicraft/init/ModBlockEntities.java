@@ -1,8 +1,9 @@
-package nameless.classicraft.block.entity;
+package nameless.classicraft.init;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.block.entity.*;
 import nameless.classicraft.init.ModBlocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -15,6 +16,12 @@ public class ModBlockEntities {
             DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, ClassiCraftMod.MODID);
 
     // new
+    public static final RegistryObject<BlockEntityType<RealisticCampfireBlockEntity>> CAMPFIRE
+            = BLOCK_ENTITY_TYPES.register("campfire",
+            () -> BlockEntityType.Builder
+                    .of(RealisticCampfireBlockEntity::new,
+                            ModBlocks.CAMPFIRE.get()).build(null));
+
     public static final RegistryObject<BlockEntityType<FridgeBlockEntity>> FRIDGE = BLOCK_ENTITY_TYPES.register("fridge",
             () -> BlockEntityType.Builder.of(FridgeBlockEntity::new, ModBlocks.FRIDGE.get()).build(null));
 

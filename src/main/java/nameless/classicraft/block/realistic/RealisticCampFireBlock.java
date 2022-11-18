@@ -1,6 +1,8 @@
 package nameless.classicraft.block.realistic;
 
 import nameless.classicraft.api.light.LightAPI;
+import nameless.classicraft.block.entity.RealisticCampfireBlockEntity;
+import nameless.classicraft.init.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -29,7 +31,6 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.CampfireBlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -83,7 +84,7 @@ public class RealisticCampFireBlock extends BaseEntityBlock implements SimpleWat
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         useBlockNeedFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, this, Items.COAL, Items.CHARCOAL, CAMPFIRE_BURNTIME, CAMPFIRE_INITIAL_BURN_TIME);
         BlockEntity blockentity = pLevel.getBlockEntity(pPos);
-        if (blockentity instanceof CampfireBlockEntity campfireblockentity) {
+        if (blockentity instanceof RealisticCampfireBlockEntity campfireblockentity) {
             ItemStack itemstack = pPlayer.getItemInHand(pHand);
             Optional<CampfireCookingRecipe> optional = campfireblockentity.getCookableRecipe(itemstack);
             if (optional.isPresent()) {
@@ -110,8 +111,8 @@ public class RealisticCampFireBlock extends BaseEntityBlock implements SimpleWat
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
         if (!pState.is(pNewState.getBlock())) {
             BlockEntity blockentity = pLevel.getBlockEntity(pPos);
-            if (blockentity instanceof CampfireBlockEntity) {
-                Containers.dropContents(pLevel, pPos, ((CampfireBlockEntity)blockentity).getItems());
+            if (blockentity instanceof RealisticCampfireBlockEntity) {
+                Containers.dropContents(pLevel, pPos, ((RealisticCampfireBlockEntity)blockentity).getItems());
             }
 
             super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
@@ -170,8 +171,8 @@ public class RealisticCampFireBlock extends BaseEntityBlock implements SimpleWat
         }
 
         BlockEntity blockentity = pLevel.getBlockEntity(pPos);
-        if (blockentity instanceof CampfireBlockEntity) {
-            ((CampfireBlockEntity)blockentity).dowse();
+        if (blockentity instanceof RealisticCampfireBlockEntity) {
+            ((RealisticCampfireBlockEntity)blockentity).dowse();
         }
 
         pLevel.gameEvent(pEntity, GameEvent.BLOCK_CHANGE, pPos);
@@ -219,19 +220,19 @@ public class RealisticCampFireBlock extends BaseEntityBlock implements SimpleWat
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(LITSTATE, SIGNAL_FIRE, BE_WATERLOGGED, FACING, CAMPFIRE_BURNTIME, OIL);
+        pBuilder.add(LITSTATE, SIGNAL_FIRE, BE_WATERLOGGED, BE_HANGING, FACING, CAMPFIRE_BURNTIME, OIL);
     }
 
     public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-        return new CampfireBlockEntity(pPos, pState);
+        return new RealisticCampfireBlockEntity(pPos, pState);
     }
 
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
         if (pLevel.isClientSide) {
-            return pState.getValue(LITSTATE) == LIT ? createTickerHelper(pBlockEntityType, BlockEntityType.CAMPFIRE, CampfireBlockEntity::particleTick) : null;
+            return pState.getValue(LITSTATE) == LIT ? createTickerHelper(pBlockEntityType, ModBlockEntities.CAMPFIRE.get(), RealisticCampfireBlockEntity::particleTick) : null;
         } else {
-            return pState.getValue(LITSTATE) == LIT ? createTickerHelper(pBlockEntityType, BlockEntityType.CAMPFIRE, CampfireBlockEntity::cookTick) : createTickerHelper(pBlockEntityType, BlockEntityType.CAMPFIRE, CampfireBlockEntity::cooldownTick);
+            return pState.getValue(LITSTATE) == LIT ? createTickerHelper(pBlockEntityType, ModBlockEntities.CAMPFIRE.get(), RealisticCampfireBlockEntity::cookTick) : createTickerHelper(pBlockEntityType, ModBlockEntities.CAMPFIRE.get(), RealisticCampfireBlockEntity::cooldownTick);
         }
     }
 

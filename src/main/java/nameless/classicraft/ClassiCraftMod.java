@@ -1,7 +1,7 @@
 package nameless.classicraft;
 
 import com.mojang.logging.LogUtils;
-import nameless.classicraft.block.entity.ModBlockEntities;
+import nameless.classicraft.init.ModBlockEntities;
 import nameless.classicraft.event.ClientEvents;
 import nameless.classicraft.event.TestEvents;
 import nameless.classicraft.init.*;

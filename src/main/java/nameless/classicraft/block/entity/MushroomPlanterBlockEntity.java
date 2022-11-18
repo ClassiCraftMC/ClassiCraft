@@ -1,6 +1,7 @@
 package nameless.classicraft.block.entity;
 
 import nameless.classicraft.block.MushroomPlanterBlock;
+import nameless.classicraft.init.ModBlockEntities;
 import nameless.classicraft.util.sync.SyncDataManager;
 import nameless.classicraft.util.sync.primitive.IntSyncData;
 import net.minecraft.core.BlockPos;
@@ -15,7 +16,7 @@ import java.util.List;
  * @author DustW
  */
 public class MushroomPlanterBlockEntity extends RotAbleCropBlockEntity {
-    protected MushroomPlanterBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
+    public MushroomPlanterBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
         super(ModBlockEntities.MUSHROOM_PLANTER.get(), pWorldPosition, pBlockState);
     }
 

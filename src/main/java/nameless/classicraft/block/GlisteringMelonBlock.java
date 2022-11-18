@@ -1,7 +1,7 @@
 package nameless.classicraft.block;
 
 import nameless.classicraft.api.block.entity.RotAbleEntityBlock;
-import nameless.classicraft.block.entity.ModBlockEntities;
+import nameless.classicraft.init.ModBlockEntities;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 

@@ -37,5 +37,6 @@ public class BlockRenderTypeSetup {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CHRYSANTHEMUM.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.PEONY.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.ROSE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CAMPFIRE.get(), RenderType.cutout());
     }
 }
