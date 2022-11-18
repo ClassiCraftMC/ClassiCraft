@@ -67,10 +67,10 @@ public interface LightAPI {
             return useAsFlint(pState,pLevel,pPos,pPlayer,pHand, block, burnTime, initialBurnTime);
         } else if(heldStack.is(fuelItem) || heldStack.is(fuelItem2))
         {
-            if(pState.getValue(OIL) >= 3) return InteractionResult.PASS;
-            if(!pPlayer.isCreative()){
-                heldStack.getItem().getDefaultInstance().shrink(1);
+            if(!pPlayer.isCreative() && pState.getValue(OIL) != 3){
+                heldStack.shrink(1);
             }
+            if(pState.getValue(OIL) >= 3) return InteractionResult.PASS;
             pPlayer.swing(pHand);
             replaceBlockNeedFuel(pPos,pLevel,pState,pState.getValue(burnTime),pState.getValue(LITSTATE),pState.getValue(OIL) + 1, block, burnTime);
             pLevel.playSound(null,pPos, SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS,1,0.3f*pLevel.random.nextFloat()*0.1f);

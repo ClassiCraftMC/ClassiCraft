@@ -107,7 +107,7 @@ public class BlockEvents {
         if ((block != null
                 && projectile instanceof ThrownPotion
                 && block.defaultBlockState().is(ModBlocks.TORCH.get()))) {
-            ModBlockProperties.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
+            LightAPI.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
             projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
                     Blocks.AIR.defaultBlockState());
             ItemEntity newItem = new ItemEntity(
@@ -120,7 +120,7 @@ public class BlockEvents {
         if ((block != null
                 && projectile instanceof ThrownPotion
                 && block.defaultBlockState().is(ModBlocks.SOUL_TORCH.get()))) {
-            ModBlockProperties.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
+            LightAPI.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
             projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
                     Blocks.AIR.defaultBlockState());
             ItemEntity newItem = new ItemEntity(
@@ -139,7 +139,7 @@ public class BlockEvents {
         if ((block != null
                 && projectile instanceof ThrownPotion
                 && block.defaultBlockState().is(ModBlocks.LANTERN.get()))) {
-            ModBlockProperties.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
+            LightAPI.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
             projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
                     ModBlocks.LANTERN.get().defaultBlockState()
                             .setValue(LightAPI.getLitState(),0)
@@ -154,7 +154,7 @@ public class BlockEvents {
         if ((block != null
                 && projectile instanceof ThrownPotion
                 && block.defaultBlockState().is(ModBlocks.SOUL_LANTERN.get()))) {
-            ModBlockProperties.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
+            LightAPI.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
             projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
                     ModBlocks.SOUL_LANTERN.get().defaultBlockState()
                             .setValue(LightAPI.getLitState(),0)
@@ -177,7 +177,7 @@ public class BlockEvents {
                 && entity.isOnFire()
                 && block.defaultBlockState().getValue(RealisticTorchBlock.getLitState())
                 != RealisticTorchBlock.LIT) {
-            ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
+            LightAPI.playLightingSound(entity.getLevel(), entity.getOnPos());
             entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
                     ModBlocks.TORCH.get().defaultBlockState()
                             .setValue(RealisticTorchBlock.getLitState(),2)
@@ -189,7 +189,7 @@ public class BlockEvents {
                 && entity.isOnFire()
                 && block.defaultBlockState().getValue(RealisticSoulTorchBlock.getLitState())
                 != RealisticSoulTorchBlock.LIT) {
-            ModBlockProperties.playLightingSound(entity.getLevel(), entity.getOnPos());
+            LightAPI.playLightingSound(entity.getLevel(), entity.getOnPos());
             entity.getLevel().setBlockAndUpdate(entity.getOnPos(),
                     ModBlocks.SOUL_TORCH.get().defaultBlockState()
                             .setValue(RealisticSoulTorchBlock.getLitState(),2)
@@ -212,6 +212,7 @@ public class BlockEvents {
                         event.getPos().getZ(),
                         Items.STICK.getDefaultInstance());
                 event.getLevel().addFreshEntity(itemEntity);
+                LightAPI.playExtinguishSound(event.getLevel(), event.getPos());
             }
         }
     }
@@ -223,10 +224,12 @@ public class BlockEvents {
             if (block instanceof RealisticLanternBlock) {
                 event.getLevel().setBlockAndUpdate(event.getPos(), ModBlocks.LANTERN.get().defaultBlockState());
                 event.getLevel().updateNeighborsAt(event.getPos(), block);
+                LightAPI.playExtinguishSound(event.getLevel(), event.getPos());
             }
             if (block instanceof RealisticSoulLanternBlock) {
                 event.getLevel().setBlockAndUpdate(event.getPos(), ModBlocks.SOUL_LANTERN.get().defaultBlockState());
                 event.getLevel().updateNeighborsAt(event.getPos(), block);
+                LightAPI.playExtinguishSound(event.getLevel(), event.getPos());
             }
         }
     }
@@ -240,18 +243,15 @@ public class BlockEvents {
         if (entity instanceof Player && block instanceof TorchBlock
                 && !item.getDefaultInstance().is(Items.REDSTONE_TORCH)
                 && !item.getDefaultInstance().is(Items.SOUL_TORCH)
-                && block.defaultBlockState().is(ModBlocks.SOUL_TORCH.get())
                 && !item.getDefaultInstance().is(ModItems.SOUL_TORCH.get())
                 && !item.getDefaultInstance().is(ModItems.LIT_SOUL_TORCH.get())
                 && ClassiCraftConfiguration.noVanillaTorchPlace.get()) {
             if (!((Player) entity).isCreative()) {
                 level.playSound(null, event.getPos(), SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1, 1);
                 level.setBlock(event.getPos(), ModBlocks.TORCH.get().defaultBlockState(), 1);
-                entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_torch"));
             }
         }
         if (entity instanceof Player && block instanceof TorchBlock
-                && block.defaultBlockState().is(ModBlocks.TORCH.get())
                 && !item.getDefaultInstance().is(Items.REDSTONE_TORCH)
                 && !item.getDefaultInstance().is(Items.TORCH)
                 && !item.getDefaultInstance().is(ModItems.TORCH.get())
@@ -260,12 +260,10 @@ public class BlockEvents {
             if (!((Player) entity).isCreative()) {
                 level.playSound(null, event.getPos(), SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1, 1);
                 level.setBlock(event.getPos(), ModBlocks.SOUL_TORCH.get().defaultBlockState(), 1);
-                entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_torch"));
             }
         }
         if (entity instanceof Player
                 && block instanceof LanternBlock
-                && block.defaultBlockState().is(ModBlocks.SOUL_LANTERN.get())
                 && !item.getDefaultInstance().is(Items.SOUL_LANTERN)
                 && !item.getDefaultInstance().is(ModItems.SOUL_LANTERN.get().asItem())
                 && !item.getDefaultInstance().is(ModItems.LIT_SOUL_LANTERN.get())
@@ -273,12 +271,10 @@ public class BlockEvents {
             if (!((Player) entity).isCreative()) {
                 level.playSound(null, event.getPos(), SoundEvents.LANTERN_PLACE, SoundSource.BLOCKS, 1, 1);
                 level.setBlock(event.getPos(), ModBlocks.LANTERN.get().defaultBlockState(), 1);
-                entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_lantern"));
             }
         }
         if (entity instanceof Player
                 && block instanceof LanternBlock
-                && block.defaultBlockState().is(ModBlocks.LANTERN.get())
                 && !item.getDefaultInstance().is(Items.LANTERN)
                 && !item.getDefaultInstance().is(ModItems.LANTERN.get().asItem())
                 && !item.getDefaultInstance().is(ModItems.LIT_LANTERN.get())
@@ -286,7 +282,6 @@ public class BlockEvents {
             if (!((Player) entity).isCreative()) {
                 level.playSound(null, event.getPos(), SoundEvents.LANTERN_PLACE, SoundSource.BLOCKS, 1, 1);
                 level.setBlock(event.getPos(), ModBlocks.SOUL_LANTERN.get().defaultBlockState(), 1);
-                entity.sendSystemMessage(Component.translatable("info.classicraft.stop_use_lantern"));
             }
         }
     }
