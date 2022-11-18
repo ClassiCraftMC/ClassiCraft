@@ -74,5 +74,6 @@ public class RotItems {
             .put(ModItems.RICE.get(), 720000)
             .put(ModItems.RICE_HUSK.get(), 720000)
             .put(ModItems.RICE_SEED.get(), 720000)
+            .put(ModItems.PUMPKIN_SLICE.get(), 48000)
             .put(Items.CAKE, 24000).build();
 }

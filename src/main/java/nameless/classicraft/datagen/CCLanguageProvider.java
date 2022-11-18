@@ -117,6 +117,7 @@ public class CCLanguageProvider extends LanguageProvider {
         add(ModEntities.BOAR_ENTITY.get(), "Boar");
         add("item.classicraft.lit_lantern", "Lit Lantern");
         add(ModItems.LANTERN.get(), "Lantern");
+        add(ModItems.PUMPKIN_SLICE.get(), "Pumpkin Slice");
         add("info.classicraft.stop_use_lantern", "Could't place the Vanilla Lantern Block in survival mode, you can configured it in ClassisCraft Mod Config.");
         add("info.classicraft.stop_use_torch", "Could't place the Vanilla Torch Block in survival mode, you can configured it in ClassisCraft Mod Config.");
     }

@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.food.Foods;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ModFoodDatas {
@@ -26,6 +27,7 @@ public class ModFoodDatas {
     public static FoodProperties RAW_COOKIE = food(3, 0.4).build();
     public static FoodProperties RAW_CAKE = food(3, 0.4).build();
     public static FoodProperties RICE_SEED = food(1, 0.1).build();
+    public static FoodProperties PUMPKIN_SLICE = Foods.MELON_SLICE;
     public static FoodProperties NONE = food(0, 0.0).build();
 
     protected static FoodProperties.Builder food(int n, double s) {

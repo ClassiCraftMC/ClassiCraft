@@ -148,6 +148,9 @@ public class ModItems {
     public static final RegistryObject<Item> ANGLEFISH =
             food("anglefish", Foods.TROPICAL_FISH);
 
+    public static final RegistryObject<Item> PUMPKIN_SLICE =
+            food("pumpkin_slice", ModFoodDatas.PUMPKIN_SLICE);
+
     public static final RegistryObject<Item> FOOTBALLFISH =
             food("footballfish", Foods.TROPICAL_FISH);
 
