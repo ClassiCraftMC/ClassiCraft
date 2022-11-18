@@ -8,11 +8,9 @@
     "MixinItem",
     "MixinItemStack",
     "MixinPrimaryLevelData",
-    "event.MixinAbstractHurtingProjectile",
     "event.MixinBlockBehaviour",
     "event.MixinItemEntity",
     "event.MixinLivingEntity",
-    "event.MixinProjectile",
     "event.MixinServerLevel"
   ],
   "client": [
