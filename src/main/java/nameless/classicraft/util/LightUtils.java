@@ -32,46 +32,42 @@ public class LightUtils {
     public static final IntegerProperty OIL = IntegerProperty.create("oil",0,3);
     public static final IntegerProperty LITSTATE = IntegerProperty.create("litstate", 0, 2);
 
-    public static final int FUEL_LEVEL_I_TOTAL_BURN_TIME = 1;
-    public static final int FUEL_LEVEL_II_TOTAL_BURN_TIME = 2;
-    public static final int FUEL_LEVEL_IV_TOTAL_BURN_TIME = 4;
-    public static final int FUEL_LEVEL_V_TOTAL_BURN_TIME = 5;
+    public static int TOTAL_BURN_TIME;
+    public static IntegerProperty BURNTIME = IntegerProperty.create("burntime", 0, TOTAL_BURN_TIME);
 
-    public static final IntegerProperty FUEL_LEVEL_I_BURNTIME = IntegerProperty.create("burntime_1", 0, FUEL_LEVEL_I_TOTAL_BURN_TIME);
-    public static final IntegerProperty FUEL_LEVEL_II_BURNTIME = IntegerProperty.create("burntime_2", 0, FUEL_LEVEL_II_TOTAL_BURN_TIME);
-    public static final IntegerProperty FUEL_LEVEL_IV_BURNTIME = IntegerProperty.create("burntime_4", 0,FUEL_LEVEL_IV_TOTAL_BURN_TIME);
-    public static final IntegerProperty FUEL_LEVEL_V_BURNTIME = IntegerProperty.create("burntime_5", 0, FUEL_LEVEL_V_TOTAL_BURN_TIME);
-
-    public static InteractionResult useFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, Block block, TagKey<Item> fuelItem, IntegerProperty burnTime, int initialBurnTime) {
+    public static InteractionResult useFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, Block block) {
         ItemStack heldStack = pPlayer.getItemInHand(pHand);
-        if (heldStack.is(fuelItem)) {
+        initBurnTime(heldStack);
+        if (heldStack.is(ModTags.Items.FUEL_LEVEL_1)
+                || heldStack.is(ModTags.Items.FUEL_LEVEL_2)
+                || heldStack.is(ModTags.Items.FUEL_LEVEL_4)
+                || heldStack.is(ModTags.Items.FUEL_LEVEL_5)
+                || heldStack.is(ModTags.Items.FUEL_LEVEL_6)
+                || heldStack.is(ModTags.Items.FUEL_LEVEL_8)
+                || heldStack.is(ModTags.Items.FUEL_LEVEL_10)
+                || heldStack.is(ModTags.Items.FUEL_LEVEL_16)
+                || heldStack.is(ModTags.Items.FUEL_LEVEL_26)
+                || heldStack.is(ModTags.Items.FUEL_LEVEL_36)
+                || heldStack.is(ModTags.Items.FUEL_LEVEL_144)){
             if (!pPlayer.isCreative() && pState.getValue(OIL) != 3) {
                 heldStack.shrink(1);
                 if (pState.getValue(OIL) >= 3) return InteractionResult.PASS;
                 pPlayer.swing(pHand);
-                replaceBlockNeedFuel(pPos, pLevel, pState, pState.getValue(burnTime), pState.getValue(LITSTATE), pState.getValue(OIL) + 1, block, burnTime);
+                replaceBlockNeedFuel(pPos, pLevel, pState, pState.getValue(BURNTIME), pState.getValue(LITSTATE), pState.getValue(OIL) + 1, block, BURNTIME);
                 pLevel.playSound(null, pPos, SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS, 1, 0.3f * pLevel.random.nextFloat() * 0.1f);
             }
         }
-        /**
         if (heldStack.getItem() == Items.FLINT_AND_STEEL) {
             if (pLevel.isRainingAt(pPos.above(1))) {
-                replaceBlockNeedFuel(pPos, pLevel, pState, pState.getValue(burnTime), UNLIT, pState.getValue(OIL), block, burnTime);
+                replaceBlockNeedFuel(pPos, pLevel, pState, pState.getValue(BURNTIME), UNLIT, pState.getValue(OIL), block, BURNTIME);
             }
-            return useAsFlint(pState, pLevel, pPos, pPlayer, pHand, block, burnTime, initialBurnTime);
-        }*/
+            return useAsFlint(pState, pLevel, pPos, pPlayer, pHand, block, BURNTIME, TOTAL_BURN_TIME);
+        }
         return InteractionResult.PASS;
     }
 
     public static InteractionResult useBlockNeedFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, Block block) {
-        ItemStack heldStack = pPlayer.getItemInHand(pHand);
-        if (heldStack.is(ModTags.Items.FUEL_LEVEL_1)) {
-            return useFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, block, ModTags.Items.FUEL_LEVEL_1, FUEL_LEVEL_I_BURNTIME, FUEL_LEVEL_I_TOTAL_BURN_TIME);
-        }
-        return InteractionResult.PASS;
-        //useFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, block, ModTags.Items.FUEL_LEVEL_2, FUEL_LEVEL_II_BURNTIME, FUEL_LEVEL_II_TOTAL_BURN_TIME);
-        //useFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, block, ModTags.Items.FUEL_LEVEL_4, FUEL_LEVEL_IV_BURNTIME, FUEL_LEVEL_IV_TOTAL_BURN_TIME);
-        //useFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, block, ModTags.Items.FUEL_LEVEL_5, FUEL_LEVEL_V_BURNTIME, FUEL_LEVEL_V_TOTAL_BURN_TIME);
+        return useFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, block);
     }
 
     public static InteractionResult useAsFlint(BlockState pState,Level pLevel,BlockPos pPos, Player pPlayer,InteractionHand pHand, Block block, IntegerProperty totalBurnTime, int initialBurnTime) {
@@ -90,19 +86,44 @@ public class LightUtils {
         return InteractionResult.SUCCESS;
     }
 
+    public static void initBurnTime(ItemStack heldStack) {
+        if (heldStack.is(ModTags.Items.FUEL_LEVEL_1)) {
+            TOTAL_BURN_TIME = 1;
+            if (heldStack.is(ModTags.Items.FUEL_LEVEL_2)) {
+                TOTAL_BURN_TIME = 2;
+            }
+            if (heldStack.is(ModTags.Items.FUEL_LEVEL_4)) {
+                TOTAL_BURN_TIME = 4;
+            }
+            if (heldStack.is(ModTags.Items.FUEL_LEVEL_5)) {
+                TOTAL_BURN_TIME = 5;
+            }
+            if (heldStack.is(ModTags.Items.FUEL_LEVEL_6)){
+                TOTAL_BURN_TIME = 6;
+            }
+            if (heldStack.is(ModTags.Items.FUEL_LEVEL_8)) {
+                TOTAL_BURN_TIME = 8;
+            }
+            if (heldStack.is(ModTags.Items.FUEL_LEVEL_10)) {
+                TOTAL_BURN_TIME = 10;
+            }
+            if (heldStack.is(ModTags.Items.FUEL_LEVEL_16)) {
+                TOTAL_BURN_TIME = 16;
+            }
+            if (heldStack.is(ModTags.Items.FUEL_LEVEL_26)) {
+                TOTAL_BURN_TIME = 26;
+            }
+            if (heldStack.is(ModTags.Items.FUEL_LEVEL_36)) {
+                TOTAL_BURN_TIME = 36;
+            }
+            if (heldStack.is(ModTags.Items.FUEL_LEVEL_144)) {
+                TOTAL_BURN_TIME = 144;
+            }
+        }
+    }
+
     public static void tickBlockNeedFuel(BlockState state, ServerLevel level, BlockPos pos, RandomSource random, Block block) {
-        if (state.getValue(FUEL_LEVEL_I_BURNTIME) != 0) {
-            tickNeedFuel(state, level, pos, random, block, FUEL_LEVEL_I_BURNTIME, FUEL_LEVEL_I_TOTAL_BURN_TIME);
-        }
-        if (state.getValue(FUEL_LEVEL_II_BURNTIME) != 0) {
-            tickNeedFuel(state, level, pos, random, block,  FUEL_LEVEL_II_BURNTIME, FUEL_LEVEL_II_TOTAL_BURN_TIME);
-        }
-        if (state.getValue(FUEL_LEVEL_IV_BURNTIME) != 0) {
-            tickNeedFuel(state, level, pos, random, block, FUEL_LEVEL_IV_BURNTIME, FUEL_LEVEL_IV_TOTAL_BURN_TIME);
-        }
-        if (state.getValue(FUEL_LEVEL_V_BURNTIME) != 0) {
-            tickNeedFuel(state, level, pos, random, block, FUEL_LEVEL_V_BURNTIME, FUEL_LEVEL_V_TOTAL_BURN_TIME);
-        }
+
     }
 
     public static void tickNeedFuel(BlockState state, ServerLevel level, BlockPos pos, RandomSource random, Block block, IntegerProperty totalBurnTime, int initialBurnTime) {
