@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:mangrove_sign",
+    "minecraft:dark_oak_sign",
+    "minecraft:acacia_sign",
+    "minecraft:jungle_sign",
+    "minecraft:birch_sign",
+    "minecraft:spruce_sign",
+    "minecraft:oak_sign",
+    "minecraft:mangrove_fence",
+    "minecraft:dark_oak_fence",
+    "minecraft:acacia_fence",
+    "minecraft:jungle_fence",
+    "minecraft:birch_fence",
+    "minecraft:spruce_fence",
+    "minecraft:oak_fence"
+  ]
+}

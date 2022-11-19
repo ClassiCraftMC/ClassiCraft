@@ -48,11 +48,41 @@ public class ItemEvents {
         if (itemstack.is(ModTags.Items.VANILLA_PLUS_SAPLINGS)
                 || itemstack.is(ModTags.Items.VANILLA_PLUS_LEAVES))
             event.setBurnTime(100);
+        if (itemstack.is(ModTags.Items.FUEL_LEVEL_0)) {
+            event.setBurnTime(0);
+        }
         if (itemstack.is(ModTags.Items.FUEL_LEVEL_1)) {
             event.setBurnTime(200);
         }
         if (itemstack.is(ModTags.Items.FUEL_LEVEL_2)) {
             event.setBurnTime(400);
+        }
+        if (itemstack.is(ModTags.Items.FUEL_LEVEL_4)) {
+            event.setBurnTime(800);
+        }
+        if (itemstack.is(ModTags.Items.FUEL_LEVEL_5)) {
+            event.setBurnTime(1000);
+        }
+        if (itemstack.is(ModTags.Items.FUEL_LEVEL_6)) {
+            event.setBurnTime(1200);
+        }
+        if (itemstack.is(ModTags.Items.FUEL_LEVEL_8)) {
+            event.setBurnTime(1600);
+        }
+        if (itemstack.is(ModTags.Items.FUEL_LEVEL_10)) {
+            event.setBurnTime(2000);
+        }
+        if (itemstack.is(ModTags.Items.FUEL_LEVEL_16)) {
+            event.setBurnTime(3200);
+        }
+        if (itemstack.is(ModTags.Items.FUEL_LEVEL_26)) {
+            event.setBurnTime(5200);
+        }
+        if (itemstack.is(ModTags.Items.FUEL_LEVEL_36)) {
+            event.setBurnTime(7200);
+        }
+        if (itemstack.is(ModTags.Items.FUEL_LEVEL_144)) {
+            event.setBurnTime(28800);
         }
     }
 

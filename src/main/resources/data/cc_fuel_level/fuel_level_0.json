@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:bee_nest",
+    "minecraft:dried_kelp_block",
+    "minecraft:lava_bucket",
+    "minecraft:blaze_rod"
+  ]
+}
