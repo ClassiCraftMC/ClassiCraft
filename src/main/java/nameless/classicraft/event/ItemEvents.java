@@ -2,10 +2,10 @@ package nameless.classicraft.event;
 
 import com.mojang.datafixers.util.Pair;
 import nameless.classicraft.ClassiCraftConfiguration;
-import nameless.classicraft.ClassiCraftHooks;
 import nameless.classicraft.capability.ModCapabilities;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
+import nameless.classicraft.util.EventUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
@@ -43,22 +43,22 @@ public class ItemEvents {
 
     @SubscribeEvent
     public static void addFuelBurn(FurnaceFuelBurnTimeEvent event) {
-        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.OAK_LEAVES);
-        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.ACACIA_LEAVES);
-        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.AZALEA_LEAVES);
-        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.BIRCH_LEAVES);
-        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.DARK_OAK_LEAVES);
-        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.JUNGLE_LEAVES);
-        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.SPRUCE_LEAVES);
-        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.MANGROVE_LEAVES);
-        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.OAK_SAPLING);
-        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.ACACIA_SAPLING);
-        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.AZALEA);
-        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.BIRCH_SAPLING);
-        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.DARK_OAK_SAPLING);
-        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.JUNGLE_SAPLING);
-        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.SPRUCE_SAPLING);
-        ClassiCraftHooks.handleWoodenItemBurnTime(event, Items.MANGROVE_ROOTS);
+        EventUtils.handleWoodenItemBurnTime(event, Items.OAK_LEAVES);
+        EventUtils.handleWoodenItemBurnTime(event, Items.ACACIA_LEAVES);
+        EventUtils.handleWoodenItemBurnTime(event, Items.AZALEA_LEAVES);
+        EventUtils.handleWoodenItemBurnTime(event, Items.BIRCH_LEAVES);
+        EventUtils.handleWoodenItemBurnTime(event, Items.DARK_OAK_LEAVES);
+        EventUtils.handleWoodenItemBurnTime(event, Items.JUNGLE_LEAVES);
+        EventUtils.handleWoodenItemBurnTime(event, Items.SPRUCE_LEAVES);
+        EventUtils.handleWoodenItemBurnTime(event, Items.MANGROVE_LEAVES);
+        EventUtils.handleWoodenItemBurnTime(event, Items.OAK_SAPLING);
+        EventUtils.handleWoodenItemBurnTime(event, Items.ACACIA_SAPLING);
+        EventUtils.handleWoodenItemBurnTime(event, Items.AZALEA);
+        EventUtils.handleWoodenItemBurnTime(event, Items.BIRCH_SAPLING);
+        EventUtils.handleWoodenItemBurnTime(event, Items.DARK_OAK_SAPLING);
+        EventUtils.handleWoodenItemBurnTime(event, Items.JUNGLE_SAPLING);
+        EventUtils.handleWoodenItemBurnTime(event, Items.SPRUCE_SAPLING);
+        EventUtils.handleWoodenItemBurnTime(event, Items.MANGROVE_ROOTS);
     }
 
     @SubscribeEvent
@@ -251,7 +251,7 @@ public class ItemEvents {
             toolTip.add(Component.translatable("按下shift键显示更多信息").withStyle(ChatFormatting.WHITE));
             if (Screen.hasShiftDown()) {
                 if (ClassiCraftConfiguration.enableShowFoodEffect.get()) {
-                    ClassiCraftHooks.addFoodComponentEffectTooltip(itemStack, event.getToolTip());
+                    EventUtils.addFoodComponentEffectTooltip(itemStack, event.getToolTip());
                 }
                 if (foodData != null) {
                     int nutrition = foodData.getNutrition();

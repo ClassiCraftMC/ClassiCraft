@@ -3,6 +3,7 @@ package nameless.classicraft.event;
 import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.api.event.ItemEntityTickEvent;
 import nameless.classicraft.init.ModItems;
+import nameless.classicraft.util.EventUtils;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
@@ -16,34 +17,9 @@ public class ItemEntityEvents {
 
     @SubscribeEvent
     public static void onLanternTicking(ItemEntityTickEvent event) {
-        ItemEntity itemEntity = event.getEntity();
-        ItemStack itemStack = itemEntity.getItem();
-        if (itemStack.is(ModItems.LIT_LANTERN.get())
-                && itemEntity.getAge()
-                == 4 * 1200) {
-            int oldCount = itemEntity.getItem().getCount();
-            itemEntity.remove(Entity.RemovalReason.KILLED);
-            ItemEntity newItem = new ItemEntity(
-                    itemEntity.getLevel(),
-                    itemEntity.getX(), itemEntity.getY(),
-                    itemEntity.getZ(),
-                    ModItems.LANTERN.get().getDefaultInstance());
-            newItem.getItem().setCount(oldCount);
-            itemEntity.getLevel().addFreshEntity(newItem);
-        }
-        if (itemStack.is(ModItems.LIT_SOUL_LANTERN.get())
-                && itemEntity.getAge()
-                == 4 * 1200) {
-            int oldCount = itemEntity.getItem().getCount();
-            itemEntity.remove(Entity.RemovalReason.KILLED);
-            ItemEntity newItem = new ItemEntity(
-                    itemEntity.getLevel(),
-                    itemEntity.getX(), itemEntity.getY(),
-                    itemEntity.getZ(),
-                    ModItems.SOUL_LANTERN.get().getDefaultInstance());
-            newItem.getItem().setCount(oldCount);
-            itemEntity.getLevel().addFreshEntity(newItem);
-        }
+        EventUtils.tickingBlockItemNeedFuel(event, ModItems.LIT_LANTERN.get(), ModItems.LANTERN.get());
+        EventUtils.tickingBlockItemNeedFuel(event, ModItems.LIT_SOUL_LANTERN.get(), ModItems.SOUL_LANTERN.get());
+
     }
 
     @SubscribeEvent
@@ -129,7 +105,7 @@ public class ItemEntityEvents {
     }
 
     @SubscribeEvent
-    public static void onItemInWater(ItemEntityTickEvent event) {
+    public static void onTorchInWater(ItemEntityTickEvent event) {
         ItemEntity itemEntity = event.getEntity();
         if (itemEntity.getItem().is(ModItems.LIT_TORCH.get()) && itemEntity.isInWater()) {
             int oldCount = itemEntity.getItem().getCount();

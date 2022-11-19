@@ -96,10 +96,6 @@ public class RealisticTorchBlock extends Block implements LightAPI {
         return LITSTATE;
     }
 
-    public static int getInitialBurnTime() {
-        return TORCH_SHOULD_BURN_OUT ? TORCH_INITIAL_BURN_TIME : 0;
-    }
-
     public static ToIntFunction<BlockState> getLightLevelFromState()
     {
         return (state) -> {

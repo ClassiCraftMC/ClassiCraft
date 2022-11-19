@@ -88,6 +88,10 @@ public interface LightAPI {
         return LANTERN_BURNTIME;
     }
 
+    static int getTorchInitialBurnTime() {
+        return TORCH_SHOULD_BURN_OUT ? TORCH_INITIAL_BURN_TIME : 0;
+    }
+
     default void tickBlockNeedFuel(BlockState state, ServerLevel level, BlockPos pos, RandomSource random, Block block, boolean shouldBurnOut, IntegerProperty totalBurnTime, int initialBurnTime) {
         if(!level.isClientSide() && shouldBurnOut && state.getValue(LITSTATE) > UNLIT)
         {

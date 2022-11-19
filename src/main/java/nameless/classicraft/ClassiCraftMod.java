@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import nameless.classicraft.event.ClientEvents;
 import nameless.classicraft.event.TestEvents;
 import nameless.classicraft.init.*;
+import nameless.classicraft.util.FoodUtils;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -29,7 +30,7 @@ public class ClassiCraftMod {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ClassiCraftConfiguration.SPEC, "classicraft.toml");
         ClassiCraftConfiguration.loadConfig(ClassiCraftConfiguration.SPEC, FMLPaths.CONFIGDIR.get().resolve("classicraft.toml"));
-        ClassiCraftHooks.handleFood();
+        FoodUtils.handleFood();
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
         ModMenuTypes.MENUS_TYPES.register(modEventBus);
