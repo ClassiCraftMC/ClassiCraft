@@ -7,6 +7,7 @@ import nameless.classicraft.capability.rot.EmptyRot;
 import nameless.classicraft.capability.rot.NormalRot;
 import nameless.classicraft.capability.rot.RotCapabilityProvider;
 import nameless.classicraft.init.ModItems;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -40,7 +41,7 @@ public class CommonCapabilityEventListener {
     @SubscribeEvent
     public static void onTooltip(ItemTooltipEvent event) {
         event.getItemStack().getCapability(ModCapabilities.ROT).ifPresent(rot -> {
-            if (rot.isHasExMsg() && !event.getItemStack().is(Items.ROTTEN_FLESH)) {
+            if (rot.isHasExMsg() && !event.getItemStack().is(Items.ROTTEN_FLESH) && Screen.hasShiftDown()) {
                 event.getToolTip().addAll(rot.getMsg());
             }
         });
