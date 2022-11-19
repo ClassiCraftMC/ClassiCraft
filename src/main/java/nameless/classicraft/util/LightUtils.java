@@ -21,6 +21,8 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 
+import java.util.function.ToIntFunction;
+
 public class LightUtils {
 
     public static final int LIT = 2;
@@ -32,12 +34,11 @@ public class LightUtils {
     public static final IntegerProperty OIL = IntegerProperty.create("oil",0,3);
     public static final IntegerProperty LITSTATE = IntegerProperty.create("litstate", 0, 2);
 
-    public static int TOTAL_BURN_TIME;
+    public static int TOTAL_BURN_TIME = 1;
     public static IntegerProperty BURNTIME = IntegerProperty.create("burntime", 0, TOTAL_BURN_TIME);
 
     public static InteractionResult useFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, Block block) {
         ItemStack heldStack = pPlayer.getItemInHand(pHand);
-        initBurnTime(heldStack);
         if (heldStack.is(ModTags.Items.FUEL_LEVEL_1)
                 || heldStack.is(ModTags.Items.FUEL_LEVEL_2)
                 || heldStack.is(ModTags.Items.FUEL_LEVEL_4)
@@ -86,9 +87,11 @@ public class LightUtils {
         return InteractionResult.SUCCESS;
     }
 
-    public static void initBurnTime(ItemStack heldStack) {
-        if (heldStack.is(ModTags.Items.FUEL_LEVEL_1)) {
-            TOTAL_BURN_TIME = 1;
+    public static ToIntFunction<ItemStack> initBurnTime() {
+        return (heldStack) -> {
+            if (heldStack.is(ModTags.Items.FUEL_LEVEL_1)) {
+                TOTAL_BURN_TIME = 1;
+            }
             if (heldStack.is(ModTags.Items.FUEL_LEVEL_2)) {
                 TOTAL_BURN_TIME = 2;
             }
@@ -118,8 +121,11 @@ public class LightUtils {
             }
             if (heldStack.is(ModTags.Items.FUEL_LEVEL_144)) {
                 TOTAL_BURN_TIME = 144;
+            } else {
+                return 1;
             }
-        }
+            return 0;
+        };
     }
 
     public static void tickBlockNeedFuel(BlockState state, ServerLevel level, BlockPos pos, RandomSource random, Block block) {
