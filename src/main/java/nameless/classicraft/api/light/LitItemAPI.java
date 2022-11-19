@@ -107,7 +107,7 @@ public interface LitItemAPI {
                 pContext.getLevel().playSound(null, pContext.getClickedPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.3f, pContext.getLevel().random.nextFloat() * 0.1F + 0.6F);
                 return state.setValue(LightAPI.LITSTATE, LightAPI.SMOLDERING).setValue(LightAPI.TORCH_BURNTIME, burnTime);
             } else {
-                return state.setValue(LightAPI.getLitState(), 2).setValue(LightAPI.TORCH_BURNTIME, RealisticTorchBlock.getInitialBurnTime());
+                return state.setValue(LightAPI.getLitState(), 2).setValue(LightAPI.TORCH_BURNTIME, LightAPI.getTorchInitialBurnTime());
             }
         }
         return null;

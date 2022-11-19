@@ -237,8 +237,9 @@ public class ItemEvents {
         Item food = itemStack.getItem();
         FoodProperties foodData = food.getFoodProperties();
         if (itemStack.isEdible()) {
-            toolTip.add(Component.translatable("按下shift键显示更多信息").withStyle(ChatFormatting.WHITE));
-            if (Screen.hasShiftDown()) {
+            if (!Screen.hasShiftDown()) {
+                toolTip.add(Component.translatable("按下shift键显示更多信息").withStyle(ChatFormatting.ITALIC));
+            } else {
                 if (ClassiCraftConfiguration.enableShowFoodEffect.get()) {
                     EventUtils.addFoodComponentEffectTooltip(itemStack, event.getToolTip());
                 }
