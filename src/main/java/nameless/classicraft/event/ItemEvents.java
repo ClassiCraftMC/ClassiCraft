@@ -48,6 +48,12 @@ public class ItemEvents {
         if (itemstack.is(ModTags.Items.VANILLA_PLUS_SAPLINGS)
                 || itemstack.is(ModTags.Items.VANILLA_PLUS_LEAVES))
             event.setBurnTime(100);
+        if (itemstack.is(ModTags.Items.FUEL_LEVEL_1)) {
+            event.setBurnTime(200);
+        }
+        if (itemstack.is(ModTags.Items.FUEL_LEVEL_2)) {
+            event.setBurnTime(400);
+        }
     }
 
     @SubscribeEvent

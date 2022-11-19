@@ -27,10 +27,16 @@ public class ModTags {
         public static final TagKey<Item> OIL_FUEL = register("oil_fuel");
         public static final TagKey<Item> VANILLA_PLUS_SAPLINGS = registerVanilla("saplings");
         public static final TagKey<Item> VANILLA_PLUS_LEAVES = registerVanilla("leaves");
+        public static final TagKey<Item> FUEL_LEVEL_1 = registerFuelLevel("fuel_level_1");
+        public static final TagKey<Item> FUEL_LEVEL_2 = registerFuelLevel("fuel_level_2");
 
         private static TagKey<Item> registerVanilla(String name)
         {
             return ItemTags.create(new ResourceLocation("cc_vanilla_plus_addon", name));
+        }
+
+        private static TagKey<Item> registerFuelLevel(String name) {
+            return ItemTags.create(new ResourceLocation("cc_fuel_level", name));
         }
 
         private static TagKey<Item> register(String name)
