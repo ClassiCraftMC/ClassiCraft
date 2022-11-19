@@ -1,6 +1,5 @@
 package nameless.classicraft.util;
 
-import nameless.classicraft.block.realistic.RealisticLanternBlock;
 import nameless.classicraft.init.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -17,6 +16,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 
@@ -26,6 +27,8 @@ public class LightUtils {
     public static final int SMOLDERING = 1;
     public static final int UNLIT = 0;
     public static final int TICK_INTERVAL = 1200;
+    public static final BooleanProperty BE_HANGING = BlockStateProperties.HANGING;
+    public static final BooleanProperty BE_WATERLOGGED = BooleanProperty.create("waterlogged");
     public static final IntegerProperty OIL = IntegerProperty.create("oil",0,3);
     public static final IntegerProperty LITSTATE = IntegerProperty.create("litstate", 0, 2);
 
@@ -50,20 +53,21 @@ public class LightUtils {
                 pLevel.playSound(null, pPos, SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS, 1, 0.3f * pLevel.random.nextFloat() * 0.1f);
             }
         }
+        /**
         if (heldStack.getItem() == Items.FLINT_AND_STEEL) {
             if (pLevel.isRainingAt(pPos.above(1))) {
                 replaceBlockNeedFuel(pPos, pLevel, pState, pState.getValue(burnTime), UNLIT, pState.getValue(OIL), block, burnTime);
             }
             return useAsFlint(pState, pLevel, pPos, pPlayer, pHand, block, burnTime, initialBurnTime);
-        }
+        }*/
         return InteractionResult.PASS;
     }
 
     public static InteractionResult useBlockNeedFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, Block block) {
         useFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, block, ModTags.Items.FUEL_LEVEL_1, FUEL_LEVEL_I_BURNTIME, FUEL_LEVEL_I_TOTAL_BURN_TIME);
-        useFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, block, ModTags.Items.FUEL_LEVEL_2, FUEL_LEVEL_II_BURNTIME, FUEL_LEVEL_II_TOTAL_BURN_TIME);
-        useFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, block, ModTags.Items.FUEL_LEVEL_4, FUEL_LEVEL_IV_BURNTIME, FUEL_LEVEL_IV_TOTAL_BURN_TIME);
-        useFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, block, ModTags.Items.FUEL_LEVEL_5, FUEL_LEVEL_V_BURNTIME, FUEL_LEVEL_V_TOTAL_BURN_TIME);
+        //useFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, block, ModTags.Items.FUEL_LEVEL_2, FUEL_LEVEL_II_BURNTIME, FUEL_LEVEL_II_TOTAL_BURN_TIME);
+        //useFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, block, ModTags.Items.FUEL_LEVEL_4, FUEL_LEVEL_IV_BURNTIME, FUEL_LEVEL_IV_TOTAL_BURN_TIME);
+        //useFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, block, ModTags.Items.FUEL_LEVEL_5, FUEL_LEVEL_V_BURNTIME, FUEL_LEVEL_V_TOTAL_BURN_TIME);
         return InteractionResult.PASS;
     }
 
@@ -120,7 +124,7 @@ public class LightUtils {
     }
 
     public static void replaceBlockNeedFuel(BlockPos pos, Level level, BlockState state, int initialBurnTime, int litState, int oil, Block block, IntegerProperty burnTime) {
-        level.setBlockAndUpdate(pos, block.defaultBlockState().setValue(burnTime, initialBurnTime).setValue(RealisticLanternBlock.HANGING,state.getValue(RealisticLanternBlock.HANGING)).setValue(RealisticLanternBlock.WATERLOGGED,state.getValue(RealisticLanternBlock.WATERLOGGED)).setValue(LITSTATE,litState).setValue(OIL,oil));
+        level.setBlockAndUpdate(pos, block.defaultBlockState().setValue(burnTime, initialBurnTime).setValue(BE_HANGING, state.getValue(BE_HANGING)).setValue(BE_WATERLOGGED,state.getValue(BE_WATERLOGGED)).setValue(LITSTATE,litState).setValue(OIL,oil));
         level.updateNeighborsAt(pos,block);
     }
 
