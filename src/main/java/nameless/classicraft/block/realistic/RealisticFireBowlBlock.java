@@ -1,6 +1,5 @@
 package nameless.classicraft.block.realistic;
 
-import nameless.classicraft.init.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
