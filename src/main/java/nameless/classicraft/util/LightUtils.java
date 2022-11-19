@@ -64,7 +64,11 @@ public class LightUtils {
     }
 
     public static InteractionResult useBlockNeedFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, Block block) {
-        return useFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, block, ModTags.Items.FUEL_LEVEL_1, FUEL_LEVEL_I_BURNTIME, FUEL_LEVEL_I_TOTAL_BURN_TIME);
+        ItemStack heldStack = pPlayer.getItemInHand(pHand);
+        if (heldStack.is(ModTags.Items.FUEL_LEVEL_1)) {
+            return useFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, block, ModTags.Items.FUEL_LEVEL_1, FUEL_LEVEL_I_BURNTIME, FUEL_LEVEL_I_TOTAL_BURN_TIME);
+        }
+        return InteractionResult.PASS;
         //useFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, block, ModTags.Items.FUEL_LEVEL_2, FUEL_LEVEL_II_BURNTIME, FUEL_LEVEL_II_TOTAL_BURN_TIME);
         //useFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, block, ModTags.Items.FUEL_LEVEL_4, FUEL_LEVEL_IV_BURNTIME, FUEL_LEVEL_IV_TOTAL_BURN_TIME);
         //useFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, block, ModTags.Items.FUEL_LEVEL_5, FUEL_LEVEL_V_BURNTIME, FUEL_LEVEL_V_TOTAL_BURN_TIME);
