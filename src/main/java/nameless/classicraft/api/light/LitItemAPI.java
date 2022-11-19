@@ -2,7 +2,6 @@ package nameless.classicraft.api.light;
 
 import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.api.item.ItemStackAPI;
-import nameless.classicraft.block.realistic.RealisticTorchBlock;
 import nameless.classicraft.init.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
