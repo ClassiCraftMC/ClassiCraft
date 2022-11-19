@@ -1,6 +1,5 @@
 package nameless.classicraft.block.realistic;
 
-import nameless.classicraft.api.light.LightAPI;
 import nameless.classicraft.init.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -31,13 +30,22 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.ToIntFunction;
 
-public class RealisticFireBowlBlock extends Block implements LightAPI {
+import static nameless.classicraft.api.light.LightAPI.BE_HANGING;
+import static nameless.classicraft.api.light.LightAPI.BE_WATERLOGGED;
+import static nameless.classicraft.util.LightUtils.*;
+
+public class RealisticFireBowlBlock extends Block {
 
     protected static final VoxelShape AABB = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 1.0D, 15.0D);
 
     public RealisticFireBowlBlock() {
         super(BlockBehaviour.Properties.of(Material.METAL).lightLevel(getLightValueFromState()).strength(1.5F, 6.0F).sound(SoundType.WOOD));
-        this.stateDefinition.any().setValue(LITSTATE, 0).setValue(FIRE_BOWL_BURNTIME, 0);
+        registerDefaultState(this.stateDefinition.any()
+                .setValue(LITSTATE, 0)
+                .setValue(FUEL_LEVEL_I_BURNTIME, 0)
+                .setValue(FUEL_LEVEL_II_BURNTIME, 0)
+                .setValue(FUEL_LEVEL_IV_BURNTIME, 0)
+                .setValue(FUEL_LEVEL_V_BURNTIME, 0));
     }
 
     @Override
@@ -53,12 +61,12 @@ public class RealisticFireBowlBlock extends Block implements LightAPI {
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-       return useBlockNeedFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, this, ModTags.Items.WOOD_FUEL, FIRE_BOWL_BURNTIME, FIRE_BOWL_INITIAL_BURN_TIME);
+       return useBlockNeedFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, this);
     }
 
     @Override
     public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
-        tickBlockNeedFuel(pState, pLevel, pPos, pRandom, this, FIRE_BOWL_SHOULD_BURN_OUT, FIRE_BOWL_BURNTIME, FIRE_BOWL_INITIAL_BURN_TIME);
+       tickBlockNeedFuel(pState, pLevel, pPos, pRandom, this);
     }
 
     @Override
@@ -78,30 +86,22 @@ public class RealisticFireBowlBlock extends Block implements LightAPI {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         super.createBlockStateDefinition(pBuilder);
-        pBuilder.add(FIRE_BOWL_BURNTIME);
         pBuilder.add(LITSTATE);
         pBuilder.add(OIL);
         pBuilder.add(BE_HANGING);
         pBuilder.add(BE_WATERLOGGED);
-    }
-
-    public static IntegerProperty getBurnTime() {
-        return FIRE_BOWL_BURNTIME;
+        pBuilder.add(FUEL_LEVEL_I_BURNTIME, FUEL_LEVEL_II_BURNTIME, FUEL_LEVEL_IV_BURNTIME, FUEL_LEVEL_V_BURNTIME);
     }
 
     public static IntegerProperty getLitState() {
         return LITSTATE;
     }
 
-    public static int getInitialBurnTime() {
-        return FIRE_BOWL_SHOULD_BURN_OUT ? FIRE_BOWL_INITIAL_BURN_TIME : 0;
-    }
-
     private static ToIntFunction<BlockState> getLightValueFromState() {
         return (state) -> {
-            if (state.getValue(RealisticFireBowlBlock.LITSTATE) == RealisticFireBowlBlock.LIT) {
+            if (state.getValue(LITSTATE) == LIT) {
                 return 14;
-            } else if (state.getValue(RealisticFireBowlBlock.LITSTATE) == RealisticFireBowlBlock.SMOLDERING) {
+            } else if (state.getValue(LITSTATE) == SMOLDERING) {
                 return 12;
             }
             return 0;

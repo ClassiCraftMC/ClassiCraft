@@ -35,7 +35,6 @@ public interface LightAPI {
     int SMOLDERING = 1;
     int UNLIT = 0;
     int TICK_INTERVAL = 1200;
-    int TICK_RATE = 1200;
     int TORCH_INITIAL_BURN_TIME = ClassiCraftConfiguration.torchBurnoutTime.get();
     boolean CAUSE_FIRE = ClassiCraftConfiguration.torchCauseFire.get();
     boolean TORCH_SHOULD_BURN_OUT = TORCH_INITIAL_BURN_TIME >= 0;

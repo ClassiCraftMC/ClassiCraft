@@ -112,9 +112,9 @@ public class RealisticLargeFireBowlBlock extends Block implements LightAPI {
 
     private static ToIntFunction<BlockState> getLightValueFromState() {
         return (state) -> {
-            if (state.getValue(RealisticFireBowlBlock.LITSTATE) == RealisticFireBowlBlock.LIT) {
+            if (state.getValue(LITSTATE) == LIT) {
                 return 14;
-            } else if (state.getValue(RealisticFireBowlBlock.LITSTATE) == RealisticFireBowlBlock.SMOLDERING) {
+            } else if (state.getValue(LITSTATE) == SMOLDERING) {
                 return 12;
             }
             return 0;
