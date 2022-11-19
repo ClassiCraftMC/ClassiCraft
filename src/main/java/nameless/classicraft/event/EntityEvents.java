@@ -2,18 +2,92 @@ package nameless.classicraft.event;
 
 import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.entity.RanchuEntity;
+import nameless.classicraft.util.EventUtils;
+import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Squid;
-import net.minecraftforge.event.entity.living.BabyEntitySpawnEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraft.world.entity.monster.AbstractSkeleton;
+import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.entity.projectile.Arrow;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
+import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
 public class EntityEvents {
+
+    @SubscribeEvent
+    public void onLivingAttack (LivingAttackEvent event) {
+
+        if (ClassiCraftConfiguration.fireDamageSpreads.get()
+                && !event.getEntity().getLevel().isClientSide) {
+
+            final Entity sourceEntity = event.getSource().getEntity();
+
+            if (sourceEntity instanceof final LivingEntity sourceLiving) {
+
+                final ItemStack heldItem = sourceLiving.getMainHandItem();
+
+                if (!(sourceLiving instanceof Zombie) && heldItem.isEmpty() && sourceLiving.isOnFire() && EventUtils.tryPercentage(ClassiCraftConfiguration.fireDamageSpreadChance.get())) {
+
+                    final float damage = Math.max(1, event.getEntity().getLevel().getCurrentDifficultyAt(new BlockPos(event.getEntity().getOnPos())).getEffectiveDifficulty());
+                    event.getEntity().setSecondsOnFire(2 * (int) damage);
+                }
+
+                if (heldItem.getItem() == Items.FLINT_AND_STEEL && ClassiCraftConfiguration.flintAndSteelDealsFireDamage.get()) {
+
+                    event.getEntity().setSecondsOnFire(ClassiCraftConfiguration.flintAndSteelFireDamage.get());
+                    heldItem.hurtAndBreak(1, sourceLiving, e -> e.broadcastBreakEvent(EquipmentSlot.MAINHAND));
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public void onLivingTick (LivingEvent.LivingTickEvent event) {
+        if (ClassiCraftConfiguration.fireResExtinguish.get()
+                && !event.getEntity().getLevel().isClientSide
+                && event.getEntity().isOnFire()
+                && event.getEntity().hasEffect(MobEffects.FIRE_RESISTANCE)) {
+
+            event.getEntity().clearFire();
+        }
+    }
+
+    @SubscribeEvent
+    public void onEntityJoinLevel(EntityJoinLevelEvent event) {
+
+        if (ClassiCraftConfiguration.flameArrowSkeletons.get()
+                && event.getEntity() instanceof Arrow
+                && !event.getEntity().getLevel().isClientSide) {
+
+            final Arrow arrowEntity = (Arrow) event.getEntity();
+            final Entity shooter = arrowEntity.getOwner();
+
+            if (shooter instanceof AbstractSkeleton && shooter.isOnFire() && shooter.isAlive() && EventUtils.tryPercentage(ClassiCraftConfiguration.flameArrowChance.get())) {
+
+                arrowEntity.setSecondsOnFire(shooter.getRemainingFireTicks());
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public void onLivingDeath (LivingDeathEvent event) {
+        if (event.getSource().isFire()
+                && ClassiCraftConfiguration.fireFromDamagesource.get()
+                && !event.getEntity().isOnFire() && !event.getEntity().getLevel().isClientSide) {
+
+            event.getEntity().setSecondsOnFire(1);
+        }
+    }
 
     @SubscribeEvent
     public static void onDamageSquid(LivingHurtEvent event) {

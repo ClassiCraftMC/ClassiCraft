@@ -33,11 +33,32 @@ public class ClassiCraftConfiguration {
     public static ForgeConfigSpec.BooleanValue enableEntityTorchBurnOut;
     public static ForgeConfigSpec.BooleanValue enableShowFoodEffect;
     public static ForgeConfigSpec.IntValue campfireBurnoutTime;
+    public static ForgeConfigSpec.BooleanValue fireResExtinguish;
 
+    public static ForgeConfigSpec.BooleanValue fireFromDamagesource;
+
+    public static ForgeConfigSpec.BooleanValue fireDamageSpreads;
+    public static ForgeConfigSpec.DoubleValue fireDamageSpreadChance;
+
+    public static ForgeConfigSpec.BooleanValue flameArrowSkeletons;
+    public static ForgeConfigSpec.ConfigValue<Double> flameArrowChance;
+
+    public static  ForgeConfigSpec.BooleanValue flintAndSteelDealsFireDamage;
+    public static ForgeConfigSpec.IntValue flintAndSteelFireDamage;
+
+    public static ForgeConfigSpec.BooleanValue fireOverlay;
+
+    public static ForgeConfigSpec.IntValue fireHitBurnTime;
+    public static ForgeConfigSpec.IntValue soulfireHitBurnTime;
+
+    public static ForgeConfigSpec.BooleanValue punchOutFlames;
+
+    public static ForgeConfigSpec.BooleanValue extinguishWithBottle;
 
     static {
         BUILDER.comment("天工开物模组配置文件");
-        BUILDER.push("general");
+        BUILDER.comment("通常");
+        BUILDER.push("General");
 
         String desc;
 
@@ -45,6 +66,67 @@ public class ClassiCraftConfiguration {
         enableShowFoodEffect = BUILDER.comment(desc)
                 .define("enableShowFoodEffect", true);
 
+        BUILDER.pop();
+
+        BUILDER.comment("燃烧机制");
+        BUILDER.push("FireSettings");
+        desc = "决定是否火把会导致易燃物燃烧(仅限点燃的火把)";
+        torchCauseFire = BUILDER.comment(desc).define("torchCauseFire",false);
+
+        desc = "具有防火效果是否可以从视觉上阻止物体着火？";
+        fireResExtinguish =
+                BUILDER.comment(desc)
+                .define("fireResistanceExtinguish", true);
+
+        desc = "决定是否修复生物着火不掉落煮熟的物品";
+        fireFromDamagesource =
+                BUILDER.comment(desc)
+                        .define("fireFromDamagesource", true);
+
+        desc = "当生物互相伤害时，火灾是否会在他们之间蔓延？僵尸已经做到了这一点，不会改变.";
+        fireDamageSpreads =
+                BUILDER.comment(desc)
+                        .define("fireDamageSpreads", true);
+
+        desc = "火灾伤害在生物之间传播的几率是多少？";
+        fireDamageSpreadChance =
+                BUILDER.comment(desc)
+                        .defineInRange("fireDamageSpreadChance", 0.3d, 0d, 1d);
+
+        desc = "打火石在用作武器时是否会造成火灾伤害？";
+        flintAndSteelDealsFireDamage =
+                BUILDER.comment(desc)
+                .define("ShouldFlintAndSteelDoFireDamage", true);
+
+        desc = "打火石应该造成多大的火焰伤害？";
+        flintAndSteelFireDamage =
+                BUILDER.comment(desc)
+                        .defineInRange("flintAndSteelFireDamage", 3, 0, Integer.MAX_VALUE);
+
+        desc = "如果玩家具有防火药水效果，是否应隐藏火燃烧HUD覆盖";
+        fireOverlay =
+                BUILDER.comment(desc)
+                        .define("hideFireOverlayWhenImmune", true);
+
+        desc = "决定玩家碰到扩散的灵魂火应该受到多少伤害";
+        soulfireHitBurnTime =
+                BUILDER.comment(desc)
+                        .defineInRange("soulfireHitBurnTime", 2, 0, Integer.MAX_VALUE);
+
+        desc = "决定玩家碰到扩散的火应该受到多少伤害";
+        punchOutFlames =
+                BUILDER.comment(desc)
+                        .define("punchOutFlames", true);
+
+        desc = "决定玩家是否可以用水瓶灭火";
+        extinguishWithBottle =
+                BUILDER.comment(desc)
+                        .define("extinguishWithBottledWater", true);
+
+        BUILDER.pop();
+
+        BUILDER.comment("光照设定");
+        BUILDER.push("LightingSettings");
         desc = "决定火把掉落物形式是否会熄灭";
         enableEntityTorchBurnOut = BUILDER.comment(desc)
                 .define("enableEntityTorchBurnOut", true);
@@ -59,22 +141,11 @@ public class ClassiCraftConfiguration {
         desc = "决定是否开启鱿鱼喷墨造成实体失明";
         enableSquidBlind = BUILDER.comment(desc).define("enableSquidBlind", true);
 
-        desc = "决定是否火把会导致易燃物燃烧(仅限点燃的火把)";
-        torchCauseFire = BUILDER.comment(desc).define("torchCauseFire",false);
-
         desc = "*困难*决定是否背包里的点燃的方块会熄灭";
         hardcore = BUILDER.comment(desc).define("hardcore",true);
 
         desc = "决定当你进入水中时是否你背包里点燃的火把会被熄灭";
         waterBurnt = BUILDER.comment(desc).define("water_burnt",true);
-
-        desc = "确定是否禁用提供反馈，报告漏洞选项";
-        removeSendFeedbackAndReportBugs = BUILDER.comment(desc)
-                .define("removeSendFeedbackAndReportBugs", true);
-
-        desc = "确定是否禁止实验性设置警告";
-        shutupExperimentalWarning = BUILDER.comment(desc)
-                .define("shutupExperimentalWarning", true);
 
         desc = "烛台熄灭耗费的时间，以分钟为单位。将其设置为负值将禁用烛台熄灭.";
         candleholderBurnoutTime = BUILDER.comment(desc)
@@ -110,7 +181,21 @@ public class ClassiCraftConfiguration {
         desc = "确定是否禁止生存模式放置原版灯笼（相关灯笼模组也将禁止放置灯笼）.";
         noVanillaLanternPlace = BUILDER.comment(desc)
                 .define("noVanillaLanternPlace", true);
+        BUILDER.pop();
 
+        BUILDER.comment("杂项");
+        BUILDER.push("Misc");
+        desc = "确定是否禁用提供反馈，报告漏洞选项";
+        removeSendFeedbackAndReportBugs = BUILDER.comment(desc)
+                .define("removeSendFeedbackAndReportBugs", true);
+
+        desc = "确定是否禁止实验性设置警告";
+        shutupExperimentalWarning = BUILDER.comment(desc)
+                .define("shutupExperimentalWarning", true);
+        BUILDER.pop();
+
+        BUILDER.comment("生成");
+        BUILDER.push("worldgen");
         desc = "设置盐洞的生成率, 将其设置为负值将禁用盐洞生成.";
         saltCaveGenerateChance = BUILDER.comment(desc)
                 .defineInRange("saltCaveGenerateChance", 26, -1, 100);

@@ -10,22 +10,86 @@ import nameless.classicraft.util.EventUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.TorchBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.client.event.RenderBlockScreenEffectEvent;
+import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.items.ItemHandlerHelper;
 
 @Mod.EventBusSubscriber
 public class BlockEvents {
+
+    @SubscribeEvent
+    public void onBlockOverlay (RenderBlockScreenEffectEvent event) {
+
+        if (event.getOverlayType() == RenderBlockScreenEffectEvent.OverlayType.FIRE && ClassiCraftConfiguration.fireOverlay.get() && (event.getPlayer().fireImmune() || event.getPlayer().hasEffect(MobEffects.FIRE_RESISTANCE))) {
+            event.setCanceled(true);
+        }
+    }
+
+    @SubscribeEvent
+    public void onBlockBreak (BlockEvent.BreakEvent event) {
+
+        if (event.getPlayer() != null && !(event.getPlayer() instanceof FakePlayer)) {
+
+            final Block block = event.getState().getBlock();
+
+            final int burnTime = block == Blocks.FIRE ? ClassiCraftConfiguration.fireHitBurnTime.get() : block == Blocks.SOUL_FIRE ? ClassiCraftConfiguration.soulfireHitBurnTime.get() : 0;
+
+            if (burnTime > 0) {
+
+                event.getPlayer().setSecondsOnFire(burnTime);
+            }
+
+            if (block instanceof FireBlock && !ClassiCraftConfiguration.punchOutFlames.get()) {
+
+                event.setCanceled(true);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public void rightClickBlockWithItem (PlayerInteractEvent.RightClickBlock event) {
+        if (ClassiCraftConfiguration.extinguishWithBottle.get()
+                && event.getEntity() != null
+                && !(event.getEntity() instanceof FakePlayer)) {
+
+            final BlockState state = event.getLevel().getBlockState(event.getPos());
+            final Block block = state.getBlock();
+            final ItemStack stack = event.getItemStack();
+            final Potion potion = PotionUtils.getPotion(stack);
+
+            if (block == Blocks.FIRE || block == Blocks.SOUL_FIRE) {
+
+                if (stack.getItem() == Items.POTION && Potions.WATER == potion && !event.getLevel().isClientSide) {
+
+                    event.getLevel().setBlockAndUpdate(event.getPos(), Blocks.AIR.defaultBlockState());
+                    event.getLevel().levelEvent((Player) null, 1009, event.getPos(), 0);
+                    ItemHandlerHelper.giveItemToPlayer(event.getEntity(), new ItemStack(Items.GLASS_BOTTLE));
+                    stack.shrink(1);
+                }
+            }
+        }
+    }
 
     @SubscribeEvent
     public static void extinguishItemByPotion(ProjectileImpactEvent event) {

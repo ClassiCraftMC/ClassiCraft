@@ -37,6 +37,10 @@ import java.util.Map;
 
 public class EventUtils {
 
+    public static boolean tryPercentage (double chance) {
+        return Math.random() < chance;
+    }
+
     public static void tickingBlockItemNeedFuel(ItemEntityTickEvent event, Item tickItem, Item changedItem) {
         ItemEntity itemEntity = event.getEntity();
         ItemStack itemStack = itemEntity.getItem();
