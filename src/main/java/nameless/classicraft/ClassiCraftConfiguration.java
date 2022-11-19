@@ -22,7 +22,6 @@ public class ClassiCraftConfiguration {
     public static ForgeConfigSpec.BooleanValue noRelightEnabled;
     public static ForgeConfigSpec.BooleanValue noVanillaTorchPlace;
     public static ForgeConfigSpec.BooleanValue noVanillaLanternPlace;
-    public static ForgeConfigSpec.IntValue woodenItemBurnTime;
     public static ForgeConfigSpec.BooleanValue torchCauseFire;
     public static ForgeConfigSpec.BooleanValue shutupExperimentalWarning;
     public static ForgeConfigSpec.BooleanValue removeSendFeedbackAndReportBugs;
@@ -76,10 +75,6 @@ public class ClassiCraftConfiguration {
         desc = "确定是否禁止实验性设置警告";
         shutupExperimentalWarning = BUILDER.comment(desc)
                 .define("shutupExperimentalWarning", true);
-
-        desc = "设置木质物品树苗、树叶的燃烧时间";
-        woodenItemBurnTime = BUILDER.comment(desc)
-                .defineInRange("woodenItemBurnTime", 100, -1, 2880);
 
         desc = "烛台熄灭耗费的时间，以分钟为单位。将其设置为负值将禁用烛台熄灭.";
         candleholderBurnoutTime = BUILDER.comment(desc)

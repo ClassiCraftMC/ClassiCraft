@@ -2,7 +2,6 @@ package nameless.classicraft.util;
 
 import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
-import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.api.event.ItemEntityTickEvent;
 import nameless.classicraft.api.event.PlayerRightClickBlockEvent;
 import nameless.classicraft.api.light.LightAPI;
@@ -31,7 +30,6 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
-import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 
 import java.util.Iterator;
 import java.util.List;
@@ -192,10 +190,4 @@ public class EventUtils {
         }
     }
 
-    public static void handleWoodenItemBurnTime(FurnaceFuelBurnTimeEvent event, Item item) {
-        int woodenItemBurnTime = ClassiCraftConfiguration.woodenItemBurnTime.get();
-        ItemStack itemstack = event.getItemStack();
-        if (itemstack.getItem() == item)
-            event.setBurnTime(woodenItemBurnTime);
-    }
 }

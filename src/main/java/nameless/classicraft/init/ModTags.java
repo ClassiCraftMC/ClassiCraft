@@ -25,7 +25,13 @@ public class ModTags {
         public static final TagKey<Item> ATTACH_FOODS = register("attach_foods");
         public static final TagKey<Item> WOOD_FUEL = register("wood_fuel");
         public static final TagKey<Item> OIL_FUEL = register("oil_fuel");
+        public static final TagKey<Item> VANILLA_PLUS_SAPLINGS = registerVanilla("saplings");
+        public static final TagKey<Item> VANILLA_PLUS_LEAVES = registerVanilla("leaves");
 
+        private static TagKey<Item> registerVanilla(String name)
+        {
+            return ItemTags.create(new ResourceLocation("cc_vanilla_plus_addon", name));
+        }
 
         private static TagKey<Item> register(String name)
         {

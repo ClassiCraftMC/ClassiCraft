@@ -5,6 +5,7 @@ import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.capability.ModCapabilities;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
+import nameless.classicraft.init.ModTags;
 import nameless.classicraft.util.EventUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
@@ -43,22 +44,10 @@ public class ItemEvents {
 
     @SubscribeEvent
     public static void addFuelBurn(FurnaceFuelBurnTimeEvent event) {
-        EventUtils.handleWoodenItemBurnTime(event, Items.OAK_LEAVES);
-        EventUtils.handleWoodenItemBurnTime(event, Items.ACACIA_LEAVES);
-        EventUtils.handleWoodenItemBurnTime(event, Items.AZALEA_LEAVES);
-        EventUtils.handleWoodenItemBurnTime(event, Items.BIRCH_LEAVES);
-        EventUtils.handleWoodenItemBurnTime(event, Items.DARK_OAK_LEAVES);
-        EventUtils.handleWoodenItemBurnTime(event, Items.JUNGLE_LEAVES);
-        EventUtils.handleWoodenItemBurnTime(event, Items.SPRUCE_LEAVES);
-        EventUtils.handleWoodenItemBurnTime(event, Items.MANGROVE_LEAVES);
-        EventUtils.handleWoodenItemBurnTime(event, Items.OAK_SAPLING);
-        EventUtils.handleWoodenItemBurnTime(event, Items.ACACIA_SAPLING);
-        EventUtils.handleWoodenItemBurnTime(event, Items.AZALEA);
-        EventUtils.handleWoodenItemBurnTime(event, Items.BIRCH_SAPLING);
-        EventUtils.handleWoodenItemBurnTime(event, Items.DARK_OAK_SAPLING);
-        EventUtils.handleWoodenItemBurnTime(event, Items.JUNGLE_SAPLING);
-        EventUtils.handleWoodenItemBurnTime(event, Items.SPRUCE_SAPLING);
-        EventUtils.handleWoodenItemBurnTime(event, Items.MANGROVE_ROOTS);
+        ItemStack itemstack = event.getItemStack();
+        if (itemstack.is(ModTags.Items.VANILLA_PLUS_SAPLINGS)
+                || itemstack.is(ModTags.Items.VANILLA_PLUS_LEAVES))
+            event.setBurnTime(100);
     }
 
     @SubscribeEvent
