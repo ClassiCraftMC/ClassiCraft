@@ -39,27 +39,27 @@ public class LightUtils {
     public static final boolean FUEL_LEVEL_IV_SHOULD_BURN_OUT = FUEL_LEVEL_IV_TOTAL_BURN_TIME >= 0;
     public static final boolean FUEL_LEVEL_V_SHOULD_BURN_OUT = FUEL_LEVEL_V_TOTAL_BURN_TIME >= 0;
 
-    public static final IntegerProperty FUEL_LEVEL_I_BURNTIME = IntegerProperty.create("burntime", 0, FUEL_LEVEL_I_SHOULD_BURN_OUT ? FUEL_LEVEL_I_TOTAL_BURN_TIME : 1);
-    public static final IntegerProperty FUEL_LEVEL_II_BURNTIME = IntegerProperty.create("burntime", 0, FUEL_LEVEL_II_SHOULD_BURN_OUT ? FUEL_LEVEL_II_TOTAL_BURN_TIME : 1);
-    public static final IntegerProperty FUEL_LEVEL_IV_BURNTIME = IntegerProperty.create("burntime", 0, FUEL_LEVEL_IV_SHOULD_BURN_OUT ? FUEL_LEVEL_IV_TOTAL_BURN_TIME : 1);
-    public static final IntegerProperty FUEL_LEVEL_V_BURNTIME = IntegerProperty.create("burntime", 0, FUEL_LEVEL_V_SHOULD_BURN_OUT ? FUEL_LEVEL_V_TOTAL_BURN_TIME : 1);
+    public static final IntegerProperty FUEL_LEVEL_I_BURNTIME = IntegerProperty.create("burntime_1", 0, FUEL_LEVEL_I_SHOULD_BURN_OUT ? FUEL_LEVEL_I_TOTAL_BURN_TIME : 1);
+    public static final IntegerProperty FUEL_LEVEL_II_BURNTIME = IntegerProperty.create("burntime_2", 0, FUEL_LEVEL_II_SHOULD_BURN_OUT ? FUEL_LEVEL_II_TOTAL_BURN_TIME : 1);
+    public static final IntegerProperty FUEL_LEVEL_IV_BURNTIME = IntegerProperty.create("burntime_4", 0, FUEL_LEVEL_IV_SHOULD_BURN_OUT ? FUEL_LEVEL_IV_TOTAL_BURN_TIME : 1);
+    public static final IntegerProperty FUEL_LEVEL_V_BURNTIME = IntegerProperty.create("burntime_5", 0, FUEL_LEVEL_V_SHOULD_BURN_OUT ? FUEL_LEVEL_V_TOTAL_BURN_TIME : 1);
 
     public static InteractionResult useFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, Block block, TagKey<Item> fuelItem, IntegerProperty burnTime, int initialBurnTime) {
         ItemStack heldStack = pPlayer.getItemInHand(pHand);
         if (heldStack.getItem() == Items.FLINT_AND_STEEL) {
-            if (pLevel.isRainingAt(pPos.above(1))){
-                replaceBlockNeedFuel(pPos,pLevel,pState,pState.getValue(burnTime), UNLIT, pState.getValue(OIL), block, burnTime);
+            if (pLevel.isRainingAt(pPos.above(1))) {
+                replaceBlockNeedFuel(pPos, pLevel, pState, pState.getValue(burnTime), UNLIT, pState.getValue(OIL), block, burnTime);
             }
-            return useAsFlint(pState,pLevel,pPos,pPlayer,pHand, block, burnTime, initialBurnTime);
-        } else if(heldStack.is(fuelItem))
-        {
-            if(!pPlayer.isCreative() && pState.getValue(OIL) != 3){
+            return useAsFlint(pState, pLevel, pPos, pPlayer, pHand, block, burnTime, initialBurnTime);
+        }
+        if (heldStack.is(fuelItem)) {
+            if (!pPlayer.isCreative() && pState.getValue(OIL) != 3) {
                 heldStack.shrink(1);
+                if (pState.getValue(OIL) >= 3) return InteractionResult.PASS;
+                pPlayer.swing(pHand);
+                replaceBlockNeedFuel(pPos, pLevel, pState, pState.getValue(burnTime), pState.getValue(LITSTATE), pState.getValue(OIL) + 1, block, burnTime);
+                pLevel.playSound(null, pPos, SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS, 1, 0.3f * pLevel.random.nextFloat() * 0.1f);
             }
-            if(pState.getValue(OIL) >= 3) return InteractionResult.PASS;
-            pPlayer.swing(pHand);
-            replaceBlockNeedFuel(pPos,pLevel,pState,pState.getValue(burnTime),pState.getValue(LITSTATE),pState.getValue(OIL) + 1, block, burnTime);
-            pLevel.playSound(null,pPos, SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS,1,0.3f*pLevel.random.nextFloat()*0.1f);
         }
         return InteractionResult.PASS;
     }

@@ -41,6 +41,7 @@ public class RealisticFireBowlBlock extends Block {
         super(BlockBehaviour.Properties.of(Material.METAL).lightLevel(getLightValueFromState()).strength(1.5F, 6.0F).sound(SoundType.WOOD));
         registerDefaultState(this.stateDefinition.any()
                 .setValue(LITSTATE, 0)
+
                 .setValue(FUEL_LEVEL_I_BURNTIME, 0)
                 .setValue(FUEL_LEVEL_II_BURNTIME, 0)
                 .setValue(FUEL_LEVEL_IV_BURNTIME, 0)
