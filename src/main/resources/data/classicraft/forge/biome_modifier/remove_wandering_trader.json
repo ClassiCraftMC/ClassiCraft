@@ -1,0 +1,7 @@
+{
+  "type": "forge:remove_spawns",
+  "biomes": {
+    "type": "forge:any"
+  },
+  "entity_types": "minecraft:wandering_trader"
+}

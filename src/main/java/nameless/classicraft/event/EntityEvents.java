@@ -4,18 +4,24 @@ import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.entity.RanchuEntity;
 import nameless.classicraft.util.EventUtils;
 import net.minecraft.core.BlockPos;
+import net.minecraft.tags.StructureTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Squid;
 import net.minecraft.world.entity.monster.AbstractSkeleton;
 import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.entity.npc.WanderingTrader;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -23,6 +29,31 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
 public class EntityEvents {
+
+    @SubscribeEvent
+    public void addWanderingTrader(LivingEvent.LivingTickEvent event) {
+        Entity entity = event.getEntity();
+        Level level = entity.getLevel();
+        if (entity instanceof Player) {
+            if (level.getBiome(entity.getOnPos()).is(StructureTags.VILLAGE.location())
+                    && level.getDayTime() == 100) {
+                WanderingTrader wanderingTrader =
+                        new WanderingTrader(EntityType.WANDERING_TRADER, level);
+                level.addFreshEntity(wanderingTrader);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public void clearWanderingTraderInNight(LivingEvent.LivingTickEvent event) {
+        Entity entity = event.getEntity();
+        Level level = entity.getLevel();
+        if (entity instanceof WanderingTrader) {
+            if (level.getDayTime() >= 14400) {
+                entity.remove(Entity.RemovalReason.KILLED);
+            }
+        }
+    }
 
     @SubscribeEvent
     public void onLivingAttack (LivingAttackEvent event) {
