@@ -1,7 +1,6 @@
 package nameless.classicraft.block.realistic;
 
 import nameless.classicraft.api.light.LightAPI;
-import nameless.classicraft.init.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -54,7 +53,7 @@ public class RealisticLargeFireBowlBlock extends Block implements LightAPI {
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        return useBlockNeedFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, this, ModTags.Items.WOOD_FUEL, LARGE_FIRE_BOWL_BURNTIME, LARGE_FIRE_BOWL_INITIAL_BURN_TIME);
+        return useBlockNeedFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, this, LARGE_FIRE_BOWL_BURNTIME, LARGE_FIRE_BOWL_INITIAL_BURN_TIME);
     }
 
     @Override

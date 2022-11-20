@@ -4,11 +4,11 @@ import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.api.item.ItemStackAPI;
 import nameless.classicraft.block.realistic.RealisticLanternBlock;
 import nameless.classicraft.init.ModItems;
+import nameless.classicraft.init.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -61,14 +61,46 @@ public interface LightAPI {
         return LITSTATE;
     }
 
-    default InteractionResult useBlockNeedFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, Block block, TagKey fuelItem, IntegerProperty burnTime, int initialBurnTime) {
+    default InteractionResult useLantern(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, Block block, IntegerProperty burnTime, int initialBurnTime) {
         ItemStack heldStack = pPlayer.getItemInHand(pHand);
         if (heldStack.getItem() == Items.FLINT_AND_STEEL) {
             if (pLevel.isRainingAt(pPos.above(1))){
                 replaceBlockNeedFuel(pPos,pLevel,pState,pState.getValue(burnTime), UNLIT, pState.getValue(OIL), block, burnTime);
             }
             return useAsFlint(pState,pLevel,pPos,pPlayer,pHand, block, burnTime, initialBurnTime);
-        } else if(heldStack.is(fuelItem))
+        } else if(heldStack.is(Items.HONEYCOMB))
+        {
+            if(!pPlayer.isCreative() && pState.getValue(OIL) != 3){
+                heldStack.shrink(1);
+            }
+            if(pState.getValue(OIL) >= 3) return InteractionResult.PASS;
+            pPlayer.swing(pHand);
+            replaceBlockNeedFuel(pPos,pLevel,pState,pState.getValue(burnTime),pState.getValue(LITSTATE),pState.getValue(OIL) + 1, block, burnTime);
+            pLevel.playSound(null,pPos, SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS,1,0.3f*pLevel.random.nextFloat()*0.1f);
+            return InteractionResult.SUCCESS;
+        }
+        return InteractionResult.PASS;
+    }
+
+    default InteractionResult useBlockNeedFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, Block block, IntegerProperty burnTime, int initialBurnTime) {
+        ItemStack heldStack = pPlayer.getItemInHand(pHand);
+        if (heldStack.getItem() == Items.FLINT_AND_STEEL) {
+            if (pLevel.isRainingAt(pPos.above(1))){
+                replaceBlockNeedFuel(pPos,pLevel,pState,pState.getValue(burnTime), UNLIT, pState.getValue(OIL), block, burnTime);
+            }
+            return useAsFlint(pState,pLevel,pPos,pPlayer,pHand, block, burnTime, initialBurnTime);
+        } else if(heldStack.is(ModTags.Items.FUEL_LEVEL_1)
+                || heldStack.is(ModTags.Items.FUEL_LEVEL_2)
+                || heldStack.is(ModTags.Items.FUEL_LEVEL_4)
+                || heldStack.is(ModTags.Items.FUEL_LEVEL_5)
+                || heldStack.is(ModTags.Items.FUEL_LEVEL_6)
+                || heldStack.is(ModTags.Items.FUEL_LEVEL_8)
+                || heldStack.is(ModTags.Items.FUEL_LEVEL_10)
+                || heldStack.is(ModTags.Items.FUEL_LEVEL_16)
+                || heldStack.is(ModTags.Items.FUEL_LEVEL_26)
+                || heldStack.is(ModTags.Items.FUEL_LEVEL_36)
+                || heldStack.is(ModTags.Items.FUEL_LEVEL_144)
+    )
         {
             if(!pPlayer.isCreative() && pState.getValue(OIL) != 3){
                 heldStack.shrink(1);

@@ -3,7 +3,6 @@ package nameless.classicraft.block.realistic;
 import nameless.classicraft.api.light.LightAPI;
 import nameless.classicraft.block.entity.RealisticCampfireBlockEntity;
 import nameless.classicraft.init.ModBlockEntities;
-import nameless.classicraft.init.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -82,7 +81,7 @@ public class RealisticCampFireBlock extends BaseEntityBlock implements SimpleWat
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        useBlockNeedFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, this, ModTags.Items.WOOD_FUEL, CAMPFIRE_BURNTIME, CAMPFIRE_INITIAL_BURN_TIME);
+        useBlockNeedFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, this, CAMPFIRE_BURNTIME, CAMPFIRE_INITIAL_BURN_TIME);
         BlockEntity blockentity = pLevel.getBlockEntity(pPos);
         if (blockentity instanceof RealisticCampfireBlockEntity campfireblockentity) {
             ItemStack itemstack = pPlayer.getItemInHand(pHand);

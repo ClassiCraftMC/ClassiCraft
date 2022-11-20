@@ -1,5 +1,6 @@
 package nameless.classicraft.block.realistic;
 
+import nameless.classicraft.api.light.LightAPI;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -29,9 +30,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.ToIntFunction;
 
-import static nameless.classicraft.util.LightUtils.*;
-
-public class RealisticFireBowlBlock extends Block {
+public class RealisticFireBowlBlock extends Block implements LightAPI {
 
     protected static final VoxelShape AABB = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 1.0D, 15.0D);
 
@@ -39,7 +38,7 @@ public class RealisticFireBowlBlock extends Block {
         super(BlockBehaviour.Properties.of(Material.METAL).lightLevel(getLightValueFromState()).strength(1.5F, 6.0F).sound(SoundType.WOOD));
         registerDefaultState(this.stateDefinition.any()
                 .setValue(LITSTATE, 0)
-                .setValue(BURNTIME, 0));
+                .setValue(FIRE_BOWL_BURNTIME, 0));
     }
 
     @Override
@@ -55,12 +54,12 @@ public class RealisticFireBowlBlock extends Block {
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-       return useBlockNeedFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, this);
+       return useBlockNeedFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, this, FIRE_BOWL_BURNTIME, FIRE_BOWL_INITIAL_BURN_TIME);
     }
 
     @Override
     public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
-       tickBlockNeedFuel(pState, pLevel, pPos, pRandom, this);
+       tickBlockNeedFuel(pState, pLevel, pPos, pRandom, this, FIRE_BOWL_SHOULD_BURN_OUT, FIRE_BOWL_BURNTIME, FIRE_BOWL_INITIAL_BURN_TIME);
     }
 
     @Override
@@ -84,7 +83,7 @@ public class RealisticFireBowlBlock extends Block {
         pBuilder.add(OIL);
         pBuilder.add(BE_HANGING);
         pBuilder.add(BE_WATERLOGGED);
-        pBuilder.add(BURNTIME);
+        pBuilder.add(FIRE_BOWL_BURNTIME);
     }
 
     public static IntegerProperty getLitState() {
