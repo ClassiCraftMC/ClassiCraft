@@ -8,7 +8,6 @@
     "MixinItem",
     "MixinItemStack",
     "MixinPrimaryLevelData",
-    "event.MixinBlockBehaviour",
     "event.MixinItemEntity",
     "event.MixinServerLevel"
   ],

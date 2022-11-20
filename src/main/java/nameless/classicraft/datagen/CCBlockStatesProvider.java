@@ -18,5 +18,6 @@ public class CCBlockStatesProvider extends BlockStateProvider {
         simpleBlock(ModBlocks.SALT_BLOCK.get());
         simpleBlock(ModBlocks.SALT_ROCK_BLOCK.get());
         simpleBlock(ModBlocks.ALGAE.get());
+        simpleBlock(ModBlocks.CHARCOAL_BLOCK.get());
     }
 }

@@ -154,6 +154,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> CAMPFIRE =
             registerDecoration("campfire", RealisticCampFireBlock::new);
 
+    public static final RegistryObject<Block> CHARCOAL_BLOCK =
+            registerNormal("charcoal_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(5.0F, 6.0F)));
+
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockSupplier, @Nullable Function<T, ? extends BlockItem> blockItemFactory) {
         return registerBlock(ModBlocks.BLOCKS, ModItems.ITEMS, name, blockSupplier, blockItemFactory);
     }

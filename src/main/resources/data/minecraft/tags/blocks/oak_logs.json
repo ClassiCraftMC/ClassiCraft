@@ -1,8 +1,6 @@
 {
   "replace": false,
   "values": [
-    "classicraft:lantern",
-    "classicraft:soul_lantern",
     "classicraft:charcoal_block"
   ]
 }
