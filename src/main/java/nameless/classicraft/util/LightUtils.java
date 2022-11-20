@@ -32,19 +32,21 @@ public class LightUtils {
     public static final IntegerProperty OIL = IntegerProperty.create("oil",0,3);
     public static final IntegerProperty LITSTATE = IntegerProperty.create("litstate", 0, 2);
 
-    public static int TOTAL_BURN_TIME = 2880;
+    public static int TOTAL_BURN_TIME = 150;
     public static IntegerProperty BURNTIME = IntegerProperty.create("burntime", 0, TOTAL_BURN_TIME);
 
     public static InteractionResult addFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, Block block) {
         ItemStack heldStack = pPlayer.getItemInHand(pHand);
-        if (pState.getValue(OIL) >= 3) return InteractionResult.PASS;
         recoginzeFuel(pState, pLevel, pPos, pPlayer, pHand, block, heldStack, ModTags.Items.FUEL_LEVEL_1, 1, 2, 3);
         recoginzeFuel(pState, pLevel, pPos, pPlayer, pHand, block, heldStack, ModTags.Items.FUEL_LEVEL_2, 2, 4, 6);
         return InteractionResult.PASS;
     }
 
-    private static void recoginzeFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, Block block, ItemStack heldStack, TagKey<Item> fuelTag, int level1, int level2, int level3) {
+    private static InteractionResult recoginzeFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, Block block, ItemStack heldStack, TagKey<Item> fuelTag, int level1, int level2, int level3) {
         if (heldStack.is(fuelTag)) {
+            if (pState.getValue(OIL) >= 3) {
+                return InteractionResult.PASS;
+            }
             if (!pPlayer.isCreative()) {
                 heldStack.shrink(1);
             }
@@ -83,6 +85,7 @@ public class LightUtils {
                 }
             }
         }
+        return InteractionResult.SUCCESS;
     }
 
     public static InteractionResult useFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit, Block block) {
@@ -93,7 +96,7 @@ public class LightUtils {
         return useFuel(pState, pLevel, pPos, pPlayer, pHand, pHit, block);
     }
 
-    public static InteractionResult useAsFlint(BlockState pState,Level pLevel,BlockPos pPos, Player pPlayer,InteractionHand pHand, Block block, IntegerProperty totalBurnTime, int initialBurnTime) {
+    public static InteractionResult useAsFlint(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, Block block, IntegerProperty totalBurnTime, int initialBurnTime) {
         if(pState.getValue(OIL)<=0) {
             pLevel.playSound(null,pPos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.PLAYERS,1,pLevel.random.nextFloat() * 0.1F + 0.3F);
             pPlayer.swing(pHand);
