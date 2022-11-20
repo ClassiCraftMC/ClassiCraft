@@ -1,7 +1,6 @@
 package nameless.classicraft.event;
 
 import nameless.classicraft.ClassiCraftConfiguration;
-import nameless.classicraft.api.event.PlayerRightClickBlockEvent;
 import nameless.classicraft.api.light.LightAPI;
 import nameless.classicraft.block.realistic.RealisticSoulTorchBlock;
 import nameless.classicraft.block.realistic.RealisticTorchBlock;
@@ -40,7 +39,6 @@ public class BlockEvents {
 
     @SubscribeEvent
     public void onBlockOverlay (RenderBlockScreenEffectEvent event) {
-
         if (event.getOverlayType() == RenderBlockScreenEffectEvent.OverlayType.FIRE && ClassiCraftConfiguration.fireOverlay.get() && (event.getPlayer().fireImmune() || event.getPlayer().hasEffect(MobEffects.FIRE_RESISTANCE))) {
             event.setCanceled(true);
         }
@@ -110,8 +108,8 @@ public class BlockEvents {
     }
 
     @SubscribeEvent
-    public static void rightClickTorch(PlayerRightClickBlockEvent event) {
-        Block block = event.getBlock();
+    public static void rightClickTorch(PlayerInteractEvent.RightClickBlock event) {
+        Block block = event.getLevel().getBlockState(event.getPos()).getBlock();
         if (event.getEntity().isShiftKeyDown()) {
             if (block instanceof RealisticTorchBlock || block instanceof RealisticSoulTorchBlock) {
                 event.getLevel().setBlockAndUpdate(event.getPos(), Blocks.AIR.defaultBlockState());
@@ -128,7 +126,7 @@ public class BlockEvents {
     }
 
     @SubscribeEvent
-    public static void rightClickLantern(PlayerRightClickBlockEvent event) {
+    public static void rightClickLantern(PlayerInteractEvent.RightClickBlock event) {
         EventUtils.rightClickBlockNeedFuel(event, ModBlocks.LANTERN.get());
         EventUtils.rightClickBlockNeedFuel(event, ModBlocks.SOUL_LANTERN.get());
     }

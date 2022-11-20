@@ -3,7 +3,6 @@ package nameless.classicraft.util;
 import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
 import nameless.classicraft.api.event.ItemEntityTickEvent;
-import nameless.classicraft.api.event.PlayerRightClickBlockEvent;
 import nameless.classicraft.api.light.LightAPI;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.CommonComponents;
@@ -30,6 +29,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 import java.util.Iterator;
 import java.util.List;
@@ -59,8 +59,8 @@ public class EventUtils {
         }
     }
 
-    public static void rightClickBlockNeedFuel(PlayerRightClickBlockEvent event, Block clickedBlock) {
-        Block block = event.getBlock();
+    public static void rightClickBlockNeedFuel(PlayerInteractEvent.RightClickBlock event, Block clickedBlock) {
+        Block block = event.getLevel().getBlockState(event.getPos()).getBlock();
         if (event.getEntity().isShiftKeyDown()) {
             if (block.defaultBlockState().is(clickedBlock)) {
                 event.getLevel().setBlockAndUpdate(event.getPos(), clickedBlock.defaultBlockState());

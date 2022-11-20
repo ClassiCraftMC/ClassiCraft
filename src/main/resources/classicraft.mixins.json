@@ -10,7 +10,6 @@
     "MixinPrimaryLevelData",
     "event.MixinBlockBehaviour",
     "event.MixinItemEntity",
-    "event.MixinLivingEntity",
     "event.MixinServerLevel"
   ],
   "client": [
