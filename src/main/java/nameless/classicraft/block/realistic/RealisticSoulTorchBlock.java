@@ -116,7 +116,7 @@ public class RealisticSoulTorchBlock extends Block implements LightAPI {
             if (state.getValue(RealisticLanternBlock.LITSTATE) == 0) {
                 return 0;
             }else {
-                return 7;
+                return 9;
             }
         };
     }

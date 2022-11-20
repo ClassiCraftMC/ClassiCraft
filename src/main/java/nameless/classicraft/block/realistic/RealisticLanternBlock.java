@@ -32,15 +32,15 @@ public class RealisticLanternBlock extends LanternBlock implements LightAPI {
         return (state) ->{
             if(state.getValue(LITSTATE) > 0 && state.getValue(OIL) == 3)
             {
-                return 9;
+                return 12;
             }
             else if(state.getValue(LITSTATE) > 0 && state.getValue(OIL) == 2)
             {
-                return 6;
+                return 9;
             }
             else if(state.getValue(LITSTATE) > 0 && state.getValue(OIL) == 1)
             {
-                return 3;
+                return 6;
             }
             else
             {
