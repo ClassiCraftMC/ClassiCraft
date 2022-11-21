@@ -1,6 +1,6 @@
 package nameless.classicraft.init;
 
-import nameless.classicraft.menu.StoneMortarBlockScreen;
+import nameless.classicraft.client.menu.StoneMortarBlockScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
 
 public class ModScreens {

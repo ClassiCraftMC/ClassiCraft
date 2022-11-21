@@ -4,7 +4,7 @@ import nameless.classicraft.api.block.entity.ItemStackContainer;
 import nameless.classicraft.api.rot.RotReduceListener;
 import nameless.classicraft.block.container.FridgeBlock;
 import nameless.classicraft.init.ModBlockEntities;
-import nameless.classicraft.menu.FridgeMenu;
+import nameless.classicraft.client.menu.FridgeMenu;
 import nameless.classicraft.util.ContainerUtils;
 import nameless.classicraft.util.sync.SyncDataManager;
 import nameless.classicraft.util.sync.object.ItemStackHandlerSyncData;

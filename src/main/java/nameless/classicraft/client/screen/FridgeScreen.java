@@ -3,7 +3,7 @@ package nameless.classicraft.client.screen;
 import com.mojang.blaze3d.vertex.PoseStack;
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.client.screen.widget.ProgressWidget;
-import nameless.classicraft.menu.FridgeMenu;
+import nameless.classicraft.client.menu.FridgeMenu;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;

@@ -1,4 +1,4 @@
-package nameless.classicraft.menu;
+package nameless.classicraft.client.menu;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;

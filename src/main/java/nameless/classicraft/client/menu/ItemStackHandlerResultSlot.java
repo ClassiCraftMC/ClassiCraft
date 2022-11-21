@@ -1,4 +1,4 @@
-package nameless.classicraft.menu;
+package nameless.classicraft.client.menu;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;

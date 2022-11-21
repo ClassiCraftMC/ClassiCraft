@@ -1,7 +1,7 @@
 package nameless.classicraft.block.entity;
 
 import nameless.classicraft.init.ModBlockEntities;
-import nameless.classicraft.menu.StoneMortarBlockMenu;
+import nameless.classicraft.client.menu.StoneMortarBlockMenu;
 import nameless.classicraft.recipe.StoneMortarRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

@@ -1,8 +1,8 @@
 package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
-import nameless.classicraft.menu.FridgeMenu;
-import nameless.classicraft.menu.StoneMortarBlockMenu;
+import nameless.classicraft.client.menu.FridgeMenu;
+import nameless.classicraft.client.menu.StoneMortarBlockMenu;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;

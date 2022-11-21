@@ -1,4 +1,4 @@
-package nameless.classicraft.menu;
+package nameless.classicraft.client.menu;
 
 import nameless.classicraft.block.entity.StoneMortarBlockEntity;
 import nameless.classicraft.init.ModBlocks;
