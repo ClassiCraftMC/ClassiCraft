@@ -1,6 +1,5 @@
 package nameless.classicraft.block.realistic;
 
-import nameless.classicraft.api.light.LightAPI;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -19,8 +18,9 @@ import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 
 import java.util.function.ToIntFunction;
+import static nameless.classicraft.util.LightUtils.*;
 
-public class RealisticLanternBlock extends LanternBlock implements LightAPI {
+public class RealisticLanternBlock extends LanternBlock {
 
     public RealisticLanternBlock() {
         super(BlockBehaviour.Properties.of(Material.METAL).strength(1.2F).requiresCorrectToolForDrops().sound(SoundType.LANTERN).lightLevel(getLitState()).noOcclusion());

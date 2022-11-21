@@ -3,6 +3,7 @@ package nameless.classicraft.api.light;
 import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.api.item.ItemStackAPI;
 import nameless.classicraft.init.ModTags;
+import nameless.classicraft.util.LightUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -35,7 +36,7 @@ public interface LitItemAPI {
         BlockState state = getSuperPlacementState(pContext, block);
         if(state != null)
         {
-            return state.setValue(LightAPI.LITSTATE, pStack.getOrCreateTag().getInt("lit_state")).setValue(LightAPI.LANTERN_BURNTIME,pContext.getItemInHand().getOrCreateTag().getInt("burnTime")).setValue(LightAPI.OIL,pContext.getItemInHand().getOrCreateTag().getInt("oil"));
+            return state.setValue(LightUtils.LITSTATE, pStack.getOrCreateTag().getInt("lit_state")).setValue(LightUtils.LANTERN_BURNTIME,pContext.getItemInHand().getOrCreateTag().getInt("burnTime")).setValue(LightUtils.OIL,pContext.getItemInHand().getOrCreateTag().getInt("oil"));
         }
         return null;
     }
@@ -93,7 +94,7 @@ public interface LitItemAPI {
         int burnTime;
         if(!pStack.getOrCreateTag().contains("burnTime"))
         {
-            burnTime = LightAPI.TORCH_SHOULD_BURN_OUT ? LightAPI.TORCH_INITIAL_BURN_TIME : 0;
+            burnTime = LightUtils.TORCH_SHOULD_BURN_OUT ? LightUtils.TORCH_INITIAL_BURN_TIME : 0;
             pStack.getTag().putInt("burnTime",burnTime);
         }
         else
@@ -104,9 +105,9 @@ public interface LitItemAPI {
         if(state != null) {
             if (pContext.getLevel().isRainingAt(pContext.getClickedPos().above())) {
                 pContext.getLevel().playSound(null, pContext.getClickedPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.3f, pContext.getLevel().random.nextFloat() * 0.1F + 0.6F);
-                return state.setValue(LightAPI.LITSTATE, LightAPI.SMOLDERING).setValue(LightAPI.TORCH_BURNTIME, burnTime);
+                return state.setValue(LightUtils.LITSTATE, LightUtils.SMOLDERING).setValue(LightUtils.TORCH_BURNTIME, burnTime);
             } else {
-                return state.setValue(LightAPI.getLitState(), 2).setValue(LightAPI.TORCH_BURNTIME, LightAPI.getTorchInitialBurnTime());
+                return state.setValue(LightUtils.getLitState(), 2).setValue(LightUtils.TORCH_BURNTIME, LightUtils.getTorchInitialBurnTime());
             }
         }
         return null;

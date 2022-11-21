@@ -23,6 +23,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import javax.annotation.Nullable;
 import java.util.Map;
 
+import static nameless.classicraft.util.LightUtils.*;
+
 public class RealisticSoulWallTorchBlock extends RealisticSoulTorchBlock {
 
     public static final int TICK_RATE = 1200;

@@ -1,6 +1,5 @@
 package nameless.classicraft.block.realistic;
 
-import nameless.classicraft.api.light.LightAPI;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.core.BlockPos;
@@ -31,8 +30,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 import java.util.function.ToIntFunction;
+import static nameless.classicraft.util.LightUtils.*;
 
-public class RealisticTorchBlock extends Block implements LightAPI {
+public class RealisticTorchBlock extends Block {
 
     protected static final int AABB_STANDING_OFFSET = 2;
     protected static final VoxelShape AABB = Block.box(6.0D, 0.0D, 6.0D, 10.0D, 10.0D, 10.0D);
@@ -99,7 +99,7 @@ public class RealisticTorchBlock extends Block implements LightAPI {
     public static ToIntFunction<BlockState> getLightLevelFromState()
     {
         return (state) -> {
-            if (state.getValue(RealisticLanternBlock.LITSTATE) == 0) {
+            if (state.getValue(LITSTATE) == 0) {
                 return 0;
             }else {
                 return 12;

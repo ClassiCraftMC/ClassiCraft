@@ -1,11 +1,11 @@
 package nameless.classicraft.event;
 
 import nameless.classicraft.ClassiCraftConfiguration;
-import nameless.classicraft.api.light.LightAPI;
 import nameless.classicraft.block.realistic.RealisticSoulTorchBlock;
 import nameless.classicraft.block.realistic.RealisticTorchBlock;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.util.EventUtils;
+import nameless.classicraft.util.LightUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -93,12 +93,12 @@ public class BlockEvents {
     public static void extinguishItemByPotion(ProjectileImpactEvent event) {
         EventUtils.extinguishTorchItemByPotion(event, ModBlocks.TORCH.get());
         EventUtils.extinguishTorchItemByPotion(event, ModBlocks.SOUL_TORCH.get());
-        EventUtils.extinguishBlockNeedFuelByPotion(event, ModBlocks.LANTERN.get(), LightAPI.LANTERN_BURNTIME, LightAPI.LANTERN_TOTAL_BURN_TIME);
-        EventUtils.extinguishBlockNeedFuelByPotion(event, ModBlocks.SOUL_LANTERN.get(), LightAPI.LANTERN_BURNTIME, LightAPI.LANTERN_TOTAL_BURN_TIME);
-        EventUtils.extinguishBlockNeedFuelByPotion(event, ModBlocks.FIRE_BOWL.get(), LightAPI.FIRE_BOWL_BURNTIME, LightAPI.FIRE_BOWL_INITIAL_BURN_TIME);
-        EventUtils.extinguishBlockNeedFuelByPotion(event, ModBlocks.SOUL_FIRE_BOWL.get(), LightAPI.FIRE_BOWL_BURNTIME, LightAPI.FIRE_BOWL_INITIAL_BURN_TIME);
-        EventUtils.extinguishBlockNeedFuelByPotion(event, ModBlocks.LARGE_FIRE_BOWL.get(), LightAPI.LARGE_FIRE_BOWL_BURNTIME, LightAPI.LARGE_FIRE_BOWL_INITIAL_BURN_TIME);
-        EventUtils.extinguishBlockNeedFuelByPotion(event, ModBlocks.LARGE_SOUL_FIRE_BOWL.get(), LightAPI.LARGE_FIRE_BOWL_BURNTIME, LightAPI.LARGE_FIRE_BOWL_INITIAL_BURN_TIME);
+        EventUtils.extinguishBlockNeedFuelByPotion(event, ModBlocks.LANTERN.get(), LightUtils.LANTERN_BURNTIME, LightUtils.LANTERN_TOTAL_BURN_TIME);
+        EventUtils.extinguishBlockNeedFuelByPotion(event, ModBlocks.SOUL_LANTERN.get(), LightUtils.LANTERN_BURNTIME, LightUtils.LANTERN_TOTAL_BURN_TIME);
+        EventUtils.extinguishBlockNeedFuelByPotion(event, ModBlocks.FIRE_BOWL.get(), LightUtils.FIRE_BOWL_BURNTIME, LightUtils.FIRE_BOWL_INITIAL_BURN_TIME);
+        EventUtils.extinguishBlockNeedFuelByPotion(event, ModBlocks.SOUL_FIRE_BOWL.get(), LightUtils.FIRE_BOWL_BURNTIME, LightUtils.FIRE_BOWL_INITIAL_BURN_TIME);
+        EventUtils.extinguishBlockNeedFuelByPotion(event, ModBlocks.LARGE_FIRE_BOWL.get(), LightUtils.LARGE_FIRE_BOWL_BURNTIME, LightUtils.LARGE_FIRE_BOWL_INITIAL_BURN_TIME);
+        EventUtils.extinguishBlockNeedFuelByPotion(event, ModBlocks.LARGE_SOUL_FIRE_BOWL.get(), LightUtils.LARGE_FIRE_BOWL_BURNTIME, LightUtils.LARGE_FIRE_BOWL_INITIAL_BURN_TIME);
     }
 
     @SubscribeEvent
@@ -120,7 +120,7 @@ public class BlockEvents {
                         event.getPos().getZ(),
                         Items.STICK.getDefaultInstance());
                 event.getLevel().addFreshEntity(itemEntity);
-                LightAPI.playExtinguishSound(event.getLevel(), event.getPos());
+                LightUtils.playExtinguishSound(event.getLevel(), event.getPos());
             }
         }
     }

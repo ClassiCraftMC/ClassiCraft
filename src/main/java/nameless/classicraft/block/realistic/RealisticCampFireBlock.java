@@ -1,6 +1,5 @@
 package nameless.classicraft.block.realistic;
 
-import nameless.classicraft.api.light.LightAPI;
 import nameless.classicraft.block.entity.RealisticCampfireBlockEntity;
 import nameless.classicraft.init.ModBlockEntities;
 import net.minecraft.core.BlockPos;
@@ -50,7 +49,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 import java.util.function.ToIntFunction;
 
-public class RealisticCampFireBlock extends BaseEntityBlock implements SimpleWaterloggedBlock, LightAPI {
+import static nameless.classicraft.util.LightUtils.*;
+
+public class RealisticCampFireBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
 
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 7.0D, 16.0D);
     public static final BooleanProperty SIGNAL_FIRE = BlockStateProperties.SIGNAL_FIRE;

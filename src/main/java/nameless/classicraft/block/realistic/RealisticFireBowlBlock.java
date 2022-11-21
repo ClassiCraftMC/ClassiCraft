@@ -1,6 +1,5 @@
 package nameless.classicraft.block.realistic;
 
-import nameless.classicraft.api.light.LightAPI;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -29,8 +28,9 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.ToIntFunction;
+import static nameless.classicraft.util.LightUtils.*;
 
-public class RealisticFireBowlBlock extends Block implements LightAPI {
+public class RealisticFireBowlBlock extends Block {
 
     protected static final VoxelShape AABB = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 1.0D, 15.0D);
 

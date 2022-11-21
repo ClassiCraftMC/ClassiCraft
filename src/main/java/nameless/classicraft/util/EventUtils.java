@@ -3,7 +3,6 @@ package nameless.classicraft.util;
 import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
 import nameless.classicraft.api.event.ItemEntityTickEvent;
-import nameless.classicraft.api.light.LightAPI;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
@@ -65,7 +64,7 @@ public class EventUtils {
             if (block.defaultBlockState().is(clickedBlock)) {
                 event.getLevel().setBlockAndUpdate(event.getPos(), clickedBlock.defaultBlockState());
                 event.getLevel().updateNeighborsAt(event.getPos(), block);
-                LightAPI.playExtinguishSound(event.getLevel(), event.getPos());
+                LightUtils.playExtinguishSound(event.getLevel(), event.getPos());
             }
         }
     }
@@ -78,14 +77,14 @@ public class EventUtils {
         if (result.getType() == HitResult.Type.BLOCK
                 && projectile.isOnFire()
                 && state.is(hitBlock)
-                && state.getValue(LightAPI.getLitState())
-                != LightAPI.LIT) {
-            LightAPI.playLightingSound(projectile.getLevel(), projectile.getOnPos());
+                && state.getValue(LightUtils.getLitState())
+                != LightUtils.LIT) {
+            LightUtils.playLightingSound(projectile.getLevel(), projectile.getOnPos());
             projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
                     hitBlock.defaultBlockState()
-                            .setValue(LightAPI.getLitState(),2)
-                            .setValue(LightAPI.TORCH_BURNTIME,
-                                    LightAPI.getTorchInitialBurnTime()));
+                            .setValue(LightUtils.getLitState(),2)
+                            .setValue(LightUtils.TORCH_BURNTIME,
+                                    LightUtils.getTorchInitialBurnTime()));
         }
     }
 
@@ -94,16 +93,16 @@ public class EventUtils {
         Block block = projectile.getBlockStateOn().getBlock();
         BlockState state = block.defaultBlockState();
         if ((projectile instanceof ThrownPotion && state.is(potionedBlock))) {
-            LightAPI.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
+            LightUtils.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
             projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
                     potionedBlock.defaultBlockState()
-                            .setValue(LightAPI.getLitState(),0)
+                            .setValue(LightUtils.getLitState(),0)
                             .setValue(burnTime,
                                     totalBurnTime)
-                            .setValue(LightAPI.BE_HANGING,
-                                    state.getValue(LightAPI.BE_HANGING))
-                            .setValue(LightAPI.BE_WATERLOGGED,
-                                    state.getValue(LightAPI.BE_WATERLOGGED)));
+                            .setValue(LightUtils.BE_HANGING,
+                                    state.getValue(LightUtils.BE_HANGING))
+                            .setValue(LightUtils.BE_WATERLOGGED,
+                                    state.getValue(LightUtils.BE_WATERLOGGED)));
             projectile.getLevel().updateNeighborsAt(projectile.getOnPos(), block);
         }
     }
@@ -115,7 +114,7 @@ public class EventUtils {
         Level level = event.getProjectile().getLevel();
         if (projectile instanceof ThrownPotion
                 && state.is(potionedBlock)) {
-            LightAPI.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
+            LightUtils.playExtinguishSound(projectile.getLevel(), projectile.getOnPos());
             projectile.getLevel().setBlockAndUpdate(projectile.getOnPos(),
                     Blocks.AIR.defaultBlockState());
             ItemEntity newItem = new ItemEntity(
