@@ -25,8 +25,9 @@ public class ModRecipeTypes {
     public static final RegistryObject<RecipeSerializer<StoneMortarRecipe>> STONE_MORTAR_TYPE =
             register("stone_mortar_type", () -> StoneMortarRecipe.Serializer.INSTANCE);
 
+    /**
     public static final RegistryObject<RecipeSerializer<WoodCutterRecipe>> WOODCUTTER_TYPE =
-            register("woodcutter_type", () -> new SingleItemRecipe.Serializer<>(WoodCutterRecipe::new));
+            register("woodcutter_type", () -> new SingleItemRecipe.Serializer<>(WoodCutterRecipe::new));*/
 
     private static <T extends RecipeSerializer<?>> RegistryObject<T> register(String name, Supplier<T> recipeSerializer)
     {
