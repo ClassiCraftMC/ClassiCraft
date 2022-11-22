@@ -96,7 +96,7 @@ public class SwineBreakCropGoal extends MoveToBlockGoal {
             }
 
             if (this.ticksSinceReachedGoal > 30) {
-                level.setBlock(blockpos1, Blocks.DIRT.defaultBlockState(), Block.UPDATE_ALL_IMMEDIATE);
+                level.destroyBlock(blockPos, false, removerMob);
                 if (!level.isClientSide) {
                     for(int i = 0; i < 20; ++i) {
                         d3 = randomsource.nextGaussian() * 0.02;
