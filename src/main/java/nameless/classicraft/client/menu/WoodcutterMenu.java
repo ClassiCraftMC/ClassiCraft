@@ -1,6 +1,7 @@
 package nameless.classicraft.client.menu;
 
 import com.google.common.collect.Lists;
+import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModMenuTypes;
 import nameless.classicraft.init.ModRecipeTypes;
 import nameless.classicraft.recipe.WoodCutterRecipe;
@@ -14,7 +15,6 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 
 import java.util.List;
 
@@ -130,7 +130,7 @@ public class WoodcutterMenu extends AbstractContainerMenu {
      * Determines whether supplied player can use this container
      */
     public boolean stillValid(Player pPlayer) {
-        return true;
+        return stillValid(this.access, pPlayer, ModBlocks.WOODCUTTER.get());
     }
 
     /**
