@@ -28,9 +28,9 @@ public class SwineBreakCropGoal extends MoveToBlockGoal {
     private int ticksSinceReachedGoal;
     private static final int WAIT_AFTER_BLOCK_FOUND = 20;
 
-    public SwineBreakCropGoal(PathfinderMob pRemoverMob, double pSpeedModifier, int pSearchRange) {
+    public SwineBreakCropGoal(PathfinderMob pRemoverMob, Block blockToRemove, double pSpeedModifier, int pSearchRange) {
         super(pRemoverMob, pSpeedModifier, 24, pSearchRange);
-        this.blockToRemove = Blocks.WHEAT;
+        this.blockToRemove = blockToRemove;
         this.removerMob = pRemoverMob;
     }
 
@@ -95,9 +95,8 @@ public class SwineBreakCropGoal extends MoveToBlockGoal {
                 }
             }
 
-            if (this.ticksSinceReachedGoal > 10) {
+            if (this.ticksSinceReachedGoal > 0) {
                 level.setBlockAndUpdate(blockpos1, Blocks.AIR.defaultBlockState());
-                //level.destroyBlock(blockPos, false, removerMob);
                 if (!level.isClientSide) {
                     for(int i = 0; i < 20; ++i) {
                         d3 = randomsource.nextGaussian() * 0.02;

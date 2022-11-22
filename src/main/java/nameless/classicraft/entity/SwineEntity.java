@@ -1,6 +1,7 @@
 package nameless.classicraft.entity;
 
 import nameless.classicraft.entity.goal.SwineBreakCropGoal;
+import nameless.classicraft.init.ModTags;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -18,6 +19,7 @@ import net.minecraft.world.entity.ai.goal.target.ResetUniversalAngerTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
@@ -44,7 +46,17 @@ public class SwineEntity extends Animal implements NeutralMob {
     }
 
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, new SwineBreakCropGoal(this, 1.0D, 24));
+        this.goalSelector.addGoal(1, new SwineBreakCropGoal(this, Blocks.WHEAT,1.0D, 24));
+        this.goalSelector.addGoal(1, new SwineBreakCropGoal(this, Blocks.CARROTS,1.0D, 24));
+        this.goalSelector.addGoal(1, new SwineBreakCropGoal(this, Blocks.BEETROOTS,1.0D, 24));
+        this.goalSelector.addGoal(1, new SwineBreakCropGoal(this, Blocks.PUMPKIN,1.0D, 24));
+        this.goalSelector.addGoal(1, new SwineBreakCropGoal(this, Blocks.PUMPKIN_STEM,1.0D, 24));
+        this.goalSelector.addGoal(1, new SwineBreakCropGoal(this, Blocks.ATTACHED_PUMPKIN_STEM,1.0D, 24));
+        this.goalSelector.addGoal(1, new SwineBreakCropGoal(this, Blocks.MELON,1.0D, 24));
+        this.goalSelector.addGoal(1, new SwineBreakCropGoal(this, Blocks.MELON_STEM,1.0D, 24));
+        this.goalSelector.addGoal(1, new SwineBreakCropGoal(this, Blocks.ATTACHED_MELON_STEM,1.0D, 24));
+        this.goalSelector.addGoal(1, new SwineBreakCropGoal(this, Blocks.SWEET_BERRY_BUSH,1.0D, 24));
+        this.goalSelector.addGoal(1, new SwineBreakCropGoal(this, Blocks.POTATOES,1.0D, 24));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0D, true));
         this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
         this.goalSelector.addGoal(4, new GolemRandomStrollInVillageGoal(this, 0.6D));
