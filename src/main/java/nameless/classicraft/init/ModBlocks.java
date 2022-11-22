@@ -135,6 +135,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> WOODCUTTER =
             registerNormal("woodcutter", () -> new WoodcutterBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).requiresCorrectToolForDrops().strength(5.0F, 6.0F)));
 
+    public static final RegistryObject<Block> QUICKSAND =
+            registerNormal("quicksand", QuicksandBlock::new);
     public static final RegistryObject<Block> AZALEA = registerDecoration("azalea", () -> new FlowerBlock(MobEffects.DIG_SPEED,
                     2, BlockBehaviour.Properties.copy(Blocks.DANDELION)));
 

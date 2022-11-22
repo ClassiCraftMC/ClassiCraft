@@ -60,6 +60,7 @@ public class CCItemModelProvider  extends ItemModelProvider {
         block(ModBlocks.GLISTERING_MELON);
         block(ModBlocks.ALGAE);
         block(ModBlocks.CHARCOAL_BLOCK);
+        block(ModBlocks.QUICKSAND);
     }
 
     void block(RegistryObject<? extends Block> block) {
