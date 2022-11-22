@@ -45,8 +45,13 @@ public class WoodcutterBlock extends Block {
     }
 
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        pPlayer.openMenu(pState.getMenuProvider(pLevel, pPos));
-        return InteractionResult.SUCCESS;
+        if (pLevel.isClientSide) {
+            return InteractionResult.SUCCESS;
+        } else {
+            pPlayer.openMenu(pState.getMenuProvider(pLevel, pPos));
+            pPlayer.awardStat(Stats.INTERACT_WITH_STONECUTTER);
+            return InteractionResult.CONSUME;
+        }
     }
 
     @Nullable
