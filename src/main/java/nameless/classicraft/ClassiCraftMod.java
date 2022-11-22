@@ -34,7 +34,7 @@ public class ClassiCraftMod {
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
         ModMenuTypes.MENUS_TYPES.register(modEventBus);
-        ModRecipeTypes.RECIPE_SERIALIZERS.register(modEventBus);
+        ModRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
         ModBlockEntities.BLOCK_ENTITY_TYPES.register(modEventBus);
         ModEntities.ENTITIES.register(modEventBus);
         ModSounds.SOUNDS.register(modEventBus);
@@ -42,6 +42,7 @@ public class ClassiCraftMod {
         ModConfiguredFeatures.CONFIGURED_FEATURES.register(modEventBus);
         ModPlacedFeatures.PLACED_FEATURES.register(modEventBus);
         ModFeatures.FEATURES.register(modEventBus);
+        ModRecipeTypes.RECIPE_TYPES.register(modEventBus);
         ClientEvents.initClient();
         TestEvents.init();
     }

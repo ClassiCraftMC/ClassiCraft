@@ -1,6 +1,9 @@
 package nameless.classicraft.client.menu;
 
 import com.google.common.collect.Lists;
+import nameless.classicraft.init.ModMenuTypes;
+import nameless.classicraft.init.ModRecipeTypes;
+import nameless.classicraft.recipe.WoodCutterRecipe;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
@@ -10,7 +13,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 
@@ -28,7 +30,7 @@ public class WoodcutterMenu extends AbstractContainerMenu {
     /** The index of the selected recipe in the GUI. */
     private final DataSlot selectedRecipeIndex = DataSlot.standalone();
     private final Level level;
-    private List<StonecutterRecipe> recipes = Lists.newArrayList();
+    private List<WoodCutterRecipe> recipes = Lists.newArrayList();
     /** The {@linkplain net.minecraft.world.item.ItemStack} set in the input slot by the player. */
     private ItemStack input = ItemStack.EMPTY;
     /**
@@ -60,7 +62,7 @@ public class WoodcutterMenu extends AbstractContainerMenu {
     }
 
     public WoodcutterMenu(int pContainerId, Inventory pPlayerInventory, final ContainerLevelAccess pAccess) {
-        super(MenuType.STONECUTTER, pContainerId);
+        super(ModMenuTypes.WOODCUTTER_CONTAINER.get(), pContainerId);
         this.access = pAccess;
         this.level = pPlayerInventory.player.level;
         this.inputSlot = this.addSlot(new Slot(this.container, 0, 20, 33));
@@ -112,7 +114,7 @@ public class WoodcutterMenu extends AbstractContainerMenu {
         return this.selectedRecipeIndex.get();
     }
 
-    public List<StonecutterRecipe> getRecipes() {
+    public List<WoodCutterRecipe> getRecipes() {
         return this.recipes;
     }
 
@@ -164,16 +166,16 @@ public class WoodcutterMenu extends AbstractContainerMenu {
         this.selectedRecipeIndex.set(-1);
         this.resultSlot.set(ItemStack.EMPTY);
         if (!pStack.isEmpty()) {
-            this.recipes = this.level.getRecipeManager().getRecipesFor(RecipeType.STONECUTTING, pContainer, this.level);
+            this.recipes = this.level.getRecipeManager().getRecipesFor(ModRecipeTypes.WOOD_CUTTER_RECIPE_RECIPE_TYPE.get(), pContainer, this.level);
         }
 
     }
 
     void setupResultSlot() {
         if (!this.recipes.isEmpty() && this.isValidRecipeIndex(this.selectedRecipeIndex.get())) {
-            StonecutterRecipe stonecutterrecipe = this.recipes.get(this.selectedRecipeIndex.get());
-            this.resultContainer.setRecipeUsed(stonecutterrecipe);
-            this.resultSlot.set(stonecutterrecipe.assemble(this.container));
+            WoodCutterRecipe woodCutterRecipe = this.recipes.get(this.selectedRecipeIndex.get());
+            this.resultContainer.setRecipeUsed(woodCutterRecipe);
+            this.resultSlot.set(woodCutterRecipe.assemble(this.container));
         } else {
             this.resultSlot.set(ItemStack.EMPTY);
         }
@@ -182,7 +184,7 @@ public class WoodcutterMenu extends AbstractContainerMenu {
     }
 
     public MenuType<?> getType() {
-        return MenuType.STONECUTTER;
+        return ModMenuTypes.WOODCUTTER_CONTAINER.get();
     }
 
     public void registerUpdateListener(Runnable pListener) {
@@ -219,7 +221,7 @@ public class WoodcutterMenu extends AbstractContainerMenu {
                 if (!this.moveItemStackTo(itemstack1, 2, 38, false)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (this.level.getRecipeManager().getRecipeFor(RecipeType.STONECUTTING, new SimpleContainer(itemstack1), this.level).isPresent()) {
+            } else if (this.level.getRecipeManager().getRecipeFor(ModRecipeTypes.WOOD_CUTTER_RECIPE_RECIPE_TYPE.get(), new SimpleContainer(itemstack1), this.level).isPresent()) {
                 if (!this.moveItemStackTo(itemstack1, 0, 1, false)) {
                     return ItemStack.EMPTY;
                 }

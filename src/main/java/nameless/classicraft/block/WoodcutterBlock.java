@@ -1,5 +1,6 @@
 package nameless.classicraft.block;
 
+import nameless.classicraft.client.menu.WoodcutterMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -10,7 +11,6 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.StonecutterMenu;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -53,7 +53,7 @@ public class WoodcutterBlock extends Block {
     @Nullable
     public MenuProvider getMenuProvider(BlockState pState, Level pLevel, BlockPos pPos) {
         return new SimpleMenuProvider((p_57074_, p_57075_, p_57076_) -> {
-            return new StonecutterMenu(p_57074_, p_57075_, ContainerLevelAccess.create(pLevel, pPos));
+            return new WoodcutterMenu(p_57074_, p_57075_, ContainerLevelAccess.create(pLevel, pPos));
         }, CONTAINER_TITLE);
     }
 
