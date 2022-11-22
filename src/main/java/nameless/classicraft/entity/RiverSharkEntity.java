@@ -4,9 +4,9 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.AbstractSchoolingFish;
 import net.minecraft.world.level.Level;
 
-public class BaskingSharkEntity extends AbstractSharkEntity {
+public class RiverSharkEntity extends AbstractSharkEntity {
 
-    public BaskingSharkEntity(EntityType<? extends AbstractSchoolingFish> pEntityType, Level pLevel) {
+    public RiverSharkEntity(EntityType<? extends AbstractSchoolingFish> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 }

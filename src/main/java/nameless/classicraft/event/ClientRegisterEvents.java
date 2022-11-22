@@ -38,6 +38,7 @@ public class ClientRegisterEvents {
         event.put(ModEntities.TROUT_ENTITY.get(), TroutEntity.registerAttributes().build());
         event.put(ModEntities.BUTTERFLY_ENTITY.get(), ButterflyEntity.registerAttributes().build());
         event.put(ModEntities.SWINE_ENTITY.get(), SwineEntity.registerAttributes().build());
+        event.put(ModEntities.RIVER_SHARK_ENTITY.get(), RiverSharkEntity.registerAttributes().build());
     }
 
     @SubscribeEvent
@@ -82,6 +83,8 @@ public class ClientRegisterEvents {
                 SwineRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.CAMPFIRE.get(),
                 RealisticCampfireRenderer::new);
+        event.registerEntityRenderer(ModEntities.RIVER_SHARK_ENTITY.get(),
+                RiverSharkRenderer::new);
     }
 
     @SubscribeEvent
@@ -105,6 +108,7 @@ public class ClientRegisterEvents {
         event.registerLayerDefinition(ModEntityModelLayers.TROUT, CodModel::createBodyLayer);
         event.registerLayerDefinition(ModEntityModelLayers.BUTTERFLY, ButterflyModel::create);
         event.registerLayerDefinition(ModEntityModelLayers.SWINE, SwineModel::create);
+        event.registerLayerDefinition(ModEntityModelLayers.RIVER_SHARK, RiverSharkModel::create);
     }
 
 }

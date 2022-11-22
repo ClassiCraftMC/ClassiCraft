@@ -24,6 +24,7 @@ public class ModEntityModelLayers {
     public static final ModelLayerLocation TROUT = register("trout");
     public static final ModelLayerLocation BUTTERFLY= register("butterfly");
     public static final ModelLayerLocation SWINE = register("swine");
+    public static final ModelLayerLocation RIVER_SHARK = register("river_shark");
     public static final ModelLayerLocation RANCHU = new ModelLayerLocation(new ResourceLocation(ClassiCraftMod.MODID, "ranchu"), "ranchu");
 
     private static ModelLayerLocation register(String p_171294_) {

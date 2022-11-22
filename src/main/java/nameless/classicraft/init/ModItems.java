@@ -48,6 +48,9 @@ public class ModItems {
     public static final RegistryObject<Item> LIONFISH_SPAWN_EGG =
             registerSpawnEgg(ModEntities.LIONFISH_ENTITY, 15281931, 16111310);
 
+    public static final RegistryObject<Item> RIVERSHARK_SPAWN_EGG =
+            registerSpawnEgg(ModEntities.RIVER_SHARK_ENTITY, 0x3b3167, 0xd6cdb6);
+
     public static final RegistryObject<Item> LIONFISH_BUCKET =
             registerMobBuckteItem(ModEntities.LIONFISH_ENTITY);
 

@@ -1,7 +1,6 @@
 package nameless.classicraft;
 
 import com.mojang.logging.LogUtils;
-import nameless.classicraft.event.ClientEvents;
 import nameless.classicraft.event.TestEvents;
 import nameless.classicraft.init.*;
 import nameless.classicraft.util.FoodUtils;
@@ -43,7 +42,6 @@ public class ClassiCraftMod {
         ModPlacedFeatures.PLACED_FEATURES.register(modEventBus);
         ModFeatures.FEATURES.register(modEventBus);
         ModRecipeTypes.RECIPE_TYPES.register(modEventBus);
-        ClientEvents.initClient();
         TestEvents.init();
     }
 }

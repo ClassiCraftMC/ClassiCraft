@@ -1,0 +1,13 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "frozen_river",
+    "river"
+  ],
+  "spawners": {
+    "type": "classicraft:river_shark",
+    "weight": 30,
+    "minCount": 1,
+    "maxCount": 4
+  }
+}

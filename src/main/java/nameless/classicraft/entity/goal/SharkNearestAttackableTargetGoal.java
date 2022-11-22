@@ -1,6 +1,6 @@
 package nameless.classicraft.entity.goal;
 
-import nameless.classicraft.entity.BaskingSharkEntity;
+import nameless.classicraft.entity.AbstractSharkEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 
@@ -13,6 +13,6 @@ public class SharkNearestAttackableTargetGoal extends NearestAttackableTargetGoa
 
     @Override
     public boolean canUse() {
-        return ((BaskingSharkEntity) this.mob).isHungry() && super.canUse();
+        return ((AbstractSharkEntity) this.mob).isHungry() && super.canUse();
     }
 }

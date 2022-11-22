@@ -1,6 +1,6 @@
 package nameless.classicraft.entity.goal;
 
-import nameless.classicraft.entity.BaskingSharkEntity;
+import nameless.classicraft.entity.AbstractSharkEntity;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.goal.Goal;
@@ -11,12 +11,12 @@ import java.util.EnumSet;
 
 public class SharkSwimWithPlayerGoal extends Goal {
 
-    private final BaskingSharkEntity shark;
+    private final AbstractSharkEntity shark;
     private final double speedModifier;
     @Nullable
     private Player player;
 
-    public SharkSwimWithPlayerGoal(BaskingSharkEntity shark, double pSpeedModifier) {
+    public SharkSwimWithPlayerGoal(AbstractSharkEntity shark, double pSpeedModifier) {
         this.shark = shark;
         this.speedModifier = pSpeedModifier;
         this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
@@ -27,7 +27,7 @@ public class SharkSwimWithPlayerGoal extends Goal {
      * method as well.
      */
     public boolean canUse() {
-        this.player = this.shark.level.getNearestPlayer(BaskingSharkEntity.SWIM_WITH_PLAYER_TARGETING, this.shark);
+        this.player = this.shark.level.getNearestPlayer(AbstractSharkEntity.SWIM_WITH_PLAYER_TARGETING, this.shark);
         if (this.player == null) {
             return false;
         } else {

@@ -93,6 +93,10 @@ public class ModEntities {
             register("boar", EntityType.Builder.of(BoarEntity::new, MobCategory.CREATURE)
                     .sized(0.9F, 0.9F));
 
+    public static final RegistryObject<EntityType<RiverSharkEntity>> RIVER_SHARK_ENTITY =
+            register("river_shark", EntityType.Builder.of(RiverSharkEntity::new, MobCategory.CREATURE)
+                    .sized(0.6f,0.7f));
+
     public static <E extends Entity> RegistryObject<EntityType<E>> register(String name, EntityType.Builder<E> builder) {
         return register(name, builder, true);
     }

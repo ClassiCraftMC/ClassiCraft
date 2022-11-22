@@ -1,6 +1,7 @@
 package nameless.classicraft.event;
 
 import nameless.classicraft.ClassiCraftConfiguration;
+import nameless.classicraft.ClassiCraftMod;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.screens.PauseScreen;
@@ -9,21 +10,17 @@ import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ScreenEvent;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.common.Mod;
 
 import java.util.List;
 
-@OnlyIn(Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = ClassiCraftMod.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ClientEvents {
 
-    public static void initClient() {
-        final IEventBus bus = MinecraftForge.EVENT_BUS;
-        bus.addListener(ClientEvents::onScreenLoad);
-    }
-
     @OnlyIn(Dist.CLIENT)
+    @SubscribeEvent
     public static void onScreenLoad(ScreenEvent.Init.Post e) {
         if (!(e.getScreen() instanceof PauseScreen pauseScreen) || !pauseScreen.showPauseMenu) return;
 
