@@ -21,7 +21,6 @@ import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -29,6 +28,25 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
 public class EntityEvents {
+
+    @SubscribeEvent
+    public static void onDamageSkeleton(LivingHurtEvent event) {
+        LivingEntity entity = event.getEntity();
+        LivingEntity hurtByMob = event.getEntity().getLastHurtByMob();
+        if (entity instanceof AbstractSkeleton
+                && hurtByMob instanceof Player
+                && entity.getLastDamageSource() != null
+                && !entity.getLastDamageSource().isProjectile()) {
+            entity.setItemSlot(EquipmentSlot.MAINHAND, Items.STONE_SWORD.getDefaultInstance());
+        }
+        if (hurtByMob instanceof Player
+                && entity.getLastDamageSource() != null
+                && entity.distanceTo(hurtByMob) >= 2
+                || entity.getLastDamageSource() != null
+                && !entity.getLastDamageSource().isProjectile()) {
+            entity.setItemSlot(EquipmentSlot.MAINHAND, Items.BOW.getDefaultInstance());
+        }
+    }
 
     @SubscribeEvent
     public void addWanderingTrader(LivingEvent.LivingTickEvent event) {
