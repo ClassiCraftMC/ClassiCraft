@@ -7,6 +7,19 @@
     "minecraft:jungle_slab",
     "minecraft:acacia_slab",
     "minecraft:dark_oak_slab",
-    "minecraft:mangrove_slab"
+    "minecraft:mangrove_slab",
+    "minecraft:wheat",
+    "minecraft:dead_bush",
+    "minecraft:bamboo",
+    "minecraft:mangrove_roots",
+    "minecraft:stick",
+    "minecraft:string",
+    "minecraft:feather",
+    "minecraft:mojang_banner_pattern",
+    "minecraft:skull_banner_pattern",
+    "minecraft:globe_banner_pattern",
+    "minecraft:piglin_banner_pattern",
+    "minecraft:crepper_banner_pattern",
+    "minecraft:flower_banner_pattern"
   ]
 }

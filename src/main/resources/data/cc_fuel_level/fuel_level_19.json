@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:trapped_chest",
+    "minecraft:campfire",
+    "minecraft:soul_campfire",
+    "classicraft:campfire",
+    "classicraft:soul_campfire"
+  ]
+}

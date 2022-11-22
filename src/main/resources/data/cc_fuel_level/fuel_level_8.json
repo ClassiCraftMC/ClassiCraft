@@ -29,6 +29,13 @@
     "minecraft:jungle_log",
     "minecraft:birch_log",
     "minecraft:spruce_log",
-    "minecraft:oak_log"
+    "minecraft:oak_log",
+    "minecraft:crafting_table",
+    "minecraft:fletching_table",
+    "minecraft:smithing_table",
+    "minecraft:wooden_pickaxe",
+    "minecraft:wooden_axe",
+    "minecraft:filled_map",
+    "minecraft:map"
   ]
 }

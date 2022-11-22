@@ -14,6 +14,11 @@
     "minecraft:jungle_fence",
     "minecraft:birch_fence",
     "minecraft:spruce_fence",
-    "minecraft:oak_fence"
+    "minecraft:oak_fence",
+    "minecraft:fishing_rod",
+    "minecraft:carrot_fishing_rod",
+    "minecraft:warped_fungus_fishing_rod",
+    "minecraft:corssbow",
+    "minecraft:wooden_sword"
   ]
 }

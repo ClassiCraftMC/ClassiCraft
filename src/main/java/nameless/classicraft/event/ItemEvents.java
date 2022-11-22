@@ -66,20 +66,50 @@ public class ItemEvents {
         if (itemstack.is(ModTags.Items.FUEL_LEVEL_6)) {
             event.setBurnTime(1200);
         }
+        if (itemstack.is(ModTags.Items.FUEL_LEVEL_7)) {
+            event.setBurnTime(1400);
+        }
         if (itemstack.is(ModTags.Items.FUEL_LEVEL_8)) {
             event.setBurnTime(1600);
+        }
+        if (itemstack.is(ModTags.Items.FUEL_LEVEL_9)) {
+            event.setBurnTime(1800);
         }
         if (itemstack.is(ModTags.Items.FUEL_LEVEL_10)) {
             event.setBurnTime(2000);
         }
+        if (itemstack.is(ModTags.Items.FUEL_LEVEL_12)) {
+            event.setBurnTime(2400);
+        }
+        if (itemstack.is(ModTags.Items.FUEL_LEVEL_14)) {
+            event.setBurnTime(2800);
+        }
         if (itemstack.is(ModTags.Items.FUEL_LEVEL_16)) {
             event.setBurnTime(3200);
+        }
+        if (itemstack.is(ModTags.Items.FUEL_LEVEL_17)) {
+            event.setBurnTime(3400);
+        }
+        if (itemstack.is(ModTags.Items.FUEL_LEVEL_18)) {
+            event.setBurnTime(3600);
+        }
+        if (itemstack.is(ModTags.Items.FUEL_LEVEL_19)) {
+            event.setBurnTime(3800);
+        }
+        if (itemstack.is(ModTags.Items.FUEL_LEVEL_25)) {
+            event.setBurnTime(5000);
         }
         if (itemstack.is(ModTags.Items.FUEL_LEVEL_26)) {
             event.setBurnTime(5200);
         }
+        if (itemstack.is(ModTags.Items.FUEL_LEVEL_27)) {
+            event.setBurnTime(5400);
+        }
         if (itemstack.is(ModTags.Items.FUEL_LEVEL_36)) {
             event.setBurnTime(7200);
+        }
+        if (itemstack.is(ModTags.Items.FUEL_LEVEL_72)) {
+            event.setBurnTime(14400);
         }
         if (itemstack.is(ModTags.Items.FUEL_LEVEL_144)) {
             event.setBurnTime(28800);

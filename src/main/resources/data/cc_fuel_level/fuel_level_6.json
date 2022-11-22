@@ -21,6 +21,13 @@
     "minecraft:jungle_fence_gate",
     "minecraft:birch_fence_gate",
     "minecraft:spruce_fence_gate",
-    "minecraft:oak_fence_gate"
+    "minecraft:oak_fence_gate",
+    "minecraft:loom",
+    "minecraft:bow",
+    "minecraft:armor_stand",
+    "minecraft:wooden_hoe",
+    "bowl",
+    "minecraft:enchanted_book",
+    "minecraft:book"
   ]
 }

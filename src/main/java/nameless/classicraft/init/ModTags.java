@@ -34,11 +34,21 @@ public class ModTags {
         public static final TagKey<Item> FUEL_LEVEL_4 = registerFuelLevel("fuel_level_4");
         public static final TagKey<Item> FUEL_LEVEL_5 = registerFuelLevel("fuel_level_5");
         public static final TagKey<Item> FUEL_LEVEL_6 = registerFuelLevel("fuel_level_6");
+        public static final TagKey<Item> FUEL_LEVEL_7 = registerFuelLevel("fuel_level_7");
         public static final TagKey<Item> FUEL_LEVEL_8 = registerFuelLevel("fuel_level_8");
+        public static final TagKey<Item> FUEL_LEVEL_9 = registerFuelLevel("fuel_level_9");
         public static final TagKey<Item> FUEL_LEVEL_10 = registerFuelLevel("fuel_level_10");
+        public static final TagKey<Item> FUEL_LEVEL_12 = registerFuelLevel("fuel_level_12");
+        public static final TagKey<Item> FUEL_LEVEL_14 = registerFuelLevel("fuel_level_14");
         public static final TagKey<Item> FUEL_LEVEL_16 = registerFuelLevel("fuel_level_16");
+        public static final TagKey<Item> FUEL_LEVEL_17 = registerFuelLevel("fuel_level_17");
+        public static final TagKey<Item> FUEL_LEVEL_19 = registerFuelLevel("fuel_level_19");
+        public static final TagKey<Item> FUEL_LEVEL_18 = registerFuelLevel("fuel_level_18");
+        public static final TagKey<Item> FUEL_LEVEL_25 = registerFuelLevel("fuel_level_25");
+        public static final TagKey<Item> FUEL_LEVEL_27 = registerFuelLevel("fuel_level_27");
         public static final TagKey<Item> FUEL_LEVEL_26 = registerFuelLevel("fuel_level_26");
         public static final TagKey<Item> FUEL_LEVEL_36 = registerFuelLevel("fuel_level_36");
+        public static final TagKey<Item> FUEL_LEVEL_72 = registerFuelLevel("fuel_level_72");
         public static final TagKey<Item> FUEL_LEVEL_144 = registerFuelLevel("fuel_level_144");
 
         private static TagKey<Item> registerVanilla(String name)
