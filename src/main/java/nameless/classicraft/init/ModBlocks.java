@@ -4,6 +4,7 @@ import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.block.*;
 import nameless.classicraft.block.container.FridgeBlock;
 import nameless.classicraft.block.container.StoneMortarBlock;
+import nameless.classicraft.block.container.WoodcutterBlock;
 import nameless.classicraft.block.realistic.*;
 import nameless.classicraft.crop.RiceBlock;
 import nameless.classicraft.crop.RicePaniclesBlock;

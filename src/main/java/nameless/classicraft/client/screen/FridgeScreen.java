@@ -22,7 +22,7 @@ public class FridgeScreen extends AbstractScreen<FridgeMenu> {
             () -> 1000 - menu.blockEntity.energy.get()
     );
 
-    protected FridgeScreen(FridgeMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
+    public FridgeScreen(FridgeMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle, TEXTURE);
         imageHeight = 180;
     }

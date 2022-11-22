@@ -1,8 +1,9 @@
-package nameless.classicraft.client.menu;
+package nameless.classicraft.client.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.client.menu.StoneMortarBlockMenu;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;

@@ -7,14 +7,12 @@ import nameless.classicraft.entity.*;
 import nameless.classicraft.init.ModBlockEntities;
 import nameless.classicraft.init.ModEntities;
 import nameless.classicraft.init.ModEntityModelLayers;
-import nameless.classicraft.init.ModScreens;
 import net.minecraft.client.model.CodModel;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 @Mod.EventBusSubscriber(modid = ClassiCraftMod.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ClientRegisterEvents {
@@ -107,11 +105,6 @@ public class ClientRegisterEvents {
         event.registerLayerDefinition(ModEntityModelLayers.TROUT, CodModel::createBodyLayer);
         event.registerLayerDefinition(ModEntityModelLayers.BUTTERFLY, ButterflyModel::create);
         event.registerLayerDefinition(ModEntityModelLayers.SWINE, SwineModel::create);
-    }
-
-    @SubscribeEvent
-    public static void onClientSetup(FMLClientSetupEvent event) {
-        ModScreens.registerScreen();
     }
 
 }

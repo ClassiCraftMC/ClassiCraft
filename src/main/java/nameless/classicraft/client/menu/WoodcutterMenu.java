@@ -130,7 +130,7 @@ public class WoodcutterMenu extends AbstractContainerMenu {
      * Determines whether supplied player can use this container
      */
     public boolean stillValid(Player pPlayer) {
-        return stillValid(this.access, pPlayer, Blocks.STONECUTTER);
+        return stillValid(this.access, pPlayer, Blocks.OAK_LOG);
     }
 
     /**

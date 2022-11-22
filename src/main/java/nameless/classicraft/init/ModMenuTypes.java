@@ -4,7 +4,6 @@ import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.client.menu.FridgeMenu;
 import nameless.classicraft.client.menu.StoneMortarBlockMenu;
 import nameless.classicraft.client.menu.WoodcutterMenu;
-import net.minecraft.core.Registry;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
