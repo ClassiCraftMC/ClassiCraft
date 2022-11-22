@@ -6,6 +6,10 @@ import net.minecraft.world.item.ItemStack;
 
 public class ItemStackAPI {
 
+    public static boolean doItemStacksMatchIgnoreNBT(ItemStack stack1, ItemStack stack2) {
+        return stack1.is(stack2.getItem()) && stack1.getCount() == stack2.getCount();
+    }
+
     public static ItemStack replaceItemWithCopyNBTTagAndCount(ItemStack oldStack, Item newItem)
     {
         CompoundTag compoundTag = oldStack.getOrCreateTag();
