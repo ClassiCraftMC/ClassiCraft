@@ -72,7 +72,7 @@ public class SwineBreakCropGoal extends MoveToBlockGoal {
     public void tick() {
         super.tick();
         Level level = this.removerMob.level;
-        BlockPos blockpos = this.removerMob.blockPosition().above().immutable();
+        BlockPos blockpos = this.removerMob.blockPosition();
         BlockPos blockpos1 = this.getPosWithBlock(blockpos, level);
         RandomSource randomsource = this.removerMob.getRandom();
         if (this.isReachedTarget() && blockpos1 != null) {
@@ -95,8 +95,9 @@ public class SwineBreakCropGoal extends MoveToBlockGoal {
                 }
             }
 
-            if (this.ticksSinceReachedGoal > 30) {
-                level.destroyBlock(blockPos, false, removerMob);
+            if (this.ticksSinceReachedGoal > 10) {
+                level.setBlockAndUpdate(blockpos1, Blocks.AIR.defaultBlockState());
+                //level.destroyBlock(blockPos, false, removerMob);
                 if (!level.isClientSide) {
                     for(int i = 0; i < 20; ++i) {
                         d3 = randomsource.nextGaussian() * 0.02;
