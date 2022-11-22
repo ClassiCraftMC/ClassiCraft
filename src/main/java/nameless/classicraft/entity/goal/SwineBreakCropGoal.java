@@ -72,7 +72,7 @@ public class SwineBreakCropGoal extends MoveToBlockGoal {
     public void tick() {
         super.tick();
         Level level = this.removerMob.level;
-        BlockPos blockpos = this.removerMob.blockPosition();
+        BlockPos blockpos = this.removerMob.blockPosition().above().immutable();
         BlockPos blockpos1 = this.getPosWithBlock(blockpos, level);
         RandomSource randomsource = this.removerMob.getRandom();
         if (this.isReachedTarget() && blockpos1 != null) {
