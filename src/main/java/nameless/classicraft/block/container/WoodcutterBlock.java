@@ -45,11 +45,7 @@ public class WoodcutterBlock extends Block {
     }
 
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        if (!pLevel.isClientSide()) {
-            NetworkHooks.openScreen((ServerPlayer) pPlayer, pState.getMenuProvider(pLevel, pPos));
-        } else {
-            throw new IllegalStateException("Our Container provider is missing!");
-        }
+        pPlayer.openMenu(pState.getMenuProvider(pLevel, pPos));
         return InteractionResult.SUCCESS;
     }
 
