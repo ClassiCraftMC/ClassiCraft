@@ -1,11 +1,13 @@
 package nameless.classicraft.event;
 
 import nameless.classicraft.ClassiCraftConfiguration;
+import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.entity.RanchuEntity;
 import nameless.classicraft.util.EventUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.StructureTags;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -26,8 +28,22 @@ import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import java.util.Objects;
+
 @Mod.EventBusSubscriber
 public class EntityEvents {
+
+    /**
+    @SubscribeEvent
+    public static void onSkeletonAttack(LivingAttackEvent event) {
+        LivingEntity entity = event.getEntity();
+        LivingEntity hurtMob = entity.getLastHurtByMob();
+        if (entity instanceof AbstractSkeleton) {
+            if (hurtMob instanceof Player &&) {
+                entity.setItemSlot(EquipmentSlot.MAINHAND, Items.BOW.getDefaultInstance());
+            }
+        }
+    }*/
 
     @SubscribeEvent
     public static void onDamageSkeleton(LivingHurtEvent event) {
@@ -38,13 +54,6 @@ public class EntityEvents {
                 && entity.getLastDamageSource() != null
                 && !entity.getLastDamageSource().isProjectile()) {
             entity.setItemSlot(EquipmentSlot.MAINHAND, Items.STONE_SWORD.getDefaultInstance());
-        }
-        if (hurtByMob instanceof Player
-                && entity.getLastDamageSource() != null
-                && entity.distanceTo(hurtByMob) >= 2
-                || entity.getLastDamageSource() != null
-                && !entity.getLastDamageSource().isProjectile()) {
-            entity.setItemSlot(EquipmentSlot.MAINHAND, Items.BOW.getDefaultInstance());
         }
     }
 
