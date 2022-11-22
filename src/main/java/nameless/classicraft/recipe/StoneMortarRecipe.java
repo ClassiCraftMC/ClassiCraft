@@ -3,6 +3,7 @@ package nameless.classicraft.recipe;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import nameless.classicraft.init.ModBlocks;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -15,7 +16,10 @@ import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
+@MethodsReturnNonnullByDefault
+@ParametersAreNonnullByDefault
 public class StoneMortarRecipe implements Recipe<SimpleContainer> {
 
     private final ResourceLocation resourceLocation;
