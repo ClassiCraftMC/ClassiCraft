@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "classicraft:stone_loose_rock"
+        }
+      ],
+      "name": "stone_loose_rock",
+      "rolls": 1.0
+    }
+  ]
+}
