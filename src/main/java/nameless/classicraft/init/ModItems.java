@@ -203,6 +203,8 @@ public class ModItems {
     public static final RegistryObject<Item> SONTE_AXE_HEAD =
             normal("stone_axe_head");
 
+    public static final RegistryObject<Item> SONTE_PICKAXE_HEAD =
+            normal("stone_pickaxe_head");
     public static final RegistryObject<Item> SONTE_HOE_HEAD =
             normal("stone_hoe_head");
 

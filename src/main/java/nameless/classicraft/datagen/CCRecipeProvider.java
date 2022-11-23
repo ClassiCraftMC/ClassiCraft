@@ -29,6 +29,30 @@ public class CCRecipeProvider extends RecipeProvider {
        simpleSmelting(ModItems.PERCH.get(), ModItems.COOKED_PERCH.get(), pFinishedRecipeConsumer);
        simpleSmelting(ModItems.TROUT.get(), ModItems.COOKED_TROUT.get(), pFinishedRecipeConsumer);
 
+        ShapelessRecipeBuilder.shapeless(Items.STONE_AXE, 1)
+                .requires(Items.STICK)
+                .requires(ModItems.SONTE_AXE_HEAD.get())
+                .unlockedBy("has_stone_axe_head", has(ModItems.SONTE_AXE_HEAD.get()))
+                .save(pFinishedRecipeConsumer);
+
+        ShapelessRecipeBuilder.shapeless(Items.STONE_HOE, 1)
+                .requires(Items.STICK)
+                .requires(ModItems.SONTE_HOE_HEAD.get())
+                .unlockedBy("has_stone_hoe_head", has(ModItems.SONTE_HOE_HEAD.get()))
+                .save(pFinishedRecipeConsumer);
+
+        ShapelessRecipeBuilder.shapeless(Items.STONE_PICKAXE, 1)
+                .requires(Items.STICK)
+                .requires(ModItems.SONTE_PICKAXE_HEAD.get())
+                .unlockedBy("has_stone_pickaxe_head", has(ModItems.SONTE_PICKAXE_HEAD.get()))
+                .save(pFinishedRecipeConsumer);
+
+        ShapelessRecipeBuilder.shapeless(Items.STONE_SHOVEL, 1)
+                .requires(Items.STICK)
+                .requires(ModItems.SONTE_SHOVEL_HEAD.get())
+                .unlockedBy("has_stone_shovel_head", has(ModItems.SONTE_SHOVEL_HEAD.get()))
+                .save(pFinishedRecipeConsumer);
+
         ShapelessRecipeBuilder.shapeless(ModItems.DOUGH.get(), 4)
                 .requires(Items.WATER_BUCKET)
                 .requires(ModItems.FLOUR.get())
@@ -99,6 +123,12 @@ public class CCRecipeProvider extends RecipeProvider {
         polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_AXE_HEAD.get(), ModBlocks.SANDSTONE_LOOSE_ROCK.get());
         polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_AXE_HEAD.get(), ModBlocks.RED_SANDSTONE_LOOSE_ROCK.get());
 
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_PICKAXE_HEAD.get(), ModBlocks.ANDESITE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_PICKAXE_HEAD.get(), ModBlocks.DIORITE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_PICKAXE_HEAD.get(), ModBlocks.GRANITE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_PICKAXE_HEAD.get(), ModBlocks.STONE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_PICKAXE_HEAD.get(), ModBlocks.SANDSTONE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_PICKAXE_HEAD.get(), ModBlocks.RED_SANDSTONE_LOOSE_ROCK.get());
 
         polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_HOE_HEAD.get(), ModBlocks.ANDESITE_LOOSE_ROCK.get());
         polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_HOE_HEAD.get(), ModBlocks.DIORITE_LOOSE_ROCK.get());

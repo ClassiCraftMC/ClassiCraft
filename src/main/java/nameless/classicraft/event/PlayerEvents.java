@@ -1,26 +1,45 @@
 package nameless.classicraft.event;
 
 import nameless.classicraft.client.menu.PolishMenu;
+import nameless.classicraft.entity.SoulEmptyEntity;
 import nameless.classicraft.init.ModBlocks;
+import nameless.classicraft.init.ModEntities;
 import net.minecraft.network.chat.Component;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
 public class PlayerEvents {
+
+    @SubscribeEvent
+    public static void onPlaceBlock(BlockEvent.EntityPlaceEvent event) {
+        Entity entity = event.getEntity();
+        Block block = event.getPlacedBlock().getBlock();
+        LevelAccessor level = event.getLevel();
+        if (entity instanceof Player) {
+            if (block.defaultBlockState().is(ModBlocks.SOUL_TORCH.get())) {
+                SoulEmptyEntity soulEmpty = new SoulEmptyEntity(ModEntities.SOUL_EMPTY_ENTITY.get(), entity.getLevel());
+                level.addFreshEntity(soulEmpty);
+            }
+        }
+    }
 
     @SubscribeEvent
     public static void onPlayerRightClick(PlayerInteractEvent.RightClickItem event) {

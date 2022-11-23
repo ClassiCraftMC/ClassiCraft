@@ -39,6 +39,7 @@ public class ClientRegisterEvents {
         event.put(ModEntities.BUTTERFLY_ENTITY.get(), ButterflyEntity.registerAttributes().build());
         event.put(ModEntities.SWINE_ENTITY.get(), SwineEntity.registerAttributes().build());
         event.put(ModEntities.RIVER_SHARK_ENTITY.get(), RiverSharkEntity.registerAttributes().build());
+        event.put(ModEntities.SOUL_EMPTY_ENTITY.get(), SoulEmptyEntity.registerAttributes().build());
     }
 
     @SubscribeEvent
