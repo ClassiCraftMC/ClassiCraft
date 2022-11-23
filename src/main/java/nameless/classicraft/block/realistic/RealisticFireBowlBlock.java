@@ -91,13 +91,27 @@ public class RealisticFireBowlBlock extends Block {
     }
 
     private static ToIntFunction<BlockState> getLightValueFromState() {
-        return (state) -> {
-            if (state.getValue(LITSTATE) == LIT) {
-                return 14;
-            } else if (state.getValue(LITSTATE) == SMOLDERING) {
-                return 12;
+        return (state) ->{
+            if(state.getValue(LITSTATE) > 0 && state.getValue(OIL) == 4)
+            {
+                return 15;
             }
-            return 0;
+            if(state.getValue(LITSTATE) > 0 && state.getValue(OIL) == 3)
+            {
+                return 13;
+            }
+            else if(state.getValue(LITSTATE) > 0 && state.getValue(OIL) == 2)
+            {
+                return 11;
+            }
+            else if(state.getValue(LITSTATE) > 0 && state.getValue(OIL) == 1)
+            {
+                return 9;
+            }
+            else
+            {
+                return 0;
+            }
         };
     }
 

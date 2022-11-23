@@ -30,17 +30,21 @@ public class RealisticLanternBlock extends LanternBlock {
     public static ToIntFunction<BlockState> getLitState()
     {
         return (state) ->{
+            if(state.getValue(LITSTATE) > 0 && state.getValue(OIL) == 4)
+            {
+                return 7;
+            }
             if(state.getValue(LITSTATE) > 0 && state.getValue(OIL) == 3)
             {
-                return 12;
+                return 6;
             }
             else if(state.getValue(LITSTATE) > 0 && state.getValue(OIL) == 2)
             {
-                return 9;
+                return 5;
             }
             else if(state.getValue(LITSTATE) > 0 && state.getValue(OIL) == 1)
             {
-                return 6;
+                return 4;
             }
             else
             {
