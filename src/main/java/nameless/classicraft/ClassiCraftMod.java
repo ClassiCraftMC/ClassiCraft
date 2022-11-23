@@ -12,12 +12,18 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
 import org.slf4j.Logger;
 
+/**
+ * ClassicCraft 模组主类
+ * modEventBus 用于注册
+ * 使用例子:
+ * ExampeModItems.ITEMS.register(modEventBus);
+ * ExampeModBlocks.BLOCKS.register(modEventBus);
+ */
 @Mod(ClassiCraftMod.MODID)
 public class ClassiCraftMod {
 
     public static final String MODID = "classicraft";
     public static final Logger LOGGER = LogUtils.getLogger();
-    public static final String NETWORK_VERSION = "1.0";
 
     public ClassiCraftMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -36,8 +42,6 @@ public class ClassiCraftMod {
         ModPlacedFeatures.PLACED_FEATURES.register(modEventBus);
         ModFeatures.FEATURES.register(modEventBus);
         ModRecipeTypes.RECIPE_TYPES.register(modEventBus);
-        ModEffects.MOB_EFFECTS.register(modEventBus);
-        ModEnchantments.ENCHANTMENTS.register(modEventBus);
         TestEvents.init();
     }
 }
