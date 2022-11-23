@@ -28,6 +28,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber
 public class PlayerEvents {
 
+    /**
     @SubscribeEvent
     public static void onPlaceBlock(BlockEvent.EntityPlaceEvent event) {
         Entity entity = event.getEntity();
@@ -39,7 +40,7 @@ public class PlayerEvents {
                 level.addFreshEntity(soulEmpty);
             }
         }
-    }
+    }*/
 
     @SubscribeEvent
     public static void onPlayerRightClick(PlayerInteractEvent.RightClickItem event) {

@@ -96,7 +96,8 @@ public class LightUtils {
                 replaceBlockNeedFuel(pPos,pLevel,pState,pState.getValue(burnTime), UNLIT, pState.getValue(OIL), block, burnTime);
             }
             return useAsFlint(pState,pLevel,pPos,pPlayer,pHand, block, burnTime, initialBurnTime);
-        } else if(heldStack.is(ModTags.Items.FUEL_LEVEL_1)
+        }
+        if(heldStack.is(ModTags.Items.FUEL_LEVEL_1)
                 || heldStack.is(ModTags.Items.FUEL_LEVEL_2)
                 || heldStack.is(ModTags.Items.FUEL_LEVEL_4)
                 || heldStack.is(ModTags.Items.FUEL_LEVEL_5)
@@ -116,9 +117,7 @@ public class LightUtils {
                 || heldStack.is(ModTags.Items.FUEL_LEVEL_27)
                 || heldStack.is(ModTags.Items.FUEL_LEVEL_36)
                 || heldStack.is(ModTags.Items.FUEL_LEVEL_72)
-                || heldStack.is(ModTags.Items.FUEL_LEVEL_144)
-        )
-        {
+                || heldStack.is(ModTags.Items.FUEL_LEVEL_144)) {
             if(!pPlayer.isCreative() && pState.getValue(OIL) != 4){
                 heldStack.shrink(1);
             }
