@@ -9,10 +9,12 @@ import nameless.classicraft.block.realistic.*;
 import nameless.classicraft.crop.RiceBlock;
 import nameless.classicraft.crop.RicePaniclesBlock;
 import nameless.classicraft.item.ClassiCraftTab;
+import net.minecraft.core.Direction;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -23,6 +25,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -162,6 +167,14 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CHARCOAL_BLOCK =
             registerNormal("charcoal_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(5.0F, 6.0F)));
+
+    public static final ArrayList<RegistryObject<Block>> COLOR_LOG = new ArrayList<RegistryObject<Block>>(){{
+        for (String material : List.of("color_"))
+            for (DyeColor dyeColor: DyeColor.values())
+                add(registerDecoration("log_" + material + dyeColor.getName(), () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD, (p_152624_) -> {
+                    return p_152624_.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MaterialColor.WOOD : MaterialColor.PODZOL;
+                }).strength(2.0F).sound(SoundType.WOOD))));
+    }};
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockSupplier, @Nullable Function<T, ? extends BlockItem> blockItemFactory) {
         return registerBlock(ModBlocks.BLOCKS, ModItems.ITEMS, name, blockSupplier, blockItemFactory);
