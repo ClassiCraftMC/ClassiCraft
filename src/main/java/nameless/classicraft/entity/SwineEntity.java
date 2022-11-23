@@ -7,8 +7,10 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -17,9 +19,12 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.ResetUniversalAngerTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.monster.hoglin.HoglinAi;
+import net.minecraft.world.entity.monster.hoglin.HoglinBase;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
@@ -42,7 +47,7 @@ public class SwineEntity extends Animal implements NeutralMob {
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 30.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.25D)
-                .add(Attributes.ATTACK_DAMAGE, 2.0D);
+                .add(Attributes.ATTACK_DAMAGE, 3.0D);
     }
 
     protected void registerGoals() {
@@ -79,10 +84,52 @@ public class SwineEntity extends Animal implements NeutralMob {
         }
     }
 
+    static boolean hurtAndThrowTarget(LivingEntity pSwine, LivingEntity pTarget) {
+        float f1 = (float)pSwine.getAttributeValue(Attributes.ATTACK_DAMAGE);
+        float f;
+        f = f1 / 2.0F + (float)pSwine.level.random.nextInt((int)f1);
+
+        boolean flag = pTarget.hurt(DamageSource.mobAttack(pSwine), f);
+        if (flag) {
+            pSwine.doEnchantDamageEffects(pSwine, pTarget);
+            throwTarget(pSwine, pTarget);
+        }
+
+        return flag;
+    }
+
+    static void throwTarget(LivingEntity pSwine, LivingEntity pTarget) {
+        double d0 = pSwine.getAttributeValue(Attributes.ATTACK_KNOCKBACK);
+        double d1 = pTarget.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
+        double d2 = d0 - d1;
+        if (!(d2 <= 0.0D)) {
+            double d3 = pTarget.getX() - pSwine.getX();
+            double d4 = pTarget.getZ() - pSwine.getZ();
+            float f = (float)(pSwine.level.random.nextInt(21) - 10);
+            double d5 = d2 * (double)(pSwine.level.random.nextFloat() * 0.5F + 0.2F);
+            Vec3 vec3 = (new Vec3(d3, 0.0D, d4)).normalize().scale(d5).yRot(f);
+            double d6 = d2 * (double)pSwine.level.random.nextFloat() * 0.5D;
+            pTarget.push(vec3.x, d6, vec3.z);
+            pTarget.hurtMarked = true;
+        }
+    }
+
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(HUNGY, true);
         this.entityData.define(TIME_TILL_HUNGRY, 0);
+    }
+
+    public boolean doHurtTarget(Entity pEntity) {
+        if (!(pEntity instanceof LivingEntity)) {
+            return false;
+        } else {
+            return hurtAndThrowTarget(this, (LivingEntity)pEntity);
+        }
+    }
+
+    protected void blockedByShield(LivingEntity pEntity) {
+        throwTarget(this, pEntity);
     }
 
     public boolean isHungry() {
