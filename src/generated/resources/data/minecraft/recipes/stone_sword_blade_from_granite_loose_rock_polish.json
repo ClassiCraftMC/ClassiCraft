@@ -1,8 +1,8 @@
 {
   "type": "classicraft:polish_type",
-  "count": 2,
+  "count": 1,
   "ingredient": {
     "item": "classicraft:granite_loose_rock"
   },
-  "result": "classicraft:stone_shovel_head"
+  "result": "classicraft:stone_sword_blade"
 }

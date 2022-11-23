@@ -122,6 +122,8 @@ public class CCLanguageProvider extends LanguageProvider {
         add(ModItems.SONTE_PICKAXE_HEAD.get(), "Stone Pickaxe Head");
         add(ModItems.SONTE_KNIFE_HEAD.get(), "Stone Knife Head");
         add(ModItems.SONTE_SHOVEL_HEAD.get(), "Stone Shovel Head");
+        add(ModItems.STONE_SWORD_BLADE.get(), "Stone Sword Blade");
+        add("classicraft.polish_title", "Stone Polish");
         add("info.classicraft.stop_use_lantern", "Could't place the Vanilla Lantern Block in survival mode, you can configured it in ClassisCraft Mod Config.");
         add("info.classicraft.stop_use_torch", "Could't place the Vanilla Torch Block in survival mode, you can configured it in ClassisCraft Mod Config.");
     }

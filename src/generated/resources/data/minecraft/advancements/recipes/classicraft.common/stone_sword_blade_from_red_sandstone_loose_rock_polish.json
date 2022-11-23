@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_red_sandstone_loose_rock": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "classicraft:red_sandstone_loose_rock"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:stone_sword_blade_from_red_sandstone_loose_rock_polish"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_red_sandstone_loose_rock",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:stone_sword_blade_from_red_sandstone_loose_rock_polish"
+    ]
+  }
+}

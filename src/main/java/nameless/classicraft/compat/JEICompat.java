@@ -5,6 +5,8 @@ import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.init.ModRecipeTypes;
+import nameless.classicraft.recipe.PolishRecipe;
 import nameless.classicraft.recipe.StoneMortarRecipe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
@@ -21,6 +23,8 @@ public class JEICompat implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration registration) {
         registration.addRecipeCategories(new
                 StoneMortarRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new
+                PolishRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -30,6 +34,9 @@ public class JEICompat implements IModPlugin {
         List<StoneMortarRecipe> recipesInfusing =
                 recipeManager.getAllRecipesFor(StoneMortarRecipe.StoneMortarRecipeType.STONE_MORTAR);
         registration.addRecipes(StoneMortarRecipeCategory.STONE_MORTAR_RECIPE, recipesInfusing);
+        List<PolishRecipe> polishInfusing =
+                recipeManager.getAllRecipesFor(ModRecipeTypes.POLISH_RECIPE_TYPE.get());
+        registration.addRecipes(PolishRecipeCategory.POLISH_RECIPE, polishInfusing);
     }
 
     @Override

@@ -217,6 +217,9 @@ public class ModItems {
     public static final RegistryObject<Item> SONTE_SHOVEL_HEAD =
             normal("stone_shovel_head");
 
+    public static final RegistryObject<Item> STONE_SWORD_BLADE =
+            normal("stone_sword_blade");
+
     private static RegistryObject<Item> food(String name, FoodProperties foodData) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().food(foodData).tab(ClassiCraftTab.COMMON)));
     }

@@ -152,12 +152,19 @@ public class CCRecipeProvider extends RecipeProvider {
         polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_KNIFE_HEAD.get(), ModBlocks.SANDSTONE_LOOSE_ROCK.get(), 2);
         polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_KNIFE_HEAD.get(), ModBlocks.RED_SANDSTONE_LOOSE_ROCK.get(), 2);
 
-        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_SHOVEL_HEAD.get(), ModBlocks.ANDESITE_LOOSE_ROCK.get());
-        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_SHOVEL_HEAD.get(), ModBlocks.DIORITE_LOOSE_ROCK.get());
-        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_SHOVEL_HEAD.get(), ModBlocks.GRANITE_LOOSE_ROCK.get());
-        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_SHOVEL_HEAD.get(), ModBlocks.STONE_LOOSE_ROCK.get());
-        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_SHOVEL_HEAD.get(), ModBlocks.SANDSTONE_LOOSE_ROCK.get());
-        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_SHOVEL_HEAD.get(), ModBlocks.RED_SANDSTONE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_SHOVEL_HEAD.get(), ModBlocks.ANDESITE_LOOSE_ROCK.get(), 2);
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_SHOVEL_HEAD.get(), ModBlocks.DIORITE_LOOSE_ROCK.get(), 2);
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_SHOVEL_HEAD.get(), ModBlocks.GRANITE_LOOSE_ROCK.get(), 2);
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_SHOVEL_HEAD.get(), ModBlocks.STONE_LOOSE_ROCK.get(), 2);
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_SHOVEL_HEAD.get(), ModBlocks.SANDSTONE_LOOSE_ROCK.get(), 2);
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_SHOVEL_HEAD.get(), ModBlocks.RED_SANDSTONE_LOOSE_ROCK.get(), 2);
+
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.STONE_SWORD_BLADE.get(), ModBlocks.ANDESITE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.STONE_SWORD_BLADE.get(), ModBlocks.DIORITE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.STONE_SWORD_BLADE.get(), ModBlocks.GRANITE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.STONE_SWORD_BLADE.get(), ModBlocks.STONE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.STONE_SWORD_BLADE.get(), ModBlocks.SANDSTONE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.STONE_SWORD_BLADE.get(), ModBlocks.RED_SANDSTONE_LOOSE_ROCK.get());
     }
 
     private static void simpleSmelting(Item material, Item finalItem, Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
