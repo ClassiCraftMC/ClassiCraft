@@ -12,13 +12,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
 import org.slf4j.Logger;
 
-/**
- * ClassicCraft 模组主类
- * modEventBus 用于注册
- * 使用例子:
- * ExampeModItems.ITEMS.register(modEventBus);
- * ExampeModBlocks.BLOCKS.register(modEventBus);
- */
 @Mod(ClassiCraftMod.MODID)
 public class ClassiCraftMod {
 
