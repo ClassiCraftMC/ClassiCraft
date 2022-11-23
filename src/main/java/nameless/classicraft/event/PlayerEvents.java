@@ -1,15 +1,56 @@
 package nameless.classicraft.event;
 
+import nameless.classicraft.client.menu.PolishMenu;
+import nameless.classicraft.init.ModBlocks;
+import net.minecraft.network.chat.Component;
+import net.minecraft.stats.Stats;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
 public class PlayerEvents {
+
+    @SubscribeEvent
+    public static void onPlayerRightClick(PlayerInteractEvent.RightClickItem event) {
+        Player player = event.getEntity();
+        ItemStack stack = player.getMainHandItem();
+        int count = stack.getCount();
+        Level level = event.getLevel();
+        if (stack.is(ModBlocks.ANDESITE_LOOSE_ROCK.get().asItem())
+                || stack.is(ModBlocks.DIORITE_LOOSE_ROCK.get().asItem())
+                || stack.is(ModBlocks.GRANITE_LOOSE_ROCK.get().asItem())
+                || stack.is(ModBlocks.STONE_LOOSE_ROCK.get().asItem())
+                || stack.is(ModBlocks.SANDSTONE_LOOSE_ROCK.get().asItem())
+                || stack.is(ModBlocks.RED_SANDSTONE_LOOSE_ROCK.get().asItem())) {
+            if (count >= 2 && !level.isClientSide) {
+                player.openMenu(new MenuProvider() {
+
+                    @Override
+                    public Component getDisplayName() {
+                        return Component.translatable("gui.classicraft.polish");
+                    }
+
+                    @Override
+                    public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+                        return new PolishMenu(id, inventory);
+                    }
+                });
+                player.awardStat(Stats.INTERACT_WITH_STONECUTTER);
+            }
+        }
+    }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onHarvestCheck(PlayerEvent.HarvestCheck event)

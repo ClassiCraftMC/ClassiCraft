@@ -1,6 +1,7 @@
 package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.recipe.PolishRecipe;
 import nameless.classicraft.recipe.StoneMortarRecipe;
 import nameless.classicraft.recipe.WoodCutterRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -21,6 +22,9 @@ public class ModRecipeSerializers {
 
     public static final RegistryObject<RecipeSerializer<WoodCutterRecipe>> WOODCUTTER_TYPE =
             register("woodcutter_type", () -> new WoodCutterRecipe.Serializer<>(WoodCutterRecipe::new));
+
+    public static final RegistryObject<RecipeSerializer<PolishRecipe>> POLISH_TYPE =
+            register("polish_type", () -> new PolishRecipe.Serializer<>(PolishRecipe::new));
 
     private static <T extends RecipeSerializer<?>> RegistryObject<T> register(String name, Supplier<T> recipeSerializer)
     {

@@ -2,6 +2,7 @@ package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.client.menu.FridgeMenu;
+import nameless.classicraft.client.menu.PolishMenu;
 import nameless.classicraft.client.menu.StoneMortarBlockMenu;
 import nameless.classicraft.client.menu.WoodcutterMenu;
 import net.minecraft.world.entity.player.Inventory;
@@ -26,6 +27,9 @@ public class ModMenuTypes {
 
     public static final RegistryObject<MenuType<WoodcutterMenu>> WOODCUTTER_CONTAINER =
             registerMenuType(WoodcutterMenu::new, "woodcutter_container");
+
+    public static final RegistryObject<MenuType<PolishMenu>> POLISH_CONTAINER =
+            registerMenuType(PolishMenu::new, "polish_container");
 
     private interface KKBeMenuCreator<M extends AbstractContainerMenu, T extends BlockEntity> {
         M create(int windowId, Inventory inv, T blockEntity);

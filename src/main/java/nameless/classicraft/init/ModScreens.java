@@ -1,6 +1,7 @@
 package nameless.classicraft.init;
 
 import nameless.classicraft.client.screen.FridgeScreen;
+import nameless.classicraft.client.screen.PolishScreen;
 import nameless.classicraft.client.screen.StoneMortarBlockScreen;
 import nameless.classicraft.client.screen.WoodcutterScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -18,6 +19,7 @@ public class ModScreens {
             MenuScreens.register(ModMenuTypes.FRIDGE.get(), FridgeScreen::new);
             MenuScreens.register(ModMenuTypes.STONE_MORTAR_BLOCK_CONTAINER.get(), StoneMortarBlockScreen::new);
             MenuScreens.register(ModMenuTypes.WOODCUTTER_CONTAINER.get(), WoodcutterScreen::new);
+            MenuScreens.register(ModMenuTypes.POLISH_CONTAINER.get(), PolishScreen::new);
         });
     }
 }

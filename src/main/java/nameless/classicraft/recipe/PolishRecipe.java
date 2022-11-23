@@ -15,10 +15,10 @@ import net.minecraft.world.item.crafting.SingleItemRecipe;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 
-public class WoodCutterRecipe extends SingleItemRecipe {
+public class PolishRecipe extends SingleItemRecipe {
 
-    public WoodCutterRecipe(ResourceLocation pId, String pGroup, Ingredient pIngredient, ItemStack pResult) {
-        super(ModRecipeTypes.WOOD_CUTTER_RECIPE_TYPE.get(), ModRecipeSerializers.WOODCUTTER_TYPE.get(), pId, pGroup, pIngredient, pResult);
+    public PolishRecipe(ResourceLocation pId, String pGroup, Ingredient pIngredient, ItemStack pResult) {
+        super(ModRecipeTypes.POLISH_RECIPE_TYPE.get(), ModRecipeSerializers.WOODCUTTER_TYPE.get(), pId, pGroup, pIngredient, pResult);
     }
 
     public boolean matches(Container pInv, Level pLevel) {
@@ -33,10 +33,10 @@ public class WoodCutterRecipe extends SingleItemRecipe {
         return this.ingredient;
     }
 
-    public static class Serializer<T extends WoodCutterRecipe> implements RecipeSerializer<T> {
-        final WoodCutterRecipe.Serializer.SingleItemMaker<T> factory;
+    public static class Serializer<T extends PolishRecipe> implements RecipeSerializer<T> {
+        final PolishRecipe.Serializer.SingleItemMaker<T> factory;
 
-        public Serializer(WoodCutterRecipe.Serializer.SingleItemMaker<T> pFactory) {
+        public Serializer(PolishRecipe.Serializer.SingleItemMaker<T> pFactory) {
             this.factory = pFactory;
         }
 
@@ -68,9 +68,10 @@ public class WoodCutterRecipe extends SingleItemRecipe {
             pBuffer.writeItem(pRecipe.getResultItem());
         }
 
-        public interface SingleItemMaker<T extends WoodCutterRecipe> {
+        public interface SingleItemMaker<T extends PolishRecipe> {
             T create(ResourceLocation pId, String pGroup, Ingredient pIngredient, ItemStack pResult);
         }
     }
 
 }
+

@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModMenuTypes;
 import nameless.classicraft.init.ModRecipeTypes;
-import nameless.classicraft.recipe.WoodCutterRecipe;
+import nameless.classicraft.recipe.PolishRecipe;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
@@ -18,7 +18,7 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 
-public class WoodcutterMenu extends AbstractContainerMenu {
+public class PolishMenu extends AbstractContainerMenu {
 
     public static final int INPUT_SLOT = 0;
     public static final int RESULT_SLOT = 1;
@@ -30,7 +30,7 @@ public class WoodcutterMenu extends AbstractContainerMenu {
     /** The index of the selected recipe in the GUI. */
     private final DataSlot selectedRecipeIndex = DataSlot.standalone();
     private final Level level;
-    private List<WoodCutterRecipe> recipes = Lists.newArrayList();
+    private List<PolishRecipe> recipes = Lists.newArrayList();
     /** The {@linkplain net.minecraft.world.item.ItemStack} set in the input slot by the player. */
     private ItemStack input = ItemStack.EMPTY;
     /**
@@ -50,19 +50,19 @@ public class WoodcutterMenu extends AbstractContainerMenu {
          */
         public void setChanged() {
             super.setChanged();
-            WoodcutterMenu.this.slotsChanged(this);
-            WoodcutterMenu.this.slotUpdateListener.run();
+            PolishMenu.this.slotsChanged(this);
+            PolishMenu.this.slotUpdateListener.run();
         }
     };
     /** The inventory that stores the output of the crafting recipe. */
     final ResultContainer resultContainer = new ResultContainer();
 
-    public WoodcutterMenu(int pContainerId, Inventory pPlayerInventory) {
+    public PolishMenu(int pContainerId, Inventory pPlayerInventory) {
         this(pContainerId, pPlayerInventory, ContainerLevelAccess.NULL);
     }
 
-    public WoodcutterMenu(int pContainerId, Inventory pPlayerInventory, final ContainerLevelAccess pAccess) {
-        super(ModMenuTypes.WOODCUTTER_CONTAINER.get(), pContainerId);
+    public PolishMenu(int pContainerId, Inventory pPlayerInventory, final ContainerLevelAccess pAccess) {
+        super(ModMenuTypes.POLISH_CONTAINER.get(), pContainerId);
         this.access = pAccess;
         this.level = pPlayerInventory.player.level;
         this.inputSlot = this.addSlot(new Slot(this.container, 0, 20, 33));
@@ -76,17 +76,17 @@ public class WoodcutterMenu extends AbstractContainerMenu {
 
             public void onTake(Player p_150672_, ItemStack p_150673_) {
                 p_150673_.onCraftedBy(p_150672_.level, p_150672_, p_150673_.getCount());
-                WoodcutterMenu.this.resultContainer.awardUsedRecipes(p_150672_);
-                ItemStack itemstack = WoodcutterMenu.this.inputSlot.remove(1);
+                PolishMenu.this.resultContainer.awardUsedRecipes(p_150672_);
+                ItemStack itemstack = PolishMenu.this.inputSlot.remove(1);
                 if (!itemstack.isEmpty()) {
-                    WoodcutterMenu.this.setupResultSlot();
+                    PolishMenu.this.setupResultSlot();
                 }
 
                 pAccess.execute((p_40364_, p_40365_) -> {
                     long l = p_40364_.getGameTime();
-                    if (WoodcutterMenu.this.lastSoundTime != l) {
+                    if (PolishMenu.this.lastSoundTime != l) {
                         p_40364_.playSound((Player)null, p_40365_, SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundSource.BLOCKS, 1.0F, 1.0F);
-                        WoodcutterMenu.this.lastSoundTime = l;
+                        PolishMenu.this.lastSoundTime = l;
                     }
 
                 });
@@ -114,7 +114,7 @@ public class WoodcutterMenu extends AbstractContainerMenu {
         return this.selectedRecipeIndex.get();
     }
 
-    public List<WoodCutterRecipe> getRecipes() {
+    public List<PolishRecipe> getRecipes() {
         return this.recipes;
     }
 
@@ -130,7 +130,7 @@ public class WoodcutterMenu extends AbstractContainerMenu {
      * Determines whether supplied player can use this container
      */
     public boolean stillValid(Player pPlayer) {
-        return stillValid(this.access, pPlayer, ModBlocks.WOODCUTTER.get());
+        return true;
     }
 
     /**
@@ -166,16 +166,16 @@ public class WoodcutterMenu extends AbstractContainerMenu {
         this.selectedRecipeIndex.set(-1);
         this.resultSlot.set(ItemStack.EMPTY);
         if (!pStack.isEmpty()) {
-            this.recipes = this.level.getRecipeManager().getRecipesFor(ModRecipeTypes.WOOD_CUTTER_RECIPE_TYPE.get(), pContainer, this.level);
+            this.recipes = this.level.getRecipeManager().getRecipesFor(ModRecipeTypes.POLISH_RECIPE_TYPE.get(), pContainer, this.level);
         }
 
     }
 
     void setupResultSlot() {
         if (!this.recipes.isEmpty() && this.isValidRecipeIndex(this.selectedRecipeIndex.get())) {
-            WoodCutterRecipe woodCutterRecipe = this.recipes.get(this.selectedRecipeIndex.get());
-            this.resultContainer.setRecipeUsed(woodCutterRecipe);
-            this.resultSlot.set(woodCutterRecipe.assemble(this.container));
+            PolishRecipe polishRecipe = this.recipes.get(this.selectedRecipeIndex.get());
+            this.resultContainer.setRecipeUsed(polishRecipe);
+            this.resultSlot.set(polishRecipe.assemble(this.container));
         } else {
             this.resultSlot.set(ItemStack.EMPTY);
         }
@@ -184,7 +184,7 @@ public class WoodcutterMenu extends AbstractContainerMenu {
     }
 
     public MenuType<?> getType() {
-        return ModMenuTypes.WOODCUTTER_CONTAINER.get();
+        return ModMenuTypes.POLISH_CONTAINER.get();
     }
 
     public void registerUpdateListener(Runnable pListener) {
@@ -221,7 +221,7 @@ public class WoodcutterMenu extends AbstractContainerMenu {
                 if (!this.moveItemStackTo(itemstack1, 2, 38, false)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (this.level.getRecipeManager().getRecipeFor(ModRecipeTypes.WOOD_CUTTER_RECIPE_TYPE.get(), new SimpleContainer(itemstack1), this.level).isPresent()) {
+            } else if (this.level.getRecipeManager().getRecipeFor(ModRecipeTypes.POLISH_RECIPE_TYPE.get(), new SimpleContainer(itemstack1), this.level).isPresent()) {
                 if (!this.moveItemStackTo(itemstack1, 0, 1, false)) {
                     return ItemStack.EMPTY;
                 }
@@ -261,3 +261,4 @@ public class WoodcutterMenu extends AbstractContainerMenu {
     }
 
 }
+
