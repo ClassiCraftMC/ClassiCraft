@@ -54,6 +54,8 @@ public class ClassiCraftConfiguration {
     public static ForgeConfigSpec.BooleanValue punchOutFlames;
 
     public static ForgeConfigSpec.BooleanValue extinguishWithBottle;
+    public static ForgeConfigSpec.DoubleValue WATER_REDUCING_RATE;
+    public static ForgeConfigSpec.IntValue WEAKNESS_EFFECT_AMPLIFIER;
 
     static {
         BUILDER.comment("天工开物模组配置文件");
