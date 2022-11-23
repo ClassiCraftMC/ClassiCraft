@@ -200,6 +200,20 @@ public class ModItems {
     public static final RegistryObject<Item> RANCHU_SPAWN_EGG =
             registerSpawnEgg(ModEntities.RANCHU_ENTITY, 0x736036, 0xd1a965);
 
+    public static final RegistryObject<Item> SONTE_AXE_HEAD =
+            normal("stone_axe_head");
+
+    public static final RegistryObject<Item> SONTE_HOE_HEAD =
+            normal("stone_hoe_head");
+
+    public static final RegistryObject<Item> SONTE_JAVELIN_HEAD =
+            normal("stone_javelin_head");
+
+    public static final RegistryObject<Item> SONTE_KNIFE_HEAD =
+            normal("stone_knife_head");
+
+    public static final RegistryObject<Item> SONTE_SHOVEL_HEAD =
+            normal("stone_shovel_head");
 
     private static RegistryObject<Item> food(String name, FoodProperties foodData) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().food(foodData).tab(ClassiCraftTab.COMMON)));

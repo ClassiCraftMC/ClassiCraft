@@ -53,6 +53,11 @@ public class CCItemModelProvider  extends ItemModelProvider {
         simpleTexture(ModItems.TROUT);
         simpleTexture(ModItems.COOKED_TROUT);
         simpleTexture(ModItems.PUMPKIN_SLICE);
+        simpleTexture(ModItems.SONTE_AXE_HEAD);
+        simpleTexture(ModItems.SONTE_HOE_HEAD);
+        simpleTexture(ModItems.SONTE_JAVELIN_HEAD);
+        simpleTexture(ModItems.SONTE_KNIFE_HEAD);
+        simpleTexture(ModItems.SONTE_SHOVEL_HEAD);
         block(ModBlocks.CACTUS_BALL);
         block(ModBlocks.SALT_BLOCK);
         block(ModBlocks.SALT_ROCK_BLOCK);

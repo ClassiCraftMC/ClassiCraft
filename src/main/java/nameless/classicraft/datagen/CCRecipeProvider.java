@@ -2,11 +2,13 @@ package nameless.classicraft.datagen;
 
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
+import nameless.classicraft.init.ModRecipeSerializers;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.function.Consumer;
@@ -90,33 +92,42 @@ public class CCRecipeProvider extends RecipeProvider {
                 .pattern("KKK")
                 .unlockedBy("has_honeycomb", has(Items.HONEYCOMB)).save(pFinishedRecipeConsumer);
 
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_AXE_HEAD.get(), ModBlocks.ANDESITE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_AXE_HEAD.get(), ModBlocks.DIORITE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_AXE_HEAD.get(), ModBlocks.GRANITE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_AXE_HEAD.get(), ModBlocks.STONE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_AXE_HEAD.get(), ModBlocks.SANDSTONE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_AXE_HEAD.get(), ModBlocks.RED_SANDSTONE_LOOSE_ROCK.get());
 
-        /**
-         ShapedRecipeBuilder.shaped(Blocks.SOUL_CAMPFIRE, 1)
-                 .define('#', Items.STICK)
-                 .define('X', Ingredient.of(Items.COAL, Items.CHARCOAL))
-                 .define('O', Ingredient.of(
-                         Items.ACACIA_LOG,
-                         Items.BIRCH_LOG,
-                         Items.DARK_OAK_LOG,
-                         Items.JUNGLE_LOG,
-                         Items.SPRUCE_LOG,
-                         Items.OAK_LOG,
-                         Items.MANGROVE_LOG,
-                         Items.STRIPPED_ACACIA_LOG,
-                         Items.STRIPPED_BIRCH_LOG,
-                         Items.STRIPPED_DARK_OAK_LOG,
-                         Items.STRIPPED_JUNGLE_LOG,
-                         Items.STRIPPED_SPRUCE_LOG,
-                         Items.STRIPPED_OAK_LOG,
-                         Items.STRIPPED_MANGROVE_LOG))
-                 .define('L', Items.SOUL_SAND)
-                 .pattern(" # ")
-                 .pattern("#X#")
-                 .pattern("OLO")
-                 .unlockedBy("has_stick", has(Items.STICK))
-                 .unlockedBy("has_soul_sand", has(ItemTags.SOUL_FIRE_BASE_BLOCKS))
-                 .save(pFinishedRecipeConsumer);*/
+
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_HOE_HEAD.get(), ModBlocks.ANDESITE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_HOE_HEAD.get(), ModBlocks.DIORITE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_HOE_HEAD.get(), ModBlocks.GRANITE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_HOE_HEAD.get(), ModBlocks.STONE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_HOE_HEAD.get(), ModBlocks.SANDSTONE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_HOE_HEAD.get(), ModBlocks.RED_SANDSTONE_LOOSE_ROCK.get());
+
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_JAVELIN_HEAD.get(), ModBlocks.ANDESITE_LOOSE_ROCK.get(), 2);
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_JAVELIN_HEAD.get(), ModBlocks.DIORITE_LOOSE_ROCK.get(), 2);
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_JAVELIN_HEAD.get(), ModBlocks.GRANITE_LOOSE_ROCK.get(), 2);
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_JAVELIN_HEAD.get(), ModBlocks.STONE_LOOSE_ROCK.get(), 2);
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_JAVELIN_HEAD.get(), ModBlocks.SANDSTONE_LOOSE_ROCK.get(), 2);
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_JAVELIN_HEAD.get(), ModBlocks.RED_SANDSTONE_LOOSE_ROCK.get(), 2);
+
+
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_KNIFE_HEAD.get(), ModBlocks.ANDESITE_LOOSE_ROCK.get(), 2);
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_KNIFE_HEAD.get(), ModBlocks.DIORITE_LOOSE_ROCK.get(), 2);
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_KNIFE_HEAD.get(), ModBlocks.GRANITE_LOOSE_ROCK.get(), 2);
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_KNIFE_HEAD.get(), ModBlocks.STONE_LOOSE_ROCK.get(), 2);
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_KNIFE_HEAD.get(), ModBlocks.SANDSTONE_LOOSE_ROCK.get(), 2);
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_KNIFE_HEAD.get(), ModBlocks.RED_SANDSTONE_LOOSE_ROCK.get(), 2);
+
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_SHOVEL_HEAD.get(), ModBlocks.ANDESITE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_SHOVEL_HEAD.get(), ModBlocks.DIORITE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_SHOVEL_HEAD.get(), ModBlocks.GRANITE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_SHOVEL_HEAD.get(), ModBlocks.STONE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_SHOVEL_HEAD.get(), ModBlocks.SANDSTONE_LOOSE_ROCK.get());
+        polishStoneResultFromBase(pFinishedRecipeConsumer, ModItems.SONTE_SHOVEL_HEAD.get(), ModBlocks.RED_SANDSTONE_LOOSE_ROCK.get());
     }
 
     private static void simpleSmelting(Item material, Item finalItem, Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
@@ -126,4 +137,15 @@ public class CCRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_" + material.getDescriptionId(), has(material)).save(pFinishedRecipeConsumer);
     }
 
+    protected static void polishStoneResultFromBase(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pResult, ItemLike pMaterial) {
+        polishStoneResultFromBase(pFinishedRecipeConsumer, pResult, pMaterial, 1);
+    }
+
+    public static SingleItemRecipeBuilder polishStone(Ingredient pIngredient, ItemLike pResult, int pCount) {
+        return new SingleItemRecipeBuilder(ModRecipeSerializers.POLISH_TYPE.get(), pIngredient, pResult, pCount);
+    }
+
+    protected static void polishStoneResultFromBase(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pResult, ItemLike pMaterial, int pResultCount) {
+        polishStone(Ingredient.of(pMaterial), pResult, pResultCount).unlockedBy(getHasName(pMaterial), has(pMaterial)).save(pFinishedRecipeConsumer, getConversionRecipeName(pResult, pMaterial) + "_polish");
+    }
 }

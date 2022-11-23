@@ -1,0 +1,8 @@
+{
+  "type": "classicraft:polish_type",
+  "count": 1,
+  "ingredient": {
+    "item": "classicraft:red_sandstone_loose_rock"
+  },
+  "result": "classicraft:stone_hoe_head"
+}
