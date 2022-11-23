@@ -6,7 +6,6 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:porkchop",
           "functions": [
             {
               "function": "set_count",
@@ -16,7 +15,7 @@
               }
             },
             {
-              "function": "furnace_smelt",
+              "function": "minecraft:furnace_smelt",
               "conditions": [
                 {
                   "condition": "minecraft:entity_properties",
@@ -29,7 +28,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "name": "minecraft:porkchop"
         }
       ]
     },
@@ -38,39 +38,13 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:leather",
-          "functions": [
-            {
-              "function": "set_count",
-              "count": {
-                "min": 0,
-                "max": 2
-              }
-            }
-          ]
+          "name": "minecraft:leather"
         }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
+      ],
+      "conditions": [
         {
-          "type": "minecraft:entity",
-          "name": "minecraft:experience_orb",
-          "functions": [
-            {
-              "function": "set_count",
-              "count": {
-                "min": 1,
-                "max": 4
-              },
-              "conditions": [
-                {
-                  "condition": "killed_by_player_or_pets"
-                }
-              ]
-            }
-          ]
+          "condition": "minecraft:random_chance",
+          "chance": 0.20
         }
       ]
     }

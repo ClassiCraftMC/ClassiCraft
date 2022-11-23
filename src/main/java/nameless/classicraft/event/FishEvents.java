@@ -1,5 +1,6 @@
 package nameless.classicraft.event;
 
+import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.fish.FishingConversion;
 import nameless.classicraft.fish.FishingManager;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -17,24 +18,25 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.entity.player.ItemFishedEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import java.util.Arrays;
 import java.util.List;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ClassiCraftMod.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class FishEvents {
 
     public static final FishingManager FISHING_MANAGER = new FishingManager();
 
-    @SubscribeEvent
-    public void onServerStarting(AddReloadListenerEvent event) {
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void onServerStarting(AddReloadListenerEvent event) {
         event.addListener(FISHING_MANAGER);
     }
 
-    @SubscribeEvent
-    public void itemFished(ItemFishedEvent event) {
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void itemFished(ItemFishedEvent event) {
         Player angler = event.getEntity();
         FishingHook hook = event.getHookEntity();
         List<ItemStack> drops = event.getDrops();
