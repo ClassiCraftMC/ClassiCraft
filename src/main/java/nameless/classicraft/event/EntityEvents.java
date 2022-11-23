@@ -56,7 +56,7 @@ public class EntityEvents {
     }
 
     @SubscribeEvent
-    public void addWanderingTrader(LivingEvent.LivingTickEvent event) {
+    public static void addWanderingTrader(LivingEvent.LivingTickEvent event) {
         Entity entity = event.getEntity();
         Level level = entity.getLevel();
         if (entity instanceof Player) {
@@ -70,7 +70,7 @@ public class EntityEvents {
     }
 
     @SubscribeEvent
-    public void clearWanderingTraderInNight(LivingEvent.LivingTickEvent event) {
+    public static void clearWanderingTraderInNight(LivingEvent.LivingTickEvent event) {
         Entity entity = event.getEntity();
         Level level = entity.getLevel();
         if (entity instanceof WanderingTrader) {
@@ -81,7 +81,7 @@ public class EntityEvents {
     }
 
     @SubscribeEvent
-    public void onLivingAttack (LivingAttackEvent event) {
+    public static void onLivingAttack (LivingAttackEvent event) {
 
         if (ClassiCraftConfiguration.fireDamageSpreads.get()
                 && !event.getEntity().getLevel().isClientSide) {
@@ -108,7 +108,7 @@ public class EntityEvents {
     }
 
     @SubscribeEvent
-    public void onLivingTick (LivingEvent.LivingTickEvent event) {
+    public static void onLivingTick (LivingEvent.LivingTickEvent event) {
         if (ClassiCraftConfiguration.fireResExtinguish.get()
                 && !event.getEntity().getLevel().isClientSide
                 && event.getEntity().isOnFire()
@@ -119,7 +119,7 @@ public class EntityEvents {
     }
 
     @SubscribeEvent
-    public void onEntityJoinLevel(EntityJoinLevelEvent event) {
+    public static void onEntityJoinLevel(EntityJoinLevelEvent event) {
 
         if (ClassiCraftConfiguration.flameArrowSkeletons.get()
                 && event.getEntity() instanceof Arrow
@@ -136,7 +136,7 @@ public class EntityEvents {
     }
 
     @SubscribeEvent
-    public void onLivingDeath (LivingDeathEvent event) {
+    public static void onLivingDeath (LivingDeathEvent event) {
         if (event.getSource().isFire()
                 && ClassiCraftConfiguration.fireFromDamagesource.get()
                 && !event.getEntity().isOnFire() && !event.getEntity().getLevel().isClientSide) {

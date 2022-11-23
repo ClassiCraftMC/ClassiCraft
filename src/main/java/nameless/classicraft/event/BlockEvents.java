@@ -19,11 +19,9 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FireBlock;
-import net.minecraft.world.level.block.TorchBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.event.RenderBlockScreenEffectEvent;
 import net.minecraftforge.common.util.FakePlayer;
@@ -38,14 +36,25 @@ import net.minecraftforge.items.ItemHandlerHelper;
 public class BlockEvents {
 
     @SubscribeEvent
-    public void onBlockOverlay (RenderBlockScreenEffectEvent event) {
+    public static void onBlockOverlay (RenderBlockScreenEffectEvent event) {
         if (event.getOverlayType() == RenderBlockScreenEffectEvent.OverlayType.FIRE && ClassiCraftConfiguration.fireOverlay.get() && (event.getPlayer().fireImmune() || event.getPlayer().hasEffect(MobEffects.FIRE_RESISTANCE))) {
             event.setCanceled(true);
         }
     }
 
     @SubscribeEvent
-    public void onBlockBreak (BlockEvent.BreakEvent event) {
+    public static void breakeLeaves(BlockEvent.BreakEvent event) {
+        Block block = event.getState().getBlock();
+        Player player = event.getPlayer();
+        Level level = player.getLevel();
+        if (block instanceof LeavesBlock) {
+            ItemEntity itemEntity = new ItemEntity(level, player.getX(), player.getY(), player.getZ(), Items.STICK.getDefaultInstance());
+            level.addFreshEntity(itemEntity);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onBlockBreak (BlockEvent.BreakEvent event) {
 
         if (event.getPlayer() != null && !(event.getPlayer() instanceof FakePlayer)) {
 
@@ -66,7 +75,7 @@ public class BlockEvents {
     }
 
     @SubscribeEvent
-    public void rightClickBlockWithItem (PlayerInteractEvent.RightClickBlock event) {
+    public static void rightClickBlockWithItem (PlayerInteractEvent.RightClickBlock event) {
         if (ClassiCraftConfiguration.extinguishWithBottle.get()
                 && event.getEntity() != null
                 && !(event.getEntity() instanceof FakePlayer)) {

@@ -1,9 +1,7 @@
 package nameless.classicraft.datagen;
 
 import nameless.classicraft.ClassiCraftMod;
-import nameless.classicraft.init.ModBlocks;
-import nameless.classicraft.init.ModEntities;
-import nameless.classicraft.init.ModItems;
+import nameless.classicraft.init.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 
@@ -118,6 +116,12 @@ public class CCLanguageProvider extends LanguageProvider {
         add("item.classicraft.lit_lantern", "Lit Lantern");
         add(ModItems.LANTERN.get(), "Lantern");
         add(ModItems.PUMPKIN_SLICE.get(), "Pumpkin Slice");
+        add(ModItems.SONTE_AXE_HEAD.get(), "Stone Axe Head");
+        add(ModItems.SONTE_HOE_HEAD.get(), "Stone Hoe Head");
+        add(ModItems.SONTE_JAVELIN_HEAD.get(), "Stone Javelin Head");
+        add(ModItems.SONTE_PICKAXE_HEAD.get(), "Stone Pickaxe Head");
+        add(ModItems.SONTE_KNIFE_HEAD.get(), "Stone Knife Head");
+        add(ModItems.SONTE_SHOVEL_HEAD.get(), "Stone Shovel Head");
         add("info.classicraft.stop_use_lantern", "Could't place the Vanilla Lantern Block in survival mode, you can configured it in ClassisCraft Mod Config.");
         add("info.classicraft.stop_use_torch", "Could't place the Vanilla Torch Block in survival mode, you can configured it in ClassisCraft Mod Config.");
     }

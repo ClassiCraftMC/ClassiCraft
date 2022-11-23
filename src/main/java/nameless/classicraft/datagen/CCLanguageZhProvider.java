@@ -113,6 +113,12 @@ public class CCLanguageZhProvider extends LanguageProvider {
         add("item.classicraft.lit_soul_lantern", "点燃的灵魂灯笼");
         add("item.classicraft.lit_lantern", "点燃的灯笼");
         add(ModItems.LANTERN.get(), "灯笼");
+        add(ModItems.SONTE_AXE_HEAD.get(), "石斧头");
+        add(ModItems.SONTE_HOE_HEAD.get(), "石锄头");
+        add(ModItems.SONTE_JAVELIN_HEAD.get(), "石矛头");
+        add(ModItems.SONTE_PICKAXE_HEAD.get(), "石镐头");
+        add(ModItems.SONTE_KNIFE_HEAD.get(), "石刀头");
+        add(ModItems.SONTE_SHOVEL_HEAD.get(), "石铲头");
         add("info.classicraft.stop_use_lantern", "生存模式下放置原版灯笼将替换为模组灯笼，你可以在天工开物模组配置文件中更改.");
         add("info.classicraft.stop_use_torch", "生存模式下放置原版火把将替换为模组火把，你可以在天工开物模组配置文件中更改.");
     }

@@ -73,6 +73,11 @@ public class ClassiCraftConfiguration {
         desc = "决定是否火把会导致易燃物燃烧(仅限点燃的火把)";
         torchCauseFire = BUILDER.comment(desc).define("torchCauseFire",false);
 
+        desc = "决定骷髅着火的时候是否能够射出火箭";
+        flameArrowSkeletons =
+                BUILDER.comment(desc)
+                        .define("flameArrowSkeletons", true);
+
         desc = "具有防火效果是否可以从视觉上阻止物体着火？";
         fireResExtinguish =
                 BUILDER.comment(desc)

@@ -75,6 +75,8 @@ public class PlayerEvents {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onHarvestCheck(PlayerEvent.HarvestCheck event)
     {
+        Player player = event.getEntity();
+        ItemStack stack = player.getMainHandItem();
         BlockState blockState = event.getTargetBlock();
         if (blockState.is(Tags.Blocks.NEEDS_WOOD_TOOL)
                 || blockState.is(Tags.Blocks.NEEDS_GOLD_TOOL)
@@ -91,7 +93,11 @@ public class PlayerEvents {
                 || blockState.is(BlockTags.MANGROVE_LOGS)
                 || blockState.is(BlockTags.OAK_LOGS)
                 || blockState.is(BlockTags.ACACIA_LOGS)) {
-            event.setCanHarvest(false);
+            if (stack.is(Tags.Items.TOOLS)) {
+                event.setCanHarvest(true);
+            }else {
+                event.setCanHarvest(false);
+            }
         }
     }
 }
