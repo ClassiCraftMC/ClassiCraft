@@ -10,6 +10,7 @@ public class SoulEmptyEntity extends LivingEntity {
 
     public SoulEmptyEntity(EntityType<? extends LivingEntity> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        noPhysics = true;
     }
 
     public static AttributeSupplier.Builder registerAttributes() {

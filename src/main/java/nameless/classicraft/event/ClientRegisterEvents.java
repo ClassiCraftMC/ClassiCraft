@@ -86,6 +86,8 @@ public class ClientRegisterEvents {
                 RealisticCampfireRenderer::new);
         event.registerEntityRenderer(ModEntities.RIVER_SHARK_ENTITY.get(),
                 RiverSharkRenderer::new);
+        event.registerEntityRenderer(ModEntities.SOUL_EMPTY_ENTITY.get(),
+                EmptyRenderer::new);
     }
 
     @SubscribeEvent

@@ -99,7 +99,9 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<SoulEmptyEntity>> SOUL_EMPTY_ENTITY =
             register("soul_empty", EntityType.Builder.of(SoulEmptyEntity::new, MobCategory.MISC)
-                    .sized(0.1f,0.1f));
+                    .setTrackingRange(256)
+                    .setUpdateInterval(20)
+                    .sized(0.0001F, 0.0001F));
 
     public static <E extends Entity> RegistryObject<EntityType<E>> register(String name, EntityType.Builder<E> builder) {
         return register(name, builder, true);

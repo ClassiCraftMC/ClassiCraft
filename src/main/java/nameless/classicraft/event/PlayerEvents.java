@@ -31,10 +31,10 @@ public class PlayerEvents {
     @SubscribeEvent
     public static void onPlaceBlock(BlockEvent.EntityPlaceEvent event) {
         Entity entity = event.getEntity();
-        Block block = event.getPlacedBlock().getBlock();
         LevelAccessor level = event.getLevel();
-        if (entity instanceof Player) {
-            if (block.defaultBlockState().is(ModBlocks.SOUL_TORCH.get())) {
+        BlockState blockState = event.getPlacedBlock();
+        if (entity!= null) {
+            if (blockState.is(ModBlocks.SOUL_TORCH.get())) {
                 SoulEmptyEntity soulEmpty = new SoulEmptyEntity(ModEntities.SOUL_EMPTY_ENTITY.get(), entity.getLevel());
                 level.addFreshEntity(soulEmpty);
             }
