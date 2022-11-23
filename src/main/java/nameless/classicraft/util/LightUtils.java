@@ -58,6 +58,7 @@ public class LightUtils {
     public static final IntegerProperty FIRE_BOWL_BURNTIME = IntegerProperty.create("burntime", 0, FIRE_BOWL_SHOULD_BURN_OUT ? FIRE_BOWL_INITIAL_BURN_TIME : 1);
     public static final IntegerProperty LARGE_FIRE_BOWL_BURNTIME = IntegerProperty.create("burntime", 0, LARGE_FIRE_BOWL_SHOULD_BURN_OUT ? LARGE_FIRE_BOWL_INITIAL_BURN_TIME : 1);
     public static final IntegerProperty CAMPFIRE_BURNTIME = IntegerProperty.create("burntime", 0, CAMPFIRE_SHOULD_BURN_OUT ? CAMPFIRE_INITIAL_BURN_TIME : 1);
+    public static final IntegerProperty FUEL_VALUE = IntegerProperty.create("fuel_value", 0, 200);
 
     // BooleanProperty
     public static final BooleanProperty BE_HANGING = BlockStateProperties.HANGING;
