@@ -95,7 +95,7 @@ public class SwineBreakCropGoal extends MoveToBlockGoal {
                 }
             }
 
-            if (this.ticksSinceReachedGoal > 0) {
+            if (this.ticksSinceReachedGoal > 3) {
                 level.setBlockAndUpdate(blockpos1, Blocks.AIR.defaultBlockState());
                 if (!level.isClientSide) {
                     for(int i = 0; i < 20; ++i) {
