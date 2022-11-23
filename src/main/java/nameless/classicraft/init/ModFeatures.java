@@ -1,6 +1,7 @@
 package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.worldgen.LooseRocksFeature;
 import nameless.classicraft.worldgen.QuickSandFeature;
 import nameless.classicraft.worldgen.SaltStalactiteConfiguration;
 import nameless.classicraft.worldgen.SaltStalactiteFeature;
@@ -18,6 +19,9 @@ public class ModFeatures {
     public static final RegistryObject<Feature<?>> SALT_STALACTITE_FEATRUE
             = FEATURES.register("salt_stalactite_feature",
             () -> new SaltStalactiteFeature(SaltStalactiteConfiguration.CODEC));
+
+    public static final RegistryObject<LooseRocksFeature> LOOSE_ROCKS =
+            FEATURES.register("loose_rocks", LooseRocksFeature::new);
 
     public static final RegistryObject<Feature<?>> QUICKSAND_FEATRUE
             = FEATURES.register("quicksand_lake", () -> new QuickSandFeature(QuickSandFeature.Configuration.CODEC));

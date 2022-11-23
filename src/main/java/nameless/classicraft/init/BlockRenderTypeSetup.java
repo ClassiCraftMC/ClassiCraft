@@ -38,5 +38,11 @@ public class BlockRenderTypeSetup {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.PEONY.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.ROSE.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CAMPFIRE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.ANDESITE_LOOSE_ROCK.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.DIORITE_LOOSE_ROCK.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.GRANITE_LOOSE_ROCK.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.STONE_LOOSE_ROCK.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.SANDSTONE_LOOSE_ROCK.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.RED_SANDSTONE_LOOSE_ROCK.get(), RenderType.cutout());
     }
 }

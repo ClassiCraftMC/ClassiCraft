@@ -1,0 +1,8 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "variants": {
+    "": {
+      "model": "classicraft:block/stone_loose_rock"
+    }
+  }
+}

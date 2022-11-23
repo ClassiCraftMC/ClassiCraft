@@ -13,6 +13,7 @@ public class ModTags {
     public static class Blocks{
         public static final TagKey<Block> TORCH_CAN_BE_BURNT_OUT = register("torch_can_be_burnt_out");
         public static final TagKey<Block> QUICKSAND = register("quicksand");
+        public static final TagKey<Block> LOOSE_ROCK_PLACEABLE_ON = register("loose_rock_placeable_on");
 
         private static TagKey<Block> register(String name)
         {

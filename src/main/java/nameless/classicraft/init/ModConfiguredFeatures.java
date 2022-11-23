@@ -56,6 +56,9 @@ public class ModConfiguredFeatures {
                     new RandomPatchConfiguration(16, 3, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
                             new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.CACTUS_BALL.get()))))));
 
+    public static final RegistryObject<ConfiguredFeature<?, ?>> CONFIGURED_LOOSE_ROCKS =
+            register("loose_rocks", () -> new ConfiguredFeature<>(ModFeatures.LOOSE_ROCKS.get(), NoneFeatureConfiguration.INSTANCE));
+
     public static final RegistryObject<ConfiguredFeature<?, ?>> SALT_STALACTITE_CAVE =
             register("salt_stalactite_cave",
                     () -> new ConfiguredFeature<>( Feature.SIMPLE_RANDOM_SELECTOR,

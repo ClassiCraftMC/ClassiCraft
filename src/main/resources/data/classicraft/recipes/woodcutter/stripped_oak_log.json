@@ -1,0 +1,8 @@
+{
+  "type": "classicraft:woodcutter_type",
+  "count": 2,
+  "ingredient": {
+    "item": "minecraft:oak_log"
+  },
+  "result": "minecraft:stripped_oak_log"
+}

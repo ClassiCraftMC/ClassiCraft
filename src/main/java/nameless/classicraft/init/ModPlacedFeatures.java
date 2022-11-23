@@ -52,6 +52,13 @@ public class ModPlacedFeatures {
                     ModConfiguredFeatures.SALT_STALACTITE_CAVE.getHolder().get(),
                     6, 30, 60);
 
+    public static final RegistryObject<PlacedFeature> PLACED_LOOSE_ROCKS =
+            register("loose_rocks_placed",
+                    () -> new PlacedFeature(ModConfiguredFeatures.CONFIGURED_LOOSE_ROCKS.getHolder().get(),
+                            List.of(CountPlacement.of(5), InSquarePlacement.spread(),
+                                    PlacementUtils.HEIGHTMAP_WORLD_SURFACE)));
+
+
     private static RegistryObject<PlacedFeature> register(String name, Holder<ConfiguredFeature<?, ?>> feature, int aboveBottem, int absolute, int chance) {
         return register(name,
                 () -> new PlacedFeature(feature,

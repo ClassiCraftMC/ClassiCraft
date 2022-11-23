@@ -168,13 +168,18 @@ public class ModBlocks {
     public static final RegistryObject<Block> CHARCOAL_BLOCK =
             registerNormal("charcoal_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(5.0F, 6.0F)));
 
-    public static final ArrayList<RegistryObject<Block>> COLOR_LOG = new ArrayList<RegistryObject<Block>>(){{
-        for (String material : List.of("color_"))
-            for (DyeColor dyeColor: DyeColor.values())
-                add(registerDecoration("log_" + material + dyeColor.getName(), () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD, (p_152624_) -> {
-                    return p_152624_.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MaterialColor.WOOD : MaterialColor.PODZOL;
-                }).strength(2.0F).sound(SoundType.WOOD))));
-    }};
+    public static final RegistryObject<LooseRockBlock> ANDESITE_LOOSE_ROCK =
+            registerNormal("andesite_loose_rock", LooseRockBlock::new);
+    public static final RegistryObject<LooseRockBlock> DIORITE_LOOSE_ROCK =
+            registerNormal("diorite_loose_rock", LooseRockBlock::new);
+    public static final RegistryObject<LooseRockBlock> GRANITE_LOOSE_ROCK =
+            registerNormal("granite_loose_rock", LooseRockBlock::new);
+    public static final RegistryObject<LooseRockBlock> STONE_LOOSE_ROCK =
+            registerNormal("stone_loose_rock", LooseRockBlock::new);
+    public static final RegistryObject<LooseRockBlock> SANDSTONE_LOOSE_ROCK =
+            registerNormal("sandstone_loose_rock", LooseRockBlock::new);
+    public static final RegistryObject<LooseRockBlock> RED_SANDSTONE_LOOSE_ROCK =
+            registerNormal("red_sandstone_loose_rock", LooseRockBlock::new);
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockSupplier, @Nullable Function<T, ? extends BlockItem> blockItemFactory) {
         return registerBlock(ModBlocks.BLOCKS, ModItems.ITEMS, name, blockSupplier, blockItemFactory);
