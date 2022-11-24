@@ -53,6 +53,12 @@ public class CCRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_stone_shovel_head", has(ModItems.SONTE_SHOVEL_HEAD.get()))
                 .save(pFinishedRecipeConsumer);
 
+        ShapelessRecipeBuilder.shapeless(ModItems.STONE_JAVELIN.get(), 1)
+                .requires(Items.STICK)
+                .requires(ModItems.SONTE_JAVELIN_HEAD.get())
+                .unlockedBy("has_stone_javelin_head", has(ModItems.SONTE_JAVELIN_HEAD.get()))
+                .save(pFinishedRecipeConsumer);
+
         ShapelessRecipeBuilder.shapeless(ModItems.DOUGH.get(), 4)
                 .requires(Items.WATER_BUCKET)
                 .requires(ModItems.FLOUR.get())
