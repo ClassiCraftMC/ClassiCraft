@@ -1,16 +1,6 @@
 package nameless.classicraft.event;
 
-import nameless.classicraft.api.event.MobInitGoalEvent;
-import nameless.classicraft.entity.SoulEmptyEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
-import net.minecraft.world.entity.ai.goal.TemptGoal;
-import net.minecraft.world.entity.animal.Cat;
-import net.minecraft.world.entity.animal.Sheep;
-import net.minecraft.world.entity.monster.AbstractSkeleton;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Ingredient;
+import nameless.classicraft.api.event.BlockDropEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 
@@ -21,11 +11,8 @@ public class TestEvents {
         bus.addListener(TestEvents::testEvent);
     }
 
-    public static void testEvent(MobInitGoalEvent event) {
-        Mob mob = event.getMob();
-        if (mob instanceof Sheep) {
-            event.getGoalSelector().addGoal(3, new AvoidEntityGoal<>((PathfinderMob) mob, SoulEmptyEntity.class, 6.0F, 1.0D, 1.2D));
-        }
+    public static void testEvent(BlockDropEvent event) {
+
     }
 
 }

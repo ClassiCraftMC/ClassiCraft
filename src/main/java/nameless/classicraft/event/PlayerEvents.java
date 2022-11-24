@@ -28,20 +28,6 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber
 public class PlayerEvents {
 
-    /**
-    @SubscribeEvent
-    public static void onPlaceBlock(BlockEvent.EntityPlaceEvent event) {
-        Entity entity = event.getEntity();
-        LevelAccessor level = event.getLevel();
-        BlockState blockState = event.getPlacedBlock();
-        if (entity!= null) {
-            if (blockState.is(ModBlocks.SOUL_TORCH.get())) {
-                SoulEmptyEntity soulEmpty = new SoulEmptyEntity(ModEntities.SOUL_EMPTY_ENTITY.get(), entity.getLevel());
-                level.addFreshEntity(soulEmpty);
-            }
-        }
-    }*/
-
     @SubscribeEvent
     public static void onPlayerRightClick(PlayerInteractEvent.RightClickItem event) {
         Player player = event.getEntity();

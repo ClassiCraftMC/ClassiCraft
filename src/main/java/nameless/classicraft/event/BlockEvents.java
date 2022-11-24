@@ -1,11 +1,13 @@
 package nameless.classicraft.event;
 
 import nameless.classicraft.ClassiCraftConfiguration;
+import nameless.classicraft.api.event.BlockDropEvent;
 import nameless.classicraft.block.realistic.RealisticSoulTorchBlock;
 import nameless.classicraft.block.realistic.RealisticTorchBlock;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.util.EventUtils;
 import nameless.classicraft.util.LightUtils;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -43,13 +45,14 @@ public class BlockEvents {
     }
 
     @SubscribeEvent
-    public static void breakeLeaves(BlockEvent.BreakEvent event) {
+    public static void breakeLeaves(BlockDropEvent event) {
         Block block = event.getState().getBlock();
-        Player player = event.getPlayer();
-        Level level = player.getLevel();
+        Level level = event.getLevel();
+        BlockPos pos = event.getPos();
         if (block instanceof LeavesBlock) {
-            ItemEntity itemEntity = new ItemEntity(level, player.getX(), player.getY(), player.getZ(), Items.STICK.getDefaultInstance());
-            level.addFreshEntity(itemEntity);
+            ItemStack itemStack = new ItemStack(Items.STICK, level.getRandom().nextInt(0,2));
+            ItemEntity itemEntity = new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), itemStack);
+            event.getLevel().addFreshEntity(itemEntity);
         }
     }
 
