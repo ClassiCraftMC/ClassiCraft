@@ -220,6 +220,8 @@ public class ModItems {
     public static final RegistryObject<Item> STONE_SWORD_BLADE =
             normal("stone_sword_blade");
 
+    public static final RegistryObject<Item> PLANT_FIBER =
+            normal("plant_fiber");
     public static final RegistryObject<Item> STONE_JAVELIN =
             register("stone_javelin", () -> new JavelinItem(Tiers.STONE, 4, -2.4F, new Item.Properties().tab(ClassiCraftTab.COMMON), "stone"));
 

@@ -61,6 +61,7 @@ public class CCItemModelProvider  extends ItemModelProvider {
         simpleTexture(ModItems.SONTE_PICKAXE_HEAD);
         simpleTexture(ModItems.STONE_SWORD_BLADE);
         simpleTexture(ModItems.STONE_JAVELIN);
+        simpleTexture(ModItems.PLANT_FIBER);
         block(ModBlocks.CACTUS_BALL);
         block(ModBlocks.SALT_BLOCK);
         block(ModBlocks.SALT_ROCK_BLOCK);

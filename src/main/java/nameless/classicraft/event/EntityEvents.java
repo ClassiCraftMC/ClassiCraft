@@ -2,46 +2,66 @@ package nameless.classicraft.event;
 
 import nameless.classicraft.ClassiCraftConfiguration;
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.api.event.MobInitGoalEvent;
 import nameless.classicraft.entity.RanchuEntity;
 import nameless.classicraft.util.EventUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.StructureTags;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.goal.BreakDoorGoal;
+import net.minecraft.world.entity.ai.goal.MoveBackToVillageGoal;
+import net.minecraft.world.entity.ai.goal.OpenDoorGoal;
+import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.animal.Squid;
+import net.minecraft.world.entity.monster.AbstractIllager;
 import net.minecraft.world.entity.monster.AbstractSkeleton;
+import net.minecraft.world.entity.monster.Vindicator;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.npc.WanderingTrader;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import java.util.function.Predicate;
+
 @Mod.EventBusSubscriber
 public class EntityEvents {
 
-    /**
     @SubscribeEvent
-    public static void onSkeletonAttack(LivingAttackEvent event) {
-        LivingEntity entity = event.getEntity();
-        LivingEntity hurtMob = entity.getLastHurtByMob();
-        if (entity instanceof AbstractSkeleton) {
-            if (hurtMob instanceof Player &&) {
-                entity.setItemSlot(EquipmentSlot.MAINHAND, Items.BOW.getDefaultInstance());
+    public static void addIllagerGoal(MobInitGoalEvent event) {
+        final Predicate<Difficulty> DOOR_BREAKING_PREDICATE = (p_34284_) -> {
+            return p_34284_ == Difficulty.HARD;
+        };
+        Mob mob = event.getMob();
+        if (mob instanceof AbstractIllager && !(mob instanceof Vindicator)) {
+            try {
+                mob.goalSelector.addGoal(1, new OpenDoorGoal(mob, true));
+                mob.goalSelector.addGoal(1, new TemptGoal((PathfinderMob) mob, 1.0F, Ingredient.of(Items.ROTTEN_FLESH), false));
+                mob.goalSelector.addGoal(1, new MoveBackToVillageGoal((PathfinderMob) mob, 0.6, false));
+            } catch (Exception e) {
+                ClassiCraftMod.LOGGER.error("Inject AbstractIllager failed!");
             }
         }
-    }*/
+        if (mob instanceof Vindicator) {
+            try {
+               mob.goalSelector.addGoal(1, new BreakDoorGoal(mob, DOOR_BREAKING_PREDICATE));
+               mob.goalSelector.addGoal(1, new TemptGoal((PathfinderMob) mob, 1.0F, Ingredient.of(Items.ROTTEN_FLESH), false));
+            } catch (Exception e) {
+                ClassiCraftMod.LOGGER.error("Inject Goal for Vindicator failed!");
+            }
+        }
+    }
 
     @SubscribeEvent
     public static void onDamageSkeleton(LivingHurtEvent event) {

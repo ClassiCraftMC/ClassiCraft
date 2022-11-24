@@ -5,6 +5,7 @@ import nameless.classicraft.api.event.BlockDropEvent;
 import nameless.classicraft.block.realistic.RealisticSoulTorchBlock;
 import nameless.classicraft.block.realistic.RealisticTorchBlock;
 import nameless.classicraft.init.ModBlocks;
+import nameless.classicraft.init.ModItems;
 import nameless.classicraft.util.EventUtils;
 import nameless.classicraft.util.LightUtils;
 import net.minecraft.core.BlockPos;
@@ -41,6 +42,28 @@ public class BlockEvents {
     public static void onBlockOverlay (RenderBlockScreenEffectEvent event) {
         if (event.getOverlayType() == RenderBlockScreenEffectEvent.OverlayType.FIRE && ClassiCraftConfiguration.fireOverlay.get() && (event.getPlayer().fireImmune() || event.getPlayer().hasEffect(MobEffects.FIRE_RESISTANCE))) {
             event.setCanceled(true);
+        }
+    }
+
+    @SubscribeEvent
+    public static void breakGrass(BlockDropEvent event) {
+        Block block = event.getState().getBlock();
+        Level level = event.getLevel();
+        BlockPos pos = event.getPos();
+        ItemStack heldStack = event.getPlayer().getMainHandItem();
+        if (heldStack.is(ModBlocks.ANDESITE_LOOSE_ROCK.get().asItem())
+                || heldStack.is(ModBlocks.DIORITE_LOOSE_ROCK.get().asItem())
+                || heldStack.is(ModBlocks.GRANITE_LOOSE_ROCK.get().asItem())
+                || heldStack.is(ModBlocks.STONE_LOOSE_ROCK.get().asItem())
+                || heldStack.is(ModBlocks.SANDSTONE_LOOSE_ROCK.get().asItem())
+                || heldStack.is(ModBlocks.RED_SANDSTONE_LOOSE_ROCK.get().asItem())) {
+            if (block instanceof GrassBlock || block instanceof TallGrassBlock) {
+                ItemStack itemStack =
+                        new ItemStack(ModItems.PLANT_FIBER.get(),
+                                level.getRandom().nextInt(0, 1));
+                ItemEntity itemEntity = new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), itemStack);
+                level.addFreshEntity(itemEntity);
+            }
         }
     }
 
