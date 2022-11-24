@@ -88,6 +88,8 @@ public class ClientRegisterEvents {
                 RiverSharkRenderer::new);
         event.registerEntityRenderer(ModEntities.SOUL_EMPTY_ENTITY.get(),
                 EmptyRenderer::new);
+        event.registerEntityRenderer(ModEntities.THROWN_JAVELIN.get(),
+                ThrownJavelinRenderer::new);
     }
 
     @SubscribeEvent
@@ -112,6 +114,7 @@ public class ClientRegisterEvents {
         event.registerLayerDefinition(ModEntityModelLayers.BUTTERFLY, ButterflyModel::create);
         event.registerLayerDefinition(ModEntityModelLayers.SWINE, SwineModel::create);
         event.registerLayerDefinition(ModEntityModelLayers.RIVER_SHARK, RiverSharkModel::create);
+        event.registerLayerDefinition(ModEntityModelLayers.JAVELIN, JavelinModel::createBodyLayer);
     }
 
 }

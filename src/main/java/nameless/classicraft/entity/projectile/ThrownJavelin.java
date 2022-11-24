@@ -1,5 +1,7 @@
 package nameless.classicraft.entity.projectile;
 
+import javax.annotation.Nullable;
+
 import nameless.classicraft.init.ModEntities;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
@@ -20,25 +22,25 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.Nullable;
 
-public class JavelinThrownEntity extends AbstractArrow {
+public class ThrownJavelin extends AbstractArrow
+{
+    private static final EntityDataAccessor<Boolean> DATA_ENCHANT_GLOW = SynchedEntityData.defineId(ThrownJavelin.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<ItemStack> DATA_ITEM = SynchedEntityData.defineId(ThrownJavelin.class, EntityDataSerializers.ITEM_STACK);
 
     private boolean dealtDamage = false;
-    private static final EntityDataAccessor<Boolean> DATA_ENCHANT_GLOW = SynchedEntityData.defineId(JavelinThrownEntity.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<ItemStack> DATA_ITEM = SynchedEntityData.defineId(JavelinThrownEntity.class, EntityDataSerializers.ITEM_STACK);
 
-    public JavelinThrownEntity(EntityType<? extends JavelinThrownEntity> type, Level level)
+    public ThrownJavelin(EntityType<? extends ThrownJavelin> type, Level level)
     {
         super(type, level);
     }
 
-    public JavelinThrownEntity(Level level, LivingEntity entity, ItemStack stack)
+    public ThrownJavelin(Level level, LivingEntity entity, ItemStack stack)
     {
         this(ModEntities.THROWN_JAVELIN.get(), level, entity, stack);
     }
 
-    public JavelinThrownEntity(EntityType<? extends JavelinThrownEntity> type, Level level, LivingEntity entity, ItemStack stack)
+    public ThrownJavelin(EntityType<? extends ThrownJavelin> type, Level level, LivingEntity entity, ItemStack stack)
     {
         super(type, entity, level);
         setItem(stack);
@@ -119,6 +121,7 @@ public class JavelinThrownEntity extends AbstractArrow {
         this.playSound(soundevent, 1F, 1F);
     }
 
+
     @Override
     protected float getWaterInertia()
     {
@@ -131,6 +134,10 @@ public class JavelinThrownEntity extends AbstractArrow {
         return SoundEvents.TRIDENT_HIT_GROUND;
     }
 
+    /**
+     * Slightly better than whacking like a sword
+     * if not a javelin inside (for some reason), default to 8 which is the trident damage value
+     */
     public float getItemAttackDamage()
     {
         return getItem().getItem() instanceof SwordItem javelin ? javelin.getDamage() * 1.1f : 8F;
@@ -194,4 +201,5 @@ public class JavelinThrownEntity extends AbstractArrow {
     {
         entityData.set(DATA_ENCHANT_GLOW, glow);
     }
+
 }

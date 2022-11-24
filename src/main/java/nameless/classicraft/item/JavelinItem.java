@@ -4,9 +4,9 @@ package nameless.classicraft.item;
 import java.util.function.Consumer;
 
 import nameless.classicraft.ClassiCraftMod;
-import nameless.classicraft.entity.projectile.JavelinThrownEntity;
+import nameless.classicraft.client.renderer.JavelinItemRenderer;
+import nameless.classicraft.entity.projectile.ThrownJavelin;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
@@ -29,15 +29,16 @@ import net.minecraftforge.common.ToolAction;
 import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.common.util.NonNullLazy;
 
-public class StoneJavelinItem extends SwordItem {
+public class JavelinItem extends SwordItem
+{
     private final ResourceLocation textureLocation;
 
-    public StoneJavelinItem(Tier tier, float attackDamage, float attackSpeed, Properties properties, String name)
+    public JavelinItem(Tier tier, float attackDamage, float attackSpeed, Properties properties, String name)
     {
-        this(tier, (int) attackDamage, attackSpeed, properties, new ResourceLocation(ClassiCraftMod.MODID, "textures/entity/projectiles/stone_javelin.png"));
+        this(tier, (int) attackDamage, attackSpeed, properties, new ResourceLocation(ClassiCraftMod.MODID, "textures/entity/projectiles/" + name + "_javelin.png"));
     }
 
-    public StoneJavelinItem(Tier tier, float attackDamage, float attackSpeed, Properties properties, ResourceLocation name)
+    public JavelinItem(Tier tier, float attackDamage, float attackSpeed, Properties properties, ResourceLocation name)
     {
         super(tier, (int) attackDamage, attackSpeed, properties);
         this.textureLocation = name;
@@ -73,7 +74,7 @@ public class StoneJavelinItem extends SwordItem {
                 {
                     stack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(entity.getUsedItemHand()));
 
-                    JavelinThrownEntity javelin = new JavelinThrownEntity(level, player, stack);
+                    ThrownJavelin javelin = new ThrownJavelin(level, player, stack);
                     javelin.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 2.5F, 1.0F);
                     if (player.getAbilities().instabuild)
                     {
@@ -114,19 +115,18 @@ public class StoneJavelinItem extends SwordItem {
         return super.canPerformAction(stack, toolAction) && toolAction != ToolActions.SWORD_SWEEP;
     }
 
-    /**
     @Override
     public void initializeClient(Consumer<IClientItemExtensions> consumer)
     {
-        consumer.accept(new ItemBlockRenderTypes() {
+        consumer.accept(new IClientItemExtensions() {
             private final NonNullLazy<JavelinItemRenderer> renderer = NonNullLazy.of(() -> new JavelinItemRenderer(getTextureLocation()));
+
             @Override
-            public BlockEntityWithoutLevelRenderer getItemStackRenderer()
-            {
+            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
                 return renderer.get();
             }
         });
-    }*/
+    }
 
     public ResourceLocation getTextureLocation()
     {

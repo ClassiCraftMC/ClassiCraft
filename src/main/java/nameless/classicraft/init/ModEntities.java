@@ -2,7 +2,7 @@ package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.entity.*;
-import nameless.classicraft.entity.projectile.JavelinThrownEntity;
+import nameless.classicraft.entity.projectile.ThrownJavelin;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -104,9 +104,9 @@ public class ModEntities {
                     .setUpdateInterval(20)
                     .sized(0.0001F, 0.0001F));
 
-    public static final RegistryObject<EntityType<JavelinThrownEntity>> THROWN_JAVELIN =
+    public static final RegistryObject<EntityType<ThrownJavelin>> THROWN_JAVELIN =
             register("thrown_javelin",
-                    EntityType.Builder.<JavelinThrownEntity>of(JavelinThrownEntity::new, MobCategory.MISC)
+                    EntityType.Builder.<ThrownJavelin>of(ThrownJavelin::new, MobCategory.MISC)
                             .sized(0.5F, 0.5F)
                             .clientTrackingRange(4)
                             .updateInterval(20));

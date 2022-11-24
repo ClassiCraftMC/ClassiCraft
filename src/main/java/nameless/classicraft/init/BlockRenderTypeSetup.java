@@ -1,7 +1,11 @@
 package nameless.classicraft.init;
 
+import nameless.classicraft.ClassiCraftMod;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -44,5 +48,8 @@ public class BlockRenderTypeSetup {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.STONE_LOOSE_ROCK.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.SANDSTONE_LOOSE_ROCK.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.RED_SANDSTONE_LOOSE_ROCK.get(), RenderType.cutout());
+        ItemProperties.register(ModItems.STONE_JAVELIN.get(), new ResourceLocation(ClassiCraftMod.MODID, "throwing_stone_javelin"), (stack, level, entity, unused) ->
+                entity != null && ((entity.isUsingItem() && entity.getUseItem() == stack) || (entity instanceof Monster monster && monster.isAggressive())) ? 1.0F : 0.0F
+        );
     }
 }
