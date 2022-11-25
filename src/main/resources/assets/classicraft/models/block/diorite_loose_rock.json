@@ -1,7 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "parent": "classicraft:block/loose_rock",
-  "textures": {
-    "all": "minecraft:block/diorite"
-  }
-}

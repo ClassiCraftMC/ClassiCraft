@@ -1,7 +1,0 @@
-{
-  "parent" : "item/generated",
-  "textures" : {
-    "layer0" : "classicraft:item/lower_bucket",
-    "layer1" : "classicraft:item/bucket_content/ranchu"
-  }
-}

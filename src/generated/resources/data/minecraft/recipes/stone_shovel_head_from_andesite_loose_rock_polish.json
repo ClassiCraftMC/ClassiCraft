@@ -1,8 +1,0 @@
-{
-  "type": "classicraft:polish_type",
-  "count": 2,
-  "ingredient": {
-    "item": "classicraft:andesite_loose_rock"
-  },
-  "result": "classicraft:stone_shovel_head"
-}

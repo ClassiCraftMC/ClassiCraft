@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:campfire_cooking",
-  "cookingtime": 100,
-  "experience": 0,
-  "ingredient": {
-    "item": "classicraft:soul_torch"
-  },
-  "result": "classicraft:lit_soul_torch"
-}

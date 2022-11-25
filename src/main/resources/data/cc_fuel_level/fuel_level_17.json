@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "minecraft:torch",
-    "minecraft:soul_torch",
-    "classicraft:torch",
-    "classicraft:soul_torch"
-  ]
-}

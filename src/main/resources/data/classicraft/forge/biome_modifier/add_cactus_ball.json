@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#forge:is_desert",
-  "features": "classicraft:cactus_ball_placed",
-  "step": "vegetal_decoration"
-}
