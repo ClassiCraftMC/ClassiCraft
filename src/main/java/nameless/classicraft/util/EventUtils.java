@@ -19,4 +19,13 @@ public class EventUtils {
             player.getInventory().add(newItem);
         }
     }
+
+    public static void resetFuel(PlayerInteractEvent.RightClickItem event, Item needFuel, Item fuelItem) {
+        Player player = event.getEntity();
+        ItemStack mainHandItem = player.getMainHandItem();
+        ItemStack offHandItem = player.getOffhandItem();
+        if (mainHandItem.is(needFuel) && offHandItem.is(fuelItem)) {
+
+        }
+    }
 }
