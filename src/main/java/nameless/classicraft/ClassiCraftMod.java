@@ -1,6 +1,7 @@
 package nameless.classicraft;
 
 import com.mojang.logging.LogUtils;
+import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -13,6 +14,7 @@ public class ClassiCraftMod {
 
     public ClassiCraftMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
     }
 }

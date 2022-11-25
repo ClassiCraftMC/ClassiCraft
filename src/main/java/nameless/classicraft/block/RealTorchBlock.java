@@ -1,11 +1,17 @@
 package nameless.classicraft.block;
 
 import nameless.classicraft.init.ModBlockProperties;
+import nameless.classicraft.util.LightUtils;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -18,6 +24,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.Material;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -78,6 +85,22 @@ public class RealTorchBlock extends AbstractLightBlock {
                 return 0;
             }
         };
+    }
+
+    @Override
+    public void onPlace(BlockState pState, Level pLevel, BlockPos pPos, BlockState pOldState, boolean pIsMoving) {
+        LightUtils.torchPlace(pState, pLevel, pPos, pOldState, pIsMoving, this);
+        super.onPlace(pState, pLevel, pPos, pOldState, pIsMoving);
+    }
+
+    @Override
+    public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
+        LightUtils.tickTorch(pState, pLevel, pPos, pRandom, this, TORCH_BURN_TIME);
+    }
+
+    @Override
+    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        return LightUtils.interactTorch(pLevel, pPos, pPlayer, pHand, this, Items.FLINT_AND_STEEL, TORCH_BURN_TIME, TORCH_INITIAL_BURN_TIME);
     }
 
     @Override
