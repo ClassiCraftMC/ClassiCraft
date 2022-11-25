@@ -71,7 +71,7 @@ public class LightUtils {
 
     public static InteractionResult interactTorch(Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, Block pBlock, Item fireStarter, IntegerProperty burnTime, int initialBurnTime) {
         ItemStack heldStack = pPlayer.getMainHandItem();
-        if (heldStack.is(fireStarter)) {
+        if (heldStack.is(fireStarter) && !pBlock.defaultBlockState().getValue(AbstractLightBlock.getLitState())) {
             playLightingSound(pLevel, pPos);
             pPlayer.swing(pHand);
             if (!pPlayer.isCreative()) {

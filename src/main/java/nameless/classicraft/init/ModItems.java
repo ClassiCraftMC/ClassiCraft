@@ -17,15 +17,28 @@ public class ModItems {
             DeferredRegister.create(ForgeRegistries.ITEMS,
                     ClassiCraftMod.MOD_ID);
 
-    public static final RegistryObject<Item> UNLIT_TORCH =
+    public static final RegistryObject<Item> TORCH_UNLIT =
             register("torch_unlit", () ->
             new StandingAndWallBlockItem(
                     ModBlocks.REAL_TORCH.get(),
                     ModBlocks.REAL_WALL_TORCH.get(),
-                    new Item.Properties().stacksTo(64)));
+                    new Item.Properties().stacksTo(64).tab(ModCreativeModeTabs.COMMON)));
 
-    public static final RegistryObject<Item> LIT_TORCH =
+    public static final RegistryObject<Item> SOUL_TORCH_UNLIT =
+            register("soul_torch_unlit", () ->
+                    new StandingAndWallBlockItem(
+                            ModBlocks.REAL_SOUL_TORCH.get(),
+                            ModBlocks.REAL_SOUL_WALL_TORCH.get(),
+                            new Item.Properties().stacksTo(64).tab(ModCreativeModeTabs.COMMON)));
+
+    public static final RegistryObject<Item> TORCH_LIT =
             register("torch_lit", LitTorchItem::new);
+
+    public static final RegistryObject<Item> SOUL_TORCH_LIT =
+            register("soul_torch_lit", LitTorchItem::new);
+
+    public static final RegistryObject<Item> CLASSIC_CRAFT =
+            register("classic_craft", () -> new Item(new Item.Properties()));
 
     /**
      * Used for registry items

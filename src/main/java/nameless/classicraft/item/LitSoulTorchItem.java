@@ -21,14 +21,14 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-public class LitTorchItem extends StandingAndWallBlockItem {
+public class LitSoulTorchItem extends StandingAndWallBlockItem {
 
     private static final boolean HARDCORE = ModConfigs.hardcore.get();
     private static final Boolean WATER_BURNT = ModConfigs.waterBurnt.get();
 
-    public LitTorchItem() {
-        super(ModBlocks.REAL_TORCH.get(),
-                ModBlocks.REAL_WALL_TORCH.get(),
+    public LitSoulTorchItem() {
+        super(ModBlocks.REAL_SOUL_TORCH.get(),
+                ModBlocks.REAL_SOUL_WALL_TORCH.get(),
                 new Properties().stacksTo(64));
     }
 

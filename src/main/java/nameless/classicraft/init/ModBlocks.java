@@ -1,6 +1,8 @@
 package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.block.RealSoulTorchBlock;
+import nameless.classicraft.block.RealSoulWallTorchBlock;
 import nameless.classicraft.block.RealTorchBlock;
 import nameless.classicraft.block.RealWallTorchBlock;
 import net.minecraft.world.level.block.Block;
@@ -19,9 +21,13 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> REAL_TORCH =
             register("real_torch", RealTorchBlock::new);
+    public static final RegistryObject<Block> REAL_SOUL_TORCH =
+            register("real_soul_torch", RealSoulTorchBlock::new);
 
     public static final RegistryObject<Block> REAL_WALL_TORCH =
             register("real_wall_torch", RealWallTorchBlock::new);
+    public static final RegistryObject<Block> REAL_SOUL_WALL_TORCH =
+            register("real_soul_wall_torch", RealSoulWallTorchBlock::new);
 
     /**
      * Used for registry blocks

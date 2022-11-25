@@ -23,13 +23,13 @@ import javax.annotation.Nullable;
 import java.util.Map;
 
 @MethodsReturnNonnullByDefault
-public class RealWallTorchBlock extends RealTorchBlock {
+public class RealSoulWallTorchBlock extends RealSoulTorchBlock {
 
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     protected static final float AABB_OFFSET = 2.5F;
     private static final Map<Direction, VoxelShape> AABBS = Maps.newEnumMap(ImmutableMap.of(Direction.NORTH, Block.box(5.5D, 3.0D, 11.0D, 10.5D, 13.0D, 16.0D), Direction.SOUTH, Block.box(5.5D, 3.0D, 0.0D, 10.5D, 13.0D, 5.0D), Direction.WEST, Block.box(11.0D, 3.0D, 5.5D, 16.0D, 13.0D, 10.5D), Direction.EAST, Block.box(0.0D, 3.0D, 5.5D, 5.0D, 13.0D, 10.5D)));
 
-    public RealWallTorchBlock() {
+    public RealSoulWallTorchBlock() {
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
     }
 
@@ -99,7 +99,7 @@ public class RealWallTorchBlock extends RealTorchBlock {
             double d2 = (double)pPos.getZ() + 0.5D;
             Direction direction1 = direction.getOpposite();
             pLevel.addParticle(ParticleTypes.SMOKE, d0 + 0.27D * (double)direction1.getStepX(), d1 + 0.22D, d2 + 0.27D * (double)direction1.getStepZ(), 0.0D, 0.0D, 0.0D);
-            pLevel.addParticle(ParticleTypes.FLAME, d0 + 0.27D * (double)direction1.getStepX(), d1 + 0.22D, d2 + 0.27D * (double)direction1.getStepZ(), 0.0D, 0.0D, 0.0D);
+            pLevel.addParticle(ParticleTypes.SOUL_FIRE_FLAME, d0 + 0.27D * (double)direction1.getStepX(), d1 + 0.22D, d2 + 0.27D * (double)direction1.getStepZ(), 0.0D, 0.0D, 0.0D);
         }
     }
 
