@@ -1,5 +1,6 @@
 package nameless.classicraft.util;
 
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -20,12 +21,15 @@ public class EventUtils {
         }
     }
 
-    public static void resetFuel(PlayerInteractEvent.RightClickItem event, Item needFuel, Item fuelItem) {
+    public static void resetFuel(PlayerInteractEvent.RightClickItem event, Item needFuel, Item fuelItem, ItemStack fullFuelItem) {
         Player player = event.getEntity();
         ItemStack mainHandItem = player.getMainHandItem();
         ItemStack offHandItem = player.getOffhandItem();
         if (mainHandItem.is(needFuel) && offHandItem.is(fuelItem)) {
-
+            if (mainHandItem.getCount() == 1) {
+                offHandItem.shrink(1);
+                player.setItemSlot(EquipmentSlot.MAINHAND, fullFuelItem);
+            }
         }
     }
 }
