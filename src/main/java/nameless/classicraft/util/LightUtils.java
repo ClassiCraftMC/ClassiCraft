@@ -104,7 +104,7 @@ public class LightUtils {
             return pState;
         } else {
             int j = i + 1;
-            BlockState blockstate = pState.setValue(AbstractLightBlock.getLevel(), Integer.valueOf(j));
+            BlockState blockstate = pState.setValue(AbstractLightBlock.getLevel(), j);
             pLevel.setBlock(pPos, blockstate, 3);
             if (j == 7) {
                 pLevel.scheduleTick(pPos, pState.getBlock(), 20);
@@ -135,7 +135,7 @@ public class LightUtils {
             }
             pLevel.updateNeighborsAt(pPos, pBlock);
         }
-        return InteractionResult.SUCCESS;
+        return InteractionResult.PASS;
     }
 
     public static void changeToLit(Level pLevel, BlockPos pPos, Block pBlock, IntegerProperty burnTime, int initialBurnTime) {
