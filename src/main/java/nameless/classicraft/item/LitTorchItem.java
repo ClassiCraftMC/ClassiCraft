@@ -33,6 +33,11 @@ public class LitTorchItem extends StandingAndWallBlockItem {
     }
 
     @Override
+    public String getDescriptionId() {
+        return "item.classicraft.torch_lit";
+    }
+
+    @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
         if(!HARDCORE || pLevel.isClientSide() || !(pEntity instanceof Player player)) return;
         if(pLevel.isRainingAt(player.getOnPos().above(2))) {

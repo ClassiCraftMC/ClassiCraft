@@ -2,8 +2,9 @@ package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.item.LitTorchItem;
+import nameless.classicraft.item.UnlitSoulTorchItem;
+import nameless.classicraft.item.UnlitTorchItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.StandingAndWallBlockItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -18,18 +19,10 @@ public class ModItems {
                     ClassiCraftMod.MOD_ID);
 
     public static final RegistryObject<Item> TORCH_UNLIT =
-            register("torch_unlit", () ->
-            new StandingAndWallBlockItem(
-                    ModBlocks.REAL_TORCH.get(),
-                    ModBlocks.REAL_WALL_TORCH.get(),
-                    new Item.Properties().stacksTo(64).tab(ModCreativeModeTabs.COMMON)));
+            register("torch_unlit", UnlitTorchItem::new);
 
     public static final RegistryObject<Item> SOUL_TORCH_UNLIT =
-            register("soul_torch_unlit", () ->
-                    new StandingAndWallBlockItem(
-                            ModBlocks.REAL_SOUL_TORCH.get(),
-                            ModBlocks.REAL_SOUL_WALL_TORCH.get(),
-                            new Item.Properties().stacksTo(64).tab(ModCreativeModeTabs.COMMON)));
+            register("soul_torch_unlit", UnlitSoulTorchItem::new);
 
     public static final RegistryObject<Item> TORCH_LIT =
             register("torch_lit", LitTorchItem::new);
