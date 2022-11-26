@@ -80,7 +80,7 @@ public class LightUtils {
         pLevel.gameEvent(itemEntity, GameEvent.ENTITY_PLACE, pPos);
     }
 
-    public static InteractionResult addFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand) {
+    public static void addFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand) {
         int i = pState.getValue(AbstractLightBlock.getLevel());
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
         if (i < 4 && ComposterBlock.COMPOSTABLES.containsKey(itemstack.getItem()) && !pLevel.isClientSide) {
@@ -91,7 +91,6 @@ public class LightUtils {
                 itemstack.shrink(1);
             }
         }
-        return InteractionResult.SUCCESS;
     }
 
     public static void shiftItem(Player pPlayer, ItemStack pOldItem, Item pNewItem) {
@@ -139,8 +138,10 @@ public class LightUtils {
                 pLevel.gameEvent(pPlayer, GameEvent.BLOCK_PLACE, pPos);
             }
             pLevel.updateNeighborsAt(pPos, pBlock);
+            return InteractionResult.PASS;
+        } else {
+            return InteractionResult.PASS;
         }
-        return InteractionResult.PASS;
     }
 
     public static void changeToLit(Level pLevel, BlockPos pPos, Block pBlock, IntegerProperty burnTime, int initialBurnTime) {
