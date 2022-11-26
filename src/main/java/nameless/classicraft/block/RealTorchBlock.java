@@ -106,7 +106,7 @@ public class RealTorchBlock extends AbstractLightBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(LIT, TORCH_BURN_TIME);
+        pBuilder.add(LIT, TORCH_BURN_TIME, FULE_LEVEL);
     }
 
    public static IntegerProperty getBurnTime() {
