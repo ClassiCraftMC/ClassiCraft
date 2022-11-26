@@ -91,7 +91,7 @@ public class LightUtils {
                 itemstack.shrink(1);
             }
         }
-        return InteractionResult.PASS;
+        return InteractionResult.SUCCESS;
     }
 
     public static void shiftItem(Player pPlayer, ItemStack pOldItem, Item pNewItem) {
