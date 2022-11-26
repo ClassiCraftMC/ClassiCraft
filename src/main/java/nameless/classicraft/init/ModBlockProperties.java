@@ -11,5 +11,5 @@ public class ModBlockProperties {
     public static final IntegerProperty SOUL_TORCH_BURN_TIME = IntegerProperty.create("burntime", 0, 16);
     public static final IntegerProperty LANTERN_BURN_TIME = IntegerProperty.create("burntime", 0, 9);
     public static final IntegerProperty SOUL_LANTERN_BURN_TIME = IntegerProperty.create("burntime", 0, 8);
-
+    public static final IntegerProperty FULE_LEVEL = IntegerProperty.create("fuel_level", 0, 4);
 }
