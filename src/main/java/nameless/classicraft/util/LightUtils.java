@@ -9,6 +9,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -18,9 +19,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -28,7 +30,6 @@ import net.minecraft.world.level.gameevent.GameEvent;
 public class LightUtils {
 
     protected static final int TICK_INTERVAL = ModBlockProperties.TICK_INTERVAL;
-    public static final Object2FloatMap<ItemLike> FUEL_LIST = new Object2FloatOpenHashMap<>();
 
     public static void torchPlace(BlockState pState, Level pLevel, BlockPos pPos, BlockState pOldState, boolean pIsMoving, Block pBlock) {
         if(!pIsMoving && pState.getBlock() != pOldState.getBlock()) {
@@ -74,11 +75,42 @@ public class LightUtils {
         pLevel.gameEvent(itemEntity, GameEvent.ENTITY_PLACE, pPos);
     }
 
+    public static InteractionResult addFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand) {
+        int i = pState.getValue(AbstractLightBlock.getLevel());
+        ItemStack itemstack = pPlayer.getItemInHand(pHand);
+        if (i < 4 && ComposterBlock.COMPOSTABLES.containsKey(itemstack.getItem()) && !pLevel.isClientSide) {
+            BlockState blockstate = addItem(pState, pLevel, pPos, itemstack);
+            pLevel.levelEvent(1500, pPos, pState != blockstate ? 1 : 0);
+            pPlayer.awardStat(Stats.ITEM_USED.get(itemstack.getItem()));
+            if (!pPlayer.getAbilities().instabuild) {
+                itemstack.shrink(1);
+            }
+        }
+        return InteractionResult.PASS;
+    }
+
     public static void shiftItem(Player pPlayer, ItemStack pOldItem, Item pNewItem) {
         if (pPlayer.isShiftKeyDown()) {
             int oldCount = pOldItem.getCount();
             pNewItem.getDefaultInstance().setCount(oldCount);
             ItemStackAPI.replaceItemWitchNoNBT(pOldItem, pNewItem);
+        }
+    }
+
+    static BlockState addItem(BlockState pState, LevelAccessor pLevel, BlockPos pPos, ItemStack pStack) {
+        int i = pState.getValue(AbstractLightBlock.getLevel());
+        float f = ComposterBlock.COMPOSTABLES.getFloat(pStack.getItem());
+        if ((i != 0 || !(f > 0.0F)) && !(pLevel.getRandom().nextDouble() < (double)f)) {
+            return pState;
+        } else {
+            int j = i + 1;
+            BlockState blockstate = pState.setValue(AbstractLightBlock.getLevel(), Integer.valueOf(j));
+            pLevel.setBlock(pPos, blockstate, 3);
+            if (j == 7) {
+                pLevel.scheduleTick(pPos, pState.getBlock(), 20);
+            }
+
+            return blockstate;
         }
     }
 

@@ -5,7 +5,6 @@ import nameless.classicraft.block.AbstractLightBlock;
 import nameless.classicraft.block.RealTorchBlock;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModConfigs;
-import nameless.classicraft.init.ModCreativeModeTabs;
 import nameless.classicraft.init.ModItems;
 import nameless.classicraft.util.LightUtils;
 import net.minecraft.core.BlockPos;
@@ -33,8 +32,7 @@ public class LitTorchItem extends StandingAndWallBlockItem {
     public LitTorchItem() {
         super(ModBlocks.REAL_TORCH.get(),
                 ModBlocks.REAL_WALL_TORCH.get(),
-                new Properties().stacksTo(64)
-                        .tab(ModCreativeModeTabs.COMMON));
+                new Properties().stacksTo(64));
     }
 
     @Override
