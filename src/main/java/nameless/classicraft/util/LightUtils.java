@@ -2,13 +2,13 @@ package nameless.classicraft.util;
 
 import it.unimi.dsi.fastutil.objects.Object2FloatMap;
 import it.unimi.dsi.fastutil.objects.Object2FloatOpenHashMap;
+import nameless.classicraft.api.item.ItemStackAPI;
 import nameless.classicraft.block.AbstractLightBlock;
 import nameless.classicraft.init.ModBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -20,9 +20,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -76,33 +74,11 @@ public class LightUtils {
         pLevel.gameEvent(itemEntity, GameEvent.ENTITY_PLACE, pPos);
     }
 
-    public static InteractionResult addFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand) {
-        int i = pState.getValue(AbstractLightBlock.getLevel());
-        ItemStack itemstack = pPlayer.getItemInHand(pHand);
-        if (i < 4 && ComposterBlock.COMPOSTABLES.containsKey(itemstack.getItem()) && !pLevel.isClientSide) {
-            BlockState blockstate = addItem(pState, pLevel, pPos, itemstack);
-            pLevel.levelEvent(1500, pPos, pState != blockstate ? 1 : 0);
-            pPlayer.awardStat(Stats.ITEM_USED.get(itemstack.getItem()));
-            if (!pPlayer.getAbilities().instabuild) {
-                itemstack.shrink(1);
-            }
-        }
-        return InteractionResult.PASS;
-    }
-
-    static BlockState addItem(BlockState pState, LevelAccessor pLevel, BlockPos pPos, ItemStack pStack) {
-        int i = pState.getValue(AbstractLightBlock.getLevel());
-        float f = FUEL_LIST.getFloat(pStack.getItem());
-        if ((i != 0 || !(f > 0.0F)) && !(pLevel.getRandom().nextDouble() < (double)f)) {
-            return pState;
-        } else {
-            int j = i + 1;
-            BlockState blockstate = pState.setValue(AbstractLightBlock.getLevel(), Integer.valueOf(j));
-            pLevel.setBlock(pPos, blockstate, 3);
-            if (j == 7) {
-                pLevel.scheduleTick(pPos, pState.getBlock(), 20);
-            }
-            return blockstate;
+    public static void shiftItem(Player pPlayer, ItemStack pOldItem, Item pNewItem) {
+        if (pPlayer.isShiftKeyDown()) {
+            int oldCount = pOldItem.getCount();
+            pNewItem.getDefaultInstance().setCount(oldCount);
+            ItemStackAPI.replaceItemWitchNoNBT(pOldItem, pNewItem);
         }
     }
 
@@ -130,25 +106,21 @@ public class LightUtils {
         return InteractionResult.SUCCESS;
     }
 
-    public static void changeToLit(Level pLevel, BlockPos pPos, Block pBlock, IntegerProperty burnTime, int initialBurnTime)
-    {
+    public static void changeToLit(Level pLevel, BlockPos pPos, Block pBlock, IntegerProperty burnTime, int initialBurnTime) {
         pLevel.setBlockAndUpdate(pPos, pBlock.defaultBlockState().setValue(AbstractLightBlock.getLitState(),true).setValue(burnTime, initialBurnTime));
         pLevel.scheduleTick(pPos, pBlock, TICK_INTERVAL);
     }
 
-    public static void changeToUnlit(Level pLevel, BlockPos pPos, Block pBlock)
-    {
+    public static void changeToUnlit(Level pLevel, BlockPos pPos, Block pBlock) {
         pLevel.setBlockAndUpdate(pPos, pBlock.defaultBlockState());
         pLevel.scheduleTick(pPos, pBlock, TICK_INTERVAL);
     }
 
-    public static void playExtinguishSound(Level pLevel,BlockPos pPos)
-    {
+    public static void playExtinguishSound(Level pLevel,BlockPos pPos) {
         pLevel.playSound(null,pPos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS,1, pLevel.random.nextFloat() * 0.1F + 0.9F);
     }
 
-    public static void playLightingSound(Level pLevel,BlockPos pPos)
-    {
+    public static void playLightingSound(Level pLevel,BlockPos pPos) {
         pLevel.playSound(null,pPos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.PLAYERS,1, pLevel.random.nextFloat() * 0.1F + 0.9F);
     }
 }

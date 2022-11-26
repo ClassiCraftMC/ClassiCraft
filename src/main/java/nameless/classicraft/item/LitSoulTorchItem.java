@@ -6,10 +6,13 @@ import nameless.classicraft.block.RealTorchBlock;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModConfigs;
 import nameless.classicraft.init.ModCreativeModeTabs;
+import nameless.classicraft.init.ModItems;
+import nameless.classicraft.util.LightUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
@@ -37,6 +40,12 @@ public class LitSoulTorchItem extends StandingAndWallBlockItem {
     @Override
     public String getDescriptionId() {
         return "item.classicraft.soul_torch_lit";
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
+        LightUtils.shiftItem(pPlayer, this.getDefaultInstance(), ModItems.SOUL_TORCH_UNLIT.get());
+        return super.use(pLevel, pPlayer, pUsedHand);
     }
 
     @Override

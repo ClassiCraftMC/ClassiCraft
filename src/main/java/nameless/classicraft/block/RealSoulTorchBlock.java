@@ -100,7 +100,6 @@ public class RealSoulTorchBlock extends AbstractLightBlock {
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        LightUtils.addFuel(pState, pLevel, pPos, pPlayer, pHand);
         return LightUtils.interactTorch(pLevel, pPos, pPlayer, pHand, this, Items.FLINT_AND_STEEL, SOUL_TORCH_BURN_TIME, SOUL_TORCH_INITIAL_BURN_TIME);
     }
 
