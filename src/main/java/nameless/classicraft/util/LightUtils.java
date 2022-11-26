@@ -80,17 +80,40 @@ public class LightUtils {
         pLevel.gameEvent(itemEntity, GameEvent.ENTITY_PLACE, pPos);
     }
 
-    public static void addFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand) {
+    public static InteractionResult addFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, int initialBurnTime, int fuelLevel, Block block, IntegerProperty burnTime) {
         int i = pState.getValue(AbstractLightBlock.getLevel());
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
-        if (i < 4 && ComposterBlock.COMPOSTABLES.containsKey(itemstack.getItem()) && !pLevel.isClientSide) {
+        if (ComposterBlock.COMPOSTABLES.containsKey(itemstack.getItem()) && !pLevel.isClientSide) {
             BlockState blockstate = addItem(pState, pLevel, pPos, itemstack);
             pLevel.levelEvent(1500, pPos, pState != blockstate ? 1 : 0);
             pPlayer.awardStat(Stats.ITEM_USED.get(itemstack.getItem()));
             if (!pPlayer.getAbilities().instabuild) {
                 itemstack.shrink(1);
             }
+            replaceBlockNeedFuel(pPos, pLevel, initialBurnTime, fuelLevel, block, burnTime);
         }
+        return InteractionResult.SUCCESS;
+    }
+
+    public static void replaceBlockNeedFuel(BlockPos pos, Level level,int initialBurnTime, int fuelLevel, Block block, IntegerProperty burnTime) {
+        level.setBlockAndUpdate(pos, block.defaultBlockState().setValue(burnTime, initialBurnTime).setValue(AbstractLightBlock.getLitState(), true).setValue(AbstractLightBlock.getLevel(), fuelLevel));
+        level.updateNeighborsAt(pos,block);
+    }
+
+    public static InteractionResult useAsFlint(BlockState pState,Level pLevel,BlockPos pPos, Player pPlayer,InteractionHand pHand, Block block, IntegerProperty totalBurnTime, int initialBurnTime) {
+        if(pState.getValue(AbstractLightBlock.getLevel()) <= 0) {
+            pLevel.playSound(null,pPos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.PLAYERS,1,pLevel.random.nextFloat() * 0.1F + 0.3F);
+            pPlayer.swing(pHand);
+            return InteractionResult.SUCCESS;
+        }
+        replaceBlockNeedFuel(pPos, pLevel, initialBurnTime ,pState.getValue(AbstractLightBlock.getLevel()), block, totalBurnTime);
+        pLevel.updateNeighborsAt(pPos,block);
+        pLevel.playSound(pPlayer,pPos,SoundEvents.FLINTANDSTEEL_USE,SoundSource.PLAYERS,1,0.9f);
+        if(!pPlayer.isCreative()) {
+            pPlayer.getItemInHand(pHand).setDamageValue(pPlayer.getItemInHand(pHand).getDamageValue() + 1);
+        }
+        pPlayer.swing(pHand);
+        return InteractionResult.SUCCESS;
     }
 
     public static void shiftItem(Player pPlayer, ItemStack pOldItem, Item pNewItem) {
@@ -138,7 +161,7 @@ public class LightUtils {
                 pLevel.gameEvent(pPlayer, GameEvent.BLOCK_PLACE, pPos);
             }
             pLevel.updateNeighborsAt(pPos, pBlock);
-            return InteractionResult.PASS;
+            return InteractionResult.SUCCESS;
         } else {
             return InteractionResult.PASS;
         }

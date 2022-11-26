@@ -100,7 +100,7 @@ public class RealTorchBlock extends AbstractLightBlock {
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        LightUtils.addFuel(pState, pLevel, pPos, pPlayer, pHand);
+        //LightUtils.addFuel(pState, pLevel, pPos, pPlayer, pHand);
         return LightUtils.interactTorch(pLevel, pPos, pPlayer, pHand, this, Items.FLINT_AND_STEEL, TORCH_BURN_TIME, TORCH_INITIAL_BURN_TIME);
     }
 
