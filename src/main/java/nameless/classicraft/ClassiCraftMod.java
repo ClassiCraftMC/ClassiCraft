@@ -1,9 +1,7 @@
 package nameless.classicraft;
 
 import com.mojang.logging.LogUtils;
-import nameless.classicraft.init.ModBlocks;
-import nameless.classicraft.init.ModConfigs;
-import nameless.classicraft.init.ModItems;
+import nameless.classicraft.init.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -24,5 +22,9 @@ public class ClassiCraftMod {
         ModConfigs.loadConfig(ModConfigs.SPEC, FMLPaths.CONFIGDIR.get().resolve("classicraft.toml"));
         ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
+        ModBiomeModifiers.BIOME_MODIFIER_SERIALIZERS.register(modEventBus);
+        ModConfiguredFeatures.CONFIGURED_FEATURE_REGISTRY.register(modEventBus);
+        ModFeatures.FEATURES.register(modEventBus);
+        ModPlacedFeatures.PLACED_FEATURE_REGISTRY.register(modEventBus);
     }
 }
