@@ -22,8 +22,8 @@ public class ReplaceAllFeature extends Feature<NoneFeatureConfiguration> {
     }
 
     @Override
-    public boolean place(NoneFeatureConfiguration p_204741_, WorldGenLevel p_204742_, ChunkGenerator p_204743_, RandomSource p_204744_, BlockPos p_204745_) {
-        return super.place(p_204741_, p_204742_, p_204743_, p_204744_, p_204745_);
+    public boolean place(NoneFeatureConfiguration pConfig, WorldGenLevel pLevel, ChunkGenerator pChunkGenerator, RandomSource pRandom, BlockPos pOrigin) {
+        return super.place(pConfig, pLevel, pChunkGenerator, pRandom, pOrigin);
     }
 
     @Override
