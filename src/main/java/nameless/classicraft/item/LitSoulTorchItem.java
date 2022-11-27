@@ -2,7 +2,7 @@ package nameless.classicraft.item;
 
 import nameless.classicraft.api.item.ItemStackAPI;
 import nameless.classicraft.block.AbstractLightBlock;
-import nameless.classicraft.block.RealTorchBlock;
+import nameless.classicraft.block.RealSoulTorchBlock;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModConfigs;
 import nameless.classicraft.init.ModItems;
@@ -81,7 +81,7 @@ public class LitSoulTorchItem extends StandingAndWallBlockItem {
         ItemStack pStack = pContext.getItemInHand();
         int burnTime;
         if(!pStack.getOrCreateTag().contains("burnTime")) {
-            burnTime = RealTorchBlock.getInitialBurnTime();
+            burnTime = RealSoulTorchBlock.getInitialBurnTime();
             if (pStack.getTag() != null) {
                 pStack.getTag().putInt("burnTime",burnTime);
             }
@@ -94,9 +94,9 @@ public class LitSoulTorchItem extends StandingAndWallBlockItem {
         if(state != null) {
             if (pContext.getLevel().isRainingAt(pContext.getClickedPos().above())) {
                 pContext.getLevel().playSound(null, pContext.getClickedPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.3f, pContext.getLevel().random.nextFloat() * 0.1F + 0.6F);
-                return state.setValue(AbstractLightBlock.getLitState(), false).setValue(RealTorchBlock.getBurnTime(), RealTorchBlock.getInitialBurnTime());
+                return state.setValue(AbstractLightBlock.getLitState(), false).setValue(RealSoulTorchBlock.getBurnTime(), RealSoulTorchBlock.getInitialBurnTime());
             } else {
-                return state.setValue(AbstractLightBlock.getLitState(), true).setValue(RealTorchBlock.getBurnTime(), RealTorchBlock.getInitialBurnTime());
+                return state.setValue(AbstractLightBlock.getLitState(), true).setValue(RealSoulTorchBlock.getBurnTime(), RealSoulTorchBlock.getInitialBurnTime());
             }
         }
         return null;

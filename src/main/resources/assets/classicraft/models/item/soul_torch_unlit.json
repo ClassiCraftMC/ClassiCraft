@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "classicraft:block/real_soul_torch_unlit"
+  }
+}

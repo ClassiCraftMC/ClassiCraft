@@ -1,7 +1,5 @@
 package nameless.classicraft.util;
 
-import it.unimi.dsi.fastutil.objects.Object2FloatMap;
-import it.unimi.dsi.fastutil.objects.Object2FloatOpenHashMap;
 import nameless.classicraft.api.item.ItemStackAPI;
 import nameless.classicraft.block.AbstractLightBlock;
 import nameless.classicraft.init.ModBlockProperties;

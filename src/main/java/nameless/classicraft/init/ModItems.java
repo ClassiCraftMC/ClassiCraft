@@ -1,6 +1,7 @@
 package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.item.LitSoulTorchItem;
 import nameless.classicraft.item.LitTorchItem;
 import nameless.classicraft.item.UnlitSoulTorchItem;
 import nameless.classicraft.item.UnlitTorchItem;
@@ -28,7 +29,7 @@ public class ModItems {
             register("torch_lit", LitTorchItem::new);
 
     public static final RegistryObject<Item> SOUL_TORCH_LIT =
-            register("soul_torch_lit", LitTorchItem::new);
+            register("soul_torch_lit", LitSoulTorchItem::new);
 
     public static final RegistryObject<Item> CLASSIC_CRAFT =
             register("classic_craft", () -> new Item(new Item.Properties()));

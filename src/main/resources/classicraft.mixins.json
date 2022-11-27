@@ -5,7 +5,9 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "classicraft.refmap.json",
   "mixins": [
-    "MixinBootstrap"
+    "MixinBootstrap",
+    "MixinForgeHooks",
+    "MixinItemEntity"
   ],
   "client": [
   ],

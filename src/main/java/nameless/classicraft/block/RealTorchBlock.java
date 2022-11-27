@@ -35,7 +35,6 @@ import java.util.function.ToIntFunction;
 @ParametersAreNonnullByDefault
 public class RealTorchBlock extends AbstractLightBlock {
 
-    protected static final int AABB_STANDING_OFFSET = 2;
     protected static final VoxelShape AABB = Block.box(6.0D, 0.0D, 6.0D, 10.0D, 10.0D, 10.0D);
     protected static final IntegerProperty TORCH_BURN_TIME = ModBlockProperties.TORCH_BURN_TIME;
     protected static final int TORCH_INITIAL_BURN_TIME = ModBlockProperties.TORCH_INITIAL_BURN_TIME;
@@ -100,7 +99,6 @@ public class RealTorchBlock extends AbstractLightBlock {
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        //LightUtils.addFuel(pState, pLevel, pPos, pPlayer, pHand);
         return LightUtils.interactTorch(pLevel, pPos, pPlayer, pHand, this, Items.FLINT_AND_STEEL, TORCH_BURN_TIME, TORCH_INITIAL_BURN_TIME);
     }
 

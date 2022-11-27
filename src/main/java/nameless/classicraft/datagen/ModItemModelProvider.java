@@ -95,6 +95,11 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     protected void addSkipItems()  {
-        skipItems(ModItems.TORCH_LIT.get(), ModItems.TORCH_UNLIT.get());
+        skipItems(
+                ModItems.TORCH_LIT.get(),
+                ModItems.TORCH_UNLIT.get(),
+                ModItems.SOUL_TORCH_LIT.get(),
+                ModItems.SOUL_TORCH_UNLIT.get()
+        );
     }
 }

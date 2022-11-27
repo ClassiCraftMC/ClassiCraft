@@ -35,7 +35,6 @@ import java.util.function.ToIntFunction;
 @ParametersAreNonnullByDefault
 public class RealSoulTorchBlock extends AbstractLightBlock {
 
-    protected static final int AABB_STANDING_OFFSET = 2;
     protected static final VoxelShape AABB = Block.box(6.0D, 0.0D, 6.0D, 10.0D, 10.0D, 10.0D);
     protected static final IntegerProperty SOUL_TORCH_BURN_TIME = ModBlockProperties.SOUL_TORCH_BURN_TIME;
     protected static final int SOUL_TORCH_INITIAL_BURN_TIME = ModBlockProperties.SOUL_TORCH_INITIAL_BURN_TIME;
