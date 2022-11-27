@@ -2,14 +2,16 @@ package nameless.classicraft.util;
 
 import nameless.classicraft.api.event.BlockDropEvent;
 import nameless.classicraft.api.event.ItemEntityTickEvent;
+import nameless.classicraft.block.AbstractLightBlock;
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -27,15 +29,69 @@ public class EventUtils {
         }
     }
 
-    public static void shiftRightTorch(PlayerInteractEvent.RightClickItem event, Item torchItem) {
+    public static void shiftRightItem(PlayerInteractEvent.RightClickItem event, Item torchItem, ItemStack newItem) {
         Player player = event.getEntity();
         ItemStack itemStack = player.getMainHandItem();
         if (itemStack.is(torchItem) && player.isShiftKeyDown()) {
-            ItemStack newItem = new ItemStack(Items.STICK);
             int oldCount = itemStack.getCount();
             player.getInventory().removeItem(itemStack);
             newItem.setCount(oldCount);
             player.getInventory().add(newItem);
+        }
+    }
+
+    public static void litBlock(PlayerInteractEvent.RightClickBlock event, Block blockChange, Item needItem, Block newBlock) {
+        BlockState blockState = event.getLevel().getBlockState(event.getPos());
+        ItemStack itemStack = event.getEntity().getMainHandItem();
+        if (blockState.is(blockChange)
+                && itemStack.is(needItem)
+                && blockState.getValue(AbstractLightBlock.getLitState())) {
+            itemStack.shrink(1);
+            event.getLevel().setBlockAndUpdate(event.getPos(), newBlock.defaultBlockState());
+            event.getLevel().updateNeighborsAt(event.getPos(), newBlock);
+        }
+    }
+
+    public static void litItem(PlayerInteractEvent.RightClickBlock event, Block litBlock, Item needLit, Item finalItem) {
+        BlockState blockState = event.getLevel().getBlockState(event.getPos());
+        ItemStack itemStack = event.getEntity().getMainHandItem();
+        if (blockState.is(litBlock)
+                && blockState.getValue(AbstractLightBlock.getLitState())
+                && itemStack.is(needLit)) {
+            int oldCount = itemStack.getCount();
+            event.getEntity().getInventory().removeItem(itemStack);
+            finalItem.getDefaultInstance().setCount(oldCount);
+            event.getEntity().getInventory().add(finalItem.getDefaultInstance());
+        }
+    }
+
+    public static void litItem(PlayerInteractEvent.RightClickItem event, Item fireStarter, Item needLit, Item finalItem) {
+        Player player = event.getEntity();
+        if (player != null) {
+            ItemStack firstItem = player.getOffhandItem();
+            ItemStack itemStack = event.getItemStack();
+            Level level = event.getLevel();
+            BlockPos pos = event.getPos();
+            if (itemStack.is(fireStarter)
+                    && firstItem.is(needLit)
+                    && !event.getLevel().isRainingAt(event.getPos().above(2))) {
+                level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
+                itemStack.setDamageValue(1);
+                int oldCount = firstItem.getCount();
+                player.getInventory().removeItem(firstItem);
+                finalItem.getDefaultInstance().setCount(oldCount);
+                player.getInventory().add(finalItem.getDefaultInstance());
+            }
+            if (itemStack.is(needLit)
+                    && firstItem.is(fireStarter)
+                    && !event.getLevel().isRainingAt(event.getPos().above(2))) {
+                level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.1F + 0.9F);
+                firstItem.setDamageValue(1);
+                int oldCount = itemStack.getCount();
+                player.getInventory().removeItem(itemStack);
+                finalItem.getDefaultInstance().setCount(oldCount);
+                player.getInventory().add(finalItem.getDefaultInstance());
+            }
         }
     }
 
