@@ -79,9 +79,9 @@ public class RealSoulTorchBlock extends AbstractLightBlock {
     private static ToIntFunction<BlockState> getLightFromState(){
         return (state) -> {
             if (state.getValue(LIT)) {
-                return 12;
-            }else {
                 return 10;
+            }else {
+                return 0;
             }
         };
     }

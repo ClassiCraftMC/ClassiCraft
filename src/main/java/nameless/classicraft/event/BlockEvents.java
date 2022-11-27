@@ -12,9 +12,11 @@ public class BlockEvents {
 
     @SubscribeEvent
     public static void blockDropItems(BlockDropEvent event) {
-        EventUtils.blockdrop(event, ModBlocks.REAL_TORCH.get(), Items.STICK, 1, 1);
-        EventUtils.blockdrop(event, ModBlocks.REAL_WALL_TORCH.get(), Items.STICK, 1, 1);
-        EventUtils.blockdrop(event, ModBlocks.REAL_SOUL_TORCH.get(), Items.STICK, 1, 1);
-        EventUtils.blockdrop(event, ModBlocks.REAL_SOUL_WALL_TORCH.get(), Items.STICK, 1, 1);
+        if (!event.getPlayer().isCreative()) {
+            EventUtils.blockdropAtOnce(event, ModBlocks.REAL_TORCH.get(), Items.STICK);
+            EventUtils.blockdropAtOnce(event, ModBlocks.REAL_WALL_TORCH.get(), Items.STICK);
+            EventUtils.blockdropAtOnce(event, ModBlocks.REAL_SOUL_TORCH.get(), Items.STICK);
+            EventUtils.blockdropAtOnce(event, ModBlocks.REAL_SOUL_WALL_TORCH.get(), Items.STICK);
+        }
     }
 }

@@ -17,13 +17,12 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class EventUtils {
 
-    public static void blockdrop(BlockDropEvent event, Block dropBlock, Item dropItem, int dropMin, int dropMax) {
+    public static void blockdropAtOnce(BlockDropEvent event, Block dropBlock, Item dropItem) {
         BlockState blockState = event.getState();
         Level level = event.getLevel();
         BlockPos pos = event.getPos();
         if (blockState.is(dropBlock)) {
-            ItemStack dropStack = new ItemStack(dropItem, level.getRandom().nextInt(dropMin,dropMax));
-            ItemEntity itemEntity = new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), dropStack);
+            ItemEntity itemEntity = new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), dropItem.getDefaultInstance());
             event.getLevel().addFreshEntity(itemEntity);
         }
     }

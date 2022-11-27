@@ -79,7 +79,7 @@ public class RealTorchBlock extends AbstractLightBlock {
     private static ToIntFunction<BlockState> getLightFromState(){
         return (state) -> {
             if (state.getValue(LIT)) {
-                return 17;
+                return 12;
             }else {
                 return 0;
             }
@@ -104,7 +104,7 @@ public class RealTorchBlock extends AbstractLightBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(LIT, TORCH_BURN_TIME, FULE_LEVEL);
+        pBuilder.add(LIT, TORCH_BURN_TIME);
     }
 
    public static IntegerProperty getBurnTime() {

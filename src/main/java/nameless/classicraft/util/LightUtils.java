@@ -60,11 +60,6 @@ public class LightUtils {
                 pLevel.scheduleTick(pPos, pBlock, TICK_INTERVAL);
             }
         }
-        if (pState.getValue(AbstractLightBlock.getLevel()) > 0) {
-            pLevel.setBlock(pPos, pState.cycle(AbstractLightBlock.getLevel()), 3);
-            pLevel.playSound((Player)null, pPos, SoundEvents.COMPOSTER_READY, SoundSource.BLOCKS, 1.0F, 1.0F);
-            pLevel.scheduleTick(pPos, pBlock, TICK_INTERVAL);
-        }
     }
 
     private static void changeToStick(Level pLevel, BlockPos pPos) {
