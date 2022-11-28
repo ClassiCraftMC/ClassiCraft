@@ -141,6 +141,7 @@ mixin {
 jar {
     from("LICENSE")
     exclude(".cache/**")
+    exclude("nameless/classicraft/datagen/**")
     manifest {
         attributes([
                 "Specification-Title"     : project.mod_id,
