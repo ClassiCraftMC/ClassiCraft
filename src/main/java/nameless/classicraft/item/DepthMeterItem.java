@@ -20,7 +20,7 @@ public class DepthMeterItem extends CompassItem {
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         BlockPos pos = pPlayer.getOnPos();
         pPlayer.sendSystemMessage(Component.translatable("info.classicraft.depth"));
-        pPlayer.sendSystemMessage(Component.literal(String.valueOf(pos.getZ())));
+        pPlayer.sendSystemMessage(Component.literal(String.valueOf(pos.getY())));
         return super.use(pLevel, pPlayer, pUsedHand);
     }
 
