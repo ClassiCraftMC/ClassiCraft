@@ -6,7 +6,7 @@
     "overrides": [
         { "predicate": { "angle": 0.000000 }, "model": "classicraft:item/depth_meter_08" },
         { "predicate": { "angle": 0.015625 }, "model": "classicraft:item/depth_meter_15" },
-        { "predicate": { "angle": 0.046875 }, "model": "classicraft:item/depth_meter_16" },
+        { "predicate": { "angle": 0.046875 }, "model": "classicraft:item/depth_meter_14" },
         { "predicate": { "angle": 0.078125 }, "model": "classicraft:item/depth_meter_14" },
         { "predicate": { "angle": 0.109375 }, "model": "classicraft:item/depth_meter_13" },
         { "predicate": { "angle": 0.140625 }, "model": "classicraft:item/depth_meter_12" },
