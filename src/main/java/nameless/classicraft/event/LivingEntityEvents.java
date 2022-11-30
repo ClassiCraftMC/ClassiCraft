@@ -26,7 +26,7 @@ public class LivingEntityEvents {
                     && ((Monster) entity).getTarget() instanceof Player
                     && !(((Monster) entity).getTarget() instanceof FakePlayer)
                     && ((Monster) entity).getTarget().getMainHandItem().is(ModItems.SOUL_TORCH_LIT.get())) {
-                ((Monster) entity).goalSelector
+                ((Monster) entity).targetSelector
                         .addGoal(1 ,
                                 new AvoidEntityGoal<>((PathfinderMob) entity, Player.class,
                                         1.0F,
