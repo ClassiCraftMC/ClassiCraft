@@ -17,7 +17,9 @@ public class ModLanguageProvider extends LanguageProvider {
     protected void addTranslations() {
         add(ModItems.TORCH_LIT.get(), "Lit Torch");
         add(ModItems.TORCH_UNLIT.get(), "Unlit Torch");
-        add(ModBlocks.REAL_WALL_TORCH.get(), "Real Wall Torch");
         add(ModBlocks.REAL_TORCH.get(), "Real Torch");
+        add("info.classicraft.burntime", "BurnTime");
+        add("info.classicraft.minutes", "Minutes");
+        add("info.classicraft.depth", "Depth");
     }
 }

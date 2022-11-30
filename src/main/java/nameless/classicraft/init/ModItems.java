@@ -34,6 +34,9 @@ public class ModItems {
     public static final RegistryObject<Item> DEBUG_TIME_STICK =
             register("debug_time_stick", DebugBugTimeStick::new);
 
+    public static final RegistryObject<Item> DEPTH_METER =
+            register("depth_meter", DepthMeterItem::new);
+
     /**
      * Used for registry items
      * @param name Items' registry name
