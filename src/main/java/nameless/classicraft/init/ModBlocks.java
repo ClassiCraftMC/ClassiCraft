@@ -1,10 +1,7 @@
 package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
-import nameless.classicraft.block.RealSoulTorchBlock;
-import nameless.classicraft.block.RealSoulWallTorchBlock;
-import nameless.classicraft.block.RealTorchBlock;
-import nameless.classicraft.block.RealWallTorchBlock;
+import nameless.classicraft.block.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -28,6 +25,9 @@ public class ModBlocks {
             register("real_wall_torch", RealWallTorchBlock::new);
     public static final RegistryObject<Block> REAL_SOUL_WALL_TORCH =
             register("real_soul_wall_torch", RealSoulWallTorchBlock::new);
+
+    public static final RegistryObject<Block> CHARCOAL_BLOCK =
+            register("charcoal_block", CharCoalBlock::new);
 
     /**
      * Used for registry blocks
