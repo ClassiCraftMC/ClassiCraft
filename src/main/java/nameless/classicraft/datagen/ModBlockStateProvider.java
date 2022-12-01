@@ -53,6 +53,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         skipBlock(ModBlocks.REAL_TORCH.get(),
                 ModBlocks.REAL_WALL_TORCH.get(),
                 ModBlocks.REAL_SOUL_TORCH.get(),
-                ModBlocks.REAL_SOUL_WALL_TORCH.get());
+                ModBlocks.REAL_SOUL_WALL_TORCH.get(),
+                ModBlocks.CACTUS_BALL.get());
     }
 }

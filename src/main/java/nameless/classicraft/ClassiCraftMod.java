@@ -26,5 +26,6 @@ public class ClassiCraftMod {
         ModConfiguredFeatures.CONFIGURED_FEATURE_REGISTRY.register(modEventBus);
         ModFeatures.FEATURES.register(modEventBus);
         ModPlacedFeatures.PLACED_FEATURE_REGISTRY.register(modEventBus);
+        ModEntities.ENTITIES.register(modEventBus);
     }
 }

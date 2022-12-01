@@ -1,13 +1,8 @@
 {
-  "parent": "block/cube",
+  "parent": "block/cross",
   "textures": {
-    "down": "classiccraft:blocks/cactus_ball",
-    "up": "classiccraft:blocks/cactus_ball",
-    "north": "classiccraft:blocks/cactus_ball",
-    "east": "classiccraft:blocks/cactus_ball",
-    "south": "classiccraft:blocks/cactus_ball",
-    "west": "classiccraft:blocks/cactus_ball",
-    "particle": "classiccraft:blocks/cactus_ball"
+    "cross": "classicraft:block/cactus_ball",
+    "particle": "classicraft:block/cactus_ball"
   },
-  "render_type": "solid"
+  "render_type": "cutout"
 }

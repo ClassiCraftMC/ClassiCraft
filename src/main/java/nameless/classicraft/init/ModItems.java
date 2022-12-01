@@ -2,7 +2,15 @@ package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.item.*;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.MobBucketItem;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -39,6 +47,34 @@ public class ModItems {
 
     public static final RegistryObject<Item> BIOME_COMPASS =
             register("biome_compass", BiomeCompass::new);
+
+    public static final RegistryObject<Item> TROUT =
+            food("trout", Foods.COD);
+
+    public static final RegistryObject<Item> COOKED_TROUT =
+            food("cooked_trout", Foods.COOKED_COD);
+
+    public static final RegistryObject<Item> TROUT_BUCKET =
+            registerMobBuckteItem(ModEntities.TROUT_ENTITY);
+
+    public static final RegistryObject<Item> TROUT_SPAWN_EGG =
+            registerSpawnEgg(ModEntities.TROUT_ENTITY, 0x5a867c, 0x6b9f93);
+
+    private static RegistryObject<Item> food(String name, FoodProperties foodData) {
+        return ITEMS.register(name, () -> new Item(new Item.Properties().food(foodData).tab(ModCreativeModeTabs.COMMON)));
+    }
+
+    private static <T extends EntityType<? extends Mob>> RegistryObject<Item> registerSpawnEgg(RegistryObject<T> entity, int color1, int color2) {
+        return register("spawn_egg/" + entity.getId().getPath(), () -> new ForgeSpawnEggItem(entity, color1, color2, new Item.Properties().tab(ModCreativeModeTabs.COMMON)));
+    }
+
+    private static <T extends EntityType<? extends Mob>> RegistryObject<Item> registerMobBuckteItem(RegistryObject<T> entity) {
+        return register("bucket/" + entity.getId().getPath(), () ->
+                new MobBucketItem(entity,
+                        () -> Fluids.WATER,
+                        () -> SoundEvents.BUCKET_EMPTY_FISH,
+                        new Item.Properties().tab(ModCreativeModeTabs.COMMON).stacksTo(1)));
+    }
 
     /**
      * Used for registry items

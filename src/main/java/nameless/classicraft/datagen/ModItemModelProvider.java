@@ -102,7 +102,9 @@ public class ModItemModelProvider extends ItemModelProvider {
                 ModItems.SOUL_TORCH_UNLIT.get(),
                 ModItems.DEPTH_METER.get(),
                 ModItems.DEBUG_TIME_STICK.get(),
-                ModItems.BIOME_COMPASS.get()
+                ModItems.BIOME_COMPASS.get(),
+                ModItems.TROUT_SPAWN_EGG.get(),
+                ModItems.TROUT_BUCKET.get()
         );
     }
 }

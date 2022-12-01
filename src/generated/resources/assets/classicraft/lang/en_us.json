@@ -1,5 +1,9 @@
 {
+  "block.classicraft.cactus_ball": "Cactus ball",
+  "block.classicraft.charcoal_block": "Charcoal Block",
+  "block.classicraft.quicksand": "Quicksand",
   "block.classicraft.real_torch": "Real Torch",
+  "block.classicraft.red_quicksand": "Red Quicksand",
   "info.classicraft.burntime": "BurnTime",
   "info.classicraft.depth.base_cloud": "'s base cloud",
   "info.classicraft.depth.bedrock": "'s bedrock",

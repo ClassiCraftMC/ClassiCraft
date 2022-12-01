@@ -19,6 +19,10 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModBlocks.REAL_TORCH.get(), "火把");
         add(ModItems.DEBUG_TIME_STICK.get(), "燃烧时间检测棒");
         add(ModItems.DEPTH_METER.get(), "深度计");
+        add(ModBlocks.QUICKSAND.get(), "流沙");
+        add(ModBlocks.RED_QUICKSAND.get(), "红流沙");
+        add(ModBlocks.CHARCOAL_BLOCK.get(), "木炭块");
+        add(ModBlocks.CACTUS_BALL.get(), "仙人球");
         add("info.classicraft.burntime", "燃烧时间");
         add("info.classicraft.minutes", "分钟");
         add("info.classicraft.depth.sky_land", "的天域");

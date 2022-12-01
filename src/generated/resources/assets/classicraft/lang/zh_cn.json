@@ -1,5 +1,9 @@
 {
+  "block.classicraft.cactus_ball": "仙人球",
+  "block.classicraft.charcoal_block": "木炭块",
+  "block.classicraft.quicksand": "流沙",
   "block.classicraft.real_torch": "火把",
+  "block.classicraft.red_quicksand": "红流沙",
   "info.classicraft.burntime": "燃烧时间",
   "info.classicraft.depth.base_cloud": "的低空",
   "info.classicraft.depth.bedrock": "的基岩层",

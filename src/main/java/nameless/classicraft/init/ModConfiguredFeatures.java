@@ -1,9 +1,12 @@
 package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.levelgen.QuickSandFeature;
 import nameless.classicraft.levelgen.ReplaceAllFeature;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
@@ -25,7 +28,6 @@ public class ModConfiguredFeatures {
            register("replace_all",
                     () -> new ConfiguredFeature<>(ModFeatures.REPLACE_ALL_FEATURE.get(),
                             NoneFeatureConfiguration.INSTANCE));
-
     public static final RegistryObject<ConfiguredFeature<?, ?>> CACTUS_BALL = register("cactus_ball",
             () -> new ConfiguredFeature<>(Feature.FLOWER,
                     new RandomPatchConfiguration(16, 3, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,

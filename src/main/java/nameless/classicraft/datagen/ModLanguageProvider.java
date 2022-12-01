@@ -6,7 +6,6 @@ import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 
-
 public class ModLanguageProvider extends LanguageProvider {
 
     public ModLanguageProvider(DataGenerator gen) {
@@ -20,6 +19,10 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.REAL_TORCH.get(), "Real Torch");
         add(ModItems.DEBUG_TIME_STICK.get(), "Debug Burn Time Stick");
         add(ModItems.DEPTH_METER.get(), "Depth Meter");
+        add(ModBlocks.QUICKSAND.get(), "Quicksand");
+        add(ModBlocks.RED_QUICKSAND.get(), "Red Quicksand");
+        add(ModBlocks.CHARCOAL_BLOCK.get(), "Charcoal Block");
+        add(ModBlocks.CACTUS_BALL.get(), "Cactus ball");
         add("info.classicraft.burntime", "BurnTime");
         add("info.classicraft.minutes", "minutes");
         add("info.classicraft.depth.sky_land", "'s sky land");
