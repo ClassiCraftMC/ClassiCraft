@@ -2,6 +2,7 @@ package nameless.classicraft.datagen;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.init.ModBlocks;
+import nameless.classicraft.init.ModEntities;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
@@ -23,6 +24,14 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModBlocks.RED_QUICKSAND.get(), "红流沙");
         add(ModBlocks.CHARCOAL_BLOCK.get(), "木炭块");
         add(ModBlocks.CACTUS_BALL.get(), "仙人球");
+        add(ModBlocks.ROSE.get(), "玫瑰");
+        add(ModEntities.TROUT_ENTITY.get(), "鳟鱼");
+        add(ModEntities.OCEAN_SHARK_ENTITY.get(), "海洋鲨鱼");
+        add(ModItems.TROUT_SPAWN_EGG.get(), "鳟鱼刷怪蛋");
+        add(ModItems.TROUT.get(), "鳟鱼");
+        add(ModItems.COOKED_TROUT.get(), "熟鳟鱼");
+        add(ModItems.TALLOW.get(), "油脂");
+        add(ModBlocks.TALLOW_BLOCK.get(), "油脂块");
         add("info.classicraft.burntime", "燃烧时间");
         add("info.classicraft.minutes", "分钟");
         add("info.classicraft.depth.sky_land", "的天域");

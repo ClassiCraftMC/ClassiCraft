@@ -4,6 +4,10 @@
   "block.classicraft.quicksand": "Quicksand",
   "block.classicraft.real_torch": "Real Torch",
   "block.classicraft.red_quicksand": "Red Quicksand",
+  "block.classicraft.rose": "Rose",
+  "block.classicraft.tallow_block": "Tallow Block",
+  "entity.classicraft.ocean_shark": "Ocean Shark",
+  "entity.classicraft.trout": "Trout",
   "info.classicraft.burntime": "BurnTime",
   "info.classicraft.depth.base_cloud": "'s base cloud",
   "info.classicraft.depth.bedrock": "'s bedrock",
@@ -17,8 +21,12 @@
   "info.classicraft.depth.void": "'s void",
   "info.classicraft.height": "At now is in the height ",
   "info.classicraft.minutes": "minutes",
+  "item.classicraft.cooked_trout": "Cooked Trout",
   "item.classicraft.debug_time_stick": "Debug Burn Time Stick",
   "item.classicraft.depth_meter": "Depth Meter",
+  "item.classicraft.spawn_egg.trout": "Trout Spawn Egg",
+  "item.classicraft.tallow": "Tallow",
   "item.classicraft.torch_lit": "Lit Torch",
-  "item.classicraft.torch_unlit": "Unlit Torch"
+  "item.classicraft.torch_unlit": "Unlit Torch",
+  "item.classicraft.trout": "Trout"
 }

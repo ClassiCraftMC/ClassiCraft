@@ -104,7 +104,8 @@ public class ModItemModelProvider extends ItemModelProvider {
                 ModItems.DEBUG_TIME_STICK.get(),
                 ModItems.BIOME_COMPASS.get(),
                 ModItems.TROUT_SPAWN_EGG.get(),
-                ModItems.TROUT_BUCKET.get()
+                ModItems.TROUT_BUCKET.get(),
+                ModItems.OCEAN_SHARK_SPAWN_EGG.get()
         );
     }
 }

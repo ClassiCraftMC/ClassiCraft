@@ -2,6 +2,7 @@ package nameless.classicraft.datagen;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.init.ModBlocks;
+import nameless.classicraft.init.ModEntities;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
@@ -23,6 +24,14 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.RED_QUICKSAND.get(), "Red Quicksand");
         add(ModBlocks.CHARCOAL_BLOCK.get(), "Charcoal Block");
         add(ModBlocks.CACTUS_BALL.get(), "Cactus ball");
+        add(ModBlocks.ROSE.get(), "Rose");
+        add(ModEntities.TROUT_ENTITY.get(), "Trout");
+        add(ModEntities.OCEAN_SHARK_ENTITY.get(), "Ocean Shark");
+        add(ModItems.TROUT_SPAWN_EGG.get(), "Trout Spawn Egg");
+        add(ModItems.TROUT.get(), "Trout");
+        add(ModItems.COOKED_TROUT.get(), "Cooked Trout");
+        add(ModItems.TALLOW.get(), "Tallow");
+        add(ModBlocks.TALLOW_BLOCK.get(), "Tallow Block");
         add("info.classicraft.burntime", "BurnTime");
         add("info.classicraft.minutes", "minutes");
         add("info.classicraft.depth.sky_land", "'s sky land");
