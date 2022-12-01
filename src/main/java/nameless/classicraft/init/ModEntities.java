@@ -1,6 +1,7 @@
 package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.entity.OceanSharkEntity;
 import nameless.classicraft.entity.TroutEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -21,6 +22,11 @@ public class ModEntities {
             register("trout", EntityType.Builder.of(TroutEntity::new, MobCategory.WATER_AMBIENT)
                     .sized(0.5F, 0.3F)
                     .clientTrackingRange(4));
+
+    public static final RegistryObject<EntityType<OceanSharkEntity>> OCEAN_SHARK_ENTITY =
+            register("ocean_shark", EntityType.Builder.of(OceanSharkEntity::new, MobCategory.WATER_AMBIENT)
+                    .sized(1.4f,1.1f)
+                    .clientTrackingRange(10));
 
     public static <E extends Entity> RegistryObject<EntityType<E>> register(String name, EntityType.Builder<E> builder) {
         return register(name, builder, true);

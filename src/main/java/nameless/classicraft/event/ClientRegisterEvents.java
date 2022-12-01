@@ -1,7 +1,10 @@
 package nameless.classicraft.event;
 
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.client.model.OceanSharkModel;
+import nameless.classicraft.client.renderer.OceanSharkRenderer;
 import nameless.classicraft.client.renderer.TroutRenderer;
+import nameless.classicraft.entity.OceanSharkEntity;
 import nameless.classicraft.entity.TroutEntity;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModEntities;
@@ -29,17 +32,21 @@ public class ClientRegisterEvents {
     @SubscribeEvent
     public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntities.TROUT_ENTITY.get(), TroutEntity.registerAttributes().build());
+        event.put(ModEntities.OCEAN_SHARK_ENTITY.get(), OceanSharkEntity.registerAttributes().build());
     }
 
     @SubscribeEvent
     public static void registerEntityRenderer(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(ModEntities.TROUT_ENTITY.get(),
                 TroutRenderer::new);
+        event.registerEntityRenderer(ModEntities.OCEAN_SHARK_ENTITY.get(),
+                OceanSharkRenderer::new);
     }
 
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(ModEntityModelLayers.TROUT, CodModel::createBodyLayer);
+        event.registerLayerDefinition(ModEntityModelLayers.OCEAN_SHARK, OceanSharkModel::create);
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)

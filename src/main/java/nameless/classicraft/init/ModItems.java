@@ -57,6 +57,9 @@ public class ModItems {
     public static final RegistryObject<Item> TROUT_BUCKET =
             registerMobBuckteItem(ModEntities.TROUT_ENTITY);
 
+    public static final RegistryObject<Item> OCEAN_SHARK_SPAWN_EGG =
+            registerSpawnEgg(ModEntities.OCEAN_SHARK_ENTITY, 0x302521, 0xe4edf2);
+
     public static final RegistryObject<Item> TROUT_SPAWN_EGG =
             registerSpawnEgg(ModEntities.TROUT_ENTITY, 0x5a867c, 0x6b9f93);
 
