@@ -2,7 +2,7 @@ package nameless.classicraft.entity.ai.behavior;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
-import nameless.classicraft.entity.CustomNpc;
+import nameless.classicraft.entity.npc.CustomNpc;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;

@@ -1,4 +1,4 @@
-package nameless.classicraft.entity;
+package nameless.classicraft.entity.npc;
 
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.nbt.CompoundTag;
