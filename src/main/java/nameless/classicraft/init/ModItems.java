@@ -37,6 +37,9 @@ public class ModItems {
     public static final RegistryObject<Item> DEPTH_METER =
             register("depth_meter", DepthMeterItem::new);
 
+    public static final RegistryObject<Item> BIOME_COMPASS =
+            register("biome_compass", BiomeCompass::new);
+
     /**
      * Used for registry items
      * @param name Items' registry name

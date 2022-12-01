@@ -17,18 +17,20 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModItems.TORCH_LIT.get(), "点燃的火把");
         add(ModItems.TORCH_UNLIT.get(), "熄灭的火把");
         add(ModBlocks.REAL_TORCH.get(), "火把");
+        add(ModItems.DEBUG_TIME_STICK.get(), "燃烧时间检测棒");
+        add(ModItems.DEPTH_METER.get(), "深度计");
         add("info.classicraft.burntime", "燃烧时间");
         add("info.classicraft.minutes", "分钟");
-        add("info.classicraft.depth.sky_land", "当前所在天域高度: ");
-        add("info.classicraft.depth.sky", "当前所在高空高度: ");
-        add("info.classicraft.depth.cloud", "当前所在云层高度: ");
-        add("info.classicraft.depth.base_cloud", "当前所在低空高度: ");
-        add("info.classicraft.depth.sea_level", "当前所在海平面高度: ");
-        add("info.classicraft.depth.surface", "当前所在地表高度: ");
-        add("info.classicraft.depth.underground", "当前所在地底深度: ");
-        add("info.classicraft.depth.deep_underground", "当前所在深层地底深度: ");
-        add("info.classicraft.depth.bedrock", "当前所在基岩层深度: ");
-        add("info.classicraft.depth.void.sky", "当前所在虚空高度: ");
-        add("info.classicraft.depth.void.underground", "当前所在虚空深度: ");
+        add("info.classicraft.depth.sky_land", "的天域");
+        add("info.classicraft.depth.sky", "的高空");
+        add("info.classicraft.depth.cloud", "的云层");
+        add("info.classicraft.depth.base_cloud", "的低空");
+        add("info.classicraft.depth.sea_level", "的海平面");
+        add("info.classicraft.depth.surface", "的地表");
+        add("info.classicraft.depth.underground", "的地底");
+        add("info.classicraft.depth.deep_underground", "的深层地底");
+        add("info.classicraft.depth.bedrock", "的基岩层");
+        add("info.classicraft.depth.void", "的虚空");
+        add("info.classicraft.height", "当前位于高度");
     }
 }

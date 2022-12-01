@@ -19,37 +19,52 @@ public class DepthMeterItem extends CompassItem {
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         int height = pPlayer.getOnPos().getY();
         if (height > 257 && height < 350) {
-            pPlayer.displayClientMessage(Component.translatable("info.classicraft.depth.sky_land").append(String.valueOf(height)), true);
+            pPlayer.displayClientMessage(Component.translatable("info.classicraft.height")
+                    .append(String.valueOf(height)).append(Component.translatable("info.classicraft.depth.sky_land")), true);
         }
         if (height > 193 && height < 256) {
-            pPlayer.displayClientMessage(Component.translatable("info.classicraft.depth.sky").append(String.valueOf(height)), true);
+            pPlayer.displayClientMessage(Component.translatable("info.classicraft.height")
+                    .append(String.valueOf(height)).append(Component.translatable("info.classicraft.depth.sky")), true);
         }
         if (height > 181 && height < 192) {
-            pPlayer.displayClientMessage(Component.translatable("info.classicraft.depth.cloud").append(String.valueOf(height)), true);
+            pPlayer.displayClientMessage(Component.translatable("info.classicraft.height")
+                    .append(String.valueOf(height))
+                    .append(Component.translatable("info.classicraft.depth.cloud")), true);
         }
         if (height > 117 && height < 180) {
-            pPlayer.displayClientMessage(Component.translatable("info.classicraft.depth.base_cloud").append(String.valueOf(height)), true);
+            pPlayer.displayClientMessage(Component.translatable("info.classicraft.height")
+                    .append(String.valueOf(height))
+                    .append(Component.translatable("info.classicraft.depth.base_cloud")), true);
         }
         if (height == 63) {
-            pPlayer.displayClientMessage(Component.translatable("info.classicraft.depth.sea_level").append(String.valueOf(height)), true);
+            pPlayer.displayClientMessage(Component.translatable("info.classicraft.height")
+                    .append(String.valueOf(height))
+                    .append(Component.translatable("info.classicraft.depth.sea_level")), true);
         }
         if (height > 52 && height < 62 || height > 64 && height < 116) {
-            pPlayer.displayClientMessage(Component.translatable("info.classicraft.depth.surface").append(String.valueOf(height)), true);
+            pPlayer.displayClientMessage(Component.translatable("info.classicraft.height")
+                    .append(String.valueOf(height))
+                    .append(Component.translatable("info.classicraft.depth.surface")), true);
         }
         if (height > 4 && height < 51) {
-            pPlayer.displayClientMessage(Component.translatable("info.classicraft.depth.underground").append(String.valueOf(height)), true);
+            pPlayer.displayClientMessage(Component.translatable("info.classicraft.height")
+                    .append(String.valueOf(height))
+                    .append(Component.translatable("info.classicraft.depth.underground")), true);
         }
         if (height > -60 && height < 3) {
-            pPlayer.displayClientMessage(Component.translatable("info.classicraft.depth.deep_underground").append(String.valueOf(height)), true);
+            pPlayer.displayClientMessage(Component.translatable("info.classicraft.height")
+                    .append(String.valueOf(height))
+                    .append(Component.translatable("info.classicraft.depth.deep_underground")), true);
         }
         if (height > -64 && height < -61) {
-            pPlayer.displayClientMessage(Component.translatable("info.classicraft.depth.bedrock").append(String.valueOf(height)), true);
+            pPlayer.displayClientMessage(Component.translatable("info.classicraft.height")
+                    .append(String.valueOf(height))
+                    .append(Component.translatable("info.classicraft.depth.bedrock")), true);
         }
-        if (height > 320) {
-            pPlayer.displayClientMessage(Component.translatable("info.classicraft.depth.void.sky").append(String.valueOf(height)), true);
-        }
-        if (height < -64) {
-            pPlayer.displayClientMessage(Component.translatable("info.classicraft.depth.void.underground").append(String.valueOf(height)), true);
+        if (height > 320 || height < -64) {
+            pPlayer.displayClientMessage(Component.translatable("info.classicraft.height")
+                    .append(String.valueOf(height))
+                    .append(Component.translatable("info.classicraft.depth.void")), true);
         }
         return super.use(pLevel, pPlayer, pUsedHand);
     }
