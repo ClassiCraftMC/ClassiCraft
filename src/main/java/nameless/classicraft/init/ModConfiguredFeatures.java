@@ -33,6 +33,11 @@ public class ModConfiguredFeatures {
                     new RandomPatchConfiguration(16, 3, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
                             new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.CACTUS_BALL.get()))))));
 
+    public static final RegistryObject<ConfiguredFeature<?, ?>> ROSE = register("rose",
+            () -> new ConfiguredFeature<>(Feature.FLOWER,
+                    new RandomPatchConfiguration(16, 3, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                            new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.ROSE.get()))))));
+
     private static <T extends ConfiguredFeature<?, ?>> RegistryObject<T> register(String name, Supplier<T> feature) {
         return  CONFIGURED_FEATURE_REGISTRY.register(name.toLowerCase(Locale.ROOT), feature);
     }

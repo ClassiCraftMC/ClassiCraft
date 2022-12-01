@@ -2,9 +2,13 @@ package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.block.*;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FlowerBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -44,6 +48,9 @@ public class ModBlocks {
             registerDefault("red_quicksand",
                     () -> new QuickSandBlock(11098145));
 
+    public static final RegistryObject<Block> ROSE =
+            registerDefault("rose", () -> new FlowerBlock(MobEffects.DIG_SPEED, 2
+            , BlockBehaviour.Properties.copy(Blocks.DANDELION)));
     /**
      * Hanlde Default Register
      * @param name registry name

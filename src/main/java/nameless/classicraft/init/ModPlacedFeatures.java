@@ -31,6 +31,11 @@ public class ModPlacedFeatures {
                     List.of(RarityFilter.onAverageOnceEvery(16),
                             InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome())));
 
+    public static final RegistryObject<PlacedFeature> ROSE_PLACED = register("rose_placed",
+            () -> new PlacedFeature(ModConfiguredFeatures.ROSE.getHolder().get(),
+                    List.of(RarityFilter.onAverageOnceEvery(16),
+                            InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome())));
+
     private static <T extends PlacedFeature> RegistryObject<T> register(String name, Supplier<T> feature) {
         return  PLACED_FEATURE_REGISTRY.register(name.toLowerCase(Locale.ROOT), feature);
     }
