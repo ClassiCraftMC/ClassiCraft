@@ -28,6 +28,7 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModEntities.TROUT_ENTITY.get(), "鳟鱼");
         add(ModEntities.OCEAN_SHARK_ENTITY.get(), "海洋鲨鱼");
         add(ModItems.TROUT_SPAWN_EGG.get(), "鳟鱼刷怪蛋");
+        add(ModItems.TROUT_BUCKET.get(), "鳟鱼桶");
         add(ModItems.TROUT.get(), "鳟鱼");
         add(ModItems.COOKED_TROUT.get(), "熟鳟鱼");
         add(ModItems.TALLOW.get(), "油脂");

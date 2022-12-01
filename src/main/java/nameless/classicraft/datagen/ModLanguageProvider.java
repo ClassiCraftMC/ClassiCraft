@@ -32,6 +32,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.COOKED_TROUT.get(), "Cooked Trout");
         add(ModItems.TALLOW.get(), "Tallow");
         add(ModBlocks.TALLOW_BLOCK.get(), "Tallow Block");
+        add(ModItems.TROUT_BUCKET.get(), "Trout Bucket");
         add("info.classicraft.burntime", "BurnTime");
         add("info.classicraft.minutes", "minutes");
         add("info.classicraft.depth.sky_land", "'s sky land");
