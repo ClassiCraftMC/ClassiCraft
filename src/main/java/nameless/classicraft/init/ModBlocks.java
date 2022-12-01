@@ -33,6 +33,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> CHARCOAL_BLOCK =
             registerDefault("charcoal_block", CharCoalBlock::new);
 
+    public static final RegistryObject<Block> CACTUS_BALL =
+            registerDefault("cactus_ball", CactusBallBlock::new);
+
     /**
      * Hanlde Default Register
      * @param name registry name
