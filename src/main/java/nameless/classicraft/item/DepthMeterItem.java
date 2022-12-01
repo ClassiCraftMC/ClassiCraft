@@ -1,7 +1,6 @@
 package nameless.classicraft.item;
 
 import nameless.classicraft.init.ModCreativeModeTabs;
-import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -18,9 +17,40 @@ public class DepthMeterItem extends CompassItem {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-        BlockPos pos = pPlayer.getOnPos();
-        pPlayer.sendSystemMessage(Component.translatable("info.classicraft.depth"));
-        pPlayer.sendSystemMessage(Component.literal(String.valueOf(pos.getY())));
+        int height = pPlayer.getOnPos().getY();
+        if (height > 257 && height < 350) {
+            pPlayer.displayClientMessage(Component.translatable("info.classicraft.depth.sky_land").append(String.valueOf(height)), true);
+        }
+        if (height > 193 && height < 256) {
+            pPlayer.displayClientMessage(Component.translatable("info.classicraft.depth.sky").append(String.valueOf(height)), true);
+        }
+        if (height > 181 && height < 192) {
+            pPlayer.displayClientMessage(Component.translatable("info.classicraft.depth.cloud").append(String.valueOf(height)), true);
+        }
+        if (height > 117 && height < 180) {
+            pPlayer.displayClientMessage(Component.translatable("info.classicraft.depth.base_cloud").append(String.valueOf(height)), true);
+        }
+        if (height == 63) {
+            pPlayer.displayClientMessage(Component.translatable("info.classicraft.depth.sea_level").append(String.valueOf(height)), true);
+        }
+        if (height > 52 && height < 62 || height > 64 && height < 116) {
+            pPlayer.displayClientMessage(Component.translatable("info.classicraft.depth.surface").append(String.valueOf(height)), true);
+        }
+        if (height > 4 && height < 51) {
+            pPlayer.displayClientMessage(Component.translatable("info.classicraft.depth.underground").append(String.valueOf(height)), true);
+        }
+        if (height > -60 && height < 3) {
+            pPlayer.displayClientMessage(Component.translatable("info.classicraft.depth.deep_underground").append(String.valueOf(height)), true);
+        }
+        if (height > -64 && height < -61) {
+            pPlayer.displayClientMessage(Component.translatable("info.classicraft.depth.bedrock").append(String.valueOf(height)), true);
+        }
+        if (height > 320) {
+            pPlayer.displayClientMessage(Component.translatable("info.classicraft.depth.void.sky").append(String.valueOf(height)), true);
+        }
+        if (height < -64) {
+            pPlayer.displayClientMessage(Component.translatable("info.classicraft.depth.void.underground").append(String.valueOf(height)), true);
+        }
         return super.use(pLevel, pPlayer, pUsedHand);
     }
 

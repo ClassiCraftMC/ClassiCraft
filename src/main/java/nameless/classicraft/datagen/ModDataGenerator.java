@@ -26,5 +26,7 @@ public class ModDataGenerator {
                 new ModBlockStateProvider(generator, helper, ModBlocks.BLOCKS));
         generator.addProvider(event.includeClient(),
                 new ModLanguageProvider(generator));
+        generator.addProvider(event.includeClient(),
+                new ModLanguageProviderZh(generator));
     }
 }

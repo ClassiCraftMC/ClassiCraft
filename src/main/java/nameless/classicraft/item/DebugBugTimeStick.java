@@ -29,14 +29,14 @@ public class DebugBugTimeStick extends Item {
         if (!level.isClientSide) {
             if (player != null) {
                 if (block instanceof RealTorchBlock) {
-                    player.sendSystemMessage(Component.translatable("info.classicraft.burntime"));
-                    player.sendSystemMessage(Component.literal(blockState.getValue(RealTorchBlock.getBurnTime()).toString()));
-                    player.sendSystemMessage(Component.translatable("info.classicraft.minutes"));
+                    player.displayClientMessage(Component.translatable("info.classicraft.burntime")
+                            .append(blockState.getValue(RealTorchBlock.getBurnTime()).toString())
+                            .append(Component.translatable("info.classicraft.minutes")), true);
                 }
                 if (block instanceof RealSoulTorchBlock) {
-                    player.sendSystemMessage(Component.translatable("info.classicraft.burntime"));
-                    player.sendSystemMessage(Component.literal(blockState.getValue(RealSoulTorchBlock.getBurnTime()).toString()));
-                    player.sendSystemMessage(Component.translatable("info.classicraft.minutes"));
+                    player.displayClientMessage(Component.translatable("info.classicraft.burntime")
+                            .append(blockState.getValue(RealSoulTorchBlock.getBurnTime()).toString())
+                            .append(Component.translatable("info.classicraft.minutes")), true);
                 }
             }
         }

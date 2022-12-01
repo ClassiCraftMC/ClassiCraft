@@ -99,7 +99,9 @@ public class ModItemModelProvider extends ItemModelProvider {
                 ModItems.TORCH_LIT.get(),
                 ModItems.TORCH_UNLIT.get(),
                 ModItems.SOUL_TORCH_LIT.get(),
-                ModItems.SOUL_TORCH_UNLIT.get()
+                ModItems.SOUL_TORCH_UNLIT.get(),
+                ModItems.DEPTH_METER.get(),
+                ModItems.DEBUG_TIME_STICK.get()
         );
     }
 }

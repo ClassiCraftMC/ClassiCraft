@@ -25,12 +25,9 @@ import net.minecraft.world.level.gameevent.GameEvent;
 
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.Map;
 
 public class HarvestCrops extends Behavior<CustomNpc> {
 
-    private static final int HARVEST_DURATION = 200;
-    public static final float SPEED_MODIFIER = 0.5F;
     @Nullable
     private BlockPos aboveFarmlandPos;
     private long nextOkStartTime;
