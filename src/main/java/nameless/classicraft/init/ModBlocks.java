@@ -2,12 +2,16 @@ package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.block.*;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Locale;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class ModBlocks {
@@ -27,16 +31,59 @@ public class ModBlocks {
             register("real_soul_wall_torch", RealSoulWallTorchBlock::new);
 
     public static final RegistryObject<Block> CHARCOAL_BLOCK =
-            register("charcoal_block", CharCoalBlock::new);
+            registerDefault("charcoal_block", CharCoalBlock::new);
 
     /**
-     * Used for registry blocks
-     * @param name Blocks' registry name
-     * @param item Block Instance
+     * Hanlde Default Register
+     * @param name registry name
+     * @param blockSupplier blocks
+     * @param blockItemFactory items
+     * @return new Instance
+     * @param <T> sth extends Block
+     */
+    private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockSupplier, @Nullable Function<T, ? extends BlockItem> blockItemFactory) {
+        return register(ModBlocks.BLOCKS, ModItems.ITEMS, name, blockSupplier, blockItemFactory);
+    }
+
+    /**
+     * Handle the default registry block
+     * @param name registry name
+     * @param blockSupplier blocks
+     * @return new Instance
+     * @param <T> sth extends Block
+     */
+    private static <T extends Block> RegistryObject<T> registerDefault(String name, Supplier<T> blockSupplier) {
+        return register(name, blockSupplier, block -> new BlockItem(block, new Item.Properties().tab(ModCreativeModeTabs.COMMON)));
+    }
+
+    /**
+     * used for registry default BlockItems
+     * @param blocks Blocks' Instance
+     * @param items Items' Instance
+     * @param name BlockItems' registry name
+     * @param blockSupplier supplier with Blocks
+     * @param blockItemFactory ItemProperties
      * @return new RegistryObject<Block>
      * @param <T> sth extends Block
      */
-    private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> item) {
-        return BLOCKS.register(name.toLowerCase(Locale.ROOT), item);
+    public static <T extends Block> RegistryObject<T> register(DeferredRegister<Block> blocks, DeferredRegister<Item> items, String name, Supplier<T> blockSupplier, @Nullable Function<T, ? extends BlockItem> blockItemFactory) {
+        final String actualName = name.toLowerCase(Locale.ROOT);
+        final RegistryObject<T> block = blocks.register(actualName, blockSupplier);
+        if (blockItemFactory != null) {
+            items.register(actualName, () -> blockItemFactory.apply(block.get()));
+        }
+        return block;
     }
+
+    /**
+     * Used for registry Block
+     * @param name Blocks' registry name
+     * @param block Block Instance
+     * @return new RegistryObject<Block>
+     * @param <T> sth extends Block
+     */
+    private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> block) {
+        return BLOCKS.register(name.toLowerCase(Locale.ROOT), block);
+    }
+
 }
