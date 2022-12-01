@@ -5,10 +5,9 @@ import nameless.classicraft.block.*;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FlowerBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -54,6 +53,58 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> TALLOW_BLOCK =
             registerDefault("tallow_block", TallowBlock::new);
+
+    public static final RegistryObject<Block> MOSSY_BRICKS =
+            registerDefault("mossy_bricks", () ->
+                    new Block(BlockBehaviour.Properties
+                            .of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> MOSSY_BRICKS_STAIR =
+            registerDefault("mossy_bricks_stair", () ->
+                    new StairBlock(MOSSY_BRICKS.get().defaultBlockState(),
+                            BlockBehaviour.Properties
+                            .of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> MOSSY_BRICKS_WALL =
+            registerDefault("mossy_bricks_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.copy(MOSSY_BRICKS.get())));
+
+    public static final RegistryObject<Block> MOSSY_BRICKS_SLAB =
+            registerDefault("mossy_bricks_slab", () ->
+                    new SlabBlock(BlockBehaviour.Properties
+                            .of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> CRACKED_BRICKS =
+            registerDefault("cracked_bricks", () ->
+                    new Block(BlockBehaviour.Properties
+                            .of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> CRACKED_BRICKS_STAIR =
+            registerDefault("cracked_bricks_stair", () ->
+                    new StairBlock(CRACKED_BRICKS.get().defaultBlockState(),
+                            BlockBehaviour.Properties
+                            .of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> CRACKED_BRICKS_WALL =
+            registerDefault("cracked_bricks_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.copy(CRACKED_BRICKS.get())));
+
+    public static final RegistryObject<Block> CRACKED_BRICKS_SLAB =
+            registerDefault("cracked_bricks_slab", () ->
+                    new SlabBlock(BlockBehaviour.Properties
+                            .of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)));
 
     /**
      * Hanlde Default Register

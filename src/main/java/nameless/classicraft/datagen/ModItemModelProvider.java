@@ -1,6 +1,7 @@
 package nameless.classicraft.datagen;
 
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -105,7 +106,9 @@ public class ModItemModelProvider extends ItemModelProvider {
                 ModItems.BIOME_COMPASS.get(),
                 ModItems.TROUT_SPAWN_EGG.get(),
                 ModItems.TROUT_BUCKET.get(),
-                ModItems.OCEAN_SHARK_SPAWN_EGG.get()
+                ModItems.OCEAN_SHARK_SPAWN_EGG.get(),
+                ModBlocks.ROSE.get().asItem(),
+                ModBlocks.CACTUS_BALL.get().asItem()
         );
     }
 }

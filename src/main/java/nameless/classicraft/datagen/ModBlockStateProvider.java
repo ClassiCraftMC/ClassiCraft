@@ -3,7 +3,9 @@ package nameless.classicraft.datagen;
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.init.ModBlocks;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.DeferredRegister;
@@ -54,6 +56,13 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 ModBlocks.REAL_WALL_TORCH.get(),
                 ModBlocks.REAL_SOUL_TORCH.get(),
                 ModBlocks.REAL_SOUL_WALL_TORCH.get(),
-                ModBlocks.CACTUS_BALL.get());
+                ModBlocks.CACTUS_BALL.get(),
+                ModBlocks.ROSE.get(),
+                ModBlocks.CRACKED_BRICKS_STAIR.get(),
+                ModBlocks.MOSSY_BRICKS_STAIR.get(),
+                ModBlocks.MOSSY_BRICKS_SLAB.get(),
+                ModBlocks.CRACKED_BRICKS_SLAB.get(),
+                ModBlocks.CRACKED_BRICKS_WALL.get(),
+                ModBlocks.MOSSY_BRICKS_WALL.get());
     }
 }
