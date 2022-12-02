@@ -61,8 +61,8 @@ public class ModBlocks {
                             .requiresCorrectToolForDrops()
                             .strength(1.5F, 6.0F)));
 
-    public static final RegistryObject<Block> MOSSY_BRICKS_STAIR =
-            registerDefault("mossy_bricks_stair", () ->
+    public static final RegistryObject<Block> MOSSY_BRICKS_STAIRS =
+            registerDefault("mossy_bricks_stairs", () ->
                     new StairBlock(MOSSY_BRICKS.get().defaultBlockState(),
                             BlockBehaviour.Properties
                             .of(Material.STONE)
@@ -87,8 +87,8 @@ public class ModBlocks {
                             .requiresCorrectToolForDrops()
                             .strength(1.5F, 6.0F)));
 
-    public static final RegistryObject<Block> CRACKED_BRICKS_STAIR =
-            registerDefault("cracked_bricks_stair", () ->
+    public static final RegistryObject<Block> CRACKED_BRICKS_STAIRS =
+            registerDefault("cracked_bricks_stairs", () ->
                     new StairBlock(CRACKED_BRICKS.get().defaultBlockState(),
                             BlockBehaviour.Properties
                             .of(Material.STONE)

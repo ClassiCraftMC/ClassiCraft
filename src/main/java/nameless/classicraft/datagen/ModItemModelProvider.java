@@ -108,7 +108,9 @@ public class ModItemModelProvider extends ItemModelProvider {
                 ModItems.TROUT_BUCKET.get(),
                 ModItems.OCEAN_SHARK_SPAWN_EGG.get(),
                 ModBlocks.ROSE.get().asItem(),
-                ModBlocks.CACTUS_BALL.get().asItem()
+                ModBlocks.CACTUS_BALL.get().asItem(),
+                ModBlocks.MOSSY_BRICKS_WALL.get().asItem(),
+                ModBlocks.CRACKED_BRICKS_WALL.get().asItem()
         );
     }
 }
