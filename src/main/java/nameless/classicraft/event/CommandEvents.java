@@ -18,17 +18,15 @@ public class CommandEvents {
     public static void onServerStaring(RegisterCommandsEvent event) {
         var dispatcher = event.getDispatcher();
 
-        String valueKey = "value";
-
         dispatcher.register(Commands.literal(ClassiCraftMod.MOD_ID).then(
-                Commands.literal("sanValue").then(
+                Commands.literal("addSan").then(
                         Commands.argument("san", FloatArgumentType.floatArg())
                                 .requires(source -> source.hasPermission(2))
                                 .executes(c -> {
                                             float san = c.getArgument("san", Float.class);
                                             Player player = Minecraft.getInstance().player;
                                             if (player != null) {
-                                                ((ISanHandler) player).reduceSan(san);
+                                                ((ISanHandler) player).regenSan(san);
                                                 c.getSource().sendSuccess(
                                                         Component.translatable("设置成功，当前为: %.1f".formatted(san)),
                                                         false);

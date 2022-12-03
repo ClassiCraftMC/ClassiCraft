@@ -9,6 +9,10 @@ public class SanUtils {
     public static boolean checkSanExist() {
         Player player = Minecraft.getInstance().player;
         assert player != null;
-        return ((ISanHandler) player).getSan() > 0;
+        if (player.isCreative()) {
+            return true;
+        } else {
+            return ((ISanHandler) player).getSan() > 0;
+        }
     }
 }
