@@ -29,6 +29,17 @@ public class EventUtils {
         }
     }
 
+    public static void blockdropRandom(BlockDropEvent event, Block dropBlock, Item dropItem) {
+        BlockState blockState = event.getState();
+        Level level = event.getLevel();
+        BlockPos pos = event.getPos();
+        if (blockState.is(dropBlock)) {
+            ItemStack itemStack = new ItemStack(dropItem, event.getLevel().getRandom().nextInt(1, 2));
+            ItemEntity itemEntity = new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), itemStack);
+            event.getLevel().addFreshEntity(itemEntity);
+        }
+    }
+
     public static void shiftRightItem(PlayerInteractEvent.RightClickItem event, Item torchItem, ItemStack newItem) {
         Player player = event.getEntity();
         ItemStack itemStack = player.getMainHandItem();
