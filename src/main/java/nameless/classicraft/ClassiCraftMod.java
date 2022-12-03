@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 public class ClassiCraftMod {
 
     public static final String MOD_ID = "classicraft";
+    public static final String NETWORK_VERSION = "1.0";
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public ClassiCraftMod() {
