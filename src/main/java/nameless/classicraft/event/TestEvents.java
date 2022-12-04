@@ -16,6 +16,7 @@ public class TestEvents {
 
     @SubscribeEvent
     public static void changeLooseRock(ItemEntityTickEvent event) {
+        /**
         ItemEntity entity = event.getEntity();
         if (((ISeasonState) entity.getLevel()).getSeason()
                 == Season.SubSeason.EARLY_AUTUMN.getSeason()) {
@@ -26,6 +27,6 @@ public class TestEvents {
                     }
                 }
             }
-        }
+        }*/
     }
 }

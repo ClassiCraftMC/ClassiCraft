@@ -63,6 +63,9 @@ public class ModItems {
     public static final RegistryObject<Item> TROUT_SPAWN_EGG =
             registerSpawnEgg(ModEntities.TROUT_ENTITY, 0x5a867c, 0x6b9f93);
 
+    public static final RegistryObject<Item> LIVING_DEAD_SPAWN_EGG =
+            registerSpawnEgg(ModEntities.LIVING_DEAD, 0x5a867c, 0x6b9f93);
+
     public static final RegistryObject<Item> TALLOW =
             register("tallow", () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.COMMON)));
 

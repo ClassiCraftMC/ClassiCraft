@@ -1,11 +1,13 @@
 package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.entity.LivingDeadEntity;
 import nameless.classicraft.entity.OceanSharkEntity;
 import nameless.classicraft.entity.TroutEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.monster.Zombie;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -22,6 +24,11 @@ public class ModEntities {
             register("trout", EntityType.Builder.of(TroutEntity::new, MobCategory.WATER_AMBIENT)
                     .sized(0.5F, 0.3F)
                     .clientTrackingRange(4));
+
+    public static final RegistryObject<EntityType<LivingDeadEntity>> LIVING_DEAD =
+            register("living_dead", EntityType.Builder.<LivingDeadEntity>of(LivingDeadEntity::new, MobCategory.MONSTER)
+                    .sized(0.6F, 1.95F)
+                    .clientTrackingRange(8));
 
     public static final RegistryObject<EntityType<OceanSharkEntity>> OCEAN_SHARK_ENTITY =
             register("ocean_shark", EntityType.Builder.of(OceanSharkEntity::new, MobCategory.WATER_AMBIENT)
