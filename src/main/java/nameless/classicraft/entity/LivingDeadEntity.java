@@ -20,6 +20,7 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.animal.Turtle;
+import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.ZombifiedPiglin;
 import net.minecraft.world.entity.npc.AbstractVillager;
@@ -30,11 +31,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
 import org.jetbrains.annotations.Nullable;
 
-public class LivingDeadEntity extends Monster {
+public class LivingDeadEntity extends Monster implements Enemy {
 
     public static final EntityDataAccessor<Integer> VARIANT =
             SynchedEntityData.defineId(LivingDeadEntity.class, EntityDataSerializers.INT);
-    public static final int MAX_VARIANTS = 200;
+    public static final int MAX_VARIANTS = 10;
 
     public LivingDeadEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -77,7 +78,7 @@ public class LivingDeadEntity extends Monster {
     @Nullable
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
-        int i = pLevel.getRandom().nextInt(200);
+        int i = pLevel.getRandom().nextInt(10);
         this.setVariant(i);
         return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
     }

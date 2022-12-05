@@ -14,7 +14,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class LivingDeadEyesLayer<T extends LivingDeadEntity, M extends HumanoidModel<T>> extends EyesLayer<T, M> {
 
     private static final RenderType LIVING_DEAD_EYES =
-            RenderType.eyes(new ResourceLocation(ClassiCraftMod.MOD_ID, "textures/entity/living_dead/living_dead_eye.png"));
+            RenderType.eyes(new ResourceLocation(ClassiCraftMod.MOD_ID, "textures/entity/living_dead/living_dead_e.png"));
 
     public LivingDeadEyesLayer(RenderLayerParent<T, M> pRenderer) {
         super(pRenderer);
