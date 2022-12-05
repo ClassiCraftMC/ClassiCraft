@@ -16,6 +16,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.Locale;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class ModItems {
@@ -69,8 +70,21 @@ public class ModItems {
     public static final RegistryObject<Item> TALLOW =
             register("tallow", () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.COMMON)));
 
+    public static final RegistryObject<Item> COOKED_EGG =
+            food("cooked_egg", Foods.COOKED_COD);
+
+    public static final RegistryObject<Item> NETHER_MUSHROOM_STEW =
+            food("nether_mushroom_stew", Foods.MUSHROOM_STEW);
+
+    public static final RegistryObject<Item> ROTTEN_FOOD =
+            food("rotten_food", p -> p.food(new FoodProperties.Builder().build()));
+
     private static RegistryObject<Item> food(String name, FoodProperties foodData) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().food(foodData).tab(ModCreativeModeTabs.COMMON)));
+    }
+
+    private static RegistryObject<Item> food(String name, Function<Item.Properties, Item.Properties> func) {
+        return ITEMS.register(name, () -> new Item(func.apply(new Item.Properties().tab(ModCreativeModeTabs.COMMON))));
     }
 
     private static <T extends EntityType<? extends Mob>> RegistryObject<Item> registerSpawnEgg(RegistryObject<T> entity, int color1, int color2) {
