@@ -16,6 +16,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 
+import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -34,7 +35,12 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     private static String name(Item item) {
-        return ForgeRegistries.ITEMS.getKey(item).getPath();
+        ResourceLocation identifier = ForgeRegistries.ITEMS.getKey(item);
+        if (identifier == null) {
+            return null;
+        }else {
+            return identifier.getPath();
+        }
     }
 
     @Override
