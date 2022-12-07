@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 
 @OnlyIn(Dist.CLIENT)
 public class LivingDeadEyesLayer<T extends LivingDeadEntity, M extends HumanoidModel<T>> extends EyesLayer<T, M> {
@@ -21,7 +22,7 @@ public class LivingDeadEyesLayer<T extends LivingDeadEntity, M extends HumanoidM
     }
 
     @Override
-    public RenderType renderType() {
+    public @NotNull RenderType renderType() {
         return LIVING_DEAD_EYES;
     }
 }
