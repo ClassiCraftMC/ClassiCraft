@@ -1,6 +1,7 @@
 package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.levelgen.LevelSurfaceFeature;
 import nameless.classicraft.levelgen.ReplaceAllFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
@@ -16,4 +17,7 @@ public class ModFeatures {
     public static final RegistryObject<ReplaceAllFeature> REPLACE_ALL_FEATURE =
             FEATURES.register("replace_all", () ->
                     new ReplaceAllFeature(NoneFeatureConfiguration.CODEC.stable()));
+
+    public static final RegistryObject<LevelSurfaceFeature> LEVEL_SURFACE_FEATURE =
+            FEATURES.register("level_surface", LevelSurfaceFeature::new);
 }

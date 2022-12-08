@@ -106,6 +106,27 @@ public class ModBlocks {
                             .requiresCorrectToolForDrops()
                             .strength(1.5F, 6.0F)));
 
+    public static final RegistryObject<Block> ANDESITE_PEBBLE =
+            registerDefault("andesite_pebble", StonePeddleBlock::new);
+
+    public static final RegistryObject<Block> COBBLESTONE_PEBBLE =
+            registerDefault("cobblestone_pebble", StonePeddleBlock::new);
+
+    public static final RegistryObject<Block> DIORITE_PEBBLE =
+            registerDefault("diorite_pebble", StonePeddleBlock::new);
+
+    public static final RegistryObject<Block> GRANITE_PEBBLE =
+            registerDefault("granite_pebble", StonePeddleBlock::new);
+
+    public static final RegistryObject<Block> RED_STONE_PEBBLE =
+            registerDefault("red_stone_pebble", StonePeddleBlock::new);
+
+    public static final RegistryObject<Block> SANDSTONE_PEBBLE =
+            registerDefault("sandstone_pebble", StonePeddleBlock::new);
+
+    public static final RegistryObject<Block> TWIGS =
+            registerDefault("twigs", TwigsBlock::new);
+
     /**
      * Hanlde Default Register
      * @param name registry name

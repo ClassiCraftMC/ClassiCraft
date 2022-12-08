@@ -4,10 +4,7 @@ import nameless.classicraft.ClassiCraftMod;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
-import net.minecraft.world.level.levelgen.placement.BiomeFilter;
-import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.RarityFilter;
+import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -35,6 +32,12 @@ public class ModPlacedFeatures {
             () -> new PlacedFeature(ModConfiguredFeatures.ROSE.getHolder().get(),
                     List.of(RarityFilter.onAverageOnceEvery(16),
                             InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome())));
+
+    public static final RegistryObject<PlacedFeature> LEVEL_SURFACE_PLACED =
+            register("level_surface_placed",
+                    () -> new PlacedFeature(ModConfiguredFeatures.LEVEL_SURFACE.getHolder().get(),
+                            List.of(CountPlacement.of(5), InSquarePlacement.spread(),
+                                    PlacementUtils.HEIGHTMAP_WORLD_SURFACE)));
 
     private static <T extends PlacedFeature> RegistryObject<T> register(String name, Supplier<T> feature) {
         return  PLACED_FEATURE_REGISTRY.register(name.toLowerCase(Locale.ROOT), feature);

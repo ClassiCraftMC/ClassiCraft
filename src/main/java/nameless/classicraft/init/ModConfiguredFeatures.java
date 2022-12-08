@@ -35,6 +35,9 @@ public class ModConfiguredFeatures {
                     new RandomPatchConfiguration(16, 3, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
                             new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.ROSE.get()))))));
 
+    public static final RegistryObject<ConfiguredFeature<?, ?>> LEVEL_SURFACE =
+            register("level_surface", () -> new ConfiguredFeature<>(ModFeatures.LEVEL_SURFACE_FEATURE.get(), NoneFeatureConfiguration.INSTANCE));
+
     private static <T extends ConfiguredFeature<?, ?>> RegistryObject<T> register(String name, Supplier<T> feature) {
         return  CONFIGURED_FEATURE_REGISTRY.register(name.toLowerCase(Locale.ROOT), feature);
     }
