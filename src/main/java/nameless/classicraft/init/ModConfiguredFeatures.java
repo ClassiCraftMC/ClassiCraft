@@ -38,6 +38,9 @@ public class ModConfiguredFeatures {
     public static final RegistryObject<ConfiguredFeature<?, ?>> LEVEL_SURFACE =
             register("level_surface", () -> new ConfiguredFeature<>(ModFeatures.LEVEL_SURFACE_FEATURE.get(), NoneFeatureConfiguration.INSTANCE));
 
+    public static final RegistryObject<ConfiguredFeature<?, ?>> TWIG_SURFACE =
+            register("twig_surface", () -> new ConfiguredFeature<>(ModFeatures.TWIG_SURFACE_FEATURE.get(), NoneFeatureConfiguration.INSTANCE));
+
     private static <T extends ConfiguredFeature<?, ?>> RegistryObject<T> register(String name, Supplier<T> feature) {
         return  CONFIGURED_FEATURE_REGISTRY.register(name.toLowerCase(Locale.ROOT), feature);
     }

@@ -39,6 +39,12 @@ public class ModPlacedFeatures {
                             List.of(CountPlacement.of(5), InSquarePlacement.spread(),
                                     PlacementUtils.HEIGHTMAP_WORLD_SURFACE)));
 
+    public static final RegistryObject<PlacedFeature> TWIG_SURFACE_PLACED =
+            register("twig_surface_placed",
+                    () -> new PlacedFeature(ModConfiguredFeatures.TWIG_SURFACE.getHolder().get(),
+                            List.of(CountPlacement.of(5), InSquarePlacement.spread(),
+                                    PlacementUtils.HEIGHTMAP_WORLD_SURFACE)));
+
     private static <T extends PlacedFeature> RegistryObject<T> register(String name, Supplier<T> feature) {
         return  PLACED_FEATURE_REGISTRY.register(name.toLowerCase(Locale.ROOT), feature);
     }
