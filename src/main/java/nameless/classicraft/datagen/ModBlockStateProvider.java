@@ -63,6 +63,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 ModBlocks.MOSSY_BRICKS_SLAB.get(),
                 ModBlocks.CRACKED_BRICKS_SLAB.get(),
                 ModBlocks.CRACKED_BRICKS_WALL.get(),
-                ModBlocks.MOSSY_BRICKS_WALL.get());
+                ModBlocks.MOSSY_BRICKS_WALL.get(),
+                ModBlocks.ANDESITE_PEBBLE.get(),
+                ModBlocks.COBBLESTONE_PEBBLE.get(),
+                ModBlocks.DIORITE_PEBBLE.get(),
+                ModBlocks.GRANITE_PEBBLE.get(),
+                ModBlocks.RED_STONE_PEBBLE.get(),
+                ModBlocks.SANDSTONE_PEBBLE.get(),
+                ModBlocks.TWIGS.get()
+        );
     }
 }

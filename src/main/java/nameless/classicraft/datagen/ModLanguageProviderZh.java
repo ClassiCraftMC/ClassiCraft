@@ -46,5 +46,14 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add("info.classicraft.depth.bedrock", "的基岩层");
         add("info.classicraft.depth.void", "的虚空");
         add("info.classicraft.height", "当前位于高度");
+        add("level.classicraft.fresh", "新鲜的");
+        add("level.classicraft.stale", "陈旧的");
+        add("level.classicraft.spoiled", "变质的");
+        add("level.classicraft.rotten", "腐坏的");
+        add("info.classicraft.rot", "%s天后腐烂");
+        add("info.classicraft.rotting_speed", "腐烂速度：%s");
+        add("info.classicraft.shift_press", "按下shift键显示更多信息");
+        add("info.classicraft.food.nutrition", "营养价值");
+        add("info.classicraft.food.saturation", "恢复价值");
     }
 }

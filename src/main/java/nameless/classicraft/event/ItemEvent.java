@@ -32,13 +32,13 @@ public class ItemEvent {
         FoodProperties foodData = food.getFoodProperties();
         if (itemStack.isEdible()) {
             if (!Screen.hasShiftDown()) {
-                toolTip.add(Component.translatable("按下shift键显示更多信息").withStyle(ChatFormatting.ITALIC));
+                toolTip.add(Component.translatable("info.classicraft.shift_press").withStyle(ChatFormatting.ITALIC));
             } else {
                 if (foodData != null) {
                     int nutrition = foodData.getNutrition();
                     float satur = foodData.getSaturationModifier();
-                    toolTip.add(Component.translatable("营养价值:" + nutrition).withStyle(ChatFormatting.WHITE));
-                    toolTip.add(Component.translatable("恢复价值:" + satur).withStyle(ChatFormatting.WHITE));
+                    toolTip.add(Component.translatable("info.classicraft.food.nutrition" + ":" + nutrition).withStyle(ChatFormatting.WHITE));
+                    toolTip.add(Component.translatable("info.classicraft.food.saturation" + ":" + satur).withStyle(ChatFormatting.WHITE));
                 }
             }
         }

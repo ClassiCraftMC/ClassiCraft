@@ -46,5 +46,14 @@ public class ModLanguageProvider extends LanguageProvider {
         add("info.classicraft.depth.bedrock", "'s bedrock");
         add("info.classicraft.depth.void", "'s void");
         add("info.classicraft.height", "At now is in the height ");
+        add("level.classicraft.fresh", "Fresh ");
+        add("level.classicraft.stale", "Stale ");
+        add("level.classicraft.spoiled", "Spoiled ");
+        add("level.classicraft.rotten", "Rotten ");
+        add("info.classicraft.rot", "It will rotten after %s day");
+        add("info.classicraft.rotting_speed", "Rotting Speed: %s");
+        add("info.classicraft.shift_press", "Press Shift key to show more info");
+        add("info.classicraft.food.nutrition", "Nutrition");
+        add("info.classicraft.food.saturation", "Saturation");
     }
 }
