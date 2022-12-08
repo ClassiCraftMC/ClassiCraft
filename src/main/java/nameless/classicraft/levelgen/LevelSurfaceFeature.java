@@ -27,7 +27,15 @@ public class LevelSurfaceFeature extends Feature<NoneFeatureConfiguration> {
             .put(Blocks.TERRACOTTA, ModBlocks.RED_STONE_PEBBLE)
             .put(Blocks.SAND, ModBlocks.SANDSTONE_PEBBLE)
             .put(Blocks.RED_SAND, ModBlocks.RED_STONE_PEBBLE)
-            .put(Blocks.DIRT, ModBlocks.TWIGS)
+            .put(Blocks.JUNGLE_LEAVES, ModBlocks.TWIGS)
+            .put(Blocks.OAK_LEAVES, ModBlocks.TWIGS)
+            .put(Blocks.SPRUCE_LEAVES, ModBlocks.TWIGS)
+            .put(Blocks.DARK_OAK_LEAVES, ModBlocks.TWIGS)
+            .put(Blocks.ACACIA_LEAVES, ModBlocks.TWIGS)
+            .put(Blocks.BIRCH_LEAVES, ModBlocks.TWIGS)
+            .put(Blocks.AZALEA_LEAVES, ModBlocks.TWIGS)
+            .put(Blocks.FLOWERING_AZALEA_LEAVES, ModBlocks.TWIGS)
+            .put(Blocks.MANGROVE_LEAVES, ModBlocks.TWIGS)
             .build()
     );
 
