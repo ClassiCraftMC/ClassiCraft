@@ -1,6 +1,7 @@
 package nameless.classicraft;
 
 import com.mojang.logging.LogUtils;
+import nameless.classicraft.event.RegisterEvents;
 import nameless.classicraft.init.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -30,5 +31,6 @@ public class ClassiCraftMod {
         ModPlacedFeatures.PLACED_FEATURE_REGISTRY.register(modEventBus);
          */
         ModEntities.ENTITIES.register(modEventBus);
+        modEventBus.addListener(RegisterEvents::registerCreativeModeTab);
     }
 }
