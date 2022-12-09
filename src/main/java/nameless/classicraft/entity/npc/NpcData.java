@@ -2,7 +2,7 @@ package nameless.classicraft.entity.npc;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.npc.VillagerData;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerType;
@@ -14,11 +14,11 @@ public class NpcData {
 
     private static final int[] NEXT_LEVEL_XP_THRESHOLDS = new int[]{0, 10, 70, 150, 250};
     public static final Codec<NpcData> CODEC = RecordCodecBuilder.create((p_35570_) -> {
-        return p_35570_.group(Registry.VILLAGER_TYPE.byNameCodec().fieldOf("type").orElseGet(() -> {
+        return p_35570_.group(BuiltInRegistries.VILLAGER_TYPE.byNameCodec().fieldOf("type").orElseGet(() -> {
             return VillagerType.PLAINS;
         }).forGetter((p_150024_) -> {
             return p_150024_.getType();
-        }), Registry.VILLAGER_PROFESSION.byNameCodec().fieldOf("profession").orElseGet(() -> {
+        }), BuiltInRegistries.VILLAGER_PROFESSION.byNameCodec().fieldOf("profession").orElseGet(() -> {
             return VillagerProfession.NONE;
         }).forGetter((p_150022_) -> {
             return p_150022_.getProfession();

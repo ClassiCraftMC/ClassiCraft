@@ -2,7 +2,6 @@ package nameless.classicraft.item;
 
 import nameless.classicraft.block.RealSoulTorchBlock;
 import nameless.classicraft.block.RealTorchBlock;
-import nameless.classicraft.init.ModCreativeModeTabs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
@@ -16,7 +15,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class DebugBugTimeStick extends Item {
 
     public DebugBugTimeStick() {
-        super(new Properties().tab(ModCreativeModeTabs.COMMON));
+        super(new Properties());
     }
 
     @Override

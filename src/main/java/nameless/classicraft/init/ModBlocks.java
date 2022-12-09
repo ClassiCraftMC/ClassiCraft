@@ -147,7 +147,7 @@ public class ModBlocks {
      * @param <T> sth extends Block
      */
     private static <T extends Block> RegistryObject<T> registerDefault(String name, Supplier<T> blockSupplier) {
-        return register(name, blockSupplier, block -> new BlockItem(block, new Item.Properties().tab(ModCreativeModeTabs.COMMON)));
+        return register(name, blockSupplier, block -> new BlockItem(block, new Item.Properties()));
     }
 
     /**

@@ -8,6 +8,7 @@ import nameless.classicraft.init.ModConfigs;
 import nameless.classicraft.init.ModItems;
 import nameless.classicraft.util.LightUtils;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -32,7 +33,8 @@ public class LitSoulTorchItem extends StandingAndWallBlockItem {
     public LitSoulTorchItem() {
         super(ModBlocks.REAL_SOUL_TORCH.get(),
                 ModBlocks.REAL_SOUL_WALL_TORCH.get(),
-                new Properties().stacksTo(64));
+                new Properties().stacksTo(64),
+                Direction.DOWN);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package nameless.classicraft.item;
 
-import nameless.classicraft.init.ModCreativeModeTabs;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -12,7 +11,7 @@ import net.minecraft.world.level.Level;
 public class DepthMeterItem extends CompassItem {
 
     public DepthMeterItem() {
-        super(new Properties().tab(ModCreativeModeTabs.COMMON).stacksTo(1));
+        super(new Properties().stacksTo(1));
     }
 
     @Override

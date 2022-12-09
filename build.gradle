@@ -28,7 +28,7 @@ println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty '
 
 minecraft {
 
-    mappings channel: 'parchment', version: '2022.11.06-1.19.2'
+    mappings channel: 'official', version: '1.19.3'
 
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -123,13 +123,9 @@ repositories {
 dependencies {
     implementation 'org.projectlombok:lombok:1.18.24'
     implementation 'org.jetbrains:annotations:23.0.0'
-    minecraft 'net.minecraftforge:forge:1.19.2-43.1.52'
+    minecraft 'net.minecraftforge:forge:1.19.3-44.0.0'
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-
-    implementation fg.deobf('curse.maven:tough-as-nails-246391:3871450')
-    implementation fg.deobf('curse.maven:serene-seasons-291874:4037228')
-    implementation fg.deobf('curse.maven:jei-238222:4068188')
 }
 
 mixin {

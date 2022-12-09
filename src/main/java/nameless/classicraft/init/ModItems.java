@@ -68,7 +68,7 @@ public class ModItems {
             registerSpawnEgg(ModEntities.LIVING_DEAD, 0x5a867c, 0x6b9f93);
 
     public static final RegistryObject<Item> TALLOW =
-            register("tallow", () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.COMMON)));
+            register("tallow", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> COOKED_EGG =
             food("cooked_egg", Foods.COOKED_COD);
@@ -80,15 +80,15 @@ public class ModItems {
             food("rotten_food", p -> p.food(new FoodProperties.Builder().build()));
 
     private static RegistryObject<Item> food(String name, FoodProperties foodData) {
-        return ITEMS.register(name, () -> new Item(new Item.Properties().food(foodData).tab(ModCreativeModeTabs.COMMON)));
+        return ITEMS.register(name, () -> new Item(new Item.Properties().food(foodData)));
     }
 
     private static RegistryObject<Item> food(String name, Function<Item.Properties, Item.Properties> func) {
-        return ITEMS.register(name, () -> new Item(func.apply(new Item.Properties().tab(ModCreativeModeTabs.COMMON))));
+        return ITEMS.register(name, () -> new Item(func.apply(new Item.Properties())));
     }
 
     private static <T extends EntityType<? extends Mob>> RegistryObject<Item> registerSpawnEgg(RegistryObject<T> entity, int color1, int color2) {
-        return register("spawn_egg/" + entity.getId().getPath(), () -> new ForgeSpawnEggItem(entity, color1, color2, new Item.Properties().tab(ModCreativeModeTabs.COMMON)));
+        return register("spawn_egg/" + entity.getId().getPath(), () -> new ForgeSpawnEggItem(entity, color1, color2, new Item.Properties()));
     }
 
     private static <T extends EntityType<? extends Mob>> RegistryObject<Item> registerMobBuckteItem(RegistryObject<T> entity) {
@@ -96,7 +96,7 @@ public class ModItems {
                 new MobBucketItem(entity,
                         () -> Fluids.WATER,
                         () -> SoundEvents.BUCKET_EMPTY_FISH,
-                        new Item.Properties().tab(ModCreativeModeTabs.COMMON).stacksTo(1)));
+                        new Item.Properties().stacksTo(1)));
     }
 
     /**

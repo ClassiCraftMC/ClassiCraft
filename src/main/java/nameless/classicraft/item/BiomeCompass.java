@@ -1,6 +1,5 @@
 package nameless.classicraft.item;
 
-import nameless.classicraft.init.ModCreativeModeTabs;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
@@ -14,7 +13,7 @@ import net.minecraft.world.level.biome.Biome;
 public class BiomeCompass extends CompassItem {
 
     public BiomeCompass() {
-        super(new Properties().tab(ModCreativeModeTabs.COMMON).stacksTo(1));
+        super(new Properties().stacksTo(1));
     }
 
     @Override

@@ -1,7 +1,5 @@
 package nameless.classicraft.levelgen;
 
-import java.util.Map;
-import java.util.function.Supplier;
 import com.google.common.base.Suppliers;
 import com.google.common.collect.ImmutableMap;
 import nameless.classicraft.init.ModBlocks;
@@ -14,6 +12,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+
+import java.util.Map;
+import java.util.function.Supplier;
 
 public class LevelSurfaceFeature extends Feature<NoneFeatureConfiguration> {
 

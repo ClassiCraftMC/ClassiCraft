@@ -16,8 +16,8 @@ public class KnappingButton extends Button {
     private final ResourceLocation texture;
     private final SoundEvent sound;
 
-    public KnappingButton(int pX, int pY, int pWidth, int pHeight, ResourceLocation texture, SoundEvent sound) {
-        super(pX, pY, pWidth, pHeight, Component.empty(), pButton -> {});
+    protected KnappingButton(int pX, int pY, int pWidth, int pHeight, CreateNarration narration, ResourceLocation texture, SoundEvent sound) {
+        super(pX, pY, pWidth, pHeight, Component.empty(), pButton -> {}, narration);
         this.texture = texture;
         this.sound = sound;
     }
@@ -39,9 +39,9 @@ public class KnappingButton extends Button {
     public void renderButton(@NotNull PoseStack matrixStack, int mouseX, int mouseY, float partialTicks) {
         if (visible) {
             RenderSystem.setShaderTexture(0, texture);
-            isHovered = mouseX >= x && mouseY >= y && mouseX < x + width && mouseY < y + height;
+            isHovered = mouseX >= getX() && mouseY >= getY() && mouseX < getX() + width && mouseY < getY() + height;
 
-            blit(matrixStack, x, y, 0, 0, 16, 16, 16, 16);
+            blit(matrixStack, getX(), getY(), 0, 0, 16, 16, 16, 16);
         }
     }
 }
