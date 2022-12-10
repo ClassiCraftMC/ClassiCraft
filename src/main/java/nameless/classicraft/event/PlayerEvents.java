@@ -1,15 +1,32 @@
 package nameless.classicraft.event;
 
+import nameless.classicraft.block.StonePebbleBlock;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
+import nameless.classicraft.init.ModTags;
 import nameless.classicraft.util.EventUtils;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
 public class PlayerEvents {
+
+    @SubscribeEvent
+    public static void polishStone(PlayerInteractEvent.LeftClickBlock event) {
+        Player player = event.getEntity();
+        Block block = player.getBlockStateOn().getBlock();
+        ItemStack itemStack = player.getMainHandItem();
+        if (block instanceof StonePebbleBlock) {
+            if (itemStack.is(ModTags.Items.STONE_PEBBLES)) {
+
+            }
+        }
+    }
 
     @SubscribeEvent
     public static void rightClickBlock(PlayerInteractEvent.RightClickBlock event) {

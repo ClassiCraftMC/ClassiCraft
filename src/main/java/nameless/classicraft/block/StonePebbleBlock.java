@@ -18,11 +18,11 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class StonePeddleBlock extends Block {
+public class StonePebbleBlock extends Block {
 
     public static final VoxelShape SHAPE = box(6, 0, 6, 10, 1, 10);
 
-    public StonePeddleBlock() {
+    public StonePebbleBlock() {
         super(Properties.of(Material.DIRT).sound(SoundType.STONE).strength(0.15f).noCollission().noOcclusion());
     }
 
