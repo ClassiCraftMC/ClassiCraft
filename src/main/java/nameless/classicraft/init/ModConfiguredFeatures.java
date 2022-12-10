@@ -1,6 +1,7 @@
 package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -16,8 +17,8 @@ import java.util.function.Supplier;
 
 public class ModConfiguredFeatures {
 
-    public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURE_REGISTRY =
-            DeferredRegister.create(ModExtraRegistries.CONFIGURED_FEATURE_REGISTRY, ClassiCraftMod.MOD_ID);
+    public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURE =
+            DeferredRegister.create(Registries.CONFIGURED_FEATURE, ClassiCraftMod.MOD_ID);
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> REPLACE_ALL_CONFIG_FEATURE =
            register("replace_all",
@@ -40,6 +41,6 @@ public class ModConfiguredFeatures {
             register("twig_surface", () -> new ConfiguredFeature<>(ModFeatures.TWIG_SURFACE_FEATURE.get(), NoneFeatureConfiguration.INSTANCE));
 
     private static <T extends ConfiguredFeature<?, ?>> RegistryObject<T> register(String name, Supplier<T> feature) {
-        return  CONFIGURED_FEATURE_REGISTRY.register(name.toLowerCase(Locale.ROOT), feature);
+        return CONFIGURED_FEATURE.register(name.toLowerCase(Locale.ROOT), feature);
     }
 }

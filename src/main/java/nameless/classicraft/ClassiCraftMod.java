@@ -25,11 +25,9 @@ public class ClassiCraftMod {
         ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
         ModBiomeModifiers.BIOME_MODIFIER_SERIALIZERS.register(modEventBus);
-        /**
-        ModConfiguredFeatures.CONFIGURED_FEATURE_REGISTRY.register(modEventBus);
+        ModConfiguredFeatures.CONFIGURED_FEATURE.register(modEventBus);
         ModFeatures.FEATURES.register(modEventBus);
-        ModPlacedFeatures.PLACED_FEATURE_REGISTRY.register(modEventBus);
-         */
+        ModPlacedFeatures.PLACED_FEATURE.register(modEventBus);
         ModEntities.ENTITIES.register(modEventBus);
         modEventBus.addListener(RegisterEvents::registerCreativeModeTab);
     }

@@ -1,6 +1,7 @@
 package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraftforge.registries.DeferredRegister;
@@ -13,8 +14,8 @@ import java.util.function.Supplier;
 
 public class ModPlacedFeatures {
 
-    public static final DeferredRegister<PlacedFeature> PLACED_FEATURE_REGISTRY =
-            DeferredRegister.create(ModExtraRegistries.PLACED_FEATURE_REGISTRY, ClassiCraftMod.MOD_ID);
+    public static final DeferredRegister<PlacedFeature> PLACED_FEATURE =
+            DeferredRegister.create(Registries.PLACED_FEATURE, ClassiCraftMod.MOD_ID);
 
     public static final RegistryObject<PlacedFeature> REPLACE_ALL_PLACED_FEATURE =
             register("replace_all",
@@ -44,6 +45,6 @@ public class ModPlacedFeatures {
                                     PlacementUtils.HEIGHTMAP_WORLD_SURFACE)));
 
     private static <T extends PlacedFeature> RegistryObject<T> register(String name, Supplier<T> feature) {
-        return  PLACED_FEATURE_REGISTRY.register(name.toLowerCase(Locale.ROOT), feature);
+        return  PLACED_FEATURE.register(name.toLowerCase(Locale.ROOT), feature);
     }
 }
