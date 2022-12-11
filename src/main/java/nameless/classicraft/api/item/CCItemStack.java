@@ -1,7 +1,7 @@
 package nameless.classicraft.api.item;
 
 import nameless.classicraft.init.ModCapabilities;
-import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraftforge.common.extensions.IForgeItemStack;
 import org.jetbrains.annotations.Nullable;
 
@@ -12,14 +12,14 @@ public interface CCItemStack extends IForgeItemStack {
 
     @Nullable
     @Override
-    default NbtCompound getShareTag() {
-        NbtCompound superValue = IForgeItemStack.super.getShareTag();
+    default CompoundTag getShareTag() {
+        CompoundTag superValue = IForgeItemStack.super.getShareTag();
 
         if (superValue == null) {
-            superValue = new NbtCompound();
+            superValue = new CompoundTag();
         }
 
-        NbtCompound returnValue = superValue;
+        CompoundTag returnValue = superValue;
 
         getCapability(ModCapabilities.ROT).ifPresent(rot -> {
             returnValue.putFloat("final_speed", rot.getFinalSpeed());
@@ -30,7 +30,7 @@ public interface CCItemStack extends IForgeItemStack {
     }
 
     @Override
-    default void readShareTag(@Nullable NbtCompound nbt) {
+    default void readShareTag(@Nullable CompoundTag nbt) {
         IForgeItemStack.super.readShareTag(nbt);
 
         if (nbt != null && nbt.contains("rot")) {

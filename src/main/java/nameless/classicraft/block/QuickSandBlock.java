@@ -1,83 +1,85 @@
 package nameless.classicraft.block;
 
-import net.minecraft.block.*;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.FallingBlockEntity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.pathing.NavigationType;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.registry.tag.EntityTypeTags;
-import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.GameRules;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.tags.EntityTypeTags;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.FallingBlockEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.SandBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.EntityCollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class QuickSandBlock extends SandBlock {
 
     private static final VoxelShape FALLING_COLLISION_SHAPE =
-            VoxelShapes.cuboid(0.0D, 0.0D, 0.0D,
+            Shapes.box(0.0D, 0.0D, 0.0D,
                     1.0D, (double)0.9F, 1.0D);
 
     public QuickSandBlock(int pDustColor) {
-        super(pDustColor, AbstractBlock.Settings.of(Material.AGGREGATE).strength(0.25F).sounds(BlockSoundGroup.SAND).dynamicBounds());
+        super(pDustColor, BlockBehaviour.Properties.of(Material.SAND).strength(0.25F).sound(SoundType.SAND).dynamicShape());
     }
 
-    @Override
-    public boolean isSideInvisible(BlockState state, BlockState stateFrom, Direction direction) {
-        return stateFrom.isOf(this) || super.isSideInvisible(state, stateFrom, direction);
+    public boolean skipRendering(BlockState pState, BlockState pAdjacentBlockState, Direction pDirection) {
+        return pAdjacentBlockState.is(this) || super.skipRendering(pState, pAdjacentBlockState, pDirection);
     }
 
-    @Override
-    public VoxelShape getCullingShape(BlockState state, BlockView world, BlockPos pos) {
-        return VoxelShapes.empty();
+    public VoxelShape getOcclusionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
+        return Shapes.empty();
     }
 
-    @Override
-    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (!(entity instanceof LivingEntity) || entity.getBlockStateAtPos().isOf(this)) {
-            entity.slowMovement(state, new Vec3d(0.8999999761581421, 1.5, 0.8999999761581421));
-            if (world.isClient) {
-                Random randomsource = world.getRandom();
-                boolean flag = entity.lastRenderX != entity.getX() || entity.lastRenderZ != entity.getZ();
+    public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
+        if (!(pEntity instanceof LivingEntity) || pEntity.getFeetBlockState().is(this)) {
+            pEntity.makeStuckInBlock(pState, new Vec3(0.6D, 0.4D, 0.6D));
+            pEntity.hurt(DamageSource.CACTUS, 1.0F);
+            if (pLevel.isClientSide) {
+                RandomSource randomsource = pLevel.getRandom();
+                boolean flag = pEntity.xOld != pEntity.getX() || pEntity.zOld != pEntity.getZ();
                 if (flag && randomsource.nextBoolean()) {
-                    world.addParticle(ParticleTypes.SNOWFLAKE, entity.getX(), (double)(pos.getY() + 1), entity.getZ(), (double)(MathHelper.nextBetween(randomsource, -1.0F, 1.0F) * 0.083333336F), 0.05000000074505806, (double)(MathHelper.nextBetween(randomsource, -1.0F, 1.0F) * 0.083333336F));
+                    pLevel.addParticle(new BlockParticleOption(ParticleTypes.FALLING_DUST, pState), pEntity.getX(), (double)(pPos.getY() + 1), pEntity.getZ(), (double)(Mth.randomBetween(randomsource, -1.0F, 1.0F) * 0.083333336F), (double)0.05F, (double)(Mth.randomBetween(randomsource, -1.0F, 1.0F) * 0.083333336F));
                 }
             }
         }
 
-        if (!world.isClient) {
-            if (entity.isOnFire() && (world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING) || entity instanceof PlayerEntity) && entity.canModifyAt(world, pos)) {
-                world.breakBlock(pos, false);
+        if (!pLevel.isClientSide) {
+            if (pEntity.isOnFire() && (pLevel.getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING) || pEntity instanceof Player) && pEntity.mayInteract(pLevel, pPos)) {
+                pLevel.destroyBlock(pPos, false);
             }
 
-            entity.setOnFire(false);
+            pEntity.setSharedFlagOnFire(false);
         }
 
     }
 
-    @Override
-    public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
-        if (!((double)fallDistance < 4.0) && entity instanceof LivingEntity livingentity) {
-            LivingEntity.FallSounds fallSounds = livingentity.getFallSounds();
-            SoundEvent soundevent = (double)fallDistance < 7.0 ? fallSounds.small() : fallSounds.big();
-            entity.playSound(soundevent, 1.0F, 1.0F);
+    public void fallOn(Level pLevel, BlockState pState, BlockPos pPos, Entity pEntity, float pFallDistance) {
+        if (!((double)pFallDistance < 4.0D) && pEntity instanceof LivingEntity livingentity) {
+            LivingEntity.Fallsounds $$7 = livingentity.getFallSounds();
+            SoundEvent soundevent = (double)pFallDistance < 7.0D ? $$7.small() : $$7.big();
+            pEntity.playSound(soundevent, 1.0F, 1.0F);
         }
-
     }
 
-    @Override
-    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        if (context instanceof EntityShapeContext entitycollisioncontext) {
+    public VoxelShape getCollisionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+        if (pContext instanceof EntityCollisionContext entitycollisioncontext) {
             Entity entity = entitycollisioncontext.getEntity();
             if (entity != null) {
                 if (entity.fallDistance > 2.5F) {
@@ -85,30 +87,28 @@ public class QuickSandBlock extends SandBlock {
                 }
 
                 boolean flag = entity instanceof FallingBlockEntity;
-                if (flag || canEntityWalkOnQuickSand(entity) && context.isAbove(VoxelShapes.fullCube(), pos, false) && !context.isDescending()) {
-                    return super.getCollisionShape(state, world, pos, context);
+                if (flag || canEntityWalkOnQuickSand(entity) && pContext.isAbove(Shapes.block(), pPos, false) && !pContext.isDescending()) {
+                    return super.getCollisionShape(pState, pLevel, pPos, pContext);
                 }
             }
         }
 
-        return VoxelShapes.empty();
+        return Shapes.empty();
     }
 
-    @Override
-    public VoxelShape getCameraCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return VoxelShapes.empty();
+    public VoxelShape getVisualShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+        return Shapes.empty();
     }
 
     public static boolean canEntityWalkOnQuickSand(Entity pEntity) {
-        if (pEntity.getType().isIn(EntityTypeTags.POWDER_SNOW_WALKABLE_MOBS)) {
+        if (pEntity.getType().is(EntityTypeTags.POWDER_SNOW_WALKABLE_MOBS)) {
             return true;
         } else {
-            return pEntity instanceof LivingEntity && ((LivingEntity) pEntity).getEquippedStack(EquipmentSlot.FEET).canWalkOnPowderedSnow((LivingEntity) pEntity);
+            return pEntity instanceof LivingEntity && ((LivingEntity) pEntity).getItemBySlot(EquipmentSlot.FEET).canWalkOnPowderedSnow((LivingEntity) pEntity);
         }
     }
 
-    @Override
-    public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
+    public boolean isPathfindable(BlockState pState, BlockGetter pLevel, BlockPos pPos, PathComputationType pType) {
         return true;
     }
 }
