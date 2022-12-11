@@ -2,12 +2,12 @@ package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.item.*;
+import net.minecraft.item.Item;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.MobBucketItem;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.ForgeSpawnEggItem;

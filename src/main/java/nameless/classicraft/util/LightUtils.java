@@ -5,9 +5,12 @@ import nameless.classicraft.block.AbstractLightBlock;
 import nameless.classicraft.init.ModBlockProperties;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.ComposterBlock;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.ActionResult;
@@ -15,6 +18,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 
 
 public class LightUtils {
@@ -22,57 +26,57 @@ public class LightUtils {
     protected static final int TICK_INTERVAL = ModBlockProperties.TICK_INTERVAL;
 
     public static void torchPlace(BlockState state, World world, BlockPos pos, BlockState newState, boolean isMoving, Block block) {
-        if(!pIsMoving && pState.getBlock() != pOldState.getBlock()) {
-            pBlock.defaultBlockState().updateIndirectNeighbourShapes(pLevel, pPos, 3);
+        if(!isMoving && state.getBlock() != newState.getBlock()) {
+            block.getDefaultState().updateNeighbors(world, pos, 3);
         }
-        if(pOldState.is(pBlock) && pState.getValue(AbstractLightBlock.getLitState())) {
-            pLevel.scheduleTick(pPos, pBlock, TICK_INTERVAL);
+        if(newState.isOf(block) && state.get(AbstractLightBlock.getLitState())) {
+            world.scheduleBlockTick(pos, block, TICK_INTERVAL);
         }
     }
 
     public static void tickTorch(BlockState pState, ServerWorld pLevel, BlockPos pPos, Random pRandom, Block pBlock, IntProperty burnTime) {
-        if (!pLevel.isClientSide && pState.getValue(AbstractLightBlock.getLitState())) {
-            int newBurnTime = pState.getValue(burnTime) - 1;
-            if (pLevel.isRainingAt(pPos.above())) {
+        if (!pLevel.isClient && pState.get(AbstractLightBlock.getLitState())) {
+            int newBurnTime = pState.get(burnTime) - 1;
+            if (pLevel.hasRain(pPos.up())) {
                 playExtinguishSound(pLevel, pPos);
-                newBurnTime -= pRandom.nextInt(20,35);
+                newBurnTime -= pRandom.nextBetween(20, 35);
                 if (newBurnTime <= 0) {
                     changeToStick(pLevel, pPos);
                 } else {
                     changeToUnlit(pLevel, pPos, pBlock);
                 }
-                pLevel.updateNeighborsAt(pPos, pBlock);
+                pLevel.updateNeighbors(pPos, pBlock);
             }
             if (newBurnTime <= 0) {
                 playExtinguishSound(pLevel, pPos);
                 changeToStick(pLevel, pPos);
-                pLevel.updateNeighborsAt(pPos, pBlock);
+                pLevel.updateNeighbors(pPos, pBlock);
             } else {
-                pLevel.setBlockAndUpdate(pPos, pState.setValue(burnTime, pState.getValue(burnTime) -1 ));
-                pLevel.scheduleTick(pPos, pBlock, TICK_INTERVAL);
+                pLevel.setBlockState(pPos, pState.with(burnTime, pState.get(burnTime) -1 ));
+                pLevel.scheduleBlockTick(pPos, pBlock, TICK_INTERVAL);
             }
         }
     }
 
-    private static void changeToStick(Level pLevel, BlockPos pPos) {
+    private static void changeToStick(World pLevel, BlockPos pPos) {
         ItemEntity itemEntity =
                 new ItemEntity(pLevel,
                         pPos.getX(),
                         pPos.getY(),
                         pPos.getZ(),
-                        Items.STICK.getDefaultInstance());
-        pLevel.addFreshEntity(itemEntity);
-        pLevel.gameEvent(itemEntity, GameEvent.ENTITY_PLACE, pPos);
+                        Items.STICK.getDefaultStack());
+        pLevel.spawnEntity(itemEntity);
+        pLevel.emitGameEvent(itemEntity, GameEvent.ENTITY_PLACE, pPos);
     }
 
-    public static InteractionResult addFuel(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, int initialBurnTime, int fuelLevel, Block block, IntegerProperty burnTime) {
-        int i = pState.getValue(AbstractLightBlock.getLevel());
-        ItemStack itemstack = pPlayer.getItemInHand(pHand);
-        if (ComposterBlock.COMPOSTABLES.containsKey(itemstack.getItem()) && !pLevel.isClientSide) {
+    public static ActionResult addFuel(BlockState pState, World pLevel, BlockPos pPos, PlayerEntity pPlayer, Hand pHand, int initialBurnTime, int fuelLevel, Block block, IntProperty burnTime) {
+        int i = pState.get(AbstractLightBlock.getLevel());
+        ItemStack itemstack = pPlayer.getStackInHand(pHand);
+        if (ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.containsKey(itemstack.getItem()) && !pLevel.isClient) {
             BlockState blockstate = addItem(pState, pLevel, pPos, itemstack);
-            pLevel.levelEvent(1500, pPos, pState != blockstate ? 1 : 0);
-            pPlayer.awardStat(Stats.ITEM_USED.get(itemstack.getItem()));
-            if (!pPlayer.getAbilities().instabuild) {
+            pLevel.syncWorldEvent(1500, pPos, pState != blockstate ? 1 : 0);
+            pPlayer.increaseTravelMotionStats(Stats.ITEM_USED.get(itemstack.getItem()));
+            if (!pPlayer.isCreative()) {
                 itemstack.shrink(1);
             }
             replaceBlockNeedFuel(pPos, pLevel, initialBurnTime, fuelLevel, block, burnTime);

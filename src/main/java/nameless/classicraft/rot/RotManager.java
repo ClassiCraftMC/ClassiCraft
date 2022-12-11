@@ -5,26 +5,27 @@ import lombok.Setter;
 import nameless.classicraft.capability.rot.EmptyRot;
 import nameless.classicraft.init.ModCapabilities;
 import nameless.classicraft.init.ModItems;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.NonNullList;
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.Inventory;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.awt.*;
 import java.util.*;
+import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
@@ -74,8 +75,8 @@ public enum RotManager {
     }
 
     public record Info(List<IItemHandler> handlers,
-                       @NotNull Supplier<Level> level,
-                       @NotNull Supplier<Vec3> pos,
+                       @NotNull Supplier<World> level,
+                       @NotNull Supplier<Vec3d> pos,
                        @Nullable ItemEntity entity,
                        @NotNull Supplier<BlockState> block,
                        SetAction action,
@@ -84,35 +85,35 @@ public enum RotManager {
         static BiFunction<ItemStack, Float, Float> UNCHANGED =  (s, r) -> r;
 
         public static Info blockEntity(List<IItemHandler> handlers,
-                                       Supplier<Level> level,
+                                       Supplier<World> level,
                                        BlockPos pos,
                                        Supplier<BlockState> block) {
-            return new Info(handlers, level, () -> new Vec3(pos.getX(), pos.getY(), pos.getZ()),
+            return new Info(handlers, level, () -> new Vec3d(pos.getX(), pos.getY(), pos.getZ()),
                     null, block, SetAction.IMPL, true, UNCHANGED);
         }
 
         public static Info blockEntity(List<IItemHandler> handlers,
-                                       Supplier<Level> level,
+                                       Supplier<World> level,
                                        BlockPos pos,
                                        Supplier<BlockState> block,
                                        BiFunction<ItemStack, Float, Float> onRotReduce) {
-            return new Info(handlers, level, () -> new Vec3(pos.getX(), pos.getY(), pos.getZ()),
+            return new Info(handlers, level, () -> new Vec3d(pos.getX(), pos.getY(), pos.getZ()),
                     null, block, SetAction.IMPL, true, onRotReduce);
         }
 
         public static Info itemEntity(ItemEntity entity) {
-            return new Info(List.of(new ItemStackHandler(NonNullList.of(ItemStack.EMPTY, entity.getItem()))),
-                    entity::getLevel, entity::position, entity, () -> null, (h, n, s) -> entity.setItem(s), true, UNCHANGED);
+            return new Info(List.of(new ItemStackHandler(NonNullList.of(ItemStack.EMPTY, entity.getStack()))),
+                    entity::getWorld, entity::getPos, entity, () -> null, (h, n, s) -> entity.setStack(s), true, UNCHANGED);
         }
 
-        public static Info playerInv(Container container, Player player) {
-            return new Info(List.of(new InvWrapper(container)), player::getLevel, player::position,
+        public static Info playerInv(Inventory container, PlayerEntity player) {
+            return new Info(List.of(new InvWrapper(container)), player::getWorld, player::getPos,
                     null, () -> null, SetAction.IMPL, true, UNCHANGED);
         }
 
-        public static Info enderChest(Container container) {
+        public static Info enderChest(Inventory container) {
             return new Info(List.of(new InvWrapper(container)), () -> null, () -> null, null,
-                    Blocks.ENDER_CHEST::defaultBlockState, SetAction.IMPL, false, UNCHANGED);
+                    Blocks.ENDER_CHEST::getDefaultState, SetAction.IMPL, false, UNCHANGED);
         }
     }
 
@@ -157,7 +158,7 @@ public enum RotManager {
                             if (rot.getHolder().getCurrent() <= 0) {
                                 Item remain = ModItems.ROTTEN_FOOD.get();
 
-                                String o = inSlot.getItem().getDescriptionId();
+                                String o = inSlot.getItem().getTranslationKey();
 
                                 if (bowl.contains(o)) {
                                     remain = Items.BOWL;
@@ -182,11 +183,11 @@ public enum RotManager {
     }
 
     /** for BlockEntity */
-    public float getFinalSpeed(Level level, BlockPos pos, BlockState state) {
-        return getFinalSpeed(level, new Vec3(pos.getX(), pos.getY(), pos.getZ()), state, null);
+    public float getFinalSpeed(World level, BlockPos pos, BlockState state) {
+        return getFinalSpeed(level, new Vec3d(pos.getX(), pos.getY(), pos.getZ()), state, null);
     }
 
-    public float getFinalSpeed(Level level, Vec3 pos, BlockState state, ItemEntity entity) {
+    public float getFinalSpeed(World level, Vec3d pos, BlockState state, ItemEntity entity) {
         return baseSpeed() *
                 dimCoefficient(level) *
                 biomeCoefficient(level, pos) *
@@ -198,40 +199,40 @@ public enum RotManager {
         return baseSpeed;
     }
 
-    float dimCoefficient(Level level) {
+    float dimCoefficient(World level) {
         if (level == null) {
             return 1;
         }
 
-        if (level.dimension() == Level.NETHER) {
+        if (level.dimension() == World.NETHER) {
             return 1.25F;
         }
-        else if (level.dimension() == Level.END) {
+        else if (level.dimension() == World.END) {
             return .75F;
         }
 
         return 1;
     }
 
-    float biomeCoefficient(Level level, Vec3 pos) {
+    float biomeCoefficient(World level, Vec3d pos) {
         if (level == null || pos == null) {
             return 1;
         }
 
-        if (level.dimension() == Level.END) {
+        if (level.dimension() == World.END) {
             return .75F;
         }
-        else if (level.dimension() == Level.NETHER) {
+        else if (level.dimension() == World.NETHER) {
             return 1.25F;
         }
 
         Biome biome = level.getBiome(new BlockPos(pos)).value();
 
-        if (biome.getBaseTemperature() < .31) {
+        if (biome.getTemperature() < .31) {
             return .75F;
         }
 
-        if (biome.getBaseTemperature() > .99) {
+        if (biome.getTemperature() > .99) {
             return 1.25F;
         }
 
@@ -243,10 +244,10 @@ public enum RotManager {
             return 1;
         }
 
-        if (container.is(Blocks.ENDER_CHEST)) {
+        if (container.isOf(Blocks.ENDER_CHEST)) {
             return 1.25F;
         }
-        else if (container.is(Blocks.SHULKER_BOX)) {
+        else if (container.isOf(Blocks.SHULKER_BOX)) {
             return .75F;
         }
 

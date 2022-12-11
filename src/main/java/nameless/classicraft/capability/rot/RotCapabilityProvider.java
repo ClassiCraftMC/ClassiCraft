@@ -1,8 +1,8 @@
 package nameless.classicraft.capability.rot;
 
 import nameless.classicraft.init.ModCapabilities;
-import net.minecraft.core.Direction;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.util.math.Direction;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityProvider;
 import net.minecraftforge.common.util.INBTSerializable;
@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 /**
  * @author DustW
  */
-public class RotCapabilityProvider extends CapabilityProvider<RotCapabilityProvider> implements INBTSerializable<CompoundTag> {
+public class RotCapabilityProvider extends CapabilityProvider<RotCapabilityProvider> implements INBTSerializable<NbtCompound> {
 
     LazyOptional<AbstractRot> cap;
 
@@ -30,17 +30,17 @@ public class RotCapabilityProvider extends CapabilityProvider<RotCapabilityProvi
     }
 
     @Override
-    public CompoundTag serializeNBT() {
+    public NbtCompound serializeNBT() {
         return cap.map(abstractRot -> {
-            CompoundTag compoundTag = new CompoundTag();
+            NbtCompound compoundTag = new NbtCompound();
             compoundTag.putFloat("rot", abstractRot.getRotValue());
             compoundTag.putFloat("fs", abstractRot.getFinalSpeed());
             return compoundTag;
-        }).orElse(new CompoundTag());
+        }).orElse(new NbtCompound());
     }
 
     @Override
-    public void deserializeNBT(CompoundTag nbt) {
+    public void deserializeNBT(NbtCompound nbt) {
         cap.ifPresent(abstractRot -> {
             abstractRot.setRotValue(nbt.getFloat("rot"));
             abstractRot.setFinalSpeed(nbt.getFloat("fs"));

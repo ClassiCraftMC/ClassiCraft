@@ -4,10 +4,10 @@ import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.TieredItem;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ToolItem;
+import net.minecraft.util.Identifier;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -23,8 +23,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class ModItemModelProvider extends ItemModelProvider {
-    public static final ResourceLocation GENERATED = new ResourceLocation("item/generated");
-    public static final ResourceLocation HANDHELD = new ResourceLocation("item/handheld");
+    public static final Identifier GENERATED = new Identifier("item/generated");
+    public static final Identifier HANDHELD = new Identifier("item/handheld");
     protected final DeferredRegister<? extends Item> deferredRegister;
     protected Set<Item> skipItems = new HashSet<>();
 
@@ -34,7 +34,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     private static String name(Item item) {
-        ResourceLocation identifier = ForgeRegistries.ITEMS.getKey(item);
+        Identifier identifier = ForgeRegistries.ITEMS.getKey(item);
         if (identifier == null) {
             return null;
         }else {
@@ -78,7 +78,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected void registerItem(Set<Item> items) {
         items.forEach(this::generatedItem);
         items.stream()
-                .filter(item -> item instanceof TieredItem)
+                .filter(item -> item instanceof ToolItem)
                 .forEach(this::handheldItem);
     }
 
