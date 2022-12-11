@@ -1,6 +1,6 @@
 package nameless.classicraft.api.event;
 
-import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.entity.ItemEntity;
 import net.minecraftforge.event.entity.item.ItemEvent;
 import net.minecraftforge.eventbus.api.Cancelable;
 

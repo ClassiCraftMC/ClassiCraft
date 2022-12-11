@@ -3,33 +3,25 @@ package nameless.classicraft.util;
 import nameless.classicraft.api.item.ItemStackAPI;
 import nameless.classicraft.block.AbstractLightBlock;
 import nameless.classicraft.init.ModBlockProperties;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.ComposterBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.state.property.IntProperty;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.world.World;
+
 
 public class LightUtils {
 
     protected static final int TICK_INTERVAL = ModBlockProperties.TICK_INTERVAL;
 
-    public static void torchPlace(BlockState pState, Level pLevel, BlockPos pPos, BlockState pOldState, boolean pIsMoving, Block pBlock) {
+    public static void torchPlace(BlockState state, World world, BlockPos pos, BlockState newState, boolean isMoving, Block block) {
         if(!pIsMoving && pState.getBlock() != pOldState.getBlock()) {
             pBlock.defaultBlockState().updateIndirectNeighbourShapes(pLevel, pPos, 3);
         }
@@ -38,7 +30,7 @@ public class LightUtils {
         }
     }
 
-    public static void tickTorch(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom, Block pBlock, IntegerProperty burnTime) {
+    public static void tickTorch(BlockState pState, ServerWorld pLevel, BlockPos pPos, Random pRandom, Block pBlock, IntProperty burnTime) {
         if (!pLevel.isClientSide && pState.getValue(AbstractLightBlock.getLitState())) {
             int newBurnTime = pState.getValue(burnTime) - 1;
             if (pLevel.isRainingAt(pPos.above())) {
@@ -134,7 +126,7 @@ public class LightUtils {
         }
     }
 
-    public static InteractionResult interactTorch(Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, Block pBlock, Item fireStarter, IntegerProperty burnTime, int initialBurnTime) {
+    public static ActionResult interactTorch(World pLevel, BlockPos pPos, PlayerEntity pPlayer, Hand pHand, Block pBlock, Item fireStarter, IntProperty burnTime, int initialBurnTime) {
         ItemStack heldStack = pPlayer.getMainHandItem();
         if (heldStack.is(fireStarter) && !pBlock.defaultBlockState().getValue(AbstractLightBlock.getLitState())) {
             playLightingSound(pLevel, pPos);

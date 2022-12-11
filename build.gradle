@@ -1,22 +1,8 @@
-buildscript {
-    repositories {
-        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
-    }
-}
-
 plugins {
-    id 'eclipse'
-    id 'maven-publish'
+    id "dev.architectury.loom" version "0.12.0-SNAPSHOT"
     id "io.freefair.lombok" version "6.5.0.3"
-    id 'net.minecraftforge.gradle' version '5.1.+'
-    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+    id "maven-publish"
 }
-
-apply plugin: 'org.spongepowered.mixin'
 
 version = project.mod_version
 group = project.mod_group
@@ -26,75 +12,22 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 
-minecraft {
+loom {
+    silentMojangMappingsLicense()
 
-    mappings channel: 'official', version: '1.19.3'
+    forge {
+        mixinConfigs = [
+                "classicraft.mixins.json"
+        ]
 
-    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
-
-    runs {
-        client {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            property 'forge.enabledGameTestNamespaces', project.mod_id
-
-            mods {
-                classicraft {
-                    source sourceSets.main
-                }
-            }
+        dataGen {
+            mod project.mod_id
         }
+    }
 
-        server {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            property 'forge.enabledGameTestNamespaces', project.mod_id
-
-            mods {
-                classicraft {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        gameTestServer {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            property 'forge.enabledGameTestNamespaces', project.mod_id
-
-            mods {
-                classicraft {
-                    source sourceSets.main
-                }
-            }
-        }
-
+    launches {
         data {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            args '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-
-            mods {
-                classicraft {
-                    source sourceSets.main
-                }
-            }
+            arg "--existing", file("src/main/resources").absolutePath
         }
     }
 }
@@ -114,29 +47,15 @@ task mergeResources(type: Copy) {
 compileJava.dependsOn mergeResources
 
 repositories {
-    maven {
-        url "https://cursemaven.com"
-    }
-    maven {
-        url "https://jitpack.io"
-    }
     mavenCentral()
 }
 
 dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     implementation 'org.projectlombok:lombok:1.18.24'
     implementation 'org.jetbrains:annotations:23.0.0'
-    minecraft 'net.minecraftforge:forge:1.19.3-44.0.5'
-
-    implementation 'com.github.LlamaLad7:MixinExtras:0.1.1'
-    annotationProcessor 'com.github.LlamaLad7:MixinExtras:0.1.1'
-    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-}
-
-mixin {
-    add sourceSets.main, "classicraft.refmap.json"
-
-    config "classicraft.mixins.json"
+    forge "net.minecraftforge:forge:${project.forge_version}"
 }
 
 jar {

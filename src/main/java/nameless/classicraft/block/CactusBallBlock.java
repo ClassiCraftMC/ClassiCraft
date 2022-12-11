@@ -1,35 +1,37 @@
 package nameless.classicraft.block;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FlowerBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.FlowerBlock;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.ai.pathing.NavigationType;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
+import net.minecraftforge.common.PlantType;
 
 public class CactusBallBlock extends FlowerBlock {
 
     public CactusBallBlock() {
-        super(MobEffects.DIG_SPEED, 2, BlockBehaviour.Properties.copy(Blocks.DANDELION));
+        super(StatusEffects.SPEED, 2, AbstractBlock.Settings.copy(Blocks.DANDELION));
     }
 
     @Override
-    public boolean isPathfindable(BlockState pState, BlockGetter pLevel, BlockPos pPos, PathComputationType pType) {
+    public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
         return false;
     }
 
     @Override
-    public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
-        pEntity.hurt(DamageSource.CACTUS, 1.0F);
+    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
+        entity.damage(DamageSource.CACTUS, 1.0F);
     }
 
     @Override
-    public net.minecraftforge.common.PlantType getPlantType(BlockGetter world, BlockPos pos) {
+    public PlantType getPlantType(BlockView level, BlockPos pos) {
         return net.minecraftforge.common.PlantType.DESERT;
     }
+
 }

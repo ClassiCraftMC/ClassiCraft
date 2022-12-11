@@ -1,9 +1,10 @@
 package nameless.classicraft.api.event;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.block.BlockState;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 import net.minecraftforge.event.level.BlockEvent;
 
 /**
@@ -14,15 +15,15 @@ public class BlockDropEvent extends BlockEvent.BreakEvent {
 
     private final BlockPos pos;
     private final BlockState state;
-    private final Player player;
-    private final Level level;
+    private final PlayerEntity player;
+    private final World world;
 
-    public BlockDropEvent(Level level, BlockPos pos, BlockState state, Player player) {
-        super(level, pos, state, player);
+    public BlockDropEvent(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        super(world, pos, state, player);
         this.pos = pos;
         this.state = state;
         this.player = player;
-        this.level = level;
+        this.world = world;
     }
 
     @Override
@@ -36,12 +37,16 @@ public class BlockDropEvent extends BlockEvent.BreakEvent {
     }
 
     @Override
-    public Player getPlayer() {
+    public PlayerEntity getPlayer() {
         return player;
     }
 
     @Override
-    public Level getLevel() {
-        return level;
+    public WorldAccess getLevel() {
+        return world;
+    }
+
+    public World getWorld() {
+        return world;
     }
 }

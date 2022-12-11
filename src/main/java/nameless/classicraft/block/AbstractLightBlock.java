@@ -1,10 +1,10 @@
 package nameless.classicraft.block;
 
 import nameless.classicraft.init.ModBlockProperties;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.block.Block;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.IntProperty;
+import net.minecraft.state.property.Properties;
 
 /**
  * Abstract Light Block
@@ -12,11 +12,11 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
  */
 public abstract class AbstractLightBlock extends Block {
 
-    protected static final BooleanProperty LIT = BlockStateProperties.LIT;
-    protected static final IntegerProperty FULE_LEVEL = ModBlockProperties.FULE_LEVEL;
+    protected static final BooleanProperty LIT = Properties.LIT;
+    protected static final IntProperty FULE_LEVEL = ModBlockProperties.FULE_LEVEL;
 
-    public AbstractLightBlock(Properties pProperties) {
-        super(pProperties);
+    public AbstractLightBlock(Settings arg) {
+        super(arg);
     }
 
     /**
@@ -31,7 +31,7 @@ public abstract class AbstractLightBlock extends Block {
      * A method to get Fuel Level
      * @return level
      */
-    public static IntegerProperty getLevel() {
+    public static IntProperty getLevel() {
         return FULE_LEVEL;
     }
 }
