@@ -126,10 +126,8 @@ repositories {
 dependencies {
     implementation 'org.projectlombok:lombok:1.18.24'
     implementation 'org.jetbrains:annotations:23.0.0'
-    minecraft 'net.minecraftforge:forge:1.19.3-44.0.5'
+    minecraft 'net.minecraftforge:forge:1.19.3-44.0.6'
 
-    implementation 'com.github.LlamaLad7:MixinExtras:0.1.1'
-    annotationProcessor 'com.github.LlamaLad7:MixinExtras:0.1.1'
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
