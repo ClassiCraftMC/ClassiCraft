@@ -4,7 +4,6 @@ import nameless.classicraft.entity.ai.goal.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.entity.passive.SchoolingFishEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -31,7 +30,7 @@ import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.Nullable;
 
-public class AbstractSharkEntity  extends SchoolingFishEntity implements Enemy {
+public class AbstractSharkEntity  extends AbstractSchoolingFish implements Enemy {
 
     private static final EntityDataAccessor<Boolean> GOT_FISH = SynchedEntityData.defineId(AbstractSharkEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> MOISTNESS_LEVEL = SynchedEntityData.defineId(AbstractSharkEntity.class, EntityDataSerializers.INT);

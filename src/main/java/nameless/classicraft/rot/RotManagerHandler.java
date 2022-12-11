@@ -3,9 +3,9 @@ package nameless.classicraft.rot;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import nameless.classicraft.init.ModCapabilities;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.ItemEntity;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -31,12 +31,12 @@ public class RotManagerHandler {
         }
     }
 
-    static final Map<PlayerEntity, RotManager.Info> playerMap = new HashMap<>();
-    static final Map<PlayerEntity, RotManager.Info> enderChestMap = new HashMap<>();
+    static final Map<Player, RotManager.Info> playerMap = new HashMap<>();
+    static final Map<Player, RotManager.Info> enderChestMap = new HashMap<>();
 
     @SubscribeEvent
     public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
-        PlayerEntity player = event.getEntity();
+        Player player = event.getEntity();
         RotManager.Info info = RotManager.Info.playerInv(player.getInventory(), player);
         playerMap.put(player, info);
         RotManager.INSTANCE.addInfo(info);
@@ -48,7 +48,7 @@ public class RotManagerHandler {
 
     @SubscribeEvent
     public static void onPlayerLogout(PlayerEvent.PlayerLoggedOutEvent event) {
-        PlayerEntity player = event.getEntity();
+        Player player = event.getEntity();
         RotManager.INSTANCE.removeInfo(playerMap.get(player));
         playerMap.remove(player);
 
@@ -62,7 +62,7 @@ public class RotManagerHandler {
     public static void onEntityJoin(EntityJoinLevelEvent event) {
         Entity entity = event.getEntity();
 
-        if (entity instanceof ItemEntity itemEntity && itemEntity.getStack().getCapability(ModCapabilities.ROT).isPresent()) {
+        if (entity instanceof ItemEntity itemEntity && itemEntity.getItem().getCapability(ModCapabilities.ROT).isPresent()) {
             RotManager.Info info = RotManager.Info.itemEntity(itemEntity);
             entityMap.put(entity, info);
             RotManager.INSTANCE.addInfo(info);

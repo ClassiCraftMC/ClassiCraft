@@ -4,9 +4,9 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import nameless.classicraft.rot.RotHolder;
-import net.minecraft.text.MutableText;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -21,11 +21,11 @@ public abstract class AbstractRot {
 
     private final RotHolder holder;
     private boolean hasExMsg;
-    private Function<AbstractRot, List<Text>> exMsg;
+    private Function<AbstractRot, List<Component>> exMsg;
     private float finalSpeed;
 
     @NotNull
-    public List<Text> getMsg() {
+    public List<Component> getMsg() {
         if (hasExMsg)
             return exMsg.apply(this);
         return List.of();
@@ -35,21 +35,21 @@ public abstract class AbstractRot {
         return getHolder().getLevel();
     }
 
-    public MutableText getLevelName() {
+    public MutableComponent getLevelName() {
         return switch (getLevel()) {
-            case FRESH ->   Text.translatable("level.classicraft.fresh");
-            case STALE ->   Text.translatable("level.classicraft.stale");
-            case SPOILED -> Text.translatable("level.classicraft.spoiled");
-            case ROT ->     Text.translatable("level.classicraft.rotten");
+            case FRESH ->   Component.translatable("level.classicraft.fresh");
+            case STALE ->   Component.translatable("level.classicraft.stale");
+            case SPOILED -> Component.translatable("level.classicraft.spoiled");
+            case ROT ->     Component.translatable("level.classicraft.rotten");
         };
     }
 
-    public Formatting getLevelNameColor() {
+    public ChatFormatting getLevelNameColor() {
         return switch (getLevel()) {
-            case FRESH ->   Formatting.GREEN;
-            case STALE ->   Formatting.YELLOW;
-            case SPOILED -> Formatting.GOLD;
-            case ROT ->     Formatting.RED;
+            case FRESH ->   ChatFormatting.GREEN;
+            case STALE ->   ChatFormatting.YELLOW;
+            case SPOILED -> ChatFormatting.GOLD;
+            case ROT ->     ChatFormatting.RED;
         };
     }
 

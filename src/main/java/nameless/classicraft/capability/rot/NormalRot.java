@@ -2,9 +2,9 @@ package nameless.classicraft.capability.rot;
 
 import nameless.classicraft.rot.RotHolder;
 import nameless.classicraft.rot.RotItems;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.text.Text;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 
@@ -25,8 +25,8 @@ public class NormalRot extends AbstractRot {
 
     public NormalRot(ItemStack food) {
         super(new RotHolder(getSecond(food.getItem()), getSecond(food.getItem())), true, rot ->
-                List.of(Text.translatable("info.classicraft.rot", String.format("%.2f", rot.getHolder().getCurrent() / 24000)),
-                        Text.translatable("info.classicraft.rotting_speed", (int) (rot.getFinalSpeed() * 100) + "%")), 1);
+                List.of(Component.translatable("info.classicraft.rot", String.format("%.2f", rot.getHolder().getCurrent() / 24000)),
+                        Component.translatable("info.classicraft.rotting_speed", (int) (rot.getFinalSpeed() * 100) + "%")), 1);
 
         this.food = food;
     }
