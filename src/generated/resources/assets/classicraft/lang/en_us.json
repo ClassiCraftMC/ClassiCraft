@@ -19,8 +19,13 @@
   "info.classicraft.depth.surface": "'s surface",
   "info.classicraft.depth.underground": "'s sea level",
   "info.classicraft.depth.void": "'s void",
+  "info.classicraft.food.nutrition": "Nutrition",
+  "info.classicraft.food.saturation": "Saturation",
   "info.classicraft.height": "At now is in the height ",
   "info.classicraft.minutes": "minutes",
+  "info.classicraft.rot": "It will rotten after %s day",
+  "info.classicraft.rotting_speed": "Rotting Speed: %s",
+  "info.classicraft.shift_press": "Press Shift key to show more info",
   "item.classicraft.bucket.trout": "Trout Bucket",
   "item.classicraft.cooked_trout": "Cooked Trout",
   "item.classicraft.debug_time_stick": "Debug Burn Time Stick",
@@ -29,5 +34,9 @@
   "item.classicraft.tallow": "Tallow",
   "item.classicraft.torch_lit": "Lit Torch",
   "item.classicraft.torch_unlit": "Unlit Torch",
-  "item.classicraft.trout": "Trout"
+  "item.classicraft.trout": "Trout",
+  "level.classicraft.fresh": "Fresh ",
+  "level.classicraft.rotten": "Rotten ",
+  "level.classicraft.spoiled": "Spoiled ",
+  "level.classicraft.stale": "Stale "
 }

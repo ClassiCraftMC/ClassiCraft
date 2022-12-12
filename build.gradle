@@ -99,19 +99,7 @@ minecraft {
     }
 }
 
-task mergeResources(type: Copy) {
-    def generated = files("src/generated/resources")
-    def resources = files("src/main/resources")
-
-    from generated
-    exclude(str -> {
-        def file = file("src/main/resources/" + str.relativePath)
-        return file.isFile() && !resources.contains(file)
-    })
-    into "$buildDir/resources/main"
-}
-
-compileJava.dependsOn mergeResources
+sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     maven {

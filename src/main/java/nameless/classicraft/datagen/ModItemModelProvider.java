@@ -115,7 +115,8 @@ public class ModItemModelProvider extends ItemModelProvider {
                 ModBlocks.ROSE.get().asItem(),
                 ModBlocks.CACTUS_BALL.get().asItem(),
                 ModBlocks.MOSSY_BRICKS_WALL.get().asItem(),
-                ModBlocks.CRACKED_BRICKS_WALL.get().asItem()
+                ModBlocks.CRACKED_BRICKS_WALL.get().asItem(),
+                ModItems.LIVING_DEAD_SPAWN_EGG.get()
         );
     }
 }
