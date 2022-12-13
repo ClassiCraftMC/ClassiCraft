@@ -20,7 +20,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     private final Set<Block> skipBlocks = new HashSet<>();
 
     public ModBlockStateProvider(DataGenerator gen, ExistingFileHelper exFileHelper, DeferredRegister<? extends Block> deferredRegister) {
-        super(gen, ClassiCraftMod.MOD_ID, exFileHelper);
+        super(gen.getPackOutput(), ClassiCraftMod.MOD_ID, exFileHelper);
         this.deferredRegister = deferredRegister;
     }
 

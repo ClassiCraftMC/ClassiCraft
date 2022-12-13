@@ -10,7 +10,7 @@ import net.minecraftforge.common.data.LanguageProvider;
 public class ModLanguageProviderZh extends LanguageProvider {
 
     public ModLanguageProviderZh(DataGenerator gen) {
-        super(gen, ClassiCraftMod.MOD_ID, "zh_cn");
+        super(gen.getPackOutput(), ClassiCraftMod.MOD_ID, "zh_cn");
     }
 
     @Override

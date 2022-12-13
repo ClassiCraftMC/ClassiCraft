@@ -35,7 +35,7 @@ public class LivingDeadEntity extends Monster implements Enemy {
 
     public static final EntityDataAccessor<Integer> VARIANT =
             SynchedEntityData.defineId(LivingDeadEntity.class, EntityDataSerializers.INT);
-    public static final int MAX_VARIANTS = 10;
+    public static final int MAX_VARIANTS = 200;
 
     public LivingDeadEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -78,7 +78,7 @@ public class LivingDeadEntity extends Monster implements Enemy {
     @Nullable
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
-        int i = pLevel.getRandom().nextInt(10);
+        int i = pLevel.getRandom().nextInt(200);
         this.setVariant(i);
         return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
     }

@@ -37,8 +37,8 @@ public class ItemEvent {
                 if (foodData != null) {
                     int nutrition = foodData.getNutrition();
                     float satur = foodData.getSaturationModifier();
-                    toolTip.add(Component.translatable("info.classicraft.food.nutrition" + ":" + nutrition).withStyle(ChatFormatting.WHITE));
-                    toolTip.add(Component.translatable("info.classicraft.food.saturation" + ":" + satur).withStyle(ChatFormatting.WHITE));
+                    toolTip.add(Component.translatable("info.classicraft.food.nutrition").append(":" + nutrition).withStyle(ChatFormatting.WHITE));
+                    toolTip.add(Component.translatable("info.classicraft.food.saturation").append(":" + satur).withStyle(ChatFormatting.WHITE));
                 }
             }
         }

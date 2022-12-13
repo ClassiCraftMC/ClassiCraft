@@ -10,7 +10,7 @@ import net.minecraftforge.common.data.LanguageProvider;
 public class ModLanguageProvider extends LanguageProvider {
 
     public ModLanguageProvider(DataGenerator gen) {
-        super(gen, ClassiCraftMod.MOD_ID, "en_us");
+        super(gen.getPackOutput(), ClassiCraftMod.MOD_ID, "en_us");
     }
 
     @Override

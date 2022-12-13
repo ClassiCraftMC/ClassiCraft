@@ -29,7 +29,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected Set<Item> skipItems = new HashSet<>();
 
     public ModItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper, DeferredRegister<? extends Item> deferredRegister) {
-        super(generator, ClassiCraftMod.MOD_ID, existingFileHelper);
+        super(generator.getPackOutput(), ClassiCraftMod.MOD_ID, existingFileHelper);
         this.deferredRegister = deferredRegister;
     }
 
