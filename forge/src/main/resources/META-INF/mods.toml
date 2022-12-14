@@ -1,7 +1,7 @@
 modLoader = "javafml"
-loaderVersion = "[44,)
+loaderVersion = "[44,)"
 license = "GPLv2.0"
-[[mods]]
+[[]mods]
 modId = "classicraft"
 version = "${version}"
 displayName = "Classicraft Mod"

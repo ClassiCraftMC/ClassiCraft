@@ -12,6 +12,7 @@ import java.util.Locale;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+@SuppressWarnings("")
 public class ModItems {
 
     public static final DeferredRegister<Item> ITEMS =
@@ -35,15 +36,15 @@ public class ModItems {
             register("sulfur");
 
     private static RegistrySupplier<Item> register(String name) {
-        return register(name.toLowerCase(Locale.ROOT), () -> new Item(new Item.Properties()));
+        return register(name.toLowerCase(Locale.ROOT), () -> new Item(new Item.Properties().arch$tab(ModCreativeModeTabs.COMMON)));
     }
 
     private static RegistrySupplier<Item> food(String name, FoodProperties foodData) {
-        return register(name, () -> new Item(new Item.Properties().food(foodData)));
+        return register(name, () -> new Item(new Item.Properties().food(foodData).arch$tab(ModCreativeModeTabs.COMMON)));
     }
 
     private static RegistrySupplier<Item> food(String name, Function<Item.Properties, Item.Properties> func) {
-        return register(name, () -> new Item(func.apply(new Item.Properties())));
+        return register(name, () -> new Item(func.apply(new Item.Properties().arch$tab(ModCreativeModeTabs.COMMON))));
     }
 
     private static <T extends Item> RegistrySupplier<T> register(String name, Supplier<T> item) {
