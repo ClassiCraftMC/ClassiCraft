@@ -79,6 +79,9 @@ public class ModItems {
     public static final RegistryObject<Item> ROTTEN_FOOD =
             food("rotten_food", p -> p.food(new FoodProperties.Builder().build()));
 
+    public static final RegistryObject<Item> SULFUR =
+            register("sulfur", () -> new Item(new Item.Properties()));
+
     private static RegistryObject<Item> food(String name, FoodProperties foodData) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().food(foodData)));
     }

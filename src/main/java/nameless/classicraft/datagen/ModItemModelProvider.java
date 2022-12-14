@@ -116,7 +116,13 @@ public class ModItemModelProvider extends ItemModelProvider {
                 ModBlocks.CACTUS_BALL.get().asItem(),
                 ModBlocks.MOSSY_BRICKS_WALL.get().asItem(),
                 ModBlocks.CRACKED_BRICKS_WALL.get().asItem(),
-                ModItems.LIVING_DEAD_SPAWN_EGG.get()
+                ModItems.LIVING_DEAD_SPAWN_EGG.get(),
+                ModBlocks.ANDESITE_PEBBLE.get().asItem().asItem(),
+                ModBlocks.DIORITE_PEBBLE.get().asItem().asItem(),
+                ModBlocks.GRANITE_PEBBLE.get().asItem().asItem(),
+                ModBlocks.RED_STONE_PEBBLE.get().asItem().asItem(),
+                ModBlocks.SANDSTONE_PEBBLE.get().asItem().asItem(),
+                ModBlocks.TWIGS.get().asItem().asItem()
         );
     }
 }

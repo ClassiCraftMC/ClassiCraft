@@ -56,6 +56,8 @@ public class RegisterEvents {
                       output.accept(ModBlocks.RED_STONE_PEBBLE.get());
                       output.accept(ModBlocks.SANDSTONE_PEBBLE.get());
                       output.accept(ModBlocks.TWIGS.get());
+                      output.accept(ModBlocks.SULFUR_ORE.get());
+                      output.accept(ModItems.SULFUR.get());
                     })
                     .title(Component.translatable("itemGroup.classicraft.common"))
                     .build();

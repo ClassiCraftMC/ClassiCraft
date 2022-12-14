@@ -2,6 +2,7 @@ package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.block.*;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -126,6 +127,13 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> TWIGS =
             registerDefault("twigs", TwigsBlock::new);
+
+    public static final RegistryObject<Block> SULFUR_ORE =
+            registerDefault("sulfur_ore", () ->
+                    new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(3.0F, 3.0F),
+                            UniformInt.of(0, 2)));
 
     /**
      * Hanlde Default Register
