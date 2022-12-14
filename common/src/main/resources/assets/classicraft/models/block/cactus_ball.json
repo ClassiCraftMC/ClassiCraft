@@ -1,0 +1,8 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "classicraft:block/cactus_ball",
+    "particle": "classicraft:block/cactus_ball"
+  },
+  "render_type": "cutout"
+}

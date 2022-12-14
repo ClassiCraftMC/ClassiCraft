@@ -7,11 +7,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CompassItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import org.bedracket.classicraft.init.ModCreativeModeTabs;
 
 public class DepthMeterItem extends CompassItem {
 
     public DepthMeterItem() {
-        super(new Properties().stacksTo(1));
+        super(new Properties().stacksTo(1).arch$tab(ModCreativeModeTabs.COMMON));
     }
 
     @Override

@@ -38,5 +38,7 @@
   "level.classicraft.fresh": "Fresh ",
   "level.classicraft.rotten": "Rotten ",
   "level.classicraft.spoiled": "Spoiled ",
-  "level.classicraft.stale": "Stale "
+  "level.classicraft.stale": "Stale ",
+  "item.classicraft.classic_craft": "Classic Craft",
+  "item.classicraft.cooked_egg": "Cooked Egg"
 }

@@ -38,5 +38,7 @@
   "level.classicraft.fresh": "新鲜的",
   "level.classicraft.rotten": "腐坏的",
   "level.classicraft.spoiled": "变质的",
-  "level.classicraft.stale": "陈旧的"
+  "level.classicraft.stale": "陈旧的",
+  "item.classicraft.classic_craft": "天工开物",
+  "item.classicraft.cooked_egg": "煎蛋"
 }

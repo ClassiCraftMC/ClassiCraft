@@ -1,0 +1,41 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "classicraft:item/depth_meter_08"
+    },
+    "overrides": [
+        { "predicate": { "angle": 0.000000 }, "model": "classicraft:item/depth_meter_08" },
+        { "predicate": { "angle": 0.015625 }, "model": "classicraft:item/depth_meter_15" },
+        { "predicate": { "angle": 0.046875 }, "model": "classicraft:item/depth_meter_14" },
+        { "predicate": { "angle": 0.078125 }, "model": "classicraft:item/depth_meter_14" },
+        { "predicate": { "angle": 0.109375 }, "model": "classicraft:item/depth_meter_13" },
+        { "predicate": { "angle": 0.140625 }, "model": "classicraft:item/depth_meter_12" },
+        { "predicate": { "angle": 0.171875 }, "model": "classicraft:item/depth_meter_11" },
+        { "predicate": { "angle": 0.203125 }, "model": "classicraft:item/depth_meter_10" },
+        { "predicate": { "angle": 0.234375 }, "model": "classicraft:item/depth_meter_09" },
+        { "predicate": { "angle": 0.265625 }, "model": "classicraft:item/depth_meter_07" },
+        { "predicate": { "angle": 0.296875 }, "model": "classicraft:item/depth_meter_06" },
+        { "predicate": { "angle": 0.328125 }, "model": "classicraft:item/depth_meter_05" },
+        { "predicate": { "angle": 0.359375 }, "model": "classicraft:item/depth_meter_04" },
+        { "predicate": { "angle": 0.390625 }, "model": "classicraft:item/depth_meter_03" },
+        { "predicate": { "angle": 0.421875 }, "model": "classicraft:item/depth_meter_02" },
+        { "predicate": { "angle": 0.453125 }, "model": "classicraft:item/depth_meter_01" },
+        { "predicate": { "angle": 0.484375 }, "model": "classicraft:item/depth_meter_00" },
+        { "predicate": { "angle": 0.515625 }, "model": "classicraft:item/depth_meter_01" },
+        { "predicate": { "angle": 0.546875 }, "model": "classicraft:item/depth_meter_02" },
+        { "predicate": { "angle": 0.578125 }, "model": "classicraft:item/depth_meter_03" },
+        { "predicate": { "angle": 0.609375 }, "model": "classicraft:item/depth_meter_04" },
+        { "predicate": { "angle": 0.640625 }, "model": "classicraft:item/depth_meter_05" },
+        { "predicate": { "angle": 0.671875 }, "model": "classicraft:item/depth_meter_06" },
+        { "predicate": { "angle": 0.703125 }, "model": "classicraft:item/depth_meter_07" },
+        { "predicate": { "angle": 0.734375 }, "model": "classicraft:item/depth_meter_08" },
+        { "predicate": { "angle": 0.765625 }, "model": "classicraft:item/depth_meter_09" },
+        { "predicate": { "angle": 0.796875 }, "model": "classicraft:item/depth_meter_10" },
+        { "predicate": { "angle": 0.828125 }, "model": "classicraft:item/depth_meter_11" },
+        { "predicate": { "angle": 0.859375 }, "model": "classicraft:item/depth_meter_12" },
+        { "predicate": { "angle": 0.890625 }, "model": "classicraft:item/depth_meter_13" },
+        { "predicate": { "angle": 0.921875 }, "model": "classicraft:item/depth_meter_14" },
+        { "predicate": { "angle": 0.953125 }, "model": "classicraft:item/depth_meter_15" },
+        { "predicate": { "angle": 0.984375 }, "model": "classicraft:item/depth_meter_08" }
+    ]
+}

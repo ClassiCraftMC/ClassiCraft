@@ -7,7 +7,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.Item;
 import org.bedracket.classicraft.ClassiCraftMod;
-import org.bedracket.classicraft.item.DepthMeterItem;
+import org.bedracket.classicraft.item.*;
 
 import java.util.Locale;
 import java.util.function.Function;
@@ -19,7 +19,7 @@ public class ModItems {
             DeferredRegister.create(ClassiCraftMod.MOD_ID, Registries.ITEM);
 
     public static final RegistrySupplier<Item> CLASSIC_CRAFT =
-            register("classic_craft");
+            register("classic_craft", () -> new Item(new Item.Properties()));
     public static final RegistrySupplier<Item> TROUT =
             food("trout", Foods.COD);
     public static final RegistrySupplier<Item> COOKED_TROUT =
@@ -36,6 +36,17 @@ public class ModItems {
             register("sulfur");
     public static final RegistrySupplier<Item> DEPTH_METER =
             register("depth_meter", DepthMeterItem::new);
+    public static final RegistrySupplier<Item> TORCH_UNLIT =
+            register("torch_unlit", UnlitTorchItem::new);
+
+    public static final RegistrySupplier<Item> SOUL_TORCH_UNLIT =
+            register("soul_torch_unlit", UnlitSoulTorchItem::new);
+
+    public static final RegistrySupplier<Item> TORCH_LIT =
+            register("torch_lit", LitTorchItem::new);
+
+    public static final RegistrySupplier<Item> SOUL_TORCH_LIT =
+            register("soul_torch_lit", LitSoulTorchItem::new);
 
     @SuppressWarnings("UnstableApiUsage")
     private static RegistrySupplier<Item> register(String name) {
