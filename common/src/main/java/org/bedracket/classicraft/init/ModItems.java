@@ -12,7 +12,6 @@ import java.util.Locale;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-@SuppressWarnings("")
 public class ModItems {
 
     public static final DeferredRegister<Item> ITEMS =
@@ -35,14 +34,17 @@ public class ModItems {
     public static final RegistrySupplier<Item> SULFUR =
             register("sulfur");
 
+    @SuppressWarnings("UnstableApiUsage")
     private static RegistrySupplier<Item> register(String name) {
         return register(name.toLowerCase(Locale.ROOT), () -> new Item(new Item.Properties().arch$tab(ModCreativeModeTabs.COMMON)));
     }
 
+    @SuppressWarnings("UnstableApiUsage")
     private static RegistrySupplier<Item> food(String name, FoodProperties foodData) {
         return register(name, () -> new Item(new Item.Properties().food(foodData).arch$tab(ModCreativeModeTabs.COMMON)));
     }
 
+    @SuppressWarnings("UnstableApiUsage")
     private static RegistrySupplier<Item> food(String name, Function<Item.Properties, Item.Properties> func) {
         return register(name, () -> new Item(func.apply(new Item.Properties().arch$tab(ModCreativeModeTabs.COMMON))));
     }
