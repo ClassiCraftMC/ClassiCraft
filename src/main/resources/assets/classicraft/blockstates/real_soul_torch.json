@@ -1,6 +1,0 @@
-{
-  "variants": {
-    "lit=true": { "model": "minecraft:block/soul_torch" },
-    "lit=false": { "model": "classicraft:block/real_soul_torch_unlit" }
-  }
-}

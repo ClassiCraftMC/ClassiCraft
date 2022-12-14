@@ -1,6 +1,0 @@
-{
-  "variants": {
-    "lit=true": { "model": "classicraft:block/real_torch_lit" },
-    "lit=false": { "model": "classicraft:block/real_torch_unlit" }
-  }
-}
