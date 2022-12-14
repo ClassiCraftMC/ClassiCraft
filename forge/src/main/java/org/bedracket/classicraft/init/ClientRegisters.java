@@ -1,4 +1,4 @@
-package org.bedracket.classicraft.event;
+package org.bedracket.classicraft.init;
 
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -11,13 +11,11 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import org.bedracket.classicraft.ClassiCraftMod;
-import org.bedracket.classicraft.init.ModBlocks;
-import org.bedracket.classicraft.init.ModItems;
 import org.bedracket.classicraft.item.DepthMeterItem;
 
 @SuppressWarnings("removal")
 @Mod.EventBusSubscriber(modid = ClassiCraftMod.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class ClientRegisterEvents {
+public class ClientRegisters {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void registerItemOverrides(FMLClientSetupEvent event) {
