@@ -15,7 +15,7 @@ import org.bedracket.classicraft.item.DepthMeterItem;
 
 @SuppressWarnings("removal")
 @Mod.EventBusSubscriber(modid = ClassiCraftMod.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class ClientRegisters {
+public class ClientRegistries {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void registerItemOverrides(FMLClientSetupEvent event) {
