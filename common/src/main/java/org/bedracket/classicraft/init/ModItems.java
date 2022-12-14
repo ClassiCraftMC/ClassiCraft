@@ -7,6 +7,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.Item;
 import org.bedracket.classicraft.ClassiCraftMod;
+import org.bedracket.classicraft.item.DepthMeterItem;
 
 import java.util.Locale;
 import java.util.function.Function;
@@ -18,7 +19,7 @@ public class ModItems {
             DeferredRegister.create(ClassiCraftMod.MOD_ID, Registries.ITEM);
 
     public static final RegistrySupplier<Item> CLASSIC_CRAFT =
-            register("classicraft");
+            register("classic_craft");
     public static final RegistrySupplier<Item> TROUT =
             food("trout", Foods.COD);
     public static final RegistrySupplier<Item> COOKED_TROUT =
@@ -33,6 +34,8 @@ public class ModItems {
             food("rotten_food", p -> p.food(new FoodProperties.Builder().build()));
     public static final RegistrySupplier<Item> SULFUR =
             register("sulfur");
+    public static final RegistrySupplier<Item> DEPTH_METER =
+            register("depth_meter", DepthMeterItem::new);
 
     @SuppressWarnings("UnstableApiUsage")
     private static RegistrySupplier<Item> register(String name) {

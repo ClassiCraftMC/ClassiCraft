@@ -36,11 +36,11 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: classicraft-1.0-SNAPSHOT-forge.jar
-          path: forge\build\libs\classicraft-1.0-SNAPSHOT-forge.jar
+          path: forge/build/libs/classicraft-1.0-SNAPSHOT-forge.jar
           repo-token:  ${{ secrets.ACTION_TOKEN }}
       - name: Upload Fabric mod to release
         uses: actions/upload-artifact@v2
         with:
           name: classicraft-1.0-SNAPSHOT-fabric.jar
-          path: fabric\build\libs\classicraft-1.0-SNAPSHOT-fabric.jar
+          path: fabric/build/libs/classicraft-1.0-SNAPSHOT-fabric.jar
           repo-token:  ${{ secrets.ACTION_TOKEN }}
