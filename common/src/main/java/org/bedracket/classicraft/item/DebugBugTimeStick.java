@@ -11,11 +11,12 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.bedracket.classicraft.block.RealSoulTorchBlock;
 import org.bedracket.classicraft.block.RealTorchBlock;
+import org.bedracket.classicraft.init.ModCreativeModeTabs;
 
 public class DebugBugTimeStick extends Item {
 
     public DebugBugTimeStick() {
-        super(new Properties());
+        super(new Properties().arch$tab(ModCreativeModeTabs.COMMON));
     }
 
     @Override

@@ -2,7 +2,7 @@ package org.bedracket.classicraft;
 
 import com.mojang.logging.LogUtils;
 import org.bedracket.classicraft.config.Configuration;
-import org.bedracket.classicraft.event.ItemTickEvents;
+import org.bedracket.classicraft.event.*;
 import org.bedracket.classicraft.init.*;
 import org.slf4j.Logger;
 
@@ -17,6 +17,11 @@ public class ClassiCraftMod {
         ModItems.ITEMS.register();
         ModBlockRenderLayers.registerBlockRenderLayers();
         ModItemProperties.registerItemProperties();
+        ModFuels.registerFuels();
         ItemTickEvents.registerItemTickEvents();
+        BlockEvents.registerBlockEvents();
+        ItemEvents.registerItemEvents();
+        LivingEntityEvents.registerLivingEntityEvents();
+        PlayerEvents.registerPlayerEvents();
     }
 }

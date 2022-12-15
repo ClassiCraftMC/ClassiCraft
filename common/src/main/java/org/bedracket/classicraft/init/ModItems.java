@@ -48,6 +48,10 @@ public class ModItems {
     public static final RegistrySupplier<Item> SOUL_TORCH_LIT =
             register("soul_torch_lit", LitSoulTorchItem::new);
 
+    public static final RegistrySupplier<Item> DEBUG_TIME_STICK =
+            register("debug_time_stick", DebugBugTimeStick::new);
+
+
     @SuppressWarnings("UnstableApiUsage")
     private static RegistrySupplier<Item> register(String name) {
         return register(name.toLowerCase(Locale.ROOT), () -> new Item(new Item.Properties().arch$tab(ModCreativeModeTabs.COMMON)));
