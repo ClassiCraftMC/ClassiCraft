@@ -12,9 +12,6 @@
   "entrypoints": {
     "main": [
       "org.bedracket.classicraft.ClassiCraftModFabric"
-    ],
-    "client": [
-      "org.bedracket.classicraft.ClassiCraftModFabricClient"
     ]
   },
   "mixins": [

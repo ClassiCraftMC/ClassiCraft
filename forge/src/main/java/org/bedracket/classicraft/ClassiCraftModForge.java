@@ -9,6 +9,6 @@ public class ClassiCraftModForge {
 
     public ClassiCraftModForge() {
         EventBuses.registerModEventBus(ClassiCraftMod.MOD_ID, FMLJavaModLoadingContext.get().getModEventBus());
-        ClassiCraftMod.init();
+        ClassiCraftMod.initialize();
     }
 }

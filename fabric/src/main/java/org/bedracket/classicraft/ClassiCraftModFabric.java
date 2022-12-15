@@ -7,7 +7,7 @@ public class ClassiCraftModFabric implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        ClassiCraftMod.init();
+        ClassiCraftMod.initialize();
         ModFlammableContents.registerFlammableContents();
     }
 }
