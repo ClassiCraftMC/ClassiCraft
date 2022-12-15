@@ -40,5 +40,8 @@
   "level.classicraft.spoiled": "变质的",
   "level.classicraft.stale": "陈旧的",
   "item.classicraft.classic_craft": "天工开物",
-  "item.classicraft.cooked_egg": "煎蛋"
+  "item.classicraft.cooked_egg": "煎蛋",
+  "item.classicraft.rotten_food": "腐烂的食物",
+  "item.classicraft.nether_mushroom_stew": "下界蘑菇头",
+  "item.classicraft.sulfur": "硫磺"
 }

@@ -35,6 +35,6 @@ public @interface Config {
      *
      * @return
      */
-    String config() default "config";
+    String config() default "general";
 
 }
