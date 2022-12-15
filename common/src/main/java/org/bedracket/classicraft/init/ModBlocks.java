@@ -12,10 +12,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import org.bedracket.classicraft.ClassiCraftMod;
-import org.bedracket.classicraft.block.RealSoulTorchBlock;
-import org.bedracket.classicraft.block.RealSoulWallTorchBlock;
-import org.bedracket.classicraft.block.RealTorchBlock;
-import org.bedracket.classicraft.block.RealWallTorchBlock;
+import org.bedracket.classicraft.block.*;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Locale;
@@ -104,6 +101,19 @@ public class ModBlocks {
                                     MaterialColor.COLOR_BLACK)
                             .requiresCorrectToolForDrops()
                             .strength(5.0F, 6.0F)));
+
+    public static final RegistrySupplier<Block> ANDESITE_HEAP =
+            registerDefault("andesite_heap", AndesiteHeapBlock::new);
+    public static final RegistrySupplier<Block> COBBLESTONE_HEAP =
+            registerDefault("cobblestone_heap", CobblestoneHeapBlock::new);
+    public static final RegistrySupplier<Block> DIORTIE_HEAP =
+            registerDefault("diorite_heap", DioriteHeapBlock::new);
+    public static final RegistrySupplier<Block> GRANITE_HEAP =
+            registerDefault("granite_heap", GraniteHeapBlock::new);
+    public static final RegistrySupplier<Block> RED_SANDSTONE_HEAP =
+            registerDefault("red_sandstone_heap", RedSandstoneHeapBlock::new);
+    public static final RegistrySupplier<Block> SANDSTONE_HEAP =
+            registerDefault("sandstone_heap", SandstoneHeapBlock::new);
 
     public static final RegistrySupplier<Block> REAL_TORCH =
             register("real_torch", RealTorchBlock::new);

@@ -51,6 +51,22 @@ public class ModItems {
     public static final RegistrySupplier<Item> DEBUG_TIME_STICK =
             register("debug_time_stick", DebugBugTimeStick::new);
 
+    public static final RegistrySupplier<Item> ANDESITE_PEBBLE =
+            register("andesite_pebble");
+    public static final RegistrySupplier<Item> COBBLESTONE_PEBBLE =
+            register("cobblestone_pebble");
+
+    public static final RegistrySupplier<Item> DIORTIE_PEBBLE =
+            register("diorite_pebble");
+
+    public static final RegistrySupplier<Item> GRANITE_PEBBLE =
+            register("granite_pebble");
+
+    public static final RegistrySupplier<Item> RED_SANDSTONE_PEBBLE =
+            register("red_sandstone_pebble");
+
+    public static final RegistrySupplier<Item> SANDSTONE_PEBBLE =
+            register("sandstone_pebble");
 
     @SuppressWarnings("UnstableApiUsage")
     private static RegistrySupplier<Item> register(String name) {
