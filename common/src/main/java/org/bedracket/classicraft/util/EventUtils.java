@@ -2,11 +2,15 @@ package org.bedracket.classicraft.util;
 
 import dev.architectury.event.CompoundEventResult;
 import dev.architectury.event.EventResult;
+import dev.architectury.event.events.client.ClientTooltipEvent;
 import dev.architectury.event.events.common.BlockEvent;
+import dev.architectury.event.events.common.EntityEvent;
 import dev.architectury.event.events.common.InteractionEvent;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
@@ -16,8 +20,61 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.bedracket.classicraft.api.event.ItemTickEvent;
 import org.bedracket.classicraft.block.AbstractLightBlock;
+import org.bedracket.classicraft.init.ModBlocks;
+
+import java.util.Random;
 
 public class EventUtils {
+
+    public static void addPebbleTooltip(Item pebble) {
+        ClientTooltipEvent.ITEM.register((stack, lines, flag) -> {
+            if (stack.getTag() != null) {
+                if (stack.is(pebble)) {
+                    if (stack.getOrCreateTag().contains("classsicraft:stone_heap", 1)) {
+                        lines.add(Component.translatable("info.classicraft,pebble_1"));
+                    }
+                    if (stack.getOrCreateTag().contains("classsicraft:stone_heap", 2)) {
+                        lines.add(Component.translatable("info.classicraft,pebble_2"));
+                    }
+                    if (stack.getOrCreateTag().contains("classsicraft:stone_heap", 3)) {
+                        lines.add(Component.translatable("info.classicraft,pebble_3"));
+                    }
+                    if (stack.getOrCreateTag().contains("classsicraft:stone_heap", 4)) {
+                        lines.add(Component.translatable("info.classicraft,pebble_4"));
+                    }
+                    if (stack.getOrCreateTag().contains("classsicraft:stone_heap", 5)) {
+                        lines.add(Component.translatable("info.classicraft,pebble_5"));
+                    }
+                    if (stack.getOrCreateTag().contains("classsicraft:stone_heap", 6)) {
+                        lines.add(Component.translatable("info.classicraft,pebble_6"));
+                    }
+                }
+            }
+        });
+    }
+
+    public static void heapPebble(Item pebble) {
+        EntityEvent.ADD.register((entity, world) -> {
+            BlockState state = entity.getLevel().getBlockState(entity.getOnPos().below());
+            if (entity instanceof ItemEntity) {
+                if (state.is(ModBlocks.ANDESITE_HEAP.get())
+                        || state.is(ModBlocks.COBBLESTONE_HEAP.get())
+                        || state.is(ModBlocks.DIORTIE_HEAP.get())
+                        || state.is(ModBlocks.GRANITE_HEAP.get())
+                        || state.is(ModBlocks.RED_SANDSTONE_HEAP.get())
+                        || state.is(ModBlocks.SANDSTONE_HEAP.get())) {
+                    int nbt = entity.getLevel().getRandom().nextInt(1, 6);
+                    if (((ItemEntity) entity).getItem().is(pebble)) {
+                        if (!((ItemEntity) entity).getItem().hasTag()) {
+                            ((ItemEntity) entity).getItem().getOrCreateTag()
+                                    .putInt("classsicraft:stone_heap", nbt);
+                        }
+                    }
+                }
+            }
+            return EventResult.pass();
+        });
+    }
 
     public static void litItem(Block litBlock, Item needLit, Item finalItem) {
         InteractionEvent.RIGHT_CLICK_BLOCK.register((player, hand, pos, face) -> {

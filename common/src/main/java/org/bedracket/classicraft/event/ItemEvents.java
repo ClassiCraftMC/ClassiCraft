@@ -8,8 +8,8 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.food.FoodProperties;
-import org.bedracket.classicraft.init.ModBlocks;
 import org.bedracket.classicraft.init.ModItems;
+import org.bedracket.classicraft.util.EventUtils;
 
 public class ItemEvents {
 
@@ -37,13 +37,12 @@ public class ItemEvents {
             }
         });
         ClientTooltipEvent.ITEM.register((stack, lines, flag) -> {
-            if (stack.getTag() != null) {
-                if (stack.is(ModItems.ANDESITE_PEBBLE.get())) {
-                    if (stack.getTag().contains("classicraft:pebble_1")) {
-                        lines.add(Component.translatable(""));
-                    }
-                }
-            }
+            EventUtils.addPebbleTooltip(ModItems.ANDESITE_PEBBLE.get());
+            EventUtils.addPebbleTooltip(ModItems.COBBLESTONE_PEBBLE.get());
+            EventUtils.addPebbleTooltip(ModItems.DIORTIE_PEBBLE.get());
+            EventUtils.addPebbleTooltip(ModItems.GRANITE_PEBBLE.get());
+            EventUtils.addPebbleTooltip(ModItems.RED_SANDSTONE_PEBBLE.get());
+            EventUtils.addPebbleTooltip(ModItems.SANDSTONE_PEBBLE.get());
         });
     }
 }
