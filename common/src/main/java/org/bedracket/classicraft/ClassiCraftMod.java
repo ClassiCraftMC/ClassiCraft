@@ -17,8 +17,8 @@ public class ClassiCraftMod {
 
     public static void initialize() {
         new Configuration(ModConfigs.class, MOD_ID);
-        ModBlocks.BLOCKS.register();
         ModItems.ITEMS.register();
+        ModBlocks.BLOCKS.register();
         ModFuels.registerFuels();
         ItemTickEvents.registerItemTickEvents();
         BlockEvents.registerBlockEvents();
