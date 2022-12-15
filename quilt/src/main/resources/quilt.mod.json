@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "quilt_loader": {
-    "group": "${group}",
+    "group": "org.bedracket.classicraft",
     "id": "classicraft",
     "version": "${version}",
     "name": "ClassiCraft Mod",
@@ -13,7 +13,7 @@
     "environment": "*",
     "entrypoints": {
       "init": [
-        "org.quilt.ExampleModQuilt"
+        "org.bedracket.classicraft.ClassiCraftModQuilt"
       ]
     },
     "depends": [
