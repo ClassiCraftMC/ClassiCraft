@@ -95,12 +95,7 @@ public class ModBlocks {
                             UniformInt.of(0, 2)));
 
     public static final RegistrySupplier<Block> CHARCOAL_BLOCK =
-            registerDefault("charcoal_block", () ->
-                    new DropExperienceBlock(BlockBehaviour
-                            .Properties.of(Material.STONE,
-                                    MaterialColor.COLOR_BLACK)
-                            .requiresCorrectToolForDrops()
-                            .strength(5.0F, 6.0F)));
+            registerDefault("charcoal_block", CharcoalBlock::new);
 
     public static final RegistrySupplier<Block> ANDESITE_HEAP =
             registerDefault("andesite_heap", AndesiteHeapBlock::new);

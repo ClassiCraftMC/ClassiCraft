@@ -17,7 +17,6 @@ import java.util.List;
 @Mod.EventBusSubscriber
 public class ItemEventsForge {
 
-    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void addToolTip(ItemTooltipEvent event) {
         List<Component> lines = event.getToolTip();
         ItemStack stack = event.getItemStack();
