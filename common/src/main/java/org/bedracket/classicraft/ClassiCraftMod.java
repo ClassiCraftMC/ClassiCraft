@@ -22,7 +22,7 @@ public class ClassiCraftMod {
         ModFuels.registerFuels();
         ItemTickEvents.registerItemTickEvents();
         BlockEvents.registerBlockEvents();
-        EntityEvents.registerEntityEvents();
+        //EntityEvents.registerEntityEvents();
         LivingEntityEvents.registerLivingEntityEvents();
         PlayerEvents.registerPlayerEvents();
         EnvExecutor.runInEnv(Env.CLIENT, () -> ClassiCraftMod::initializeClient);
