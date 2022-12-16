@@ -17,12 +17,12 @@ public class ClassiCraftMod {
 
     public static void initialize() {
         new Configuration(ModConfigs.class, MOD_ID);
-        ModItems.ITEMS.register();
         ModBlocks.BLOCKS.register();
+        ModItems.ITEMS.register();
         ModFuels.registerFuels();
         ItemTickEvents.registerItemTickEvents();
         BlockEvents.registerBlockEvents();
-        //ItemEvents.registerItemEvents();
+        EntityEvents.registerEntityEvents();
         LivingEntityEvents.registerLivingEntityEvents();
         PlayerEvents.registerPlayerEvents();
         EnvExecutor.runInEnv(Env.CLIENT, () -> ClassiCraftMod::initializeClient);
