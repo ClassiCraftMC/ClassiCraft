@@ -25,12 +25,12 @@ public class CharcoalBlock  extends Block {
     }
 
     @ExpectPlatform
-    public int getFlammability(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
+    public static int getFlammability(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
         throw new AssertionError();
     }
 
     @ExpectPlatform
-    public boolean canConnectRedstone(BlockState state, BlockGetter world, BlockPos pos, Direction side) {
+    public static boolean canConnectRedstone(BlockState state, BlockGetter world, BlockPos pos, Direction side) {
         throw new AssertionError();
     }
 
