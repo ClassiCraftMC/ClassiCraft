@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "flower_forest",
+  "features": "classicraft:rose_placed",
+  "step": "vegetal_decoration"
+}

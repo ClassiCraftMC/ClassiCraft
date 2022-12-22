@@ -1,0 +1,27 @@
+modLoader="javafml"
+loaderVersion="[44,)"
+license="GPLv2.0"
+[[mods]]
+modId="classicraft"
+version="${file.jarVersion}"
+displayName="Classicraft Mod"
+logoFile="classicraft.png"
+authors="Nameless, 1798643961, Thaumstrial, Vapour_Beatle"
+
+description = '''
+
+'''
+
+[[dependencies.classicraft]]
+    modId="forge"
+    mandatory=true
+    versionRange="[44,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.classicraft]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.19.3,1.20)"
+    ordering="NONE"
+    side="BOTH"
