@@ -1,9 +1,12 @@
 package nameless.classicraft.event;
 
 import nameless.classicraft.api.event.ItemEntityTickEvent;
+import nameless.classicraft.util.EventUtils;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.event.entity.ProjectileImpactEvent;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -11,14 +14,12 @@ import net.minecraftforge.fml.common.Mod;
 public class TestEvents {
 
     @SubscribeEvent
-    public static void changeLooseRock(ItemEntityTickEvent event) {
-        ItemEntity entity = event.getEntity();
-        Block block = entity.getFeetBlockState().getBlock();
-            if (entity.getItem().is(Items.BONE)) {
-                ItemEntity newItem = new
-                        ItemEntity(entity.getLevel(),
-                        entity.getX(), entity.getY(), entity.getZ(),
-                        Items.STONE_BRICKS.getDefaultInstance());
-        }
+    public static void test(ItemEntityTickEvent event) {
+        EventUtils.onHit(event);
+    }
+
+    @SubscribeEvent
+    public static void test0(ItemTooltipEvent event) {
+        EventUtils.appendTooltip(event);
     }
 }

@@ -4,20 +4,59 @@ import nameless.classicraft.api.event.BlockDropEvent;
 import nameless.classicraft.api.event.ItemEntityTickEvent;
 import nameless.classicraft.block.AbstractLightBlock;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Arrow;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.event.entity.ProjectileImpactEvent;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class EventUtils {
+
+    public static void onHit(ItemEntityTickEvent event) {
+        ItemEntity entity = event.getEntity();
+        ItemStack stack = entity.getItem();
+        if (stack.is(Items.ARROW) && entity.getBlockStateOn().is(Blocks.IRON_BLOCK)) {
+            int rand = entity.getLevel().getRandom().nextInt(1, 7);
+            stack.getOrCreateTag().putInt("classicraft:arrow", rand);
+        }
+    }
+
+    public static void appendTooltip(ItemTooltipEvent event) {
+        if (event.getItemStack().getTag() !=null) {
+            if (event.getItemStack().getTag().getInt("classicraft:arrow") == 1) {
+                event.getToolTip().add(Component.literal("Arrrow_1"));
+            }
+            if (event.getItemStack().getTag().getInt("classicraft:arrow") == 2) {
+                event.getToolTip().add(Component.literal("Arrrow_2"));
+            }
+            if (event.getItemStack().getTag().getInt("classicraft:arrow") == 3) {
+                event.getToolTip().add(Component.literal("Arrrow_3"));
+            }
+            if (event.getItemStack().getTag().getInt("classicraft:arrow") == 4) {
+                event.getToolTip().add(Component.literal("Arrrow_4"));
+            }
+            if (event.getItemStack().getTag().getInt("classicraft:arrow") == 5) {
+                event.getToolTip().add(Component.literal("Arrrow_5"));
+            }
+            if (event.getItemStack().getTag().getInt("classicraft:arrow") == 6 || event.getItemStack().getTag().getInt("classicraft:arrow") == 7) {
+                event.getToolTip().add(Component.literal("Arrrow_6"));
+            }
+        }
+    }
 
     public static void blockdropAtOnce(BlockDropEvent event, Block dropBlock, Item dropItem) {
         BlockState blockState = event.getState();
