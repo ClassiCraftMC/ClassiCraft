@@ -11,7 +11,8 @@
     "MixinPlayer"
   ],
   "client": [
-    "MixinGui"
+    "MixinGui",
+    "MixinModelBakery"
   ],
   "injectors": {
     "defaultRequire": 1

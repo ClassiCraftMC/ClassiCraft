@@ -66,8 +66,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 ModBlocks.COBBLESTONE_PEBBLE.get(),
                 ModBlocks.DIORITE_PEBBLE.get(),
                 ModBlocks.GRANITE_PEBBLE.get(),
-                ModBlocks.RED_STONE_PEBBLE.get(),
+                ModBlocks.RED_SANDSTONE_PEBBLE.get(),
                 ModBlocks.SANDSTONE_PEBBLE.get(),
+                ModBlocks.DEEPSLATE_PEBBLE.get(),
                 ModBlocks.TWIGS.get()
         );
     }

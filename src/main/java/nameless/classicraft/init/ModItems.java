@@ -1,6 +1,7 @@
 package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.api.item.MetaItem;
 import nameless.classicraft.item.*;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
@@ -15,6 +16,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -82,6 +84,43 @@ public class ModItems {
     public static final RegistryObject<Item> SULFUR =
             register("sulfur", () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<MetaItem> PEBBLE = register("pebble", PebbleItem::new);
+
+    public static final RegistryObject<MetaItem> POINT =
+            register("point", () -> new PebbleToolItem(new Item.Properties(), List.of(
+                    "cobblestone_point",
+                    "deepslate_point",
+                    "flint_point"
+            )));
+
+    public static final RegistryObject<MetaItem> ADZE =
+            register("adze", () -> new PebbleToolItem(new Item.Properties(), List.of(
+                    "cobblestone_adze",
+                    "deepslate_adze",
+                    "flint_adze"
+            )));
+
+    public static final RegistryObject<MetaItem> SCRAPER =
+            register("scraper", () -> new PebbleToolItem(new Item.Properties(), List.of(
+                    "cobblestone_scraper",
+                    "deepslate_scraper",
+                    "flint_scraper"
+            )));
+
+    public static final RegistryObject<MetaItem> AWL =
+            register("awl", () -> new PebbleToolItem(new Item.Properties(), List.of(
+                    "cobblestone_awl",
+                    "deepslate_awl",
+                    "flint_awl"
+            )));
+
+    public static final RegistryObject<MetaItem> CHOPPER =
+            register("chopper", () -> new PebbleToolItem(new Item.Properties(), List.of(
+                    "cobblestone_chopper",
+                    "deepslate_chopper",
+                    "flint_chopper"
+            )));
+
     private static RegistryObject<Item> food(String name, FoodProperties foodData) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().food(foodData)));
     }
@@ -104,10 +143,11 @@ public class ModItems {
 
     /**
      * Used for registry items
+     *
      * @param name Items' registry name
      * @param item Item Instance
+     * @param <T>  sth extends Item
      * @return new RegistryObject<Item>
-     * @param <T> sth extends Item
      */
     private static <T extends Item> RegistryObject<T> register(String name, Supplier<T> item) {
         return ITEMS.register(name.toLowerCase(Locale.ROOT), item);

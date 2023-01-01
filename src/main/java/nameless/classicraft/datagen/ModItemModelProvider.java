@@ -1,6 +1,7 @@
 package nameless.classicraft.datagen;
 
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.api.item.MetaItem;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
@@ -48,8 +49,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         addSkipItems();
         items.removeAll(skipItems);
         registerItemBlock(items.stream()
-                .filter(item -> item instanceof BlockItem)
-                .map(item -> (BlockItem) item)
+                .filter(BlockItem.class::isInstance)
+                .map(BlockItem.class::cast)
                 .collect(Collectors.toSet()));
 
         addSkipItems();
@@ -117,12 +118,9 @@ public class ModItemModelProvider extends ItemModelProvider {
                 ModBlocks.MOSSY_BRICKS_WALL.get().asItem(),
                 ModBlocks.CRACKED_BRICKS_WALL.get().asItem(),
                 ModItems.LIVING_DEAD_SPAWN_EGG.get(),
-                ModBlocks.ANDESITE_PEBBLE.get().asItem().asItem(),
-                ModBlocks.DIORITE_PEBBLE.get().asItem().asItem(),
-                ModBlocks.GRANITE_PEBBLE.get().asItem().asItem(),
-                ModBlocks.RED_STONE_PEBBLE.get().asItem().asItem(),
-                ModBlocks.SANDSTONE_PEBBLE.get().asItem().asItem(),
                 ModBlocks.TWIGS.get().asItem().asItem()
         );
+
+        skipItems(MetaItem.getMetaItems());
     }
 }

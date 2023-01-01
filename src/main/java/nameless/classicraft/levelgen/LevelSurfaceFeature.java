@@ -14,20 +14,32 @@ import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
 import java.util.Map;
+import java.util.Random;
 import java.util.function.Supplier;
 
 public class LevelSurfaceFeature extends Feature<NoneFeatureConfiguration> {
+    static Random random = new Random();
+
+    static Supplier<Block> randomPebble() {
+        return () -> switch (random.nextInt(4)) {
+            case 1 -> ModBlocks.ANDESITE_PEBBLE.get();
+            case 2 -> ModBlocks.DIORITE_PEBBLE.get();
+            case 3 -> ModBlocks.GRANITE_PEBBLE.get();
+            default -> ModBlocks.COBBLESTONE_PEBBLE.get();
+        };
+    }
 
     private static final Supplier<Map<Block, Supplier<? extends Block>>> LEVEL_SURFACE_PLACE_LOOKUP = Suppliers.memoize(() -> new ImmutableMap.Builder<Block, Supplier<? extends Block>>()
-            .put(Blocks.STONE, ModBlocks.COBBLESTONE_PEBBLE)
-            .put(Blocks.ANDESITE, ModBlocks.ANDESITE_PEBBLE)
-            .put(Blocks.DIORITE, ModBlocks.DIORITE_PEBBLE)
-            .put(Blocks.GRANITE, ModBlocks.GRANITE_PEBBLE)
+            .put(Blocks.STONE, randomPebble())
+            .put(Blocks.ANDESITE, randomPebble())
+            .put(Blocks.DIORITE, randomPebble())
+            .put(Blocks.GRANITE, randomPebble())
+
             .put(Blocks.SANDSTONE, ModBlocks.SANDSTONE_PEBBLE)
-            .put(Blocks.RED_SANDSTONE, ModBlocks.RED_STONE_PEBBLE)
-            .put(Blocks.TERRACOTTA, ModBlocks.RED_STONE_PEBBLE)
+            .put(Blocks.RED_SANDSTONE, ModBlocks.RED_SANDSTONE_PEBBLE)
+            .put(Blocks.TERRACOTTA, ModBlocks.RED_SANDSTONE_PEBBLE)
             .put(Blocks.SAND, ModBlocks.SANDSTONE_PEBBLE)
-            .put(Blocks.RED_SAND, ModBlocks.RED_STONE_PEBBLE)
+            .put(Blocks.RED_SAND, ModBlocks.RED_SANDSTONE_PEBBLE)
             .build()
     );
 

@@ -1,0 +1,22 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "block/red_sandstone_bottom",
+		"particle": "block/red_sandstone_bottom"
+	},
+	"elements": [
+		{
+			"from": [10.5, -0.2, 2],
+			"to": [13.5, 0.8, 5],
+			"rotation": {"angle": 45, "axis": "y", "origin": [12.5, 15.8, 4]},
+			"faces": {
+				"north": {"uv": [12, 15, 15, 16], "texture": "#0"},
+				"east": {"uv": [13, 10, 16, 11], "texture": "#0"},
+				"south": {"uv": [6, 12, 9, 13], "texture": "#0"},
+				"west": {"uv": [7, 1, 10, 2], "texture": "#0"},
+				"up": {"uv": [11, 3, 14, 6], "texture": "#0"},
+				"down": {"uv": [8, 7, 11, 10], "texture": "#0"}
+			}
+		}
+	]
+}

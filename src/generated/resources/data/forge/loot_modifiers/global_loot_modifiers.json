@@ -1,0 +1,16 @@
+{
+  "entries": [
+    "classicraft:block/granite",
+    "classicraft:block/stone",
+    "classicraft:block/basalt",
+    "classicraft:block/coarse_dirt",
+    "classicraft:block/red_sandstone",
+    "classicraft:block/andesite",
+    "classicraft:block/diorite",
+    "classicraft:block/deepslate",
+    "classicraft:block/blackstone",
+    "classicraft:block/cobbled_deepslate",
+    "classicraft:block/sandstone"
+  ],
+  "replace": false
+}

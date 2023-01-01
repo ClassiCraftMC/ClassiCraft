@@ -55,5 +55,34 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add("info.classicraft.shift_press", "按下shift键显示更多信息");
         add("info.classicraft.food.nutrition", "营养价值");
         add("info.classicraft.food.saturation", "恢复价值");
+
+        meta();
+    }
+
+    private void meta() {
+        add("item.classicraft.adze.cobblestone_adze", "圆石刨铲器");
+        add("item.classicraft.adze.deepslate_adze", "深板岩刨铲器");
+        add("item.classicraft.adze.flint_adze", "燧石刨铲器");
+        add("item.classicraft.awl.cobblestone_awl", "圆石锥形器");
+        add("item.classicraft.awl.deepslate_awl", "深板岩锥形器");
+        add("item.classicraft.awl.flint_awl", "燧石锥形器");
+        add("item.classicraft.chopper.cobblestone_chopper", "圆石砍砸器");
+        add("item.classicraft.chopper.deepslate_chopper", "深板岩砍砸器");
+        add("item.classicraft.chopper.flint_chopper", "燧石砍砸器");
+        add("item.classicraft.pebble.andesite_pebble", "安山岩石块");
+        add("item.classicraft.pebble.basalt_pebble", "玄武岩石块");
+        add("item.classicraft.pebble.blackstone_pebble", "黑石石块");
+        add("item.classicraft.pebble.cobblestone_pebble", "圆石石块");
+        add("item.classicraft.pebble.deepslate_pebble", "深板岩石块");
+        add("item.classicraft.pebble.diorite_pebble", "闪长岩石块");
+        add("item.classicraft.pebble.granite_pebble", "花岗岩石块");
+        add("item.classicraft.pebble.red_sandstone_pebble", "红砂岩石块");
+        add("item.classicraft.pebble.sandstone_pebble", "砂岩石块");
+        add("item.classicraft.point.cobblestone_point", "圆石尖状器");
+        add("item.classicraft.point.deepslate_point", "深板岩尖状器");
+        add("item.classicraft.point.flint_point", "燧石尖状器");
+        add("item.classicraft.scraper.cobblestone_scraper", "圆石刮削器");
+        add("item.classicraft.scraper.deepslate_scraper", "深板岩刮削器");
+        add("item.classicraft.scraper.flint_scraper", "燧石刮削器");
     }
 }

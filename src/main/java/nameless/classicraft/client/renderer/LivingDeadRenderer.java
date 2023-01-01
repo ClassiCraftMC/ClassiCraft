@@ -31,7 +31,7 @@ public class LivingDeadRenderer<T extends LivingDeadEntity> extends MobRenderer<
     public ResourceLocation getTextureLocation(LivingDeadEntity pEntity) {
         int variant = pEntity.getVariant() + 1;
         if (TEXTURES[variant - 1] == null) {
-            ResourceLocation loc = new ResourceLocation(ClassiCraftMod.MOD_ID, "textures/entity/living_dead/zombie1" + variant + ".png");
+            ResourceLocation loc = new ResourceLocation(ClassiCraftMod.MOD_ID, "textures/entity/living_dead/zombie" + variant + ".png");
             if (Minecraft.getInstance().getResourceManager().getResource(loc).isEmpty()) {
                 ClassiCraftMod.LOGGER.warn("Found Unknown variant " + variant + ", using default");
                 loc = DEFAULT_TEXTURES;

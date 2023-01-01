@@ -21,6 +21,7 @@ public class BlockEvents {
             EventUtils.blockdropAtOnce(event, ModBlocks.REAL_WALL_TORCH.get(), Items.STICK);
             EventUtils.blockdropAtOnce(event, ModBlocks.REAL_SOUL_TORCH.get(), Items.STICK);
             EventUtils.blockdropAtOnce(event, ModBlocks.REAL_SOUL_WALL_TORCH.get(), Items.STICK);
+
             if (block instanceof LeavesBlock
                     || block instanceof DeadBushBlock) {
                 EventUtils.blockdropRandom(event, block, Items.STICK);

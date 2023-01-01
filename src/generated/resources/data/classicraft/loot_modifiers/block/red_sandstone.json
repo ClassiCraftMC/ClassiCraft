@@ -1,0 +1,14 @@
+{
+  "type": "classicraft:replace_drop",
+  "conditions": [
+    {
+      "block": "minecraft:red_sandstone",
+      "condition": "minecraft:block_state_property"
+    }
+  ],
+  "drop": "classicraft:pebble",
+  "max": 4,
+  "meta": "red_sandstone_pebble",
+  "min": 1,
+  "probability": 100
+}

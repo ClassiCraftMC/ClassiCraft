@@ -1,7 +1,36 @@
 {
   "variants": {
-    "": {
-      "model": "classicraft:block/twigs"
-    }
+    "": [
+      {
+        "model": "classicraft:block/twigs_1"
+      },
+      {
+        "model": "classicraft:block/twigs_1",
+        "y": 90
+      },
+      {
+        "model": "classicraft:block/twigs_1",
+        "y": 180
+      },
+      {
+        "model": "classicraft:block/twigs_1",
+        "y": 270
+      },
+      {
+        "model": "classicraft:block/twigs_2"
+      },
+      {
+        "model": "classicraft:block/twigs_2",
+        "y": 90
+      },
+      {
+        "model": "classicraft:block/twigs_2",
+        "y": 180
+      },
+      {
+        "model": "classicraft:block/twigs_2",
+        "y": 270
+      }
+    ]
   }
 }
