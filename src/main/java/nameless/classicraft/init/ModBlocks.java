@@ -52,7 +52,7 @@ public class ModBlocks {
             registerDefault("rose", () -> new FlowerBlock(MobEffects.DIG_SPEED, 2
             , BlockBehaviour.Properties.copy(Blocks.DANDELION)));
     public static final RegistryObject<Block> POTTED_ROSE =
-            registerDefault("potted_rose", () -> new FlowerPotBlock(ROSE.get(),
+            register("potted_rose", () -> new FlowerPotBlock(ROSE.get(),
                     BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
 
     public static final RegistryObject<Block> TALLOW_BLOCK =
@@ -132,14 +132,14 @@ public class ModBlocks {
             registerDefault("deepslate_pebble", StonePebbleBlock::new);
 
     public static final RegistryObject<Block> QUARTZ_SANDSTONE_PEBBLE =
-            registerDefault("quartz_sandstone_pebble", StonePebbleBlock::new);
+            register("quartz_sandstone_pebble", StonePebbleBlock::new);
 
     public static final RegistryObject<Block> SOUL_SANDSTONE_PEBBLE =
-            registerDefault("soul_sandstone_pebble", StonePebbleBlock::new);
-    public static final RegistryObject<Block> NETHER_RACK_PEBBLE =
-            registerDefault("nether_rack_pebble", StonePebbleBlock::new);
+            register("soul_sandstone_pebble", StonePebbleBlock::new);
+    public static final RegistryObject<Block> NETHERRACK_PEBBLE =
+            register("netherrack_pebble", StonePebbleBlock::new);
     public static final RegistryObject<Block> END_STONE_PEBBLE =
-            registerDefault("end_stone_pebble", StonePebbleBlock::new);
+            register("end_stone_pebble", StonePebbleBlock::new);
 
     public static final RegistryObject<Block> TWIGS =
             registerDefault("twigs", TwigsBlock::new);

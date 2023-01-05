@@ -34,6 +34,10 @@ public class ModGlobalModifierProvider extends GlobalLootModifierProvider {
         pebble(Blocks.BASALT);
         pebble(Blocks.GRANITE);
         pebble(Blocks.BLACKSTONE);
+        pebble(Blocks.QUARTZ_BLOCK);
+        pebble(Blocks.SOUL_SAND);
+        pebble(Blocks.NETHERRACK);
+        pebble(Blocks.END_STONE);
 
         replaceBlock(Blocks.COARSE_DIRT, Items.FLINT, 1);
     }

@@ -41,7 +41,11 @@ public class PebbleItem extends MetaItem {
                 "diorite_pebble",
                 "granite_pebble",
                 "red_sandstone_pebble",
-                "sandstone_pebble"
+                "sandstone_pebble",
+                "quartz_sandstone_pebble",
+                "soul_sandstone_pebble",
+                "netherrack_pebble",
+                "end_stone_pebble"
         ));
     }
 

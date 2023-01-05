@@ -118,7 +118,7 @@ public class ModItemModelProvider extends ItemModelProvider {
                 ModBlocks.MOSSY_BRICKS_WALL.get().asItem(),
                 ModBlocks.CRACKED_BRICKS_WALL.get().asItem(),
                 ModItems.LIVING_DEAD_SPAWN_EGG.get(),
-                ModBlocks.TWIGS.get().asItem().asItem()
+                ModBlocks.TWIGS.get().asItem()
         );
 
         skipItems(MetaItem.getMetaItems());
