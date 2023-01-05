@@ -26,10 +26,11 @@ public class ItemEntityTickEvents {
     }
 
     @SubscribeEvent
-    public static void onTorchInWater(ItemEntityTickEvent event) {
+    public static void onItemInWater(ItemEntityTickEvent event) {
         EventUtils.tickItemInWater(event, ModItems.TORCH_LIT.get(), Items.STICK);
         EventUtils.tickItemInWater(event, ModItems.SOUL_TORCH_LIT.get(), Items.STICK);
         EventUtils.tickItemInWater(event, ModItems.TORCH_UNLIT.get(), Items.STICK);
         EventUtils.tickItemInWater(event, ModItems.SOUL_TORCH_UNLIT.get(), Items.STICK);
+        EventUtils.tickItemInWater(event, Items.SPONGE, Items.WET_SPONGE);
     }
 }
