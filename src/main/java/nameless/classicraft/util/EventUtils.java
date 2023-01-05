@@ -3,6 +3,8 @@ package nameless.classicraft.util;
 import nameless.classicraft.api.event.BlockDropEvent;
 import nameless.classicraft.api.event.ItemEntityTickEvent;
 import nameless.classicraft.block.AbstractLightBlock;
+import nameless.classicraft.block.StonePebbleBlock;
+import nameless.classicraft.init.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -21,39 +23,65 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
+import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class EventUtils {
 
+    public static void onPolish(LivingEntityUseItemEvent.Finish event) {
+        ItemStack stack = event.getItem();
+        /**
+        if (stack.getTag() !=null) {
+            int oldCount = stack.getCount();
+            if (stack.getTag().getInt("classicraft:pebble") == 1) {
+            }
+            if (stack.getTag().getInt("classicraft:pebble") == 2) {
+                event.getToolTip().add(Component.literal("Pebble_3"));
+            }
+            if (stack.getTag().getInt("classicraft:pebble") == 3) {
+                event.getToolTip().add(Component.literal("Pebble_3"));
+            }
+            if (stack.getTag().getInt("classicraft:pebble") == 4) {
+                event.getToolTip().add(Component.literal("Pebble_4"));
+            }
+            if (stack.getTag().getInt("classicraft:pebble") == 5) {
+                event.getToolTip().add(Component.literal("Pebble_5"));
+            }
+            if (stack.getTag().getInt("classicraft:pebble") == 6 || stack.getTag().getInt("classicraft:pebble") == 7) {
+                event.getToolTip().add(Component.literal("Pebble_6"));
+            }
+        }*/
+    }
+
     public static void onHit(ItemEntityTickEvent event) {
         ItemEntity entity = event.getEntity();
         ItemStack stack = entity.getItem();
-        if (stack.is(Items.ARROW) && entity.getBlockStateOn().is(Blocks.IRON_BLOCK)) {
+        if (stack.is(ModTags.Items.STONE_PEBBLES) && entity.getBlockStateOn().getBlock() instanceof StonePebbleBlock) {
             int rand = entity.getLevel().getRandom().nextInt(1, 7);
-            stack.getOrCreateTag().putInt("classicraft:arrow", rand);
+            stack.getOrCreateTag().putInt("classicraft:pebble", rand);
         }
     }
 
     public static void appendTooltip(ItemTooltipEvent event) {
         if (event.getItemStack().getTag() !=null) {
-            if (event.getItemStack().getTag().getInt("classicraft:arrow") == 1) {
-                event.getToolTip().add(Component.literal("Arrrow_1"));
+            if (event.getItemStack().getTag().getInt("classicraft:pebble") == 1) {
+                event.getToolTip().add(Component.literal("Pebble_1"));
             }
-            if (event.getItemStack().getTag().getInt("classicraft:arrow") == 2) {
-                event.getToolTip().add(Component.literal("Arrrow_2"));
+            if (event.getItemStack().getTag().getInt("classicraft:pebble") == 2) {
+                event.getToolTip().add(Component.literal("Pebble_3"));
             }
-            if (event.getItemStack().getTag().getInt("classicraft:arrow") == 3) {
-                event.getToolTip().add(Component.literal("Arrrow_3"));
+            if (event.getItemStack().getTag().getInt("classicraft:pebble") == 3) {
+                event.getToolTip().add(Component.literal("Pebble_3"));
             }
-            if (event.getItemStack().getTag().getInt("classicraft:arrow") == 4) {
-                event.getToolTip().add(Component.literal("Arrrow_4"));
+            if (event.getItemStack().getTag().getInt("classicraft:pebble") == 4) {
+                event.getToolTip().add(Component.literal("Pebble_4"));
             }
-            if (event.getItemStack().getTag().getInt("classicraft:arrow") == 5) {
-                event.getToolTip().add(Component.literal("Arrrow_5"));
+            if (event.getItemStack().getTag().getInt("classicraft:pebble") == 5) {
+                event.getToolTip().add(Component.literal("Pebble_5"));
             }
-            if (event.getItemStack().getTag().getInt("classicraft:arrow") == 6 || event.getItemStack().getTag().getInt("classicraft:arrow") == 7) {
-                event.getToolTip().add(Component.literal("Arrrow_6"));
+            if (event.getItemStack().getTag().getInt("classicraft:pebble") == 6 || event.getItemStack().getTag().getInt("classicraft:pebble") == 7) {
+                event.getToolTip().add(Component.literal("Pebble_6"));
             }
         }
     }
