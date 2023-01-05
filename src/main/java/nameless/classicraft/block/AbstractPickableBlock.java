@@ -19,10 +19,10 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 /**
  * @author DustW
  */
-public abstract class AbstractPickBlock extends Block {
+public abstract class AbstractPickableBlock extends Block {
     public static final VoxelShape SHAPE = box(0, 0, 0, 16, 1, 16);
 
-    protected AbstractPickBlock(Properties pProperties) {
+    protected AbstractPickableBlock(Properties pProperties) {
         super(pProperties);
     }
 

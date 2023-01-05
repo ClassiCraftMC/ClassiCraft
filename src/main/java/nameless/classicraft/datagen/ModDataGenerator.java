@@ -1,14 +1,21 @@
 package nameless.classicraft.datagen;
 
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.datagen.levelgen.ModConfiguredFeatureProvider;
+import nameless.classicraft.datagen.levelgen.ModPlacedFeatureProvider;
 import nameless.classicraft.datagen.loot.ModLootTableProvider;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
+import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
+import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.Set;
 
 /**
  * ClassicCraft 数据生成类
@@ -17,6 +24,13 @@ import net.minecraftforge.fml.common.Mod;
  */
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModDataGenerator {
+
+    public static RegistrySetBuilder BUILDER =
+            new RegistrySetBuilder()
+                    .add(Registries.PLACED_FEATURE,
+                            ModPlacedFeatureProvider::placedFeature)
+                    .add(Registries.CONFIGURED_FEATURE,
+                            ModConfiguredFeatureProvider::configuredFeatures);
 
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
@@ -37,5 +51,9 @@ public class ModDataGenerator {
                 new ModLootTableProvider(generator.getPackOutput()));
         generator.addProvider(event.includeServer(),
                 new ModGlobalModifierProvider(generator.getPackOutput(), ClassiCraftMod.MOD_ID));
+        generator.addProvider(event.includeServer(),
+                new DatapackBuiltinEntriesProvider(generator.getPackOutput(),
+                        event.getLookupProvider(), BUILDER,
+                        Set.of(ClassiCraftMod.MOD_ID)));
     }
 }

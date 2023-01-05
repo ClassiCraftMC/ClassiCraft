@@ -30,6 +30,7 @@ import java.util.function.Supplier;
  * }</pre>
  * @author DustW
  */
+@SuppressWarnings("unchecked")
 public class SafeTag implements Supplier<CompoundTag> {
     Supplier<CompoundTag> tagSupplier;
     String mainKey;

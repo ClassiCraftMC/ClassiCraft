@@ -2,12 +2,8 @@
   "feature": "classicraft:rose",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 3
-    },
-    {
       "type": "minecraft:rarity_filter",
-      "chance": 2
+      "chance": 14
     },
     {
       "type": "minecraft:in_square"
@@ -15,9 +11,6 @@
     {
       "type": "minecraft:heightmap",
       "heightmap": "MOTION_BLOCKING"
-    },
-    {
-      "type": "minecraft:biome"
     },
     {
       "type": "minecraft:biome"

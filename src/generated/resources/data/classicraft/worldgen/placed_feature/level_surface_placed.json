@@ -1,9 +1,9 @@
 {
-  "feature": "classicraft:twig_surface",
+  "feature": "classicraft:level_surface",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 3
+      "count": 5
     },
     {
       "type": "minecraft:in_square"
