@@ -132,14 +132,14 @@ public class ModBlocks {
             registerDefault("deepslate_pebble", StonePebbleBlock::new);
 
     public static final RegistryObject<Block> QUARTZ_SANDSTONE_PEBBLE =
-            register("quartz_sandstone_pebble", StonePebbleBlock::new);
+            registerDefault("quartz_sandstone_pebble", StonePebbleBlock::new);
 
     public static final RegistryObject<Block> SOUL_SANDSTONE_PEBBLE =
-            register("soul_sandstone_pebble", StonePebbleBlock::new);
+            registerDefault("soul_sandstone_pebble", StonePebbleBlock::new);
     public static final RegistryObject<Block> NETHERRACK_PEBBLE =
-            register("netherrack_pebble", StonePebbleBlock::new);
+            registerDefault("netherrack_pebble", StonePebbleBlock::new);
     public static final RegistryObject<Block> END_STONE_PEBBLE =
-            register("end_stone_pebble", StonePebbleBlock::new);
+            registerDefault("end_stone_pebble", StonePebbleBlock::new);
 
     public static final RegistryObject<Block> TWIGS =
             registerDefault("twigs", TwigsBlock::new);
