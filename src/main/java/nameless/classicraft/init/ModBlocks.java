@@ -51,6 +51,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> ROSE =
             registerDefault("rose", () -> new FlowerBlock(MobEffects.DIG_SPEED, 2
             , BlockBehaviour.Properties.copy(Blocks.DANDELION)));
+    public static final RegistryObject<Block> POTTED_ROSE =
+            registerDefault("potted_rose", () -> new FlowerPotBlock(ROSE.get(),
+                    BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
 
     public static final RegistryObject<Block> TALLOW_BLOCK =
             registerDefault("tallow_block", TallowBlock::new);
