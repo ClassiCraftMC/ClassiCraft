@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:block",
+  "functions": [
+    {
+      "function": "minecraft:set_nbt",
+      "tag": "{classicraft:{Meta:\"blackstone_pebble\"}}"
+    }
+  ],
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "classicraft:pebble"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}

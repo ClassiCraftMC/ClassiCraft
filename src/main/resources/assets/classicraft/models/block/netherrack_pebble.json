@@ -1,0 +1,36 @@
+{
+  "credit": "Made with Blockbench",
+  "parent": "block/block",
+  "textures": {
+    "0": "classicraft:block/netherrack",
+    "particle": "classicraft:block/netherrack"
+  },
+  "elements": [
+    {
+      "from": [3, -0.7, 4],
+      "to": [8, 0.3, 7],
+      "shade": false,
+      "rotation": {"angle": -22.5, "axis": "y", "origin": [3, -2.7, 5]},
+      "faces": {
+        "north": {"uv": [11, 13, 16, 16], "texture": "#0", "cullface": "up"},
+        "east": {"uv": [13, 9, 16, 12], "texture": "#0", "cullface": "up"},
+        "south": {"uv": [1, 12, 6, 15], "texture": "#0", "cullface": "up"},
+        "west": {"uv": [11, 3, 14, 6], "texture": "#0", "cullface": "up"},
+        "up": {"uv": [7, 0, 12, 3], "texture": "#0", "cullface": "up"}
+      }
+    },
+    {
+      "from": [5.5, -0.2, 6],
+      "to": [9.5, 0.8, 10],
+      "shade": false,
+      "rotation": {"angle": 22.5, "axis": "y", "origin": [7.5, -0.2, 8]},
+      "faces": {
+        "north": {"uv": [5, 13, 9, 14], "texture": "#0", "cullface": "up"},
+        "east": {"uv": [0, 11, 4, 12], "texture": "#0", "cullface": "up"},
+        "south": {"uv": [0, 11, 4, 12], "texture": "#0", "cullface": "up"},
+        "west": {"uv": [7, 11, 11, 12], "texture": "#0", "cullface": "up"},
+        "up": {"uv": [7, 0, 11, 4], "texture": "#0", "cullface": "up"}
+      }
+    }
+  ]
+}

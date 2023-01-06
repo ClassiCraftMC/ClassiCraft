@@ -139,7 +139,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> NETHERRACK_PEBBLE =
             registerDefault("netherrack_pebble", StonePebbleBlock::new);
     public static final RegistryObject<Block> END_STONE_PEBBLE =
-            registerDefault("end_stone_pebble", StonePebbleBlock::new);
+            register("end_stone_pebble", StonePebbleBlock::new);
+    public static final RegistryObject<Block> BASALT_PEBBLE =
+            registerDefault("basalt_pebble", StonePebbleBlock::new);
+    public static final RegistryObject<Block> BLACKSTONE_PEBBLE =
+            registerDefault("blackstone_pebble", StonePebbleBlock::new);
 
     public static final RegistryObject<Block> TWIGS =
             registerDefault("twigs", TwigsBlock::new);

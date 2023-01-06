@@ -3,7 +3,9 @@ package nameless.classicraft.datagen;
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.init.ModBlocks;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.DeferredRegister;
@@ -74,7 +76,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 ModBlocks.QUARTZ_SANDSTONE_PEBBLE.get(),
                 ModBlocks.SOUL_SANDSTONE_PEBBLE.get(),
                 ModBlocks.NETHERRACK_PEBBLE.get(),
-                ModBlocks.END_STONE_PEBBLE.get()
+                ModBlocks.END_STONE_PEBBLE.get(),
+                ModBlocks.BASALT_PEBBLE.get(),
+                ModBlocks.BLACKSTONE_PEBBLE.get()
         );
     }
 }

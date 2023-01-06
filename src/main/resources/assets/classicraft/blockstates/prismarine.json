@@ -1,0 +1,96 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "classicraft:block/prismarine_1"
+      },
+      {
+        "model": "classicraft:block/prismarine_1",
+        "y": 90
+      },
+      {
+        "model": "classicraft:block/prismarine_1",
+        "y": 180
+      },
+      {
+        "model": "classicraft:block/prismarine_1",
+        "y": 270
+      },
+      {
+        "model": "classicraft:block/prismarine_2"
+      },
+      {
+        "model": "classicraft:block/prismarine_2",
+        "y": 90
+      },
+      {
+        "model": "classicraft:block/prismarine_2",
+        "y": 180
+      },
+      {
+        "model": "classicraft:block/prismarine_2",
+        "y": 270
+      },
+      {
+        "model": "classicraft:block/prismarine_3"
+      },
+      {
+        "model": "classicraft:block/prismarine_3",
+        "y": 90
+      },
+      {
+        "model": "classicraft:block/prismarine_3",
+        "y": 180
+      },
+      {
+        "model": "classicraft:block/prismarine_3",
+        "y": 270
+      },
+      {
+        "model": "classicraft:block/prismarine_4"
+      },
+      {
+        "model": "classicraft:block/prismarine_4",
+        "y": 90
+      },
+      {
+        "model": "classicraft:block/prismarine_4",
+        "y": 180
+      },
+      {
+        "model": "classicraft:block/prismarine_4",
+        "y": 270
+      },
+      {
+        "model": "classicraft:block/prismarine_5"
+      },
+      {
+        "model": "classicraft:block/prismarine_5",
+        "y": 90
+      },
+      {
+        "model": "classicraft:block/prismarine_5",
+        "y": 180
+      },
+      {
+        "model": "classicraft:block/prismarine_5",
+        "y": 270
+      },
+      {
+        "model": "classicraft:block/prismarine_6"
+      },
+      {
+        "model": "classicraft:block/prismarine_6",
+        "y": 90
+      },
+      {
+        "model": "classicraft:block/prismarine_6",
+        "y": 180
+      },
+      {
+        "model": "classicraft:block/prismarine_6",
+        "y": 270
+      }
+    ]
+  }
+}
