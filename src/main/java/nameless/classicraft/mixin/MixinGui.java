@@ -23,10 +23,7 @@ public abstract class MixinGui extends GuiComponent {
     private void renderSanBar(float pPartialTick, PoseStack pPoseStack, CallbackInfo ci) {
         Player player = ((Gui) (Object) this).getCameraPlayer();
         ISanHandler handler = (ISanHandler) player;
-        if (player != null
-                && !player.isCreative()
-                && !player.isSpectator()
-                && !(player instanceof FakePlayer)) {
+        if (!player.isCreative() && !player.isSpectator() && !(player instanceof FakePlayer)) {
             int san = Mth.ceil(handler.getSan());
             int barX = ((Gui) (Object) this).screenWidth / 2 - 91;
             int barY = ((Gui) (Object) this).screenHeight - 39;
