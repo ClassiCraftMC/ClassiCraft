@@ -8,13 +8,10 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.util.FakePlayer;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -22,27 +19,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Gui.class)
 public abstract class MixinGui extends GuiComponent {
 
-    @Shadow
-    protected abstract Player getCameraPlayer();
-
-    @Shadow protected int screenWidth;
-
-    @Shadow protected int screenHeight;
-
-    @Shadow @Final
-    protected RandomSource random;
-
     @Inject(method = "renderHotbar", at = @At("RETURN"))
     private void renderSanBar(float pPartialTick, PoseStack pPoseStack, CallbackInfo ci) {
-        Player player = this.getCameraPlayer();
+        Player player = ((Gui) (Object) this).getCameraPlayer();
         ISanHandler handler = (ISanHandler) player;
         if (player != null
                 && !player.isCreative()
                 && !player.isSpectator()
                 && !(player instanceof FakePlayer)) {
             int san = Mth.ceil(handler.getSan());
-            int barX = this.screenWidth / 2 - 91;
-            int barY = this.screenHeight - 39;
+            int barX = ((Gui) (Object) this).screenWidth / 2 - 91;
+            int barY = ((Gui) (Object) this).screenHeight - 39;
             int sanPerStar = (int) handler.getMaxSan() / 10;
             int maxHealth = Mth.ceil((player.getAttributeValue(Attributes.MAX_HEALTH)
                     + player.getAbsorptionAmount()) / 2.0F / 10.0F);
@@ -56,7 +43,7 @@ public abstract class MixinGui extends GuiComponent {
                     drawY -= 10;
                 }
                 if (Mth.ceil(san) <= 2 * sanPerStar) {
-                    drawY += this.random.nextInt(2);
+                    drawY += ((Gui) (Object) this).random.nextInt(2);
                 }
                 this.blit(pPoseStack, drawX, drawY, 0, 0, 9, 9);
                 if (x * sanPerStar + 1 < san) {
