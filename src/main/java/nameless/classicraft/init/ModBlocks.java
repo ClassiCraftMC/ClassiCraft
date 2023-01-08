@@ -145,6 +145,10 @@ public class ModBlocks {
     public static final RegistryObject<Block> BLACKSTONE_PEBBLE =
             registerDefault("blackstone_pebble", StonePebbleBlock::new);
 
+    public static final RegistryObject<Block> FLINT =
+            registerDefault("flint", StonePebbleBlock::new);
+
+
     public static final RegistryObject<Block> TWIGS =
             registerDefault("twigs", TwigsBlock::new);
 
@@ -154,6 +158,26 @@ public class ModBlocks {
                             .requiresCorrectToolForDrops()
                             .strength(3.0F, 3.0F),
                             UniformInt.of(0, 2)));
+
+    public static final RegistryObject<Block> STONE_WALL =
+            registerDefault("stone_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> SMOOTH_STONE_STAIRS =
+            registerDefault("smooth_stone_stairs", () ->
+                    new StairBlock(Blocks.SMOOTH_STONE.defaultBlockState(),
+                            BlockBehaviour.Properties
+                                    .of(Material.STONE)
+                                    .requiresCorrectToolForDrops()
+                                    .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> SMOOTH_STONE_WALL =
+            registerDefault("smooth_stone_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)));
 
     /**
      * Hanlde Default Register

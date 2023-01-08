@@ -52,7 +52,9 @@ public class RegisterEvents {
                             output.accept(ModBlocks.TWIGS.get());
                             output.accept(ModBlocks.SULFUR_ORE.get());
                             output.accept(ModItems.SULFUR.get());
-
+                            output.accept(ModBlocks.STONE_WALL.get());
+                            output.accept(ModBlocks.SMOOTH_STONE_STAIRS.get());
+                            output.accept(ModBlocks.SMOOTH_STONE_WALL.get());
                             MetaItem.getMetaItems().forEach(mi -> mi.acceptToCreativeModeTab(output));
                         })
                         .title(Component.translatable("itemGroup.classicraft.common"))

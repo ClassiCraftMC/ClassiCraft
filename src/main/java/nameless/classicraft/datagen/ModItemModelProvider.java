@@ -9,6 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.TieredItem;
+import net.minecraft.world.level.block.WallBlock;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -118,7 +119,10 @@ public class ModItemModelProvider extends ItemModelProvider {
                 ModBlocks.MOSSY_BRICKS_WALL.get().asItem(),
                 ModBlocks.CRACKED_BRICKS_WALL.get().asItem(),
                 ModItems.LIVING_DEAD_SPAWN_EGG.get(),
-                ModBlocks.TWIGS.get().asItem()
+                ModBlocks.TWIGS.get().asItem(),
+                ModBlocks.STONE_WALL.get().asItem(),
+                ModBlocks.SMOOTH_STONE_STAIRS.get().asItem(),
+                ModBlocks.SMOOTH_STONE_WALL.get().asItem()
         );
 
         skipItems(MetaItem.getMetaItems());
