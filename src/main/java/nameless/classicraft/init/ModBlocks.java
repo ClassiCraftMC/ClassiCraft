@@ -6,6 +6,7 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
@@ -146,7 +147,7 @@ public class ModBlocks {
             registerDefault("blackstone_pebble", StonePebbleBlock::new);
 
     public static final RegistryObject<Block> FLINT =
-            registerDefault("flint", StonePebbleBlock::new);
+            registerDefault("flint", () -> new VanillaPickBlock(Items.FLINT));
 
 
     public static final RegistryObject<Block> TWIGS =
