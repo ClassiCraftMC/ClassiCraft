@@ -24,6 +24,15 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class EventUtils {
 
+    public static void putPebbleBlock(PlayerInteractEvent.RightClickBlock event, Item vanillaItem, Block pebbleBlock) {
+        Level level = event.getLevel();
+        ItemStack itemStack = event.getItemStack();
+        if (itemStack.is(vanillaItem)) {
+            level.setBlockAndUpdate(event.getPos(), pebbleBlock.defaultBlockState());
+            itemStack.shrink(1);
+        }
+    }
+
     public static void onPolish(LivingEntityUseItemEvent.Finish event) {
         ItemStack stack = event.getItem();
         /**

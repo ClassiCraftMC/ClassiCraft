@@ -147,8 +147,7 @@ public class ModBlocks {
             registerDefault("blackstone_pebble", StonePebbleBlock::new);
 
     public static final RegistryObject<Block> FLINT =
-            registerDefault("flint", () -> new VanillaPickBlock(Items.FLINT));
-
+            register("flint", () -> new VanillaPickBlock(Items.FLINT));
 
     public static final RegistryObject<Block> TWIGS =
             registerDefault("twigs", TwigsBlock::new);

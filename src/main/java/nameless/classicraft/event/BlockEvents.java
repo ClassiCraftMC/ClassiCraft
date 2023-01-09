@@ -7,11 +7,17 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DeadBushBlock;
 import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
 public class BlockEvents {
+
+    @SubscribeEvent
+    public static void putPebbleVanilla(PlayerInteractEvent.RightClickBlock event) {
+        EventUtils.putPebbleBlock(event, Items.FLINT, ModBlocks.FLINT.get());
+    }
 
     @SubscribeEvent
     public static void blockDropItems(BlockDropEvent event) {
