@@ -9,6 +9,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -28,6 +29,8 @@ public class EventUtils {
         Level level = event.getLevel();
         ItemStack itemStack = event.getItemStack();
         if (itemStack.is(vanillaItem)) {
+            event.setCancellationResult(InteractionResult.PASS);
+            level.playSound(null, event.getPos(), SoundEvents.STONE_PLACE, SoundSource.BLOCKS,1, level.random.nextFloat() * 0.1F + 0.9F);
             level.setBlockAndUpdate(event.getPos().above(), pebbleBlock.defaultBlockState());
             if (!event.getEntity().isCreative()) {
                 itemStack.shrink(1);
