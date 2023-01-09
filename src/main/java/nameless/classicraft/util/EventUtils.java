@@ -28,8 +28,10 @@ public class EventUtils {
         Level level = event.getLevel();
         ItemStack itemStack = event.getItemStack();
         if (itemStack.is(vanillaItem)) {
-            level.setBlockAndUpdate(event.getPos(), pebbleBlock.defaultBlockState());
-            itemStack.shrink(1);
+            level.setBlockAndUpdate(event.getPos().above(), pebbleBlock.defaultBlockState());
+            if (!event.getEntity().isCreative()) {
+                itemStack.shrink(1);
+            }
         }
     }
 
