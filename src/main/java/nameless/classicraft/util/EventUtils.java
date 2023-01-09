@@ -6,6 +6,7 @@ import nameless.classicraft.block.AbstractLightBlock;
 import nameless.classicraft.block.StonePebbleBlock;
 import nameless.classicraft.init.ModTags;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -29,9 +30,12 @@ public class EventUtils {
         Level level = event.getLevel();
         ItemStack itemStack = event.getItemStack();
         if (itemStack.is(vanillaItem)) {
+            BlockState stateUnder = level.getBlockState(event.getPos());
             event.setCancellationResult(InteractionResult.PASS);
             level.playSound(null, event.getPos(), SoundEvents.STONE_PLACE, SoundSource.BLOCKS,1, level.random.nextFloat() * 0.1F + 0.9F);
-            level.setBlockAndUpdate(event.getPos().above(), pebbleBlock.defaultBlockState());
+            if (stateUnder.isFaceSturdy(level, event.getPos(), Direction.UP)) {
+                level.setBlockAndUpdate(event.getPos().above(), pebbleBlock.defaultBlockState());
+            }
             if (!event.getEntity().isCreative()) {
                 itemStack.shrink(1);
             }
