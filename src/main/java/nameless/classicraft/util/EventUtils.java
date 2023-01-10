@@ -15,11 +15,13 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -31,13 +33,14 @@ public class EventUtils {
         ItemStack itemStack = event.getItemStack();
         if (itemStack.is(vanillaItem)) {
             BlockState stateUnder = level.getBlockState(event.getPos());
-            event.setCancellationResult(InteractionResult.PASS);
-            level.playSound(null, event.getPos(), SoundEvents.STONE_PLACE, SoundSource.BLOCKS,1, level.random.nextFloat() * 0.1F + 0.9F);
             if (stateUnder.isFaceSturdy(level, event.getPos(), Direction.UP)) {
+                event.setCancellationResult(InteractionResult.PASS);
                 level.setBlockAndUpdate(event.getPos().above(), pebbleBlock.defaultBlockState());
-            }
-            if (!event.getEntity().isCreative()) {
-                itemStack.shrink(1);
+                level.playSound(null, event.getPos(), SoundEvents.STONE_PLACE, SoundSource.BLOCKS,1, level.random.nextFloat() * 0.1F + 0.9F);
+                level.gameEvent(event.getEntity(), GameEvent.BLOCK_PLACE, event.getPos());
+                if (!event.getEntity().isCreative()) {
+                    itemStack.shrink(1);
+                }
             }
         }
     }

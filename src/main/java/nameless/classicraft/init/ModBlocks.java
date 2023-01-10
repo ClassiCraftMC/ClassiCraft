@@ -150,7 +150,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> FLINT =
             register("flint", () -> new VanillaPickBlock(Items.FLINT));
     public static final RegistryObject<Block> PRISMARINE =
-            register("prismarine", () -> new VanillaPickBlock(Items.PRISMARINE));
+            register("prismarine", () -> new VanillaPickBlock(Items.PRISMARINE_SHARD));
 
     public static final RegistryObject<Block> TWIGS =
             registerDefault("twigs", TwigsBlock::new);
