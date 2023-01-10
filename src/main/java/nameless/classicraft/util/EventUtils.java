@@ -18,14 +18,13 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.FlintAndSteelItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
@@ -34,49 +33,27 @@ public class EventUtils {
     public static void putPebbleBlock(PlayerInteractEvent.RightClickBlock event, Item vanillaItem, Block pebbleBlock) {
         Level level = event.getLevel();
         ItemStack itemStack = event.getItemStack();
+        BlockPos pos = event.getPos();
+        Player player = event.getEntity();
+        BlockPos abovePos = pos.above();
         if (itemStack.is(vanillaItem)) {
-            BlockState stateUnder = level.getBlockState(event.getPos());
-            if (stateUnder.isFaceSturdy(level, event.getPos(), Direction.UP)) {
+            BlockState stateUnder = level.getBlockState(pos);
+            if (stateUnder.isFaceSturdy(level, pos, Direction.UP) && level.getBlockState(abovePos).getBlock() == Blocks.AIR) {
                 event.getEntity().swing(event.getHand());
-                level.setBlockAndUpdate(event.getPos().above(), pebbleBlock.defaultBlockState());
-                pebbleBlock.setPlacedBy(level, event.getPos().above(), pebbleBlock.defaultBlockState(), event.getEntity(), itemStack);
-                if (event.getEntity() instanceof ServerPlayer) {
-                    CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)event.getEntity(), event.getPos(), itemStack);
+                level.setBlockAndUpdate(abovePos, pebbleBlock.defaultBlockState());
+                pebbleBlock.setPlacedBy(level, abovePos, pebbleBlock.defaultBlockState(), player, itemStack);
+                if (player instanceof ServerPlayer) {
+                    CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, pos, itemStack);
                 }
-                level.gameEvent(GameEvent.BLOCK_PLACE, event.getPos(), GameEvent.Context.of(event.getEntity(), pebbleBlock.defaultBlockState()));
-                level.playSound(null, event.getPos(), SoundEvents.STONE_PLACE, SoundSource.BLOCKS,1, level.random.nextFloat() * 0.1F + 0.9F);
-                if (!event.getEntity().isCreative()) {
+                level.gameEvent(GameEvent.BLOCK_PLACE, pos, GameEvent.Context.of(player, pebbleBlock.defaultBlockState()));
+                level.playSound(null, pos, SoundEvents.STONE_PLACE, SoundSource.BLOCKS,1, level.random.nextFloat() * 0.1F + 0.9F);
+                if (!player.getAbilities().instabuild) {
                     itemStack.shrink(1);
                 }
-                event.getEntity().awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
+                player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
                 event.setCancellationResult(InteractionResult.sidedSuccess(level.isClientSide));
             }
         }
-    }
-
-    public static void onPolish(LivingEntityUseItemEvent.Finish event) {
-        ItemStack stack = event.getItem();
-        /**
-        if (stack.getTag() !=null) {
-            int oldCount = stack.getCount();
-            if (stack.getTag().getInt("classicraft:pebble") == 1) {
-            }
-            if (stack.getTag().getInt("classicraft:pebble") == 2) {
-                event.getToolTip().add(Component.literal("Pebble_3"));
-            }
-            if (stack.getTag().getInt("classicraft:pebble") == 3) {
-                event.getToolTip().add(Component.literal("Pebble_3"));
-            }
-            if (stack.getTag().getInt("classicraft:pebble") == 4) {
-                event.getToolTip().add(Component.literal("Pebble_4"));
-            }
-            if (stack.getTag().getInt("classicraft:pebble") == 5) {
-                event.getToolTip().add(Component.literal("Pebble_5"));
-            }
-            if (stack.getTag().getInt("classicraft:pebble") == 6 || stack.getTag().getInt("classicraft:pebble") == 7) {
-                event.getToolTip().add(Component.literal("Pebble_6"));
-            }
-        }*/
     }
 
     public static void onHit(ItemEntityTickEvent event) {

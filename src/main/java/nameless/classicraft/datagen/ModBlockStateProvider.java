@@ -17,6 +17,13 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
+        simpleBlock(ModBlocks.FLINT_BLOCK.get());
+        simpleBlock(ModBlocks.CHISELED_QUARTZ_SANDSTONE.get());
+        simpleBlock(ModBlocks.CHISELED_SOUL_SANDSTONE.get());
+        simpleBlock(ModBlocks.CUT_QUARTZ_SANDSTONE.get());
+        simpleBlock(ModBlocks.CUT_SOUL_SANDSTONE.get());
+        simpleBlock(ModBlocks.QUARTZ_QUICKSAND.get());
+        simpleBlock(ModBlocks.QUARTZ_SANDSTONE.get());
         wallBlock((WallBlock) ModBlocks.STONE_WALL.get(), new ResourceLocation("minecraft:block/stone"));
         stairsBlock((StairBlock) ModBlocks.SMOOTH_STONE_STAIRS.get(), new ResourceLocation("minecraft:block/smooth_stone"));
         wallBlock((WallBlock) ModBlocks.SMOOTH_STONE_WALL.get(), new ResourceLocation("minecraft:block/smooth_stone"));

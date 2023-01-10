@@ -7,13 +7,9 @@ import nameless.classicraft.init.ModItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-
-import java.util.Arrays;
-import java.util.Collection;
 
 public class RegisterEvents {
 
@@ -60,6 +56,12 @@ public class RegisterEvents {
                             output.accept(ModBlocks.SMOOTH_STONE_STAIRS.get());
                             output.accept(ModBlocks.SMOOTH_STONE_WALL.get());
                             output.accept(ModBlocks.FLINT_BLOCK.get());
+                            output.accept(ModBlocks.CHISELED_QUARTZ_SANDSTONE.get());
+                            output.accept(ModBlocks.CHISELED_SOUL_SANDSTONE.get());
+                            output.accept(ModBlocks.CUT_QUARTZ_SANDSTONE.get());
+                            output.accept(ModBlocks.CUT_SOUL_SANDSTONE.get());
+                            output.accept(ModBlocks.QUARTZ_QUICKSAND.get());
+                            output.accept(ModBlocks.QUARTZ_SANDSTONE.get());
                             MetaItem.getMetaItems().forEach(mi -> mi.acceptToCreativeModeTab(output));
                         })
                         .title(Component.translatable("itemGroup.classicraft.common"))

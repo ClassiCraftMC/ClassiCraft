@@ -69,7 +69,15 @@ public class ClientRegisterEvents {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.SANDSTONE_PEBBLE.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DEEPSLATE_PEBBLE.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.TWIGS.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.STONE_WALL.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.STONE_WALL.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.MOSSY_BRICKS_WALL.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CRACKED_BRICKS_WALL.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.SMOOTH_STONE_WALL.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.MOSSY_BRICKS_STAIRS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CRACKED_BRICKS_STAIRS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.SMOOTH_STONE_STAIRS.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.MOSSY_BRICKS_SLAB.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CRACKED_BRICKS_SLAB.get(), RenderType.translucent());
         ItemProperties.register(ModItems.DEPTH_METER.get(), new ResourceLocation("angle"),
                 new CompassItemPropertyFunction((level, stack, pEntity)
                         -> DepthMeterItem.isLodestoneCompass(stack) ?

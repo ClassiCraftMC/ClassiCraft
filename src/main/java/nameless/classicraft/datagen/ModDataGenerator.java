@@ -4,7 +4,6 @@ import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.datagen.levelgen.ModConfiguredFeatureProvider;
 import nameless.classicraft.datagen.levelgen.ModPlacedFeatureProvider;
 import nameless.classicraft.datagen.loot.ModLootTableProvider;
-import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;

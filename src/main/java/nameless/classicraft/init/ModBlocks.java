@@ -50,6 +50,10 @@ public class ModBlocks {
             registerDefault("red_quicksand",
                     () -> new QuickSandBlock(11098145));
 
+    public static final RegistryObject<Block> QUARTZ_QUICKSAND =
+            registerDefault("quartz_quicksand",
+                    () -> new QuickSandBlock(14406560));
+
     public static final RegistryObject<Block> ROSE =
             registerDefault("rose", () -> new FlowerBlock(MobEffects.DIG_SPEED, 2
             , BlockBehaviour.Properties.copy(Blocks.DANDELION)));
@@ -195,6 +199,36 @@ public class ModBlocks {
                             .sound(SoundType.STONE).strength(1f, 10f)
                             .noOcclusion()
                             .isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
+
+    public static final RegistryObject<Block> CHISELED_QUARTZ_SANDSTONE =
+            registerDefault("chiseled_quartz_sandstone", () ->
+                    new Block(BlockBehaviour.Properties.of(Material.STONE,
+                            MaterialColor.SAND).requiresCorrectToolForDrops()
+
+                            .strength(0.8F)));
+    public static final RegistryObject<Block> CHISELED_SOUL_SANDSTONE =
+            registerDefault("chiseled_soul_sandstone", () ->
+                    new Block(BlockBehaviour.Properties.of(Material.STONE,
+                                    MaterialColor.SAND).requiresCorrectToolForDrops()
+                            .strength(0.8F)));
+
+    public static final RegistryObject<Block> CUT_QUARTZ_SANDSTONE =
+            registerDefault("cut_quartz_sandstone", () ->
+                    new Block(BlockBehaviour.Properties.of(Material.STONE,
+                            MaterialColor.SAND).requiresCorrectToolForDrops()
+                            .strength(0.8F)));
+
+    public static final RegistryObject<Block> CUT_SOUL_SANDSTONE =
+            registerDefault("cut_soul_sandstone", () ->
+                    new Block(BlockBehaviour.Properties.of(Material.STONE,
+                                    MaterialColor.SAND).requiresCorrectToolForDrops()
+                            .strength(0.8F)));
+
+    public static final RegistryObject<Block> QUARTZ_SANDSTONE =
+            registerDefault("quartz_sandstone", () ->
+                    new Block(BlockBehaviour.Properties.of(Material.STONE,
+                                    MaterialColor.SAND).requiresCorrectToolForDrops()
+                            .strength(0.8F)));
 
     /**
      * Hanlde Default Register
