@@ -69,9 +69,11 @@ public class ClientRegisterEvents {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.SANDSTONE_PEBBLE.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DEEPSLATE_PEBBLE.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.TWIGS.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.STONE_WALL.get(), RenderType.LINES);
-        ItemProperties.register(ModItems.DEPTH_METER.get(), new ResourceLocation("angle"), new CompassItemPropertyFunction((level, stack, pEntity) -> {
-            return DepthMeterItem.isLodestoneCompass(stack) ? DepthMeterItem.getLodestonePosition(stack.getOrCreateTag()) : DepthMeterItem.getSpawnPosition(level);
-        }));
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.STONE_WALL.get(), RenderType.cutout());
+        ItemProperties.register(ModItems.DEPTH_METER.get(), new ResourceLocation("angle"),
+                new CompassItemPropertyFunction((level, stack, pEntity)
+                        -> DepthMeterItem.isLodestoneCompass(stack) ?
+                        DepthMeterItem.getLodestonePosition(stack.getOrCreateTag()) :
+                        DepthMeterItem.getSpawnPosition(level)));
     }
 }

@@ -12,12 +12,13 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.FlintAndSteelItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -36,7 +37,9 @@ public class EventUtils {
         if (itemStack.is(vanillaItem)) {
             BlockState stateUnder = level.getBlockState(event.getPos());
             if (stateUnder.isFaceSturdy(level, event.getPos(), Direction.UP)) {
+                event.getEntity().swing(event.getHand());
                 level.setBlockAndUpdate(event.getPos().above(), pebbleBlock.defaultBlockState());
+                pebbleBlock.setPlacedBy(level, event.getPos().above(), pebbleBlock.defaultBlockState(), event.getEntity(), itemStack);
                 if (event.getEntity() instanceof ServerPlayer) {
                     CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)event.getEntity(), event.getPos(), itemStack);
                 }
@@ -45,6 +48,7 @@ public class EventUtils {
                 if (!event.getEntity().isCreative()) {
                     itemStack.shrink(1);
                 }
+                event.getEntity().awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
                 event.setCancellationResult(InteractionResult.sidedSuccess(level.isClientSide));
             }
         }
