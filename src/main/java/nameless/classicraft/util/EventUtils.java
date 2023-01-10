@@ -5,9 +5,11 @@ import nameless.classicraft.api.event.ItemEntityTickEvent;
 import nameless.classicraft.block.AbstractLightBlock;
 import nameless.classicraft.block.StonePebbleBlock;
 import nameless.classicraft.init.ModTags;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
@@ -34,13 +36,16 @@ public class EventUtils {
         if (itemStack.is(vanillaItem)) {
             BlockState stateUnder = level.getBlockState(event.getPos());
             if (stateUnder.isFaceSturdy(level, event.getPos(), Direction.UP)) {
-                event.setCancellationResult(InteractionResult.PASS);
                 level.setBlockAndUpdate(event.getPos().above(), pebbleBlock.defaultBlockState());
+                if (event.getEntity() instanceof ServerPlayer) {
+                    CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)event.getEntity(), event.getPos(), itemStack);
+                }
+                level.gameEvent(GameEvent.BLOCK_PLACE, event.getPos(), GameEvent.Context.of(event.getEntity(), pebbleBlock.defaultBlockState()));
                 level.playSound(null, event.getPos(), SoundEvents.STONE_PLACE, SoundSource.BLOCKS,1, level.random.nextFloat() * 0.1F + 0.9F);
-                level.gameEvent(event.getEntity(), GameEvent.BLOCK_PLACE, event.getPos());
                 if (!event.getEntity().isCreative()) {
                     itemStack.shrink(1);
                 }
+                event.setCancellationResult(InteractionResult.sidedSuccess(level.isClientSide));
             }
         }
     }

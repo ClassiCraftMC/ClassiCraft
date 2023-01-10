@@ -6,7 +6,6 @@
   "refmap": "classicraft.refmap.json",
   "mixins": [
     "MixinForgeHooks",
-    "MixinItem",
     "MixinItemEntity",
     "MixinItemStack",
     "MixinPlayer"
