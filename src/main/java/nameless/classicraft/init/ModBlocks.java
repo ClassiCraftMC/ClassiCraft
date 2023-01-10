@@ -10,6 +10,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -148,9 +149,17 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> FLINT =
             register("flint", () -> new VanillaPickBlock(Items.FLINT));
+    public static final RegistryObject<Block> PRISMARINE =
+            register("prismarine", () -> new VanillaPickBlock(Items.PRISMARINE));
 
     public static final RegistryObject<Block> TWIGS =
             registerDefault("twigs", TwigsBlock::new);
+
+    public static final RegistryObject<Block> FLINT_BLOCK =
+            registerDefault("flint_block", () ->
+                    new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE)
+                            .requiresCorrectToolForDrops().strength(5.0F,
+                                    6.0F)));
 
     public static final RegistryObject<Block> SULFUR_ORE =
             registerDefault("sulfur_ore", () ->

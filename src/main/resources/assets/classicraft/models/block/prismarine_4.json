@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "classicraft:block/prismarine",
-		"particle": "classicraft:block/prismarine"
+		"0": "block/prismarine",
+		"particle": "block/prismarine"
 	},
 	"elements": [
 		{

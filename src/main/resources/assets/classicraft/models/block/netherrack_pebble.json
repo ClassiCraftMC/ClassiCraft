@@ -2,8 +2,8 @@
   "credit": "Made with Blockbench",
   "parent": "block/block",
   "textures": {
-    "0": "classicraft:block/netherrack",
-    "particle": "classicraft:block/netherrack"
+    "0": "block/netherrack",
+    "particle": "block/netherrack"
   },
   "elements": [
     {

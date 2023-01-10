@@ -7,9 +7,13 @@
     "classicraft:granite_pebble",
     "classicraft:red_sandstone_pebble",
     "classicraft:sandstone_pebble",
-    "quartz_sandstone_pebble",
-    "soul_sandstone_pebble",
-    "netherrack_pebble",
-    "end_stone_pebble"
+    "classicraft:quartz_sandstone_pebble",
+    "classicraft:soul_sandstone_pebble",
+    "classicraft:netherrack_pebble",
+    "end_stone_pebble",
+    "classicraft:basalt_pebble",
+    "classicraft:blackstone_pebble",
+    "classicraft:flint",
+    "classicraft:prismarine"
   ]
 }
