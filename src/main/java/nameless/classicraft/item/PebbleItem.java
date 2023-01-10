@@ -45,8 +45,7 @@ public class PebbleItem extends MetaItem {
                 "quartz_sandstone_pebble",
                 "soul_sandstone_pebble",
                 "netherrack_pebble",
-                "end_stone_pebble",
-                "flint"
+                "end_stone_pebble"
         ));
     }
 
