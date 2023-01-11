@@ -55,6 +55,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add("info.classicraft.shift_press", "Press Shift key to show more info");
         add("info.classicraft.food.nutrition", "Nutrition");
         add("info.classicraft.food.saturation", "Saturation");
+        add(ModBlocks.FLINT.get(), "Flint");
 
         meta();
     }
