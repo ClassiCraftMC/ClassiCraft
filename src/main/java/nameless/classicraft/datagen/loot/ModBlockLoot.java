@@ -46,7 +46,8 @@ public class ModBlockLoot extends BlockLootSubProvider {
         addPebble(ModBlocks.END_STONE_PEBBLE.get());
         addPebble(ModBlocks.BLACKSTONE_PEBBLE.get());
         addPebble(ModBlocks.BASALT_PEBBLE.get());
-        addPebble(ModBlocks.FLINT.get());
+        addVanillaPebble(ModBlocks.FLINT.get(), Items.FLINT);
+        addVanillaPebble(ModBlocks.PRISMARINE.get(), Items.PRISMARINE_SHARD);
     }
 
     @Override
@@ -59,5 +60,9 @@ public class ModBlockLoot extends BlockLootSubProvider {
     void addPebble(Block block) {
         add(block, createSingleItemTable(ModItems.PEBBLE.get())
                 .apply(SetNbtFunction.setTag(PebbleItem.getTagFrom(block))));
+    }
+
+    void addVanillaPebble(Block block,Item item) {
+        add(block, createSingleItemTable(item));
     }
 }
