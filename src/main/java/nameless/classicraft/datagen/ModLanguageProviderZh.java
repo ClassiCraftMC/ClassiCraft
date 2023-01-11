@@ -77,6 +77,10 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add("item.classicraft.pebble.diorite_pebble", "闪长岩石块");
         add("item.classicraft.pebble.granite_pebble", "花岗岩石块");
         add("item.classicraft.pebble.red_sandstone_pebble", "红砂岩石块");
+        add("item.classicraft.pebble.end_stone_pebble", "末地石石块");
+        add("item.classicraft.pebble.netherrack_pebble", "下界岩石块");
+        add("item.classicraft.pebble.quartz_sandstone_pebble", "石英砂岩石块");
+        add("item.classicraft.pebble.soul_sandstone_pebble", "灵魂砂岩石块");
         add("item.classicraft.pebble.sandstone_pebble", "砂岩石块");
         add("item.classicraft.point.cobblestone_point", "圆石尖状器");
         add("item.classicraft.point.deepslate_point", "深板岩尖状器");

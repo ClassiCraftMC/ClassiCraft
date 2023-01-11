@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "classicraft:block/blackstone_top",
-		"particle": "classicraft:block/blackstone_top"
+		"0": ":block/blackstone_top",
+		"particle": "block/blackstone_top"
 	},
 	"elements": [
 		{

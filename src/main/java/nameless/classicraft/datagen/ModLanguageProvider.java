@@ -61,29 +61,33 @@ public class ModLanguageProvider extends LanguageProvider {
     }
 
     private void meta() {
-        add("item.classicraft.adze.cobblestone_adze", "cobblestone adze");
-        add("item.classicraft.adze.deepslate_adze", "deepslate adze");
-        add("item.classicraft.adze.flint_adze", "flint adze");
-        add("item.classicraft.awl.cobblestone_awl", "cobblestone awl");
-        add("item.classicraft.awl.deepslate_awl", "deepslate awl");
-        add("item.classicraft.awl.flint_awl", "flint awl");
-        add("item.classicraft.chopper.cobblestone_chopper", "cobblestone chopper");
-        add("item.classicraft.chopper.deepslate_chopper", "deepslate chopper");
-        add("item.classicraft.chopper.flint_chopper", "flint chopper");
-        add("item.classicraft.pebble.andesite_pebble", "andesite pebble");
-        add("item.classicraft.pebble.basalt_pebble", "basalt pebble");
-        add("item.classicraft.pebble.blackstone_pebble", "blackstone pebble");
-        add("item.classicraft.pebble.cobblestone_pebble", "cobblestone pebble");
-        add("item.classicraft.pebble.deepslate_pebble", "deepslate pebble");
-        add("item.classicraft.pebble.diorite_pebble", "diorite pebble");
-        add("item.classicraft.pebble.granite_pebble", "granite pebble");
-        add("item.classicraft.pebble.red_sandstone_pebble", "red sandstone pebble");
-        add("item.classicraft.pebble.sandstone_pebble", "sandstone pebble");
-        add("item.classicraft.point.cobblestone_point", "cobblestone point");
-        add("item.classicraft.point.deepslate_point", "deepslate point");
-        add("item.classicraft.point.flint_point", "flint point");
-        add("item.classicraft.scraper.cobblestone_scraper", "cobblestone scraper");
-        add("item.classicraft.scraper.deepslate_scraper", "deepslate scraper");
-        add("item.classicraft.scraper.flint_scraper", "flint scraper");
+        add("item.classicraft.adze.cobblestone_adze", "Cobblestone Adze");
+        add("item.classicraft.adze.deepslate_adze", "Deepslate Adze");
+        add("item.classicraft.adze.flint_adze", "Flint Adze");
+        add("item.classicraft.awl.cobblestone_awl", "Cobblestone Awl");
+        add("item.classicraft.awl.deepslate_awl", "Deepslate Awl");
+        add("item.classicraft.awl.flint_awl", "Flint Awl");
+        add("item.classicraft.chopper.cobblestone_chopper", "Cobblestone Chopper");
+        add("item.classicraft.chopper.deepslate_chopper", "Deepslate Chopper");
+        add("item.classicraft.chopper.flint_chopper", "Flint Chopper");
+        add("item.classicraft.pebble.andesite_pebble", "Andesite Pebble");
+        add("item.classicraft.pebble.basalt_pebble", "Basalt Pebble");
+        add("item.classicraft.pebble.blackstone_pebble", "Blackstone Pebble");
+        add("item.classicraft.pebble.cobblestone_pebble", "Cobblestone Pebble");
+        add("item.classicraft.pebble.deepslate_pebble", "Deepslate Pebble");
+        add("item.classicraft.pebble.diorite_pebble", "Diorite Pebble");
+        add("item.classicraft.pebble.granite_pebble", "Granite Pebble");
+        add("item.classicraft.pebble.red_sandstone_pebble", "Red Sandstone Pebble");
+        add("item.classicraft.pebble.end_stone_pebble", "End Stone Pebble");
+        add("item.classicraft.pebble.netherrack_pebble", "Netherrack Pebble");
+        add("item.classicraft.pebble.quartz_sandstone_pebble", "Quartz Sandstone Pebble");
+        add("item.classicraft.pebble.soul_sandstone_pebble", "Soul Sandstone Pebble");
+        add("item.classicraft.pebble.sandstone_pebble", "Sandstone Pebble");
+        add("item.classicraft.point.cobblestone_point", "Cobblestone Point");
+        add("item.classicraft.point.deepslate_point", "Deepslate Point");
+        add("item.classicraft.point.flint_point", "Flint Point");
+        add("item.classicraft.scraper.cobblestone_scraper", "Cobblestone Scraper");
+        add("item.classicraft.scraper.deepslate_scraper", "Deepslate Scraper");
+        add("item.classicraft.scraper.flint_scraper", "Flint Scraper");
     }
 }
