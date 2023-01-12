@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "classicraft:block/cut_soul_sandstone"
-  }
-}

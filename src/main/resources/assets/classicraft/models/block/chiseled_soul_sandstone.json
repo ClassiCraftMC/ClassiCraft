@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "minecraft:block/chiseled_soul_sandstone_bottom",
+    "side": "minecraft:block/chiseled_soul_sandstone",
+    "top": "minecraft:block/chiseled_soul_sandstone_top"
+  }
+}
