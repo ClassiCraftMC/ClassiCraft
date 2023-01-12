@@ -109,7 +109,7 @@ public class PebbleItem extends MetaItem {
      * @param item   手持（左手或者右手）
      * @return 在需要减少物品数量时返回 true（工具存在、在服务端以及玩家不是创造模式）
      */
-    boolean addItem(Player player, ItemStack item) {
+    public static boolean addItem(Player player, ItemStack item) {
         Level level = player.level;
 
         if (!level.isClientSide) {

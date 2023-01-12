@@ -17,6 +17,12 @@ import net.minecraftforge.fml.common.Mod;
 public class PlayerEvents {
 
     @SubscribeEvent
+    public static void pebbleTool(PlayerInteractEvent.RightClickItem event) {
+        EventUtils.pebbleToolByHandVanilla(event, Items.FLINT);
+        EventUtils.pebbleToolByHandVanilla(event, Items.PRISMARINE_SHARD);
+    }
+
+    @SubscribeEvent
     public static void polishStone(PlayerInteractEvent.LeftClickBlock event) {
         Player player = event.getEntity();
         Block block = player.getBlockStateOn().getBlock();

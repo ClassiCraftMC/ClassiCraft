@@ -15,6 +15,12 @@ import net.minecraftforge.fml.common.Mod;
 public class BlockEvents {
 
     @SubscribeEvent
+    public static void pebbleTool(PlayerInteractEvent.RightClickBlock event) {
+        EventUtils.pebbleToolByStoneVanilla(event, Items.FLINT);
+        EventUtils.pebbleToolByStoneVanilla(event, Items.PRISMARINE_SHARD);
+    }
+
+    @SubscribeEvent
     public static void putPebbleVanilla(PlayerInteractEvent.RightClickBlock event) {
         EventUtils.putPebbleBlock(event, Items.FLINT, ModBlocks.FLINT.get());
         EventUtils.putPebbleBlock(event, Items.PRISMARINE_SHARD, ModBlocks.PRISMARINE.get());

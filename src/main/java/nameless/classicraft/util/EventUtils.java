@@ -5,6 +5,7 @@ import nameless.classicraft.api.event.ItemEntityTickEvent;
 import nameless.classicraft.block.AbstractLightBlock;
 import nameless.classicraft.block.StonePebbleBlock;
 import nameless.classicraft.init.ModTags;
+import nameless.classicraft.item.PebbleItem;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -13,6 +14,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -25,10 +27,37 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class EventUtils {
+
+    public static void pebbleToolByStoneVanilla(PlayerInteractEvent.RightClickBlock event, Item vanillaItem) {
+        Player player = event.getEntity();
+        Level level = event.getLevel();
+        BlockState state = player.getBlockStateOn();
+        if (state.getMaterial() == Material.STONE) {
+            if (PebbleItem.addItem(player, vanillaItem.getDefaultInstance()))
+                vanillaItem.getDefaultInstance().shrink(1);
+        }
+    }
+
+    public static void pebbleToolByHandVanilla(PlayerInteractEvent.RightClickItem event, Item vanillaItem) {
+        InteractionHand hand = event.getHand();
+        Player player = event.getEntity();
+        if (hand == InteractionHand.MAIN_HAND) {
+            ItemStack main = player.getMainHandItem();
+            ItemStack off = player.getOffhandItem();
+
+            if (main.getItem() == vanillaItem
+                    && off.getItem() == vanillaItem
+                    && PebbleItem.addItem(player, main)) {
+                main.shrink(1);
+                off.shrink(1);
+            }
+        }
+    }
 
     public static void putPebbleBlock(PlayerInteractEvent.RightClickBlock event, Item vanillaItem, Block pebbleBlock) {
         Level level = event.getLevel();
