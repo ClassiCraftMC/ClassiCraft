@@ -6,6 +6,7 @@
     "classicraft:block/red_sandstone",
     "classicraft:block/quartz_block",
     "classicraft:block/andesite",
+    "classicraft:block/gravel",
     "classicraft:block/cobbled_deepslate",
     "classicraft:block/sandstone",
     "classicraft:block/granite",
@@ -13,6 +14,7 @@
     "classicraft:block/soul_sand",
     "classicraft:block/diorite",
     "classicraft:block/deepslate",
+    "classicraft:block/prismarine",
     "classicraft:block/blackstone",
     "classicraft:block/netherrack"
   ],

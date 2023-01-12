@@ -90,35 +90,45 @@ public class ModItems {
             register("point", () -> new PebbleToolItem(new Item.Properties(), List.of(
                     "cobblestone_point",
                     "deepslate_point",
-                    "flint_point"
+                    "flint_point",
+                    "blackstone_point",
+                    "quartz_point"
             )));
 
     public static final RegistryObject<MetaItem> ADZE =
             register("adze", () -> new PebbleToolItem(new Item.Properties(), List.of(
                     "cobblestone_adze",
                     "deepslate_adze",
-                    "flint_adze"
+                    "flint_adze",
+                    "blackstone_adze",
+                    "quartz_adze"
             )));
 
     public static final RegistryObject<MetaItem> SCRAPER =
             register("scraper", () -> new PebbleToolItem(new Item.Properties(), List.of(
                     "cobblestone_scraper",
                     "deepslate_scraper",
-                    "flint_scraper"
+                    "flint_scraper",
+                    "blackstone_scraper",
+                    "quartz_scraper"
             )));
 
     public static final RegistryObject<MetaItem> AWL =
             register("awl", () -> new PebbleToolItem(new Item.Properties(), List.of(
                     "cobblestone_awl",
                     "deepslate_awl",
-                    "flint_awl"
+                    "flint_awl",
+                    "blackstone_awl",
+                    "quartz_awl"
             )));
 
     public static final RegistryObject<MetaItem> CHOPPER =
             register("chopper", () -> new PebbleToolItem(new Item.Properties(), List.of(
                     "cobblestone_chopper",
                     "deepslate_chopper",
-                    "flint_chopper"
+                    "flint_chopper",
+                    "blackstone_chopper",
+                    "quartz_chopper"
             )));
 
     private static RegistryObject<Item> food(String name, FoodProperties foodData) {

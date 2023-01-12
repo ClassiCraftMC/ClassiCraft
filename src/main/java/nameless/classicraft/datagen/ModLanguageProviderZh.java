@@ -63,12 +63,18 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add("item.classicraft.adze.cobblestone_adze", "圆石刨铲器");
         add("item.classicraft.adze.deepslate_adze", "深板岩刨铲器");
         add("item.classicraft.adze.flint_adze", "燧石刨铲器");
+        add("item.classicraft.adze.blackstone_adze", "黑石刨铲器");
+        add("item.classicraft.adze.quartz_adze", "石英刨铲器");
         add("item.classicraft.awl.cobblestone_awl", "圆石锥形器");
         add("item.classicraft.awl.deepslate_awl", "深板岩锥形器");
         add("item.classicraft.awl.flint_awl", "燧石锥形器");
+        add("item.classicraft.adze.blackstone_awl", "黑石锥形器");
+        add("item.classicraft.adze.quartz_awl", "石英锥形器");
         add("item.classicraft.chopper.cobblestone_chopper", "圆石砍砸器");
         add("item.classicraft.chopper.deepslate_chopper", "深板岩砍砸器");
         add("item.classicraft.chopper.flint_chopper", "燧石砍砸器");
+        add("item.classicraft.adze.blackstone_chopper", "黑石砍砸器");
+        add("item.classicraft.adze.quartz_chopper", "石英砍砸器");
         add("item.classicraft.pebble.andesite_pebble", "安山岩石块");
         add("item.classicraft.pebble.basalt_pebble", "玄武岩石块");
         add("item.classicraft.pebble.blackstone_pebble", "黑石石块");
@@ -85,8 +91,12 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add("item.classicraft.point.cobblestone_point", "圆石尖状器");
         add("item.classicraft.point.deepslate_point", "深板岩尖状器");
         add("item.classicraft.point.flint_point", "燧石尖状器");
+        add("item.classicraft.adze.blackstone_point", "黑石尖状器");
+        add("item.classicraft.adze.quartz_point", "石英尖状器");
         add("item.classicraft.scraper.cobblestone_scraper", "圆石刮削器");
         add("item.classicraft.scraper.deepslate_scraper", "深板岩刮削器");
         add("item.classicraft.scraper.flint_scraper", "燧石刮削器");
+        add("item.classicraft.adze.blackstone_scraper", "黑石刮削器");
+        add("item.classicraft.adze.quartz_scraper", "石英刮削器");
     }
 }

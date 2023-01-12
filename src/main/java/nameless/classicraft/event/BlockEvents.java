@@ -18,6 +18,7 @@ public class BlockEvents {
     public static void putPebbleVanilla(PlayerInteractEvent.RightClickBlock event) {
         EventUtils.putPebbleBlock(event, Items.FLINT, ModBlocks.FLINT.get());
         EventUtils.putPebbleBlock(event, Items.PRISMARINE_SHARD, ModBlocks.PRISMARINE.get());
+        EventUtils.putPebbleBlock(event, Items.QUARTZ, ModBlocks.QUARTZ_PEBBLE.get());
     }
 
     @SubscribeEvent

@@ -64,12 +64,18 @@ public class ModLanguageProvider extends LanguageProvider {
         add("item.classicraft.adze.cobblestone_adze", "Cobblestone Adze");
         add("item.classicraft.adze.deepslate_adze", "Deepslate Adze");
         add("item.classicraft.adze.flint_adze", "Flint Adze");
+        add("item.classicraft.adze.blackstone_adze", "Blackstone Adze");
+        add("item.classicraft.adze.quartz_adze", "Quartz Adze");
         add("item.classicraft.awl.cobblestone_awl", "Cobblestone Awl");
         add("item.classicraft.awl.deepslate_awl", "Deepslate Awl");
         add("item.classicraft.awl.flint_awl", "Flint Awl");
+        add("item.classicraft.adze.blackstone_awl", "Blackstone Awl");
+        add("item.classicraft.adze.quartz_awl", "Quartz Awl");
         add("item.classicraft.chopper.cobblestone_chopper", "Cobblestone Chopper");
         add("item.classicraft.chopper.deepslate_chopper", "Deepslate Chopper");
         add("item.classicraft.chopper.flint_chopper", "Flint Chopper");
+        add("item.classicraft.adze.blackstone_chopper", "Blackstone Chopper");
+        add("item.classicraft.adze.quartz_chopper", "Quartz Chopper");
         add("item.classicraft.pebble.andesite_pebble", "Andesite Pebble");
         add("item.classicraft.pebble.basalt_pebble", "Basalt Pebble");
         add("item.classicraft.pebble.blackstone_pebble", "Blackstone Pebble");
@@ -86,8 +92,12 @@ public class ModLanguageProvider extends LanguageProvider {
         add("item.classicraft.point.cobblestone_point", "Cobblestone Point");
         add("item.classicraft.point.deepslate_point", "Deepslate Point");
         add("item.classicraft.point.flint_point", "Flint Point");
+        add("item.classicraft.adze.blackstone_point", "Blackstone Point");
+        add("item.classicraft.adze.quartz_point", "Quartz Point");
         add("item.classicraft.scraper.cobblestone_scraper", "Cobblestone Scraper");
         add("item.classicraft.scraper.deepslate_scraper", "Deepslate Scraper");
         add("item.classicraft.scraper.flint_scraper", "Flint Scraper");
+        add("item.classicraft.adze.blackstone_scraper", "Blackstone Scraper");
+        add("item.classicraft.adze.quartz_scraper", "Quartz Scraper");
     }
 }
