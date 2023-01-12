@@ -1,8 +1,13 @@
 {
-  "parent": "minecraft:block/cube_bottom_top",
+  "parent": "block/cube",
   "textures": {
-    "bottom": "classicraft:block/cut_soul_sandstone_bottom",
-    "side": "classicraft:block/cut_soul_sandstone",
-    "top": "classicraft:block/cut_soul_sandstone_top"
-  }
+    "down": "classiccraft:blocks/cut_soul_sandstone_bottom",
+    "up": "classiccraft:blocks/cut_soul_sandstone_top",
+    "north": "classiccraft:blocks/cut_soul_sandstone",
+    "east": "classiccraft:blocks/cut_soul_sandstone",
+    "south": "classiccraft:blocks/cut_soul_sandstone",
+    "west": "classiccraft:blocks/cut_soul_sandstone",
+    "particle": "classiccraft:blocks/cut_soul_sandstone"
+  },
+  "render_type": "solid"
 }

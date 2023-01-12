@@ -230,8 +230,30 @@ public class ModBlocks {
                                     MaterialColor.SAND).requiresCorrectToolForDrops()
                             .strength(0.8F)));
 
+    public static final RegistryObject<Block> QUARTZ_SANDSTONE_BRICKS =
+            registerDefault("quartz_sandstone_bricks", () ->
+                    new Block(BlockBehaviour.Properties.of(Material.STONE,
+                                    MaterialColor.SAND).requiresCorrectToolForDrops()
+                            .strength(0.8F)));
+
+    public static final RegistryObject<Block> RED_SANDSTONE_BRICKS =
+            registerDefault("red_sandstone_bricks", () ->
+                    new Block(BlockBehaviour.Properties.of(Material.STONE,
+                                    MaterialColor.FIRE).requiresCorrectToolForDrops()
+                            .strength(0.8F)));
+
+    public static final RegistryObject<Block> SANDSTONE_BRICKS =
+            registerDefault("sandstone_bricks", () ->
+                    new Block(BlockBehaviour.Properties.of(Material.STONE,
+                                    MaterialColor.SAND).requiresCorrectToolForDrops()
+                            .strength(0.8F)));
+
     public static final RegistryObject<Block> QUARTZ_PEBBLE =
             registerDefault("quartz_pebble", () -> new VanillaPickBlock(Items.QUARTZ));
+
+    public static final RegistryObject<Block> QUARTZ_SAND =
+            registerDefault("quartz_sand",
+                    () -> new SandBlock(14406560, BlockBehaviour.Properties.copy(Blocks.SAND)));
 
     /**
      * Hanlde Default Register

@@ -62,8 +62,11 @@ public class RegisterEvents {
                             output.accept(ModBlocks.CUT_SOUL_SANDSTONE.get());
                             output.accept(ModBlocks.QUARTZ_QUICKSAND.get());
                             output.accept(ModBlocks.QUARTZ_SANDSTONE.get());
-                            MetaItem.getMetaItems().forEach(mi -> mi.acceptToCreativeModeTab(output));
-                        })
+                            output.accept(ModBlocks.QUARTZ_SAND.get());
+                            output.accept(ModBlocks.QUARTZ_SANDSTONE_BRICKS.get());
+                            output.accept(ModBlocks.RED_SANDSTONE_BRICKS.get());
+                            output.accept(ModBlocks.SANDSTONE_BRICKS.get());
+                            MetaItem.getMetaItems().forEach(mi -> mi.acceptToCreativeModeTab(output));                        })
                         .title(Component.translatable("itemGroup.classicraft.common"))
                         .build());
     }
