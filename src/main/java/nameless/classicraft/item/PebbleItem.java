@@ -75,10 +75,7 @@ public class PebbleItem extends MetaItem {
         Player player = pContext.getPlayer();
 
         if (player != null &&
-                level.getBlockState(pContext.getClickedPos()).getMaterial() == Material.STONE
-                || player != null &&
-                level.getBlockState(pContext.getClickedPos()).getBlock() instanceof StonePebbleBlock
-        ) {
+                level.getBlockState(pContext.getClickedPos()).getMaterial() == Material.STONE) {
             if (addItem(player, item))
                 item.shrink(1);
 
@@ -118,8 +115,16 @@ public class PebbleItem extends MetaItem {
         if (!level.isClientSide) {
             ItemStack tool = PebbleToolItem.randomFrom(item, level.random);
 
-            if (!tool.isEmpty() && level.random.nextInt(100) < 15)
+            if (!tool.isEmpty()
+                    && level.random.nextInt(100) >= 85)
+                player.addItem(ItemStack.EMPTY);
+            if (!tool.isEmpty()
+                    && level.random.nextInt(100) <= 50)
                 player.addItem(tool);
+            if (!tool.isEmpty()
+                    && level.random.nextInt(100) > 50
+                    && level.random.nextInt(100) < 85)
+                return false;
 
             return !player.isCreative();
         } else
