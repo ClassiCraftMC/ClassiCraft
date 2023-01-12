@@ -2,6 +2,7 @@ package nameless.classicraft.item;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.api.item.MetaItem;
+import nameless.classicraft.block.StonePebbleBlock;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -73,7 +74,11 @@ public class PebbleItem extends MetaItem {
         ItemStack item = pContext.getItemInHand();
         Player player = pContext.getPlayer();
 
-        if (player != null && level.getBlockState(pContext.getClickedPos()).getMaterial() == Material.STONE) {
+        if (player != null &&
+                level.getBlockState(pContext.getClickedPos()).getMaterial() == Material.STONE
+                || player != null &&
+                level.getBlockState(pContext.getClickedPos()).getBlock() instanceof StonePebbleBlock
+        ) {
             if (addItem(player, item))
                 item.shrink(1);
 
