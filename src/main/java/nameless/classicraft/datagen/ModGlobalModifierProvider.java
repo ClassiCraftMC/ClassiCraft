@@ -1,6 +1,7 @@
 package nameless.classicraft.datagen;
 
 import nameless.classicraft.glm.ReplaceDropModifier;
+import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
@@ -39,6 +40,10 @@ public class ModGlobalModifierProvider extends GlobalLootModifierProvider {
         pebble(Blocks.NETHERRACK);
         pebble(Blocks.END_STONE);
         pebble(Blocks.PRISMARINE);
+        pebble(Blocks.COBBLESTONE);
+        pebble(Blocks.BLACKSTONE);
+        pebble(ModBlocks.QUARTZ_SANDSTONE.get());
+        replaceBlock(Blocks.ROOTED_DIRT, Items.FLINT, 1);
 
         replaceBlock(Blocks.COARSE_DIRT, Items.FLINT, 1);
         replaceBlock(Blocks.GRAVEL, ModItems.PEBBLE.get(), "flint", 1, 2);
