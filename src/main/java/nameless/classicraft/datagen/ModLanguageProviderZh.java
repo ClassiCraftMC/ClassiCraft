@@ -17,6 +17,7 @@ public class ModLanguageProviderZh extends LanguageProvider {
     protected void addTranslations() {
         add(ModItems.TORCH_LIT.get(), "点燃的火把");
         add(ModItems.TORCH_UNLIT.get(), "熄灭的火把");
+        add(ModItems.SOUL_TORCH_UNLIT.get(), "熄灭的灵魂火把");
         add(ModBlocks.REAL_TORCH.get(), "火把");
         add(ModItems.DEBUG_TIME_STICK.get(), "燃烧时间检测棒");
         add(ModItems.DEPTH_METER.get(), "深度计");
@@ -55,8 +56,57 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add("info.classicraft.shift_press", "按下shift键显示更多信息");
         add("info.classicraft.food.nutrition", "营养价值");
         add("info.classicraft.food.saturation", "恢复价值");
+        add(ModItems.OCEAN_SHARK_SPAWN_EGG.get(), "海洋鲨鱼生成蛋");
+        add(ModItems.LIVING_DEAD_SPAWN_EGG.get(), "活死人生成蛋");
+        add(ModItems.COOKED_EGG.get(), "煎蛋");
+        add(ModItems.NETHER_MUSHROOM_STEW.get(), "下界蘑菇汤");
+        add(ModItems.ROTTEN_FOOD.get(), "腐烂的食物");
+        add(ModBlocks.MOSSY_BRICKS.get(), "苔藓红砖块");
+        add(ModBlocks.MOSSY_BRICKS_STAIRS.get(), "苔藓红砖楼梯");
+        add(ModBlocks.MOSSY_BRICKS_WALL.get(), "苔藓红砖石墙");
+        add(ModBlocks.MOSSY_BRICKS_SLAB.get(), "苔藓红砖台阶");
+        add(ModBlocks.CRACKED_BRICKS.get(), "破裂的红砖块");
+        add(ModBlocks.CRACKED_BRICKS_STAIRS.get(), "破裂的红砖楼梯");
+        add(ModBlocks.CRACKED_BRICKS_WALL.get(), "破裂的红砖石墙");
+        add(ModBlocks.CRACKED_BRICKS_SLAB.get(), "破裂的红砖台阶");
+        add(ModBlocks.SULFUR_ORE.get(), "硫磺矿");
+        add(ModItems.SULFUR.get(), "硫磺");
+        add(ModBlocks.SMOOTH_STONE_WALL.get(), "平滑石墙");
+        add(ModBlocks.SMOOTH_STONE_STAIRS.get(), "平滑石楼梯");
+        add(ModBlocks.STONE_WALL.get(), "石墙");
+        add(ModBlocks.FLINT_BLOCK.get(), "燧石块");
+        add(ModBlocks.CHISELED_SOUL_SANDSTONE.get(), "雕纹灵魂砂岩");
+        add(ModBlocks.CHISELED_QUARTZ_SANDSTONE.get(), "雕纹石英砂岩");
+        add(ModBlocks.CUT_SOUL_SANDSTONE.get(), "切制灵魂砂岩");
+        add(ModBlocks.CUT_QUARTZ_SANDSTONE.get(), "切制石英砂岩");
+        add(ModBlocks.QUARTZ_QUICKSAND.get(), "石英流沙");
+        add(ModBlocks.QUARTZ_SAND.get(), "石英沙");
+        add(ModBlocks.QUARTZ_SANDSTONE.get(), "石英砂岩");
+        add(ModBlocks.QUARTZ_SANDSTONE_BRICKS.get(), "石英砂岩砖块");
+        add(ModBlocks.RED_SANDSTONE_BRICKS.get(), "红色砂岩砖块");
+        add(ModBlocks.SANDSTONE_BRICKS.get(), "砂岩砖块");
 
+        pebbleBlock();
         meta();
+    }
+
+    private void pebbleBlock() {
+        add(ModBlocks.FLINT.get(), "燧石石块");
+        add(ModBlocks.ANDESITE_PEBBLE.get(), "安山岩石块");
+        add(ModBlocks.COBBLESTONE_PEBBLE.get(), "圆石石块");
+        add(ModBlocks.DIORITE_PEBBLE.get(), "闪长岩石块");
+        add(ModBlocks.GRANITE_PEBBLE.get(), "花岗岩石块");
+        add(ModBlocks.RED_SANDSTONE_PEBBLE.get(), "红砂岩石块");
+        add(ModBlocks.SANDSTONE_PEBBLE.get(), "砂岩石块");
+        add(ModBlocks.DEEPSLATE_PEBBLE.get(), "深板岩石块");
+        add(ModBlocks.QUARTZ_SANDSTONE_PEBBLE.get(), "石英砂岩石块");
+        add(ModBlocks.SOUL_SANDSTONE_PEBBLE.get(), "灵魂砂岩石块");
+        add(ModBlocks.NETHERRACK_PEBBLE.get(), "下界岩石块");
+        add(ModBlocks.END_STONE_PEBBLE.get(), "末地岩石块");
+        add(ModBlocks.BASALT_PEBBLE.get(), "玄武岩石块");
+        add(ModBlocks.BLACKSTONE_PEBBLE.get(), "黑石石块");
+        add(ModBlocks.PRISMARINE.get(), "海晶岩石块");
+        add(ModBlocks.QUARTZ_PEBBLE.get(), "石英石块");
     }
 
     private void meta() {

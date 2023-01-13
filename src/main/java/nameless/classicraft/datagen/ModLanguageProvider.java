@@ -5,6 +5,7 @@ import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModEntities;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.world.entity.Mob;
 import net.minecraftforge.common.data.LanguageProvider;
 
 public class ModLanguageProvider extends LanguageProvider {
@@ -17,6 +18,7 @@ public class ModLanguageProvider extends LanguageProvider {
     protected void addTranslations() {
         add(ModItems.TORCH_LIT.get(), "Lit Torch");
         add(ModItems.TORCH_UNLIT.get(), "Unlit Torch");
+        add(ModItems.SOUL_TORCH_UNLIT.get(), "Unlit Soul Torch");
         add(ModBlocks.REAL_TORCH.get(), "Real Torch");
         add(ModItems.DEBUG_TIME_STICK.get(), "Debug Burn Time Stick");
         add(ModItems.DEPTH_METER.get(), "Depth Meter");
@@ -55,9 +57,57 @@ public class ModLanguageProvider extends LanguageProvider {
         add("info.classicraft.shift_press", "Press Shift key to show more info");
         add("info.classicraft.food.nutrition", "Nutrition");
         add("info.classicraft.food.saturation", "Saturation");
-        add(ModBlocks.FLINT.get(), "Flint");
+        add(ModItems.OCEAN_SHARK_SPAWN_EGG.get(), "Ocean Shark Spawn Egg");
+        add(ModItems.LIVING_DEAD_SPAWN_EGG.get(), "Living Dead Spawn Egg");
+        add(ModItems.COOKED_EGG.get(), "Cooked Egg");
+        add(ModItems.NETHER_MUSHROOM_STEW.get(), "Nether Mushroom Stew");
+        add(ModItems.ROTTEN_FOOD.get(), "Rotten Food");
+        add(ModBlocks.MOSSY_BRICKS.get(), "Mossy Bricks");
+        add(ModBlocks.MOSSY_BRICKS_STAIRS.get(), "Mossy Bricks Stairs");
+        add(ModBlocks.MOSSY_BRICKS_WALL.get(), "Mossy Bricks Wall");
+        add(ModBlocks.MOSSY_BRICKS_SLAB.get(), "Mossy Bricks Slab");
+        add(ModBlocks.CRACKED_BRICKS.get(), "Cracked Bricks");
+        add(ModBlocks.CRACKED_BRICKS_STAIRS.get(), "Cracked Bricks Stairs");
+        add(ModBlocks.CRACKED_BRICKS_WALL.get(), "Cracked Bricks Wall");
+        add(ModBlocks.CRACKED_BRICKS_SLAB.get(), "Cracked Bricks Slab");
+        add(ModBlocks.SULFUR_ORE.get(), "Sulfur Ore");
+        add(ModItems.SULFUR.get(), "Sulfur");
+        add(ModBlocks.SMOOTH_STONE_WALL.get(), "Smooth Stone Wall");
+        add(ModBlocks.SMOOTH_STONE_STAIRS.get(), "Smooth Stone Stairs");
+        add(ModBlocks.STONE_WALL.get(), "Stone Wall");
+        add(ModBlocks.FLINT_BLOCK.get(), "Flint Block");
+        add(ModBlocks.CHISELED_SOUL_SANDSTONE.get(), "Chiseled Soul SandStone");
+        add(ModBlocks.CHISELED_QUARTZ_SANDSTONE.get(), "Chiseled Quartz SandStone");
+        add(ModBlocks.CUT_SOUL_SANDSTONE.get(), "Cut Soul SandStone");
+        add(ModBlocks.CUT_QUARTZ_SANDSTONE.get(), "Cut Quartz SandStone");
+        add(ModBlocks.QUARTZ_QUICKSAND.get(), "Quartz QuickSand");
+        add(ModBlocks.QUARTZ_SAND.get(), "Quartz Sand");
+        add(ModBlocks.QUARTZ_SANDSTONE.get(), "Quartz SandStone");
+        add(ModBlocks.QUARTZ_SANDSTONE_BRICKS.get(), "Quartz SandStone Bricks");
+        add(ModBlocks.RED_SANDSTONE_BRICKS.get(), "Red SandStone Bricks");
+        add(ModBlocks.SANDSTONE_BRICKS.get(), "SandStone Bricks");
 
+        pebbleBlock();
         meta();
+    }
+
+    private void pebbleBlock() {
+        add(ModBlocks.FLINT.get(), "Flint Pebble");
+        add(ModBlocks.ANDESITE_PEBBLE.get(), "Andesite Pebble");
+        add(ModBlocks.COBBLESTONE_PEBBLE.get(), "CobbleStone Pebble");
+        add(ModBlocks.DIORITE_PEBBLE.get(), "Diorite Pebble");
+        add(ModBlocks.GRANITE_PEBBLE.get(), "Granite Pebble");
+        add(ModBlocks.RED_SANDSTONE_PEBBLE.get(), "Red SandStone Pebble");
+        add(ModBlocks.SANDSTONE_PEBBLE.get(), "SandStone Pebble");
+        add(ModBlocks.DEEPSLATE_PEBBLE.get(), "Deepslate Pebble");
+        add(ModBlocks.QUARTZ_SANDSTONE_PEBBLE.get(), "Quartz SandStone Pebble");
+        add(ModBlocks.SOUL_SANDSTONE_PEBBLE.get(), "Soul SandStone Pebble");
+        add(ModBlocks.NETHERRACK_PEBBLE.get(), "Nether Rack Pebble");
+        add(ModBlocks.END_STONE_PEBBLE.get(), "End Stone Pebble");
+        add(ModBlocks.BASALT_PEBBLE.get(), "Basalt Pebble");
+        add(ModBlocks.BLACKSTONE_PEBBLE.get(), "BlackStone Pebble");
+        add(ModBlocks.PRISMARINE.get(), "Prismarine Pebble");
+        add(ModBlocks.QUARTZ_PEBBLE.get(), "Quartz Pebble");
     }
 
     private void meta() {

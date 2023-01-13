@@ -1,8 +1,8 @@
 {
   "parent": "block/cube",
   "textures": {
-    "down": "classicraft:block/chiseled_soul_sandstone_bottom",
-    "up": "classicraft:block/chiseled_soul_sandstone_top",
+    "down": "classicraft:block/soul_sandstone",
+    "up": "classicraft:block/soul_sandstone",
     "north": "classicraft:block/chiseled_soul_sandstone",
     "east": "classicraft:block/chiseled_soul_sandstone",
     "south": "classicraft:block/chiseled_soul_sandstone",
