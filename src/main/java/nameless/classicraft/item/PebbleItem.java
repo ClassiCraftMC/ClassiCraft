@@ -2,7 +2,6 @@ package nameless.classicraft.item;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.api.item.MetaItem;
-import nameless.classicraft.block.StonePebbleBlock;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -46,8 +45,7 @@ public class PebbleItem extends MetaItem {
                 "quartz_sandstone_pebble",
                 "soul_sandstone_pebble",
                 "netherrack_pebble",
-                "end_stone_pebble",
-                "quartz_pebble"
+                "end_stone_pebble"
         ));
     }
 

@@ -81,10 +81,8 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> MOSSY_BRICKS_WALL =
             registerDefault("mossy_bricks_wall", () ->
-                    new WallBlock(BlockBehaviour.Properties.of(Material.STONE)
-                            .sound(SoundType.STONE).strength(1f, 10f)
-                            .noOcclusion()
-                            .isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
+                    new WallBlock(BlockBehaviour.Properties.copy(MOSSY_BRICKS.get())
+                            .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
 
     public static final RegistryObject<Block> MOSSY_BRICKS_SLAB =
             registerDefault("mossy_bricks_slab", () ->
@@ -110,10 +108,8 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CRACKED_BRICKS_WALL =
             registerDefault("cracked_bricks_wall", () ->
-                    new WallBlock(BlockBehaviour.Properties.of(Material.STONE)
-                            .sound(SoundType.STONE).strength(1f, 10f)
-                            .noOcclusion()
-                            .isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
+                    new WallBlock(BlockBehaviour.Properties.copy(CRACKED_BRICKS.get())
+                            .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
 
     public static final RegistryObject<Block> CRACKED_BRICKS_SLAB =
             registerDefault("cracked_bricks_slab", () ->
@@ -180,10 +176,8 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> STONE_WALL =
             registerDefault("stone_wall", () ->
-                    new WallBlock(BlockBehaviour.Properties.of(Material.STONE)
-                            .sound(SoundType.STONE).strength(1f, 10f)
-                            .noOcclusion()
-                            .isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
+                    new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
+                            .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
 
     public static final RegistryObject<Block> SMOOTH_STONE_STAIRS =
             registerDefault("smooth_stone_stairs", () ->
@@ -195,10 +189,8 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> SMOOTH_STONE_WALL =
             registerDefault("smooth_stone_wall", () ->
-                    new WallBlock(BlockBehaviour.Properties.of(Material.STONE)
-                            .sound(SoundType.STONE).strength(1f, 10f)
-                            .noOcclusion()
-                            .isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
+                    new WallBlock(BlockBehaviour.Properties.copy(Blocks.SMOOTH_STONE)
+                            .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
 
     public static final RegistryObject<Block> CHISELED_QUARTZ_SANDSTONE =
             registerDefault("chiseled_quartz_sandstone", () ->

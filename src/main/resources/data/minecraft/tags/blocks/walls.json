@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "classicraft:mossy_bricks_wall",
+    "classicraft:cracked_bricks_wall",
+    "classicraft:stone_wall",
+    "classicraft:smooth_stone_wall"
+  ]
+}

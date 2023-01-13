@@ -35,9 +35,8 @@ public class EventUtils {
 
     public static void pebbleToolByStoneVanilla(PlayerInteractEvent.RightClickBlock event, Item vanillaItem) {
         Player player = event.getEntity();
-        Level level = event.getLevel();
         BlockState state = player.getBlockStateOn();
-        if (state.getMaterial() == Material.STONE) {
+        if (state.getMaterial() == Material.STONE && player.getItemInHand(event.getHand()).is(vanillaItem)) {
             if (PebbleItem.addItem(player, vanillaItem.getDefaultInstance()))
                 vanillaItem.getDefaultInstance().shrink(1);
         }
@@ -67,7 +66,9 @@ public class EventUtils {
         BlockPos abovePos = pos.above();
         if (itemStack.is(vanillaItem)) {
             BlockState stateUnder = level.getBlockState(pos);
-            if (stateUnder.isFaceSturdy(level, pos, Direction.UP) && level.getBlockState(abovePos).getBlock() == Blocks.AIR) {
+            if (stateUnder.isFaceSturdy(level, pos, Direction.UP)
+                    && level.getBlockState(abovePos).getBlock() == Blocks.AIR
+                    && level.getBlockState(pos).getMaterial() != Material.STONE) {
                 event.getEntity().swing(event.getHand());
                 level.setBlockAndUpdate(abovePos, pebbleBlock.defaultBlockState());
                 pebbleBlock.setPlacedBy(level, abovePos, pebbleBlock.defaultBlockState(), player, itemStack);

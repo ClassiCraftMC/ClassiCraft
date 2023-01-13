@@ -1,13 +1,13 @@
 {
   "parent": "block/cube",
   "textures": {
-    "down": "classiccraft:blocks/quartz_sandstone_bottom",
-    "up": "classiccraft:blocks/quartz_sandstone_top",
-    "north": "classiccraft:blocks/quartz_sandstone",
-    "east": "classiccraft:blocks/quartz_sandstone",
-    "south": "classiccraft:blocks/quartz_sandstone",
-    "west": "classiccraft:blocks/quartz_sandstone",
-    "particle": "classiccraft:blocks/quartz_sandstone"
+    "down": "classicraft:block/quartz_sandstone_bottom",
+    "up": "classicraft:block/quartz_sandstone_top",
+    "north": "classicraft:block/quartz_sandstone",
+    "east": "classicraft:block/quartz_sandstone",
+    "south": "classicraft:block/quartz_sandstone",
+    "west": "classicraft:block/quartz_sandstone",
+    "particle": "classicraft:block/quartz_sandstone"
   },
   "render_type": "solid"
 }

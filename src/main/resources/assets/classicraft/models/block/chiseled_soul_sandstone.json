@@ -1,13 +1,13 @@
 {
   "parent": "block/cube",
   "textures": {
-    "down": "classiccraft:blocks/chiseled_soul_sandstone_bottom",
-    "up": "classiccraft:blocks/chiseled_soul_sandstone_top",
-    "north": "classiccraft:blocks/chiseled_soul_sandstone",
-    "east": "classiccraft:blocks/chiseled_soul_sandstone",
-    "south": "classiccraft:blocks/chiseled_soul_sandstone",
-    "west": "classiccraft:blocks/chiseled_soul_sandstone",
-    "particle": "classiccraft:blocks/chiseled_soul_sandstone"
+    "down": "classicraft:block/chiseled_soul_sandstone_bottom",
+    "up": "classicraft:block/chiseled_soul_sandstone_top",
+    "north": "classicraft:block/chiseled_soul_sandstone",
+    "east": "classicraft:block/chiseled_soul_sandstone",
+    "south": "classicraft:block/chiseled_soul_sandstone",
+    "west": "classicraft:block/chiseled_soul_sandstone",
+    "particle": "classicraft:block/chiseled_soul_sandstone"
   },
   "render_type": "solid"
 }
