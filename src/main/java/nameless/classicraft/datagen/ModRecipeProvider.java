@@ -1,4 +1,4 @@
-package nameless.classicraft.datagen.levelgen;
+package nameless.classicraft.datagen;
 
 import nameless.classicraft.init.ModItems;
 import nameless.classicraft.init.ModTags;
