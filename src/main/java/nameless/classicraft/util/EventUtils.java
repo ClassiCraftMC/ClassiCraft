@@ -29,19 +29,25 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class EventUtils {
 
-    public static void pebbleToolByStoneVanilla(PlayerInteractEvent.RightClickBlock event, Item vanillaItem) {
+    public static void pebbleToolByStoneVanilla(PlayerInteractEvent.RightClickBlock event, Item vanillaItem, String meta) {
         Player player = event.getEntity();
         BlockState state = player.getBlockStateOn();
         ItemStack itemStack = event.getItemStack();
+        if (itemStack.getTag() == null) {
+            itemStack.getOrCreateTag().putString("classicraft:Meta", meta);
+        }
         if (state.getMaterial() == Material.STONE && itemStack.is(vanillaItem)) {
             if (PebbleItem.addItem(player, vanillaItem.getDefaultInstance()))
                 vanillaItem.getDefaultInstance().shrink(1);
         }
     }
 
-    public static void pebbleToolByHandVanilla(PlayerInteractEvent.RightClickItem event, Item vanillaItem) {
+    public static void pebbleToolByHandVanilla(PlayerInteractEvent.RightClickItem event, Item vanillaItem, String meta) {
         InteractionHand hand = event.getHand();
         Player player = event.getEntity();
+        if (event.getItemStack().getTag() == null) {
+            event.getItemStack().getOrCreateTag().putString("classicraft:Meta", meta);
+        }
         if (hand == InteractionHand.MAIN_HAND) {
             ItemStack main = event.getItemStack();
             ItemStack off = player.getOffhandItem();

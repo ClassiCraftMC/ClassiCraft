@@ -60,5 +60,7 @@ public class ModDataGenerator {
                         Set.of(ClassiCraftMod.MOD_ID)));
         generator.addProvider(event.includeClient(),
                 new ModBlockTagsProvider(pack, lookup, helper));
+        generator.addProvider(event.includeServer(),
+                new ModRecipeProvider(pack));
     }
 }

@@ -17,15 +17,19 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        stairsInventory("smooth_stone", "minecraft:block/stone");
+        stairsInventory("smooth_stone", "minecraft:block/smooth_stone");
         stairsInventory("mossy_bricks", "classicraft:block/mossy_bricks");
+        stairsInventory("cracked_bricks", "classicraft:block/cracked_bricks");
         wallInventory("smooth_stone_wall",
                 new ResourceLocation("minecraft:block/smooth_stone"));
         wallInventory("stone_wall",
                 new ResourceLocation("minecraft:block/stone"));
         wallInventory("mossy_bricks_wall",
                 new ResourceLocation("classicraft:block/mossy_bricks"));
+        wallInventory("cracked_bricks_wall",
+                new ResourceLocation("classicraft:block/cracked_bricks"));
         slabInventory("mossy_bricks_slab", "classicraft:block/mossy_bricks");
+        slabInventory("cracked_bricks_slab", "classicraft:block/cracked_bricks");
         blockItem(ModBlocks.CHISELED_QUARTZ_SANDSTONE);
         blockItem(ModBlocks.CHISELED_SOUL_SANDSTONE);
         blockItem(ModBlocks.CUT_QUARTZ_SANDSTONE);
@@ -40,6 +44,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItem(ModBlocks.SOUL_QUICKSAND);
         blockItem(ModBlocks.SOUL_SANDSTONE);
         blockItem(ModBlocks.SOUL_SANDSTONE_BRICKS);
+        blockItem(ModBlocks.CRACKED_BRICKS);
     }
 
     void slabInventory(String prefix, String texture) {

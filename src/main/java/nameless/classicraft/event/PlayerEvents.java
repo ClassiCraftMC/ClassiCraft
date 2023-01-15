@@ -18,8 +18,8 @@ public class PlayerEvents {
 
     @SubscribeEvent
     public static void pebbleTool(PlayerInteractEvent.RightClickItem event) {
-        EventUtils.pebbleToolByHandVanilla(event, Items.FLINT);
-        EventUtils.pebbleToolByHandVanilla(event, Items.PRISMARINE_SHARD);
+        EventUtils.pebbleToolByHandVanilla(event, Items.FLINT, "flint");
+        EventUtils.pebbleToolByHandVanilla(event, Items.PRISMARINE_SHARD, "prismarine");
     }
 
     @SubscribeEvent

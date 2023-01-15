@@ -161,9 +161,8 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> FLINT_BLOCK =
             registerDefault("flint_block", () ->
-                    new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE).
-                            strength(5.0F,
-                                    6.0F)));
+                    new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE)
+                            .strength(3.0F, 3.0F)));
 
     public static final RegistryObject<Block> SULFUR_ORE =
             registerDefault("sulfur_ore", () ->
