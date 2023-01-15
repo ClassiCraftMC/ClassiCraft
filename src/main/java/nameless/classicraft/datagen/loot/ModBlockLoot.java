@@ -49,6 +49,38 @@ public class ModBlockLoot extends BlockLootSubProvider {
         addPebble(ModBlocks.QUARTZ_PEBBLE.get());
         addVanillaPebble(ModBlocks.FLINT.get(), Items.FLINT);
         addVanillaPebble(ModBlocks.PRISMARINE.get(), Items.PRISMARINE_SHARD);
+
+        dropSelf(ModBlocks.CHARCOAL_BLOCK.get());
+        dropSelf(ModBlocks.CACTUS_BALL.get());
+        dropSelf(ModBlocks.QUICKSAND.get());
+        dropSelf(ModBlocks.RED_QUICKSAND.get());
+        dropSelf(ModBlocks.QUARTZ_QUICKSAND.get());
+        dropSelf(ModBlocks.ROSE.get());
+        dropSelf(ModBlocks.TALLOW_BLOCK.get());
+        dropSelf(ModBlocks.MOSSY_BRICKS.get());
+        dropSelf(ModBlocks.MOSSY_BRICKS_STAIRS.get());
+        dropSelf(ModBlocks.MOSSY_BRICKS_WALL.get());
+        addSlabDrop(ModBlocks.MOSSY_BRICKS_SLAB.get());
+        dropSelf(ModBlocks.CRACKED_BRICKS.get());
+        dropSelf(ModBlocks.CRACKED_BRICKS_STAIRS.get());
+        dropSelf(ModBlocks.CRACKED_BRICKS_WALL.get());
+        addSlabDrop(ModBlocks.CRACKED_BRICKS_SLAB.get());
+        addOreDrop(ModBlocks.SULFUR_ORE.get(), ModItems.SULFUR.get());
+        dropSelf(ModBlocks.STONE_WALL.get());
+        dropSelf(ModBlocks.SMOOTH_STONE_STAIRS.get());
+        dropSelf(ModBlocks.SMOOTH_STONE_WALL.get());
+        dropSelf(ModBlocks.CHISELED_QUARTZ_SANDSTONE.get());
+        dropSelf(ModBlocks.CHISELED_SOUL_SANDSTONE.get());
+        dropSelf(ModBlocks.CUT_QUARTZ_SANDSTONE.get());
+        dropSelf(ModBlocks.CUT_SOUL_SANDSTONE.get());
+        dropSelf(ModBlocks.QUARTZ_SANDSTONE.get());
+        dropSelf(ModBlocks.QUARTZ_SANDSTONE_BRICKS.get());
+        dropSelf(ModBlocks.RED_SANDSTONE_BRICKS.get());
+        dropSelf(ModBlocks.SANDSTONE_BRICKS.get());
+        dropSelf(ModBlocks.QUARTZ_SAND.get());
+        dropSelf(ModBlocks.SOUL_QUICKSAND.get());
+        dropSelf(ModBlocks.SOUL_SANDSTONE.get());
+        dropSelf(ModBlocks.SOUL_SANDSTONE_BRICKS.get());
     }
 
     @Override
@@ -63,7 +95,16 @@ public class ModBlockLoot extends BlockLootSubProvider {
                 .apply(SetNbtFunction.setTag(PebbleItem.getTagFrom(block))));
     }
 
+    void addOreDrop(Block block, Item item) {
+        add(block, (ore) -> createOreDrop(block, item));
+    }
+
+    void addSlabDrop(Block block) {
+     add(block, this::createSlabItemTable);
+    }
+
     void addVanillaPebble(Block block,Item item) {
-        add(block, createSingleItemTable(item));
+        add(block, createSingleItemTable(item)
+                .apply(SetNbtFunction.setTag(PebbleItem.getTagFrom(block))));
     }
 }

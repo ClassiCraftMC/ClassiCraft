@@ -35,6 +35,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItem(ModBlocks.QUARTZ_SANDSTONE_BRICKS);
         blockItem(ModBlocks.RED_SANDSTONE_BRICKS);
         blockItem(ModBlocks.SANDSTONE_BRICKS);
+        blockItem(ModBlocks.CRACKED_BRICKS);
+        blockItem(ModBlocks.MOSSY_BRICKS);
+        blockItem(ModBlocks.SOUL_QUICKSAND);
+        blockItem(ModBlocks.SOUL_SANDSTONE);
+        blockItem(ModBlocks.SOUL_SANDSTONE_BRICKS);
     }
 
     void slabInventory(String prefix, String texture) {

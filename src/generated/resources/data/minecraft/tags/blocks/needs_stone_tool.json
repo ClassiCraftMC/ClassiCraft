@@ -1,0 +1,33 @@
+{
+  "values": [
+    "classicraft:mossy_bricks_wall",
+    "classicraft:cracked_bricks_wall",
+    "classicraft:stone_wall",
+    "classicraft:smooth_stone_wall",
+    "classicraft:mossy_bricks",
+    "classicraft:mossy_bricks_stairs",
+    "classicraft:mossy_bricks_slab",
+    "classicraft:cracked_bricks",
+    "classicraft:cracked_bricks_stairs",
+    "classicraft:cracked_bricks_slab",
+    "classicraft:flint_block",
+    "classicraft:sulfur_ore",
+    "classicraft:smooth_stone_stairs",
+    "classicraft:chiseled_quartz_sandstone",
+    "classicraft:chiseled_soul_sandstone",
+    "classicraft:cut_quartz_sandstone",
+    "classicraft:cut_soul_sandstone",
+    "classicraft:quartz_sandstone",
+    "classicraft:quartz_sandstone_bricks",
+    "classicraft:red_sandstone_bricks",
+    "classicraft:sandstone_bricks",
+    "classicraft:charcoal_block",
+    "classicraft:quicksand",
+    "classicraft:red_quicksand",
+    "classicraft:quartz_quicksand",
+    "classicraft:tallow_block",
+    "classicraft:soul_quicksand",
+    "classicraft:soul_sandstone",
+    "classicraft:soul_sandstone_bricks"
+  ]
+}

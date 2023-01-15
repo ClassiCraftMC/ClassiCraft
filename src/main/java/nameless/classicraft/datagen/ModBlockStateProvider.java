@@ -27,12 +27,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlock(ModBlocks.RED_SANDSTONE_BRICKS.get());
         simpleBlock(ModBlocks.SANDSTONE_BRICKS.get());
         simpleBlock(ModBlocks.MOSSY_BRICKS.get());
+        simpleBlock(ModBlocks.SOUL_QUICKSAND.get());
+        simpleBlock(ModBlocks.SOUL_SANDSTONE_BRICKS.get());
         wallBlock(ModBlocks.STONE_WALL, "stone","minecraft:block/stone");
         wallBlock(ModBlocks.SMOOTH_STONE_WALL, "smooth_stone", "minecraft:block/smooth_stone");
         wallBlock(ModBlocks.MOSSY_BRICKS_WALL, "mossy_bricks", "classicraft:block/mossy_bricks");
         stairsBlock(ModBlocks.MOSSY_BRICKS_STAIRS, "mossy_bricks","classicraft:block/mossy_bricks");
         stairsBlock(ModBlocks.SMOOTH_STONE_STAIRS, "smooth_stone", "minecraft:block/smooth_stone");
-        slabBlock(ModBlocks.MOSSY_BRICKS_SLAB, "classicraft:block/mossy_bricks_slab", "classicraft:block/mossy_bricks");
+        slabBlock(ModBlocks.MOSSY_BRICKS_SLAB, "classicraft:block/mossy_bricks", "classicraft:block/mossy_bricks");
     }
 
     void wallBlock(RegistryObject<Block> block, String name, String texture) {

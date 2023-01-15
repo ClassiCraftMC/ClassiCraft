@@ -65,10 +65,10 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModBlocks.MOSSY_BRICKS_STAIRS.get(), "苔藓红砖楼梯");
         add(ModBlocks.MOSSY_BRICKS_WALL.get(), "苔藓红砖石墙");
         add(ModBlocks.MOSSY_BRICKS_SLAB.get(), "苔藓红砖台阶");
-        add(ModBlocks.CRACKED_BRICKS.get(), "破裂的红砖块");
-        add(ModBlocks.CRACKED_BRICKS_STAIRS.get(), "破裂的红砖楼梯");
-        add(ModBlocks.CRACKED_BRICKS_WALL.get(), "破裂的红砖石墙");
-        add(ModBlocks.CRACKED_BRICKS_SLAB.get(), "破裂的红砖台阶");
+        add(ModBlocks.CRACKED_BRICKS.get(), "裂纹红砖块");
+        add(ModBlocks.CRACKED_BRICKS_STAIRS.get(), "裂纹红砖楼梯");
+        add(ModBlocks.CRACKED_BRICKS_WALL.get(), "裂纹红砖石墙");
+        add(ModBlocks.CRACKED_BRICKS_SLAB.get(), "裂纹红砖台阶");
         add(ModBlocks.SULFUR_ORE.get(), "硫磺矿");
         add(ModItems.SULFUR.get(), "硫磺");
         add(ModBlocks.SMOOTH_STONE_WALL.get(), "平滑石墙");
@@ -85,6 +85,10 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModBlocks.QUARTZ_SANDSTONE_BRICKS.get(), "石英砂岩砖块");
         add(ModBlocks.RED_SANDSTONE_BRICKS.get(), "红色砂岩砖块");
         add(ModBlocks.SANDSTONE_BRICKS.get(), "砂岩砖块");
+        add(ModBlocks.SOUL_SANDSTONE.get(), "灵魂砂岩");
+        add(ModBlocks.SOUL_QUICKSAND.get(), "灵魂流沙");
+        add(ModBlocks.SOUL_SANDSTONE_BRICKS.get(), "灵魂砂岩砖块");
+        add("itemGroup.classicraft.common", "天工开物|通常");
 
         pebbleBlock();
         meta();

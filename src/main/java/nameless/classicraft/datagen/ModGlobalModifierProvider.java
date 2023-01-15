@@ -46,7 +46,6 @@ public class ModGlobalModifierProvider extends GlobalLootModifierProvider {
         replaceBlock(Blocks.ROOTED_DIRT, Items.FLINT, 1);
 
         replaceBlock(Blocks.COARSE_DIRT, Items.FLINT, 1);
-        replaceBlock(Blocks.GRAVEL, ModItems.PEBBLE.get(), "flint", 1, 2);
     }
 
     void pebble(Block block) {

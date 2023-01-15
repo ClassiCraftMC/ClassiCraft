@@ -3,13 +3,10 @@ package nameless.classicraft.util;
 import nameless.classicraft.api.event.BlockDropEvent;
 import nameless.classicraft.api.event.ItemEntityTickEvent;
 import nameless.classicraft.block.AbstractLightBlock;
-import nameless.classicraft.block.StonePebbleBlock;
-import nameless.classicraft.init.ModTags;
 import nameless.classicraft.item.PebbleItem;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -28,7 +25,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Material;
-import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class EventUtils {
@@ -36,7 +32,8 @@ public class EventUtils {
     public static void pebbleToolByStoneVanilla(PlayerInteractEvent.RightClickBlock event, Item vanillaItem) {
         Player player = event.getEntity();
         BlockState state = player.getBlockStateOn();
-        if (state.getMaterial() == Material.STONE && player.getItemInHand(event.getHand()).is(vanillaItem)) {
+        ItemStack itemStack = event.getItemStack();
+        if (state.getMaterial() == Material.STONE && itemStack.is(vanillaItem)) {
             if (PebbleItem.addItem(player, vanillaItem.getDefaultInstance()))
                 vanillaItem.getDefaultInstance().shrink(1);
         }
@@ -46,7 +43,7 @@ public class EventUtils {
         InteractionHand hand = event.getHand();
         Player player = event.getEntity();
         if (hand == InteractionHand.MAIN_HAND) {
-            ItemStack main = player.getMainHandItem();
+            ItemStack main = event.getItemStack();
             ItemStack off = player.getOffhandItem();
 
             if (main.getItem() == vanillaItem
@@ -82,38 +79,6 @@ public class EventUtils {
                 }
                 player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
                 event.setCancellationResult(InteractionResult.sidedSuccess(level.isClientSide));
-            }
-        }
-    }
-
-    public static void onHit(ItemEntityTickEvent event) {
-        ItemEntity entity = event.getEntity();
-        ItemStack stack = entity.getItem();
-        if (stack.is(ModTags.Items.STONE_PEBBLES) && entity.getBlockStateOn().getBlock() instanceof StonePebbleBlock) {
-            int rand = entity.getLevel().getRandom().nextInt(1, 7);
-            stack.getOrCreateTag().putInt("classicraft:pebble", rand);
-        }
-    }
-
-    public static void appendTooltip(ItemTooltipEvent event) {
-        if (event.getItemStack().getTag() !=null) {
-            if (event.getItemStack().getTag().getInt("classicraft:pebble") == 1) {
-                event.getToolTip().add(Component.literal("Pebble_1"));
-            }
-            if (event.getItemStack().getTag().getInt("classicraft:pebble") == 2) {
-                event.getToolTip().add(Component.literal("Pebble_3"));
-            }
-            if (event.getItemStack().getTag().getInt("classicraft:pebble") == 3) {
-                event.getToolTip().add(Component.literal("Pebble_3"));
-            }
-            if (event.getItemStack().getTag().getInt("classicraft:pebble") == 4) {
-                event.getToolTip().add(Component.literal("Pebble_4"));
-            }
-            if (event.getItemStack().getTag().getInt("classicraft:pebble") == 5) {
-                event.getToolTip().add(Component.literal("Pebble_5"));
-            }
-            if (event.getItemStack().getTag().getInt("classicraft:pebble") == 6 || event.getItemStack().getTag().getInt("classicraft:pebble") == 7) {
-                event.getToolTip().add(Component.literal("Pebble_6"));
             }
         }
     }

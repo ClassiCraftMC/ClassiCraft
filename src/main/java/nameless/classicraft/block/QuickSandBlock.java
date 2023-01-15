@@ -36,7 +36,7 @@ public class QuickSandBlock extends SandBlock {
                     1.0D, (double)0.9F, 1.0D);
 
     public QuickSandBlock(int pDustColor) {
-        super(pDustColor, BlockBehaviour.Properties.of(Material.SAND).strength(0.25F).sound(SoundType.SAND).dynamicShape());
+        super(pDustColor, BlockBehaviour.Properties.of(Material.SAND).strength(0.25F).sound(SoundType.SAND).dynamicShape().requiresCorrectToolForDrops());
     }
 
     public boolean skipRendering(BlockState pState, BlockState pAdjacentBlockState, Direction pDirection) {

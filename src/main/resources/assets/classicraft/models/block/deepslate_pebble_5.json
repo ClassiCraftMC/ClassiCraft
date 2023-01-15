@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "block/andesite",
-		"particle": "block/andesite"
+		"particle": "block/cobbled_deepslate"
 	},
 	"elements": [
 		{

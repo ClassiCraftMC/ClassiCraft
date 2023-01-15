@@ -5,7 +5,6 @@ import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModEntities;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.world.entity.Mob;
 import net.minecraftforge.common.data.LanguageProvider;
 
 public class ModLanguageProvider extends LanguageProvider {
@@ -86,6 +85,10 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.QUARTZ_SANDSTONE_BRICKS.get(), "Quartz SandStone Bricks");
         add(ModBlocks.RED_SANDSTONE_BRICKS.get(), "Red SandStone Bricks");
         add(ModBlocks.SANDSTONE_BRICKS.get(), "SandStone Bricks");
+        add(ModBlocks.SOUL_SANDSTONE.get(), "Soul SandStone");
+        add(ModBlocks.SOUL_QUICKSAND.get(), "Soul QuickSand");
+        add(ModBlocks.SOUL_SANDSTONE_BRICKS.get(), "Soul SandStone Bricks");
+        add("itemGroup.classicraft.common", "ClassiCraft|Common");
 
         pebbleBlock();
         meta();

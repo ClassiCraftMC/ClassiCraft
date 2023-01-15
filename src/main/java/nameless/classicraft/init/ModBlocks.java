@@ -54,6 +54,10 @@ public class ModBlocks {
             registerDefault("quartz_quicksand",
                     () -> new QuickSandBlock(14406560));
 
+    public static final RegistryObject<Block> SOUL_QUICKSAND =
+            registerDefault("soul_quicksand",
+                    () -> new QuickSandBlock(11098145));
+
     public static final RegistryObject<Block> ROSE =
             registerDefault("rose", () -> new FlowerBlock(MobEffects.DIG_SPEED, 2
             , BlockBehaviour.Properties.copy(Blocks.DANDELION)));
@@ -68,7 +72,6 @@ public class ModBlocks {
             registerDefault("mossy_bricks", () ->
                     new Block(BlockBehaviour.Properties
                             .of(Material.STONE)
-                            .requiresCorrectToolForDrops()
                             .strength(1.5F, 6.0F)));
 
     public static final RegistryObject<Block> MOSSY_BRICKS_STAIRS =
@@ -76,7 +79,6 @@ public class ModBlocks {
                     new StairBlock(MOSSY_BRICKS.get().defaultBlockState(),
                             BlockBehaviour.Properties
                             .of(Material.STONE)
-                            .requiresCorrectToolForDrops()
                             .strength(1.5F, 6.0F)));
 
     public static final RegistryObject<Block> MOSSY_BRICKS_WALL =
@@ -88,14 +90,12 @@ public class ModBlocks {
             registerDefault("mossy_bricks_slab", () ->
                     new SlabBlock(BlockBehaviour.Properties
                             .of(Material.STONE)
-                            .requiresCorrectToolForDrops()
                             .strength(1.5F, 6.0F)));
 
     public static final RegistryObject<Block> CRACKED_BRICKS =
             registerDefault("cracked_bricks", () ->
                     new Block(BlockBehaviour.Properties
                             .of(Material.STONE)
-                            .requiresCorrectToolForDrops()
                             .strength(1.5F, 6.0F)));
 
     public static final RegistryObject<Block> CRACKED_BRICKS_STAIRS =
@@ -103,7 +103,6 @@ public class ModBlocks {
                     new StairBlock(CRACKED_BRICKS.get().defaultBlockState(),
                             BlockBehaviour.Properties
                             .of(Material.STONE)
-                            .requiresCorrectToolForDrops()
                             .strength(1.5F, 6.0F)));
 
     public static final RegistryObject<Block> CRACKED_BRICKS_WALL =
@@ -115,7 +114,6 @@ public class ModBlocks {
             registerDefault("cracked_bricks_slab", () ->
                     new SlabBlock(BlockBehaviour.Properties
                             .of(Material.STONE)
-                            .requiresCorrectToolForDrops()
                             .strength(1.5F, 6.0F)));
 
     public static final RegistryObject<Block> ANDESITE_PEBBLE =
@@ -163,14 +161,13 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> FLINT_BLOCK =
             registerDefault("flint_block", () ->
-                    new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE)
-                            .requiresCorrectToolForDrops().strength(5.0F,
+                    new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE).
+                            strength(5.0F,
                                     6.0F)));
 
     public static final RegistryObject<Block> SULFUR_ORE =
             registerDefault("sulfur_ore", () ->
                     new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE)
-                            .requiresCorrectToolForDrops()
                             .strength(3.0F, 3.0F),
                             UniformInt.of(0, 2)));
 
@@ -184,7 +181,6 @@ public class ModBlocks {
                     new StairBlock(Blocks.SMOOTH_STONE.defaultBlockState(),
                             BlockBehaviour.Properties
                                     .of(Material.STONE)
-                                    .requiresCorrectToolForDrops()
                                     .strength(1.5F, 6.0F)));
 
     public static final RegistryObject<Block> SMOOTH_STONE_WALL =
@@ -195,50 +191,52 @@ public class ModBlocks {
     public static final RegistryObject<Block> CHISELED_QUARTZ_SANDSTONE =
             registerDefault("chiseled_quartz_sandstone", () ->
                     new Block(BlockBehaviour.Properties.of(Material.STONE,
-                            MaterialColor.SAND).requiresCorrectToolForDrops()
-
+                            MaterialColor.SAND)
                             .strength(0.8F)));
     public static final RegistryObject<Block> CHISELED_SOUL_SANDSTONE =
             registerDefault("chiseled_soul_sandstone", () ->
                     new Block(BlockBehaviour.Properties.of(Material.STONE,
-                                    MaterialColor.SAND).requiresCorrectToolForDrops()
-                            .strength(0.8F)));
+                                    MaterialColor.SAND).strength(0.8F)));
 
     public static final RegistryObject<Block> CUT_QUARTZ_SANDSTONE =
             registerDefault("cut_quartz_sandstone", () ->
                     new Block(BlockBehaviour.Properties.of(Material.STONE,
-                            MaterialColor.SAND).requiresCorrectToolForDrops()
-                            .strength(0.8F)));
+                            MaterialColor.SAND).strength(0.8F)));
 
     public static final RegistryObject<Block> CUT_SOUL_SANDSTONE =
             registerDefault("cut_soul_sandstone", () ->
                     new Block(BlockBehaviour.Properties.of(Material.STONE,
-                                    MaterialColor.SAND).requiresCorrectToolForDrops()
-                            .strength(0.8F)));
+                                    MaterialColor.SAND).strength(0.8F)));
 
     public static final RegistryObject<Block> QUARTZ_SANDSTONE =
             registerDefault("quartz_sandstone", () ->
                     new Block(BlockBehaviour.Properties.of(Material.STONE,
-                                    MaterialColor.SAND).requiresCorrectToolForDrops()
-                            .strength(0.8F)));
+                                    MaterialColor.SAND).strength(0.8F)));
+
+    public static final RegistryObject<Block> SOUL_SANDSTONE =
+            registerDefault("soul_sandstone", () ->
+                    new Block(BlockBehaviour.Properties.of(Material.STONE,
+                                    MaterialColor.SAND).strength(0.8F)));
 
     public static final RegistryObject<Block> QUARTZ_SANDSTONE_BRICKS =
             registerDefault("quartz_sandstone_bricks", () ->
                     new Block(BlockBehaviour.Properties.of(Material.STONE,
-                                    MaterialColor.SAND).requiresCorrectToolForDrops()
-                            .strength(0.8F)));
+                                    MaterialColor.SAND).strength(0.8F)));
 
     public static final RegistryObject<Block> RED_SANDSTONE_BRICKS =
             registerDefault("red_sandstone_bricks", () ->
                     new Block(BlockBehaviour.Properties.of(Material.STONE,
-                                    MaterialColor.FIRE).requiresCorrectToolForDrops()
-                            .strength(0.8F)));
+                                    MaterialColor.FIRE).strength(0.8F)));
 
     public static final RegistryObject<Block> SANDSTONE_BRICKS =
             registerDefault("sandstone_bricks", () ->
                     new Block(BlockBehaviour.Properties.of(Material.STONE,
-                                    MaterialColor.SAND).requiresCorrectToolForDrops()
-                            .strength(0.8F)));
+                                    MaterialColor.SAND).strength(0.8F)));
+
+    public static final RegistryObject<Block> SOUL_SANDSTONE_BRICKS =
+            registerDefault("soul_sandstone_bricks", () ->
+                    new Block(BlockBehaviour.Properties.of(Material.STONE,
+                                    MaterialColor.SAND).strength(0.8F)));
 
     public static final RegistryObject<Block> QUARTZ_PEBBLE =
             registerDefault("quartz_pebble", () -> new VanillaPickBlock(Items.QUARTZ));

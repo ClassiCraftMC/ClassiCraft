@@ -1,5 +1,11 @@
 {
   "type": "minecraft:block",
+  "functions": [
+    {
+      "function": "minecraft:set_nbt",
+      "tag": "{classicraft:{Meta:\"flint\"}}"
+    }
+  ],
   "pools": [
     {
       "bonus_rolls": 0.0,
