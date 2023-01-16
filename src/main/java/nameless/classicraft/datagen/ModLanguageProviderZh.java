@@ -88,6 +88,10 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModBlocks.SOUL_SANDSTONE.get(), "灵魂砂岩");
         add(ModBlocks.SOUL_QUICKSAND.get(), "灵魂沙流沙");
         add(ModBlocks.SOUL_SANDSTONE_BRICKS.get(), "灵魂岩砖");
+        add(ModBlocks.CRACKED_STONE_BRICKS_SLAB.get(), "裂纹石砖台阶");
+        add(ModBlocks.CRACKED_STONE_BRICKS_STAIRS.get(), "裂纹石砖楼梯");
+        add(ModBlocks.CRACKED_STONE_BRICKS_WALL.get(), "裂纹石砖墙");
+        add(ModBlocks.POLISHED_GRANITE_WALL.get(), "磨制花岗岩墙");
         add("itemGroup.classicraft.common", "天工开物|通常");
 
         pebbleBlock();

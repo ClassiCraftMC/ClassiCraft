@@ -81,6 +81,9 @@ public class ModBlockLoot extends BlockLootSubProvider {
         dropSelf(ModBlocks.SOUL_QUICKSAND.get());
         dropSelf(ModBlocks.SOUL_SANDSTONE.get());
         dropSelf(ModBlocks.SOUL_SANDSTONE_BRICKS.get());
+        dropSelf(ModBlocks.CRACKED_STONE_BRICKS_STAIRS.get());
+        dropSelf(ModBlocks.POLISHED_GRANITE_WALL.get());
+        dropSelf(ModBlocks.INFESTED_MOSSY_COBBLESTONE.get());
     }
 
     @Override

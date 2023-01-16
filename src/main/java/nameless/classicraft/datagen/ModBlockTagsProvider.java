@@ -6,6 +6,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
@@ -25,42 +26,49 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         wallTag(ModBlocks.CRACKED_BRICKS_WALL);
         wallTag(ModBlocks.STONE_WALL);
         wallTag(ModBlocks.SMOOTH_STONE_WALL);
-        needStoneTool(ModBlocks.MOSSY_BRICKS_WALL);
-        needStoneTool(ModBlocks.CRACKED_BRICKS_WALL);
-        needStoneTool(ModBlocks.STONE_WALL);
-        needStoneTool(ModBlocks.SMOOTH_STONE_WALL);
-        needStoneTool(ModBlocks.MOSSY_BRICKS);
-        needStoneTool(ModBlocks.MOSSY_BRICKS_STAIRS);
-        needStoneTool(ModBlocks.MOSSY_BRICKS_SLAB);
-        needStoneTool(ModBlocks.CRACKED_BRICKS);
-        needStoneTool(ModBlocks.CRACKED_BRICKS_STAIRS);
-        needStoneTool(ModBlocks.CRACKED_BRICKS_SLAB);
-        needStoneTool(ModBlocks.FLINT_BLOCK);
-        needStoneTool(ModBlocks.SULFUR_ORE);
-        needStoneTool(ModBlocks.SMOOTH_STONE_STAIRS);
-        needStoneTool(ModBlocks.CHISELED_QUARTZ_SANDSTONE);
-        needStoneTool(ModBlocks.CHISELED_SOUL_SANDSTONE);
-        needStoneTool(ModBlocks.CUT_QUARTZ_SANDSTONE);
-        needStoneTool(ModBlocks.CUT_SOUL_SANDSTONE);
-        needStoneTool(ModBlocks.QUARTZ_SANDSTONE);
-        needStoneTool(ModBlocks.QUARTZ_SANDSTONE_BRICKS);
-        needStoneTool(ModBlocks.RED_SANDSTONE_BRICKS);
-        needStoneTool(ModBlocks.SANDSTONE_BRICKS);
-        needStoneTool(ModBlocks.CHARCOAL_BLOCK);
-        needStoneTool(ModBlocks.QUICKSAND);
-        needStoneTool(ModBlocks.RED_QUICKSAND);
-        needStoneTool(ModBlocks.QUARTZ_QUICKSAND);
-        needStoneTool(ModBlocks.TALLOW_BLOCK);
-        needStoneTool(ModBlocks.SOUL_QUICKSAND);
-        needStoneTool(ModBlocks.SOUL_SANDSTONE);
-        needStoneTool(ModBlocks.SOUL_SANDSTONE_BRICKS);
+        wallTag(ModBlocks.CRACKED_STONE_BRICKS_WALL);
+        wallTag(ModBlocks.POLISHED_GRANITE_WALL);
+        needWoodTool(ModBlocks.MOSSY_BRICKS_WALL);
+        needWoodTool(ModBlocks.CRACKED_BRICKS_WALL);
+        needWoodTool(ModBlocks.STONE_WALL);
+        needWoodTool(ModBlocks.SMOOTH_STONE_WALL);
+        needWoodTool(ModBlocks.MOSSY_BRICKS);
+        needWoodTool(ModBlocks.MOSSY_BRICKS_STAIRS);
+        needWoodTool(ModBlocks.MOSSY_BRICKS_SLAB);
+        needWoodTool(ModBlocks.CRACKED_BRICKS);
+        needWoodTool(ModBlocks.CRACKED_BRICKS_STAIRS);
+        needWoodTool(ModBlocks.CRACKED_BRICKS_SLAB);
+        needWoodTool(ModBlocks.FLINT_BLOCK);
+        needWoodTool(ModBlocks.SULFUR_ORE);
+        needWoodTool(ModBlocks.SMOOTH_STONE_STAIRS);
+        needWoodTool(ModBlocks.CHISELED_QUARTZ_SANDSTONE);
+        needWoodTool(ModBlocks.CHISELED_SOUL_SANDSTONE);
+        needWoodTool(ModBlocks.CUT_QUARTZ_SANDSTONE);
+        needWoodTool(ModBlocks.CUT_SOUL_SANDSTONE);
+        needWoodTool(ModBlocks.QUARTZ_SANDSTONE);
+        needWoodTool(ModBlocks.QUARTZ_SANDSTONE_BRICKS);
+        needWoodTool(ModBlocks.RED_SANDSTONE_BRICKS);
+        needWoodTool(ModBlocks.SANDSTONE_BRICKS);
+        needWoodTool(ModBlocks.CHARCOAL_BLOCK);
+        needWoodTool(ModBlocks.QUICKSAND);
+        needWoodTool(ModBlocks.RED_QUICKSAND);
+        needWoodTool(ModBlocks.QUARTZ_QUICKSAND);
+        needWoodTool(ModBlocks.TALLOW_BLOCK);
+        needWoodTool(ModBlocks.SOUL_QUICKSAND);
+        needWoodTool(ModBlocks.SOUL_SANDSTONE);
+        needWoodTool(ModBlocks.SOUL_SANDSTONE_BRICKS);
+        needWoodTool(ModBlocks.CRACKED_STONE_BRICKS_STAIRS);
+        needWoodTool(ModBlocks.CRACKED_STONE_BRICKS_SLAB);
+        needWoodTool(ModBlocks.CRACKED_STONE_BRICKS_WALL);
+        needWoodTool(ModBlocks.POLISHED_GRANITE_WALL);
+        needWoodTool(ModBlocks.INFESTED_MOSSY_COBBLESTONE);
     }
 
     void wallTag(RegistryObject<Block> wall) {
         tag(BlockTags.WALLS).add(wall.get());
     }
 
-    void needStoneTool(RegistryObject<Block> block) {
-        tag(BlockTags.NEEDS_STONE_TOOL).add(block.get());
+    void needWoodTool(RegistryObject<Block> block) {
+        tag(Tags.Blocks.NEEDS_WOOD_TOOL).add(block.get());
     }
 }

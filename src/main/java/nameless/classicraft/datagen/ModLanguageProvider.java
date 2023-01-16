@@ -88,6 +88,10 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.SOUL_SANDSTONE.get(), "Soul SandStone");
         add(ModBlocks.SOUL_QUICKSAND.get(), "Soul QuickSand");
         add(ModBlocks.SOUL_SANDSTONE_BRICKS.get(), "Soul SandStone Bricks");
+        add(ModBlocks.CRACKED_STONE_BRICKS_SLAB.get(), "Cracked Stone Bricks Slab");
+        add(ModBlocks.CRACKED_STONE_BRICKS_STAIRS.get(), "Cracked Stone Bricks Stairs");
+        add(ModBlocks.CRACKED_STONE_BRICKS_WALL.get(), "Cracked Stone Bricks Wall");
+        add(ModBlocks.POLISHED_GRANITE_WALL.get(), "Polished Granite Wall");
         add("itemGroup.classicraft.common", "ClassiCraft|Common");
 
         pebbleBlock();

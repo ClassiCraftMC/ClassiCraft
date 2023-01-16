@@ -20,6 +20,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         stairsInventory("smooth_stone", "minecraft:block/smooth_stone");
         stairsInventory("mossy_bricks", "classicraft:block/mossy_bricks");
         stairsInventory("cracked_bricks", "classicraft:block/cracked_bricks");
+        stairsInventory("cracked_stone_bricks", "minecraft:block/cracked_stone_bricks");
         wallInventory("smooth_stone_wall",
                 new ResourceLocation("minecraft:block/smooth_stone"));
         wallInventory("stone_wall",
@@ -28,23 +29,19 @@ public class ModItemModelProvider extends ItemModelProvider {
                 new ResourceLocation("classicraft:block/mossy_bricks"));
         wallInventory("cracked_bricks_wall",
                 new ResourceLocation("classicraft:block/cracked_bricks"));
+        wallInventory("cracked_stone_bricks_wall",
+                new ResourceLocation("minecraft:block/cracked_stone_bricks"));
+        wallInventory("polished_granite_wall",
+                new ResourceLocation("minecraft:block/polished_granite"));
         slabInventory("mossy_bricks_slab", "classicraft:block/mossy_bricks");
         slabInventory("cracked_bricks_slab", "classicraft:block/cracked_bricks");
+        slabInventory("cracked_stone_bricks_slab", "minecraft:block/cracked_stone_bricks");
         blockItem(ModBlocks.CHISELED_QUARTZ_SANDSTONE);
         blockItem(ModBlocks.CHISELED_SOUL_SANDSTONE);
         blockItem(ModBlocks.CUT_QUARTZ_SANDSTONE);
         blockItem(ModBlocks.CUT_SOUL_SANDSTONE);
         blockItem(ModBlocks.QUARTZ_SANDSTONE);
-        blockItem(ModBlocks.QUARTZ_SAND);
-        blockItem(ModBlocks.QUARTZ_SANDSTONE_BRICKS);
-        blockItem(ModBlocks.RED_SANDSTONE_BRICKS);
-        blockItem(ModBlocks.SANDSTONE_BRICKS);
-        blockItem(ModBlocks.CRACKED_BRICKS);
-        blockItem(ModBlocks.MOSSY_BRICKS);
-        blockItem(ModBlocks.SOUL_QUICKSAND);
         blockItem(ModBlocks.SOUL_SANDSTONE);
-        blockItem(ModBlocks.SOUL_SANDSTONE_BRICKS);
-        blockItem(ModBlocks.CRACKED_BRICKS);
     }
 
     void slabInventory(String prefix, String texture) {

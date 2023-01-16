@@ -67,6 +67,11 @@ public class RegisterEvents {
                             output.accept(ModBlocks.SOUL_QUICKSAND.get());
                             output.accept(ModBlocks.SOUL_SANDSTONE.get());
                             output.accept(ModBlocks.SOUL_SANDSTONE_BRICKS.get());
+                            output.accept(ModBlocks.CRACKED_STONE_BRICKS_STAIRS.get());
+                            output.accept(ModBlocks.CRACKED_STONE_BRICKS_SLAB.get());
+                            output.accept(ModBlocks.CRACKED_STONE_BRICKS_WALL.get());
+                            output.accept(ModBlocks.POLISHED_GRANITE_WALL.get());
+                            output.accept(ModBlocks.INFESTED_MOSSY_COBBLESTONE.get());
                             MetaItem.getMetaItems().forEach(mi -> mi.acceptToCreativeModeTab(output));                        })
                         .title(Component.translatable("itemGroup.classicraft.common"))
                         .build());

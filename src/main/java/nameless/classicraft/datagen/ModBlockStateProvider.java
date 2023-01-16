@@ -20,25 +20,33 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        simpleBlock(ModBlocks.FLINT_BLOCK.get());
-        simpleBlock(ModBlocks.QUARTZ_QUICKSAND.get());
-        simpleBlock(ModBlocks.QUARTZ_SAND.get());
-        simpleBlock(ModBlocks.QUARTZ_SANDSTONE_BRICKS.get());
-        simpleBlock(ModBlocks.RED_SANDSTONE_BRICKS.get());
-        simpleBlock(ModBlocks.SANDSTONE_BRICKS.get());
-        simpleBlock(ModBlocks.MOSSY_BRICKS.get());
-        simpleBlock(ModBlocks.SOUL_QUICKSAND.get());
-        simpleBlock(ModBlocks.SOUL_SANDSTONE_BRICKS.get());
-        simpleBlock(ModBlocks.CRACKED_BRICKS.get());
+        simpleBlockWithItem(ModBlocks.FLINT_BLOCK);
+        simpleBlockWithItem(ModBlocks.QUARTZ_QUICKSAND);
+        simpleBlockWithItem(ModBlocks.QUARTZ_SAND);
+        simpleBlockWithItem(ModBlocks.QUARTZ_SANDSTONE_BRICKS);
+        simpleBlockWithItem(ModBlocks.RED_SANDSTONE_BRICKS);
+        simpleBlockWithItem(ModBlocks.SANDSTONE_BRICKS);
+        simpleBlockWithItem(ModBlocks.MOSSY_BRICKS);
+        simpleBlockWithItem(ModBlocks.SOUL_QUICKSAND);
+        simpleBlockWithItem(ModBlocks.SOUL_SANDSTONE_BRICKS);
+        simpleBlockWithItem(ModBlocks.CRACKED_BRICKS);
+        wallBlock(ModBlocks.POLISHED_GRANITE_WALL, "polished_granite","minecraft:block/polished_granite");
         wallBlock(ModBlocks.STONE_WALL, "stone","minecraft:block/stone");
         wallBlock(ModBlocks.SMOOTH_STONE_WALL, "smooth_stone", "minecraft:block/smooth_stone");
         wallBlock(ModBlocks.MOSSY_BRICKS_WALL, "mossy_bricks", "classicraft:block/mossy_bricks");
         wallBlock(ModBlocks.CRACKED_BRICKS_WALL, "cracked_bricks", "classicraft:block/cracked_bricks");
+        wallBlock(ModBlocks.CRACKED_STONE_BRICKS_WALL, "cracked_stone_bricks", "minecraft:block/cracked_stone_bricks");
         stairsBlock(ModBlocks.CRACKED_BRICKS_STAIRS, "cracked_bricks","classicraft:block/cracked_bricks");
         stairsBlock(ModBlocks.MOSSY_BRICKS_STAIRS, "mossy_bricks","classicraft:block/mossy_bricks");
         stairsBlock(ModBlocks.SMOOTH_STONE_STAIRS, "smooth_stone", "minecraft:block/smooth_stone");
+        stairsBlock(ModBlocks.CRACKED_STONE_BRICKS_STAIRS, "cracked_stone_bricks","minecraft:block/cracked_stone_bricks");
         slabBlock(ModBlocks.MOSSY_BRICKS_SLAB, "classicraft:block/mossy_bricks");
         slabBlock(ModBlocks.CRACKED_BRICKS_SLAB,"classicraft:block/cracked_bricks");
+        slabBlock(ModBlocks.CRACKED_STONE_BRICKS_SLAB,"minecraft:block/cracked_stone_bricks");
+    }
+
+    void simpleBlockWithItem(RegistryObject<Block> block) {
+        simpleBlockWithItem(block.get(), cubeAll(block.get()));
     }
 
     void wallBlock(RegistryObject<Block> block, String name, String texture) {

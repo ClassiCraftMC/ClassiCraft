@@ -86,6 +86,11 @@ public class ModBlocks {
                     new WallBlock(BlockBehaviour.Properties.copy(MOSSY_BRICKS.get())
                             .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
 
+    public static final RegistryObject<Block> POLISHED_GRANITE_WALL =
+            registerDefault("polished_granite_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.copy(Blocks.POLISHED_GRANITE)
+                            .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
+
     public static final RegistryObject<Block> MOSSY_BRICKS_SLAB =
             registerDefault("mossy_bricks_slab", () ->
                     new SlabBlock(BlockBehaviour.Properties
@@ -182,6 +187,24 @@ public class ModBlocks {
                                     .of(Material.STONE)
                                     .strength(1.5F, 6.0F)));
 
+    public static final RegistryObject<Block> CRACKED_STONE_BRICKS_STAIRS =
+            registerDefault("cracked_stone_bricks_stairs", () ->
+                    new StairBlock(Blocks.CRACKED_STONE_BRICKS.defaultBlockState(),
+                            BlockBehaviour.Properties
+                                    .of(Material.STONE)
+                                    .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> CRACKED_STONE_BRICKS_WALL =
+            registerDefault("cracked_stone_bricks_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.copy(Blocks.CRACKED_STONE_BRICKS)
+                            .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
+
+    public static final RegistryObject<Block> CRACKED_STONE_BRICKS_SLAB =
+            registerDefault("cracked_stone_bricks_slab", () ->
+                    new SlabBlock(BlockBehaviour.Properties
+                            .of(Material.STONE)
+                            .strength(1.5F, 6.0F)));
+
     public static final RegistryObject<Block> SMOOTH_STONE_WALL =
             registerDefault("smooth_stone_wall", () ->
                     new WallBlock(BlockBehaviour.Properties.copy(Blocks.SMOOTH_STONE)
@@ -243,6 +266,10 @@ public class ModBlocks {
     public static final RegistryObject<Block> QUARTZ_SAND =
             registerDefault("quartz_sand",
                     () -> new SandBlock(14406560, BlockBehaviour.Properties.copy(Blocks.SAND)));
+
+    public static final RegistryObject<Block> INFESTED_MOSSY_COBBLESTONE =
+            registerDefault("infested_mossy_cobblestone", () ->
+                    new InfestedBlock(Blocks.MOSSY_COBBLESTONE, BlockBehaviour.Properties.of(Material.CLAY)));
 
     /**
      * Hanlde Default Register
