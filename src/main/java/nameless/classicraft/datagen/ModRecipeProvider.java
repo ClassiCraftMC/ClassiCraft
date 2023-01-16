@@ -3,6 +3,7 @@ package nameless.classicraft.datagen;
 import nameless.classicraft.init.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.data.recipes.packs.VanillaRecipeProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -11,7 +12,7 @@ import net.minecraft.world.level.ItemLike;
 import javax.annotation.Nullable;
 import java.util.function.Consumer;
 
-public class ModRecipeProvider extends RecipeProvider {
+public class ModRecipeProvider extends VanillaRecipeProvider {
 
     public ModRecipeProvider(PackOutput pOutput) {
         super(pOutput);
