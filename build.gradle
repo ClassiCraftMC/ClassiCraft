@@ -129,7 +129,7 @@ jar {
     from("LICENSE")
     exclude(".cache/**")
     exclude("nameless/classicraft/datagen/**")
-    exclude("nameless/classicraft/event/TestEvents")
+    exclude("nameless/classicraft/event/TestEvents.class")
     manifest {
         attributes([
                 "Specification-Title"     : project.mod_id,
