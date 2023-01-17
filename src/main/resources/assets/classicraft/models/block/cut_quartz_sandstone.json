@@ -1,8 +1,8 @@
 {
   "parent": "block/cube",
   "textures": {
-    "down": "minecraft:block/sandstone_top",
-    "up": "minecraft:block/sandstone_top",
+    "down": "classicraft:block/quartz_sandstone_top",
+    "up": "classicraft:block/quartz_sandstone_top",
     "north": "classicraft:block/cut_quartz_sandstone",
     "east": "classicraft:block/cut_quartz_sandstone",
     "south": "classicraft:block/cut_quartz_sandstone",

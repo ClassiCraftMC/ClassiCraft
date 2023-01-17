@@ -271,7 +271,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> DEEPSLATE_WALL =
             registerDefault("deepslate_wall", () ->
                     new WallBlock(BlockBehaviour.Properties.of(Material.STONE,
-                            MaterialColor.DEEPSLATE).requiresCorrectToolForDrops()
+                            MaterialColor.DEEPSLATE)
+                            .sound(SoundType.DEEPSLATE)
+                            .requiresCorrectToolForDrops()
                             .strength(3.0F, 6.0F)
                             .sound(SoundType.DEEPSLATE)));
 
@@ -280,6 +282,7 @@ public class ModBlocks {
                     new SlabBlock(BlockBehaviour.Properties
                             .of(Material.STONE)
                             .requiresCorrectToolForDrops()
+                            .sound(SoundType.DEEPSLATE)
                             .strength(1.5F, 6.0F)));
 
     public static final RegistryObject<Block> DEEPSLATE_STAIRS =
@@ -287,6 +290,7 @@ public class ModBlocks {
                     new StairBlock(Blocks.DEEPSLATE.defaultBlockState(),
                             BlockBehaviour.Properties
                                     .of(Material.STONE).requiresCorrectToolForDrops()
+                                    .sound(SoundType.DEEPSLATE)
                                     .strength(1.5F, 6.0F)));
 
     public static final RegistryObject<Block> CRACKED_DEEPSLATE_BRICKS_WALL =
