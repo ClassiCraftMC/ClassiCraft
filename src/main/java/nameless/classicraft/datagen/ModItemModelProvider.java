@@ -38,6 +38,8 @@ public class ModItemModelProvider extends ItemModelProvider {
                 new ResourceLocation("minecraft:block/polished_andesite"));
         wallInventory("polished_diorite_wall",
                 new ResourceLocation("minecraft:block/polished_diorite"));
+        wallInventory("deepslate_wall",
+                new ResourceLocation("minecraft:block/deepslate"));
         slabInventory("mossy_bricks_slab", "classicraft:block/mossy_bricks");
         slabInventory("cracked_bricks_slab", "classicraft:block/cracked_bricks");
         slabInventory("cracked_stone_bricks_slab", "minecraft:block/cracked_stone_bricks");

@@ -2,16 +2,19 @@ package nameless.classicraft.datagen;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.init.ModBlocks;
+import nameless.classicraft.util.ExtraUtils;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 public class ModBlockTagsProvider extends BlockTagsProvider {
@@ -22,14 +25,27 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
-        wallTag(ModBlocks.MOSSY_BRICKS_WALL);
-        wallTag(ModBlocks.CRACKED_BRICKS_WALL);
-        wallTag(ModBlocks.STONE_WALL);
-        wallTag(ModBlocks.SMOOTH_STONE_WALL);
-        wallTag(ModBlocks.CRACKED_STONE_BRICKS_WALL);
-        wallTag(ModBlocks.POLISHED_GRANITE_WALL);
-        wallTag(ModBlocks.POLISHED_ANDESITE_WALL);
-        wallTag(ModBlocks.POLISHED_DIORITE_WALL);
+        Set<Block> blocks = ExtraUtils.getBlocks();
+        blocks.stream().filter(block -> block instanceof WallBlock)
+                        .forEach(this::wallTag);
+        blocks.stream().filter(block -> block instanceof StairBlock)
+                        .forEach(this::stairsTag);
+        blocks.stream().filter(block -> block instanceof SlabBlock)
+                        .forEach(this::slabTag);
+        blocks.stream().filter(block -> block instanceof FlowerBlock)
+                .forEach(this::flowerTag);
+        blocks.stream().filter(block -> block.defaultBlockState().getMaterial() == Material.STONE)
+                        .forEach(this::pickaxeMineAble);
+        blocks.stream().filter(block -> block.defaultBlockState().getMaterial() == Material.SAND)
+                .forEach(this::shovelMineAble);
+        addToolNeedsTags();
+    }
+
+    private void wallTag(Block wall) {
+        tag(BlockTags.WALLS).add(wall);
+    }
+
+    private void addToolNeedsTags() {
         needWoodTool(ModBlocks.MOSSY_BRICKS_WALL);
         needWoodTool(ModBlocks.CRACKED_BRICKS_WALL);
         needWoodTool(ModBlocks.STONE_WALL);
@@ -68,8 +84,24 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         needWoodTool(ModBlocks.POLISHED_ANDESITE_WALL);
     }
 
-    void wallTag(RegistryObject<Block> wall) {
-        tag(BlockTags.WALLS).add(wall.get());
+    void shovelMineAble(Block block) {
+        tag(BlockTags.MINEABLE_WITH_SHOVEL).add(block);
+    }
+
+    void pickaxeMineAble(Block block) {
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(block);
+    }
+
+    void flowerTag(Block flower) {
+        tag(BlockTags.FLOWERS).add(flower);
+    }
+
+    void stairsTag(Block stairs) {
+        tag(BlockTags.STAIRS).add(stairs);
+    }
+
+    void slabTag(Block slab) {
+        tag(BlockTags.SLABS).add(slab);
     }
 
     void needWoodTool(RegistryObject<Block> block) {

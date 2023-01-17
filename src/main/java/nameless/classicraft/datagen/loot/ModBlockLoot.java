@@ -1,16 +1,19 @@
 package nameless.classicraft.datagen.loot;
 
+import nameless.classicraft.block.SandStoneBlock;
+import nameless.classicraft.block.StoneBricksBlock;
+import nameless.classicraft.datagen.ModBlockTagsProvider;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import nameless.classicraft.item.PebbleItem;
+import nameless.classicraft.util.ExtraUtils;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.functions.SetNbtFunction;
 
@@ -57,36 +60,21 @@ public class ModBlockLoot extends BlockLootSubProvider {
         dropSelf(ModBlocks.QUARTZ_QUICKSAND.get());
         dropSelf(ModBlocks.ROSE.get());
         dropSelf(ModBlocks.TALLOW_BLOCK.get());
-        dropSelf(ModBlocks.MOSSY_BRICKS.get());
-        dropSelf(ModBlocks.MOSSY_BRICKS_STAIRS.get());
-        dropSelf(ModBlocks.MOSSY_BRICKS_WALL.get());
-        addSlabDrop(ModBlocks.MOSSY_BRICKS_SLAB.get());
-        dropSelf(ModBlocks.CRACKED_BRICKS.get());
-        dropSelf(ModBlocks.CRACKED_BRICKS_STAIRS.get());
-        dropSelf(ModBlocks.CRACKED_BRICKS_WALL.get());
-        addSlabDrop(ModBlocks.CRACKED_BRICKS_SLAB.get());
         addOreDrop(ModBlocks.SULFUR_ORE.get(), ModItems.SULFUR.get());
-        dropSelf(ModBlocks.STONE_WALL.get());
-        dropSelf(ModBlocks.SMOOTH_STONE_STAIRS.get());
-        dropSelf(ModBlocks.SMOOTH_STONE_WALL.get());
-        dropSelf(ModBlocks.CHISELED_QUARTZ_SANDSTONE.get());
-        dropSelf(ModBlocks.CHISELED_SOUL_SANDSTONE.get());
-        dropSelf(ModBlocks.CUT_QUARTZ_SANDSTONE.get());
-        dropSelf(ModBlocks.CUT_SOUL_SANDSTONE.get());
-        dropSelf(ModBlocks.QUARTZ_SANDSTONE.get());
-        dropSelf(ModBlocks.QUARTZ_SANDSTONE_BRICKS.get());
-        dropSelf(ModBlocks.RED_SANDSTONE_BRICKS.get());
-        dropSelf(ModBlocks.SANDSTONE_BRICKS.get());
         dropSelf(ModBlocks.QUARTZ_SAND.get());
         dropSelf(ModBlocks.SOUL_QUICKSAND.get());
-        dropSelf(ModBlocks.SOUL_SANDSTONE.get());
-        dropSelf(ModBlocks.SOUL_SANDSTONE_BRICKS.get());
-        dropSelf(ModBlocks.CRACKED_STONE_BRICKS_STAIRS.get());
-        dropSelf(ModBlocks.CRACKED_STONE_BRICKS_WALL.get());
-        dropSelf(ModBlocks.POLISHED_GRANITE_WALL.get());
-        dropSelf(ModBlocks.INFESTED_MOSSY_COBBLESTONE.get());
-        dropSelf(ModBlocks.POLISHED_ANDESITE_WALL.get());
-        dropSelf(ModBlocks.POLISHED_DIORITE_WALL.get());
+        dropOther(ModBlocks.INFESTED_MOSSY_COBBLESTONE.get(), Items.MOSSY_COBBLESTONE);
+        Set<Block> blocks = ExtraUtils.getBlocks();
+        blocks.stream().filter(block -> block instanceof StairBlock)
+                .forEach(this::dropSelf);
+        blocks.stream().filter(block -> block instanceof WallBlock)
+                .forEach(this::dropSelf);
+        blocks.stream().filter(block -> block instanceof SlabBlock)
+                .forEach(this::dropSelf);
+        blocks.stream().filter(block -> block instanceof StoneBricksBlock)
+                .forEach(this::dropSelf);
+        blocks.stream().filter(block -> block instanceof SandStoneBlock)
+                .forEach(this::dropSelf);
     }
 
     @Override

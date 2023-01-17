@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "classicraft:cracked_bricks_slab"
+          "name": "classicraft:cracked_stone_bricks_slab"
         }
       ],
       "rolls": 1.0

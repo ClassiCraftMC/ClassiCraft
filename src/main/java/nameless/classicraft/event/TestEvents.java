@@ -1,7 +1,7 @@
 package nameless.classicraft.event;
 
 import nameless.classicraft.api.event.ItemEntityTickEvent;
-import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -14,7 +14,7 @@ public class TestEvents {
     }
 
     @SubscribeEvent
-    public static void test0(ItemTooltipEvent event) {
+    public static void test0(PlayerInteractEvent.LeftClickEmpty event) {
 
     }
 }

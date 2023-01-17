@@ -62,5 +62,7 @@ public class ModDataGenerator {
                 new ModBlockTagsProvider(pack, lookup, helper));
         generator.addProvider(event.includeServer(),
                 new ModRecipeProvider(pack));
+        generator.addProvider(event.includeClient(),
+                new ModItemTagsProvider(pack, lookup, new ModBlockTagsProvider(pack, lookup, helper), helper));
     }
 }

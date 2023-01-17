@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "classicraft:infested_mossy_cobblestone"
+          "name": "minecraft:mossy_cobblestone"
         }
       ],
       "rolls": 1.0

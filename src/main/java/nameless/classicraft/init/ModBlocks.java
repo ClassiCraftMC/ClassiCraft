@@ -69,66 +69,67 @@ public class ModBlocks {
             registerDefault("tallow_block", TallowBlock::new);
 
     public static final RegistryObject<Block> MOSSY_BRICKS =
-            registerDefault("mossy_bricks", () ->
-                    new Block(BlockBehaviour.Properties
-                            .of(Material.STONE)
-                            .strength(1.5F, 6.0F)));
+            registerDefault("mossy_bricks", StoneBricksBlock::new);
 
     public static final RegistryObject<Block> MOSSY_BRICKS_STAIRS =
             registerDefault("mossy_bricks_stairs", () ->
                     new StairBlock(MOSSY_BRICKS.get().defaultBlockState(),
                             BlockBehaviour.Properties
-                            .of(Material.STONE)
+                            .of(Material.STONE).requiresCorrectToolForDrops()
                             .strength(1.5F, 6.0F)));
 
     public static final RegistryObject<Block> MOSSY_BRICKS_WALL =
             registerDefault("mossy_bricks_wall", () ->
                     new WallBlock(BlockBehaviour.Properties.copy(MOSSY_BRICKS.get())
+                            .requiresCorrectToolForDrops()
                             .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
 
     public static final RegistryObject<Block> POLISHED_GRANITE_WALL =
             registerDefault("polished_granite_wall", () ->
                     new WallBlock(BlockBehaviour.Properties.copy(Blocks.POLISHED_GRANITE)
+                            .requiresCorrectToolForDrops()
                             .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
 
     public static final RegistryObject<Block> POLISHED_DIORITE_WALL =
             registerDefault("polished_diorite_wall", () ->
                     new WallBlock(BlockBehaviour.Properties.copy(Blocks.POLISHED_DIORITE)
+                            .requiresCorrectToolForDrops()
                             .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
 
     public static final RegistryObject<Block> POLISHED_ANDESITE_WALL =
             registerDefault("polished_andesite_wall", () ->
                     new WallBlock(BlockBehaviour.Properties.copy(Blocks.POLISHED_ANDESITE)
+                            .requiresCorrectToolForDrops()
                             .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
 
     public static final RegistryObject<Block> MOSSY_BRICKS_SLAB =
             registerDefault("mossy_bricks_slab", () ->
                     new SlabBlock(BlockBehaviour.Properties
                             .of(Material.STONE)
+                            .requiresCorrectToolForDrops()
                             .strength(1.5F, 6.0F)));
 
     public static final RegistryObject<Block> CRACKED_BRICKS =
-            registerDefault("cracked_bricks", () ->
-                    new Block(BlockBehaviour.Properties
-                            .of(Material.STONE)
-                            .strength(1.5F, 6.0F)));
+            registerDefault("cracked_bricks", StoneBricksBlock::new);
 
     public static final RegistryObject<Block> CRACKED_BRICKS_STAIRS =
             registerDefault("cracked_bricks_stairs", () ->
                     new StairBlock(CRACKED_BRICKS.get().defaultBlockState(),
                             BlockBehaviour.Properties
-                            .of(Material.STONE)
+                            .of(Material.STONE).requiresCorrectToolForDrops()
                             .strength(1.5F, 6.0F)));
 
     public static final RegistryObject<Block> CRACKED_BRICKS_WALL =
             registerDefault("cracked_bricks_wall", () ->
                     new WallBlock(BlockBehaviour.Properties.copy(CRACKED_BRICKS.get())
+                            .requiresCorrectToolForDrops()
                             .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
 
     public static final RegistryObject<Block> CRACKED_BRICKS_SLAB =
             registerDefault("cracked_bricks_slab", () ->
                     new SlabBlock(BlockBehaviour.Properties
                             .of(Material.STONE)
+                            .requiresCorrectToolForDrops()
                             .strength(1.5F, 6.0F)));
 
     public static final RegistryObject<Block> ANDESITE_PEBBLE =
@@ -177,17 +178,19 @@ public class ModBlocks {
     public static final RegistryObject<Block> FLINT_BLOCK =
             registerDefault("flint_block", () ->
                     new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE)
+                            .requiresCorrectToolForDrops()
                             .strength(3.0F, 3.0F)));
 
     public static final RegistryObject<Block> SULFUR_ORE =
             registerDefault("sulfur_ore", () ->
                     new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE)
-                            .strength(3.0F, 3.0F),
+                            .strength(3.0F, 3.0F).requiresCorrectToolForDrops(),
                             UniformInt.of(0, 2)));
 
     public static final RegistryObject<Block> STONE_WALL =
             registerDefault("stone_wall", () ->
                     new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
+                            .requiresCorrectToolForDrops()
                             .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
 
     public static final RegistryObject<Block> SMOOTH_STONE_STAIRS =
@@ -195,6 +198,7 @@ public class ModBlocks {
                     new StairBlock(Blocks.SMOOTH_STONE.defaultBlockState(),
                             BlockBehaviour.Properties
                                     .of(Material.STONE)
+                                    .requiresCorrectToolForDrops()
                                     .strength(1.5F, 6.0F)));
 
     public static final RegistryObject<Block> CRACKED_STONE_BRICKS_STAIRS =
@@ -202,73 +206,56 @@ public class ModBlocks {
                     new StairBlock(Blocks.CRACKED_STONE_BRICKS.defaultBlockState(),
                             BlockBehaviour.Properties
                                     .of(Material.STONE)
+                                    .requiresCorrectToolForDrops()
                                     .strength(1.5F, 6.0F)));
 
     public static final RegistryObject<Block> CRACKED_STONE_BRICKS_WALL =
             registerDefault("cracked_stone_bricks_wall", () ->
                     new WallBlock(BlockBehaviour.Properties.copy(Blocks.CRACKED_STONE_BRICKS)
+                            .requiresCorrectToolForDrops()
                             .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
 
     public static final RegistryObject<Block> CRACKED_STONE_BRICKS_SLAB =
             registerDefault("cracked_stone_bricks_slab", () ->
                     new SlabBlock(BlockBehaviour.Properties
                             .of(Material.STONE)
+                            .requiresCorrectToolForDrops()
                             .strength(1.5F, 6.0F)));
 
     public static final RegistryObject<Block> SMOOTH_STONE_WALL =
             registerDefault("smooth_stone_wall", () ->
                     new WallBlock(BlockBehaviour.Properties.copy(Blocks.SMOOTH_STONE)
+                            .requiresCorrectToolForDrops()
                             .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
 
     public static final RegistryObject<Block> CHISELED_QUARTZ_SANDSTONE =
-            registerDefault("chiseled_quartz_sandstone", () ->
-                    new Block(BlockBehaviour.Properties.of(Material.STONE,
-                            MaterialColor.SAND)
-                            .strength(0.8F)));
+            registerDefault("chiseled_quartz_sandstone", SandStoneBlock::new);
     public static final RegistryObject<Block> CHISELED_SOUL_SANDSTONE =
-            registerDefault("chiseled_soul_sandstone", () ->
-                    new Block(BlockBehaviour.Properties.of(Material.STONE,
-                                    MaterialColor.SAND).strength(0.8F)));
+            registerDefault("chiseled_soul_sandstone", SandStoneBlock::new);
 
     public static final RegistryObject<Block> CUT_QUARTZ_SANDSTONE =
-            registerDefault("cut_quartz_sandstone", () ->
-                    new Block(BlockBehaviour.Properties.of(Material.STONE,
-                            MaterialColor.SAND).strength(0.8F)));
+            registerDefault("cut_quartz_sandstone", SandStoneBlock::new);
 
     public static final RegistryObject<Block> CUT_SOUL_SANDSTONE =
-            registerDefault("cut_soul_sandstone", () ->
-                    new Block(BlockBehaviour.Properties.of(Material.STONE,
-                                    MaterialColor.SAND).strength(0.8F)));
+            registerDefault("cut_soul_sandstone", SandStoneBlock::new);
 
     public static final RegistryObject<Block> QUARTZ_SANDSTONE =
-            registerDefault("quartz_sandstone", () ->
-                    new Block(BlockBehaviour.Properties.of(Material.STONE,
-                                    MaterialColor.SAND).strength(0.8F)));
+            registerDefault("quartz_sandstone", SandStoneBlock::new);
 
     public static final RegistryObject<Block> SOUL_SANDSTONE =
-            registerDefault("soul_sandstone", () ->
-                    new Block(BlockBehaviour.Properties.of(Material.STONE,
-                                    MaterialColor.SAND).strength(0.8F)));
+            registerDefault("soul_sandstone", SandStoneBlock::new);
 
     public static final RegistryObject<Block> QUARTZ_SANDSTONE_BRICKS =
-            registerDefault("quartz_sandstone_bricks", () ->
-                    new Block(BlockBehaviour.Properties.of(Material.STONE,
-                                    MaterialColor.SAND).strength(0.8F)));
+            registerDefault("quartz_sandstone_bricks", StoneBricksBlock::new);
 
     public static final RegistryObject<Block> RED_SANDSTONE_BRICKS =
-            registerDefault("red_sandstone_bricks", () ->
-                    new Block(BlockBehaviour.Properties.of(Material.STONE,
-                                    MaterialColor.FIRE).strength(0.8F)));
+            registerDefault("red_sandstone_bricks", StoneBricksBlock::new);
 
     public static final RegistryObject<Block> SANDSTONE_BRICKS =
-            registerDefault("sandstone_bricks", () ->
-                    new Block(BlockBehaviour.Properties.of(Material.STONE,
-                                    MaterialColor.SAND).strength(0.8F)));
+            registerDefault("sandstone_bricks", StoneBricksBlock::new);
 
     public static final RegistryObject<Block> SOUL_SANDSTONE_BRICKS =
-            registerDefault("soul_sandstone_bricks", () ->
-                    new Block(BlockBehaviour.Properties.of(Material.STONE,
-                                    MaterialColor.SAND).strength(0.8F)));
+            registerDefault("soul_sandstone_bricks", StoneBricksBlock::new);
 
     public static final RegistryObject<Block> QUARTZ_PEBBLE =
             registerDefault("quartz_pebble", () -> new VanillaPickBlock(Items.QUARTZ));
@@ -280,6 +267,13 @@ public class ModBlocks {
     public static final RegistryObject<Block> INFESTED_MOSSY_COBBLESTONE =
             registerDefault("infested_mossy_cobblestone", () ->
                     new InfestedBlock(Blocks.MOSSY_COBBLESTONE, BlockBehaviour.Properties.of(Material.CLAY)));
+
+    public static final RegistryObject<Block> DEEPSLATE_WALL =
+            registerDefault("deepslate_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.of(Material.STONE,
+                            MaterialColor.DEEPSLATE).requiresCorrectToolForDrops()
+                            .strength(3.0F, 6.0F)
+                            .sound(SoundType.DEEPSLATE)));
 
     /**
      * Hanlde Default Register

@@ -91,6 +91,7 @@ public class PebbleItem extends MetaItem {
             ItemStack main = pPlayer.getMainHandItem();
             ItemStack off = pPlayer.getOffhandItem();
 
+            pPlayer.swing(pUsedHand);
             if (main.getItem() == off.getItem() && addItem(pPlayer, main)) {
                 main.shrink(1);
                 off.shrink(1);

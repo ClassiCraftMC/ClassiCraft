@@ -2,14 +2,23 @@ package nameless.classicraft.event;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.api.item.MetaItem;
+import nameless.classicraft.block.QuickSandBlock;
+import nameless.classicraft.block.SandStoneBlock;
+import nameless.classicraft.block.StoneBricksBlock;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.*;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.RegistryObject;
+
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class RegisterEvents {
 
@@ -17,6 +26,8 @@ public class RegisterEvents {
     public static CreativeModeTab BUILDING_BLOCKS;
     public static CreativeModeTab MATERIAL;
     public static CreativeModeTab NATURAL_BLOCKS;
+    protected static DeferredRegister<? extends Block> blockDeferredRegister
+            = ModBlocks.BLOCKS;
 
     @SubscribeEvent
     public static void registerCreativeModeTab(CreativeModeTabEvent.Register event) {
@@ -43,39 +54,22 @@ public class RegisterEvents {
         BUILDING_BLOCKS = event.registerCreativeModeTab(new ResourceLocation(ClassiCraftMod.MOD_ID, "building_blocks"),
                 builder -> builder.icon(() -> new ItemStack(ModBlocks.MOSSY_BRICKS.get()))
                         .displayItems((features, output, hasPermissions) -> {
-                            output.accept(ModBlocks.SOUL_QUICKSAND.get());
-                            output.accept(ModBlocks.SOUL_SANDSTONE.get());
-                            output.accept(ModBlocks.SOUL_SANDSTONE_BRICKS.get());
-                            output.accept(ModBlocks.CRACKED_STONE_BRICKS_STAIRS.get());
-                            output.accept(ModBlocks.CRACKED_STONE_BRICKS_SLAB.get());
-                            output.accept(ModBlocks.CRACKED_STONE_BRICKS_WALL.get());
-                            output.accept(ModBlocks.POLISHED_GRANITE_WALL.get());
+                            Set<Block> blocks = getBlocks();
+                            blocks.stream().filter(block -> block instanceof StairBlock)
+                                            .forEach(output::accept);
+                            blocks.stream().filter(block -> block instanceof WallBlock)
+                                    .forEach(output::accept);
+                            blocks.stream().filter(block -> block instanceof SlabBlock)
+                                    .forEach(output::accept);
+                            blocks.stream().filter(block -> block instanceof StoneBricksBlock)
+                                    .forEach(output::accept);
+                            blocks.stream().filter(block -> block instanceof SandStoneBlock)
+                                    .forEach(output::accept);
+                            blocks.stream().filter(block -> block instanceof QuickSandBlock)
+                                    .forEach(output::accept);
+                            blocks.stream().filter(block -> block instanceof SandBlock)
+                                    .forEach(output::accept);
                             output.accept(ModBlocks.INFESTED_MOSSY_COBBLESTONE.get());
-                            output.accept(ModBlocks.POLISHED_ANDESITE_WALL.get());
-                            output.accept(ModBlocks.POLISHED_DIORITE_WALL.get());
-                            output.accept(ModBlocks.CHISELED_QUARTZ_SANDSTONE.get());
-                            output.accept(ModBlocks.CHISELED_SOUL_SANDSTONE.get());
-                            output.accept(ModBlocks.CUT_QUARTZ_SANDSTONE.get());
-                            output.accept(ModBlocks.CUT_SOUL_SANDSTONE.get());
-                            output.accept(ModBlocks.QUARTZ_QUICKSAND.get());
-                            output.accept(ModBlocks.QUARTZ_SANDSTONE.get());
-                            output.accept(ModBlocks.QUARTZ_SAND.get());
-                            output.accept(ModBlocks.QUARTZ_SANDSTONE_BRICKS.get());
-                            output.accept(ModBlocks.RED_SANDSTONE_BRICKS.get());
-                            output.accept(ModBlocks.SANDSTONE_BRICKS.get());
-                            output.accept(ModBlocks.STONE_WALL.get());
-                            output.accept(ModBlocks.SMOOTH_STONE_STAIRS.get());
-                            output.accept(ModBlocks.SMOOTH_STONE_WALL.get());
-                            output.accept(ModBlocks.MOSSY_BRICKS.get());
-                            output.accept(ModBlocks.MOSSY_BRICKS_STAIRS.get());
-                            output.accept(ModBlocks.MOSSY_BRICKS_WALL.get());
-                            output.accept(ModBlocks.MOSSY_BRICKS_SLAB.get());
-                            output.accept(ModBlocks.CRACKED_BRICKS.get());
-                            output.accept(ModBlocks.CRACKED_BRICKS_STAIRS.get());
-                            output.accept(ModBlocks.CRACKED_BRICKS_WALL.get());
-                            output.accept(ModBlocks.CRACKED_BRICKS_SLAB.get());
-                            output.accept(ModBlocks.QUICKSAND.get());
-                            output.accept(ModBlocks.RED_QUICKSAND.get());
                             output.accept(ModBlocks.FLINT_BLOCK.get());
                             output.accept(ModBlocks.TALLOW_BLOCK.get());
                         }).title(Component.translatable("itemGroup.classicraft.building_blocks"))
@@ -99,5 +93,9 @@ public class RegisterEvents {
                             output.accept(ModBlocks.CHARCOAL_BLOCK.get());
                         }).title(Component.translatable("itemGroup.classicraft.natural_blocks"))
                         .build());
+    }
+
+    protected static Set<Block> getBlocks() {
+        return blockDeferredRegister.getEntries().stream().map(RegistryObject::get).collect(Collectors.toSet());
     }
 }
