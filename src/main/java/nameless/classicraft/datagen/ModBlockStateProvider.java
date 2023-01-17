@@ -48,31 +48,39 @@ public class ModBlockStateProvider extends BlockStateProvider {
         slabBlock(ModBlocks.MOSSY_BRICKS_SLAB, "classicraft:block/mossy_bricks");
         slabBlock(ModBlocks.CRACKED_BRICKS_SLAB,"classicraft:block/cracked_bricks");
         slabBlock(ModBlocks.CRACKED_STONE_BRICKS_SLAB,"minecraft:block/cracked_stone_bricks");
-        slabBlock(ModBlocks.DEEPSLATE_SLAB,"minecraft:block/deepslate");
+        slabBlock(ModBlocks.DEEPSLATE_SLAB,"minecraft:block/deepslate", "minecraft:block/deepslate_top", "minecraft:block/deepslate_top");
         threeBuildBlocks(ModBlocks.CRACKED_DEEPSLATE_BRICKS_WALL, ModBlocks.CRACKED_DEEPSLATE_BRICKS_STAIRS,
                 ModBlocks.CRACKED_DEEPSLATE_BRICKS_SLAB, "cracked_deepslate_bricks", "minecraft:block/cracked_deepslate_bricks");
     }
 
-    void simpleBlockWithItem(RegistryObject<Block> block) {
+    protected void simpleBlockWithItem(RegistryObject<Block> block) {
         simpleBlockWithItem(block.get(), cubeAll(block.get()));
     }
 
-    void threeBuildBlocks(RegistryObject<Block> wall, RegistryObject<Block> stairs, RegistryObject<Block> slab, String prefix, String texture) {
+    protected void threeBuildBlocks(RegistryObject<Block> wall, RegistryObject<Block> stairs, RegistryObject<Block> slab, String prefix, String texture) {
         wallBlock(wall, prefix, texture);
         stairsBlock(stairs, prefix, texture);
         slabBlock(slab, texture);
     }
-    void wallBlock(RegistryObject<Block> block, String name, String texture) {
+    protected void wallBlock(RegistryObject<Block> block, String name, String texture) {
         wallBlock((WallBlock) block.get(), name, new ResourceLocation(texture));
     }
 
-    void stairsBlock(RegistryObject<Block> block, String name, String texture) {
+    protected void stairsBlock(RegistryObject<Block> block, String name, String texture) {
         stairsBlock((StairBlock) block.get(), name, new ResourceLocation(texture));
     }
 
-    void slabBlock(RegistryObject<Block> block, String texture) {
+    protected void slabBlock(RegistryObject<Block> block, String texture) {
         slabBlock((SlabBlock) block.get(),
                 new ResourceLocation(texture),
                 new ResourceLocation(texture));
+    }
+
+    protected void slabBlock(RegistryObject<Block> block, String doubleslab, String bottom, String top) {
+        slabBlock((SlabBlock) block.get(),
+                new ResourceLocation(doubleslab),
+                new ResourceLocation(doubleslab),
+                new ResourceLocation(bottom),
+                new ResourceLocation(top));
     }
 }

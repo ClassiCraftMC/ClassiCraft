@@ -69,7 +69,8 @@ public class ModBlocks {
             registerDefault("tallow_block", TallowBlock::new);
 
     public static final RegistryObject<Block> MOSSY_BRICKS =
-            registerDefault("mossy_bricks", StoneBricksBlock::new);
+            registerDefault("mossy_bricks", () ->
+                    new StoneBricksBlock(SoundType.STONE, MaterialColor.COLOR_GREEN));
 
     public static final RegistryObject<Block> MOSSY_BRICKS_STAIRS =
             registerDefault("mossy_bricks_stairs", () ->
@@ -110,7 +111,8 @@ public class ModBlocks {
                             .strength(1.5F, 6.0F)));
 
     public static final RegistryObject<Block> CRACKED_BRICKS =
-            registerDefault("cracked_bricks", StoneBricksBlock::new);
+            registerDefault("cracked_bricks", () ->
+                    new StoneBricksBlock(SoundType.STONE, MaterialColor.COLOR_RED));
 
     public static final RegistryObject<Block> CRACKED_BRICKS_STAIRS =
             registerDefault("cracked_bricks_stairs", () ->
@@ -229,33 +231,43 @@ public class ModBlocks {
                             .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
 
     public static final RegistryObject<Block> CHISELED_QUARTZ_SANDSTONE =
-            registerDefault("chiseled_quartz_sandstone", SandStoneBlock::new);
+            registerDefault("chiseled_quartz_sandstone", () ->
+                    new SandStoneBlock(SoundType.STONE, MaterialColor.QUARTZ));
     public static final RegistryObject<Block> CHISELED_SOUL_SANDSTONE =
-            registerDefault("chiseled_soul_sandstone", SandStoneBlock::new);
+            registerDefault("chiseled_soul_sandstone",  () ->
+                    new SandStoneBlock(SoundType.STONE, MaterialColor.COLOR_BROWN));
 
     public static final RegistryObject<Block> CUT_QUARTZ_SANDSTONE =
-            registerDefault("cut_quartz_sandstone", SandStoneBlock::new);
+            registerDefault("cut_quartz_sandstone",  () ->
+                    new SandStoneBlock(SoundType.STONE, MaterialColor.QUARTZ));
 
     public static final RegistryObject<Block> CUT_SOUL_SANDSTONE =
-            registerDefault("cut_soul_sandstone", SandStoneBlock::new);
+            registerDefault("cut_soul_sandstone",  () ->
+                    new SandStoneBlock(SoundType.STONE, MaterialColor.COLOR_BROWN));
 
     public static final RegistryObject<Block> QUARTZ_SANDSTONE =
-            registerDefault("quartz_sandstone", SandStoneBlock::new);
+            registerDefault("quartz_sandstone", () ->
+                    new SandStoneBlock(SoundType.STONE, MaterialColor.QUARTZ));
 
     public static final RegistryObject<Block> SOUL_SANDSTONE =
-            registerDefault("soul_sandstone", SandStoneBlock::new);
+            registerDefault("soul_sandstone",  () ->
+                    new SandStoneBlock(SoundType.STONE, MaterialColor.COLOR_BROWN));
 
     public static final RegistryObject<Block> QUARTZ_SANDSTONE_BRICKS =
-            registerDefault("quartz_sandstone_bricks", StoneBricksBlock::new);
+            registerDefault("quartz_sandstone_bricks", () ->
+                    new StoneBricksBlock(SoundType.STONE, MaterialColor.QUARTZ));
 
     public static final RegistryObject<Block> RED_SANDSTONE_BRICKS =
-            registerDefault("red_sandstone_bricks", StoneBricksBlock::new);
+            registerDefault("red_sandstone_bricks", () ->
+                    new StoneBricksBlock(SoundType.STONE, MaterialColor.FIRE));
 
     public static final RegistryObject<Block> SANDSTONE_BRICKS =
-            registerDefault("sandstone_bricks", StoneBricksBlock::new);
+            registerDefault("sandstone_bricks", () ->
+                    new StoneBricksBlock(SoundType.STONE, MaterialColor.SAND));
 
     public static final RegistryObject<Block> SOUL_SANDSTONE_BRICKS =
-            registerDefault("soul_sandstone_bricks", StoneBricksBlock::new);
+            registerDefault("soul_sandstone_bricks", () ->
+                    new StoneBricksBlock(SoundType.STONE, MaterialColor.COLOR_BROWN));
 
     public static final RegistryObject<Block> QUARTZ_PEBBLE =
             registerDefault("quartz_pebble", () -> new VanillaPickBlock(Items.QUARTZ));
