@@ -93,6 +93,9 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.POLISHED_ANDESITE_WALL.get(), "Polished Andesite Wall");
         add(ModBlocks.POLISHED_DIORITE_WALL.get(), "Polished Diorite Wall");
         add(ModBlocks.INFESTED_MOSSY_COBBLESTONE.get(), "Infested Mossy CobbleStone");
+        add(ModBlocks.DEEPSLATE_WALL.get(), "Deepslate Wall");
+        add(ModBlocks.DEEPSLATE_STAIRS.get(), "Deepslate Stairs");
+        add(ModBlocks.DEEPSLATE_SLAB.get(), "Deepslate Slab");
         add("itemGroup.classicraft.common", "ClassiCraft|Common");
         add("itemGroup.classicraft.building_blocks", "ClassiCraft|Building Blocks");
         add("itemGroup.classicraft.material", "ClassiCraft|Material");

@@ -22,6 +22,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         stairsInventory("mossy_bricks", "classicraft:block/mossy_bricks");
         stairsInventory("cracked_bricks", "classicraft:block/cracked_bricks");
         stairsInventory("cracked_stone_bricks", "minecraft:block/cracked_stone_bricks");
+        stairsInventory("deepslate", "minecraft:block/deepslate");
+        stairsInventory("cracked_deepslate_bricks", "minecraft:block/cracked_deepslate_bricks");
         wallInventory("smooth_stone_wall",
                 new ResourceLocation("minecraft:block/smooth_stone"));
         wallInventory("stone_wall",
@@ -38,11 +40,17 @@ public class ModItemModelProvider extends ItemModelProvider {
                 new ResourceLocation("minecraft:block/polished_andesite"));
         wallInventory("polished_diorite_wall",
                 new ResourceLocation("minecraft:block/polished_diorite"));
+        wallInventory("smooth_stone_wall",
+                new ResourceLocation("minecraft:block/smooth_stone"));
+        wallInventory("cracked_deepslate_bricks_wall",
+                new ResourceLocation("minecraft:block/cracked_deepslate_bricks"));
         wallInventory("deepslate_wall",
                 new ResourceLocation("minecraft:block/deepslate"));
         slabInventory("mossy_bricks_slab", "classicraft:block/mossy_bricks");
         slabInventory("cracked_bricks_slab", "classicraft:block/cracked_bricks");
         slabInventory("cracked_stone_bricks_slab", "minecraft:block/cracked_stone_bricks");
+        slabInventory("deepslate_slab", "minecraft:block/deepslate");
+        slabInventory("cracked_deepslate_bricks_slab", "minecraft:block/cracked_deepslate_bricks");
         blockItem(ModBlocks.CHISELED_QUARTZ_SANDSTONE);
         blockItem(ModBlocks.CHISELED_SOUL_SANDSTONE);
         blockItem(ModBlocks.CUT_QUARTZ_SANDSTONE);

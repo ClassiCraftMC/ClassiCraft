@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/wall_inventory",
   "textures": {
-    "wall": "minecraft:block/deepslate"
+    "wall": "minecraft:block/cracked_deepslate_bricks"
   }
 }

@@ -275,6 +275,41 @@ public class ModBlocks {
                             .strength(3.0F, 6.0F)
                             .sound(SoundType.DEEPSLATE)));
 
+    public static final RegistryObject<Block> DEEPSLATE_SLAB =
+            registerDefault("deepslate_slab", () ->
+                    new SlabBlock(BlockBehaviour.Properties
+                            .of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> DEEPSLATE_STAIRS =
+            registerDefault("deepslate_stairs", () ->
+                    new StairBlock(Blocks.DEEPSLATE.defaultBlockState(),
+                            BlockBehaviour.Properties
+                                    .of(Material.STONE).requiresCorrectToolForDrops()
+                                    .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> CRACKED_DEEPSLATE_BRICKS_WALL =
+            registerDefault("cracked_deepslate_bricks_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.of(Material.STONE,
+                                    MaterialColor.DEEPSLATE).requiresCorrectToolForDrops()
+                            .strength(3.0F, 6.0F)
+                            .sound(SoundType.DEEPSLATE)));
+
+    public static final RegistryObject<Block> CRACKED_DEEPSLATE_BRICKS_SLAB =
+            registerDefault("cracked_deepslate_bricks_slab", () ->
+                    new SlabBlock(BlockBehaviour.Properties
+                            .of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> CRACKED_DEEPSLATE_BRICKS_STAIRS =
+            registerDefault("cracked_deepslate_bricks_stairs", () ->
+                    new StairBlock(Blocks.CRACKED_DEEPSLATE_BRICKS.defaultBlockState(),
+                            BlockBehaviour.Properties
+                                    .of(Material.STONE).requiresCorrectToolForDrops()
+                                    .strength(1.5F, 6.0F)));
+
     /**
      * Hanlde Default Register
      * @param name registry name

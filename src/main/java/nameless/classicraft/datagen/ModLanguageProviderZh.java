@@ -93,6 +93,9 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModBlocks.POLISHED_ANDESITE_WALL.get(), "磨制安山岩墙");
         add(ModBlocks.POLISHED_DIORITE_WALL.get(), "磨制闪长岩墙");
         add(ModBlocks.INFESTED_MOSSY_COBBLESTONE.get(), "被虫蚀的苔石");
+        add(ModBlocks.DEEPSLATE_WALL.get(), "深板岩墙");
+        add(ModBlocks.DEEPSLATE_STAIRS.get(), "深板岩楼梯");
+        add(ModBlocks.DEEPSLATE_SLAB.get(), "深板岩台阶");
         add("itemGroup.classicraft.common", "天工开物|通常");
         add("itemGroup.classicraft.building_blocks", "天工开物|建筑方块");
         add("itemGroup.classicraft.material", "天工开物|材料");
