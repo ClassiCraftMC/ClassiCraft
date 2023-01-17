@@ -26,8 +26,6 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModBlocks.CHARCOAL_BLOCK.get(), "木炭块");
         add(ModBlocks.CACTUS_BALL.get(), "仙人球");
         add(ModBlocks.ROSE.get(), "玫瑰");
-        add(ModEntities.TROUT_ENTITY.get(), "鳟鱼");
-        add(ModEntities.OCEAN_SHARK_ENTITY.get(), "海洋鲨鱼");
         add(ModItems.TROUT_SPAWN_EGG.get(), "鳟鱼刷怪蛋");
         add(ModItems.TROUT_BUCKET.get(), "鳟鱼桶");
         add(ModItems.TROUT.get(), "鳟鱼");
@@ -92,10 +90,16 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModBlocks.CRACKED_STONE_BRICKS_STAIRS.get(), "裂纹石砖楼梯");
         add(ModBlocks.CRACKED_STONE_BRICKS_WALL.get(), "裂纹石砖墙");
         add(ModBlocks.POLISHED_GRANITE_WALL.get(), "磨制花岗岩墙");
+        add(ModBlocks.POLISHED_ANDESITE_WALL.get(), "磨制安山岩墙");
+        add(ModBlocks.POLISHED_DIORITE_WALL.get(), "磨制闪长岩墙");
+        add(ModBlocks.INFESTED_MOSSY_COBBLESTONE.get(), "被虫蚀的苔石");
         add("itemGroup.classicraft.common", "天工开物|通常");
+        add("itemGroup.classicraft.building_blocks", "天工开物|建筑方块");
+        add("itemGroup.classicraft.material", "天工开物|材料");
 
         pebbleBlock();
         meta();
+        entity();
     }
 
     private void pebbleBlock() {
@@ -115,6 +119,12 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModBlocks.BLACKSTONE_PEBBLE.get(), "黑石石块");
         add(ModBlocks.PRISMARINE.get(), "海晶岩石块");
         add(ModBlocks.QUARTZ_PEBBLE.get(), "石英石块");
+    }
+
+    private void entity() {
+        add(ModEntities.OCEAN_SHARK_ENTITY.get(), "Ocean Shark");
+        add(ModEntities.TROUT_ENTITY.get(), "Trout");
+        add(ModEntities.LIVING_DEAD.get(), "Living Dead");
     }
 
     private void meta() {

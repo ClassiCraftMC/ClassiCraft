@@ -14,6 +14,9 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 public class RegisterEvents {
 
     public static CreativeModeTab COMMON_TAB;
+    public static CreativeModeTab BUILDING_BLOCKS;
+    public static CreativeModeTab MATERIAL;
+    public static CreativeModeTab NATURAL_BLOCKS;
 
     @SubscribeEvent
     public static void registerCreativeModeTab(CreativeModeTabEvent.Register event) {
@@ -30,30 +33,26 @@ public class RegisterEvents {
                             output.accept(ModItems.OCEAN_SHARK_SPAWN_EGG.get());
                             output.accept(ModItems.TROUT_SPAWN_EGG.get());
                             output.accept(ModItems.LIVING_DEAD_SPAWN_EGG.get());
-                            output.accept(ModItems.TALLOW.get());
                             output.accept(ModItems.COOKED_EGG.get());
                             output.accept(ModItems.NETHER_MUSHROOM_STEW.get());
                             output.accept(ModItems.ROTTEN_FOOD.get());
-                            output.accept(ModBlocks.CHARCOAL_BLOCK.get());
-                            output.accept(ModBlocks.CACTUS_BALL.get());
-                            output.accept(ModBlocks.QUICKSAND.get());
-                            output.accept(ModBlocks.RED_QUICKSAND.get());
-                            output.accept(ModBlocks.ROSE.get());
-                            output.accept(ModBlocks.TALLOW_BLOCK.get());
-                            output.accept(ModBlocks.MOSSY_BRICKS.get());
-                            output.accept(ModBlocks.MOSSY_BRICKS_STAIRS.get());
-                            output.accept(ModBlocks.MOSSY_BRICKS_WALL.get());
-                            output.accept(ModBlocks.MOSSY_BRICKS_SLAB.get());
-                            output.accept(ModBlocks.CRACKED_BRICKS.get());
-                            output.accept(ModBlocks.CRACKED_BRICKS_STAIRS.get());
-                            output.accept(ModBlocks.CRACKED_BRICKS_WALL.get());
-                            output.accept(ModBlocks.CRACKED_BRICKS_SLAB.get());
-                            output.accept(ModBlocks.SULFUR_ORE.get());
-                            output.accept(ModItems.SULFUR.get());
-                            output.accept(ModBlocks.STONE_WALL.get());
-                            output.accept(ModBlocks.SMOOTH_STONE_STAIRS.get());
-                            output.accept(ModBlocks.SMOOTH_STONE_WALL.get());
-                            output.accept(ModBlocks.FLINT_BLOCK.get());
+                        })
+                        .title(Component.translatable("itemGroup.classicraft.common"))
+                        .build());
+
+        BUILDING_BLOCKS = event.registerCreativeModeTab(new ResourceLocation(ClassiCraftMod.MOD_ID, "building_blocks"),
+                builder -> builder.icon(() -> new ItemStack(ModBlocks.MOSSY_BRICKS.get()))
+                        .displayItems((features, output, hasPermissions) -> {
+                            output.accept(ModBlocks.SOUL_QUICKSAND.get());
+                            output.accept(ModBlocks.SOUL_SANDSTONE.get());
+                            output.accept(ModBlocks.SOUL_SANDSTONE_BRICKS.get());
+                            output.accept(ModBlocks.CRACKED_STONE_BRICKS_STAIRS.get());
+                            output.accept(ModBlocks.CRACKED_STONE_BRICKS_SLAB.get());
+                            output.accept(ModBlocks.CRACKED_STONE_BRICKS_WALL.get());
+                            output.accept(ModBlocks.POLISHED_GRANITE_WALL.get());
+                            output.accept(ModBlocks.INFESTED_MOSSY_COBBLESTONE.get());
+                            output.accept(ModBlocks.POLISHED_ANDESITE_WALL.get());
+                            output.accept(ModBlocks.POLISHED_DIORITE_WALL.get());
                             output.accept(ModBlocks.CHISELED_QUARTZ_SANDSTONE.get());
                             output.accept(ModBlocks.CHISELED_SOUL_SANDSTONE.get());
                             output.accept(ModBlocks.CUT_QUARTZ_SANDSTONE.get());
@@ -64,16 +63,41 @@ public class RegisterEvents {
                             output.accept(ModBlocks.QUARTZ_SANDSTONE_BRICKS.get());
                             output.accept(ModBlocks.RED_SANDSTONE_BRICKS.get());
                             output.accept(ModBlocks.SANDSTONE_BRICKS.get());
-                            output.accept(ModBlocks.SOUL_QUICKSAND.get());
-                            output.accept(ModBlocks.SOUL_SANDSTONE.get());
-                            output.accept(ModBlocks.SOUL_SANDSTONE_BRICKS.get());
-                            output.accept(ModBlocks.CRACKED_STONE_BRICKS_STAIRS.get());
-                            output.accept(ModBlocks.CRACKED_STONE_BRICKS_SLAB.get());
-                            output.accept(ModBlocks.CRACKED_STONE_BRICKS_WALL.get());
-                            output.accept(ModBlocks.POLISHED_GRANITE_WALL.get());
-                            output.accept(ModBlocks.INFESTED_MOSSY_COBBLESTONE.get());
+                            output.accept(ModBlocks.STONE_WALL.get());
+                            output.accept(ModBlocks.SMOOTH_STONE_STAIRS.get());
+                            output.accept(ModBlocks.SMOOTH_STONE_WALL.get());
+                            output.accept(ModBlocks.MOSSY_BRICKS.get());
+                            output.accept(ModBlocks.MOSSY_BRICKS_STAIRS.get());
+                            output.accept(ModBlocks.MOSSY_BRICKS_WALL.get());
+                            output.accept(ModBlocks.MOSSY_BRICKS_SLAB.get());
+                            output.accept(ModBlocks.CRACKED_BRICKS.get());
+                            output.accept(ModBlocks.CRACKED_BRICKS_STAIRS.get());
+                            output.accept(ModBlocks.CRACKED_BRICKS_WALL.get());
+                            output.accept(ModBlocks.CRACKED_BRICKS_SLAB.get());
+                            output.accept(ModBlocks.QUICKSAND.get());
+                            output.accept(ModBlocks.RED_QUICKSAND.get());
+                            output.accept(ModBlocks.FLINT_BLOCK.get());
+                            output.accept(ModBlocks.TALLOW_BLOCK.get());
+                        }).title(Component.translatable("itemGroup.classicraft.building_blocks"))
+                        .build());
+
+        MATERIAL = event.registerCreativeModeTab(new ResourceLocation(ClassiCraftMod.MOD_ID, "material"),
+                builder -> builder.icon(() -> new ItemStack(ModItems.MATERIAL.get()))
+                        .displayItems((features, output, hasPermissions) -> {
+                            output.accept(ModItems.SULFUR.get());
+                            output.accept(ModItems.TALLOW.get());
                             MetaItem.getMetaItems().forEach(mi -> mi.acceptToCreativeModeTab(output));                        })
-                        .title(Component.translatable("itemGroup.classicraft.common"))
+                        .title(Component.translatable("itemGroup.classicraft.material"))
+                        .build());
+
+        NATURAL_BLOCKS = event.registerCreativeModeTab(new ResourceLocation(ClassiCraftMod.MOD_ID, "natural_blocks"),
+                builder -> builder.icon(() -> new ItemStack(ModBlocks.SULFUR_ORE.get()))
+                        .displayItems((features, output, hasPermissions) -> {
+                            output.accept(ModBlocks.SULFUR_ORE.get());
+                            output.accept(ModBlocks.CACTUS_BALL.get());
+                            output.accept(ModBlocks.ROSE.get());
+                            output.accept(ModBlocks.CHARCOAL_BLOCK.get());
+                        }).title(Component.translatable("itemGroup.classicraft.natural_blocks"))
                         .build());
     }
 }

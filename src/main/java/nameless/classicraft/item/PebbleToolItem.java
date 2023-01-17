@@ -13,7 +13,7 @@ import java.util.Objects;
  * @author DustW
  */
 public class PebbleToolItem extends MetaItem {
-    private static final List<PebbleToolItem> TOOLS = new ArrayList<>();
+    public static final List<PebbleToolItem> TOOLS = new ArrayList<>();
 
     public PebbleToolItem(Properties pProperties, List<String> metas) {
         super(pProperties, metas);

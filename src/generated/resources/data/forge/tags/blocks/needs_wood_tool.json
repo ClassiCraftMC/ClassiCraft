@@ -33,6 +33,8 @@
     "classicraft:cracked_stone_bricks_slab",
     "classicraft:cracked_stone_bricks_wall",
     "classicraft:polished_granite_wall",
-    "classicraft:infested_mossy_cobblestone"
+    "classicraft:infested_mossy_cobblestone",
+    "classicraft:polished_diorite_wall",
+    "classicraft:polished_andesite_wall"
   ]
 }

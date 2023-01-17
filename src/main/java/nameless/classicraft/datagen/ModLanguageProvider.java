@@ -26,8 +26,6 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.CHARCOAL_BLOCK.get(), "Charcoal Block");
         add(ModBlocks.CACTUS_BALL.get(), "Cactus ball");
         add(ModBlocks.ROSE.get(), "Rose");
-        add(ModEntities.TROUT_ENTITY.get(), "Trout");
-        add(ModEntities.OCEAN_SHARK_ENTITY.get(), "Ocean Shark");
         add(ModItems.TROUT_SPAWN_EGG.get(), "Trout Spawn Egg");
         add(ModItems.TROUT.get(), "Trout");
         add(ModItems.COOKED_TROUT.get(), "Cooked Trout");
@@ -92,7 +90,12 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.CRACKED_STONE_BRICKS_STAIRS.get(), "Cracked Stone Bricks Stairs");
         add(ModBlocks.CRACKED_STONE_BRICKS_WALL.get(), "Cracked Stone Bricks Wall");
         add(ModBlocks.POLISHED_GRANITE_WALL.get(), "Polished Granite Wall");
+        add(ModBlocks.POLISHED_ANDESITE_WALL.get(), "Polished Andesite Wall");
+        add(ModBlocks.POLISHED_DIORITE_WALL.get(), "Polished Diorite Wall");
+        add(ModBlocks.INFESTED_MOSSY_COBBLESTONE.get(), "Infested Mossy CobbleStone");
         add("itemGroup.classicraft.common", "ClassiCraft|Common");
+        add("itemGroup.classicraft.building_blocks", "ClassiCraft|Building Blocks");
+        add("itemGroup.classicraft.material", "ClassiCraft|Material");
 
         pebbleBlock();
         meta();
@@ -115,6 +118,13 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.BLACKSTONE_PEBBLE.get(), "BlackStone Pebble");
         add(ModBlocks.PRISMARINE.get(), "Prismarine Pebble");
         add(ModBlocks.QUARTZ_PEBBLE.get(), "Quartz Pebble");
+        entity();
+    }
+
+    private void entity() {
+        add(ModEntities.OCEAN_SHARK_ENTITY.get(), "海洋鲨鱼");
+        add(ModEntities.TROUT_ENTITY.get(), "鳟鱼");
+        add(ModEntities.LIVING_DEAD.get(), "活死人");
     }
 
     private void meta() {

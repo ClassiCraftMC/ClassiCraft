@@ -5,6 +5,8 @@
     "classicraft:stone_wall",
     "classicraft:smooth_stone_wall",
     "classicraft:cracked_stone_bricks_wall",
-    "classicraft:polished_granite_wall"
+    "classicraft:polished_granite_wall",
+    "classicraft:polished_andesite_wall",
+    "classicraft:polished_diorite_wall"
   ]
 }

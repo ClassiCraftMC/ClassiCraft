@@ -45,8 +45,9 @@ public class EventUtils {
     public static void pebbleToolByHandVanilla(PlayerInteractEvent.RightClickItem event, Item vanillaItem, String meta) {
         InteractionHand hand = event.getHand();
         Player player = event.getEntity();
-        if (event.getItemStack().getTag() == null) {
-            event.getItemStack().getOrCreateTag().putString("classicraft:Meta", meta);
+        ItemStack held = event.getItemStack();
+        if (held.getTag() == null && held.is(vanillaItem)) {
+            held.getOrCreateTag().putString("classicraft:Meta", meta);
         }
         if (hand == InteractionHand.MAIN_HAND) {
             ItemStack main = event.getItemStack();

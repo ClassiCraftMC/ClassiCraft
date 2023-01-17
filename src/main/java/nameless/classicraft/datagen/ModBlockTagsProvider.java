@@ -28,6 +28,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         wallTag(ModBlocks.SMOOTH_STONE_WALL);
         wallTag(ModBlocks.CRACKED_STONE_BRICKS_WALL);
         wallTag(ModBlocks.POLISHED_GRANITE_WALL);
+        wallTag(ModBlocks.POLISHED_ANDESITE_WALL);
+        wallTag(ModBlocks.POLISHED_DIORITE_WALL);
         needWoodTool(ModBlocks.MOSSY_BRICKS_WALL);
         needWoodTool(ModBlocks.CRACKED_BRICKS_WALL);
         needWoodTool(ModBlocks.STONE_WALL);
@@ -62,6 +64,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         needWoodTool(ModBlocks.CRACKED_STONE_BRICKS_WALL);
         needWoodTool(ModBlocks.POLISHED_GRANITE_WALL);
         needWoodTool(ModBlocks.INFESTED_MOSSY_COBBLESTONE);
+        needWoodTool(ModBlocks.POLISHED_DIORITE_WALL);
+        needWoodTool(ModBlocks.POLISHED_ANDESITE_WALL);
     }
 
     void wallTag(RegistryObject<Block> wall) {

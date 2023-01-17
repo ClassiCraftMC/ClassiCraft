@@ -42,6 +42,9 @@ public class ModItems {
     public static final RegistryObject<Item> CLASSIC_CRAFT =
             register("classic_craft", () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> MATERIAL =
+            register("material", () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> DEBUG_TIME_STICK =
             register("debug_time_stick", DebugBugTimeStick::new);
 

@@ -91,6 +91,16 @@ public class ModBlocks {
                     new WallBlock(BlockBehaviour.Properties.copy(Blocks.POLISHED_GRANITE)
                             .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
 
+    public static final RegistryObject<Block> POLISHED_DIORITE_WALL =
+            registerDefault("polished_diorite_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.copy(Blocks.POLISHED_DIORITE)
+                            .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
+
+    public static final RegistryObject<Block> POLISHED_ANDESITE_WALL =
+            registerDefault("polished_andesite_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.copy(Blocks.POLISHED_ANDESITE)
+                            .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
+
     public static final RegistryObject<Block> MOSSY_BRICKS_SLAB =
             registerDefault("mossy_bricks_slab", () ->
                     new SlabBlock(BlockBehaviour.Properties
