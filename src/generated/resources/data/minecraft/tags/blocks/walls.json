@@ -1,13 +1,13 @@
 {
   "values": [
+    "classicraft:polished_andesite_wall",
+    "classicraft:polished_diorite_wall",
+    "classicraft:mossy_bricks_wall",
+    "classicraft:smooth_stone_wall",
+    "classicraft:polished_granite_wall",
+    "classicraft:cracked_bricks_wall",
     "classicraft:cracked_deepslate_bricks_wall",
     "classicraft:deepslate_wall",
-    "classicraft:smooth_stone_wall",
-    "classicraft:polished_diorite_wall",
-    "classicraft:polished_andesite_wall",
-    "classicraft:cracked_bricks_wall",
-    "classicraft:polished_granite_wall",
-    "classicraft:mossy_bricks_wall",
     "classicraft:stone_wall",
     "classicraft:cracked_stone_bricks_wall"
   ]

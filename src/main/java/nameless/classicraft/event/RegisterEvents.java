@@ -7,6 +7,7 @@ import nameless.classicraft.block.SandStoneBlock;
 import nameless.classicraft.block.StoneBricksBlock;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
+import nameless.classicraft.util.ExtraUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
@@ -14,11 +15,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
 
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class RegisterEvents {
 
@@ -26,8 +24,6 @@ public class RegisterEvents {
     public static CreativeModeTab BUILDING_BLOCKS;
     public static CreativeModeTab MATERIAL;
     public static CreativeModeTab NATURAL_BLOCKS;
-    protected static DeferredRegister<? extends Block> blockDeferredRegister
-            = ModBlocks.BLOCKS;
 
     @SubscribeEvent
     public static void registerCreativeModeTab(CreativeModeTabEvent.Register event) {
@@ -54,7 +50,7 @@ public class RegisterEvents {
         BUILDING_BLOCKS = event.registerCreativeModeTab(new ResourceLocation(ClassiCraftMod.MOD_ID, "building_blocks"),
                 builder -> builder.icon(() -> new ItemStack(ModBlocks.MOSSY_BRICKS.get()))
                         .displayItems((features, output, hasPermissions) -> {
-                            Set<Block> blocks = getBlocks();
+                            Set<Block> blocks = ExtraUtils.getBlocks();
                             blocks.stream().filter(block -> block instanceof StairBlock)
                                             .forEach(output::accept);
                             blocks.stream().filter(block -> block instanceof WallBlock)
@@ -93,9 +89,5 @@ public class RegisterEvents {
                             output.accept(ModBlocks.CHARCOAL_BLOCK.get());
                         }).title(Component.translatable("itemGroup.classicraft.natural_blocks"))
                         .build());
-    }
-
-    protected static Set<Block> getBlocks() {
-        return blockDeferredRegister.getEntries().stream().map(RegistryObject::get).collect(Collectors.toSet());
     }
 }
