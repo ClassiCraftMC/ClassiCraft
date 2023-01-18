@@ -3,6 +3,7 @@ package nameless.classicraft.item;
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.api.item.MetaItem;
 import nameless.classicraft.init.ModItems;
+import nameless.classicraft.util.ExtraUtils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
@@ -27,6 +28,7 @@ import java.util.Objects;
 public class PebbleItem extends MetaItem {
 
     public static String getPebbleType(ItemStack stack) {
+        ExtraUtils.setVanillaMeta(stack);
         String meta = getMeta(stack);
         return meta.substring(0, meta.length() - 7);
     }

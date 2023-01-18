@@ -16,8 +16,9 @@ public class BlockEvents {
 
     @SubscribeEvent
     public static void pebbleTool(PlayerInteractEvent.RightClickBlock event) {
-        EventUtils.pebbleToolByStoneVanilla(event, Items.FLINT, "flint");
-        EventUtils.pebbleToolByStoneVanilla(event, Items.PRISMARINE_SHARD, "prismarine");
+        EventUtils.pebbleToolByStoneVanilla(event, Items.FLINT);
+        EventUtils.pebbleToolByStoneVanilla(event, Items.PRISMARINE_SHARD);
+        EventUtils.pebbleToolByStoneVanilla(event, Items.QUARTZ);
     }
 
     @SubscribeEvent

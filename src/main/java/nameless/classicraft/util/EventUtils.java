@@ -29,35 +29,32 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class EventUtils {
 
-    public static void pebbleToolByStoneVanilla(PlayerInteractEvent.RightClickBlock event, Item vanillaItem, String meta) {
+    public static void pebbleToolByStoneVanilla(PlayerInteractEvent.RightClickBlock event, Item vanillaItem) {
         Player player = event.getEntity();
         BlockState state = player.getBlockStateOn();
         ItemStack itemStack = event.getItemStack();
-        if (itemStack.getTag() == null) {
-            itemStack.getOrCreateTag().putString("classicraft:Meta", meta);
-        }
-        if (state.getMaterial() == Material.STONE && itemStack.is(vanillaItem)) {
-            if (PebbleItem.addItem(player, vanillaItem.getDefaultInstance()))
-                vanillaItem.getDefaultInstance().shrink(1);
+        if (itemStack.is(vanillaItem)) {
+            if (state.getMaterial() == Material.STONE) {
+                if (PebbleItem.addItem(player, vanillaItem.getDefaultInstance()))
+                    vanillaItem.getDefaultInstance().shrink(1);
+            }
         }
     }
 
-    public static void pebbleToolByHandVanilla(PlayerInteractEvent.RightClickItem event, Item vanillaItem, String meta) {
+    public static void pebbleToolByHandVanilla(PlayerInteractEvent.RightClickItem event, Item vanillaItem) {
         InteractionHand hand = event.getHand();
         Player player = event.getEntity();
         ItemStack held = event.getItemStack();
-        if (held.getTag() == null && held.is(vanillaItem)) {
-            held.getOrCreateTag().putString("classicraft:Meta", meta);
-        }
-        if (hand == InteractionHand.MAIN_HAND) {
-            ItemStack main = event.getItemStack();
-            ItemStack off = player.getOffhandItem();
+        if (held.is(vanillaItem)) {
+            if (hand == InteractionHand.MAIN_HAND) {
+                ItemStack off = player.getOffhandItem();
 
-            if (main.getItem() == vanillaItem
-                    && off.getItem() == vanillaItem
-                    && PebbleItem.addItem(player, main)) {
-                main.shrink(1);
-                off.shrink(1);
+                if (held.getItem() == vanillaItem
+                        && off.getItem() == vanillaItem
+                        && PebbleItem.addItem(player, held)) {
+                    held.shrink(1);
+                    off.shrink(1);
+                }
             }
         }
     }

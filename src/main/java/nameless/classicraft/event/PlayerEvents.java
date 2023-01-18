@@ -1,14 +1,9 @@
 package nameless.classicraft.event;
 
-import nameless.classicraft.block.StonePebbleBlock;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
-import nameless.classicraft.init.ModTags;
 import nameless.classicraft.util.EventUtils;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -18,20 +13,9 @@ public class PlayerEvents {
 
     @SubscribeEvent
     public static void pebbleTool(PlayerInteractEvent.RightClickItem event) {
-        EventUtils.pebbleToolByHandVanilla(event, Items.FLINT, "flint");
-        EventUtils.pebbleToolByHandVanilla(event, Items.PRISMARINE_SHARD, "prismarine");
-    }
-
-    @SubscribeEvent
-    public static void polishStone(PlayerInteractEvent.LeftClickBlock event) {
-        Player player = event.getEntity();
-        Block block = player.getBlockStateOn().getBlock();
-        ItemStack itemStack = player.getMainHandItem();
-        if (block instanceof StonePebbleBlock) {
-            if (itemStack.is(ModTags.Items.STONE_PEBBLES)) {
-
-            }
-        }
+        EventUtils.pebbleToolByHandVanilla(event, Items.FLINT);
+        EventUtils.pebbleToolByHandVanilla(event, Items.PRISMARINE_SHARD);
+        EventUtils.pebbleToolByHandVanilla(event, Items.QUARTZ);
     }
 
     @SubscribeEvent

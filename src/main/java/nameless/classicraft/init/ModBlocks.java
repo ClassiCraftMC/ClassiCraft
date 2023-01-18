@@ -270,7 +270,7 @@ public class ModBlocks {
                     new StoneBricksBlock(SoundType.STONE, MaterialColor.COLOR_BROWN));
 
     public static final RegistryObject<Block> QUARTZ_PEBBLE =
-            registerDefault("quartz_pebble", () -> new VanillaPickBlock(Items.QUARTZ));
+            register("quartz_pebble", () -> new VanillaPickBlock(Items.QUARTZ));
 
     public static final RegistryObject<Block> QUARTZ_SAND =
             registerDefault("quartz_sand",
