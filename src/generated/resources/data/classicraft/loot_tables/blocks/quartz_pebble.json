@@ -17,7 +17,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "classicraft:pebble"
+          "name": "minecraft:quartz"
         }
       ],
       "rolls": 1.0

@@ -34,9 +34,11 @@ public class EventUtils {
         BlockState state = player.getBlockStateOn();
         ItemStack itemStack = event.getItemStack();
         if (itemStack.is(vanillaItem)) {
+            player.swing(InteractionHand.MAIN_HAND);
             if (state.getMaterial() == Material.STONE) {
-                if (PebbleItem.addItem(player, vanillaItem.getDefaultInstance()))
-                    vanillaItem.getDefaultInstance().shrink(1);
+                if (PebbleItem.addItem(player, itemStack)) {
+                    itemStack.shrink(1);
+                }
             }
         }
     }
@@ -49,6 +51,7 @@ public class EventUtils {
             if (hand == InteractionHand.MAIN_HAND) {
                 ItemStack off = player.getOffhandItem();
 
+                player.swing(InteractionHand.MAIN_HAND);
                 if (held.getItem() == vanillaItem
                         && off.getItem() == vanillaItem
                         && PebbleItem.addItem(player, held)) {

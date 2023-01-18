@@ -49,7 +49,7 @@ public class ModBlockLoot extends BlockLootSubProvider {
         addPebble(ModBlocks.END_STONE_PEBBLE.get());
         addPebble(ModBlocks.BLACKSTONE_PEBBLE.get());
         addPebble(ModBlocks.BASALT_PEBBLE.get());
-        addPebble(ModBlocks.QUARTZ_PEBBLE.get());
+        addVanillaPebble(ModBlocks.QUARTZ_PEBBLE.get(), Items.QUARTZ);
         addVanillaPebble(ModBlocks.FLINT.get(), Items.FLINT);
         addVanillaPebble(ModBlocks.PRISMARINE.get(), Items.PRISMARINE_SHARD);
 
