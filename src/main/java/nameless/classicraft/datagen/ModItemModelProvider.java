@@ -51,7 +51,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         slabInventory("cracked_stone_bricks_slab", "minecraft:block/cracked_stone_bricks");
         slabInventory("deepslate_slab", "minecraft:block/deepslate");
         slabInventory("cracked_deepslate_bricks_slab", "minecraft:block/cracked_deepslate_bricks");
-        blockItem(ModBlocks.CHISELED_QUARTZ_SANDSTONE);
         blockItem(ModBlocks.CHISELED_SOUL_SANDSTONE);
         blockItem(ModBlocks.CUT_QUARTZ_SANDSTONE);
         blockItem(ModBlocks.CUT_SOUL_SANDSTONE);

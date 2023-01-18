@@ -96,9 +96,17 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.DEEPSLATE_WALL.get(), "Deepslate Wall");
         add(ModBlocks.DEEPSLATE_STAIRS.get(), "Deepslate Stairs");
         add(ModBlocks.DEEPSLATE_SLAB.get(), "Deepslate Slab");
+        add(ModBlocks.CRACKED_DEEPSLATE_BRICKS_WALL.get(), "Cracked Deepslate Bricks Wall");
+        add(ModBlocks.CRACKED_DEEPSLATE_BRICKS_STAIRS.get(), "Cracked Deepslate Bricks Stairs");
+        add(ModBlocks.CRACKED_DEEPSLATE_BRICKS_SLAB.get(), "Cracked Deepslate Bricks Slab");
+        add(ModBlocks.INFESTED_CHISELED_DEEPSLATE.get(), "Infested Chiseled DeepSlate");
+        add(ModBlocks.INFESTED_COBBLED_DEEPSLATE.get(), "Infested Cobbled DeepSlate");
+        add(ModBlocks.INFESTED_DEEPSLATE_BRICKS.get(), "Infested DeepSlate Bricks");
+        add(ModBlocks.INFESTED_DEEPSLATE_TILES.get(), "Infested DeepSlate Tiles");
         add("itemGroup.classicraft.common", "ClassiCraft|Common");
         add("itemGroup.classicraft.building_blocks", "ClassiCraft|Building Blocks");
         add("itemGroup.classicraft.material", "ClassiCraft|Material");
+        add("itemGroup.classicraft.natural_blocks", "ClassiCraft|Natural Blocks");
 
         pebbleBlock();
         meta();

@@ -64,6 +64,9 @@ public class ModBlockLoot extends BlockLootSubProvider {
         dropSelf(ModBlocks.QUARTZ_SAND.get());
         dropSelf(ModBlocks.SOUL_QUICKSAND.get());
         dropOther(ModBlocks.INFESTED_MOSSY_COBBLESTONE.get(), Items.MOSSY_COBBLESTONE);
+        dropOther(ModBlocks.INFESTED_CHISELED_DEEPSLATE.get(), Items.CHISELED_DEEPSLATE);
+        dropOther(ModBlocks.INFESTED_COBBLED_DEEPSLATE.get(), Items.COBBLED_DEEPSLATE);
+        dropOther(ModBlocks.INFESTED_DEEPSLATE_TILES.get(), Items.DEEPSLATE_TILES);
         Set<Block> blocks = ExtraUtils.getBlocks();
         blocks.stream().filter(block -> block instanceof StairBlock)
                 .forEach(this::dropSelf);

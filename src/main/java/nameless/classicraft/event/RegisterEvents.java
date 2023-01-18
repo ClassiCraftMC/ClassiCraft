@@ -65,7 +65,8 @@ public class RegisterEvents {
                                     .forEach(output::accept);
                             blocks.stream().filter(block -> block instanceof SandBlock)
                                     .forEach(output::accept);
-                            output.accept(ModBlocks.INFESTED_MOSSY_COBBLESTONE.get());
+                            blocks.stream().filter(block -> block instanceof InfestedBlock)
+                                            .forEach(output::accept);
                             output.accept(ModBlocks.FLINT_BLOCK.get());
                             output.accept(ModBlocks.TALLOW_BLOCK.get());
                         }).title(Component.translatable("itemGroup.classicraft.building_blocks"))

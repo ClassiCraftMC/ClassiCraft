@@ -96,9 +96,17 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModBlocks.DEEPSLATE_WALL.get(), "深板岩墙");
         add(ModBlocks.DEEPSLATE_STAIRS.get(), "深板岩楼梯");
         add(ModBlocks.DEEPSLATE_SLAB.get(), "深板岩台阶");
+        add(ModBlocks.CRACKED_DEEPSLATE_BRICKS_WALL.get(), "裂纹深板岩墙");
+        add(ModBlocks.CRACKED_DEEPSLATE_BRICKS_STAIRS.get(), "裂纹深板岩楼梯");
+        add(ModBlocks.CRACKED_DEEPSLATE_BRICKS_SLAB.get(), "裂纹深板岩台阶");
+        add(ModBlocks.INFESTED_CHISELED_DEEPSLATE.get(), "被虫蚀的雕纹深板岩");
+        add(ModBlocks.INFESTED_COBBLED_DEEPSLATE.get(), "被虫蚀的深板岩圆石");
+        add(ModBlocks.INFESTED_DEEPSLATE_BRICKS.get(), "被虫蚀的深板岩砖");
+        add(ModBlocks.INFESTED_DEEPSLATE_TILES.get(), "被虫蚀的深板岩瓦");
         add("itemGroup.classicraft.common", "天工开物|通常");
         add("itemGroup.classicraft.building_blocks", "天工开物|建筑方块");
         add("itemGroup.classicraft.material", "天工开物|材料");
+        add("itemGroup.classicraft.natural_blocks", "天工开物|自然方块");
 
         pebbleBlock();
         meta();

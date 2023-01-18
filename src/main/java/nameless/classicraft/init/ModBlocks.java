@@ -280,6 +280,22 @@ public class ModBlocks {
             registerDefault("infested_mossy_cobblestone", () ->
                     new InfestedBlock(Blocks.MOSSY_COBBLESTONE, BlockBehaviour.Properties.of(Material.CLAY)));
 
+    public static final RegistryObject<Block> INFESTED_CHISELED_DEEPSLATE =
+            registerDefault("infested_chiseled_deepslate", () ->
+                    new InfestedBlock(Blocks.CHISELED_DEEPSLATE, BlockBehaviour.Properties.of(Material.CLAY).sound(SoundType.DEEPSLATE)));
+
+    public static final RegistryObject<Block> INFESTED_COBBLED_DEEPSLATE =
+            registerDefault("infested_cobbled_deepslate", () ->
+                    new InfestedBlock(Blocks.COBBLED_DEEPSLATE, BlockBehaviour.Properties.of(Material.CLAY).sound(SoundType.DEEPSLATE)));
+
+    public static final RegistryObject<Block> INFESTED_DEEPSLATE_BRICKS =
+            registerDefault("infested_deepslate_bricks", () ->
+                    new InfestedBlock(Blocks.DEEPSLATE_BRICKS, BlockBehaviour.Properties.of(Material.CLAY).sound(SoundType.DEEPSLATE)));
+
+    public static final RegistryObject<Block> INFESTED_DEEPSLATE_TILES =
+            registerDefault("infested_deepslate_tiles", () ->
+                    new InfestedBlock(Blocks.DEEPSLATE_TILES, BlockBehaviour.Properties.of(Material.CLAY).sound(SoundType.DEEPSLATE)));
+
     public static final RegistryObject<Block> DEEPSLATE_WALL =
             registerDefault("deepslate_wall", () ->
                     new WallBlock(BlockBehaviour.Properties.of(Material.STONE,
