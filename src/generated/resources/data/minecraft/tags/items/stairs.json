@@ -1,13 +1,15 @@
 {
   "values": [
     "classicraft:cut_sandstone_stairs",
-    "classicraft:cut_red_sandstone_stairs",
-    "classicraft:deepslate_stairs",
-    "classicraft:cracked_deepslate_bricks_stairs",
-    "classicraft:mossy_bricks_stairs",
     "classicraft:soul_sandstone_stairs",
     "classicraft:smooth_stone_stairs",
+    "classicraft:deepslate_stairs",
+    "classicraft:cut_soul_sandstone_stairs",
+    "classicraft:smooth_soul_sandstone_stairs",
     "classicraft:cracked_bricks_stairs",
+    "classicraft:cracked_deepslate_bricks_stairs",
+    "classicraft:mossy_bricks_stairs",
+    "classicraft:cut_red_sandstone_stairs",
     "classicraft:cracked_stone_bricks_stairs"
   ]
 }

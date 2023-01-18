@@ -112,6 +112,12 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.SOUL_SANDSTONE_SLAB.get(), "Soul SandStone Slab");
         add(ModBlocks.SOUL_SANDSTONE_STAIRS.get(), "Soul SandStone Stairs");
         add(ModBlocks.SOUL_SANDSTONE_WALL.get(), "Soul SandStone Wall");
+        add(ModBlocks.SMOOTH_SOUL_SANDSTONE.get(), "Smooth Soul SandStone");
+        add(ModBlocks.SMOOTH_SOUL_SANDSTONE_SLAB.get(), "Smooth Soul SandStone Slab");
+        add(ModBlocks.SMOOTH_SOUL_SANDSTONE_STAIRS.get(), "Smooth Soul SandStone Stairs");
+        add(ModBlocks.SMOOTH_SOUL_SANDSTONE_WALL.get(), "Smooth Soul SandStone Wall");
+        add(ModBlocks.CUT_SOUL_SANDSTONE_WALL.get(), "Cut Soul SandStone Wall");
+        add(ModBlocks.CUT_SOUL_SANDSTONE_STAIRS.get(), "Cut Soul SandStone Stairs");
         add("itemGroup.classicraft.common", "ClassiCraft|Common");
         add("itemGroup.classicraft.building_blocks", "ClassiCraft|Building Blocks");
         add("itemGroup.classicraft.material", "ClassiCraft|Material");

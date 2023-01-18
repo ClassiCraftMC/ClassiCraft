@@ -1,7 +1,6 @@
 package nameless.classicraft.datagen;
 
 import nameless.classicraft.ClassiCraftMod;
-import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -27,6 +26,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         stairsInventory("cut_red_sandstone", "minecraft:block/cut_red_sandstone", "minecraft:block/red_sandstone_bottom", "minecraft:block/red_sandstone_top");
         stairsInventory("cracked_deepslate_bricks", "minecraft:block/cracked_deepslate_bricks");
         stairsInventory("soul_sandstone", "classicraft:block/soul_sandstone", "classicraft:block/soul_sandstone_bottom", "classicraft:block/soul_sandstone_top");
+        stairsInventory("cut_soul_sandstone", "classicraft:block/cut_soul_sandstone", "classicraft:block/soul_sandstone_bottom", "classicraft:block/soul_sandstone_top");
+        stairsInventory("smooth_soul_sandstone", "classicraft:block/smooth_soul_sandstone");
+        wallInventory("smooth_soul_sandstone_wall",
+                new ResourceLocation("classicraft:block/soul_sandstone_top"));
         wallInventory("smooth_stone_wall",
                 new ResourceLocation("minecraft:block/smooth_stone"));
         wallInventory("stone_wall",
@@ -50,6 +53,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         wallInventory("deepslate_wall",
                 new ResourceLocation("minecraft:block/deepslate"));
         wallInventory("soul_sandstone", "classicraft:block/soul_sandstone");
+        wallInventory("smooth_soul_sandstone", "classicraft:block/soul_sandstone_top");
+        wallInventory("cut_soul_sandstone", "classicraft:block/cut_soul_sandstone");
         wallInventory("cut_red_sandstone", "minecraft:block/cut_red_sandstone");
         wallInventory("smooth_sandstone", "minecraft:block/sandstone_top");
         wallInventory("smooth_red_sandstone", "minecraft:block/red_sandstone_top");
@@ -60,6 +65,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         slabInventory("cracked_stone_bricks_slab", "minecraft:block/cracked_stone_bricks");
         slabInventory("deepslate_slab", "minecraft:block/deepslate_top", "minecraft:block/deepslate_top", "minecraft:block/deepslate");
         slabInventory("cracked_deepslate_bricks_slab", "minecraft:block/cracked_deepslate_bricks");
+        slabInventory("cut_soul_sandstone_slab", "classicraft:block/soul_sandstone_bottom", "classicraft:block/soul_sandstone_top", "classicraft:block/cut_soul_sandstone");
+        slabInventory("smooth_soul_sandstone_slab", "classicraft:block/soul_sandstone_bottom", "classicraft:block/soul_sandstone_top", "classicraft:block/smooth_soul_sandstone");
         basicItem(ModItems.MATERIAL.get());
     }
 

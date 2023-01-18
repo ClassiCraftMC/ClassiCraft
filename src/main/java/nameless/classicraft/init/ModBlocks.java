@@ -400,6 +400,50 @@ public class ModBlocks {
                             .requiresCorrectToolForDrops()
                             .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
 
+    public static final RegistryObject<Block> SMOOTH_SOUL_SANDSTONE =
+            registerDefault("smooth_soul_sandstone",  () ->
+                    new SandStoneBlock(SoundType.STONE, MaterialColor.COLOR_BROWN));
+
+    public static final RegistryObject<Block> SMOOTH_SOUL_SANDSTONE_WALL =
+            registerDefault("smooth_soul_sandstone_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.copy(SMOOTH_SOUL_SANDSTONE.get())
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
+
+    public static final RegistryObject<Block> SMOOTH_SOUL_SANDSTONE_SLAB =
+            registerDefault("smooth_soul_sandstone_slab", () ->
+                    new SlabBlock(BlockBehaviour.Properties
+                            .copy(SMOOTH_SOUL_SANDSTONE.get())
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> SMOOTH_SOUL_SANDSTONE_STAIRS =
+            registerDefault("smooth_soul_sandstone_stairs", () ->
+                    new StairBlock(SMOOTH_SOUL_SANDSTONE.get().defaultBlockState(),
+                            BlockBehaviour.Properties
+                                    .of(Material.STONE).requiresCorrectToolForDrops()
+                                    .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> CUT_SOUL_SANDSTONE_WALL =
+            registerDefault("cut_soul_sandstone_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.copy(CUT_SOUL_SANDSTONE.get())
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
+
+    public static final RegistryObject<Block> CUT_SOUL_SANDSTONE_STAIRS =
+            registerDefault("cut_soul_sandstone_stairs", () ->
+                    new StairBlock(CUT_SOUL_SANDSTONE.get().defaultBlockState(),
+                            BlockBehaviour.Properties
+                                    .of(Material.STONE).requiresCorrectToolForDrops()
+                                    .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> CUT_SOUL_SANDSTONE_SLAB =
+            registerDefault("cut_soul_sandstone_slab", () ->
+                    new SlabBlock(BlockBehaviour.Properties
+                            .copy(CUT_SOUL_SANDSTONE.get())
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)));
+
     /**
      * Hanlde Default Register
      * @param name registry name

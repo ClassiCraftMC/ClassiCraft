@@ -112,6 +112,12 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModBlocks.SOUL_SANDSTONE_SLAB.get(), "灵魂砂岩台阶");
         add(ModBlocks.SOUL_SANDSTONE_STAIRS.get(), "灵魂砂岩楼梯");
         add(ModBlocks.SOUL_SANDSTONE_WALL.get(), "灵魂砂岩墙");
+        add(ModBlocks.SMOOTH_SOUL_SANDSTONE.get(), "平滑灵魂砂岩");
+        add(ModBlocks.SMOOTH_SOUL_SANDSTONE_STAIRS.get(), "平滑灵魂砂岩楼梯");
+        add(ModBlocks.SMOOTH_SOUL_SANDSTONE_SLAB.get(), "平滑灵魂砂岩台阶");
+        add(ModBlocks.SMOOTH_SOUL_SANDSTONE_WALL.get(), "平滑灵魂砂岩墙");
+        add(ModBlocks.CUT_SOUL_SANDSTONE_WALL.get(), "切制灵魂砂岩墙");
+        add(ModBlocks.CUT_SOUL_SANDSTONE_STAIRS.get(), "切制灵魂砂岩楼梯");
         add("itemGroup.classicraft.common", "天工开物|通常");
         add("itemGroup.classicraft.building_blocks", "天工开物|建筑方块");
         add("itemGroup.classicraft.material", "天工开物|材料");
