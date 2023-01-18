@@ -103,6 +103,15 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.INFESTED_COBBLED_DEEPSLATE.get(), "Infested Cobbled DeepSlate");
         add(ModBlocks.INFESTED_DEEPSLATE_BRICKS.get(), "Infested DeepSlate Bricks");
         add(ModBlocks.INFESTED_DEEPSLATE_TILES.get(), "Infested DeepSlate Tiles");
+        add(ModBlocks.SMOOTH_SANDSTONE_WALL.get(), "Smooth SandStone Wall");
+        add(ModBlocks.CUT_SANDSTONE_WALL.get(), "Cut SandStone Wall");
+        add(ModBlocks.CUT_SANDSTONE_STAIRS.get(), "Cut SandStone Stairs");
+        add(ModBlocks.SMOOTH_RED_SANDSTONE_WALL.get(), "Smooth Red Sandstone Wall");
+        add(ModBlocks.CUT_RED_SANDSTONE_STAIRS.get(), "Cut Red SandStone Stairs");
+        add(ModBlocks.CUT_RED_SANDSTONE_WALL.get(), "Cut Res SandStone Wall");
+        add(ModBlocks.SOUL_SANDSTONE_SLAB.get(), "Soul SandStone Slab");
+        add(ModBlocks.SOUL_SANDSTONE_STAIRS.get(), "Soul SandStone Stairs");
+        add(ModBlocks.SOUL_SANDSTONE_WALL.get(), "Soul SandStone Wall");
         add("itemGroup.classicraft.common", "ClassiCraft|Common");
         add("itemGroup.classicraft.building_blocks", "ClassiCraft|Building Blocks");
         add("itemGroup.classicraft.material", "ClassiCraft|Material");
@@ -133,9 +142,9 @@ public class ModLanguageProvider extends LanguageProvider {
     }
 
     private void entity() {
-        add(ModEntities.OCEAN_SHARK_ENTITY.get(), "海洋鲨鱼");
-        add(ModEntities.TROUT_ENTITY.get(), "鳟鱼");
-        add(ModEntities.LIVING_DEAD.get(), "活死人");
+        add(ModEntities.OCEAN_SHARK_ENTITY.get(), "Ocean Shark");
+        add(ModEntities.TROUT_ENTITY.get(), "Trout");
+        add(ModEntities.LIVING_DEAD.get(), "Living Dead");
     }
 
     private void meta() {

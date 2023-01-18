@@ -23,7 +23,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         stairsInventory("cracked_bricks", "classicraft:block/cracked_bricks");
         stairsInventory("cracked_stone_bricks", "minecraft:block/cracked_stone_bricks");
         stairsInventory("deepslate", "minecraft:block/deepslate");
+        stairsInventory("cut_sandstone", "minecraft:block/cut_sandstone", "minecraft:block/sandstone_bottom", "minecraft:block/sandstone_top");
+        stairsInventory("cut_red_sandstone", "minecraft:block/cut_red_sandstone", "minecraft:block/red_sandstone_bottom", "minecraft:block/red_sandstone_top");
         stairsInventory("cracked_deepslate_bricks", "minecraft:block/cracked_deepslate_bricks");
+        stairsInventory("soul_sandstone", "classicraft:block/soul_sandstone", "classicraft:block/soul_sandstone_bottom", "classicraft:block/soul_sandstone_top");
         wallInventory("smooth_stone_wall",
                 new ResourceLocation("minecraft:block/smooth_stone"));
         wallInventory("stone_wall",
@@ -46,17 +49,23 @@ public class ModItemModelProvider extends ItemModelProvider {
                 new ResourceLocation("minecraft:block/cracked_deepslate_bricks"));
         wallInventory("deepslate_wall",
                 new ResourceLocation("minecraft:block/deepslate"));
+        wallInventory("soul_sandstone", "classicraft:block/soul_sandstone");
+        wallInventory("cut_red_sandstone", "minecraft:block/cut_red_sandstone");
+        wallInventory("smooth_sandstone", "minecraft:block/sandstone_top");
+        wallInventory("smooth_red_sandstone", "minecraft:block/red_sandstone_top");
+        wallInventory("cut_sandstone", "minecraft:block/cut_sandstone");
         slabInventory("mossy_bricks_slab", "classicraft:block/mossy_bricks");
         slabInventory("cracked_bricks_slab", "classicraft:block/cracked_bricks");
+        slabInventory("soul_sandstone_slab", "classicraft:block/soul_sandstone_bottom", "classicraft:block/soul_sandstone_top", "classicraft:block/soul_sandstone");
         slabInventory("cracked_stone_bricks_slab", "minecraft:block/cracked_stone_bricks");
-        slabInventory("deepslate_slab", "minecraft:block/deepslate");
+        slabInventory("deepslate_slab", "minecraft:block/deepslate_top", "minecraft:block/deepslate_top", "minecraft:block/deepslate");
         slabInventory("cracked_deepslate_bricks_slab", "minecraft:block/cracked_deepslate_bricks");
-        blockItem(ModBlocks.CHISELED_SOUL_SANDSTONE);
-        blockItem(ModBlocks.CUT_QUARTZ_SANDSTONE);
-        blockItem(ModBlocks.CUT_SOUL_SANDSTONE);
-        blockItem(ModBlocks.QUARTZ_SANDSTONE);
-        blockItem(ModBlocks.SOUL_SANDSTONE);
         basicItem(ModItems.MATERIAL.get());
+    }
+
+    void wallInventory(String name, String texture) {
+        singleTexture(name + "_wall", new ResourceLocation(BLOCK_FOLDER + "/wall_inventory"),
+                "wall", new ResourceLocation(texture));
     }
 
     void slabInventory(String prefix, String texture) {
@@ -66,11 +75,25 @@ public class ModItemModelProvider extends ItemModelProvider {
                 new ResourceLocation(texture));
     }
 
+    void slabInventory(String prefix, String bottom, String top, String side) {
+        slab(prefix,
+                new ResourceLocation(side),
+                new ResourceLocation(bottom),
+                new ResourceLocation(top));
+    }
+
     void stairsInventory(String prefix, String texture) {
         stairs(prefix + "_stairs",
                 new ResourceLocation(texture),
                 new ResourceLocation(texture),
                 new ResourceLocation(texture));
+    }
+
+    void stairsInventory(String prefix, String side, String bottom, String top) {
+        stairs(prefix + "_stairs",
+                new ResourceLocation(side),
+                new ResourceLocation(bottom),
+                new ResourceLocation(top));
     }
 
     void blockItem(RegistryObject<Block> block) {

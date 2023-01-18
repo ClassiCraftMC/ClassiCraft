@@ -103,6 +103,15 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModBlocks.INFESTED_COBBLED_DEEPSLATE.get(), "被虫蚀的深板岩圆石");
         add(ModBlocks.INFESTED_DEEPSLATE_BRICKS.get(), "被虫蚀的深板岩砖");
         add(ModBlocks.INFESTED_DEEPSLATE_TILES.get(), "被虫蚀的深板岩瓦");
+        add(ModBlocks.SMOOTH_SANDSTONE_WALL.get(), "平滑砂岩墙");
+        add(ModBlocks.CUT_SANDSTONE_WALL.get(), "切制砂岩墙");
+        add(ModBlocks.CUT_SANDSTONE_STAIRS.get(), "切制砂岩楼梯");
+        add(ModBlocks.SMOOTH_RED_SANDSTONE_WALL.get(), "平滑红砂岩墙");
+        add(ModBlocks.CUT_RED_SANDSTONE_STAIRS.get(), "切制红砂岩楼梯");
+        add(ModBlocks.CUT_RED_SANDSTONE_WALL.get(), "切制红砂岩墙");
+        add(ModBlocks.SOUL_SANDSTONE_SLAB.get(), "灵魂砂岩台阶");
+        add(ModBlocks.SOUL_SANDSTONE_STAIRS.get(), "灵魂砂岩楼梯");
+        add(ModBlocks.SOUL_SANDSTONE_WALL.get(), "灵魂砂岩墙");
         add("itemGroup.classicraft.common", "天工开物|通常");
         add("itemGroup.classicraft.building_blocks", "天工开物|建筑方块");
         add("itemGroup.classicraft.material", "天工开物|材料");
@@ -133,9 +142,9 @@ public class ModLanguageProviderZh extends LanguageProvider {
     }
 
     private void entity() {
-        add(ModEntities.OCEAN_SHARK_ENTITY.get(), "Ocean Shark");
-        add(ModEntities.TROUT_ENTITY.get(), "Trout");
-        add(ModEntities.LIVING_DEAD.get(), "Living Dead");
+        add(ModEntities.OCEAN_SHARK_ENTITY.get(), "海洋鲨鱼");
+        add(ModEntities.TROUT_ENTITY.get(), "鳟鱼");
+        add(ModEntities.LIVING_DEAD.get(), "活死人");
     }
 
     private void meta() {
