@@ -681,6 +681,46 @@ public class ModBlocks {
                             .requiresCorrectToolForDrops()
                             .strength(3.0F, 6.0F)));
 
+    public static final RegistryObject<Block> CUT_QUARTZ_SANDSTONE_WALL =
+            registerDefault("cut_quartz_sandstone_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.copy(CUT_QUARTZ_SANDSTONE.get())
+                            .requiresCorrectToolForDrops()
+                            .strength(3.0F, 6.0F)));
+
+    public static final RegistryObject<Block> CUT_QUARTZ_SANDSTONE_STAIRS =
+            registerDefault("cut_quartz_sandstone_stairs", () ->
+                    new StairBlock(CUT_QUARTZ_SANDSTONE.get().defaultBlockState(),
+                            BlockBehaviour.Properties
+                                    .of(Material.STONE).requiresCorrectToolForDrops()
+                                    .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> CUT_QUARTZ_SANDSTONE_SLAB =
+            registerDefault("cut_quartz_sandstone_slab", () ->
+                    new SlabBlock(BlockBehaviour.Properties
+                            .of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> QUARTZ_BRICKS_SLAB =
+            registerDefault("quartz_bricks_slab", () ->
+                    new SlabBlock(BlockBehaviour.Properties
+                            .of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> QUARTZ_BRICKS_STAIRS =
+            registerDefault("quartz_bricks_stairs", () ->
+                    new StairBlock(Blocks.QUARTZ_BRICKS.defaultBlockState(),
+                            BlockBehaviour.Properties
+                                    .of(Material.STONE).requiresCorrectToolForDrops()
+                                    .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> QUARTZ_BRICKS_WALL =
+            registerDefault("quartz_bricks_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.copy(Blocks.QUARTZ_BRICKS)
+                            .requiresCorrectToolForDrops()
+                            .strength(3.0F, 6.0F)));
+
     /**
      * Hanlde Default Register
      * @param name registry name

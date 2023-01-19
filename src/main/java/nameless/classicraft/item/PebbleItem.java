@@ -3,6 +3,7 @@ package nameless.classicraft.item;
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.api.item.MetaItem;
 import nameless.classicraft.init.ModItems;
+import nameless.classicraft.init.ModTags;
 import nameless.classicraft.util.ExtraUtils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -78,6 +79,7 @@ public class PebbleItem extends MetaItem {
                 level.getBlockState(pContext.getClickedPos()).getMaterial() == Material.STONE) {
             if (addItem(player, item))
                 item.shrink(1);
+            player.swing(pContext.getHand());
 
             return InteractionResult.SUCCESS;
         } else
@@ -92,9 +94,12 @@ public class PebbleItem extends MetaItem {
         if (pUsedHand == InteractionHand.MAIN_HAND) {
             ItemStack main = pPlayer.getMainHandItem();
             ItemStack off = pPlayer.getOffhandItem();
-            pPlayer.swing(pUsedHand);
 
-            if (main.getItem() == off.getItem() && addItem(pPlayer, main)) {
+            if (off.getItem() instanceof PebbleItem
+                    && addItem(pPlayer, main)
+                    || off.is(ModTags.Items.VANILLA_PEBBLES)
+                    && addItem(pPlayer, main)) {
+                pPlayer.swing(pUsedHand);
                 main.shrink(1);
                 off.shrink(1);
             }

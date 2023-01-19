@@ -1,12 +1,15 @@
 package nameless.classicraft.datagen;
 
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.init.ModTags;
 import nameless.classicraft.util.ExtraUtils;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -31,6 +34,17 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .forEach(this::slabTag);
         blocks.stream().filter(block -> block instanceof FlowerBlock)
                 .forEach(this::flowerTag);
+        addVanillaPebbleTags();
+    }
+
+    void addVanillaPebbleTags() {
+        vanillaPebbleTag(Items.FLINT);
+        vanillaPebbleTag(Items.QUARTZ);
+        vanillaPebbleTag(Items.PRISMARINE_SHARD);
+    }
+
+    void vanillaPebbleTag(Item item) {
+        tag(ModTags.Items.VANILLA_PEBBLES).add(item);
     }
 
     void slabTag(Block slab) {

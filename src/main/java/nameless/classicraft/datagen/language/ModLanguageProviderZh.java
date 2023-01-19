@@ -1,10 +1,12 @@
-package nameless.classicraft.datagen;
+package nameless.classicraft.datagen.language;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModEntities;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.LanguageProvider;
 
 public class ModLanguageProviderZh extends LanguageProvider {
@@ -136,7 +138,7 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModBlocks.RED_SANDSTONE_BRICKS_SLAB.get(), "红砂岩砖台阶");
         add(ModBlocks.RED_SANDSTONE_BRICKS_STAIRS.get(), "红砂岩砖楼梯");
         add(ModBlocks.RED_SANDSTONE_BRICKS_WALL.get(), "红砂岩砖墙");
-        add(ModBlocks.INFESTED_CRACKED_DEEPSLATE_BRICKS.get(), "被虫蚀的裂纹深板砖");
+        add(ModBlocks.INFESTED_CRACKED_DEEPSLATE_BRICKS.get(), "被虫蚀的裂纹深板岩砖");
         add(ModBlocks.INFESTED_CRACKED_DEEPSLATE_TILES.get(), "被虫蚀的裂纹深板岩瓦");
         add(ModBlocks.PRISMARINE_BRICKS_WALL.get(), "海晶石砖墙");
         add(ModBlocks.DARK_PRISMARINE_WALL.get(), "暗海晶石墙");
@@ -149,6 +151,15 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModBlocks.FLINT_BLOCK_SLAB.get(), "燧石块台阶");
         add(ModBlocks.FLINT_BLOCK_STAIRS.get(), "燧石块楼梯");
         add(ModBlocks.FLINT_BLOCK_WALL.get(), "燧石块墙");
+        add(ModBlocks.SOUL_SANDSTONE_BRICKS_SLAB.get(), "灵魂砂岩砖台阶");
+        add(ModBlocks.SOUL_SANDSTONE_BRICKS_STAIRS.get(), "灵魂砂岩砖楼梯");
+        add(ModBlocks.SOUL_SANDSTONE_BRICKS_WALL.get(), "灵魂砂岩砖墙");
+        add(ModBlocks.CUT_QUARTZ_SANDSTONE_SLAB.get(), "切制石英砂岩台阶");
+        add(ModBlocks.CUT_QUARTZ_SANDSTONE_STAIRS.get(), "切制石英砂岩楼梯");
+        add(ModBlocks.CUT_QUARTZ_SANDSTONE_WALL.get(), "切制石英砂岩墙");
+        add(ModBlocks.QUARTZ_BRICKS_WALL.get(), "石英砖墙");
+        add(ModBlocks.QUARTZ_BRICKS_SLAB.get(), "石英砖台阶");
+        add(ModBlocks.QUARTZ_BRICKS_STAIRS.get(), "石英砖楼梯");
         add("itemGroup.classicraft.common", "天工开物|通常");
         add("itemGroup.classicraft.building_blocks", "天工开物|建筑方块");
         add("itemGroup.classicraft.material", "天工开物|材料");
@@ -157,6 +168,7 @@ public class ModLanguageProviderZh extends LanguageProvider {
         pebbleBlock();
         meta();
         entity();
+        vanilla();
     }
 
     private void pebbleBlock() {
@@ -182,6 +194,16 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModEntities.OCEAN_SHARK_ENTITY.get(), "海洋鲨鱼");
         add(ModEntities.TROUT_ENTITY.get(), "鳟鱼");
         add(ModEntities.LIVING_DEAD.get(), "活死人");
+    }
+
+    private void vanilla() {
+        add(Blocks.NETHER_WART_BLOCK, "绯红疣块");
+        add(Blocks.NETHER_SPROUTS, "诡异苗");
+        add(Items.NETHER_WART, "绯红疣");
+        add(Blocks.RED_NETHER_BRICKS, "绯红下界砖块");
+        add(Blocks.RED_NETHER_BRICK_STAIRS, "绯红下界砖楼梯");
+        add(Blocks.RED_NETHER_BRICK_SLAB, "绯红下界砖台阶");
+        add(Blocks.RED_NETHER_BRICK_WALL, "绯红下界砖墙");
     }
 
     private void meta() {

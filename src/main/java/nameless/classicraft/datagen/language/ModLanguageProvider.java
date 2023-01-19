@@ -1,10 +1,12 @@
-package nameless.classicraft.datagen;
+package nameless.classicraft.datagen.language;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModEntities;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.LanguageProvider;
 
 public class ModLanguageProvider extends LanguageProvider {
@@ -149,6 +151,15 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.FLINT_BLOCK_SLAB.get(), "Flint Block Slab");
         add(ModBlocks.FLINT_BLOCK_STAIRS.get(), "Flint Block Stairs");
         add(ModBlocks.FLINT_BLOCK_WALL.get(), "Flint Block Wall");
+        add(ModBlocks.SOUL_SANDSTONE_BRICKS_SLAB.get(), "Soul SandStone Brick Slab");
+        add(ModBlocks.SOUL_SANDSTONE_BRICKS_STAIRS.get(), "Soul SandStone Brick Stairs");
+        add(ModBlocks.SOUL_SANDSTONE_BRICKS_WALL.get(), "Soul SandStone Brick Wall");
+        add(ModBlocks.CUT_QUARTZ_SANDSTONE_SLAB.get(), "Cut Quartz SandStone Slab");
+        add(ModBlocks.CUT_QUARTZ_SANDSTONE_STAIRS.get(), "Cut Quartz SandStone Stairs");
+        add(ModBlocks.CUT_QUARTZ_SANDSTONE_WALL.get(), "Cut Quartz SandStone Wall");
+        add(ModBlocks.QUARTZ_BRICKS_WALL.get(), "Quartz Bricks Wall");
+        add(ModBlocks.QUARTZ_BRICKS_SLAB.get(), "Quartz Bricks Slab");
+        add(ModBlocks.QUARTZ_BRICKS_STAIRS.get(), "Quartz Bricks Stairs");
         add("itemGroup.classicraft.common", "ClassiCraft|Common");
         add("itemGroup.classicraft.building_blocks", "ClassiCraft|Building Blocks");
         add("itemGroup.classicraft.material", "ClassiCraft|Material");
@@ -157,6 +168,7 @@ public class ModLanguageProvider extends LanguageProvider {
         pebbleBlock();
         meta();
         entity();
+        vanilla();
     }
 
     private void pebbleBlock() {
@@ -182,6 +194,16 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModEntities.OCEAN_SHARK_ENTITY.get(), "Ocean Shark");
         add(ModEntities.TROUT_ENTITY.get(), "Trout");
         add(ModEntities.LIVING_DEAD.get(), "Living Dead");
+    }
+
+    private void vanilla() {
+        add(Blocks.NETHER_WART_BLOCK, "Crimson Wart Block");
+        add(Blocks.NETHER_SPROUTS, "Crimson Sprouts");
+        add(Items.NETHER_WART, "Crimson Wart");
+        add(Blocks.RED_NETHER_BRICKS, "Crimson Nether Bricks");
+        add(Blocks.RED_NETHER_BRICK_STAIRS, "Crimson Nether Brick Stairs");
+        add(Blocks.RED_NETHER_BRICK_SLAB, "Crimson Nether Brick Slab");
+        add(Blocks.RED_NETHER_BRICK_WALL, "Crimson Nether Brick Wall");
     }
 
     private void meta() {

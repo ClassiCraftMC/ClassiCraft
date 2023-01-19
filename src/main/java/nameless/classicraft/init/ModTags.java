@@ -21,6 +21,7 @@ public class ModTags {
     public static class Items {
 
         public static final TagKey<Item> STONE_PEBBLES = register("stone_pebbles");
+        public static final TagKey<Item> VANILLA_PEBBLES = register("vanilla_pebbles");
 
         private static TagKey<Item> register(String name) {
             return ItemTags.create(new ResourceLocation(ClassiCraftMod.MOD_ID, name));

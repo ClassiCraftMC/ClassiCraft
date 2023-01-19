@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "classicraft:block/cut_quartz_sandstone_slab"
+    },
+    "type=double": {
+      "model": "classicraft:block/cut_quartz_sandstone"
+    },
+    "type=top": {
+      "model": "classicraft:block/cut_quartz_sandstone_slab_top"
+    }
+  }
+}

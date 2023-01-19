@@ -1,4 +1,4 @@
-package nameless.classicraft.datagen;
+package nameless.classicraft.datagen.language;
 
 import nameless.classicraft.api.item.MetaItem;
 import net.minecraft.data.PackOutput;

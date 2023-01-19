@@ -29,6 +29,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         stairsInventory("soul_sandstone", "classicraft:block/soul_sandstone", "classicraft:block/soul_sandstone_bottom", "classicraft:block/soul_sandstone_top");
         stairsInventory("cut_soul_sandstone", "classicraft:block/cut_soul_sandstone", "classicraft:block/soul_sandstone_bottom", "classicraft:block/soul_sandstone_top");
         stairsInventory("smooth_soul_sandstone", "classicraft:block/smooth_soul_sandstone");
+        stairsInventory("cut_quartz_sandstone", "classicraft:block/cut_quartz_sandstone", "classicraft:block/quartz_sandstone_bottom", "classicraft:block/quartz_sandstone_top");
         wallInventory("smooth_soul_sandstone_wall",
                 new ResourceLocation("classicraft:block/soul_sandstone_top"));
         wallInventory("smooth_stone_wall",
@@ -54,6 +55,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         wallInventory("deepslate_wall",
                 new ResourceLocation("minecraft:block/deepslate"));
         wallInventory("soul_sandstone", "classicraft:block/soul_sandstone");
+        wallInventory("cut_quartz_sandstone", "classicraft:block/cut_quartz_sandstone");
         wallInventory("smooth_soul_sandstone", "classicraft:block/soul_sandstone_top");
         wallInventory("cut_soul_sandstone", "classicraft:block/cut_soul_sandstone");
         wallInventory("cut_red_sandstone", "minecraft:block/cut_red_sandstone");
@@ -64,6 +66,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         wallInventory("prismarine_bricks", "minecraft:block/prismarine_bricks");
         slabInventory("mossy_bricks_slab", "classicraft:block/mossy_bricks");
         slabInventory("cracked_bricks_slab", "classicraft:block/cracked_bricks");
+        slabInventory("cut_quartz_sandstone_slab", "classicraft:block/quartz_sandstone_bottom", "classicraft:block/quartz_sandstone_top", "classicraft:block/cut_quartz_sandstone");
         slabInventory("soul_sandstone_slab", "classicraft:block/soul_sandstone_bottom", "classicraft:block/soul_sandstone_top", "classicraft:block/soul_sandstone");
         slabInventory("cracked_stone_bricks_slab", "minecraft:block/cracked_stone_bricks");
         slabInventory("deepslate_slab", "minecraft:block/deepslate_top", "minecraft:block/deepslate_top", "minecraft:block/deepslate");
@@ -71,6 +74,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         slabInventory("cut_soul_sandstone_slab", "classicraft:block/soul_sandstone_bottom", "classicraft:block/soul_sandstone_top", "classicraft:block/cut_soul_sandstone");
         slabInventory("smooth_soul_sandstone_slab", "classicraft:block/soul_sandstone_bottom", "classicraft:block/soul_sandstone_top", "classicraft:block/smooth_soul_sandstone");
         basicItem(ModItems.MATERIAL.get());
+        basicItem(ModItems.DEBUG_BURN_TIME_STICK.get());
         threeBuildBlockItems("cracked_deepslate_tiles", "minecraft:block/cracked_deepslate_tiles");
         threeBuildBlockItems("sandstone_bricks", "classicraft:block/sandstone_bricks");
         threeBuildBlockItems("red_sandstone_bricks", "classicraft:block/red_sandstone_bricks");
@@ -81,6 +85,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         threeBuildBlockItems("netherrack", "minecraft:block/netherrack");
         threeBuildBlockItems("smooth_quartz_sandstone", "classicraft:block/smooth_quartz_sandstone");
         threeBuildBlockItems("smooth_basalt", "minecraft:block/smooth_basalt");
+        threeBuildBlockItems("quartz_bricks", "minecraft:block/quartz_bricks");
     }
 
     void threeBuildBlockItems(String name, String texture) {

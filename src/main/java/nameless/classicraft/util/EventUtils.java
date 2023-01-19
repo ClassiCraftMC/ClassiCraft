@@ -3,6 +3,7 @@ package nameless.classicraft.util;
 import nameless.classicraft.api.event.BlockDropEvent;
 import nameless.classicraft.api.event.ItemEntityTickEvent;
 import nameless.classicraft.block.AbstractLightBlock;
+import nameless.classicraft.init.ModTags;
 import nameless.classicraft.item.PebbleItem;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
@@ -34,9 +35,9 @@ public class EventUtils {
         BlockState state = player.getBlockStateOn();
         ItemStack itemStack = event.getItemStack();
         if (itemStack.is(vanillaItem)) {
-            player.swing(InteractionHand.MAIN_HAND);
             if (state.getMaterial() == Material.STONE) {
                 if (PebbleItem.addItem(player, itemStack)) {
+                    player.swing(InteractionHand.MAIN_HAND);
                     itemStack.shrink(1);
                 }
             }
@@ -47,14 +48,15 @@ public class EventUtils {
         InteractionHand hand = event.getHand();
         Player player = event.getEntity();
         ItemStack held = event.getItemStack();
-        if (held.is(vanillaItem)) {
-            if (hand == InteractionHand.MAIN_HAND) {
+        if (hand == InteractionHand.MAIN_HAND) {
+            if (player.getItemInHand(hand).is(vanillaItem)) {
                 ItemStack off = player.getOffhandItem();
 
-                player.swing(InteractionHand.MAIN_HAND);
-                if (held.getItem() == vanillaItem
-                        && off.getItem() == vanillaItem
+                if (off.getItem() instanceof PebbleItem
+                        && PebbleItem.addItem(player, held)
+                        || off.is(ModTags.Items.VANILLA_PEBBLES)
                         && PebbleItem.addItem(player, held)) {
+                    player.swing(InteractionHand.MAIN_HAND);
                     held.shrink(1);
                     off.shrink(1);
                 }

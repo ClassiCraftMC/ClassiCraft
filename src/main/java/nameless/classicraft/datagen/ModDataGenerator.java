@@ -1,6 +1,7 @@
 package nameless.classicraft.datagen;
 
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.datagen.language.*;
 import nameless.classicraft.datagen.levelgen.ModConfiguredFeatureProvider;
 import nameless.classicraft.datagen.levelgen.ModPlacedFeatureProvider;
 import nameless.classicraft.datagen.loot.ModLootTableProvider;
@@ -63,6 +64,7 @@ public class ModDataGenerator {
         generator.addProvider(event.includeServer(),
                 new ModRecipeProvider(pack));
         generator.addProvider(event.includeClient(),
-                new ModItemTagsProvider(pack, lookup, new ModBlockTagsProvider(pack, lookup, helper), helper));
+                new ModItemTagsProvider(pack, lookup,
+                        new ModBlockTagsProvider(pack, lookup, helper), helper));
     }
 }
