@@ -36,9 +36,11 @@ public class EventUtils {
         ItemStack itemStack = event.getItemStack();
         if (itemStack.is(vanillaItem)) {
             if (state.getMaterial() == Material.STONE) {
+                player.swing(InteractionHand.MAIN_HAND);
+                ExtraUtils.addPebbleCoolDown(player, vanillaItem);
                 if (PebbleItem.addItem(player, itemStack)) {
-                    player.swing(InteractionHand.MAIN_HAND);
                     itemStack.shrink(1);
+                    player.awardStat(Stats.ITEM_USED.get(vanillaItem));
                 }
             }
         }
@@ -51,14 +53,15 @@ public class EventUtils {
         if (hand == InteractionHand.MAIN_HAND) {
             if (player.getItemInHand(hand).is(vanillaItem)) {
                 ItemStack off = player.getOffhandItem();
-
+                player.swing(InteractionHand.MAIN_HAND);
+                ExtraUtils.addPebbleCoolDown(player, vanillaItem);
                 if (off.getItem() instanceof PebbleItem
                         && PebbleItem.addItem(player, held)
                         || off.is(ModTags.Items.VANILLA_PEBBLES)
                         && PebbleItem.addItem(player, held)) {
-                    player.swing(InteractionHand.MAIN_HAND);
                     held.shrink(1);
                     off.shrink(1);
+                    player.awardStat(Stats.ITEM_USED.get(vanillaItem));
                 }
             }
         }

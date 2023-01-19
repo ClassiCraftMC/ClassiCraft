@@ -2,6 +2,8 @@ package nameless.classicraft.util;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.init.ModBlocks;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
@@ -14,6 +16,10 @@ import java.util.stream.Collectors;
 public class ExtraUtils {
 
     public static final DeferredRegister<? extends Block> deferredRegister = ModBlocks.BLOCKS;
+
+    public static void addPebbleCoolDown(Player player, Item item) {
+        player.getCooldowns().addCooldown(item, 10);
+    }
 
     public static void setVanillaMeta(ItemStack stack) {
         if (stack.is(Items.FLINT)) {

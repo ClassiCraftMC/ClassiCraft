@@ -8,6 +8,7 @@ import nameless.classicraft.util.ExtraUtils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -77,10 +78,12 @@ public class PebbleItem extends MetaItem {
 
         if (player != null &&
                 level.getBlockState(pContext.getClickedPos()).getMaterial() == Material.STONE) {
+            player.swing(pContext.getHand());
+            ExtraUtils.addPebbleCoolDown(player, item.getItem());
             if (addItem(player, item))
                 item.shrink(1);
-            player.swing(pContext.getHand());
 
+            player.awardStat(Stats.ITEM_USED.get(this));
             return InteractionResult.SUCCESS;
         } else
             return Objects.requireNonNull(ForgeRegistries.BLOCKS
@@ -95,13 +98,14 @@ public class PebbleItem extends MetaItem {
             ItemStack main = pPlayer.getMainHandItem();
             ItemStack off = pPlayer.getOffhandItem();
 
-            if (off.getItem() instanceof PebbleItem
-                    && addItem(pPlayer, main)
-                    || off.is(ModTags.Items.VANILLA_PEBBLES)
-                    && addItem(pPlayer, main)) {
+            if (off.getItem() instanceof PebbleItem || off.is(ModTags.Items.VANILLA_PEBBLES)) {
                 pPlayer.swing(pUsedHand);
-                main.shrink(1);
-                off.shrink(1);
+                ExtraUtils.addPebbleCoolDown(pPlayer, this);
+                if (addItem(pPlayer, main)) {
+                    main.shrink(1);
+                    off.shrink(1);
+                    pPlayer.awardStat(Stats.ITEM_USED.get(this));
+                }
             }
         }
 
