@@ -721,6 +721,154 @@ public class ModBlocks {
                             .requiresCorrectToolForDrops()
                             .strength(3.0F, 6.0F)));
 
+    public static final RegistryObject<Block> WHITE_WOOL_SLAB =
+            registerDefault("white_wool_slab", () ->
+                    new SlabBlock(offWool(MaterialColor.SNOW)));
+
+    public static final RegistryObject<Block> WHITE_WOOL_STAIRS =
+            registerDefault("white_wool_stairs", () ->
+                    new StairBlock(Blocks.WHITE_WOOL.defaultBlockState(),
+                            offWool(MaterialColor.SNOW)));
+
+    public static final RegistryObject<Block> ORANGE_WOOL_SLAB =
+            registerDefault("orange_wool_slab", () ->
+                    new SlabBlock(offWool(MaterialColor.COLOR_ORANGE)));
+
+    public static final RegistryObject<Block> ORANGE_WOOL_STAIRS =
+            registerDefault("orange_wool_stairs", () ->
+                    new StairBlock(Blocks.ORANGE_WOOL.defaultBlockState(),
+                            offWool(MaterialColor.COLOR_ORANGE)));
+
+    public static final RegistryObject<Block> MAGENTA_WOOL_SLAB =
+            registerDefault("magenta_wool_slab", () ->
+                    new SlabBlock(offWool(MaterialColor.COLOR_MAGENTA)));
+
+    public static final RegistryObject<Block> MAGENTA_WOOL_STAIRS =
+            registerDefault("magenta_wool_stairs", () ->
+                    new StairBlock(Blocks.MAGENTA_WOOL.defaultBlockState(),
+                            offWool(MaterialColor.COLOR_MAGENTA)));
+
+    public static final RegistryObject<Block> LIGHT_BLUE_WOOL_SLAB =
+            registerDefault("light_blue_wool_slab", () ->
+                    new SlabBlock(offWool(MaterialColor.COLOR_LIGHT_BLUE)));
+
+    public static final RegistryObject<Block> LIGHT_BLUE_WOOL_STAIRS =
+            registerDefault("light_blue_wool_stairs", () ->
+                    new StairBlock(Blocks.LIGHT_BLUE_WOOL.defaultBlockState(),
+                            offWool(MaterialColor.COLOR_LIGHT_BLUE)));
+
+    public static final RegistryObject<Block> YELLOW_WOOL_SLAB =
+            registerDefault("yellow_wool_slab", () ->
+                    new SlabBlock(offWool(MaterialColor.COLOR_YELLOW)));
+
+    public static final RegistryObject<Block> YELLOW_WOOL_STAIRS =
+            registerDefault("yellow_wool_stairs", () ->
+                    new StairBlock(Blocks.YELLOW_WOOL.defaultBlockState(),
+                            offWool(MaterialColor.COLOR_YELLOW)));
+
+    public static final RegistryObject<Block> LIME_WOOL_SLAB =
+            registerDefault("lime_wool_slab", () ->
+                    new SlabBlock(offWool(MaterialColor.COLOR_LIGHT_GREEN)));
+
+    public static final RegistryObject<Block> LIME_WOOL_STAIRS =
+            registerDefault("lime_wool_stairs", () ->
+                    new StairBlock(Blocks.LIME_WOOL.defaultBlockState(),
+                            offWool(MaterialColor.COLOR_LIGHT_GREEN)));
+
+    public static final RegistryObject<Block> PINK_WOOL_SLAB =
+            registerDefault("pink_wool_slab", () ->
+                    new SlabBlock(offWool(MaterialColor.COLOR_PINK)));
+
+    public static final RegistryObject<Block> PINK_WOOL_STAIRS =
+            registerDefault("pink_wool_stairs", () ->
+                    new StairBlock(Blocks.PINK_WOOL.defaultBlockState(),
+                            offWool(MaterialColor.COLOR_PINK)));
+
+    public static final RegistryObject<Block> GRAY_WOOL_SLAB =
+            registerDefault("gray_wool_slab", () ->
+                    new SlabBlock(offWool(MaterialColor.COLOR_GRAY)));
+
+    public static final RegistryObject<Block> GRAY_WOOL_STAIRS =
+            registerDefault("gray_wool_stairs", () ->
+                    new StairBlock(Blocks.GRAY_WOOL.defaultBlockState(),
+                            offWool(MaterialColor.COLOR_GRAY)));
+
+    public static final RegistryObject<Block> LIGHT_GRAY_WOOL_SLAB =
+            registerDefault("light_gray_wool_slab", () ->
+                    new SlabBlock(offWool(MaterialColor.COLOR_LIGHT_GRAY)));
+
+    public static final RegistryObject<Block> LIGHT_GRAY_WOOL_STAIRS =
+            registerDefault("light_gray_wool_stairs", () ->
+                    new StairBlock(Blocks.LIGHT_GRAY_WOOL.defaultBlockState(),
+                            offWool(MaterialColor.COLOR_LIGHT_GRAY)));
+
+    public static final RegistryObject<Block> CYAN_WOOL_SLAB =
+            registerDefault("cyan_wool_slab", () ->
+                    new SlabBlock(offWool(MaterialColor.COLOR_CYAN)));
+
+    public static final RegistryObject<Block> CYAN_WOOL_STAIRS =
+            registerDefault("cyan_wool_stairs", () ->
+                    new StairBlock(Blocks.CYAN_WOOL.defaultBlockState(),
+                            offWool(MaterialColor.COLOR_CYAN)));
+
+    public static final RegistryObject<Block> PURPLE_WOOL_SLAB =
+            registerDefault("purple_wool_slab", () ->
+                    new SlabBlock(offWool(MaterialColor.COLOR_PURPLE)));
+
+    public static final RegistryObject<Block> PURPLE_WOOL_STAIRS =
+            registerDefault("purple_wool_stairs", () ->
+                    new StairBlock(Blocks.PURPLE_WOOL.defaultBlockState(),
+                            offWool(MaterialColor.COLOR_PURPLE)));
+
+    public static final RegistryObject<Block> BLUE_WOOL_SLAB =
+            registerDefault("blue_wool_slab", () ->
+                    new SlabBlock(offWool(MaterialColor.COLOR_BLUE)));
+
+    public static final RegistryObject<Block> BLUE_WOOL_STAIRS =
+            registerDefault("blue_wool_stairs", () ->
+                    new StairBlock(Blocks.BLUE_WOOL.defaultBlockState(),
+                            offWool(MaterialColor.COLOR_BLUE)));
+
+    public static final RegistryObject<Block> BROWN_WOOL_SLAB =
+            registerDefault("brown_wool_slab", () ->
+                    new SlabBlock(offWool(MaterialColor.COLOR_BROWN)));
+
+    public static final RegistryObject<Block> BROWN_WOOL_STAIRS =
+            registerDefault("brown_wool_stairs", () ->
+                    new StairBlock(Blocks.BROWN_WOOL.defaultBlockState(),
+                            offWool(MaterialColor.COLOR_BROWN)));
+
+    public static final RegistryObject<Block> GREEN_WOOL_SLAB =
+            registerDefault("green_wool_slab", () ->
+                    new SlabBlock(offWool(MaterialColor.COLOR_GREEN)));
+
+    public static final RegistryObject<Block> GREEN_WOOL_STAIRS =
+            registerDefault("green_wool_stairs", () ->
+                    new StairBlock(Blocks.GREEN_WOOL.defaultBlockState(),
+                            offWool(MaterialColor.COLOR_GREEN)));
+
+    public static final RegistryObject<Block> RED_WOOL_SLAB =
+            registerDefault("red_wool_slab", () ->
+                    new SlabBlock(offWool(MaterialColor.COLOR_RED)));
+
+    public static final RegistryObject<Block> RED_WOOL_STAIRS =
+            registerDefault("red_wool_stairs", () ->
+                    new StairBlock(Blocks.RED_WOOL.defaultBlockState(),
+                            offWool(MaterialColor.COLOR_RED)));
+
+    public static final RegistryObject<Block> BLACK_WOOL_SLAB =
+            registerDefault("black_wool_slab", () ->
+                    new SlabBlock(offWool(MaterialColor.COLOR_BLACK)));
+
+    public static final RegistryObject<Block> BLACK_WOOL_STAIRS =
+            registerDefault("black_wool_stairs", () ->
+                    new StairBlock(Blocks.BLACK_WOOL.defaultBlockState(),
+                            offWool(MaterialColor.COLOR_BLACK)));
+
+    private static BlockBehaviour.Properties offWool(MaterialColor color) {
+        return BlockBehaviour.Properties.of(Material.WOOL, color).strength(0.8F).sound(SoundType.WOOL);
+    }
+
     /**
      * Hanlde Default Register
      * @param name registry name

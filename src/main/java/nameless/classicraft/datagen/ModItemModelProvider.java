@@ -86,6 +86,27 @@ public class ModItemModelProvider extends ItemModelProvider {
         threeBuildBlockItems("smooth_quartz_sandstone", "classicraft:block/smooth_quartz_sandstone");
         threeBuildBlockItems("smooth_basalt", "minecraft:block/smooth_basalt");
         threeBuildBlockItems("quartz_bricks", "minecraft:block/quartz_bricks");
+        twoBuildBlockItems("white_wool", "minecraft:block/white_wool");
+        twoBuildBlockItems("orange_wool", "minecraft:block/orange_wool");
+        twoBuildBlockItems("magenta_wool", "minecraft:block/magenta_wool");
+        twoBuildBlockItems("light_blue_wool", "minecraft:block/light_blue_wool");
+        twoBuildBlockItems("yellow_wool", "minecraft:block/yellow_wool");
+        twoBuildBlockItems("lime_wool", "minecraft:block/lime_wool");
+        twoBuildBlockItems("pink_wool", "minecraft:block/pink_wool");
+        twoBuildBlockItems("gray_wool", "minecraft:block/gray_wool");
+        twoBuildBlockItems("light_gray_wool", "minecraft:block/light_gray_wool");
+        twoBuildBlockItems("cyan_wool", "minecraft:block/cyan_wool");
+        twoBuildBlockItems("purple_wool", "minecraft:block/purple_wool");
+        twoBuildBlockItems("blue_wool", "minecraft:block/blue_wool");
+        twoBuildBlockItems("brown_wool", "minecraft:block/brown_wool");
+        twoBuildBlockItems("green_wool", "minecraft:block/green_wool");
+        twoBuildBlockItems("red_wool", "minecraft:block/red_wool");
+        twoBuildBlockItems("black_wool", "minecraft:block/black_wool");
+    }
+
+    void twoBuildBlockItems(String name, String texture) {
+        stairsInventory(name, texture);
+        slabInventory(name + "_slab", texture);
     }
 
     void threeBuildBlockItems(String name, String texture) {

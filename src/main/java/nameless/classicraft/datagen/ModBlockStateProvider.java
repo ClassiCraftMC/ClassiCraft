@@ -112,7 +112,45 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 "smooth_basalt", "minecraft:block/smooth_basalt");
         threeBuildBlocks(ModBlocks.QUARTZ_BRICKS_WALL, ModBlocks.QUARTZ_BRICKS_STAIRS, ModBlocks.QUARTZ_BRICKS_SLAB,
                 "quartz_bricks", "minecraft:block/quartz_bricks");
+        twoBuildBlocks(ModBlocks.WHITE_WOOL_STAIRS, ModBlocks.WHITE_WOOL_SLAB,
+                "white_wool", "minecraft:block/white_wool");
+        twoBuildBlocks(ModBlocks.ORANGE_WOOL_STAIRS, ModBlocks.ORANGE_WOOL_SLAB,
+                "orange_wool", "minecraft:block/orange_wool");
+        twoBuildBlocks(ModBlocks.MAGENTA_WOOL_STAIRS, ModBlocks.MAGENTA_WOOL_SLAB,
+                "magenta_wool", "minecraft:block/magenta_wool");
+        twoBuildBlocks(ModBlocks.LIGHT_BLUE_WOOL_STAIRS, ModBlocks.LIGHT_BLUE_WOOL_SLAB,
+                "light_blue_wool", "minecraft:block/light_blue_wool");
+        twoBuildBlocks(ModBlocks.YELLOW_WOOL_STAIRS, ModBlocks.YELLOW_WOOL_SLAB,
+                "yellow_wool", "minecraft:block/yellow_wool");
+        twoBuildBlocks(ModBlocks.LIME_WOOL_STAIRS, ModBlocks.LIME_WOOL_SLAB,
+                "lime_wool", "minecraft:block/lime_wool");
+        twoBuildBlocks(ModBlocks.PINK_WOOL_STAIRS, ModBlocks.PINK_WOOL_SLAB,
+                "pink_wool", "minecraft:block/pink_wool");
+        twoBuildBlocks(ModBlocks.GRAY_WOOL_STAIRS, ModBlocks.GRAY_WOOL_SLAB,
+                "gray_wool", "minecraft:block/gray_wool");
+        twoBuildBlocks(ModBlocks.LIGHT_GRAY_WOOL_STAIRS, ModBlocks.LIGHT_GRAY_WOOL_SLAB,
+                "light_gray_wool", "minecraft:block/light_gray_wool");
+        twoBuildBlocks(ModBlocks.CYAN_WOOL_STAIRS, ModBlocks.CYAN_WOOL_SLAB,
+                "cyan_wool", "minecraft:block/cyan_wool");
+        twoBuildBlocks(ModBlocks.PURPLE_WOOL_STAIRS, ModBlocks.PURPLE_WOOL_SLAB,
+                "purple_wool", "minecraft:block/purple_wool");
+        twoBuildBlocks(ModBlocks.BLUE_WOOL_STAIRS, ModBlocks.BLUE_WOOL_SLAB,
+                "blue_wool", "minecraft:block/blue_wool");
+        twoBuildBlocks(ModBlocks.BROWN_WOOL_STAIRS, ModBlocks.BROWN_WOOL_SLAB,
+                "brown_wool", "minecraft:block/brown_wool");
+        twoBuildBlocks(ModBlocks.GREEN_WOOL_STAIRS, ModBlocks.GREEN_WOOL_SLAB,
+                "green_wool", "minecraft:block/green_wool");
+        twoBuildBlocks(ModBlocks.RED_WOOL_STAIRS, ModBlocks.RED_WOOL_SLAB,
+                "red_wool", "minecraft:block/red_wool");
+        twoBuildBlocks(ModBlocks.BLACK_WOOL_STAIRS, ModBlocks.BLACK_WOOL_SLAB,
+                "black_wool", "minecraft:block/black_wool");
     }
+
+    protected void twoBuildBlocks(RegistryObject<Block> stairs, RegistryObject<Block> slab, String prefix, String texture) {
+        stairsBlock(stairs, prefix, texture);
+        slabBlock(slab, texture);
+    }
+
 
     protected void modSimpleBlockWithItem(RegistryObject<Block> block, String textureName) {
         simpleBlock(block.get(), models().cubeAll(block.getId().toString(),
