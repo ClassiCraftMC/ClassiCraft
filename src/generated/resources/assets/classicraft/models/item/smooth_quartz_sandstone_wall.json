@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "classicraft:block/smooth_quartz_sandstone"
+  }
+}

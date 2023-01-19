@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "classicraft:block/smooth_quartz_sandstone",
+    "side": "classicraft:block/smooth_quartz_sandstone",
+    "top": "classicraft:block/smooth_quartz_sandstone"
+  }
+}

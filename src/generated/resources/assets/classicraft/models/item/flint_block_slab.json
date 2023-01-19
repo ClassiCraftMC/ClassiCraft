@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "classicraft:block/flint_block",
+    "side": "classicraft:block/flint_block",
+    "top": "classicraft:block/flint_block"
+  }
+}

@@ -1,12 +1,22 @@
 {
   "values": [
-    "classicraft:deepslate_slab",
-    "classicraft:smooth_soul_sandstone_slab",
-    "classicraft:cracked_stone_bricks_slab",
-    "classicraft:cut_soul_sandstone_slab",
+    "classicraft:netherrack_slab",
+    "classicraft:quartz_sandstone_bricks_slab",
+    "classicraft:sandstone_bricks_slab",
     "classicraft:mossy_bricks_slab",
-    "classicraft:cracked_deepslate_bricks_slab",
+    "classicraft:flint_block_slab",
     "classicraft:cracked_bricks_slab",
-    "classicraft:soul_sandstone_slab"
+    "classicraft:smooth_basalt_slab",
+    "classicraft:cracked_deepslate_bricks_slab",
+    "classicraft:cracked_stone_bricks_slab",
+    "classicraft:smooth_soul_sandstone_slab",
+    "classicraft:end_stone_slab",
+    "classicraft:soul_sandstone_bricks_slab",
+    "classicraft:red_sandstone_bricks_slab",
+    "classicraft:cut_soul_sandstone_slab",
+    "classicraft:cracked_deepslate_tiles_slab",
+    "classicraft:deepslate_slab",
+    "classicraft:soul_sandstone_slab",
+    "classicraft:smooth_quartz_sandstone_slab"
   ]
 }

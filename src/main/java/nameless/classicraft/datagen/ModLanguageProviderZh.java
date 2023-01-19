@@ -85,7 +85,7 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModBlocks.SANDSTONE_BRICKS.get(), "砂岩砖");
         add(ModBlocks.SOUL_SANDSTONE.get(), "灵魂砂岩");
         add(ModBlocks.SOUL_QUICKSAND.get(), "灵魂沙流沙");
-        add(ModBlocks.SOUL_SANDSTONE_BRICKS.get(), "灵魂岩砖");
+        add(ModBlocks.SOUL_SANDSTONE_BRICKS.get(), "灵魂砂岩砖");
         add(ModBlocks.CRACKED_STONE_BRICKS_SLAB.get(), "裂纹石砖台阶");
         add(ModBlocks.CRACKED_STONE_BRICKS_STAIRS.get(), "裂纹石砖楼梯");
         add(ModBlocks.CRACKED_STONE_BRICKS_WALL.get(), "裂纹石砖墙");
@@ -96,9 +96,9 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModBlocks.DEEPSLATE_WALL.get(), "深板岩墙");
         add(ModBlocks.DEEPSLATE_STAIRS.get(), "深板岩楼梯");
         add(ModBlocks.DEEPSLATE_SLAB.get(), "深板岩台阶");
-        add(ModBlocks.CRACKED_DEEPSLATE_BRICKS_WALL.get(), "裂纹深板岩墙");
-        add(ModBlocks.CRACKED_DEEPSLATE_BRICKS_STAIRS.get(), "裂纹深板岩楼梯");
-        add(ModBlocks.CRACKED_DEEPSLATE_BRICKS_SLAB.get(), "裂纹深板岩台阶");
+        add(ModBlocks.CRACKED_DEEPSLATE_BRICKS_WALL.get(), "裂纹深板岩砖墙");
+        add(ModBlocks.CRACKED_DEEPSLATE_BRICKS_STAIRS.get(), "裂纹深板岩砖楼梯");
+        add(ModBlocks.CRACKED_DEEPSLATE_BRICKS_SLAB.get(), "裂纹深板岩砖台阶");
         add(ModBlocks.INFESTED_CHISELED_DEEPSLATE.get(), "被虫蚀的雕纹深板岩");
         add(ModBlocks.INFESTED_COBBLED_DEEPSLATE.get(), "被虫蚀的深板岩圆石");
         add(ModBlocks.INFESTED_DEEPSLATE_BRICKS.get(), "被虫蚀的深板岩砖");

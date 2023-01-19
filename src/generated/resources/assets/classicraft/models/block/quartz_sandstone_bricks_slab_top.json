@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "classicraft:block/quartz_sandstone_bricks",
+    "side": "classicraft:block/quartz_sandstone_bricks",
+    "top": "classicraft:block/quartz_sandstone_bricks"
+  }
+}

@@ -1,6 +1,7 @@
 package nameless.classicraft.datagen;
 
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -59,6 +60,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         wallInventory("smooth_sandstone", "minecraft:block/sandstone_top");
         wallInventory("smooth_red_sandstone", "minecraft:block/red_sandstone_top");
         wallInventory("cut_sandstone", "minecraft:block/cut_sandstone");
+        wallInventory("dark_prismarine","minecraft:block/dark_prismarine");
+        wallInventory("prismarine_bricks", "minecraft:block/prismarine_bricks");
         slabInventory("mossy_bricks_slab", "classicraft:block/mossy_bricks");
         slabInventory("cracked_bricks_slab", "classicraft:block/cracked_bricks");
         slabInventory("soul_sandstone_slab", "classicraft:block/soul_sandstone_bottom", "classicraft:block/soul_sandstone_top", "classicraft:block/soul_sandstone");
@@ -68,6 +71,22 @@ public class ModItemModelProvider extends ItemModelProvider {
         slabInventory("cut_soul_sandstone_slab", "classicraft:block/soul_sandstone_bottom", "classicraft:block/soul_sandstone_top", "classicraft:block/cut_soul_sandstone");
         slabInventory("smooth_soul_sandstone_slab", "classicraft:block/soul_sandstone_bottom", "classicraft:block/soul_sandstone_top", "classicraft:block/smooth_soul_sandstone");
         basicItem(ModItems.MATERIAL.get());
+        threeBuildBlockItems("cracked_deepslate_tiles", "minecraft:block/cracked_deepslate_tiles");
+        threeBuildBlockItems("sandstone_bricks", "classicraft:block/sandstone_bricks");
+        threeBuildBlockItems("red_sandstone_bricks", "classicraft:block/red_sandstone_bricks");
+        threeBuildBlockItems("soul_sandstone_bricks", "classicraft:block/soul_sandstone_bricks");
+        threeBuildBlockItems("flint_block", "classicraft:block/flint_block");
+        threeBuildBlockItems("quartz_sandstone_bricks", "classicraft:block/quartz_sandstone_bricks");
+        threeBuildBlockItems("end_stone", "minecraft:block/end_stone");
+        threeBuildBlockItems("netherrack", "minecraft:block/netherrack");
+        threeBuildBlockItems("smooth_quartz_sandstone", "classicraft:block/smooth_quartz_sandstone");
+        threeBuildBlockItems("smooth_basalt", "minecraft:block/smooth_basalt");
+    }
+
+    void threeBuildBlockItems(String name, String texture) {
+        wallInventory(name, texture);
+        stairsInventory(name, texture);
+        slabInventory(name + "_slab", texture);
     }
 
     void wallInventory(String name, String texture) {

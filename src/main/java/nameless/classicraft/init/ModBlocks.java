@@ -296,6 +296,15 @@ public class ModBlocks {
             registerDefault("infested_deepslate_tiles", () ->
                     new InfestedBlock(Blocks.DEEPSLATE_TILES, BlockBehaviour.Properties.of(Material.CLAY).sound(SoundType.DEEPSLATE)));
 
+    public static final RegistryObject<Block> INFESTED_CRACKED_DEEPSLATE_BRICKS =
+            registerDefault("infested_cracked_deepslate_bricks", () ->
+                    new InfestedBlock(Blocks.CRACKED_DEEPSLATE_BRICKS, BlockBehaviour.Properties.of(Material.CLAY).sound(SoundType.DEEPSLATE)));
+
+    public static final RegistryObject<Block> INFESTED_CRACKED_DEEPSLATE_TILES =
+            registerDefault("infested_cracked_deepslate_tiles", () ->
+                    new InfestedBlock(Blocks.CRACKED_DEEPSLATE_TILES, BlockBehaviour.Properties.of(Material.CLAY).sound(SoundType.DEEPSLATE)));
+
+
     public static final RegistryObject<Block> DEEPSLATE_WALL =
             registerDefault("deepslate_wall", () ->
                     new WallBlock(BlockBehaviour.Properties.of(Material.STONE,
@@ -443,6 +452,234 @@ public class ModBlocks {
                             .copy(CUT_SOUL_SANDSTONE.get())
                             .requiresCorrectToolForDrops()
                             .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> CRACKED_DEEPSLATE_TILES_WALL =
+            registerDefault("cracked_deepslate_tiles_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.of(Material.STONE,
+                                    MaterialColor.DEEPSLATE)
+                            .sound(SoundType.DEEPSLATE)
+                            .requiresCorrectToolForDrops()
+                            .strength(3.0F, 6.0F)
+                            .sound(SoundType.DEEPSLATE)));
+
+    public static final RegistryObject<Block> CRACKED_DEEPSLATE_TILES_SLAB =
+            registerDefault("cracked_deepslate_tiles_slab", () ->
+                    new SlabBlock(BlockBehaviour.Properties
+                            .of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .sound(SoundType.DEEPSLATE)
+                            .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> CRACKED_DEEPSLATE_TILES_STAIRS =
+            registerDefault("cracked_deepslate_tiles_stairs", () ->
+                    new StairBlock(Blocks.CRACKED_DEEPSLATE_TILES.defaultBlockState(),
+                            BlockBehaviour.Properties
+                                    .of(Material.STONE).requiresCorrectToolForDrops()
+                                    .sound(SoundType.DEEPSLATE)
+                                    .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> SANDSTONE_BRICKS_WALL =
+            registerDefault("sandstone_bricks_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.of(Material.STONE,
+                                    MaterialColor.COLOR_BROWN)
+                            .requiresCorrectToolForDrops()
+                            .strength(3.0F, 6.0F)));
+
+    public static final RegistryObject<Block> SANDSTONE_BRICKS_SLAB =
+            registerDefault("sandstone_bricks_slab", () ->
+                    new SlabBlock(BlockBehaviour.Properties
+                            .of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> SANDSTONE_BRICKS_STAIRS =
+            registerDefault("sandstone_bricks_stairs", () ->
+                    new StairBlock(SANDSTONE_BRICKS.get().defaultBlockState(),
+                            BlockBehaviour.Properties
+                                    .of(Material.STONE).requiresCorrectToolForDrops()
+                                    .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> RED_SANDSTONE_BRICKS_WALL =
+            registerDefault("red_sandstone_bricks_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.of(Material.STONE,
+                                    MaterialColor.FIRE)
+                            .requiresCorrectToolForDrops()
+                            .strength(3.0F, 6.0F)));
+
+    public static final RegistryObject<Block> RED_SANDSTONE_BRICKS_SLAB =
+            registerDefault("red_sandstone_bricks_slab", () ->
+                    new SlabBlock(BlockBehaviour.Properties
+                            .of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> RED_SANDSTONE_BRICKS_STAIRS =
+            registerDefault("red_sandstone_bricks_stairs", () ->
+                    new StairBlock(RED_SANDSTONE_BRICKS.get().defaultBlockState(),
+                            BlockBehaviour.Properties
+                                    .of(Material.STONE).requiresCorrectToolForDrops()
+                                    .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> SOUL_SANDSTONE_BRICKS_WALL =
+            registerDefault("soul_sandstone_bricks_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.of(Material.STONE,
+                                    MaterialColor.COLOR_BROWN)
+                            .requiresCorrectToolForDrops()
+                            .strength(3.0F, 6.0F)));
+
+    public static final RegistryObject<Block> SOUL_SANDSTONE_BRICKS_SLAB =
+            registerDefault("soul_sandstone_bricks_slab", () ->
+                    new SlabBlock(BlockBehaviour.Properties
+                            .of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> SOUL_SANDSTONE_BRICKS_STAIRS =
+            registerDefault("soul_sandstone_bricks_stairs", () ->
+                    new StairBlock(SOUL_SANDSTONE_BRICKS.get().defaultBlockState(),
+                            BlockBehaviour.Properties
+                                    .of(Material.STONE).requiresCorrectToolForDrops()
+                                    .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> FLINT_BLOCK_WALL =
+            registerDefault("flint_block_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.of(Material.STONE,
+                                    MaterialColor.COLOR_BLACK)
+                            .requiresCorrectToolForDrops()
+                            .strength(3.0F, 6.0F)));
+
+    public static final RegistryObject<Block> FLINT_BLOCK_SLAB =
+            registerDefault("flint_block_slab", () ->
+                    new SlabBlock(BlockBehaviour.Properties
+                            .of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> FLINT_BLOCK_STAIRS =
+            registerDefault("flint_block_stairs", () ->
+                    new StairBlock(FLINT_BLOCK.get().defaultBlockState(),
+                            BlockBehaviour.Properties
+                                    .of(Material.STONE).requiresCorrectToolForDrops()
+                                    .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> QUARTZ_SANDSTONE_BRICKS_WALL =
+            registerDefault("quartz_sandstone_bricks_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.of(Material.STONE,
+                                    MaterialColor.QUARTZ)
+                            .requiresCorrectToolForDrops()
+                            .strength(3.0F, 6.0F)
+                            .sound(SoundType.DEEPSLATE)));
+
+    public static final RegistryObject<Block> QUARTZ_SANDSTONE_BRICKS_SLAB =
+            registerDefault("quartz_sandstone_bricks_slab", () ->
+                    new SlabBlock(BlockBehaviour.Properties
+                            .of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> QUARTZ_SANDSTONE_BRICKS_STAIRS =
+            registerDefault("quartz_sandstone_bricks_stairs", () ->
+                    new StairBlock(QUARTZ_SANDSTONE_BRICKS.get().defaultBlockState(),
+                            BlockBehaviour.Properties
+                                    .of(Material.STONE).requiresCorrectToolForDrops()
+                                    .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> PRISMARINE_BRICKS_WALL =
+            registerDefault("prismarine_bricks_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.copy(Blocks.PRISMARINE_BRICKS)
+                            .requiresCorrectToolForDrops()
+                            .strength(3.0F, 6.0F)));
+
+    public static final RegistryObject<Block> END_STONE_WALL =
+            registerDefault("end_stone_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.copy(Blocks.END_STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(3.0F, 6.0F)));
+
+
+    public static final RegistryObject<Block> END_STONE_SLAB =
+            registerDefault("end_stone_slab", () ->
+                    new SlabBlock(BlockBehaviour.Properties
+                            .of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> END_STONE_STAIRS =
+            registerDefault("end_stone_stairs", () ->
+                    new StairBlock(Blocks.END_STONE.defaultBlockState(),
+                            BlockBehaviour.Properties
+                                    .of(Material.STONE).requiresCorrectToolForDrops()
+                                    .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> NETHERRACK_WALL =
+            registerDefault("netherrack_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.copy(Blocks.NETHERRACK)
+                            .requiresCorrectToolForDrops()
+                            .strength(3.0F, 6.0F)));
+
+    public static final RegistryObject<Block> NETHERRACK_SLAB =
+            registerDefault("netherrack_slab", () ->
+                    new SlabBlock(BlockBehaviour.Properties
+                            .of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> NETHERRACK_STAIRS =
+            registerDefault("netherrack_stairs", () ->
+                    new StairBlock(Blocks.NETHERRACK.defaultBlockState(),
+                            BlockBehaviour.Properties
+                                    .of(Material.STONE).requiresCorrectToolForDrops()
+                                    .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> DARK_PRISMARINE_WALL =
+            registerDefault("dark_prismarine_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.copy(Blocks.DARK_PRISMARINE)
+                            .requiresCorrectToolForDrops()
+                            .strength(3.0F, 6.0F)));
+
+    public static final RegistryObject<Block> SMOOTH_QUARTZ_SANDSTONE =
+            registerDefault("smooth_quartz_sandstone", () ->
+                    new SandStoneBlock(SoundType.STONE, MaterialColor.QUARTZ));
+
+    public static final RegistryObject<Block> SMOOTH_QUARTZ_SANDSTONE_SLAB =
+            registerDefault("smooth_quartz_sandstone_slab", () ->
+                    new SlabBlock(BlockBehaviour.Properties
+                            .of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> SMOOTH_QUARTZ_SANDSTONE_STAIRS =
+            registerDefault("smooth_quartz_sandstone_stairs", () ->
+                    new StairBlock(SMOOTH_QUARTZ_SANDSTONE.get().defaultBlockState(),
+                            BlockBehaviour.Properties
+                                    .of(Material.STONE).requiresCorrectToolForDrops()
+                                    .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> SMOOTH_QUARTZ_SANDSTONE_WALL =
+            registerDefault("smooth_quartz_sandstone_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.copy(SMOOTH_QUARTZ_SANDSTONE.get())
+                            .requiresCorrectToolForDrops()
+                            .strength(3.0F, 6.0F)));
+
+    public static final RegistryObject<Block> SMOOTH_BASALT_SLAB =
+            registerDefault("smooth_basalt_slab", () ->
+                    new SlabBlock(BlockBehaviour.Properties
+                            .of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> SMOOTH_BASALT_STAIRS =
+            registerDefault("smooth_basalt_stairs", () ->
+                    new StairBlock(Blocks.SMOOTH_BASALT.defaultBlockState(),
+                            BlockBehaviour.Properties
+                                    .of(Material.STONE).requiresCorrectToolForDrops()
+                                    .strength(1.5F, 6.0F)));
+
+    public static final RegistryObject<Block> SMOOTH_BASALT_WALL =
+            registerDefault("smooth_basalt_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.copy(Blocks.SMOOTH_BASALT)
+                            .requiresCorrectToolForDrops()
+                            .strength(3.0F, 6.0F)));
 
     /**
      * Hanlde Default Register
