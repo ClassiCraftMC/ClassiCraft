@@ -148,6 +148,7 @@ jar.finalizedBy('reobfJar')
 task deobfJar(type: Jar) {
     classifier 'deobf'
     from sourceSets.main.output
+    from("LICENSE")
     exclude(".cache/**")
     exclude("nameless/classicraft/datagen/**")
     exclude("nameless/classicraft/event/TestEvents.class")
