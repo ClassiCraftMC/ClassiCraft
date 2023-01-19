@@ -12,9 +12,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class DebugBugTimeStick extends Item {
+public class DebugBurnTimeStick extends Item {
 
-    public DebugBugTimeStick() {
+    public DebugBurnTimeStick() {
         super(new Properties());
     }
 

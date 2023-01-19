@@ -19,7 +19,7 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModItems.TORCH_UNLIT.get(), "熄灭的火把");
         add(ModItems.SOUL_TORCH_UNLIT.get(), "熄灭的灵魂火把");
         add(ModBlocks.REAL_TORCH.get(), "火把");
-        add(ModItems.DEBUG_TIME_STICK.get(), "燃烧时间检测棒");
+        add(ModItems.DEBUG_BURN_TIME_STICK.get(), "燃烧时间检测棒");
         add(ModItems.DEPTH_METER.get(), "深度计");
         add(ModBlocks.QUICKSAND.get(), "流沙");
         add(ModBlocks.RED_QUICKSAND.get(), "红沙流沙");

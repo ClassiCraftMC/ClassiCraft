@@ -32,7 +32,7 @@ public class RegisterEvents {
                         .displayItems((features, output, hasPermissions) -> {
                             output.accept(ModItems.TORCH_UNLIT.get());
                             output.accept(ModItems.SOUL_TORCH_UNLIT.get());
-                            output.accept(ModItems.DEBUG_TIME_STICK.get());
+                            output.accept(ModItems.DEBUG_BURN_TIME_STICK.get());
                             output.accept(ModItems.DEPTH_METER.get());
                             output.accept(ModItems.TROUT.get());
                             output.accept(ModItems.COOKED_TROUT.get());

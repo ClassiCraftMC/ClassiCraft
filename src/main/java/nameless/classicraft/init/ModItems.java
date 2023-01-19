@@ -45,8 +45,8 @@ public class ModItems {
     public static final RegistryObject<Item> MATERIAL =
             register("material", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> DEBUG_TIME_STICK =
-            register("debug_time_stick", DebugBugTimeStick::new);
+    public static final RegistryObject<Item> DEBUG_BURN_TIME_STICK =
+            register("debug_burn_time_stick", DebugBurnTimeStick::new);
 
     public static final RegistryObject<Item> DEPTH_METER =
             register("depth_meter", DepthMeterItem::new);

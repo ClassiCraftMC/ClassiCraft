@@ -90,16 +90,6 @@ public class EventUtils {
         }
     }
 
-    public static void blockdropAtOnce(BlockDropEvent event, Block dropBlock, Item dropItem) {
-        BlockState blockState = event.getState();
-        Level level = event.getLevel();
-        BlockPos pos = event.getPos();
-        if (blockState.is(dropBlock)) {
-            ItemEntity itemEntity = new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), dropItem.getDefaultInstance());
-            event.getLevel().addFreshEntity(itemEntity);
-        }
-    }
-
     public static void blockdropRandom(BlockDropEvent event, Block dropBlock, Item dropItem) {
         BlockState blockState = event.getState();
         Level level = event.getLevel();

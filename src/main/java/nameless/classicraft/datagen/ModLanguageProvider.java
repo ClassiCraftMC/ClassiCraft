@@ -19,7 +19,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModItems.TORCH_UNLIT.get(), "Unlit Torch");
         add(ModItems.SOUL_TORCH_UNLIT.get(), "Unlit Soul Torch");
         add(ModBlocks.REAL_TORCH.get(), "Real Torch");
-        add(ModItems.DEBUG_TIME_STICK.get(), "Debug Burn Time Stick");
+        add(ModItems.DEBUG_BURN_TIME_STICK.get(), "Debug Burn Time Stick");
         add(ModItems.DEPTH_METER.get(), "Depth Meter");
         add(ModBlocks.QUICKSAND.get(), "Quicksand");
         add(ModBlocks.RED_QUICKSAND.get(), "Red Quicksand");

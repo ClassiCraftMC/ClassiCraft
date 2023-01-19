@@ -32,11 +32,6 @@ public class BlockEvents {
     public static void blockDropItems(BlockDropEvent event) {
         Block block = event.getState().getBlock();
         if (!event.getPlayer().isCreative()) {
-            EventUtils.blockdropAtOnce(event, ModBlocks.REAL_TORCH.get(), Items.STICK);
-            EventUtils.blockdropAtOnce(event, ModBlocks.REAL_WALL_TORCH.get(), Items.STICK);
-            EventUtils.blockdropAtOnce(event, ModBlocks.REAL_SOUL_TORCH.get(), Items.STICK);
-            EventUtils.blockdropAtOnce(event, ModBlocks.REAL_SOUL_WALL_TORCH.get(), Items.STICK);
-
             if (block instanceof LeavesBlock
                     || block instanceof DeadBushBlock) {
                 EventUtils.blockdropRandom(event, block, Items.STICK);

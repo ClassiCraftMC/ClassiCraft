@@ -69,6 +69,10 @@ public class ModBlockLoot extends BlockLootSubProvider {
         dropOther(ModBlocks.INFESTED_DEEPSLATE_TILES.get(), Items.DEEPSLATE_TILES);
         dropOther(ModBlocks.INFESTED_CRACKED_DEEPSLATE_BRICKS.get(), Items.CRACKED_DEEPSLATE_BRICKS);
         dropOther(ModBlocks.INFESTED_CRACKED_DEEPSLATE_TILES.get(), Items.CRACKED_DEEPSLATE_TILES);
+        dropOther(ModBlocks.REAL_TORCH.get(), Items.STICK);
+        dropOther(ModBlocks.REAL_WALL_TORCH.get(), Items.STICK);
+        dropOther(ModBlocks.REAL_SOUL_TORCH.get(), Items.STICK);
+        dropOther(ModBlocks.REAL_SOUL_WALL_TORCH.get(), Items.STICK);
         Set<Block> blocks = ExtraUtils.getBlocks();
         blocks.stream().filter(block -> block instanceof StairBlock)
                 .forEach(this::dropSelf);
