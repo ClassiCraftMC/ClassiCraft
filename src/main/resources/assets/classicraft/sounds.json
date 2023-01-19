@@ -1,0 +1,16 @@
+{
+  "misc.knapping.pebble": {
+    "subtitle": "subtitles.misc.classicraft.knapping.pebble",
+    "sounds": [
+      {
+        "name": "classicraft:misc/pebble",
+        "pitch": 0.9
+      },
+      "classicraft:misc/pebble",
+      {
+        "name": "classicraft:misc/pebble",
+        "pitch": 1.1
+      }
+    ]
+  }
+}

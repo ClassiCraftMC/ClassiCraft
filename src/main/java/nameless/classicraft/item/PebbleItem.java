@@ -3,6 +3,7 @@ package nameless.classicraft.item;
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.api.item.MetaItem;
 import nameless.classicraft.init.ModItems;
+import nameless.classicraft.init.ModSounds;
 import nameless.classicraft.init.ModTags;
 import nameless.classicraft.util.ExtraUtils;
 import net.minecraft.nbt.CompoundTag;
@@ -138,7 +139,7 @@ public class PebbleItem extends MetaItem {
 
             return !player.isCreative();
         } else
-            player.playSound(SoundEvents.FLINTANDSTEEL_USE);
+            player.playSound(ModSounds.PEBBLE.get());
 
         return false;
     }

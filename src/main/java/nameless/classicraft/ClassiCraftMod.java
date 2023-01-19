@@ -32,5 +32,6 @@ public class ClassiCraftMod {
         ModEntities.ENTITIES.register(modEventBus);
         modEventBus.addListener(RegisterEvents::registerCreativeModeTab);
         ModLootModifiers.REGISTER.register(modEventBus);
+        ModSounds.SOUND_EVENTS.register(modEventBus);
     }
 }
