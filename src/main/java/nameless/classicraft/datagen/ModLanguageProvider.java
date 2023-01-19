@@ -118,6 +118,37 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.SMOOTH_SOUL_SANDSTONE_WALL.get(), "Smooth Soul SandStone Wall");
         add(ModBlocks.CUT_SOUL_SANDSTONE_WALL.get(), "Cut Soul SandStone Wall");
         add(ModBlocks.CUT_SOUL_SANDSTONE_STAIRS.get(), "Cut Soul SandStone Stairs");
+        add(ModBlocks.END_STONE_SLAB.get(), "End Stone Slab");
+        add(ModBlocks.END_STONE_STAIRS.get(), "End Stone Stairs");
+        add(ModBlocks.END_STONE_WALL.get(), "End Stone Wall");
+        add(ModBlocks.SANDSTONE_BRICKS_SLAB.get(), "SandStone Bricks Slab");
+        add(ModBlocks.SANDSTONE_BRICKS_STAIRS.get(), "SandStone Bricks Stairs");
+        add(ModBlocks.SANDSTONE_BRICKS_WALL.get(), "SandStone Bricks Wall");
+        add(ModBlocks.QUARTZ_SANDSTONE_BRICKS_SLAB.get(), "Quartz SandStone Bricks Slab");
+        add(ModBlocks.QUARTZ_SANDSTONE_BRICKS_STAIRS.get(), "Quartz SandStone Bricks Stairs");
+        add(ModBlocks.QUARTZ_SANDSTONE_BRICKS_WALL.get(), "Quartz SandStone Bricks Wall");
+        add(ModBlocks.SMOOTH_QUARTZ_SANDSTONE_SLAB.get(), "Smooth Quartz SandStone Slab");
+        add(ModBlocks.SMOOTH_QUARTZ_SANDSTONE_STAIRS.get(), "Smooth Quartz SandStone Stairs");
+        add(ModBlocks.SMOOTH_QUARTZ_SANDSTONE_WALL.get(), "Smooth Quartz SandStone Wall");
+        add(ModBlocks.NETHERRACK_SLAB.get(), "Netherrack Slab");
+        add(ModBlocks.NETHERRACK_STAIRS.get(), "Netherrack Stairs");
+        add(ModBlocks.NETHERRACK_WALL.get(), "Netherrack Wall");
+        add(ModBlocks.RED_SANDSTONE_BRICKS_SLAB.get(), "Red SandStone Bricks Slab");
+        add(ModBlocks.RED_SANDSTONE_BRICKS_STAIRS.get(), "Red SandStone Bricks Stairs");
+        add(ModBlocks.RED_SANDSTONE_BRICKS_WALL.get(), "Red SandStone Bricks Wall");
+        add(ModBlocks.INFESTED_CRACKED_DEEPSLATE_BRICKS.get(), "Infested Cracked Deepslate Bricks");
+        add(ModBlocks.INFESTED_CRACKED_DEEPSLATE_TILES.get(), "Infested Cracked Deepslate Tiles");
+        add(ModBlocks.PRISMARINE_BRICKS_WALL.get(), "Prismarine Bricks Wall");
+        add(ModBlocks.DARK_PRISMARINE_WALL.get(), "Dark Prismarine Wall");
+        add(ModBlocks.CRACKED_DEEPSLATE_TILES_WALL.get(), "Cracked Deepslate Tiles Wall");
+        add(ModBlocks.CRACKED_DEEPSLATE_TILES_STAIRS.get(), "Cracked Deepslate Tiles Stairs");
+        add(ModBlocks.CRACKED_DEEPSLATE_TILES_SLAB.get(), "Cracked Deepslate Tiles Slab");
+        add(ModBlocks.SMOOTH_BASALT_SLAB.get(), "Smooth Basalt Slab");
+        add(ModBlocks.SMOOTH_BASALT_STAIRS.get(), "Smooth Basalt Stairs");
+        add(ModBlocks.SMOOTH_BASALT_WALL.get(), "Smooth Basalt Wall");
+        add(ModBlocks.FLINT_BLOCK_SLAB.get(), "Flint Block Slab");
+        add(ModBlocks.FLINT_BLOCK_STAIRS.get(), "Flint Block Stairs");
+        add(ModBlocks.FLINT_BLOCK_WALL.get(), "Flint Block Wall");
         add("itemGroup.classicraft.common", "ClassiCraft|Common");
         add("itemGroup.classicraft.building_blocks", "ClassiCraft|Building Blocks");
         add("itemGroup.classicraft.material", "ClassiCraft|Material");
@@ -125,6 +156,7 @@ public class ModLanguageProvider extends LanguageProvider {
 
         pebbleBlock();
         meta();
+        entity();
     }
 
     private void pebbleBlock() {
@@ -144,7 +176,6 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.BLACKSTONE_PEBBLE.get(), "BlackStone Pebble");
         add(ModBlocks.PRISMARINE.get(), "Prismarine Pebble");
         add(ModBlocks.QUARTZ_PEBBLE.get(), "Quartz Pebble");
-        entity();
     }
 
     private void entity() {
