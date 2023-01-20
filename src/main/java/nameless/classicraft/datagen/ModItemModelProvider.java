@@ -1,7 +1,6 @@
 package nameless.classicraft.datagen;
 
 import nameless.classicraft.ClassiCraftMod;
-import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -11,7 +10,6 @@ import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class ModItemModelProvider extends ItemModelProvider {

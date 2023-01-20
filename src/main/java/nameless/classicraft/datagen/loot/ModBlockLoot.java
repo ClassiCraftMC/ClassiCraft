@@ -2,7 +2,6 @@ package nameless.classicraft.datagen.loot;
 
 import nameless.classicraft.block.SandStoneBlock;
 import nameless.classicraft.block.StoneBricksBlock;
-import nameless.classicraft.datagen.ModBlockTagsProvider;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import nameless.classicraft.item.PebbleItem;

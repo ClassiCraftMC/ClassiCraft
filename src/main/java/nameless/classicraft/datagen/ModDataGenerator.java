@@ -1,7 +1,9 @@
 package nameless.classicraft.datagen;
 
 import nameless.classicraft.ClassiCraftMod;
-import nameless.classicraft.datagen.language.*;
+import nameless.classicraft.datagen.language.EmptyLangProvider;
+import nameless.classicraft.datagen.language.ModLanguageProvider;
+import nameless.classicraft.datagen.language.ModLanguageProviderZh;
 import nameless.classicraft.datagen.levelgen.ModConfiguredFeatureProvider;
 import nameless.classicraft.datagen.levelgen.ModPlacedFeatureProvider;
 import nameless.classicraft.datagen.loot.ModLootTableProvider;
