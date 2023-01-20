@@ -2,15 +2,19 @@ package nameless.classicraft.mixin;
 
 import nameless.classicraft.api.item.CCItemStack;
 import nameless.classicraft.init.ModCapabilities;
+import nameless.classicraft.init.ModTags;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ClickAction;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.UseAnim;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -62,6 +66,21 @@ public abstract class MixinItemStack implements CCItemStack {
                                     .withColor(rot.getLevelNameColor())));
                 }
             });
+        }
+    }
+
+    @Inject(method = "getUseAnimation", at = @At("RETURN"), cancellable = true)
+    public void getUseAnimationCC(CallbackInfoReturnable<UseAnim> cir) {
+        if (((ItemStack) (Object) this).is(ModTags.Items.TAG_DRINKABLE)
+                || ((ItemStack) (Object) this).is(ModTags.Items.TAG_THICK)){
+            cir.setReturnValue(UseAnim.DRINK);
+        }
+    }
+
+    @Inject(method = "getDrinkingSound", at = @At("RETURN"), cancellable = true)
+    public void getDrinkingSoundCC(CallbackInfoReturnable<SoundEvent> cir) {
+        if (((ItemStack) (Object) this).is(ModTags.Items.TAG_THICK)) {
+            cir.setReturnValue(SoundEvents.HONEY_DRINK);
         }
     }
 }

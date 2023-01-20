@@ -35,6 +35,23 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         blocks.stream().filter(block -> block instanceof FlowerBlock)
                 .forEach(this::flowerTag);
         addVanillaPebbleTags();
+        addDrinkableTags();
+    }
+
+    void addDrinkableTags() {
+        drinkableTag(Items.MUSHROOM_STEW);
+        drinkableTag(Items.BEETROOT_SOUP);
+        drinkableTag(Items.SUSPICIOUS_STEW);
+        thickTag(Items.MUSHROOM_STEM);
+        thickTag(Items.SUSPICIOUS_STEW);
+    }
+
+    void thickTag(Item item) {
+        tag(ModTags.Items.TAG_THICK).add(item).replace(false);
+    }
+
+    void drinkableTag(Item item) {
+        tag(ModTags.Items.TAG_DRINKABLE).add(item).replace(false);
     }
 
     void addVanillaPebbleTags() {
@@ -44,22 +61,22 @@ public class ModItemTagsProvider extends ItemTagsProvider {
     }
 
     void vanillaPebbleTag(Item item) {
-        tag(ModTags.Items.VANILLA_PEBBLES).add(item);
+        tag(ModTags.Items.VANILLA_PEBBLES).add(item).replace(false);
     }
 
     void slabTag(Block slab) {
-        tag(ItemTags.SLABS).add(slab.asItem());
+        tag(ItemTags.SLABS).add(slab.asItem()).replace(false);
     }
 
     void stairsTag(Block stairs) {
-        tag(ItemTags.STAIRS).add(stairs.asItem());
+        tag(ItemTags.STAIRS).add(stairs.asItem()).replace(false);
     }
 
     void wallTag(Block wall) {
-        tag(ItemTags.WALLS).add(wall.asItem());
+        tag(ItemTags.WALLS).add(wall.asItem()).replace(false);
     }
 
     void flowerTag(Block flower) {
-        tag(ItemTags.FLOWERS).add(flower.asItem());
+        tag(ItemTags.FLOWERS).add(flower.asItem()).replace(false);
     }
 }
