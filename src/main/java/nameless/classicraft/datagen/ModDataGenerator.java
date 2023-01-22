@@ -61,11 +61,11 @@ public class ModDataGenerator {
                 new DatapackBuiltinEntriesProvider(pack,
                         lookup, BUILDER,
                         Set.of(ClassiCraftMod.MOD_ID)));
-        generator.addProvider(event.includeClient(),
+        generator.addProvider(event.includeServer(),
                 new ModBlockTagsProvider(pack, lookup, helper));
         generator.addProvider(event.includeServer(),
                 new ModRecipeProvider(pack));
-        generator.addProvider(event.includeClient(),
+        generator.addProvider(event.includeServer(),
                 new ModItemTagsProvider(pack, lookup,
                         new ModBlockTagsProvider(pack, lookup, helper), helper));
     }
