@@ -32,6 +32,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         stairsInventory("cut_soul_sandstone", "classicraft:block/cut_soul_sandstone", "classicraft:block/soul_sandstone_bottom", "classicraft:block/soul_sandstone_top");
         stairsInventory("smooth_soul_sandstone", "classicraft:block/smooth_soul_sandstone");
         stairsInventory("cut_quartz_sandstone", "classicraft:block/cut_quartz_sandstone", "classicraft:block/quartz_sandstone_bottom", "classicraft:block/quartz_sandstone_top");
+        stairsInventory("quartz_sandstone","classicraft:block/quartz_sandstone", "classicraft:block/quartz_sandstone_bottom", "classicraft:block/quartz_sandstone_top");
         wallInventory("smooth_soul_sandstone_wall",
                 new ResourceLocation("classicraft:block/soul_sandstone_top"));
         wallInventory("smooth_stone_wall",
@@ -56,6 +57,7 @@ public class ModItemModelProvider extends ItemModelProvider {
                 new ResourceLocation("minecraft:block/cracked_deepslate_bricks"));
         wallInventory("deepslate_wall",
                 new ResourceLocation("minecraft:block/deepslate"));
+        wallInventory("quartz_sandstone","classicraft:block/quartz_sandstone");
         wallInventory("soul_sandstone", "classicraft:block/soul_sandstone");
         wallInventory("cut_quartz_sandstone", "classicraft:block/cut_quartz_sandstone");
         wallInventory("smooth_soul_sandstone", "classicraft:block/soul_sandstone_top");
@@ -68,6 +70,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         wallInventory("prismarine_bricks", "minecraft:block/prismarine_bricks");
         slabInventory("mossy_bricks_slab", "classicraft:block/mossy_bricks");
         slabInventory("cracked_bricks_slab", "classicraft:block/cracked_bricks");
+        slabInventory("quartz_sandstone_slab", "classicraft:block/quartz_sandstone_bottom", "classicraft:block/quartz_sandstone_top", "classicraft:block/quartz_sandstone");
         slabInventory("cut_quartz_sandstone_slab", "classicraft:block/quartz_sandstone_bottom", "classicraft:block/quartz_sandstone_top", "classicraft:block/cut_quartz_sandstone");
         slabInventory("soul_sandstone_slab", "classicraft:block/soul_sandstone_bottom", "classicraft:block/soul_sandstone_top", "classicraft:block/soul_sandstone");
         slabInventory("cracked_stone_bricks_slab", "minecraft:block/cracked_stone_bricks");

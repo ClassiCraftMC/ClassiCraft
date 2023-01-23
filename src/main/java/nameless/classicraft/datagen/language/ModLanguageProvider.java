@@ -196,6 +196,9 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.RED_WOOL_SLAB.get(), "Red Wool Slab");
         add(ModBlocks.BLACK_WOOL_STAIRS.get(), "Black Wool Stairs");
         add(ModBlocks.BLACK_WOOL_SLAB.get(), "Black Wool Slab");
+        add(ModBlocks.QUARTZ_SANDSTONE_WALL.get(), "Quartz SandStone Wall");
+        add(ModBlocks.QUARTZ_SANDSTONE_STAIRS.get(), "Quartz SandStone Stairs");
+        add(ModBlocks.QUARTZ_SANDSTONE_SLAB.get(), "Quartz SandStone Slab");
 
         pebbleBlock();
         meta();

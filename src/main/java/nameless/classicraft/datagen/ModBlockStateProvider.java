@@ -52,6 +52,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         wallBlock(ModBlocks.POLISHED_DIORITE_WALL, "polished_diorite","minecraft:block/polished_diorite");
         wallBlock(ModBlocks.POLISHED_GRANITE_WALL, "polished_granite","minecraft:block/polished_granite");
         wallBlock(ModBlocks.STONE_WALL, "stone","minecraft:block/stone");
+        wallBlock(ModBlocks.QUARTZ_SANDSTONE_WALL, "quartz_sandstone","classicraft:block/quartz_sandstone");
         wallBlock(ModBlocks.DARK_PRISMARINE_WALL, "dark_prismarine","minecraft:block/dark_prismarine");
         wallBlock(ModBlocks.CUT_SOUL_SANDSTONE_WALL, "cut_soul_sandstone","classicraft:block/cut_soul_sandstone");
         wallBlock(ModBlocks.SOUL_SANDSTONE_WALL, "soul_sandstone", "classicraft:block/soul_sandstone");
@@ -76,6 +77,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         stairsBlock(ModBlocks.SOUL_SANDSTONE_STAIRS, "soul_sandstone","classicraft:block/soul_sandstone", "classicraft:block/soul_sandstone_bottom", "classicraft:block/soul_sandstone_top");
         stairsBlock(ModBlocks.CUT_SOUL_SANDSTONE_STAIRS, "cut_soul_sandstone","classicraft:block/cut_soul_sandstone", "classicraft:block/soul_sandstone_bottom", "classicraft:block/soul_sandstone_top");
         stairsBlock(ModBlocks.CUT_QUARTZ_SANDSTONE_STAIRS, "cut_quartz_sandstone","classicraft:block/cut_quartz_sandstone", "classicraft:block/quartz_sandstone_bottom", "classicraft:block/quartz_sandstone_top");
+        stairsBlock(ModBlocks.QUARTZ_SANDSTONE_STAIRS, "quartz_sandstone","classicraft:block/quartz_sandstone", "classicraft:block/quartz_sandstone_bottom", "classicraft:block/quartz_sandstone_top");
         slabBlock(ModBlocks.MOSSY_BRICKS_SLAB, "classicraft:block/mossy_bricks");
         slabBlock(ModBlocks.CRACKED_BRICKS_SLAB,"classicraft:block/cracked_bricks");
         slabBlock(ModBlocks.CRACKED_STONE_BRICKS_SLAB,"minecraft:block/cracked_stone_bricks");
@@ -83,6 +85,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         slabBlock(ModBlocks.SOUL_SANDSTONE_SLAB,"classicraft:block/soul_sandstone", "classicraft:block/soul_sandstone_bottom", "classicraft:block/soul_sandstone_top");
         slabBlock(ModBlocks.CUT_SOUL_SANDSTONE_SLAB,"classicraft:block/cut_soul_sandstone", "classicraft:block/soul_sandstone_bottom", "classicraft:block/soul_sandstone_top");
         slabBlock(ModBlocks.CUT_QUARTZ_SANDSTONE_SLAB,"classicraft:block/cut_quartz_sandstone", "classicraft:block/quartz_sandstone_bottom", "classicraft:block/quartz_sandstone_top");
+        slabBlock(ModBlocks.QUARTZ_SANDSTONE_SLAB,"classicraft:block/quartz_sandstone","classicraft:block/quartz_sandstone_bottom", "classicraft:block/quartz_sandstone_top");
         threeBuildBlocks(ModBlocks.CRACKED_DEEPSLATE_BRICKS_WALL, ModBlocks.CRACKED_DEEPSLATE_BRICKS_STAIRS,
                 ModBlocks.CRACKED_DEEPSLATE_BRICKS_SLAB, "cracked_deepslate_bricks", "minecraft:block/cracked_deepslate_bricks");
         threeBuildBlocks(ModBlocks.SMOOTH_SOUL_SANDSTONE_WALL, ModBlocks.SMOOTH_SOUL_SANDSTONE_STAIRS, ModBlocks.SMOOTH_SOUL_SANDSTONE_SLAB,
@@ -147,7 +150,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
         stairsBlock(stairs, prefix, texture);
         slabBlock(slab, texture);
     }
-
 
     protected void modSimpleBlockWithItem(RegistryObject<Block> block, String textureName) {
         simpleBlock(block.get(), models().cubeAll(block.getId().toString(),

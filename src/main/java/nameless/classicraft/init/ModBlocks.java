@@ -865,6 +865,28 @@ public class ModBlocks {
                     new StairBlock(Blocks.BLACK_WOOL.defaultBlockState(),
                             offWool(MaterialColor.COLOR_BLACK)));
 
+    public static final RegistryObject<Block> QUARTZ_SANDSTONE_STAIRS =
+            registerDefault("quartz_sandstone_stairs", () ->
+                    new StairBlock(QUARTZ_SANDSTONE.get().defaultBlockState(),
+                            offSandStone(MaterialColor.QUARTZ)));
+
+    public static final RegistryObject<Block> QUARTZ_SANDSTONE_SLAB =
+            registerDefault("quartz_sandstone_slab", () ->
+                    new SlabBlock(offSandStone(MaterialColor.QUARTZ)));
+
+    public static final RegistryObject<Block> QUARTZ_SANDSTONE_WALL =
+            registerDefault("quartz_sandstone_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.copy(QUARTZ_SANDSTONE.get())
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
+
+    private static BlockBehaviour.Properties offSandStone(MaterialColor color) {
+        return BlockBehaviour.Properties.of(Material.STONE
+                ).sound(SoundType.STONE)
+                .color(color).requiresCorrectToolForDrops()
+                .strength(0.8F);
+    }
+
     private static BlockBehaviour.Properties offWool(MaterialColor color) {
         return BlockBehaviour.Properties.of(Material.WOOL, color).strength(0.8F).sound(SoundType.WOOL);
     }

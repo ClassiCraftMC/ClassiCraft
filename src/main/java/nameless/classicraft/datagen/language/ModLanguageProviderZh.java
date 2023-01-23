@@ -196,6 +196,9 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModBlocks.RED_WOOL_SLAB.get(), "红色羊毛台阶");
         add(ModBlocks.BLACK_WOOL_STAIRS.get(), "黑色羊毛楼梯");
         add(ModBlocks.BLACK_WOOL_SLAB.get(), "黑色羊毛台阶");
+        add(ModBlocks.QUARTZ_SANDSTONE_WALL.get(), "石英砂岩墙");
+        add(ModBlocks.QUARTZ_SANDSTONE_STAIRS.get(), "石英砂岩楼梯");
+        add(ModBlocks.QUARTZ_SANDSTONE_SLAB.get(), "石英砂岩台阶");
 
         pebbleBlock();
         meta();
