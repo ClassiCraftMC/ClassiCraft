@@ -220,8 +220,8 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICKS_WALL.get(), "裂纹磨制黑石砖墙");
         add(ModBlocks.CUT_SOUL_SANDSTONE_SLAB.get(), "切制灵魂砂岩台阶");
         add(ModBlocks.SMOOTH_QUARTZ_SANDSTONE.get(), "平滑石英砂岩");
-        add(ModItems.BLOOD_MOON_DISC.get(), "音乐碟片");
-        add("item.classicraft.blood_moon_disc.desc", "血月");
+        add(ModItems.BLOOD_MOON_DISC.get(), "音乐唱片");
+        add("item.classicraft.blood_moon_disc.desc", "Scott Lloyd Shelly - Phobos Outpost");
 
         pebbleBlock();
         meta();
