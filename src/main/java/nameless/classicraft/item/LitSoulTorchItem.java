@@ -4,7 +4,7 @@ import nameless.classicraft.api.item.ItemStackAPI;
 import nameless.classicraft.block.AbstractLightBlock;
 import nameless.classicraft.block.RealSoulTorchBlock;
 import nameless.classicraft.init.ModBlocks;
-import nameless.classicraft.init.ModConfigs;
+import nameless.classicraft.init.ModConfigurations;
 import nameless.classicraft.init.ModItems;
 import nameless.classicraft.util.LightUtils;
 import net.minecraft.core.BlockPos;
@@ -27,8 +27,8 @@ import org.jetbrains.annotations.Nullable;
 
 public class LitSoulTorchItem extends StandingAndWallBlockItem {
 
-    private static final boolean HARDCORE = ModConfigs.hardcore.get();
-    private static final Boolean WATER_BURNT = ModConfigs.waterBurnt.get();
+    private static final boolean HARDCORE = ModConfigurations.hardcore.get();
+    private static final Boolean WATER_BURNT = ModConfigurations.waterBurnt.get();
 
     public LitSoulTorchItem() {
         super(ModBlocks.REAL_SOUL_TORCH.get(),

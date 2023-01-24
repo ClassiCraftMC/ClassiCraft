@@ -6,7 +6,7 @@ import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.nio.file.Path;
 
-public class ModConfigs {
+public class ModConfigurations {
 
     public static final ForgeConfigSpec SPEC;
     public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();

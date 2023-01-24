@@ -22,8 +22,8 @@ public class ClassiCraftMod {
 
     public ClassiCraftMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ModConfigs.SPEC, "classicraft.toml");
-        ModConfigs.loadConfig(ModConfigs.SPEC, FMLPaths.CONFIGDIR.get().resolve("classicraft.toml"));
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ModConfigurations.SPEC, "classicraft.toml");
+        ModConfigurations.loadConfig(ModConfigurations.SPEC, FMLPaths.CONFIGDIR.get().resolve("classicraft.toml"));
         FoodUtils.handleFood();
         ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);

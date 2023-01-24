@@ -218,6 +218,8 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICKS_STAIRS.get(), "Cracked Polished BlackStone Bricks Stairs");
         add(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICKS_SLAB.get(), "Cracked Polished BlackStone Bricks Slab");
         add(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICKS_WALL.get(), "Cracked Polished BlackStone Bricks Wall");
+        add(ModBlocks.CUT_SOUL_SANDSTONE_SLAB.get(), "Cut Soul SandStone Slab");
+        add(ModBlocks.SMOOTH_QUARTZ_SANDSTONE.get(), "Smooth Quartz SandStone");
 
         pebbleBlock();
         meta();

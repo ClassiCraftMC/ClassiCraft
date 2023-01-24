@@ -218,6 +218,8 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICKS_STAIRS.get(), "裂纹磨制黑石砖楼梯");
         add(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICKS_SLAB.get(), "裂纹磨制黑石砖台阶");
         add(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICKS_WALL.get(), "裂纹磨制黑石砖墙");
+        add(ModBlocks.CUT_SOUL_SANDSTONE_SLAB.get(), "切制灵魂砂岩台阶");
+        add(ModBlocks.SMOOTH_QUARTZ_SANDSTONE.get(), "平滑石英砂岩");
 
         pebbleBlock();
         meta();

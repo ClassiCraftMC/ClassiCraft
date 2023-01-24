@@ -3,7 +3,7 @@ package nameless.classicraft.levelgen;
 import com.mojang.serialization.Codec;
 import nameless.classicraft.block.*;
 import nameless.classicraft.init.ModBlocks;
-import nameless.classicraft.init.ModConfigs;
+import nameless.classicraft.init.ModConfigurations;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
@@ -28,7 +28,7 @@ public class ReplaceAllFeature extends Feature<NoneFeatureConfiguration> {
 
     @Override
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
-        if (!ModConfigs.replaceVanillaBlock.get()) return false;
+        if (!ModConfigurations.replaceVanillaBlock.get()) return false;
         BlockPos origin = context.origin();
         WorldGenLevel level = context.level();
         ChunkAccess chunk = level.getChunk(origin);
