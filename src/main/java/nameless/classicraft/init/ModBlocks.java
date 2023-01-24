@@ -904,12 +904,41 @@ public class ModBlocks {
                                     .strength(1.25F, 4.2F)
                                     .sound(SoundType.BASALT)));
 
+    public static final RegistryObject<Block> CRIMSON_NYLIUM_WALL =
+            registerDefault("crimson_nylium_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.copy(Blocks.CRIMSON_NYLIUM)
+                            .requiresCorrectToolForDrops()
+                            .sound(SoundType.NYLIUM)
+                            .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
+
+    public static final RegistryObject<Block> CRIMSON_NYLIUM_SLAB =
+            registerDefault("crimson_nylium_slab", () ->
+                    new SlabBlock(BlockBehaviour.Properties.of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.25F, 4.2F)
+                            .sound(SoundType.NYLIUM)));
+
+    public static final RegistryObject<Block> CRIMSON_NYLIUM_STAIRS =
+            registerDefault("crimson_nylium_stairs", () ->
+                    new StairBlock(Blocks.CRIMSON_NYLIUM::defaultBlockState,
+                            BlockBehaviour.Properties.of(Material.STONE)
+                                    .requiresCorrectToolForDrops()
+                                    .strength(1.25F, 4.2F)
+                                    .sound(SoundType.NYLIUM)));
+
     private static BlockBehaviour.Properties offSandStone(MaterialColor color) {
         return BlockBehaviour.Properties.of(Material.STONE
                 ).sound(SoundType.STONE)
                 .color(color).requiresCorrectToolForDrops()
                 .strength(0.8F);
     }
+
+    public static final RegistryObject<Block> QUARTZ_WALL =
+            registerDefault("quartz_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.copy(Blocks.QUARTZ_BLOCK)
+                            .requiresCorrectToolForDrops()
+                            .sound(SoundType.STONE)
+                            .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
 
     private static BlockBehaviour.Properties offWool(MaterialColor color) {
         return BlockBehaviour.Properties.of(Material.WOOL, color).strength(0.8F).sound(SoundType.WOOL);

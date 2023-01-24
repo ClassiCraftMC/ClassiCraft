@@ -202,6 +202,10 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.POLISHED_BASALT_SLAB.get(), "Polished Basalt Slab");
         add(ModBlocks.POLISHED_BASALT_STAIRS.get(), "Polished Basalt Stairs");
         add(ModBlocks.POLISHED_BASALT_WALL.get(), "Polished Basalt Wall");
+        add(ModBlocks.CRIMSON_NYLIUM_SLAB.get(), "Crimson Nylium Slab");
+        add(ModBlocks.CRIMSON_NYLIUM_STAIRS.get(), "Crimson Nylium Stairs");
+        add(ModBlocks.CRIMSON_NYLIUM_WALL.get(), "Crimson Nylium Wall");
+        add(ModBlocks.QUARTZ_WALL.get(), "Quartz Wall");
 
         pebbleBlock();
         meta();

@@ -202,6 +202,10 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModBlocks.POLISHED_BASALT_SLAB.get(), "磨制玄武岩台阶");
         add(ModBlocks.POLISHED_BASALT_STAIRS.get(), "磨制玄武岩楼梯");
         add(ModBlocks.POLISHED_BASALT_WALL.get(), "磨制玄武岩墙");
+        add(ModBlocks.CRIMSON_NYLIUM_SLAB.get(), "绯红菌岩台阶");
+        add(ModBlocks.CRIMSON_NYLIUM_STAIRS.get(), "绯红菌岩楼梯");
+        add(ModBlocks.CRIMSON_NYLIUM_WALL.get(), "绯红菌岩墙");
+        add(ModBlocks.QUARTZ_WALL.get(), "石英墙");
 
         pebbleBlock();
         meta();
