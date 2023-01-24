@@ -955,6 +955,63 @@ public class ModBlocks {
                             .sound(SoundType.STONE)
                             .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
 
+    public static final RegistryObject<Block> CRACKED_NETHER_BRICKS_WALL =
+            registerDefault("cracked_nether_bricks_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.copy(Blocks.CRACKED_NETHER_BRICKS)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
+
+    public static final RegistryObject<Block> CRACKED_NETHER_BRICKS_SLAB =
+            registerDefault("cracked_nether_bricks_slab", () ->
+                    new SlabBlock(BlockBehaviour.Properties.of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.25F, 4.2F)));
+
+    public static final RegistryObject<Block> CRACKED_NETHER_BRICKS_STAIRS =
+            registerDefault("cracked_nether_bricks_stairs", () ->
+                    new StairBlock(Blocks.CRACKED_NETHER_BRICKS::defaultBlockState,
+                            BlockBehaviour.Properties.of(Material.STONE)
+                                    .requiresCorrectToolForDrops()
+                                    .strength(1.25F, 4.2F)));
+
+    public static final RegistryObject<Block> CRIMSON_NETHER_BRICKS_FENCE =
+            registerDefault("crimson_nether_bricks_fence", () ->
+                    new FenceBlock(BlockBehaviour.Properties.of(Material.STONE,
+                            MaterialColor.NETHER).requiresCorrectToolForDrops()
+                            .strength(2.0F, 6.0F)
+                            .sound(SoundType.NETHER_BRICKS)));
+
+    public static final RegistryObject<Block> PURPUR_BLOCK_WALL =
+            registerDefault("purpur_block_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.copy(Blocks.PURPUR_BLOCK)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
+
+    public static final RegistryObject<Block> SMOOTH_QUARTZ_WALL =
+            registerDefault("smooth_quartz_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.copy(Blocks.SMOOTH_QUARTZ)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
+
+    public static final RegistryObject<Block> CRACKED_POLISHED_BLACKSTONE_BRICKS_WALL =
+            registerDefault("cracked_polished_blackstone_bricks_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.copy(Blocks.CRACKED_NETHER_BRICKS)
+                            .requiresCorrectToolForDrops()
+                            .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
+
+    public static final RegistryObject<Block> CRACKED_POLISHED_BLACKSTONE_BRICKS_SLAB =
+            registerDefault("cracked_polished_blackstone_bricks_slab", () ->
+                    new SlabBlock(BlockBehaviour.Properties.of(Material.STONE)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.25F, 4.2F)));
+
+    public static final RegistryObject<Block> CRACKED_POLISHED_BLACKSTONE_BRICKS_STAIRS =
+            registerDefault("cracked_polished_blackstone_bricks_stairs", () ->
+                    new StairBlock(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS::defaultBlockState,
+                            BlockBehaviour.Properties.of(Material.STONE)
+                                    .requiresCorrectToolForDrops()
+                                    .strength(1.25F, 4.2F)));
+
     private static BlockBehaviour.Properties offSandStone(MaterialColor color) {
         return BlockBehaviour.Properties.of(Material.STONE
                 ).sound(SoundType.STONE)

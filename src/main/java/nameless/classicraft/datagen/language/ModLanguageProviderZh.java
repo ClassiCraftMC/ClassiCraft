@@ -208,7 +208,16 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModBlocks.WARPED_NYLIUM_SLAB.get(), "诡异菌岩台阶");
         add(ModBlocks.WARPED_NYLIUM_STAIRS.get(), "诡异菌岩楼梯");
         add(ModBlocks.WARPED_NYLIUM_WALL.get(), "诡异菌岩墙");
+        add(ModBlocks.CRACKED_NETHER_BRICKS_SLAB.get(), "裂纹下界岩砖台阶");
+        add(ModBlocks.CRACKED_NETHER_BRICKS_STAIRS.get(), "裂纹下界岩砖楼梯");
+        add(ModBlocks.CRACKED_NETHER_BRICKS_WALL.get(), "裂纹下界岩砖墙");
+        add(ModBlocks.CRIMSON_NETHER_BRICKS_FENCE.get(), "绯红下界砖栅栏");
         add(ModBlocks.QUARTZ_WALL.get(), "石英墙");
+        add(ModBlocks.PURPUR_BLOCK_WALL.get(), "紫珀墙");
+        add(ModBlocks.SMOOTH_QUARTZ_WALL.get(), "平滑石英墙");
+        add(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICKS_STAIRS.get(), "裂纹磨制黑石砖楼梯");
+        add(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICKS_SLAB.get(), "裂纹磨制黑石砖台阶");
+        add(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICKS_WALL.get(), "裂纹磨制黑石砖墙");
 
         pebbleBlock();
         meta();

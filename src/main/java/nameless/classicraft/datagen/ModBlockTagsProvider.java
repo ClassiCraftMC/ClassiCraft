@@ -38,6 +38,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .forEach(this::shovelMineAble);
         blocks.stream().filter(block -> block.defaultBlockState().getMaterial() == Material.STONE)
                 .forEach(this::needWoodTool);
+        blocks.stream().filter(block -> block instanceof FenceBlock)
+                .forEach(this::fenceTag);
+    }
+
+    private void fenceTag(Block fence) {
+        tag(BlockTags.FENCES).add(fence);
     }
 
     private void wallTag(Block wall) {

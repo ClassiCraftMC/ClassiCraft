@@ -5,10 +5,7 @@ import nameless.classicraft.init.ModBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SlabBlock;
-import net.minecraft.world.level.block.StairBlock;
-import net.minecraft.world.level.block.WallBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -66,6 +63,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         wallBlock(ModBlocks.CRACKED_BRICKS_WALL, "cracked_bricks", "classicraft:block/cracked_bricks");
         wallBlock(ModBlocks.CRACKED_STONE_BRICKS_WALL, "cracked_stone_bricks", "minecraft:block/cracked_stone_bricks");
         wallBlock(ModBlocks.DEEPSLATE_WALL, "deepslate","minecraft:block/deepslate");
+        wallBlock(ModBlocks.PURPUR_BLOCK_WALL, "purpur_block", "minecraft:block/purpur_block");
+        wallBlock(ModBlocks.SMOOTH_QUARTZ_WALL, "smooth_quartz", "minecraft:block/quartz_block_bottom");
         wallBlock(ModBlocks.CUT_QUARTZ_SANDSTONE_WALL, "cut_quartz_sandstone", "classicraft:block/cut_quartz_sandstone");
         wallBlock(ModBlocks.PRISMARINE_BRICKS_WALL, "prismarine_bricks","minecraft:block/prismarine_bricks");
         wallBlock(ModBlocks.CUT_RED_SANDSTONE_WALL, "cut_red_sandstone","minecraft:block/cut_red_sandstone");
@@ -122,6 +121,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 "smooth_basalt", "minecraft:block/smooth_basalt");
         threeBuildBlocks(ModBlocks.QUARTZ_BRICKS_WALL, ModBlocks.QUARTZ_BRICKS_STAIRS, ModBlocks.QUARTZ_BRICKS_SLAB,
                 "quartz_bricks", "minecraft:block/quartz_bricks");
+        threeBuildBlocks(ModBlocks.CRACKED_NETHER_BRICKS_WALL, ModBlocks.CRACKED_NETHER_BRICKS_STAIRS, ModBlocks.CRACKED_NETHER_BRICKS_SLAB,
+                "cracked_nether_bricks", "minecraft:block/cracked_nether_bricks");
+        threeBuildBlocks(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICKS_WALL, ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICKS_STAIRS, ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICKS_SLAB,
+                "cracked_polished_blackstone_bricks", "minecraft:block/cracked_polished_blackstone_bricks");
         twoBuildBlocks(ModBlocks.WHITE_WOOL_STAIRS, ModBlocks.WHITE_WOOL_SLAB,
                 "white_wool", "minecraft:block/white_wool");
         twoBuildBlocks(ModBlocks.ORANGE_WOOL_STAIRS, ModBlocks.ORANGE_WOOL_SLAB,
@@ -154,6 +157,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 "red_wool", "minecraft:block/red_wool");
         twoBuildBlocks(ModBlocks.BLACK_WOOL_STAIRS, ModBlocks.BLACK_WOOL_SLAB,
                 "black_wool", "minecraft:block/black_wool");
+        fenceBlock(ModBlocks.CRIMSON_NETHER_BRICKS_FENCE, "minecraft:block/red_nether_bricks");
+    }
+
+    private void fenceBlock(RegistryObject<Block> block, String texture) {
+        fenceBlock((FenceBlock) block.get(), new ResourceLocation(texture));
     }
 
     protected void twoBuildBlocks(RegistryObject<Block> stairs, RegistryObject<Block> slab, String prefix, String texture) {

@@ -1,12 +1,10 @@
-package nameless.classicraft.event;
+package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.api.item.MetaItem;
 import nameless.classicraft.block.QuickSandBlock;
 import nameless.classicraft.block.SandStoneBlock;
 import nameless.classicraft.block.StoneBricksBlock;
-import nameless.classicraft.init.ModBlocks;
-import nameless.classicraft.init.ModItems;
 import nameless.classicraft.util.ExtraUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -18,7 +16,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import java.util.Set;
 
-public class RegisterEvents {
+public class ModCreativeModeTabs {
 
     public static CreativeModeTab COMMON_TAB;
     public static CreativeModeTab BUILDING_BLOCKS;
@@ -52,6 +50,8 @@ public class RegisterEvents {
                         .displayItems((features, output, hasPermissions) -> {
                             Set<Block> blocks = ExtraUtils.getBlocks();
                             blocks.stream().filter(block -> block instanceof StairBlock)
+                                            .forEach(output::accept);
+                            blocks.stream().filter(block -> block instanceof FenceBlock)
                                             .forEach(output::accept);
                             blocks.stream().filter(block -> block instanceof WallBlock)
                                     .forEach(output::accept);

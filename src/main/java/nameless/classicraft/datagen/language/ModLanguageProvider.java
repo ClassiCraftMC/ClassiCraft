@@ -208,7 +208,16 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.WARPED_NYLIUM_SLAB.get(), "Warped Nylium Slab");
         add(ModBlocks.WARPED_NYLIUM_STAIRS.get(), "Warped Nylium Stairs");
         add(ModBlocks.WARPED_NYLIUM_WALL.get(), "Warped Nylium Wall");
+        add(ModBlocks.CRACKED_NETHER_BRICKS_SLAB.get(), "Cracked Nether Bricks Slab");
+        add(ModBlocks.CRACKED_NETHER_BRICKS_STAIRS.get(), "Cracked Nether Bricks Stairs");
+        add(ModBlocks.CRACKED_NETHER_BRICKS_WALL.get(), "Cracked Nether Bricks Wall");
+        add(ModBlocks.CRIMSON_NETHER_BRICKS_FENCE.get(), "Crimson Nether Bricks Fence");
         add(ModBlocks.QUARTZ_WALL.get(), "Quartz Wall");
+        add(ModBlocks.PURPUR_BLOCK_WALL.get(), "Purpur Block Wall");
+        add(ModBlocks.SMOOTH_QUARTZ_WALL.get(), "Smooth Quartz Wall");
+        add(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICKS_STAIRS.get(), "Cracked Polished BlackStone Bricks Stairs");
+        add(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICKS_SLAB.get(), "Cracked Polished BlackStone Bricks Slab");
+        add(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICKS_WALL.get(), "Cracked Polished BlackStone Bricks Wall");
 
         pebbleBlock();
         meta();

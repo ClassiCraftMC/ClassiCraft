@@ -60,6 +60,8 @@ public class ModItemModelProvider extends ItemModelProvider {
                 new ResourceLocation("minecraft:block/cracked_deepslate_bricks"));
         wallInventory("deepslate_wall",
                 new ResourceLocation("minecraft:block/deepslate"));
+        wallInventory("purpur_block", "minecraft:block/purpur_block");
+        wallInventory("smooth_quartz", "minecraft:block/quartz_block_bottom");
         wallInventory("quartz", "minecraft:block/quartz_block_side");
         wallInventory("warped_nylium", "minecraft:block/warped_nylium");
         wallInventory("crimson_nylium", "minecraft:block/crimson_nylium");
@@ -101,7 +103,14 @@ public class ModItemModelProvider extends ItemModelProvider {
         threeBuildBlockItems("smooth_quartz_sandstone", "classicraft:block/smooth_quartz_sandstone");
         threeBuildBlockItems("smooth_basalt", "minecraft:block/smooth_basalt");
         threeBuildBlockItems("quartz_bricks", "minecraft:block/quartz_bricks");
+        threeBuildBlockItems("cracked_nether_bricks", "minecraft:block/cracked_nether_bricks");
+        threeBuildBlockItems("cracked_polished_blackstone_bricks", "minecraft:block/cracked_polished_blackstone_bricks");
+        fenceInventory("crimson_nether_bricks","minecraft:block/red_nether_bricks");
         woolTwoBlockItems();
+    }
+
+    void fenceInventory(String prefix, String texture) {
+        fenceInventory(prefix + "_fence", new ResourceLocation(texture));
     }
 
     void woolTwoBlockItems() {

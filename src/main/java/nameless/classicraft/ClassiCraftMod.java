@@ -1,7 +1,7 @@
 package nameless.classicraft;
 
 import com.mojang.logging.LogUtils;
-import nameless.classicraft.event.RegisterEvents;
+import nameless.classicraft.init.ModCreativeModeTabs;
 import nameless.classicraft.glm.ModLootModifiers;
 import nameless.classicraft.init.*;
 import nameless.classicraft.util.FoodUtils;
@@ -30,7 +30,7 @@ public class ClassiCraftMod {
         ModBiomeModifiers.BIOME_MODIFIER_SERIALIZERS.register(modEventBus);
         ModFeatures.FEATURES.register(modEventBus);
         ModEntities.ENTITIES.register(modEventBus);
-        modEventBus.addListener(RegisterEvents::registerCreativeModeTab);
+        modEventBus.addListener(ModCreativeModeTabs::registerCreativeModeTab);
         ModLootModifiers.REGISTER.register(modEventBus);
         ModSounds.SOUND_EVENTS.register(modEventBus);
     }

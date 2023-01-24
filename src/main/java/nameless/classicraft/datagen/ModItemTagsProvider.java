@@ -34,8 +34,14 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .forEach(this::slabTag);
         blocks.stream().filter(block -> block instanceof FlowerBlock)
                 .forEach(this::flowerTag);
+        blocks.stream().filter(block -> block instanceof FenceBlock)
+                        .forEach(this::fenceTag);
         addVanillaPebbleTags();
         addDrinkableTags();
+    }
+
+    void fenceTag(Block fence) {
+        tag(ItemTags.FENCES).add(fence.asItem());
     }
 
     void addDrinkableTags() {
