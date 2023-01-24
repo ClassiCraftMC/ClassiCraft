@@ -135,6 +135,10 @@ public class ModItems {
             register("phobos_outpost_disc", () ->
                     new RecordItem(11, ModSounds.PHOBOS_OUTPOST, new Item.Properties().stacksTo(1), 238));
 
+    public static final RegistryObject<Item> DRAGON_FISH_DISC =
+            register("dragon_fish_disc", () ->
+                    new RecordItem(11, ModSounds.DRAGON_FISH, new Item.Properties().stacksTo(1), 238));
+
     private static RegistryObject<Item> food(String name, FoodProperties foodData) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().food(foodData)));
     }

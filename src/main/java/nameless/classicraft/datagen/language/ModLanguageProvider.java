@@ -221,7 +221,9 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.CUT_SOUL_SANDSTONE_SLAB.get(), "Cut Soul SandStone Slab");
         add(ModBlocks.SMOOTH_QUARTZ_SANDSTONE.get(), "Smooth Quartz SandStone");
         add(ModItems.PHOBOS_OUTPOST_DISC.get(), "§bMusic Disc");
-        add("item.classicraft.blood_moon_disc.desc", "Scott Lloyd Shelly - Phobos Outpost");
+        add("item.classicraft.phobos_outpost_disc.desc", "Scott Lloyd Shelly - Phobos Outpost");
+        add(ModItems.DRAGON_FISH_DISC.get(), "§bMusic Disc");
+        add("item.classicraft.dragon_fish_disc.desc", "C418 - Dragon Fish");
 
         pebbleBlock();
         meta();

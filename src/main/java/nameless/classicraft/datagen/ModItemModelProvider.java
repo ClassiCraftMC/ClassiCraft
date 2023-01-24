@@ -113,6 +113,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         fenceInventory("crimson_nether_bricks","minecraft:block/red_nether_bricks");
         woolTwoBlockItems();
         otherItem(ModItems.PHOBOS_OUTPOST_DISC.get(), "classicraft:item/music_disc_blood_moon");
+        otherItem(ModItems.DRAGON_FISH_DISC.get(), "classicraft:item/music_disc_dragon_fish");
     }
 
     public ItemModelBuilder otherItem(Item item, String texture)

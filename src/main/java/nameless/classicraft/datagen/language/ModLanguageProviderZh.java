@@ -221,7 +221,9 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModBlocks.CUT_SOUL_SANDSTONE_SLAB.get(), "切制灵魂砂岩台阶");
         add(ModBlocks.SMOOTH_QUARTZ_SANDSTONE.get(), "平滑石英砂岩");
         add(ModItems.PHOBOS_OUTPOST_DISC.get(), "§b音乐唱片");
-        add("item.classicraft.blood_moon_disc.desc", "Scott Lloyd Shelly - Phobos Outpost");
+        add("item.classicraft.phobos_outpost_disc.desc", "Scott Lloyd Shelly - Phobos Outpost");
+        add(ModItems.DRAGON_FISH_DISC.get(), "§b音乐唱片");
+        add("item.classicraft.dragon_fish_disc.desc", "C418 - Dragon Fish");
 
         pebbleBlock();
         meta();
