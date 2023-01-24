@@ -33,6 +33,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         stairsInventory("smooth_soul_sandstone", "classicraft:block/smooth_soul_sandstone");
         stairsInventory("cut_quartz_sandstone", "classicraft:block/cut_quartz_sandstone", "classicraft:block/quartz_sandstone_bottom", "classicraft:block/quartz_sandstone_top");
         stairsInventory("quartz_sandstone","classicraft:block/quartz_sandstone", "classicraft:block/quartz_sandstone_bottom", "classicraft:block/quartz_sandstone_top");
+        stairsInventory("polished_basalt", "minecraft:block/polished_basalt_side", "minecraft:block/polished_basalt_top", "minecraft:block/polished_basalt_top");
         wallInventory("smooth_soul_sandstone_wall",
                 new ResourceLocation("classicraft:block/soul_sandstone_top"));
         wallInventory("smooth_stone_wall",
@@ -57,6 +58,7 @@ public class ModItemModelProvider extends ItemModelProvider {
                 new ResourceLocation("minecraft:block/cracked_deepslate_bricks"));
         wallInventory("deepslate_wall",
                 new ResourceLocation("minecraft:block/deepslate"));
+        wallInventory("polished_basalt", "minecraft:block/polished_basalt_side");
         wallInventory("quartz_sandstone","classicraft:block/quartz_sandstone");
         wallInventory("soul_sandstone", "classicraft:block/soul_sandstone");
         wallInventory("cut_quartz_sandstone", "classicraft:block/cut_quartz_sandstone");
@@ -78,6 +80,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         slabInventory("cracked_deepslate_bricks_slab", "minecraft:block/cracked_deepslate_bricks");
         slabInventory("cut_soul_sandstone_slab", "classicraft:block/soul_sandstone_bottom", "classicraft:block/soul_sandstone_top", "classicraft:block/cut_soul_sandstone");
         slabInventory("smooth_soul_sandstone_slab", "classicraft:block/soul_sandstone_bottom", "classicraft:block/soul_sandstone_top", "classicraft:block/smooth_soul_sandstone");
+        slabInventory("polished_basalt_slab", "minecraft:block/polished_basalt_top", "minecraft:block/polished_basalt_top", "minecraft:block/polished_basalt_side");
         basicItem(ModItems.MATERIAL.get());
         basicItem(ModItems.DEBUG_BURN_TIME_STICK.get());
         threeBuildBlockItems("cracked_deepslate_tiles", "minecraft:block/cracked_deepslate_tiles");

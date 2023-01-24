@@ -74,7 +74,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> MOSSY_BRICKS_STAIRS =
             registerDefault("mossy_bricks_stairs", () ->
-                    new StairBlock(MOSSY_BRICKS.get().defaultBlockState(),
+                    new StairBlock(() -> MOSSY_BRICKS.get().defaultBlockState(),
                             BlockBehaviour.Properties
                             .of(Material.STONE).requiresCorrectToolForDrops()
                             .strength(1.5F, 6.0F)));
@@ -116,7 +116,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CRACKED_BRICKS_STAIRS =
             registerDefault("cracked_bricks_stairs", () ->
-                    new StairBlock(CRACKED_BRICKS.get().defaultBlockState(),
+                    new StairBlock(() -> CRACKED_BRICKS.get().defaultBlockState(),
                             BlockBehaviour.Properties
                             .of(Material.STONE).requiresCorrectToolForDrops()
                             .strength(1.5F, 6.0F)));
@@ -197,7 +197,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> SMOOTH_STONE_STAIRS =
             registerDefault("smooth_stone_stairs", () ->
-                    new StairBlock(Blocks.SMOOTH_STONE.defaultBlockState(),
+                    new StairBlock(() -> Blocks.SMOOTH_STONE.defaultBlockState(),
                             BlockBehaviour.Properties
                                     .of(Material.STONE)
                                     .requiresCorrectToolForDrops()
@@ -205,7 +205,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CRACKED_STONE_BRICKS_STAIRS =
             registerDefault("cracked_stone_bricks_stairs", () ->
-                    new StairBlock(Blocks.CRACKED_STONE_BRICKS.defaultBlockState(),
+                    new StairBlock(() -> Blocks.CRACKED_STONE_BRICKS.defaultBlockState(),
                             BlockBehaviour.Properties
                                     .of(Material.STONE)
                                     .requiresCorrectToolForDrops()
@@ -324,7 +324,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> DEEPSLATE_STAIRS =
             registerDefault("deepslate_stairs", () ->
-                    new StairBlock(Blocks.DEEPSLATE.defaultBlockState(),
+                    new StairBlock(() -> Blocks.DEEPSLATE.defaultBlockState(),
                             BlockBehaviour.Properties
                                     .of(Material.STONE).requiresCorrectToolForDrops()
                                     .sound(SoundType.DEEPSLATE)
@@ -346,7 +346,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CRACKED_DEEPSLATE_BRICKS_STAIRS =
             registerDefault("cracked_deepslate_bricks_stairs", () ->
-                    new StairBlock(Blocks.CRACKED_DEEPSLATE_BRICKS.defaultBlockState(),
+                    new StairBlock(() -> Blocks.CRACKED_DEEPSLATE_BRICKS.defaultBlockState(),
                             BlockBehaviour.Properties
                                     .of(Material.STONE).requiresCorrectToolForDrops()
                                     .strength(1.5F, 6.0F)));
@@ -359,14 +359,14 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CUT_SANDSTONE_STAIRS =
             registerDefault("cut_sandstone_stairs", () ->
-                    new StairBlock(Blocks.CUT_SANDSTONE.defaultBlockState(),
+                    new StairBlock(() -> Blocks.CUT_SANDSTONE.defaultBlockState(),
                             BlockBehaviour.Properties
                                     .of(Material.STONE).requiresCorrectToolForDrops()
                                     .strength(1.5F, 6.0F)));
 
     public static final RegistryObject<Block> CUT_RED_SANDSTONE_STAIRS =
             registerDefault("cut_red_sandstone_stairs", () ->
-                    new StairBlock(Blocks.CUT_RED_SANDSTONE.defaultBlockState(),
+                    new StairBlock(() -> Blocks.CUT_RED_SANDSTONE.defaultBlockState(),
                             BlockBehaviour.Properties
                                     .of(Material.STONE).requiresCorrectToolForDrops()
                                     .strength(1.5F, 6.0F)));
@@ -398,7 +398,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> SOUL_SANDSTONE_STAIRS =
             registerDefault("soul_sandstone_stairs", () ->
-                    new StairBlock(SOUL_SANDSTONE.get().defaultBlockState(),
+                    new StairBlock(() -> SOUL_SANDSTONE.get().defaultBlockState(),
                             BlockBehaviour.Properties
                                     .of(Material.STONE).requiresCorrectToolForDrops()
                                     .strength(1.5F, 6.0F)));
@@ -428,7 +428,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> SMOOTH_SOUL_SANDSTONE_STAIRS =
             registerDefault("smooth_soul_sandstone_stairs", () ->
-                    new StairBlock(SMOOTH_SOUL_SANDSTONE.get().defaultBlockState(),
+                    new StairBlock(() -> SMOOTH_SOUL_SANDSTONE.get().defaultBlockState(),
                             BlockBehaviour.Properties
                                     .of(Material.STONE).requiresCorrectToolForDrops()
                                     .strength(1.5F, 6.0F)));
@@ -441,7 +441,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CUT_SOUL_SANDSTONE_STAIRS =
             registerDefault("cut_soul_sandstone_stairs", () ->
-                    new StairBlock(CUT_SOUL_SANDSTONE.get().defaultBlockState(),
+                    new StairBlock(() -> CUT_SOUL_SANDSTONE.get().defaultBlockState(),
                             BlockBehaviour.Properties
                                     .of(Material.STONE).requiresCorrectToolForDrops()
                                     .strength(1.5F, 6.0F)));
@@ -472,7 +472,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CRACKED_DEEPSLATE_TILES_STAIRS =
             registerDefault("cracked_deepslate_tiles_stairs", () ->
-                    new StairBlock(Blocks.CRACKED_DEEPSLATE_TILES.defaultBlockState(),
+                    new StairBlock(Blocks.CRACKED_DEEPSLATE_TILES::defaultBlockState,
                             BlockBehaviour.Properties
                                     .of(Material.STONE).requiresCorrectToolForDrops()
                                     .sound(SoundType.DEEPSLATE)
@@ -494,7 +494,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> SANDSTONE_BRICKS_STAIRS =
             registerDefault("sandstone_bricks_stairs", () ->
-                    new StairBlock(SANDSTONE_BRICKS.get().defaultBlockState(),
+                    new StairBlock(() -> SANDSTONE_BRICKS.get().defaultBlockState(),
                             BlockBehaviour.Properties
                                     .of(Material.STONE).requiresCorrectToolForDrops()
                                     .strength(1.5F, 6.0F)));
@@ -515,7 +515,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> RED_SANDSTONE_BRICKS_STAIRS =
             registerDefault("red_sandstone_bricks_stairs", () ->
-                    new StairBlock(RED_SANDSTONE_BRICKS.get().defaultBlockState(),
+                    new StairBlock(() -> RED_SANDSTONE_BRICKS.get().defaultBlockState(),
                             BlockBehaviour.Properties
                                     .of(Material.STONE).requiresCorrectToolForDrops()
                                     .strength(1.5F, 6.0F)));
@@ -536,7 +536,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> SOUL_SANDSTONE_BRICKS_STAIRS =
             registerDefault("soul_sandstone_bricks_stairs", () ->
-                    new StairBlock(SOUL_SANDSTONE_BRICKS.get().defaultBlockState(),
+                    new StairBlock(() -> SOUL_SANDSTONE_BRICKS.get().defaultBlockState(),
                             BlockBehaviour.Properties
                                     .of(Material.STONE).requiresCorrectToolForDrops()
                                     .strength(1.5F, 6.0F)));
@@ -557,7 +557,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> FLINT_BLOCK_STAIRS =
             registerDefault("flint_block_stairs", () ->
-                    new StairBlock(FLINT_BLOCK.get().defaultBlockState(),
+                    new StairBlock(() -> FLINT_BLOCK.get().defaultBlockState(),
                             BlockBehaviour.Properties
                                     .of(Material.STONE).requiresCorrectToolForDrops()
                                     .strength(1.5F, 6.0F)));
@@ -579,7 +579,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> QUARTZ_SANDSTONE_BRICKS_STAIRS =
             registerDefault("quartz_sandstone_bricks_stairs", () ->
-                    new StairBlock(QUARTZ_SANDSTONE_BRICKS.get().defaultBlockState(),
+                    new StairBlock(() -> QUARTZ_SANDSTONE_BRICKS.get().defaultBlockState(),
                             BlockBehaviour.Properties
                                     .of(Material.STONE).requiresCorrectToolForDrops()
                                     .strength(1.5F, 6.0F)));
@@ -606,7 +606,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> END_STONE_STAIRS =
             registerDefault("end_stone_stairs", () ->
-                    new StairBlock(Blocks.END_STONE.defaultBlockState(),
+                    new StairBlock(() -> Blocks.END_STONE.defaultBlockState(),
                             BlockBehaviour.Properties
                                     .of(Material.STONE).requiresCorrectToolForDrops()
                                     .strength(1.5F, 6.0F)));
@@ -626,7 +626,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> NETHERRACK_STAIRS =
             registerDefault("netherrack_stairs", () ->
-                    new StairBlock(Blocks.NETHERRACK.defaultBlockState(),
+                    new StairBlock(() -> Blocks.NETHERRACK.defaultBlockState(),
                             BlockBehaviour.Properties
                                     .of(Material.STONE).requiresCorrectToolForDrops()
                                     .strength(1.5F, 6.0F)));
@@ -650,7 +650,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> SMOOTH_QUARTZ_SANDSTONE_STAIRS =
             registerDefault("smooth_quartz_sandstone_stairs", () ->
-                    new StairBlock(SMOOTH_QUARTZ_SANDSTONE.get().defaultBlockState(),
+                    new StairBlock(() -> SMOOTH_QUARTZ_SANDSTONE.get().defaultBlockState(),
                             BlockBehaviour.Properties
                                     .of(Material.STONE).requiresCorrectToolForDrops()
                                     .strength(1.5F, 6.0F)));
@@ -670,7 +670,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> SMOOTH_BASALT_STAIRS =
             registerDefault("smooth_basalt_stairs", () ->
-                    new StairBlock(Blocks.SMOOTH_BASALT.defaultBlockState(),
+                    new StairBlock(Blocks.SMOOTH_BASALT::defaultBlockState,
                             BlockBehaviour.Properties
                                     .of(Material.STONE).requiresCorrectToolForDrops()
                                     .strength(1.5F, 6.0F)));
@@ -689,7 +689,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CUT_QUARTZ_SANDSTONE_STAIRS =
             registerDefault("cut_quartz_sandstone_stairs", () ->
-                    new StairBlock(CUT_QUARTZ_SANDSTONE.get().defaultBlockState(),
+                    new StairBlock(() -> CUT_QUARTZ_SANDSTONE.get().defaultBlockState(),
                             BlockBehaviour.Properties
                                     .of(Material.STONE).requiresCorrectToolForDrops()
                                     .strength(1.5F, 6.0F)));
@@ -710,7 +710,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> QUARTZ_BRICKS_STAIRS =
             registerDefault("quartz_bricks_stairs", () ->
-                    new StairBlock(Blocks.QUARTZ_BRICKS.defaultBlockState(),
+                    new StairBlock(Blocks.QUARTZ_BRICKS::defaultBlockState,
                             BlockBehaviour.Properties
                                     .of(Material.STONE).requiresCorrectToolForDrops()
                                     .strength(1.5F, 6.0F)));
@@ -727,7 +727,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> WHITE_WOOL_STAIRS =
             registerDefault("white_wool_stairs", () ->
-                    new StairBlock(Blocks.WHITE_WOOL.defaultBlockState(),
+                    new StairBlock(Blocks.WHITE_WOOL::defaultBlockState,
                             offWool(MaterialColor.SNOW)));
 
     public static final RegistryObject<Block> ORANGE_WOOL_SLAB =
@@ -736,7 +736,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> ORANGE_WOOL_STAIRS =
             registerDefault("orange_wool_stairs", () ->
-                    new StairBlock(Blocks.ORANGE_WOOL.defaultBlockState(),
+                    new StairBlock(Blocks.ORANGE_WOOL::defaultBlockState,
                             offWool(MaterialColor.COLOR_ORANGE)));
 
     public static final RegistryObject<Block> MAGENTA_WOOL_SLAB =
@@ -745,7 +745,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> MAGENTA_WOOL_STAIRS =
             registerDefault("magenta_wool_stairs", () ->
-                    new StairBlock(Blocks.MAGENTA_WOOL.defaultBlockState(),
+                    new StairBlock(Blocks.MAGENTA_WOOL::defaultBlockState,
                             offWool(MaterialColor.COLOR_MAGENTA)));
 
     public static final RegistryObject<Block> LIGHT_BLUE_WOOL_SLAB =
@@ -754,7 +754,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> LIGHT_BLUE_WOOL_STAIRS =
             registerDefault("light_blue_wool_stairs", () ->
-                    new StairBlock(Blocks.LIGHT_BLUE_WOOL.defaultBlockState(),
+                    new StairBlock(Blocks.LIGHT_BLUE_WOOL::defaultBlockState,
                             offWool(MaterialColor.COLOR_LIGHT_BLUE)));
 
     public static final RegistryObject<Block> YELLOW_WOOL_SLAB =
@@ -763,7 +763,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> YELLOW_WOOL_STAIRS =
             registerDefault("yellow_wool_stairs", () ->
-                    new StairBlock(Blocks.YELLOW_WOOL.defaultBlockState(),
+                    new StairBlock(Blocks.YELLOW_WOOL::defaultBlockState,
                             offWool(MaterialColor.COLOR_YELLOW)));
 
     public static final RegistryObject<Block> LIME_WOOL_SLAB =
@@ -772,7 +772,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> LIME_WOOL_STAIRS =
             registerDefault("lime_wool_stairs", () ->
-                    new StairBlock(Blocks.LIME_WOOL.defaultBlockState(),
+                    new StairBlock(Blocks.LIME_WOOL::defaultBlockState,
                             offWool(MaterialColor.COLOR_LIGHT_GREEN)));
 
     public static final RegistryObject<Block> PINK_WOOL_SLAB =
@@ -781,7 +781,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> PINK_WOOL_STAIRS =
             registerDefault("pink_wool_stairs", () ->
-                    new StairBlock(Blocks.PINK_WOOL.defaultBlockState(),
+                    new StairBlock(Blocks.PINK_WOOL::defaultBlockState,
                             offWool(MaterialColor.COLOR_PINK)));
 
     public static final RegistryObject<Block> GRAY_WOOL_SLAB =
@@ -790,7 +790,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> GRAY_WOOL_STAIRS =
             registerDefault("gray_wool_stairs", () ->
-                    new StairBlock(Blocks.GRAY_WOOL.defaultBlockState(),
+                    new StairBlock(Blocks.GRAY_WOOL::defaultBlockState,
                             offWool(MaterialColor.COLOR_GRAY)));
 
     public static final RegistryObject<Block> LIGHT_GRAY_WOOL_SLAB =
@@ -799,7 +799,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> LIGHT_GRAY_WOOL_STAIRS =
             registerDefault("light_gray_wool_stairs", () ->
-                    new StairBlock(Blocks.LIGHT_GRAY_WOOL.defaultBlockState(),
+                    new StairBlock(Blocks.LIGHT_GRAY_WOOL::defaultBlockState,
                             offWool(MaterialColor.COLOR_LIGHT_GRAY)));
 
     public static final RegistryObject<Block> CYAN_WOOL_SLAB =
@@ -808,7 +808,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CYAN_WOOL_STAIRS =
             registerDefault("cyan_wool_stairs", () ->
-                    new StairBlock(Blocks.CYAN_WOOL.defaultBlockState(),
+                    new StairBlock(Blocks.CYAN_WOOL::defaultBlockState,
                             offWool(MaterialColor.COLOR_CYAN)));
 
     public static final RegistryObject<Block> PURPLE_WOOL_SLAB =
@@ -817,7 +817,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> PURPLE_WOOL_STAIRS =
             registerDefault("purple_wool_stairs", () ->
-                    new StairBlock(Blocks.PURPLE_WOOL.defaultBlockState(),
+                    new StairBlock(Blocks.PURPLE_WOOL::defaultBlockState,
                             offWool(MaterialColor.COLOR_PURPLE)));
 
     public static final RegistryObject<Block> BLUE_WOOL_SLAB =
@@ -826,7 +826,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> BLUE_WOOL_STAIRS =
             registerDefault("blue_wool_stairs", () ->
-                    new StairBlock(Blocks.BLUE_WOOL.defaultBlockState(),
+                    new StairBlock(Blocks.BLUE_WOOL::defaultBlockState,
                             offWool(MaterialColor.COLOR_BLUE)));
 
     public static final RegistryObject<Block> BROWN_WOOL_SLAB =
@@ -835,7 +835,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> BROWN_WOOL_STAIRS =
             registerDefault("brown_wool_stairs", () ->
-                    new StairBlock(Blocks.BROWN_WOOL.defaultBlockState(),
+                    new StairBlock(Blocks.BROWN_WOOL::defaultBlockState,
                             offWool(MaterialColor.COLOR_BROWN)));
 
     public static final RegistryObject<Block> GREEN_WOOL_SLAB =
@@ -844,7 +844,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> GREEN_WOOL_STAIRS =
             registerDefault("green_wool_stairs", () ->
-                    new StairBlock(Blocks.GREEN_WOOL.defaultBlockState(),
+                    new StairBlock(Blocks.GREEN_WOOL::defaultBlockState,
                             offWool(MaterialColor.COLOR_GREEN)));
 
     public static final RegistryObject<Block> RED_WOOL_SLAB =
@@ -853,7 +853,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> RED_WOOL_STAIRS =
             registerDefault("red_wool_stairs", () ->
-                    new StairBlock(Blocks.RED_WOOL.defaultBlockState(),
+                    new StairBlock(Blocks.RED_WOOL::defaultBlockState,
                             offWool(MaterialColor.COLOR_RED)));
 
     public static final RegistryObject<Block> BLACK_WOOL_SLAB =
@@ -862,12 +862,12 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> BLACK_WOOL_STAIRS =
             registerDefault("black_wool_stairs", () ->
-                    new StairBlock(Blocks.BLACK_WOOL.defaultBlockState(),
+                    new StairBlock(Blocks.BLACK_WOOL::defaultBlockState,
                             offWool(MaterialColor.COLOR_BLACK)));
 
     public static final RegistryObject<Block> QUARTZ_SANDSTONE_STAIRS =
             registerDefault("quartz_sandstone_stairs", () ->
-                    new StairBlock(QUARTZ_SANDSTONE.get().defaultBlockState(),
+                    new StairBlock(() -> QUARTZ_SANDSTONE.get().defaultBlockState(),
                             offSandStone(MaterialColor.QUARTZ)));
 
     public static final RegistryObject<Block> QUARTZ_SANDSTONE_SLAB =
@@ -879,6 +879,30 @@ public class ModBlocks {
                     new WallBlock(BlockBehaviour.Properties.copy(QUARTZ_SANDSTONE.get())
                             .requiresCorrectToolForDrops()
                             .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
+
+    public static final RegistryObject<Block> POLISHED_BASALT_WALL =
+            registerDefault("polished_basalt_wall", () ->
+                    new WallBlock(BlockBehaviour.Properties.copy(Blocks.POLISHED_BASALT)
+                            .requiresCorrectToolForDrops()
+                            .sound(SoundType.BASALT)
+                            .noOcclusion().isRedstoneConductor((bs, br, bp) -> false).dynamicShape()));
+
+    public static final RegistryObject<Block> POLISHED_BASALT_SLAB =
+            registerDefault("polished_basalt_slab", () ->
+                    new SlabBlock(BlockBehaviour.Properties.of(Material.STONE,
+                            MaterialColor.COLOR_BLACK)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.25F, 4.2F)
+                            .sound(SoundType.BASALT)));
+
+    public static final RegistryObject<Block> POLISHED_BASALT_STAIRS =
+            registerDefault("polished_basalt_stairs", () ->
+                    new StairBlock(Blocks.POLISHED_BASALT::defaultBlockState,
+                            BlockBehaviour.Properties.of(Material.STONE,
+                                            MaterialColor.COLOR_BLACK)
+                                    .requiresCorrectToolForDrops()
+                                    .strength(1.25F, 4.2F)
+                                    .sound(SoundType.BASALT)));
 
     private static BlockBehaviour.Properties offSandStone(MaterialColor color) {
         return BlockBehaviour.Properties.of(Material.STONE
