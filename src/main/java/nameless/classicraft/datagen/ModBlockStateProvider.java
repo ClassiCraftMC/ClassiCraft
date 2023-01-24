@@ -53,6 +53,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         wallBlock(ModBlocks.POLISHED_GRANITE_WALL, "polished_granite","minecraft:block/polished_granite");
         wallBlock(ModBlocks.STONE_WALL, "stone","minecraft:block/stone");
         wallBlock(ModBlocks.QUARTZ_WALL, "quartz", "minecraft:block/quartz_block_side");
+        wallBlock(ModBlocks.WARPED_NYLIUM_WALL, "warped_nylium", "minecraft:block/warped_nylium");
         wallBlock(ModBlocks.CRIMSON_NYLIUM_WALL, "crimson_nylium", "minecraft:block/crimson_nylium");
         wallBlock(ModBlocks.POLISHED_BASALT_WALL, "polished_basalt", "minecraft:block/polished_basalt_side");
         wallBlock(ModBlocks.QUARTZ_SANDSTONE_WALL, "quartz_sandstone","classicraft:block/quartz_sandstone");
@@ -83,11 +84,13 @@ public class ModBlockStateProvider extends BlockStateProvider {
         stairsBlock(ModBlocks.QUARTZ_SANDSTONE_STAIRS, "quartz_sandstone","classicraft:block/quartz_sandstone", "classicraft:block/quartz_sandstone_bottom", "classicraft:block/quartz_sandstone_top");
         stairsBlock(ModBlocks.POLISHED_BASALT_STAIRS, "polished_basalt","minecraft:block/polished_basalt_side", "minecraft:block/polished_basalt_top", "minecraft:block/polished_basalt_top");
         stairsBlock(ModBlocks.CRIMSON_NYLIUM_STAIRS, "crimson_nylium","minecraft:block/crimson_nylium_side", "minecraft:block/netherrack", "minecraft:block/crimson_nylium");
+        stairsBlock(ModBlocks.WARPED_NYLIUM_STAIRS, "warped_nylium","minecraft:block/warped_nylium_side", "minecraft:block/netherrack", "minecraft:block/warped_nylium");
         slabBlock(ModBlocks.MOSSY_BRICKS_SLAB, "classicraft:block/mossy_bricks");
         slabBlock(ModBlocks.CRACKED_BRICKS_SLAB,"classicraft:block/cracked_bricks");
         slabBlock(ModBlocks.CRACKED_STONE_BRICKS_SLAB,"minecraft:block/cracked_stone_bricks");
         slabBlock(ModBlocks.DEEPSLATE_SLAB,"minecraft:block/deepslate", "minecraft:block/deepslate_top", "minecraft:block/deepslate_top");
         slabBlock(ModBlocks.CRIMSON_NYLIUM_SLAB,"minecraft:block/crimson_nylium", "minecraft:block/crimson_nylium_side", "minecraft:block/netherrack", "minecraft:block/crimson_nylium");
+        slabBlock(ModBlocks.WARPED_NYLIUM_SLAB,"minecraft:block/warped_nylium", "minecraft:block/warped_nylium_side", "minecraft:block/netherrack", "minecraft:block/warped_nylium");
         slabBlock(ModBlocks.POLISHED_BASALT_SLAB,"minecraft:block/polished_basalt", "minecraft:block/polished_basalt_side", "minecraft:block/polished_basalt_top", "minecraft:block/polished_basalt_top");
         slabBlock(ModBlocks.SOUL_SANDSTONE_SLAB,"classicraft:block/soul_sandstone", "classicraft:block/soul_sandstone_bottom", "classicraft:block/soul_sandstone_top");
         slabBlock(ModBlocks.CUT_SOUL_SANDSTONE_SLAB,"classicraft:block/cut_soul_sandstone", "classicraft:block/soul_sandstone_bottom", "classicraft:block/soul_sandstone_top");
