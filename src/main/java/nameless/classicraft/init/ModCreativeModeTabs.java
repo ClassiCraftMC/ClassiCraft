@@ -41,7 +41,7 @@ public class ModCreativeModeTabs {
                             output.accept(ModItems.COOKED_EGG.get());
                             output.accept(ModItems.NETHER_MUSHROOM_STEW.get());
                             output.accept(ModItems.ROTTEN_FOOD.get());
-                            output.accept(ModItems.BLOOD_MOON_DISC.get());
+                            output.accept(ModItems.PHOBOS_OUTPOST_DISC.get());
                         })
                         .title(Component.translatable("itemGroup.classicraft.common"))
                         .build());

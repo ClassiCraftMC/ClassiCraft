@@ -10,7 +10,6 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.MobBucketItem;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.RecordItem;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.ForgeSpawnEggItem;
@@ -132,9 +131,9 @@ public class ModItems {
                     "quartz_chopper"
             )));
 
-    public static final RegistryObject<Item> BLOOD_MOON_DISC =
-            register("blood_moon_disc", () ->
-                    new RecordItem(11, ModSounds.BLOOD_MOON, new Item.Properties().stacksTo(1), 238));
+    public static final RegistryObject<Item> PHOBOS_OUTPOST_DISC =
+            register("phobos_outpost_disc", () ->
+                    new RecordItem(11, ModSounds.PHOBOS_OUTPOST, new Item.Properties().stacksTo(1), 238));
 
     private static RegistryObject<Item> food(String name, FoodProperties foodData) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().food(foodData)));

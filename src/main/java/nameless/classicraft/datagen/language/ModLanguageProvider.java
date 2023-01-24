@@ -220,7 +220,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICKS_WALL.get(), "Cracked Polished BlackStone Bricks Wall");
         add(ModBlocks.CUT_SOUL_SANDSTONE_SLAB.get(), "Cut Soul SandStone Slab");
         add(ModBlocks.SMOOTH_QUARTZ_SANDSTONE.get(), "Smooth Quartz SandStone");
-        add(ModItems.BLOOD_MOON_DISC.get(), "&4Music Disc");
+        add(ModItems.PHOBOS_OUTPOST_DISC.get(), "§bMusic Disc");
         add("item.classicraft.blood_moon_disc.desc", "Scott Lloyd Shelly - Phobos Outpost");
 
         pebbleBlock();

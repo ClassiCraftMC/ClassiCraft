@@ -13,16 +13,30 @@
       }
     ]
   },
-  "music.event.blood_moon": {
-    "subtitle": "subtitles.music.classicraft.event.blood_moon",
+  "music.event.phobos_outpost": {
+    "subtitle": "subtitles.music.classicraft.event.phobos_outpost",
     "sounds": [
       {
-        "name": "classicraft:music/blood_moon",
+        "name": "classicraft:music/phobos_outpost",
         "pitch": 0.9
       },
-      "classicraft:music/blood_moon",
+      "classicraft:music/phobos_outpost",
       {
-        "name": "classicraft:music/blood_moon",
+        "name": "classicraft:music/phobos_outpost",
+        "pitch": 1.1
+      }
+    ]
+  },
+  "music.event.dragon_fish": {
+    "subtitle": "subtitles.music.classicraft.event.dragon_fish",
+    "sounds": [
+      {
+        "name": "classicraft:music/dragon_fish",
+        "pitch": 0.9
+      },
+      "classicraft:music/dragon_fish",
+      {
+        "name": "classicraft:music/dragon_fish",
         "pitch": 1.1
       }
     ]
