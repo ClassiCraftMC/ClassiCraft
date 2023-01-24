@@ -12,5 +12,19 @@
         "pitch": 1.1
       }
     ]
+  },
+  "music.event.blood_moon": {
+    "subtitle": "subtitles.music.classicraft.event.blood_moon",
+    "sounds": [
+      {
+        "name": "classicraft:music/blood_moon",
+        "pitch": 0.9
+      },
+      "classicraft:music/blood_moon",
+      {
+        "name": "classicraft:music/blood_moon",
+        "pitch": 1.1
+      }
+    ]
   }
 }

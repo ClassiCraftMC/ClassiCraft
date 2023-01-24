@@ -15,6 +15,8 @@ public class ModSounds {
 
     public static final RegistryObject<SoundEvent> PEBBLE =
             register("misc.knapping.pebble");
+    public static final RegistryObject<SoundEvent> BLOOD_MOON =
+            register("music.event.blood_moon");
 
     private static RegistryObject<SoundEvent> register(String sound) {
         return SOUND_EVENTS.register(sound, () ->

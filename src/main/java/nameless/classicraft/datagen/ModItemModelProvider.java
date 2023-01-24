@@ -5,12 +5,17 @@ import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.List;
+import java.util.Objects;
 
 public class ModItemModelProvider extends ItemModelProvider {
 
@@ -107,6 +112,14 @@ public class ModItemModelProvider extends ItemModelProvider {
         threeBuildBlockItems("cracked_polished_blackstone_bricks", "minecraft:block/cracked_polished_blackstone_bricks");
         fenceInventory("crimson_nether_bricks","minecraft:block/red_nether_bricks");
         woolTwoBlockItems();
+        otherItem(ModItems.BLOOD_MOON_DISC.get(), "minecraft:item/music_disc_13");
+    }
+
+    public ItemModelBuilder otherItem(Item item, String texture)
+    {
+        return getBuilder(Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)).toString())
+                .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                .texture("layer0", new ResourceLocation(texture));
     }
 
     void fenceInventory(String prefix, String texture) {
