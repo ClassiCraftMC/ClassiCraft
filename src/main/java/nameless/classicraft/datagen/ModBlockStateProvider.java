@@ -1,15 +1,22 @@
 package nameless.classicraft.datagen;
 
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.block.StainedGlassSlabBlock;
+import nameless.classicraft.block.StainedGlassStairsBlock;
 import nameless.classicraft.init.ModBlocks;
+import nameless.classicraft.util.ExtraUtils;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.properties.Half;
+import net.minecraft.world.level.block.state.properties.StairsShape;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.Set;
 
 
 public class ModBlockStateProvider extends BlockStateProvider {
@@ -264,6 +271,49 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 new ResourceLocation(side),
                 new ResourceLocation(bottom),
                 new ResourceLocation(top));
+    }
+
+    protected void glassStairsBlock(Block block, String name, String all) {
+        glassStairsBlock((StainedGlassStairsBlock) block,
+                name,
+                new ResourceLocation(all),
+                new ResourceLocation(all),
+                new ResourceLocation(all));
+    }
+
+    public void glassStairsBlock(StainedGlassStairsBlock block, String name, ResourceLocation side, ResourceLocation bottom, ResourceLocation top) {
+        glassStairsBlockInternal(block, name + "_stairs", side, bottom, top);
+    }
+
+    private void glassStairsBlockInternal(StainedGlassStairsBlock block, String baseName, ResourceLocation side, ResourceLocation bottom, ResourceLocation top) {
+        ModelFile stairs = models().stairs(baseName, side, bottom, top);
+        ModelFile stairsInner = models().stairsInner(baseName + "_inner", side, bottom, top);
+        ModelFile stairsOuter = models().stairsOuter(baseName + "_outer", side, bottom, top);
+        glassStairsBlock(block, stairs, stairsInner, stairsOuter);
+    }
+
+    public void glassStairsBlock(StainedGlassStairsBlock block, ModelFile stairs, ModelFile stairsInner, ModelFile stairsOuter) {
+        getVariantBuilder(block)
+                .forAllStatesExcept(state -> {
+                    Direction facing = state.getValue(StainedGlassStairsBlock.FACING);
+                    Half half = state.getValue(StainedGlassStairsBlock.HALF);
+                    StairsShape shape = state.getValue(StainedGlassStairsBlock.SHAPE);
+                    int yRot = (int) facing.getClockWise().toYRot(); // Stairs model is rotated 90 degrees clockwise for some reason
+                    if (shape == StairsShape.INNER_LEFT || shape == StairsShape.OUTER_LEFT) {
+                        yRot += 270; // Left facing stairs are rotated 90 degrees clockwise
+                    }
+                    if (shape != StairsShape.STRAIGHT && half == Half.TOP) {
+                        yRot += 90; // Top stairs are rotated 90 degrees clockwise
+                    }
+                    yRot %= 360;
+                    boolean uvlock = yRot != 0 || half == Half.TOP; // Don't set uvlock for states that have no rotation
+                    return ConfiguredModel.builder()
+                            .modelFile(shape == StairsShape.STRAIGHT ? stairs : shape == StairsShape.INNER_LEFT || shape == StairsShape.INNER_RIGHT ? stairsInner : stairsOuter)
+                            .rotationX(half == Half.BOTTOM ? 0 : 180)
+                            .rotationY(yRot)
+                            .uvLock(uvlock)
+                            .build();
+                }, StainedGlassStairsBlock.WATERLOGGED);
     }
 
     private ResourceLocation key(Block block) {

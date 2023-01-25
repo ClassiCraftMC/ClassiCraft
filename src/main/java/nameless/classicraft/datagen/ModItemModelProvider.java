@@ -112,6 +112,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         threeBuildBlockItems("cracked_polished_blackstone_bricks", "minecraft:block/cracked_polished_blackstone_bricks");
         fenceInventory("crimson_nether_bricks","minecraft:block/red_nether_bricks");
         woolTwoBlockItems();
+        glassThreeBlockItems();
         otherItem(ModItems.PHOBOS_OUTPOST_DISC.get(), "classicraft:item/music_disc_blood_moon");
         otherItem(ModItems.DRAGON_FISH_DISC.get(), "classicraft:item/music_disc_dragon_fish");
     }
@@ -131,6 +132,14 @@ public class ModItemModelProvider extends ItemModelProvider {
         for (String material : List.of("_wool")) {
             for (DyeColor dyeColor : DyeColor.values()) {
                 twoBuildBlockItems(dyeColor + material, "minecraft:block/" + dyeColor + material);
+            }
+        }
+    }
+
+    void glassThreeBlockItems() {
+        for (String material : List.of("_stained_glass")) {
+            for (DyeColor dyeColor : DyeColor.values()) {
+                threeBuildBlockItems(dyeColor.getName() + material, "minecraft:block/" + dyeColor.getName() + material);
             }
         }
     }

@@ -5,6 +5,7 @@ import nameless.classicraft.block.*;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.*;
@@ -15,6 +16,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
+import org.stringtemplate.v4.ST;
 
 import java.util.Locale;
 import java.util.function.Function;
@@ -1011,6 +1013,214 @@ public class ModBlocks {
                             BlockBehaviour.Properties.of(Material.STONE)
                                     .requiresCorrectToolForDrops()
                                     .strength(1.25F, 4.2F)));
+
+    public static final RegistryObject<Block> WHITE_STAINED_GLASS_SLAB =
+            registerDefault("white_stained_glass_slab", () ->
+                    new StainedGlassSlabBlock(DyeColor.WHITE));
+
+    public static final RegistryObject<Block> ORANGE_STAINED_GLASS_SLAB =
+            registerDefault("orange_stained_glass_slab", () ->
+                    new StainedGlassSlabBlock(DyeColor.ORANGE));
+
+    public static final RegistryObject<Block> MAGENTA_STAINED_GLASS_SLAB =
+            registerDefault("magenta_stained_glass_slab", () ->
+                    new StainedGlassSlabBlock(DyeColor.MAGENTA));
+
+    public static final RegistryObject<Block> LIGHT_BLUE_STAINED_GLASS_SLAB =
+            registerDefault("light_blue_stained_glass_slab", () ->
+                    new StainedGlassSlabBlock(DyeColor.LIGHT_BLUE));
+
+    public static final RegistryObject<Block> YELLOW_STAINED_GLASS_SLAB =
+            registerDefault("yellow_stained_glass_slab", () ->
+                    new StainedGlassSlabBlock(DyeColor.YELLOW));
+
+    public static final RegistryObject<Block> LIME_STAINED_GLASS_SLAB =
+            registerDefault("lime_stained_glass_slab", () ->
+                    new StainedGlassSlabBlock(DyeColor.LIME));
+
+    public static final RegistryObject<Block> PINK_STAINED_GLASS_SLAB =
+            registerDefault("pink_stained_glass_slab", () ->
+                    new StainedGlassSlabBlock(DyeColor.PINK));
+
+    public static final RegistryObject<Block> GRAY_STAINED_GLASS_SLAB =
+            registerDefault("gray_stained_glass_slab", () ->
+                    new StainedGlassSlabBlock(DyeColor.GRAY));
+
+    public static final RegistryObject<Block> LIGHT_GRAY_STAINED_GLASS_SLAB =
+            registerDefault("light_gray_stained_glass_slab", () ->
+                    new StainedGlassSlabBlock(DyeColor.LIGHT_GRAY));
+
+    public static final RegistryObject<Block> CYAN_STAINED_GLASS_SLAB =
+            registerDefault("cyan_stained_glass_slab", () ->
+                    new StainedGlassSlabBlock(DyeColor.CYAN));
+
+    public static final RegistryObject<Block> PURPLE_STAINED_GLASS_SLAB =
+            registerDefault("purple_stained_glass_slab", () ->
+                    new StainedGlassSlabBlock(DyeColor.PURPLE));
+
+    public static final RegistryObject<Block> BLUE_STAINED_GLASS_SLAB =
+            registerDefault("blue_stained_glass_slab", () ->
+                    new StainedGlassSlabBlock(DyeColor.BLUE));
+
+    public static final RegistryObject<Block> BROWN_STAINED_GLASS_SLAB =
+            registerDefault("brown_stained_glass_slab", () ->
+                    new StainedGlassSlabBlock(DyeColor.BROWN));
+
+    public static final RegistryObject<Block> GREEN_STAINED_GLASS_SLAB =
+            registerDefault("green_stained_glass_slab", () ->
+                    new StainedGlassSlabBlock(DyeColor.GREEN));
+
+    public static final RegistryObject<Block> RED_STAINED_GLASS_SLAB =
+            registerDefault("red_stained_glass_slab", () ->
+                    new StainedGlassSlabBlock(DyeColor.RED));
+
+    public static final RegistryObject<Block> BLACK_STAINED_GLASS_SLAB =
+            registerDefault("black_stained_glass_slab", () ->
+                    new StainedGlassSlabBlock(DyeColor.BLACK));
+
+    public static final RegistryObject<Block> WHITE_STAINED_GLASS_STAIRS =
+            registerDefault("white_stained_glass_stairs", () ->
+                    new StainedGlassStairsBlock(DyeColor.WHITE,
+                            Blocks.WHITE_STAINED_GLASS::defaultBlockState));
+
+    public static final RegistryObject<Block> ORANGE_STAINED_GLASS_STAIRS =
+            registerDefault("orange_stained_glass_stairs", () ->
+                    new StainedGlassStairsBlock(DyeColor.ORANGE,
+                            Blocks.ORANGE_STAINED_GLASS::defaultBlockState));
+
+    public static final RegistryObject<Block> MAGENTA_STAINED_GLASS_STAIRS =
+            registerDefault("magenta_stained_glass_stairs", () ->
+                    new StainedGlassStairsBlock(DyeColor.MAGENTA,
+                            Blocks.MAGENTA_STAINED_GLASS::defaultBlockState));
+
+    public static final RegistryObject<Block> LIGHT_BLUE_STAINED_GLASS_STAIRS =
+            registerDefault("light_blue_stained_glass_stairs", () ->
+                    new StainedGlassStairsBlock(DyeColor.LIGHT_BLUE,
+                            Blocks.LIGHT_BLUE_STAINED_GLASS::defaultBlockState));
+
+    public static final RegistryObject<Block> YELLOW_STAINED_GLASS_STAIRS =
+            registerDefault("yellow_stained_glass_stairs", () ->
+                    new StainedGlassStairsBlock(DyeColor.YELLOW,
+                            Blocks.YELLOW_STAINED_GLASS::defaultBlockState));
+
+    public static final RegistryObject<Block> LIME_STAINED_GLASS_STAIRS =
+            registerDefault("lime_stained_glass_stairs", () ->
+                    new StainedGlassStairsBlock(DyeColor.LIME,
+                            Blocks.LIME_STAINED_GLASS::defaultBlockState));
+
+    public static final RegistryObject<Block> PINK_STAINED_GLASS_STAIRS =
+            registerDefault("pink_stained_glass_stairs", () ->
+                    new StainedGlassStairsBlock(DyeColor.PINK,
+                            Blocks.PINK_STAINED_GLASS::defaultBlockState));
+
+    public static final RegistryObject<Block> GRAY_STAINED_GLASS_STAIRS =
+            registerDefault("gray_stained_glass_stairs", () ->
+                    new StainedGlassStairsBlock(DyeColor.GRAY,
+                            Blocks.GRAY_STAINED_GLASS::defaultBlockState));
+
+    public static final RegistryObject<Block> LIGHT_GRAY_STAINED_GLASS_STAIRS =
+            registerDefault("light_gray_stained_glass_stairs", () ->
+                    new StainedGlassStairsBlock(DyeColor.LIGHT_GRAY,
+                            Blocks.LIGHT_GRAY_STAINED_GLASS::defaultBlockState));
+
+    public static final RegistryObject<Block> CYAN_STAINED_GLASS_STAIRS =
+            registerDefault("cyan_stained_glass_stairs", () ->
+                    new StainedGlassStairsBlock(DyeColor.CYAN,
+                            Blocks.CYAN_STAINED_GLASS::defaultBlockState));
+
+    public static final RegistryObject<Block> PURPLE_STAINED_GLASS_STAIRS =
+            registerDefault("purple_stained_glass_stairs", () ->
+                    new StainedGlassStairsBlock(DyeColor.PURPLE,
+                            Blocks.PURPLE_STAINED_GLASS::defaultBlockState));
+
+    public static final RegistryObject<Block> BLUE_STAINED_GLASS_STAIRS =
+            registerDefault("blue_stained_glass_stairs", () ->
+                    new StainedGlassStairsBlock(DyeColor.BLUE,
+                            Blocks.BLUE_STAINED_GLASS::defaultBlockState));
+
+    public static final RegistryObject<Block> BROWN_STAINED_GLASS_STAIRS =
+            registerDefault("brown_stained_glass_stairs", () ->
+                    new StainedGlassStairsBlock(DyeColor.BROWN,
+                            Blocks.BROWN_STAINED_GLASS::defaultBlockState));
+
+    public static final RegistryObject<Block> GREEN_STAINED_GLASS_STAIRS =
+            registerDefault("green_stained_glass_stairs", () ->
+                    new StainedGlassStairsBlock(DyeColor.GREEN,
+                            Blocks.GREEN_STAINED_GLASS::defaultBlockState));
+
+    public static final RegistryObject<Block> RED_STAINED_GLASS_STAIRS =
+            registerDefault("red_stained_glass_stairs", () ->
+                    new StainedGlassStairsBlock(DyeColor.RED,
+                            Blocks.RED_STAINED_GLASS::defaultBlockState));
+
+    public static final RegistryObject<Block> BLACK_STAINED_GLASS_STAIRS =
+            registerDefault("black_stained_glass_stairs", () ->
+                    new StainedGlassStairsBlock(DyeColor.BLACK,
+                            Blocks.BLACK_STAINED_GLASS::defaultBlockState));
+
+    public static final RegistryObject<Block> WHITE_STAINED_GLASS_WALL =
+            registerDefault("white_stained_glass_wall", () ->
+                    new StainedGlassWallBlock(DyeColor.WHITE));
+
+    public static final RegistryObject<Block> ORANGE_STAINED_GLASS_WALL =
+            registerDefault("orange_stained_glass_wall", () ->
+                    new StainedGlassWallBlock(DyeColor.ORANGE));
+
+    public static final RegistryObject<Block> MAGENTA_STAINED_GLASS_WALL =
+            registerDefault("magenta_stained_glass_wall", () ->
+                    new StainedGlassWallBlock(DyeColor.MAGENTA));
+
+    public static final RegistryObject<Block> LIGHT_BLUE_STAINED_GLASS_WALL =
+            registerDefault("light_blue_stained_glass_wall", () ->
+                    new StainedGlassWallBlock(DyeColor.LIGHT_BLUE));
+
+    public static final RegistryObject<Block> YELLOW_STAINED_GLASS_WALL =
+            registerDefault("yellow_stained_glass_wall", () ->
+                    new StainedGlassWallBlock(DyeColor.YELLOW));
+
+    public static final RegistryObject<Block> LIME_STAINED_GLASS_WALL =
+            registerDefault("lime_stained_glass_wall", () ->
+                    new StainedGlassWallBlock(DyeColor.LIME));
+
+    public static final RegistryObject<Block> PINK_STAINED_GLASS_WALL =
+            registerDefault("pink_stained_glass_wall", () ->
+                    new StainedGlassWallBlock(DyeColor.PINK));
+
+    public static final RegistryObject<Block> GRAY_STAINED_GLASS_WALL =
+            registerDefault("gray_stained_glass_wall", () ->
+                    new StainedGlassWallBlock(DyeColor.GRAY));
+
+    public static final RegistryObject<Block> LIGHT_GRAY_STAINED_GLASS_WALL =
+            registerDefault("light_gray_stained_glass_wall", () ->
+                    new StainedGlassWallBlock(DyeColor.LIGHT_GRAY));
+
+    public static final RegistryObject<Block> CYAN_STAINED_GLASS_WALL =
+            registerDefault("cyan_stained_glass_wall", () ->
+                    new StainedGlassWallBlock(DyeColor.CYAN));
+
+    public static final RegistryObject<Block> PURPLE_STAINED_GLASS_WALL =
+            registerDefault("purple_stained_glass_wall", () ->
+                    new StainedGlassWallBlock(DyeColor.PURPLE));
+
+    public static final RegistryObject<Block> BLUE_STAINED_GLASS_WALL =
+            registerDefault("blue_stained_glass_wall", () ->
+                    new StainedGlassWallBlock(DyeColor.BLUE));
+
+    public static final RegistryObject<Block> BROWN_STAINED_GLASS_WALL =
+            registerDefault("brown_stained_glass_wall", () ->
+                    new StainedGlassWallBlock(DyeColor.BROWN));
+
+    public static final RegistryObject<Block> GREEN_STAINED_GLASS_WALL =
+            registerDefault("green_stained_glass_wall", () ->
+                    new StainedGlassWallBlock(DyeColor.GREEN));
+
+    public static final RegistryObject<Block> RED_STAINED_GLASS_WALL =
+            registerDefault("red_stained_glass_wall", () ->
+                    new StainedGlassWallBlock(DyeColor.RED));
+
+    public static final RegistryObject<Block> BLACK_STAINED_GLASS_WALL =
+            registerDefault("black_stained_glass_wall", () ->
+                    new StainedGlassWallBlock(DyeColor.BLACK));
 
     private static BlockBehaviour.Properties offSandStone(MaterialColor color) {
         return BlockBehaviour.Properties.of(Material.STONE

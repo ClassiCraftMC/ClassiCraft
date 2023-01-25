@@ -1,6 +1,9 @@
 package nameless.classicraft.datagen;
 
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.block.StainedGlassSlabBlock;
+import nameless.classicraft.block.StainedGlassStairsBlock;
+import nameless.classicraft.block.StainedGlassWallBlock;
 import nameless.classicraft.util.ExtraUtils;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -26,12 +29,20 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         Set<Block> blocks = ExtraUtils.getBlocks();
         blocks.stream().filter(block -> block instanceof WallBlock)
                         .forEach(this::wallTag);
+        blocks.stream().filter(block -> block instanceof StainedGlassWallBlock)
+                .forEach(this::wallTag);
         blocks.stream().filter(block -> block instanceof StairBlock)
                         .forEach(this::stairsTag);
+        blocks.stream().filter(block -> block instanceof StainedGlassStairsBlock)
+                .forEach(this::stairsTag);
         blocks.stream().filter(block -> block instanceof SlabBlock)
                         .forEach(this::slabTag);
+        blocks.stream().filter(block -> block instanceof StainedGlassSlabBlock)
+                .forEach(this::slabTag);
         blocks.stream().filter(block -> block instanceof FlowerBlock)
                 .forEach(this::flowerTag);
+        blocks.stream().filter(block -> block.defaultBlockState().getMaterial() == Material.GLASS)
+                .forEach(this::pickaxeMineAble);
         blocks.stream().filter(block -> block.defaultBlockState().getMaterial() == Material.STONE)
                         .forEach(this::pickaxeMineAble);
         blocks.stream().filter(block -> block.defaultBlockState().getMaterial() == Material.SAND)

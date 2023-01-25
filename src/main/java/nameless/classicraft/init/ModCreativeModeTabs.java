@@ -2,9 +2,7 @@ package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.api.item.MetaItem;
-import nameless.classicraft.block.QuickSandBlock;
-import nameless.classicraft.block.SandStoneBlock;
-import nameless.classicraft.block.StoneBricksBlock;
+import nameless.classicraft.block.*;
 import nameless.classicraft.util.ExtraUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -53,11 +51,17 @@ public class ModCreativeModeTabs {
                             Set<Block> blocks = ExtraUtils.getBlocks();
                             blocks.stream().filter(block -> block instanceof StairBlock)
                                             .forEach(output::accept);
+                            blocks.stream().filter(block -> block instanceof StainedGlassStairsBlock)
+                                            .forEach(output::accept);
                             blocks.stream().filter(block -> block instanceof FenceBlock)
                                             .forEach(output::accept);
                             blocks.stream().filter(block -> block instanceof WallBlock)
                                     .forEach(output::accept);
+                            blocks.stream().filter(block -> block instanceof StainedGlassWallBlock)
+                                    .forEach(output::accept);
                             blocks.stream().filter(block -> block instanceof SlabBlock)
+                                    .forEach(output::accept);
+                            blocks.stream().filter(block -> block instanceof StainedGlassSlabBlock)
                                     .forEach(output::accept);
                             blocks.stream().filter(block -> block instanceof StoneBricksBlock)
                                     .forEach(output::accept);
