@@ -3,19 +3,22 @@ package nameless.classicraft.datagen;
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.block.StainedGlassSlabBlock;
 import nameless.classicraft.block.StainedGlassStairsBlock;
+import nameless.classicraft.block.StainedGlassWallBlock;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.util.ExtraUtils;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.state.properties.Half;
-import net.minecraft.world.level.block.state.properties.StairsShape;
+import net.minecraft.world.level.block.state.properties.*;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 
@@ -165,6 +168,50 @@ public class ModBlockStateProvider extends BlockStateProvider {
         twoBuildBlocks(ModBlocks.BLACK_WOOL_STAIRS, ModBlocks.BLACK_WOOL_SLAB,
                 "black_wool", "minecraft:block/black_wool");
         fenceBlock(ModBlocks.CRIMSON_NETHER_BRICKS_FENCE, "minecraft:block/red_nether_bricks");
+        twoGlassBuildBlocks();
+        glassStairsBlock(ModBlocks.WHITE_STAINED_GLASS_STAIRS, DyeColor.WHITE);
+        glassStairsBlock(ModBlocks.ORANGE_STAINED_GLASS_STAIRS, DyeColor.ORANGE);
+        glassStairsBlock(ModBlocks.MAGENTA_STAINED_GLASS_STAIRS, DyeColor.MAGENTA);
+        glassStairsBlock(ModBlocks.LIGHT_BLUE_STAINED_GLASS_STAIRS, DyeColor.LIGHT_BLUE);
+        glassStairsBlock(ModBlocks.YELLOW_STAINED_GLASS_STAIRS, DyeColor.YELLOW);
+        glassStairsBlock(ModBlocks.LIME_STAINED_GLASS_STAIRS, DyeColor.LIME);
+        glassStairsBlock(ModBlocks.PINK_STAINED_GLASS_STAIRS, DyeColor.PINK);
+        glassStairsBlock(ModBlocks.GRAY_STAINED_GLASS_STAIRS, DyeColor.GRAY);
+        glassStairsBlock(ModBlocks.LIGHT_GRAY_STAINED_GLASS_STAIRS, DyeColor.LIGHT_GRAY);
+        glassStairsBlock(ModBlocks.CYAN_STAINED_GLASS_STAIRS, DyeColor.CYAN);
+        glassStairsBlock(ModBlocks.PURPLE_STAINED_GLASS_STAIRS, DyeColor.PURPLE);
+        glassStairsBlock(ModBlocks.BLUE_STAINED_GLASS_STAIRS, DyeColor.BLUE);
+        glassStairsBlock(ModBlocks.BROWN_STAINED_GLASS_STAIRS, DyeColor.BROWN);
+        glassStairsBlock(ModBlocks.GREEN_STAINED_GLASS_STAIRS, DyeColor.GREEN);
+        glassStairsBlock(ModBlocks.RED_STAINED_GLASS_STAIRS, DyeColor.RED);
+        glassStairsBlock(ModBlocks.BLACK_STAINED_GLASS_STAIRS, DyeColor.BLACK);
+    }
+
+    protected void twoGlassBuildBlocks() {
+        for (Block block : ExtraUtils.getBlocks()) {
+            for (String material : List.of("_stained_glass")) {
+                for (DyeColor dyeColor : DyeColor.values()) {
+                    if (block instanceof StainedGlassWallBlock) {
+                        glassWallBlock((StainedGlassWallBlock) block, new ResourceLocation("minecraft:block/" + dyeColor.getName() + material));
+                    }
+                    if (block instanceof StainedGlassSlabBlock) {
+                        glassSlabBlock((StainedGlassSlabBlock) block,
+                                new ResourceLocation("minecraft:block/" + dyeColor.getName() + material),
+                                new ResourceLocation("minecraft:block/" + dyeColor.getName() + material),
+                                new ResourceLocation("minecraft:block/" + dyeColor.getName() + material),
+                                new ResourceLocation("minecraft:block/" + dyeColor.getName() + material));
+                    }
+                }
+            }
+        }
+    }
+
+    protected void glassStairsBlock(RegistryObject<Block> stairs, DyeColor dyeColor) {
+        glassStairsBlock((StainedGlassStairsBlock) stairs.get(),
+                name(stairs.get()),
+                new ResourceLocation("minecraft:block/" + dyeColor.getName() + "_stained_glass"),
+                new ResourceLocation("minecraft:block/" + dyeColor.getName() + "_stained_glass"),
+                new ResourceLocation("minecraft:block/" + dyeColor.getName() + "_stained_glass"));
     }
 
     private void fenceBlock(RegistryObject<Block> block, String texture) {
@@ -273,6 +320,48 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 new ResourceLocation(top));
     }
 
+    public void glassWallBlock(StainedGlassWallBlock block, ResourceLocation texture) {
+        glassWallBlockInternal(block,  key(block).toString(), texture);
+    }
+
+    private void glassWallBlockInternal(StainedGlassWallBlock block, String baseName, ResourceLocation texture) {
+        glassWallBlock(block, models().wallPost(baseName + "_post", texture),
+                models().wallSide(baseName + "_side", texture),
+                models().wallSideTall(baseName + "_side_tall", texture));
+    }
+
+    public void glassWallBlock(StainedGlassWallBlock block, ModelFile post, ModelFile side, ModelFile sideTall) {
+        MultiPartBlockStateBuilder builder = getMultipartBuilder(block)
+                .part().modelFile(post).addModel()
+                .condition(WallBlock.UP, true).end();
+        WALL_PROPS.entrySet().stream()
+                .filter(e -> e.getKey().getAxis().isHorizontal())
+                .forEach(e -> {
+                    wallSidePart(builder, side, e, WallSide.LOW);
+                    wallSidePart(builder, sideTall, e, WallSide.TALL);
+                });
+    }
+
+    private void wallSidePart(MultiPartBlockStateBuilder builder, ModelFile model, Map.Entry<Direction, Property<WallSide>> entry, WallSide height) {
+        builder.part()
+                .modelFile(model)
+                .rotationY((((int) entry.getKey().toYRot()) + 180) % 360)
+                .uvLock(true)
+                .addModel()
+                .condition(entry.getValue(), height);
+    }
+
+    public void glassSlabBlock(StainedGlassSlabBlock block, ResourceLocation doubleslab, ResourceLocation side, ResourceLocation bottom, ResourceLocation top) {
+        glassSlabBlock(block, models().slab(name(block), side, bottom, top), models().slabTop(name(block) + "_top", side, bottom, top), models().getExistingFile(doubleslab));
+    }
+
+    public void glassSlabBlock(StainedGlassSlabBlock block, ModelFile bottom, ModelFile top, ModelFile doubleslab) {
+        getVariantBuilder(block)
+                .partialState().with(StainedGlassSlabBlock.TYPE, SlabType.BOTTOM).addModels(new ConfiguredModel(bottom))
+                .partialState().with(StainedGlassSlabBlock.TYPE, SlabType.TOP).addModels(new ConfiguredModel(top))
+                .partialState().with(StainedGlassSlabBlock.TYPE, SlabType.DOUBLE).addModels(new ConfiguredModel(doubleslab));
+    }
+
     protected void glassStairsBlock(Block block, String name, String all) {
         glassStairsBlock((StainedGlassStairsBlock) block,
                 name,
@@ -294,10 +383,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     public void glassStairsBlock(StainedGlassStairsBlock block, ModelFile stairs, ModelFile stairsInner, ModelFile stairsOuter) {
         getVariantBuilder(block)
-                .forAllStatesExcept(state -> {
-                    Direction facing = state.getValue(StainedGlassStairsBlock.FACING);
-                    Half half = state.getValue(StainedGlassStairsBlock.HALF);
-                    StairsShape shape = state.getValue(StainedGlassStairsBlock.SHAPE);
+                .forAllStates(state -> {
+                    Direction facing = state.getValue(HorizontalDirectionalBlock.FACING);
+                    Half half = state.getValue(BlockStateProperties.HALF);
+                    StairsShape shape = state.getValue(BlockStateProperties.STAIRS_SHAPE);
                     int yRot = (int) facing.getClockWise().toYRot(); // Stairs model is rotated 90 degrees clockwise for some reason
                     if (shape == StairsShape.INNER_LEFT || shape == StairsShape.OUTER_LEFT) {
                         yRot += 270; // Left facing stairs are rotated 90 degrees clockwise
@@ -313,7 +402,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
                             .rotationY(yRot)
                             .uvLock(uvlock)
                             .build();
-                }, StainedGlassStairsBlock.WATERLOGGED);
+                });
     }
 
     private ResourceLocation key(Block block) {

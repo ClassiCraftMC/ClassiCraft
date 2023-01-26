@@ -224,6 +224,21 @@ public class ModLanguageProvider extends LanguageProvider {
         add("item.classicraft.phobos_outpost_disc.desc", "Scott Lloyd Shelly - Phobos Outpost");
         add(ModItems.DRAGON_FISH_DISC.get(), "§bMusic Disc");
         add("item.classicraft.dragon_fish_disc.desc", "C418 - Dragon Fish");
+        add(ModBlocks.WHITE_STAINED_GLASS_STAIRS.get(), "White Stained Glass Stairs");
+        add(ModBlocks.WHITE_STAINED_GLASS_SLAB.get(), "White Stained Glass Slab");
+        add(ModBlocks.WHITE_STAINED_GLASS_WALL.get(), "White Stained Glass Wall");
+        add(ModBlocks.ORANGE_STAINED_GLASS_STAIRS.get(), "Orange Stained Glass Stairs");
+        add(ModBlocks.ORANGE_STAINED_GLASS_SLAB.get(), "Orange Stained Glass Slab");
+        add(ModBlocks.ORANGE_STAINED_GLASS_WALL.get(), "Orange Stained Glass Wall");
+        add(ModBlocks.MAGENTA_STAINED_GLASS_STAIRS.get(), "Magenta Stained Glass Stairs");
+        add(ModBlocks.MAGENTA_STAINED_GLASS_SLAB.get(), "Magenta Stained Glass Slab");
+        add(ModBlocks.MAGENTA_STAINED_GLASS_WALL.get(), "Magenta Stained Glass Wall");
+        add(ModBlocks.LIGHT_BLUE_STAINED_GLASS_STAIRS.get(), "Light Blue Stained Glass Stairs");
+        add(ModBlocks.LIGHT_BLUE_STAINED_GLASS_SLAB.get(), "Light Blue Stained Glass Slab");
+        add(ModBlocks.LIGHT_BLUE_STAINED_GLASS_WALL.get(), "Light Blue Stained Glass Wall");
+        add(ModBlocks.YELLOW_STAINED_GLASS_STAIRS.get(), "Yellow Stained Glass Stairs");
+        add(ModBlocks.YELLOW_STAINED_GLASS_SLAB.get(), "Yellow Stained Glass Slab");
+        add(ModBlocks.YELLOW_STAINED_GLASS_WALL.get(), "Yellow Stained Glass Wall");
 
         pebbleBlock();
         meta();

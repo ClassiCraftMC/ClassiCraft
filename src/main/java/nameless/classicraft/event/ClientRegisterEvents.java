@@ -1,6 +1,10 @@
 package nameless.classicraft.event;
 
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.block.StainedGlassSlabBlock;
+import nameless.classicraft.block.StainedGlassStairsBlock;
+import nameless.classicraft.block.StainedGlassWallBlock;
+import nameless.classicraft.block.StonePebbleBlock;
 import nameless.classicraft.client.model.OceanSharkModel;
 import nameless.classicraft.client.renderer.LivingDeadRenderer;
 import nameless.classicraft.client.renderer.OceanSharkRenderer;
@@ -13,12 +17,17 @@ import nameless.classicraft.init.ModEntities;
 import nameless.classicraft.init.ModEntityModelLayers;
 import nameless.classicraft.init.ModItems;
 import nameless.classicraft.item.DepthMeterItem;
+import nameless.classicraft.util.ExtraUtils;
 import net.minecraft.client.model.CodModel;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.item.CompassItemPropertyFunction;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.WallBlock;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -61,23 +70,20 @@ public class ClientRegisterEvents {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.REAL_SOUL_TORCH.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.REAL_SOUL_WALL_TORCH.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CACTUS_BALL.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.ANDESITE_PEBBLE.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.COBBLESTONE_PEBBLE.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.DIORITE_PEBBLE.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.GRANITE_PEBBLE.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.RED_SANDSTONE_PEBBLE.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.SANDSTONE_PEBBLE.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.DEEPSLATE_PEBBLE.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.TWIGS.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.STONE_WALL.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.MOSSY_BRICKS_WALL.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CRACKED_BRICKS_WALL.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.SMOOTH_STONE_WALL.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.MOSSY_BRICKS_STAIRS.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CRACKED_BRICKS_STAIRS.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.SMOOTH_STONE_STAIRS.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.MOSSY_BRICKS_SLAB.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CRACKED_BRICKS_SLAB.get(), RenderType.translucent());
+        for (Block block : ExtraUtils.getBlocks()) {
+            if (block instanceof StainedGlassSlabBlock
+                    || block instanceof StainedGlassStairsBlock
+                    || block instanceof StainedGlassWallBlock
+                    || block instanceof WallBlock
+                    || block instanceof StairBlock
+                    || block instanceof SlabBlock) {
+                ItemBlockRenderTypes.setRenderLayer(block, RenderType.translucent());
+            }
+            if (block instanceof StonePebbleBlock) {
+                ItemBlockRenderTypes.setRenderLayer(block, RenderType.cutout());
+            }
+        }
         ItemProperties.register(ModItems.DEPTH_METER.get(), new ResourceLocation("angle"),
                 new CompassItemPropertyFunction((level, stack, pEntity)
                         -> DepthMeterItem.isLodestoneCompass(stack) ?
