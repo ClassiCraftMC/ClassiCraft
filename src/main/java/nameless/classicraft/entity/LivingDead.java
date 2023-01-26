@@ -48,13 +48,13 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
 import org.jetbrains.annotations.Nullable;
 
-public class LivingDeadEntity extends Monster implements Enemy {
+public class LivingDead extends Monster implements Enemy {
 
     public static final EntityDataAccessor<Integer> VARIANT =
             SynchedEntityData.defineId(LivingDeadEntity.class, EntityDataSerializers.INT);
     public static final int MAX_VARIANTS = 200;
 
-    public LivingDeadEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
+    public LivingDead(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 

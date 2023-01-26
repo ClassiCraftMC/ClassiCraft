@@ -20,7 +20,7 @@ package nameless.classicraft.client.renderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import nameless.classicraft.ClassiCraftMod;
-import nameless.classicraft.entity.TroutEntity;
+import nameless.classicraft.entity.Trout;
 import nameless.classicraft.init.ModEntityModelLayers;
 import net.minecraft.client.model.CodModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -31,13 +31,13 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class TroutRenderer<T extends TroutEntity> extends MobRenderer<TroutEntity, CodModel<TroutEntity>> {
+public class TroutRenderer<T extends Trout> extends MobRenderer<Trout, CodModel<Trout>> {
 
     public TroutRenderer(EntityRendererProvider.Context pContext) {
         super(pContext, new CodModel<>(pContext.bakeLayer(ModEntityModelLayers.TROUT)), 0.3F);
     }
 
-    protected void setupRotations(TroutEntity pEntityLiving, PoseStack pMatrixStack, float pAgeInTicks, float pRotationYaw, float pPartialTicks) {
+    protected void setupRotations(Trout pEntityLiving, PoseStack pMatrixStack, float pAgeInTicks, float pRotationYaw, float pPartialTicks) {
         super.setupRotations(pEntityLiving, pMatrixStack, pAgeInTicks, pRotationYaw, pPartialTicks);
         float f = 4.3F * Mth.sin(0.6F * pAgeInTicks);
         pMatrixStack.mulPose(Axis.YP.rotationDegrees(f));
@@ -48,7 +48,7 @@ public class TroutRenderer<T extends TroutEntity> extends MobRenderer<TroutEntit
 
     }
     @Override
-    public ResourceLocation getTextureLocation(TroutEntity pEntity) {
+    public ResourceLocation getTextureLocation(Trout pEntity) {
         return new ResourceLocation(ClassiCraftMod.MOD_ID, "textures/entity/trout.png");
     }
 }

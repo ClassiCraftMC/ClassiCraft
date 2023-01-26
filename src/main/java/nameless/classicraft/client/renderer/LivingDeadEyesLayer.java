@@ -18,7 +18,7 @@
 package nameless.classicraft.client.renderer;
 
 import nameless.classicraft.ClassiCraftMod;
-import nameless.classicraft.entity.LivingDeadEntity;
+import nameless.classicraft.entity.LivingDead;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
@@ -29,7 +29,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 @OnlyIn(Dist.CLIENT)
-public class LivingDeadEyesLayer<T extends LivingDeadEntity, M extends HumanoidModel<T>> extends EyesLayer<T, M> {
+public class LivingDeadEyesLayer<T extends LivingDead, M extends HumanoidModel<T>> extends EyesLayer<T, M> {
 
     private static final RenderType LIVING_DEAD_EYES =
             RenderType.eyes(new ResourceLocation(ClassiCraftMod.MOD_ID, "textures/entity/living_dead/living_dead_e.png"));

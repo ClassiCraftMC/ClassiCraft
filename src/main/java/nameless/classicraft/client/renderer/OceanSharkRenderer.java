@@ -19,7 +19,7 @@ package nameless.classicraft.client.renderer;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.client.model.OceanSharkModel;
-import nameless.classicraft.entity.OceanSharkEntity;
+import nameless.classicraft.entity.OceanShark;
 import nameless.classicraft.init.ModEntityModelLayers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -28,7 +28,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class OceanSharkRenderer<T extends OceanSharkEntity> extends MobRenderer<T, OceanSharkModel<T>> {
+public class OceanSharkRenderer<T extends OceanShark> extends MobRenderer<T, OceanSharkModel<T>> {
 
     public OceanSharkRenderer(EntityRendererProvider.Context pContext) {
         super(pContext, new OceanSharkModel<>(pContext.bakeLayer(ModEntityModelLayers.OCEAN_SHARK)), 0.2F);

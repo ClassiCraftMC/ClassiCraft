@@ -18,7 +18,7 @@
 package nameless.classicraft.client.renderer;
 
 import nameless.classicraft.ClassiCraftMod;
-import nameless.classicraft.entity.LivingDeadEntity;
+import nameless.classicraft.entity.LivingDead;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelLayers;
@@ -30,10 +30,10 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class LivingDeadRenderer<T extends LivingDeadEntity> extends MobRenderer<LivingDeadEntity, HumanoidModel<LivingDeadEntity>> {
+public class LivingDeadRenderer<T extends LivingDead> extends MobRenderer<LivingDead, HumanoidModel<LivingDead>> {
 
     private static final ResourceLocation[] TEXTURES =
-            new ResourceLocation[LivingDeadEntity.MAX_VARIANTS];
+            new ResourceLocation[LivingDead.MAX_VARIANTS];
     private static final ResourceLocation DEFAULT_TEXTURES =
             new ResourceLocation(ClassiCraftMod.MOD_ID, "textures/entity/living_dead/zombie1.png");
 
@@ -45,7 +45,7 @@ public class LivingDeadRenderer<T extends LivingDeadEntity> extends MobRenderer<
     }
 
     @Override
-    public ResourceLocation getTextureLocation(LivingDeadEntity pEntity) {
+    public ResourceLocation getTextureLocation(LivingDead pEntity) {
         int variant = pEntity.getVariant() + 1;
         if (TEXTURES[variant - 1] == null) {
             ResourceLocation loc = new ResourceLocation(ClassiCraftMod.MOD_ID, "textures/entity/living_dead/zombie" + variant + ".png");

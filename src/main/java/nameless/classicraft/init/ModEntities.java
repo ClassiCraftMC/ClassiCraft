@@ -18,9 +18,9 @@
 package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
-import nameless.classicraft.entity.LivingDeadEntity;
-import nameless.classicraft.entity.OceanSharkEntity;
-import nameless.classicraft.entity.TroutEntity;
+import nameless.classicraft.entity.LivingDead;
+import nameless.classicraft.entity.OceanShark;
+import nameless.classicraft.entity.Trout;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -36,18 +36,18 @@ public class ModEntities {
             DeferredRegister.create(ForgeRegistries.ENTITY_TYPES,
                     ClassiCraftMod.MOD_ID);
 
-    public static final RegistryObject<EntityType<TroutEntity>> TROUT_ENTITY =
-            register("trout", EntityType.Builder.of(TroutEntity::new, MobCategory.WATER_AMBIENT)
+    public static final RegistryObject<EntityType<Trout>> TROUT_ENTITY =
+            register("trout", EntityType.Builder.of(Trout::new, MobCategory.WATER_AMBIENT)
                     .sized(0.5F, 0.3F)
                     .clientTrackingRange(4));
 
-    public static final RegistryObject<EntityType<LivingDeadEntity>> LIVING_DEAD =
-            register("living_dead", EntityType.Builder.<LivingDeadEntity>of(LivingDeadEntity::new, MobCategory.MONSTER)
+    public static final RegistryObject<EntityType<LivingDead>> LIVING_DEAD =
+            register("living_dead", EntityType.Builder.<LivingDead>of(LivingDead::new, MobCategory.MONSTER)
                     .sized(0.6F, 1.95F)
                     .clientTrackingRange(8));
 
-    public static final RegistryObject<EntityType<OceanSharkEntity>> OCEAN_SHARK_ENTITY =
-            register("ocean_shark", EntityType.Builder.of(OceanSharkEntity::new, MobCategory.WATER_AMBIENT)
+    public static final RegistryObject<EntityType<OceanShark>> OCEAN_SHARK_ENTITY =
+            register("ocean_shark", EntityType.Builder.of(OceanShark::new, MobCategory.WATER_AMBIENT)
                     .sized(1.4f,1.1f)
                     .clientTrackingRange(10));
 

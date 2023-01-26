@@ -47,16 +47,16 @@ import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.Nullable;
 
-public class AbstractSharkEntity  extends AbstractSchoolingFish implements Enemy {
+public class AbstractShark extends AbstractSchoolingFish implements Enemy {
 
-    private static final EntityDataAccessor<Boolean> GOT_FISH = SynchedEntityData.defineId(AbstractSharkEntity.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Integer> MOISTNESS_LEVEL = SynchedEntityData.defineId(AbstractSharkEntity.class, EntityDataSerializers.INT);
-    private static final EntityDataAccessor<Boolean> HUNGY = SynchedEntityData.defineId(AbstractSharkEntity.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Integer> TIME_TILL_HUNGRY = SynchedEntityData.defineId(AbstractSharkEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Boolean> GOT_FISH = SynchedEntityData.defineId(AbstractShark.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> MOISTNESS_LEVEL = SynchedEntityData.defineId(AbstractShark.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Boolean> HUNGY = SynchedEntityData.defineId(AbstractShark.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> TIME_TILL_HUNGRY = SynchedEntityData.defineId(AbstractShark.class, EntityDataSerializers.INT);
     public static final TargetingConditions SWIM_WITH_PLAYER_TARGETING = TargetingConditions.forNonCombat().range(10.0D).ignoreLineOfSight();
     int lastTimeSinceHungry;
 
-    public AbstractSharkEntity(EntityType<? extends AbstractSchoolingFish> pEntityType, Level pLevel) {
+    public AbstractShark(EntityType<? extends AbstractSchoolingFish> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
@@ -263,7 +263,7 @@ public class AbstractSharkEntity  extends AbstractSchoolingFish implements Enemy
         this.goalSelector.addGoal(5, new SharkJumpGoal(this, 10));
         this.goalSelector.addGoal(2, new SharkAttackGoal(this, 1.2, true));
         this.goalSelector.addGoal(8, new FollowBoatGoal(this));
-        this.targetSelector.addGoal(3, new SharkNearestAttackableTargetGoal(this, TroutEntity.class, true, false));
+        this.targetSelector.addGoal(3, new SharkNearestAttackableTargetGoal(this, Trout.class, true, false));
         this.targetSelector.addGoal(3, new SharkNearestAttackableTargetGoal(this, Pufferfish.class, true, false));
         this.targetSelector.addGoal(3, new SharkNearestAttackableTargetGoal(this, Cod.class, true, false));
         this.targetSelector.addGoal(3, new SharkNearestAttackableTargetGoal(this, TropicalFish.class, true, false));

@@ -19,7 +19,7 @@ package nameless.classicraft.event;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import nameless.classicraft.entity.LivingDeadEntity;
+import nameless.classicraft.entity.LivingDead;
 import nameless.classicraft.init.ModItems;
 import nameless.classicraft.network.SimpleNetworkHandler;
 import net.minecraft.world.level.block.ComposterBlock;
@@ -34,7 +34,7 @@ public class SetupEvents {
     @SubscribeEvent
     public static void onCommonSetup(FMLCommonSetupEvent event) {
         SimpleNetworkHandler.init();
-        event.enqueueWork(LivingDeadEntity::init);
+        event.enqueueWork(LivingDead::init);
         boolean hasRottenFood = ComposterBlock.COMPOSTABLES.containsKey(ModItems.ROTTEN_FOOD.get());
 
         if (!hasRottenFood) {

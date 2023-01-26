@@ -17,7 +17,7 @@
  */
 package nameless.classicraft.entity.ai.goal;
 
-import nameless.classicraft.entity.AbstractSharkEntity;
+import nameless.classicraft.entity.AbstractShark;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
 import net.minecraft.world.phys.Vec3;
@@ -37,7 +37,7 @@ public class SharkSwimmingGoal extends RandomSwimmingGoal {
                 if (this.mob.getNoActionTime() >= 100) {
                     return false;
                 }
-                if (((AbstractSharkEntity) this.mob).isHungry()) {
+                if (((AbstractShark) this.mob).isHungry()) {
                     if (this.mob.getRandom().nextInt(60) != 0) {
                         return false;
                     }

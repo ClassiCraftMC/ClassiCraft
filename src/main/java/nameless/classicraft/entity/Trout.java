@@ -31,9 +31,9 @@ import net.minecraft.world.entity.animal.AbstractSchoolingFish;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class TroutEntity extends AbstractSchoolingFish {
+public class Trout extends AbstractSchoolingFish {
 
-    public TroutEntity(EntityType<? extends AbstractSchoolingFish> pEntityType, Level pLevel) {
+    public Trout(EntityType<? extends AbstractSchoolingFish> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
