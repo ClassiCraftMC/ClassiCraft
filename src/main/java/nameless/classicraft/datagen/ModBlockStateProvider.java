@@ -19,10 +19,9 @@ package nameless.classicraft.datagen;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.block.StainedGlassSlabBlock;
-import nameless.classicraft.block.StainedGlassStairsBlock;
+import nameless.classicraft.block.StainedGlassStairBlock;
 import nameless.classicraft.block.StainedGlassWallBlock;
 import nameless.classicraft.init.ModBlocks;
-import nameless.classicraft.util.ExtraUtils;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -186,7 +185,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
         twoBuildBlocks(ModBlocks.BLACK_WOOL_STAIRS, ModBlocks.BLACK_WOOL_SLAB,
                 "black_wool", "minecraft:block/black_wool");
         fenceBlock(ModBlocks.CRIMSON_NETHER_BRICKS_FENCE, "minecraft:block/red_nether_bricks");
-        twoGlassBuildBlocks();
         glassStairsBlock(ModBlocks.WHITE_STAINED_GLASS_STAIRS, DyeColor.WHITE);
         glassStairsBlock(ModBlocks.ORANGE_STAINED_GLASS_STAIRS, DyeColor.ORANGE);
         glassStairsBlock(ModBlocks.MAGENTA_STAINED_GLASS_STAIRS, DyeColor.MAGENTA);
@@ -203,29 +201,58 @@ public class ModBlockStateProvider extends BlockStateProvider {
         glassStairsBlock(ModBlocks.GREEN_STAINED_GLASS_STAIRS, DyeColor.GREEN);
         glassStairsBlock(ModBlocks.RED_STAINED_GLASS_STAIRS, DyeColor.RED);
         glassStairsBlock(ModBlocks.BLACK_STAINED_GLASS_STAIRS, DyeColor.BLACK);
+        glassWallBlock(ModBlocks.WHITE_STAINED_GLASS_WALL, DyeColor.WHITE);
+        glassWallBlock(ModBlocks.ORANGE_STAINED_GLASS_WALL, DyeColor.ORANGE);
+        glassWallBlock(ModBlocks.MAGENTA_STAINED_GLASS_WALL, DyeColor.MAGENTA);
+        glassWallBlock(ModBlocks.LIGHT_BLUE_STAINED_GLASS_WALL, DyeColor.LIGHT_BLUE);
+        glassWallBlock(ModBlocks.YELLOW_STAINED_GLASS_WALL, DyeColor.YELLOW);
+        glassWallBlock(ModBlocks.LIME_STAINED_GLASS_WALL, DyeColor.LIME);
+        glassWallBlock(ModBlocks.PINK_STAINED_GLASS_WALL, DyeColor.PINK);
+        glassWallBlock(ModBlocks.GRAY_STAINED_GLASS_WALL, DyeColor.GRAY);
+        glassWallBlock(ModBlocks.LIGHT_GRAY_STAINED_GLASS_WALL, DyeColor.LIGHT_GRAY);
+        glassWallBlock(ModBlocks.CYAN_STAINED_GLASS_WALL, DyeColor.CYAN);
+        glassWallBlock(ModBlocks.PURPLE_STAINED_GLASS_WALL, DyeColor.PURPLE);
+        glassWallBlock(ModBlocks.BLUE_STAINED_GLASS_WALL, DyeColor.BLUE);
+        glassWallBlock(ModBlocks.BROWN_STAINED_GLASS_WALL, DyeColor.BROWN);
+        glassWallBlock(ModBlocks.GREEN_STAINED_GLASS_WALL, DyeColor.GREEN);
+        glassWallBlock(ModBlocks.RED_STAINED_GLASS_WALL, DyeColor.RED);
+        glassWallBlock(ModBlocks.BLACK_STAINED_GLASS_WALL, DyeColor.BLACK);
+        glassSlabBlock(ModBlocks.WHITE_STAINED_GLASS_SLAB, DyeColor.WHITE);
+        glassSlabBlock(ModBlocks.ORANGE_STAINED_GLASS_SLAB, DyeColor.ORANGE);
+        glassSlabBlock(ModBlocks.MAGENTA_STAINED_GLASS_SLAB, DyeColor.MAGENTA);
+        glassSlabBlock(ModBlocks.LIGHT_BLUE_STAINED_GLASS_SLAB, DyeColor.LIGHT_BLUE);
+        glassSlabBlock(ModBlocks.YELLOW_STAINED_GLASS_SLAB, DyeColor.YELLOW);
+        glassSlabBlock(ModBlocks.LIME_STAINED_GLASS_SLAB, DyeColor.LIME);
+        glassSlabBlock(ModBlocks.PINK_STAINED_GLASS_SLAB, DyeColor.PINK);
+        glassSlabBlock(ModBlocks.GRAY_STAINED_GLASS_SLAB, DyeColor.GRAY);
+        glassSlabBlock(ModBlocks.LIGHT_GRAY_STAINED_GLASS_SLAB, DyeColor.LIGHT_GRAY);
+        glassSlabBlock(ModBlocks.CYAN_STAINED_GLASS_SLAB, DyeColor.CYAN);
+        glassSlabBlock(ModBlocks.PURPLE_STAINED_GLASS_SLAB, DyeColor.PURPLE);
+        glassSlabBlock(ModBlocks.BLUE_STAINED_GLASS_SLAB, DyeColor.BLUE);
+        glassSlabBlock(ModBlocks.BROWN_STAINED_GLASS_SLAB, DyeColor.BROWN);
+        glassSlabBlock(ModBlocks.GREEN_STAINED_GLASS_SLAB, DyeColor.GREEN);
+        glassSlabBlock(ModBlocks.RED_STAINED_GLASS_SLAB, DyeColor.RED);
+        glassSlabBlock(ModBlocks.BLACK_STAINED_GLASS_SLAB, DyeColor.BLACK);
+        threeBuildBlocks(ModBlocks.GLASS_WALL, ModBlocks.GLASS_STAIRS, ModBlocks.GLASS_SLAB,
+                "glass", "minecraft:block/glass");
+        threeBuildBlocks(ModBlocks.TINTED_GLASS_WALL, ModBlocks.TINTED_GLASS_STAIRS, ModBlocks.TINTED_GLASS_SLAB,
+                "tinted_glass", "minecraft:block/tinted_glass");
     }
 
-    protected void twoGlassBuildBlocks() {
-        for (Block block : ExtraUtils.getBlocks()) {
-            for (String material : List.of("_stained_glass")) {
-                for (DyeColor dyeColor : DyeColor.values()) {
-                    if (block instanceof StainedGlassWallBlock) {
-                        glassWallBlock((StainedGlassWallBlock) block, new ResourceLocation("minecraft:block/" + dyeColor.getName() + material));
-                    }
-                    if (block instanceof StainedGlassSlabBlock) {
-                        glassSlabBlock((StainedGlassSlabBlock) block,
-                                new ResourceLocation("minecraft:block/" + dyeColor.getName() + material),
-                                new ResourceLocation("minecraft:block/" + dyeColor.getName() + material),
-                                new ResourceLocation("minecraft:block/" + dyeColor.getName() + material),
-                                new ResourceLocation("minecraft:block/" + dyeColor.getName() + material));
-                    }
-                }
-            }
-        }
+    protected void glassSlabBlock(RegistryObject<Block> slab, DyeColor dyeColor) {
+        glassSlabBlock((StainedGlassSlabBlock) slab.get(),
+                new ResourceLocation("minecraft:block/" + dyeColor.getName() + "_stained_glass"),
+                new ResourceLocation("minecraft:block/" + dyeColor.getName() + "_stained_glass"),
+                new ResourceLocation("minecraft:block/" + dyeColor.getName() + "_stained_glass"),
+                new ResourceLocation("minecraft:block/" + dyeColor.getName() + "_stained_glass"));
+    }
+
+    protected void glassWallBlock(RegistryObject<Block> wall, DyeColor dyeColor) {
+        glassWallBlock((StainedGlassWallBlock) wall.get(), new ResourceLocation("minecraft:block/" + dyeColor.getName() + "_stained_glass"));
     }
 
     protected void glassStairsBlock(RegistryObject<Block> stairs, DyeColor dyeColor) {
-        glassStairsBlock((StainedGlassStairsBlock) stairs.get(),
+        glassStairsBlock((StainedGlassStairBlock) stairs.get(),
                 name(stairs.get()),
                 new ResourceLocation("minecraft:block/" + dyeColor.getName() + "_stained_glass"),
                 new ResourceLocation("minecraft:block/" + dyeColor.getName() + "_stained_glass"),
@@ -381,27 +408,27 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     protected void glassStairsBlock(Block block, String name, String all) {
-        glassStairsBlock((StainedGlassStairsBlock) block,
+        glassStairsBlock((StainedGlassStairBlock) block,
                 name,
                 new ResourceLocation(all),
                 new ResourceLocation(all),
                 new ResourceLocation(all));
     }
 
-    public void glassStairsBlock(StainedGlassStairsBlock block, String name, ResourceLocation side, ResourceLocation bottom, ResourceLocation top) {
+    public void glassStairsBlock(StainedGlassStairBlock block, String name, ResourceLocation side, ResourceLocation bottom, ResourceLocation top) {
         glassStairsBlockInternal(block, name + "_stairs", side, bottom, top);
     }
 
-    private void glassStairsBlockInternal(StainedGlassStairsBlock block, String baseName, ResourceLocation side, ResourceLocation bottom, ResourceLocation top) {
+    private void glassStairsBlockInternal(StainedGlassStairBlock block, String baseName, ResourceLocation side, ResourceLocation bottom, ResourceLocation top) {
         ModelFile stairs = models().stairs(baseName, side, bottom, top);
         ModelFile stairsInner = models().stairsInner(baseName + "_inner", side, bottom, top);
         ModelFile stairsOuter = models().stairsOuter(baseName + "_outer", side, bottom, top);
         glassStairsBlock(block, stairs, stairsInner, stairsOuter);
     }
 
-    public void glassStairsBlock(StainedGlassStairsBlock block, ModelFile stairs, ModelFile stairsInner, ModelFile stairsOuter) {
+    public void glassStairsBlock(StainedGlassStairBlock block, ModelFile stairs, ModelFile stairsInner, ModelFile stairsOuter) {
         getVariantBuilder(block)
-                .forAllStates(state -> {
+                .forAllStatesExcept(state -> {
                     Direction facing = state.getValue(HorizontalDirectionalBlock.FACING);
                     Half half = state.getValue(BlockStateProperties.HALF);
                     StairsShape shape = state.getValue(BlockStateProperties.STAIRS_SHAPE);
@@ -420,7 +447,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
                             .rotationY(yRot)
                             .uvLock(uvlock)
                             .build();
-                });
+                }, StainedGlassStairBlock.WATERLOGGED);
     }
 
     private ResourceLocation key(Block block) {

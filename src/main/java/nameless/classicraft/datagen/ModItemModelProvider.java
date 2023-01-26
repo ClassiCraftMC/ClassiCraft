@@ -128,10 +128,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         threeBuildBlockItems("cracked_nether_bricks", "minecraft:block/cracked_nether_bricks");
         threeBuildBlockItems("cracked_polished_blackstone_bricks", "minecraft:block/cracked_polished_blackstone_bricks");
         fenceInventory("crimson_nether_bricks","minecraft:block/red_nether_bricks");
+        threeBuildBlockItems("glass", "minecraft:block/glass");
         woolTwoBlockItems();
         glassThreeBlockItems();
         otherItem(ModItems.PHOBOS_OUTPOST_DISC.get(), "classicraft:item/music_disc_blood_moon");
         otherItem(ModItems.DRAGON_FISH_DISC.get(), "classicraft:item/music_disc_dragon_fish");
+        threeBuildBlockItems("tinted_glass", "minecraft:block/tinted_glass");
     }
 
     public ItemModelBuilder otherItem(Item item, String texture)
