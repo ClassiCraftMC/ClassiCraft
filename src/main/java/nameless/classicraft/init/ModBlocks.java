@@ -1418,12 +1418,12 @@ public class ModBlocks {
                     new WallBlock(offConcrete(DyeColor.BLUE)));
 
     public static final RegistryObject<Block> BROWN_CONCRETE_STAIRS =
-            registerDefault("brown__concrete_stairs", () ->
+            registerDefault("brown_concrete_stairs", () ->
                     new StairBlock(Blocks.BROWN_CONCRETE::defaultBlockState,
                             offConcrete(DyeColor.BROWN)));
 
     public static final RegistryObject<Block> BROWN_CONCRETE_SLAB =
-            registerDefault("brown__concrete_slab", () ->
+            registerDefault("brown_concrete_slab", () ->
                     new SlabBlock(offConcrete(DyeColor.BROWN)));
 
     public static final RegistryObject<Block> BROWN_CONCRETE_WALL =

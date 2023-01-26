@@ -53,9 +53,13 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .forEach(this::pickaxeMineAble);
         blocks.stream().filter(block -> block.defaultBlockState().getMaterial() == Material.STONE)
                         .forEach(this::pickaxeMineAble);
+        blocks.stream().filter(block -> block.defaultBlockState().getMaterial() == Material.GLASS)
+                .forEach(this::pickaxeMineAble);
         blocks.stream().filter(block -> block.defaultBlockState().getMaterial() == Material.SAND)
                 .forEach(this::shovelMineAble);
         blocks.stream().filter(block -> block.defaultBlockState().getMaterial() == Material.STONE)
+                .forEach(this::needWoodTool);
+        blocks.stream().filter(block -> block.defaultBlockState().getMaterial() == Material.GLASS)
                 .forEach(this::needWoodTool);
         blocks.stream().filter(block -> block instanceof FenceBlock)
                 .forEach(this::fenceTag);
