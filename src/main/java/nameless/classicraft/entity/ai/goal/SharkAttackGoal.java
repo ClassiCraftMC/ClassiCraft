@@ -18,7 +18,7 @@
 package nameless.classicraft.entity.ai.goal;
 
 
-import nameless.classicraft.entity.AbstractSharkEntity;
+import nameless.classicraft.entity.AbstractShark;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
@@ -39,9 +39,9 @@ public class SharkAttackGoal extends MeleeAttackGoal {
         double d0 = this.getAttackReachSqr(enemy);
         if (distToEnemySqr <= d0 && this.getTicksUntilNextAttack() <= 0) {
             this.resetAttackCooldown();
-            ((AbstractSharkEntity) this.mob).attack(enemy);
-            ((AbstractSharkEntity) this.mob).setHungry(false);
-            ((AbstractSharkEntity) this.mob).setTimeTillHungry(mob.getRandom().nextInt(300) + 300);
+            ((AbstractShark) this.mob).attack(enemy);
+            ((AbstractShark) this.mob).setHungry(false);
+            ((AbstractShark) this.mob).setTimeTillHungry(mob.getRandom().nextInt(300) + 300);
         }
     }
 

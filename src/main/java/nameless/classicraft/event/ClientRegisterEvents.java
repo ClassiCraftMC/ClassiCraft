@@ -23,9 +23,9 @@ import nameless.classicraft.client.model.OceanSharkModel;
 import nameless.classicraft.client.renderer.LivingDeadRenderer;
 import nameless.classicraft.client.renderer.OceanSharkRenderer;
 import nameless.classicraft.client.renderer.TroutRenderer;
-import nameless.classicraft.entity.LivingDeadEntity;
-import nameless.classicraft.entity.OceanSharkEntity;
-import nameless.classicraft.entity.TroutEntity;
+import nameless.classicraft.entity.LivingDead;
+import nameless.classicraft.entity.OceanShark;
+import nameless.classicraft.entity.Trout;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModEntities;
 import nameless.classicraft.init.ModEntityModelLayers;
@@ -56,9 +56,9 @@ public class ClientRegisterEvents {
 
     @SubscribeEvent
     public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
-        event.put(ModEntities.TROUT_ENTITY.get(), TroutEntity.registerAttributes().build());
-        event.put(ModEntities.OCEAN_SHARK_ENTITY.get(), OceanSharkEntity.registerAttributes().build());
-        event.put(ModEntities.LIVING_DEAD.get(), LivingDeadEntity.registerAttributes().build());
+        event.put(ModEntities.TROUT_ENTITY.get(), Trout.registerAttributes().build());
+        event.put(ModEntities.OCEAN_SHARK_ENTITY.get(), OceanShark.registerAttributes().build());
+        event.put(ModEntities.LIVING_DEAD.get(), LivingDead.registerAttributes().build());
     }
 
     @SubscribeEvent
