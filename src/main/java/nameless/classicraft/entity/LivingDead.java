@@ -51,7 +51,7 @@ import org.jetbrains.annotations.Nullable;
 public class LivingDead extends Monster implements Enemy {
 
     public static final EntityDataAccessor<Integer> VARIANT =
-            SynchedEntityData.defineId(LivingDeadEntity.class, EntityDataSerializers.INT);
+            SynchedEntityData.defineId(LivingDead.class, EntityDataSerializers.INT);
     public static final int MAX_VARIANTS = 200;
 
     public LivingDead(EntityType<? extends Monster> pEntityType, Level pLevel) {
