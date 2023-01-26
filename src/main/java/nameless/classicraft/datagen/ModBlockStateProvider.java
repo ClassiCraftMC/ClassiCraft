@@ -99,7 +99,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
         wallBlock(ModBlocks.SMOOTH_RED_SANDSTONE_WALL, "smooth_red_sandstone", "minecraft:block/red_sandstone_top");
         stairsBlock(ModBlocks.CRACKED_BRICKS_STAIRS, "cracked_bricks","classicraft:block/cracked_bricks");
         stairsBlock(ModBlocks.MOSSY_BRICKS_STAIRS, "mossy_bricks","classicraft:block/mossy_bricks");
-        stairsBlock(ModBlocks.SMOOTH_STONE_STAIRS, "smooth_stone", "minecraft:block/smooth_stone");
         stairsBlock(ModBlocks.CRACKED_STONE_BRICKS_STAIRS, "cracked_stone_bricks","minecraft:block/cracked_stone_bricks");
         stairsBlock(ModBlocks.DEEPSLATE_STAIRS, "deepslate","minecraft:block/deepslate", "minecraft:block/deepslate_top", "minecraft:block/deepslate_top");
         stairsBlock(ModBlocks.CUT_SANDSTONE_STAIRS, "cut_sandstone","minecraft:block/cut_sandstone", "minecraft:block/sandstone_bottom", "minecraft:block/sandstone_top");
@@ -269,6 +268,42 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 ModBlocks.RED_CONCRETE_SLAB, DyeColor.RED);
         threeColorConcretes(ModBlocks.BLACK_CONCRETE_WALL, ModBlocks.BLACK_CONCRETE_STAIRS,
                 ModBlocks.BLACK_CONCRETE_SLAB, DyeColor.BLACK);
+        threeColorTerracottas(ModBlocks.WHITE_TERRACOTTA_WALL, ModBlocks.WHITE_TERRACOTTA_STAIRS,
+                ModBlocks.WHITE_TERRACOTTA_SLAB, DyeColor.WHITE);
+        threeColorTerracottas(ModBlocks.ORANGE_TERRACOTTA_WALL, ModBlocks.ORANGE_TERRACOTTA_STAIRS,
+                ModBlocks.ORANGE_TERRACOTTA_SLAB, DyeColor.ORANGE);
+        threeColorTerracottas(ModBlocks.MAGENTA_TERRACOTTA_WALL, ModBlocks.MAGENTA_TERRACOTTA_STAIRS,
+                ModBlocks.MAGENTA_TERRACOTTA_SLAB, DyeColor.MAGENTA);
+        threeColorTerracottas(ModBlocks.LIGHT_BLUE_TERRACOTTA_WALL, ModBlocks.LIGHT_BLUE_TERRACOTTA_STAIRS,
+                ModBlocks.LIGHT_BLUE_TERRACOTTA_SLAB, DyeColor.LIGHT_BLUE);
+        threeColorTerracottas(ModBlocks.YELLOW_TERRACOTTA_WALL, ModBlocks.YELLOW_TERRACOTTA_STAIRS,
+                ModBlocks.YELLOW_TERRACOTTA_SLAB, DyeColor.YELLOW);
+        threeColorTerracottas(ModBlocks.LIME_TERRACOTTA_WALL, ModBlocks.LIME_TERRACOTTA_STAIRS,
+                ModBlocks.LIME_TERRACOTTA_SLAB, DyeColor.LIME);
+        threeColorTerracottas(ModBlocks.PINK_TERRACOTTA_WALL, ModBlocks.PINK_TERRACOTTA_STAIRS,
+                ModBlocks.PINK_TERRACOTTA_SLAB, DyeColor.PINK);
+        threeColorTerracottas(ModBlocks.GRAY_TERRACOTTA_WALL, ModBlocks.GRAY_TERRACOTTA_STAIRS,
+                ModBlocks.GRAY_TERRACOTTA_SLAB, DyeColor.GRAY);
+        threeColorTerracottas(ModBlocks.LIGHT_GRAY_TERRACOTTA_WALL, ModBlocks.LIGHT_GRAY_TERRACOTTA_STAIRS,
+                ModBlocks.LIGHT_GRAY_TERRACOTTA_SLAB, DyeColor.LIGHT_GRAY);
+        threeColorTerracottas(ModBlocks.CYAN_TERRACOTTA_WALL, ModBlocks.CYAN_TERRACOTTA_STAIRS,
+                ModBlocks.CYAN_TERRACOTTA_SLAB, DyeColor.CYAN);
+        threeColorTerracottas(ModBlocks.PURPLE_TERRACOTTA_WALL, ModBlocks.PURPLE_TERRACOTTA_STAIRS,
+                ModBlocks.PURPLE_TERRACOTTA_SLAB, DyeColor.PURPLE);
+        threeColorTerracottas(ModBlocks.BLUE_TERRACOTTA_WALL, ModBlocks.BLUE_TERRACOTTA_STAIRS,
+                ModBlocks.BLUE_TERRACOTTA_SLAB, DyeColor.BLUE);
+        threeColorTerracottas(ModBlocks.BROWN_TERRACOTTA_WALL, ModBlocks.BROWN_TERRACOTTA_STAIRS,
+                ModBlocks.BROWN_TERRACOTTA_SLAB, DyeColor.BROWN);
+        threeColorTerracottas(ModBlocks.GREEN_TERRACOTTA_WALL, ModBlocks.GREEN_TERRACOTTA_STAIRS,
+                ModBlocks.GREEN_TERRACOTTA_SLAB, DyeColor.GREEN);
+        threeColorTerracottas(ModBlocks.RED_TERRACOTTA_WALL, ModBlocks.RED_TERRACOTTA_STAIRS,
+                ModBlocks.RED_TERRACOTTA_SLAB, DyeColor.RED);
+        threeColorTerracottas(ModBlocks.BLACK_TERRACOTTA_WALL, ModBlocks.BLACK_TERRACOTTA_STAIRS,
+                ModBlocks.BLACK_TERRACOTTA_SLAB, DyeColor.BLACK);
+    }
+
+    protected void threeColorTerracottas(RegistryObject<Block> wall, RegistryObject<Block> stairs, RegistryObject<Block> slab, DyeColor dyeColor) {
+        threeBuildBlocks(wall, stairs, slab, dyeColor.getName() + "_terracotta", "minecraft:block/" + dyeColor.getName() + "_terracotta");
     }
 
     protected void threeColorConcretes(RegistryObject<Block> wall, RegistryObject<Block> stairs, RegistryObject<Block> slab, DyeColor dyeColor) {

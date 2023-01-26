@@ -83,5 +83,8 @@ public class RotItems {
             .put(ModItems.NETHER_MUSHROOM_STEW.get(), 144000)
             .put(Items.MELON, 168000)
             .put(Items.PUMPKIN, 720000)
-            .put(Items.CAKE, 24000).build();
+            .put(Items.CAKE, 24000)
+            .put(ModItems.TROUT.get(), 24000)
+            .put(ModItems.COOKED_TROUT.get(), 48000)
+            .build();
 }

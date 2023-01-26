@@ -18,13 +18,14 @@
 package nameless.classicraft.datagen;
 
 import nameless.classicraft.init.ModBlocks;
+import nameless.classicraft.init.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Blocks;
 
 import javax.annotation.Nullable;
 import java.util.function.Consumer;
@@ -37,13 +38,30 @@ public class ModRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
-        wall(pWriter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.STONE_WALL.get(), Items.STONE);
-        stair(pWriter, ModBlocks.SMOOTH_STONE_STAIRS.get(), Items.SMOOTH_STONE);
-        stair(pWriter, ModBlocks.MOSSY_BRICKS_STAIRS.get(), ModBlocks.MOSSY_BRICKS.get());
-        stair(pWriter, ModBlocks.CRACKED_BRICKS_STAIRS.get(), ModBlocks.CRACKED_BRICKS.get());
-        stair(pWriter, ModBlocks.CRACKED_STONE_BRICKS_STAIRS.get(), Blocks.CRACKED_STONE_BRICKS);
+        cookRecipe(pWriter, Items.EGG, ModItems.COOKED_EGG.get());
+        cookRecipe(pWriter, Items.ROTTEN_FLESH, Items.LEATHER);
         nineBlockStorageRecipes(pWriter, RecipeCategory.BUILDING_BLOCKS, Items.QUARTZ, RecipeCategory.MISC, Items.QUARTZ_BLOCK);
         fourBlockStorageRecipes(pWriter, RecipeCategory.BUILDING_BLOCKS, Items.FLINT, RecipeCategory.MISC, ModBlocks.FLINT_BLOCK.get());
+    }
+
+    void cookRecipe(Consumer<FinishedRecipe> pWriter, Item ingredient, Item result) {
+        SimpleCookingRecipeBuilder.smelting
+                (Ingredient.of(ingredient),
+                        RecipeCategory.FOOD,
+                        result,
+                        0.35F, 200)
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(pWriter,getItemName(result) + "_from_" + "smelting");
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ingredient),
+                RecipeCategory.FOOD, result,
+                        0.35F, 200)
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(pWriter,getItemName(result) + "_from_" + "campfire");
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ingredient),
+                RecipeCategory.FOOD, result,
+                0.35F, 200)
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(pWriter,getItemName(result) + "_from_" + "smoking");
     }
 
     void stair(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pStair, ItemLike pMaterial) {

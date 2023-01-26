@@ -137,6 +137,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         threeBuildBlockItems("tinted_glass", "minecraft:block/tinted_glass");
         concreteThreeBlockItems();
         blockItem(ModBlocks.GLISTERING_MELON);
+        terracottaThreeBlockItems();
     }
 
     public ItemModelBuilder otherItem(Item item, String texture)
@@ -160,6 +161,14 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     void glassThreeBlockItems() {
         for (String material : List.of("_stained_glass")) {
+            for (DyeColor dyeColor : DyeColor.values()) {
+                threeBuildBlockItems(dyeColor.getName() + material, "minecraft:block/" + dyeColor.getName() + material);
+            }
+        }
+    }
+
+    void terracottaThreeBlockItems() {
+        for (String material : List.of("_terracotta")) {
             for (DyeColor dyeColor : DyeColor.values()) {
                 threeBuildBlockItems(dyeColor.getName() + material, "minecraft:block/" + dyeColor.getName() + material);
             }
