@@ -6,10 +6,10 @@ modId="classicraft"
 version="${file.jarVersion}"
 displayName="Classicraft Mod"
 logoFile="classicraft.png"
-authors="Nameless, 1798643961, Thaumstrial, Vapour_Beatle"
+authors="Vapour_Beatle, TT432, 1798643961, Thaumstrial"
 
 description = '''
-
+A Vanilla Expandation mod
 '''
 
 [[dependencies.classicraft]]
