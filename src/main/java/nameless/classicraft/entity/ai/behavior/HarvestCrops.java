@@ -26,6 +26,9 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import javax.annotation.Nullable;
 import java.util.List;
 
+/**
+ * @author wdog5
+ */
 public class HarvestCrops extends Behavior<CustomNpc> {
 
     @Nullable

@@ -21,6 +21,9 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.List;
 
+/**
+ * @author wdog5
+ */
 @Mod.EventBusSubscriber
 public class ItemEvent {
 

@@ -1,5 +1,8 @@
 package nameless.classicraft.api.san;
 
+/**
+ * @author wdog5
+ */
 public interface ISanHandler {
 
     void setSan(float san);

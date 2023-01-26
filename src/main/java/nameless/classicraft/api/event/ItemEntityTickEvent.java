@@ -6,6 +6,7 @@ import net.minecraftforge.eventbus.api.Cancelable;
 
 /**
  * Called when an item tick in the world
+ * @author wdog5
  */
 @Cancelable
 public class ItemEntityTickEvent extends ItemEvent {

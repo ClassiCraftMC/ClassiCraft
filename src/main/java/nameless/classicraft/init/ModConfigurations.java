@@ -6,6 +6,9 @@ import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.nio.file.Path;
 
+/**
+ * @author wdog5
+ */
 public class ModConfigurations {
 
     public static final ForgeConfigSpec SPEC;

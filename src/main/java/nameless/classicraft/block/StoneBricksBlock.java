@@ -6,6 +6,9 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 
+/**
+ * @author wdog5
+ */
 public class StoneBricksBlock extends Block {
 
     public StoneBricksBlock(SoundType soundType, MaterialColor color) {

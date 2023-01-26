@@ -5,6 +5,9 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.StandingAndWallBlockItem;
 
+/**
+ * @author wdog5
+ */
 public class UnlitSoulTorchItem extends StandingAndWallBlockItem {
 
     public UnlitSoulTorchItem() {

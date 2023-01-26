@@ -8,6 +8,9 @@ import net.minecraft.world.item.CompassItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
+/**
+ * @author wdog5
+ */
 public class DepthMeterItem extends CompassItem {
 
     public DepthMeterItem() {

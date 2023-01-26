@@ -1,7 +1,6 @@
 package nameless.classicraft;
 
 import com.mojang.logging.LogUtils;
-import nameless.classicraft.init.ModCreativeModeTabs;
 import nameless.classicraft.glm.ModLootModifiers;
 import nameless.classicraft.init.*;
 import nameless.classicraft.util.FoodUtils;

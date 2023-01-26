@@ -13,6 +13,9 @@ import net.minecraft.util.Mth;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+/**
+ * @author wdog5
+ */
 @OnlyIn(Dist.CLIENT)
 public class TroutRenderer<T extends TroutEntity> extends MobRenderer<TroutEntity, CodModel<TroutEntity>> {
 

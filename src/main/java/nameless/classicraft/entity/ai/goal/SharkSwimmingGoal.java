@@ -5,6 +5,9 @@ import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
 import net.minecraft.world.phys.Vec3;
 
+/**
+ * @author wdog5
+ */
 public class SharkSwimmingGoal extends RandomSwimmingGoal {
 
     public SharkSwimmingGoal(PathfinderMob p_25753_) {

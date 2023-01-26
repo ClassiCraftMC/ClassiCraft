@@ -1,7 +1,6 @@
 package nameless.classicraft.event;
 
 import nameless.classicraft.ClassiCraftMod;
-import nameless.classicraft.block.StainedGlassSlabBlock;
 import nameless.classicraft.block.StainedGlassStairsBlock;
 import nameless.classicraft.block.StainedGlassWallBlock;
 import nameless.classicraft.block.StonePebbleBlock;
@@ -72,10 +71,7 @@ public class ClientRegisterEvents {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CACTUS_BALL.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.TWIGS.get(), RenderType.cutout());
         for (Block block : ExtraUtils.getBlocks()) {
-            if (block instanceof StainedGlassSlabBlock
-                    || block instanceof StainedGlassStairsBlock
-                    || block instanceof StainedGlassWallBlock
-                    || block instanceof WallBlock
+            if (block instanceof WallBlock
                     || block instanceof StairBlock
                     || block instanceof SlabBlock) {
                 ItemBlockRenderTypes.setRenderLayer(block, RenderType.translucent());

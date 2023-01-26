@@ -14,6 +14,9 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * @author wdog5
+ */
 public class CharCoalBlock extends Block {
 
     public CharCoalBlock() {

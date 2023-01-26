@@ -22,6 +22,9 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import javax.annotation.Nullable;
 import java.util.Map;
 
+/**
+ * @author wdog5
+ */
 @MethodsReturnNonnullByDefault
 public class RealSoulWallTorchBlock extends RealSoulTorchBlock {
 

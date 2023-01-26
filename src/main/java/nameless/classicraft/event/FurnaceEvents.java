@@ -6,6 +6,9 @@ import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+/**
+ * @author wdog5
+ */
 @Mod.EventBusSubscriber
 public class FurnaceEvents {
 

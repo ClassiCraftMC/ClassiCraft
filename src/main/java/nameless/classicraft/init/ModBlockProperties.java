@@ -2,6 +2,9 @@ package nameless.classicraft.init;
 
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
+/**
+ * @author wdog5
+ */
 public class ModBlockProperties {
 
     public static final int TICK_INTERVAL = 1200;

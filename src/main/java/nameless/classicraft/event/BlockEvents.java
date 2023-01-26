@@ -11,6 +11,9 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+/**
+ * @author wdog5
+ */
 @Mod.EventBusSubscriber
 public class BlockEvents {
 

@@ -13,6 +13,9 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * @author wdog5
+ */
 public class ExtraUtils {
 
     public static final DeferredRegister<? extends Block> deferredRegister = ModBlocks.BLOCKS;

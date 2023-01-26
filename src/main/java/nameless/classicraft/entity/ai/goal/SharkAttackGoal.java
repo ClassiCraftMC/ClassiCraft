@@ -6,6 +6,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 
+/**
+ * @author wdog5
+ */
 public class SharkAttackGoal extends MeleeAttackGoal {
 
     public SharkAttackGoal(PathfinderMob creature, double speedIn, boolean useLongMemory) {

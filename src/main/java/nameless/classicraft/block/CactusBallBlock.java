@@ -12,6 +12,9 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 
+/**
+ * @author wdog5
+ */
 public class CactusBallBlock extends FlowerBlock {
 
     public CactusBallBlock() {

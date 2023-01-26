@@ -20,6 +20,9 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
+/**
+ * @author wdog5
+ */
 @ParametersAreNonnullByDefault
 public abstract class AbstractNpc extends AgeableMob implements InventoryCarrier, Npc {
 

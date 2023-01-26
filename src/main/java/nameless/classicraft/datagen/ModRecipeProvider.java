@@ -12,6 +12,9 @@ import net.minecraft.world.level.block.Blocks;
 import javax.annotation.Nullable;
 import java.util.function.Consumer;
 
+/**
+ * @author wdog5
+ */
 public class ModRecipeProvider extends RecipeProvider {
 
     public ModRecipeProvider(PackOutput pOutput) {

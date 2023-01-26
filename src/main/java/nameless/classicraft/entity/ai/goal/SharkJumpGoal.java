@@ -10,6 +10,9 @@ import net.minecraft.world.entity.ai.goal.JumpGoal;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
 
+/**
+ * @author wdog5
+ */
 public class SharkJumpGoal extends JumpGoal {
     private static final int[] STEPS_TO_CHECK = new int[]{0, 1, 4, 5, 6, 7};
     private final PathfinderMob mob;

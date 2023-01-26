@@ -25,6 +25,7 @@ import java.util.concurrent.CompletableFuture;
  * ClassicCraft 数据生成类
  * 用于自动生成模组json文件
  * 运用GatherDataEvent类
+ * @author wdog5
  */
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModDataGenerator {

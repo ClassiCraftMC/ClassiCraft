@@ -25,6 +25,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 
+/**
+ * @author wdog5
+ */
 public class LightUtils {
 
     protected static final int TICK_INTERVAL = ModBlockProperties.TICK_INTERVAL;

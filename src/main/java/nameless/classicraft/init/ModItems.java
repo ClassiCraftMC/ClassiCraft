@@ -22,6 +22,9 @@ import java.util.Locale;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+/**
+ * @author wdog5
+ */
 public class ModItems {
 
     public static final DeferredRegister<Item> ITEMS =

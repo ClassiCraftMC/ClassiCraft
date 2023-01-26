@@ -9,6 +9,9 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 
+/**
+ * @author wdog5
+ */
 public class OceanSharkModel<T extends Entity> extends EntityModel<T> {
 
     private final ModelPart head;

@@ -4,6 +4,9 @@ import nameless.classicraft.ClassiCraftMod;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.resources.ResourceLocation;
 
+/**
+ * @author wdog5
+ */
 public class ModEntityModelLayers {
 
     public static final ModelLayerLocation TROUT = register("trout");

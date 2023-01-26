@@ -9,6 +9,7 @@ import net.minecraftforge.event.level.BlockEvent;
 /**
  * A event fired when block was destroyed
  * this event can get the block's pos while break
+ * @author wdog5
  */
 public class BlockDropEvent extends BlockEvent.BreakEvent {
 

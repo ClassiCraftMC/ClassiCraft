@@ -4,6 +4,9 @@ import nameless.classicraft.api.san.ISanHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 
+/**
+ * @author wdog5
+ */
 public class SanUtils {
 
     public static boolean checkSanExist() {

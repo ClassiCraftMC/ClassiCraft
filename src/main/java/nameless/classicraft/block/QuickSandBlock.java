@@ -29,6 +29,9 @@ import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
+/**
+ * @author wdog5
+ */
 public class QuickSandBlock extends SandBlock {
 
     private static final VoxelShape FALLING_COLLISION_SHAPE =

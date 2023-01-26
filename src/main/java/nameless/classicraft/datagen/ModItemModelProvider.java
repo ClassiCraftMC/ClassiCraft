@@ -17,6 +17,9 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * @author wdog5
+ */
 public class ModItemModelProvider extends ItemModelProvider {
 
     public ModItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {

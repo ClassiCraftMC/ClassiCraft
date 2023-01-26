@@ -13,6 +13,9 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.Locale;
 
+/**
+ * @author wdog5
+ */
 public class ModEntities {
 
     public static final DeferredRegister<EntityType<?>> ENTITIES =

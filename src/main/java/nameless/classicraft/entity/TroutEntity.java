@@ -14,6 +14,9 @@ import net.minecraft.world.entity.animal.AbstractSchoolingFish;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
+/**
+ * @author wdog5
+ */
 public class TroutEntity extends AbstractSchoolingFish {
 
     public TroutEntity(EntityType<? extends AbstractSchoolingFish> pEntityType, Level pLevel) {

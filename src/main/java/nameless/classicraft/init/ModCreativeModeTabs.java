@@ -51,17 +51,11 @@ public class ModCreativeModeTabs {
                             Set<Block> blocks = ExtraUtils.getBlocks();
                             blocks.stream().filter(block -> block instanceof StairBlock)
                                             .forEach(output::accept);
-                            blocks.stream().filter(block -> block instanceof StainedGlassStairsBlock)
-                                            .forEach(output::accept);
                             blocks.stream().filter(block -> block instanceof FenceBlock)
                                             .forEach(output::accept);
                             blocks.stream().filter(block -> block instanceof WallBlock)
                                     .forEach(output::accept);
-                            blocks.stream().filter(block -> block instanceof StainedGlassWallBlock)
-                                    .forEach(output::accept);
                             blocks.stream().filter(block -> block instanceof SlabBlock)
-                                    .forEach(output::accept);
-                            blocks.stream().filter(block -> block instanceof StainedGlassSlabBlock)
                                     .forEach(output::accept);
                             blocks.stream().filter(block -> block instanceof StoneBricksBlock)
                                     .forEach(output::accept);

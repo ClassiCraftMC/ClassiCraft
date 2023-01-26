@@ -10,6 +10,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+/**
+ * @author wdog5
+ */
 @OnlyIn(Dist.CLIENT)
 public class OceanSharkRenderer<T extends OceanSharkEntity> extends MobRenderer<T, OceanSharkModel<T>> {
 

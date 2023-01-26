@@ -9,6 +9,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 /**
  * Abstract Light Block
  * A mod light block should be extended from it
+ * @author wdog5
  */
 public abstract class AbstractLightBlock extends Block {
 

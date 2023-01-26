@@ -7,6 +7,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 
+/**
+ * @author wdog5
+ */
 public class TallowBlock extends SlimeBlock {
 
     public TallowBlock() {

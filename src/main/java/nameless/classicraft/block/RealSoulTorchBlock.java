@@ -31,6 +31,9 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.function.ToIntFunction;
 
+/**
+ * @author wdog5
+ */
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class RealSoulTorchBlock extends AbstractLightBlock {

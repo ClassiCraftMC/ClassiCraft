@@ -25,6 +25,9 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * @author wdog5
+ */
 public class LitTorchItem extends StandingAndWallBlockItem {
 
     private static final boolean HARDCORE = ModConfigurations.hardcore.get();

@@ -1,6 +1,9 @@
 package nameless.classicraft.datagen.loot;
 
-import nameless.classicraft.block.*;
+import nameless.classicraft.block.SandStoneBlock;
+import nameless.classicraft.block.StainedGlassStairsBlock;
+import nameless.classicraft.block.StainedGlassWallBlock;
+import nameless.classicraft.block.StoneBricksBlock;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import nameless.classicraft.item.PebbleItem;
@@ -77,12 +80,6 @@ public class ModBlockLoot extends BlockLootSubProvider {
         blocks.stream().filter(block -> block instanceof WallBlock)
                 .forEach(this::dropSelf);
         blocks.stream().filter(block -> block instanceof SlabBlock)
-                .forEach(this::dropSelf);
-        blocks.stream().filter(block -> block instanceof StainedGlassStairsBlock)
-                .forEach(this::dropSelf);
-        blocks.stream().filter(block -> block instanceof StainedGlassWallBlock)
-                .forEach(this::dropSelf);
-        blocks.stream().filter(block -> block instanceof StainedGlassSlabBlock)
                 .forEach(this::dropSelf);
         blocks.stream().filter(block -> block instanceof StoneBricksBlock)
                 .forEach(this::dropSelf);

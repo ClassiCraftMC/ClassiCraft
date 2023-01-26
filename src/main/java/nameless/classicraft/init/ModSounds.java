@@ -7,6 +7,9 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+/**
+ * @author wdog5
+ */
 public class ModSounds {
 
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS

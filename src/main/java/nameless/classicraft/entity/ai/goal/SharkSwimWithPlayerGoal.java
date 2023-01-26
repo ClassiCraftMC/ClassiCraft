@@ -9,6 +9,9 @@ import net.minecraft.world.entity.player.Player;
 import javax.annotation.Nullable;
 import java.util.EnumSet;
 
+/**
+ * @author wdog5
+ */
 public class SharkSwimWithPlayerGoal extends Goal {
 
     private final AbstractSharkEntity shark;

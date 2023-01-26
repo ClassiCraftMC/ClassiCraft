@@ -7,6 +7,9 @@ import net.minecraft.world.entity.npc.VillagerData;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerType;
 
+/**
+ * @author wdog5
+ */
 public class NpcData {
 
     public static final int MIN_VILLAGER_LEVEL = 1;

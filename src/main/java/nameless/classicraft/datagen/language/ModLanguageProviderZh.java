@@ -9,6 +9,9 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.LanguageProvider;
 
+/**
+ * @author wdog5
+ */
 public class ModLanguageProviderZh extends LanguageProvider {
 
     public ModLanguageProviderZh(DataGenerator gen) {

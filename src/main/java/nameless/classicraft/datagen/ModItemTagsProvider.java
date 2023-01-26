@@ -1,7 +1,6 @@
 package nameless.classicraft.datagen;
 
 import nameless.classicraft.ClassiCraftMod;
-import nameless.classicraft.block.StainedGlassSlabBlock;
 import nameless.classicraft.block.StainedGlassStairsBlock;
 import nameless.classicraft.block.StainedGlassWallBlock;
 import nameless.classicraft.init.ModTags;
@@ -20,6 +19,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * @author wdog5
+ */
 public class ModItemTagsProvider extends ItemTagsProvider {
 
     public ModItemTagsProvider(PackOutput p_255871_, CompletableFuture<HolderLookup.Provider> p_256035_, TagsProvider<Block> p_256467_, @Nullable ExistingFileHelper existingFileHelper) {
@@ -31,15 +33,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         Set<Block> blocks = ExtraUtils.getBlocks();
         blocks.stream().filter(block -> block instanceof WallBlock)
                         .forEach(this::wallTag);
-        blocks.stream().filter(block -> block instanceof StainedGlassWallBlock)
-                .forEach(this::wallTag);
         blocks.stream().filter(block -> block instanceof StairBlock)
                 .forEach(this::stairsTag);
-        blocks.stream().filter(block -> block instanceof StainedGlassStairsBlock)
-                .forEach(this::stairsTag);
         blocks.stream().filter(block -> block instanceof SlabBlock)
-                .forEach(this::slabTag);
-        blocks.stream().filter(block -> block instanceof StainedGlassSlabBlock)
                 .forEach(this::slabTag);
         blocks.stream().filter(block -> block instanceof FlowerBlock)
                 .forEach(this::flowerTag);

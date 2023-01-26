@@ -6,6 +6,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.Material;
 
+/**
+ * @author wdog5
+ */
 public class StonePebbleBlock extends AbstractPickableBlock {
     public StonePebbleBlock() {
         super(Properties.of(BlockUtils.from(Material.DIRT).noCollider().build())

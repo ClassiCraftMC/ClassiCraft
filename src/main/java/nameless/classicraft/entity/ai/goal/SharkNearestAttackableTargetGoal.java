@@ -4,6 +4,9 @@ import nameless.classicraft.entity.AbstractSharkEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 
+/**
+ * @author wdog5
+ */
 @SuppressWarnings("unchecked")
 public class SharkNearestAttackableTargetGoal extends NearestAttackableTargetGoal {
 

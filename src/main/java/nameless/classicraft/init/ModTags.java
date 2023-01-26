@@ -8,6 +8,9 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
+/**
+ * @author wdog5
+ */
 public class ModTags {
 
     public static class Blocks {

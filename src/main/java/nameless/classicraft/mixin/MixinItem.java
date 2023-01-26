@@ -32,6 +32,9 @@ public abstract class MixinItem {
         cir.setReturnValue(cir.getReturnValue() || AttachFoods.isAttach(((Item) (Object) this)));
     }
 
+    /**
+     * @author wdog5
+     */
     @Inject(method = "inventoryTick", at = @At("HEAD"))
     private void callItemTickInventoryEvent(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected, CallbackInfo ci) {
         ItemTickInventoryEvent event = new ItemTickInventoryEvent(pStack.getItem(), pLevel, pEntity, pSlotId, pIsSelected);

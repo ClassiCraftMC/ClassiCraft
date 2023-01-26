@@ -11,6 +11,9 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * @author wdog5
+ */
 @OnlyIn(Dist.CLIENT)
 public class LivingDeadEyesLayer<T extends LivingDeadEntity, M extends HumanoidModel<T>> extends EyesLayer<T, M> {
 

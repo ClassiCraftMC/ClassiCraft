@@ -18,6 +18,9 @@ import org.slf4j.Logger;
 
 import java.util.Map;
 
+/**
+ * @author wdog5
+ */
 public class CustomNpc extends AbstractNpc implements NpcDataHolder {
 
     private static final Logger LOGGER = LogUtils.getLogger();

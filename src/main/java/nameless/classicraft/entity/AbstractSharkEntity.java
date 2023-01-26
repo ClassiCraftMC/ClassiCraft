@@ -30,6 +30,9 @@ import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.Nullable;
 
+/**
+ * @author wdog5
+ */
 public class AbstractSharkEntity  extends AbstractSchoolingFish implements Enemy {
 
     private static final EntityDataAccessor<Boolean> GOT_FISH = SynchedEntityData.defineId(AbstractSharkEntity.class, EntityDataSerializers.BOOLEAN);

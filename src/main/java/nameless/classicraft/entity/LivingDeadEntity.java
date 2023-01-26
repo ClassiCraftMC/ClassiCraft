@@ -31,6 +31,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * @author wdog5
+ */
 public class LivingDeadEntity extends Monster implements Enemy {
 
     public static final EntityDataAccessor<Integer> VARIANT =

@@ -12,6 +12,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+/**
+ * @author wdog5
+ */
 @OnlyIn(Dist.CLIENT)
 public class LivingDeadRenderer<T extends LivingDeadEntity> extends MobRenderer<LivingDeadEntity, HumanoidModel<LivingDeadEntity>> {
 
