@@ -1261,6 +1261,218 @@ public class ModBlocks {
     public static final RegistryObject<Block> TINTED_GLASS_WALL =
             registerDefault("tinted_glass_wall", TintedGlassWallBlock::new);
 
+    public static final RegistryObject<Block> WHITE_CONCRETE_STAIRS =
+            registerDefault("white_concrete_stairs", () ->
+                    new StairBlock(Blocks.WHITE_CONCRETE::defaultBlockState,
+                            offConcrete(DyeColor.WHITE)));
+
+    public static final RegistryObject<Block> WHITE_CONCRETE_SLAB =
+            registerDefault("white_concrete_slab", () ->
+                    new SlabBlock(offConcrete(DyeColor.WHITE)));
+
+    public static final RegistryObject<Block> WHITE_CONCRETE_WALL =
+            registerDefault("white_concrete_wall", () ->
+                    new WallBlock(offConcrete(DyeColor.WHITE)));
+
+    public static final RegistryObject<Block> ORANGE_CONCRETE_STAIRS =
+            registerDefault("orange_concrete_stairs", () ->
+                    new StairBlock(Blocks.ORANGE_CONCRETE::defaultBlockState,
+                            offConcrete(DyeColor.ORANGE)));
+
+    public static final RegistryObject<Block> ORANGE_CONCRETE_SLAB =
+            registerDefault("orange_concrete_slab", () ->
+                    new SlabBlock(offConcrete(DyeColor.ORANGE)));
+
+    public static final RegistryObject<Block> ORANGE_CONCRETE_WALL =
+            registerDefault("orange_concrete_wall", () ->
+                    new WallBlock(offConcrete(DyeColor.ORANGE)));
+
+    public static final RegistryObject<Block> MAGENTA_CONCRETE_STAIRS =
+            registerDefault("magenta_concrete_stairs", () ->
+                    new StairBlock(Blocks.MAGENTA_CONCRETE::defaultBlockState,
+                            offConcrete(DyeColor.MAGENTA)));
+
+    public static final RegistryObject<Block> MAGENTA_CONCRETE_SLAB =
+            registerDefault("magenta_concrete_slab", () ->
+                    new SlabBlock(offConcrete(DyeColor.MAGENTA)));
+
+    public static final RegistryObject<Block> MAGENTA_CONCRETE_WALL =
+            registerDefault("magenta_concrete_wall", () ->
+                    new WallBlock(offConcrete(DyeColor.MAGENTA)));
+
+    public static final RegistryObject<Block> LIGHT_BLUE_CONCRETE_STAIRS =
+            registerDefault("light_blue_concrete_stairs", () ->
+                    new StairBlock(Blocks.LIGHT_BLUE_CONCRETE::defaultBlockState,
+                            offConcrete(DyeColor.LIGHT_BLUE)));
+
+    public static final RegistryObject<Block> LIGHT_BLUE_CONCRETE_SLAB =
+            registerDefault("light_blue_concrete_slab", () ->
+                    new SlabBlock(offConcrete(DyeColor.LIGHT_BLUE)));
+
+    public static final RegistryObject<Block> LIGHT_BLUE_CONCRETE_WALL =
+            registerDefault("light_blue_concrete_wall", () ->
+                    new WallBlock(offConcrete(DyeColor.LIGHT_BLUE)));
+
+    public static final RegistryObject<Block> YELLOW_CONCRETE_STAIRS =
+            registerDefault("yellow_concrete_stairs", () ->
+                    new StairBlock(Blocks.YELLOW_CONCRETE::defaultBlockState,
+                            offConcrete(DyeColor.YELLOW)));
+
+    public static final RegistryObject<Block> YELLOW_CONCRETE_SLAB =
+            registerDefault("yellow_concrete_slab", () ->
+                    new SlabBlock(offConcrete(DyeColor.YELLOW)));
+
+    public static final RegistryObject<Block> YELLOW_CONCRETE_WALL =
+            registerDefault("yellow_concrete_wall", () ->
+                    new WallBlock(offConcrete(DyeColor.YELLOW)));
+
+    public static final RegistryObject<Block> LIME_CONCRETE_STAIRS =
+            registerDefault("lime_concrete_stairs", () ->
+                    new StairBlock(Blocks.LIME_CONCRETE::defaultBlockState,
+                            offConcrete(DyeColor.MAGENTA)));
+
+    public static final RegistryObject<Block> LIME_CONCRETE_SLAB =
+            registerDefault("lime_concrete_slab", () ->
+                    new SlabBlock(offConcrete(DyeColor.LIME)));
+
+    public static final RegistryObject<Block> LIME_CONCRETE_WALL =
+            registerDefault("lime_concrete_wall", () ->
+                    new WallBlock(offConcrete(DyeColor.LIME)));
+
+    public static final RegistryObject<Block> PINK_CONCRETE_STAIRS =
+            registerDefault("pink_concrete_stairs", () ->
+                    new StairBlock(Blocks.PINK_CONCRETE::defaultBlockState,
+                            offConcrete(DyeColor.PINK)));
+
+    public static final RegistryObject<Block> PINK_CONCRETE_SLAB =
+            registerDefault("pink_concrete_slab", () ->
+                    new SlabBlock(offConcrete(DyeColor.PINK)));
+
+    public static final RegistryObject<Block> PINK_CONCRETE_WALL =
+            registerDefault("pink_concrete_wall", () ->
+                    new WallBlock(offConcrete(DyeColor.PINK)));
+
+    public static final RegistryObject<Block> GRAY_CONCRETE_STAIRS =
+            registerDefault("gray_concrete_stairs", () ->
+                    new StairBlock(Blocks.GRAY_CONCRETE::defaultBlockState,
+                            offConcrete(DyeColor.GRAY)));
+
+    public static final RegistryObject<Block> GRAY_CONCRETE_SLAB =
+            registerDefault("gray_concrete_slab", () ->
+                    new SlabBlock(offConcrete(DyeColor.GRAY)));
+
+    public static final RegistryObject<Block> GRAY_CONCRETE_WALL =
+            registerDefault("gray_concrete_wall", () ->
+                    new WallBlock(offConcrete(DyeColor.GRAY)));
+
+    public static final RegistryObject<Block> LIGHT_GRAY_CONCRETE_STAIRS =
+            registerDefault("light_gray_concrete_stairs", () ->
+                    new StairBlock(Blocks.LIGHT_GRAY_CONCRETE::defaultBlockState,
+                            offConcrete(DyeColor.LIGHT_GRAY)));
+
+    public static final RegistryObject<Block> LIGHT_GRAY_CONCRETE_SLAB =
+            registerDefault("light_gray_concrete_slab", () ->
+                    new SlabBlock(offConcrete(DyeColor.LIGHT_GRAY)));
+
+    public static final RegistryObject<Block> LIGHT_GRAY_CONCRETE_WALL =
+            registerDefault("light_gray_concrete_wall", () ->
+                    new WallBlock(offConcrete(DyeColor.LIGHT_GRAY)));
+
+    public static final RegistryObject<Block> CYAN_CONCRETE_STAIRS =
+            registerDefault("cyan_concrete_stairs", () ->
+                    new StairBlock(Blocks.CYAN_CONCRETE::defaultBlockState,
+                            offConcrete(DyeColor.CYAN)));
+
+    public static final RegistryObject<Block> CYAN_CONCRETE_SLAB =
+            registerDefault("cyan_concrete_slab", () ->
+                    new SlabBlock(offConcrete(DyeColor.CYAN)));
+
+    public static final RegistryObject<Block> CYAN_CONCRETE_WALL =
+            registerDefault("cyan_concrete_wall", () ->
+                    new WallBlock(offConcrete(DyeColor.CYAN)));
+
+    public static final RegistryObject<Block> PURPLE_CONCRETE_STAIRS =
+            registerDefault("purple_concrete_stairs", () ->
+                    new StairBlock(Blocks.PURPLE_CONCRETE::defaultBlockState,
+                            offConcrete(DyeColor.PURPLE)));
+
+    public static final RegistryObject<Block> PURPLE_CONCRETE_SLAB =
+            registerDefault("purple_concrete_slab", () ->
+                    new SlabBlock(offConcrete(DyeColor.PURPLE)));
+
+    public static final RegistryObject<Block> PURPLE_CONCRETE_WALL =
+            registerDefault("purple_concrete_wall", () ->
+                    new WallBlock(offConcrete(DyeColor.PURPLE)));
+
+    public static final RegistryObject<Block> BLUE_CONCRETE_STAIRS =
+            registerDefault("blue_concrete_stairs", () ->
+                    new StairBlock(Blocks.BLUE_CONCRETE::defaultBlockState,
+                            offConcrete(DyeColor.BLUE)));
+
+    public static final RegistryObject<Block> BLUE_CONCRETE_SLAB =
+            registerDefault("blue_concrete_slab", () ->
+                    new SlabBlock(offConcrete(DyeColor.BLUE)));
+
+    public static final RegistryObject<Block> BLUE_CONCRETE_WALL =
+            registerDefault("blue_concrete_wall", () ->
+                    new WallBlock(offConcrete(DyeColor.BLUE)));
+
+    public static final RegistryObject<Block> BROWN_CONCRETE_STAIRS =
+            registerDefault("brown__concrete_stairs", () ->
+                    new StairBlock(Blocks.BROWN_CONCRETE::defaultBlockState,
+                            offConcrete(DyeColor.BROWN)));
+
+    public static final RegistryObject<Block> BROWN_CONCRETE_SLAB =
+            registerDefault("brown__concrete_slab", () ->
+                    new SlabBlock(offConcrete(DyeColor.BROWN)));
+
+    public static final RegistryObject<Block> BROWN_CONCRETE_WALL =
+            registerDefault("brown_concrete_wall", () ->
+                    new WallBlock(offConcrete(DyeColor.BROWN)));
+
+    public static final RegistryObject<Block> GREEN_CONCRETE_STAIRS =
+            registerDefault("green_concrete_stairs", () ->
+                    new StairBlock(Blocks.GREEN_CONCRETE::defaultBlockState,
+                            offConcrete(DyeColor.GREEN)));
+
+    public static final RegistryObject<Block> GREEN_CONCRETE_SLAB =
+            registerDefault("green_concrete_slab", () ->
+                    new SlabBlock(offConcrete(DyeColor.GREEN)));
+
+    public static final RegistryObject<Block> GREEN_CONCRETE_WALL =
+            registerDefault("green_concrete_wall", () ->
+                    new WallBlock(offConcrete(DyeColor.GREEN)));
+
+    public static final RegistryObject<Block> RED_CONCRETE_STAIRS =
+            registerDefault("red_concrete_stairs", () ->
+                    new StairBlock(Blocks.RED_CONCRETE::defaultBlockState,
+                            offConcrete(DyeColor.RED)));
+
+    public static final RegistryObject<Block> RED_CONCRETE_SLAB =
+            registerDefault("red_concrete_slab", () ->
+                    new SlabBlock(offConcrete(DyeColor.RED)));
+
+    public static final RegistryObject<Block> RED_CONCRETE_WALL =
+            registerDefault("red_concrete_wall", () ->
+                    new WallBlock(offConcrete(DyeColor.RED)));
+
+    public static final RegistryObject<Block> BLACK_CONCRETE_STAIRS =
+            registerDefault("black_concrete_stairs", () ->
+                    new StairBlock(Blocks.BLACK_CONCRETE::defaultBlockState,
+                            offConcrete(DyeColor.BLACK)));
+
+    public static final RegistryObject<Block> BLACK_CONCRETE_SLAB =
+            registerDefault("black_concrete_slab", () ->
+                    new SlabBlock(offConcrete(DyeColor.BLACK)));
+
+    public static final RegistryObject<Block> BLACK_CONCRETE_WALL =
+            registerDefault("black_concrete_wall", () ->
+                    new WallBlock(offConcrete(DyeColor.BLACK)));
+
+    private static BlockBehaviour.Properties offConcrete(DyeColor dyeColor) {
+        return BlockBehaviour.Properties.of(Material.STONE, dyeColor)
+                .requiresCorrectToolForDrops().strength(1.8F);
+    }
     private static BlockBehaviour.Properties offSandStone(MaterialColor color) {
         return BlockBehaviour.Properties.of(Material.STONE
                 ).sound(SoundType.STONE)

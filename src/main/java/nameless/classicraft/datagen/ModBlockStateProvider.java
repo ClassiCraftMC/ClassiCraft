@@ -237,6 +237,42 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 "glass", "minecraft:block/glass");
         threeBuildBlocks(ModBlocks.TINTED_GLASS_WALL, ModBlocks.TINTED_GLASS_STAIRS, ModBlocks.TINTED_GLASS_SLAB,
                 "tinted_glass", "minecraft:block/tinted_glass");
+        threeColorConcretes(ModBlocks.WHITE_CONCRETE_WALL, ModBlocks.WHITE_CONCRETE_STAIRS,
+                ModBlocks.WHITE_CONCRETE_SLAB, DyeColor.WHITE);
+        threeColorConcretes(ModBlocks.ORANGE_CONCRETE_WALL, ModBlocks.ORANGE_CONCRETE_STAIRS,
+                ModBlocks.ORANGE_CONCRETE_SLAB, DyeColor.ORANGE);
+        threeColorConcretes(ModBlocks.MAGENTA_CONCRETE_WALL, ModBlocks.MAGENTA_CONCRETE_STAIRS,
+                ModBlocks.MAGENTA_CONCRETE_SLAB, DyeColor.MAGENTA);
+        threeColorConcretes(ModBlocks.LIGHT_BLUE_CONCRETE_WALL, ModBlocks.LIGHT_BLUE_CONCRETE_STAIRS,
+                ModBlocks.LIGHT_BLUE_CONCRETE_SLAB, DyeColor.LIGHT_BLUE);
+        threeColorConcretes(ModBlocks.YELLOW_CONCRETE_WALL, ModBlocks.YELLOW_CONCRETE_STAIRS,
+                ModBlocks.YELLOW_CONCRETE_SLAB, DyeColor.YELLOW);
+        threeColorConcretes(ModBlocks.LIME_CONCRETE_WALL, ModBlocks.LIME_CONCRETE_STAIRS,
+                ModBlocks.LIME_CONCRETE_SLAB, DyeColor.LIME);
+        threeColorConcretes(ModBlocks.PINK_CONCRETE_WALL, ModBlocks.PINK_CONCRETE_STAIRS,
+                ModBlocks.PINK_CONCRETE_SLAB, DyeColor.PINK);
+        threeColorConcretes(ModBlocks.GRAY_CONCRETE_WALL, ModBlocks.GRAY_CONCRETE_STAIRS,
+                ModBlocks.GRAY_CONCRETE_SLAB, DyeColor.GRAY);
+        threeColorConcretes(ModBlocks.LIGHT_GRAY_CONCRETE_WALL, ModBlocks.LIGHT_GRAY_CONCRETE_STAIRS,
+                ModBlocks.LIGHT_GRAY_CONCRETE_SLAB, DyeColor.LIGHT_GRAY);
+        threeColorConcretes(ModBlocks.CYAN_CONCRETE_WALL, ModBlocks.CYAN_CONCRETE_STAIRS,
+                ModBlocks.CYAN_CONCRETE_SLAB, DyeColor.CYAN);
+        threeColorConcretes(ModBlocks.PURPLE_CONCRETE_WALL, ModBlocks.PURPLE_CONCRETE_STAIRS,
+                ModBlocks.PURPLE_CONCRETE_SLAB, DyeColor.PURPLE);
+        threeColorConcretes(ModBlocks.BLUE_CONCRETE_WALL, ModBlocks.BLUE_CONCRETE_STAIRS,
+                ModBlocks.BLUE_CONCRETE_SLAB, DyeColor.BLUE);
+        threeColorConcretes(ModBlocks.BROWN_CONCRETE_WALL, ModBlocks.BROWN_CONCRETE_STAIRS,
+                ModBlocks.BROWN_CONCRETE_SLAB, DyeColor.BROWN);
+        threeColorConcretes(ModBlocks.GREEN_CONCRETE_WALL, ModBlocks.GREEN_CONCRETE_STAIRS,
+                ModBlocks.GREEN_CONCRETE_SLAB, DyeColor.GREEN);
+        threeColorConcretes(ModBlocks.RED_CONCRETE_WALL, ModBlocks.RED_CONCRETE_STAIRS,
+                ModBlocks.RED_CONCRETE_SLAB, DyeColor.RED);
+        threeColorConcretes(ModBlocks.BLACK_CONCRETE_WALL, ModBlocks.BLACK_CONCRETE_STAIRS,
+                ModBlocks.BLACK_CONCRETE_SLAB, DyeColor.BLACK);
+    }
+
+    protected void threeColorConcretes(RegistryObject<Block> wall, RegistryObject<Block> stairs, RegistryObject<Block> slab, DyeColor dyeColor) {
+        threeBuildBlocks(wall, stairs, slab, dyeColor.getName() + "_concrete", "minecraft:block/" + dyeColor.getName() + "_concrete");
     }
 
     protected void glassSlabBlock(RegistryObject<Block> slab, DyeColor dyeColor) {

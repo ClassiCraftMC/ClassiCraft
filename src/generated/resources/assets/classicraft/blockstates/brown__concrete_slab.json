@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "classicraft:block/brown__concrete_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/brown_concrete"
+    },
+    "type=top": {
+      "model": "classicraft:block/brown__concrete_slab_top"
+    }
+  }
+}

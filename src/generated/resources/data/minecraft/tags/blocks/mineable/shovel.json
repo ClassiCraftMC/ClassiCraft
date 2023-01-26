@@ -1,9 +1,9 @@
 {
   "values": [
-    "classicraft:quartz_sand",
     "classicraft:quartz_quicksand",
+    "classicraft:quartz_sand",
     "classicraft:red_quicksand",
-    "classicraft:quicksand",
-    "classicraft:soul_quicksand"
+    "classicraft:soul_quicksand",
+    "classicraft:quicksand"
   ]
 }

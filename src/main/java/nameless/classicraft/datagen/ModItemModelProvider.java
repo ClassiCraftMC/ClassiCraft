@@ -134,6 +134,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         otherItem(ModItems.PHOBOS_OUTPOST_DISC.get(), "classicraft:item/music_disc_blood_moon");
         otherItem(ModItems.DRAGON_FISH_DISC.get(), "classicraft:item/music_disc_dragon_fish");
         threeBuildBlockItems("tinted_glass", "minecraft:block/tinted_glass");
+        concreteThreeBlockItems();
     }
 
     public ItemModelBuilder otherItem(Item item, String texture)
@@ -157,6 +158,14 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     void glassThreeBlockItems() {
         for (String material : List.of("_stained_glass")) {
+            for (DyeColor dyeColor : DyeColor.values()) {
+                threeBuildBlockItems(dyeColor.getName() + material, "minecraft:block/" + dyeColor.getName() + material);
+            }
+        }
+    }
+
+    void concreteThreeBlockItems() {
+        for (String material : List.of("_concrete")) {
             for (DyeColor dyeColor : DyeColor.values()) {
                 threeBuildBlockItems(dyeColor.getName() + material, "minecraft:block/" + dyeColor.getName() + material);
             }
