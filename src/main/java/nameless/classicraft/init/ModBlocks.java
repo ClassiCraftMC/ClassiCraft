@@ -1469,6 +1469,13 @@ public class ModBlocks {
             registerDefault("black_concrete_wall", () ->
                     new WallBlock(offConcrete(DyeColor.BLACK)));
 
+    public static final RegistryObject<Block> GLISTERING_MELON =
+            registerDefault("glistering_melon", () ->
+                    new Block(BlockBehaviour.Properties.of(Material.VEGETABLE,
+                    MaterialColor.TERRACOTTA_YELLOW)
+                    .strength(1.0F)
+                    .sound(SoundType.WOOD)));
+
     private static BlockBehaviour.Properties offConcrete(DyeColor dyeColor) {
         return BlockBehaviour.Properties.of(Material.STONE, dyeColor)
                 .requiresCorrectToolForDrops().strength(1.8F);

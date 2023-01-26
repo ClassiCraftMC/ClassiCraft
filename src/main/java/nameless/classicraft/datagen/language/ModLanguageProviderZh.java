@@ -295,6 +295,7 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModBlocks.TINTED_GLASS_SLAB.get(), "遮光玻璃台阶");
         add(ModBlocks.TINTED_GLASS_STAIRS.get(), "遮光玻璃楼梯");
         add(ModBlocks.TINTED_GLASS_WALL.get(), "遮光玻璃墙");
+        add(ModBlocks.GLISTERING_MELON.get(), "闪烁的西瓜块");
 
         pebbleBlock();
         meta();

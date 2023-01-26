@@ -18,6 +18,7 @@
 package nameless.classicraft.datagen;
 
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.util.ExtraUtils;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -63,6 +64,14 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .forEach(this::needWoodTool);
         blocks.stream().filter(block -> block instanceof FenceBlock)
                 .forEach(this::fenceTag);
+        wallPost();
+    }
+
+    private void wallPost() {
+        tag(BlockTags.WALL_POST_OVERRIDE).add(ModBlocks.REAL_TORCH.get());
+        tag(BlockTags.WALL_POST_OVERRIDE).add(ModBlocks.REAL_SOUL_TORCH.get());
+        tag(BlockTags.WALL_POST_OVERRIDE).add(ModBlocks.REAL_WALL_TORCH.get());
+        tag(BlockTags.WALL_POST_OVERRIDE).add(ModBlocks.REAL_SOUL_WALL_TORCH.get());
     }
 
     private void fenceTag(Block fence) {

@@ -18,6 +18,7 @@
 package nameless.classicraft.datagen;
 
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -135,6 +136,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         otherItem(ModItems.DRAGON_FISH_DISC.get(), "classicraft:item/music_disc_dragon_fish");
         threeBuildBlockItems("tinted_glass", "minecraft:block/tinted_glass");
         concreteThreeBlockItems();
+        blockItem(ModBlocks.GLISTERING_MELON);
     }
 
     public ItemModelBuilder otherItem(Item item, String texture)

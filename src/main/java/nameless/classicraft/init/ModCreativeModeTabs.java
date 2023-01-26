@@ -107,6 +107,7 @@ public class ModCreativeModeTabs {
                             output.accept(ModBlocks.CACTUS_BALL.get());
                             output.accept(ModBlocks.ROSE.get());
                             output.accept(ModBlocks.CHARCOAL_BLOCK.get());
+                            output.accept(ModBlocks.GLISTERING_MELON.get());
                         }).title(Component.translatable("itemGroup.classicraft.natural_blocks"))
                         .build());
     }

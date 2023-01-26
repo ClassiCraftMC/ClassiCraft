@@ -295,6 +295,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.TINTED_GLASS_SLAB.get(), "Tinted Glass Slab");
         add(ModBlocks.TINTED_GLASS_STAIRS.get(), "Tinted Glass Stairs");
         add(ModBlocks.TINTED_GLASS_WALL.get(), "Tinted Glass Wall");
+        add(ModBlocks.GLISTERING_MELON.get(), "Glistering Melon");
 
         pebbleBlock();
         meta();
