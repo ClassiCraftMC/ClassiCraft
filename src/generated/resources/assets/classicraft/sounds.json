@@ -1,0 +1,41 @@
+{
+  "misc.knapping.pebble": {
+    "sounds": [
+      {
+        "name": "classicraft:misc/pebble",
+        "pitch": 0.9
+      },
+      {
+        "name": "classicraft:misc/pebble",
+        "pitch": 1.1
+      }
+    ],
+    "subtitle": "subtitles.misc.classicraft.knapping.pebble"
+  },
+  "music.event.dragon_fish": {
+    "sounds": [
+      {
+        "name": "classicraft:music/dragon_fish",
+        "pitch": 0.9
+      },
+      {
+        "name": "classicraft:music/dragon_fish",
+        "pitch": 1.1
+      }
+    ],
+    "subtitle": "subtitles.music.classicraft.event.dragon_fish"
+  },
+  "music.event.phobos_outpost": {
+    "sounds": [
+      {
+        "name": "classicraft:music/phobos_outpost",
+        "pitch": 0.9
+      },
+      {
+        "name": "classicraft:music/phobos_outpost",
+        "pitch": 1.1
+      }
+    ],
+    "subtitle": "subtitles.music.classicraft.event.phobos_outpost"
+  }
+}

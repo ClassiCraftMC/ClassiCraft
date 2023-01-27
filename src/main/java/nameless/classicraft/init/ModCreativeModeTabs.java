@@ -109,4 +109,15 @@ public class ModCreativeModeTabs {
                         }).title(Component.translatable("itemGroup.classicraft.natural_blocks"))
                         .build());
     }
+
+    @SubscribeEvent
+    public static void onCreativeModeTabBuildContents(CreativeModeTabEvent.BuildContents event) {
+        var entries = event.getEntries();
+        var vis = CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS;
+        if (event.getTab() == BUILDING_BLOCKS) {
+            entries.putAfter(
+                    Helpers.stack(ModBlocks.WHITE_CONCRETE_SLAB.get()),
+                    Helpers.stack(ModBlocks.ORANGE_CONCRETE_SLAB.get()), vis);
+        }
+    }
 }

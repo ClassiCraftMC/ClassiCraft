@@ -3,9 +3,10 @@
   "category": "building",
   "key": {
     "#": {
-      "item": "classicraft:pebble",
       "type": "forge:nbt",
-      "nbt": "{classicraft:{Meta:\"andesite_pebble\"}}"
+      "count": 1,
+      "item": "classicraft:pebble",
+      "nbt": "{classicraft:{Meta:\"end_stone_pebble\"}}"
     }
   },
   "pattern": [
@@ -13,6 +14,6 @@
     "##"
   ],
   "result": {
-    "item": "minecraft:andesite"
+    "item": "minecraft:end_stone"
   }
 }

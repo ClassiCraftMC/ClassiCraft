@@ -3,9 +3,10 @@
   "category": "building",
   "key": {
     "#": {
-      "item": "classicraft:pebble",
       "type": "forge:nbt",
-      "nbt": "{classicraft:{Meta:\"diorite_pebble\"}}"
+      "count": 1,
+      "item": "classicraft:pebble",
+      "nbt": "{classicraft:{Meta:\"deepslate_pebble\"}}"
     }
   },
   "pattern": [
@@ -13,6 +14,6 @@
     "##"
   ],
   "result": {
-    "item": "minecraft:diorite"
+    "item": "minecraft:cobbled_deepslate"
   }
 }

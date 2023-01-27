@@ -17,16 +17,27 @@
  */
 package nameless.classicraft.datagen;
 
+import nameless.classicraft.api.item.MetaItem;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
+import nameless.classicraft.util.Helpers;
+import nameless.classicraft.util.SafeTag;
+import net.minecraft.Util;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.data.recipes.packs.VanillaRecipeProvider;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.crafting.PartialNBTIngredient;
+import net.minecraftforge.common.crafting.StrictNBTIngredient;
 
 import javax.annotation.Nullable;
 import java.util.function.Consumer;
@@ -60,11 +71,42 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_soul_sand",
                         has(ItemTags.SOUL_FIRE_BASE_BLOCKS)).save(pWriter);
 
+        nbtPebbleRecipe(pWriter, Blocks.ANDESITE, "andesite_pebble");
+        nbtPebbleRecipe(pWriter, Blocks.BASALT, "basalt_pebble");
+        nbtPebbleRecipe(pWriter, Blocks.BLACKSTONE, "blackstone_pebble");
+        nbtPebbleRecipe(pWriter, Blocks.COBBLED_DEEPSLATE, "deepslate_pebble");
+        nbtPebbleRecipe(pWriter, Blocks.COBBLESTONE, "cobblestone_pebble");
+        nbtPebbleRecipe(pWriter, Blocks.DIORITE, "diorite_pebble");
+        nbtPebbleRecipe(pWriter, Blocks.END_STONE, "end_stone_pebble");
+        nbtPebbleRecipe(pWriter, Blocks.GRANITE, "granite_pebble");
+        nbtPebbleRecipe(pWriter, Blocks.NETHERRACK, "netherrack_pebble");
+        nbtPebbleRecipe(pWriter, ModBlocks.QUARTZ_SANDSTONE.get(), "quartz_sandstone_pebble");
+        nbtPebbleRecipe(pWriter, Blocks.RED_SANDSTONE, "red_sandstone_pebble");
+        nbtPebbleRecipe(pWriter, Blocks.SANDSTONE, "sandstone_pebble");
+        nbtPebbleRecipe(pWriter, ModBlocks.SOUL_SANDSTONE.get(), "soul_sandstone_pebble");
         nineBlockStorageRecipes(pWriter, RecipeCategory.BUILDING_BLOCKS, Items.QUARTZ, RecipeCategory.MISC, Items.QUARTZ_BLOCK);
         fourBlockStorageRecipes(pWriter, RecipeCategory.BUILDING_BLOCKS, Items.FLINT, RecipeCategory.MISC, ModBlocks.FLINT_BLOCK.get());
     }
 
-    void cookRecipe(Consumer<FinishedRecipe> pWriter, Item ingredient, Item result) {
+    protected void nbtPebbleRecipe(Consumer<FinishedRecipe> pWriter, Block block, String meta) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS,
+                        block).define('#',
+                        StrictNBTIngredient.of(Util.make(() ->
+                                {
+                                    ItemStack stack = ModItems.PEBBLE.get().getDefaultInstance();
+                                    CompoundTag nbt = new CompoundTag();
+                                    assert stack.getTag() != null;
+                                    MetaItem.setMeta(stack, meta);
+                                    return stack;
+                                }
+                               )))
+                .pattern("##")
+                .pattern("##")
+                .unlockedBy("has_" + ModItems.PEBBLE.get(), has(ModItems.PEBBLE.get()))
+                .save(pWriter, getItemName(block) + "_from_" + "pebble");
+    }
+
+    protected void cookRecipe(Consumer<FinishedRecipe> pWriter, Item ingredient, Item result) {
         SimpleCookingRecipeBuilder.smelting
                 (Ingredient.of(ingredient),
                         RecipeCategory.FOOD,
@@ -84,7 +126,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(pWriter,getItemName(result) + "_from_" + "smoking");
     }
 
-    void stair(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pStair, ItemLike pMaterial) {
+    protected void stair(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pStair, ItemLike pMaterial) {
         stairBuilder(pStair, Ingredient.of(pMaterial)).unlockedBy(getHasName(pMaterial), has(pMaterial)).save(pFinishedRecipeConsumer);
     }
 

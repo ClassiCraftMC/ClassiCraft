@@ -85,5 +85,7 @@ public class ModDataGenerator {
         generator.addProvider(event.includeServer(),
                 new ModItemTagsProvider(pack, lookup,
                         new ModBlockTagsProvider(pack, lookup, helper), helper));
+        generator.addProvider(event.includeClient(),
+                new ModSoundDefinitions(pack, helper));
     }
 }

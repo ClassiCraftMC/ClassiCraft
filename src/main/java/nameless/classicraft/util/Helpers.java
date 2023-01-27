@@ -24,6 +24,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -35,6 +36,10 @@ public final class Helpers {
 
 
     public static final DeferredRegister<? extends Block> deferredRegister = ModBlocks.BLOCKS;
+
+    public static ItemStack stack(ItemLike item) {
+        return new ItemStack(item);
+    }
 
     /**
      * Use for create cool down of item

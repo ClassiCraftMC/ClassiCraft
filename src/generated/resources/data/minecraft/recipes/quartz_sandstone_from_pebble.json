@@ -3,9 +3,10 @@
   "category": "building",
   "key": {
     "#": {
-      "item": "classicraft:pebble",
       "type": "forge:nbt",
-      "nbt": "{classicraft:{Meta:\"red_sandstone_pebble\"}}"
+      "count": 1,
+      "item": "classicraft:pebble",
+      "nbt": "{classicraft:{Meta:\"quartz_sandstone_pebble\"}}"
     }
   },
   "pattern": [
@@ -13,6 +14,6 @@
     "##"
   ],
   "result": {
-    "item": "minecraft:red_sandstone"
+    "item": "classicraft:quartz_sandstone"
   }
 }
