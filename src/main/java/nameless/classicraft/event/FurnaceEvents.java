@@ -18,6 +18,7 @@
 package nameless.classicraft.event;
 
 import nameless.classicraft.init.ModItems;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -31,6 +32,10 @@ public class FurnaceEvents {
         ItemStack itemStack = event.getItemStack();
         if (itemStack.is(ModItems.TALLOW.get())) {
             event.setBurnTime(20);
+        }
+        if (itemStack.is(ItemTags.SAPLINGS)
+                || itemStack.is(ItemTags.SAPLINGS)) {
+            event.setBurnTime(100);
         }
     }
 }

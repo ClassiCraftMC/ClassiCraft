@@ -22,6 +22,7 @@ import nameless.classicraft.init.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -40,6 +41,25 @@ public class ModRecipeProvider extends RecipeProvider {
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
         cookRecipe(pWriter, Items.EGG, ModItems.COOKED_EGG.get());
         cookRecipe(pWriter, Items.ROTTEN_FLESH, Items.LEATHER);
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS,
+                ModItems.TORCH_UNLIT.get(), 4).define('#', Items.STICK)
+                .define('X',
+                        Ingredient.of(Items.COAL, Items.CHARCOAL))
+                .pattern("X")
+                .pattern("#")
+                .unlockedBy("has_stone_pickaxe",
+                        has(Items.STONE_PICKAXE)).save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS,
+                ModItems.SOUL_TORCH_UNLIT.get(), 4).define('X',
+                Ingredient.of(Items.COAL, Items.CHARCOAL))
+                .define('#', Items.STICK)
+                .define('S', ItemTags.SOUL_FIRE_BASE_BLOCKS)
+                .pattern("X")
+                .pattern("#")
+                .pattern("S")
+                .unlockedBy("has_soul_sand",
+                        has(ItemTags.SOUL_FIRE_BASE_BLOCKS)).save(pWriter);
+
         nineBlockStorageRecipes(pWriter, RecipeCategory.BUILDING_BLOCKS, Items.QUARTZ, RecipeCategory.MISC, Items.QUARTZ_BLOCK);
         fourBlockStorageRecipes(pWriter, RecipeCategory.BUILDING_BLOCKS, Items.FLINT, RecipeCategory.MISC, ModBlocks.FLINT_BLOCK.get());
     }

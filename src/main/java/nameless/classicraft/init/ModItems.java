@@ -148,6 +148,9 @@ public class ModItems {
                     "quartz_chopper"
             )));
 
+    public static final RegistryObject<Item> PUMPKIN_SLICE =
+            food("pumpkin_slice", Foods.MELON_SLICE);
+
     public static final RegistryObject<Item> PHOBOS_OUTPOST_DISC =
             register("phobos_outpost_disc", () ->
                     new RecordItem(11, ModSounds.PHOBOS_OUTPOST, new Item.Properties().stacksTo(1), 238));

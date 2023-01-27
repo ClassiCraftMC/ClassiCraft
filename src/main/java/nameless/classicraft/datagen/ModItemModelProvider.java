@@ -115,6 +115,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         slabInventory("polished_basalt_slab", "minecraft:block/polished_basalt_top", "minecraft:block/polished_basalt_top", "minecraft:block/polished_basalt_side");
         basicItem(ModItems.MATERIAL.get());
         basicItem(ModItems.DEBUG_BURN_TIME_STICK.get());
+        basicItem(ModItems.PUMPKIN_SLICE.get());
         threeBuildBlockItems("cracked_deepslate_tiles", "minecraft:block/cracked_deepslate_tiles");
         threeBuildBlockItems("sandstone_bricks", "classicraft:block/sandstone_bricks");
         threeBuildBlockItems("red_sandstone_bricks", "classicraft:block/red_sandstone_bricks");
