@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:cobbled_deepslate_from_pebble"
+        "recipe": "classicraft:diorite_from_pebble"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:cobbled_deepslate_from_pebble"
+      "classicraft:diorite_from_pebble"
     ]
   }
 }

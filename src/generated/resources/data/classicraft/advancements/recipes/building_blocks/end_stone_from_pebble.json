@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:blackstone_from_pebble"
+        "recipe": "classicraft:end_stone_from_pebble"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:blackstone_from_pebble"
+      "classicraft:end_stone_from_pebble"
     ]
   }
 }

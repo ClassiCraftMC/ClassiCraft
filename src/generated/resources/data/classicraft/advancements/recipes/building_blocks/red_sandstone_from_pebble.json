@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_egg": {
+    "has_pebble": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:egg"
+              "classicraft:pebble"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:cooked_egg_from_smelting"
+        "recipe": "classicraft:red_sandstone_from_pebble"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_egg",
+      "has_pebble",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:cooked_egg_from_smelting"
+      "classicraft:red_sandstone_from_pebble"
     ]
   }
 }

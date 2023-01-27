@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_egg": {
+    "has_rotten_flesh": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:egg"
+              "minecraft:rotten_flesh"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:cooked_egg_from_campfire"
+        "recipe": "classicraft:leather_from_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_egg",
+      "has_rotten_flesh",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:cooked_egg_from_campfire"
+      "classicraft:leather_from_smelting"
     ]
   }
 }

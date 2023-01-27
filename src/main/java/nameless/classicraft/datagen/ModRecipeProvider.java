@@ -21,11 +21,9 @@ import nameless.classicraft.api.item.MetaItem;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import nameless.classicraft.util.Helpers;
-import nameless.classicraft.util.SafeTag;
 import net.minecraft.Util;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
-import net.minecraft.data.recipes.packs.VanillaRecipeProvider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
@@ -36,7 +34,6 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.common.crafting.PartialNBTIngredient;
 import net.minecraftforge.common.crafting.StrictNBTIngredient;
 
 import javax.annotation.Nullable;
@@ -84,7 +81,7 @@ public class ModRecipeProvider extends RecipeProvider {
         nbtPebbleRecipe(pWriter, Blocks.RED_SANDSTONE, "red_sandstone_pebble");
         nbtPebbleRecipe(pWriter, Blocks.SANDSTONE, "sandstone_pebble");
         nbtPebbleRecipe(pWriter, ModBlocks.SOUL_SANDSTONE.get(), "soul_sandstone_pebble");
-        nineBlockStorageRecipes(pWriter, RecipeCategory.BUILDING_BLOCKS, Items.QUARTZ, RecipeCategory.MISC, Items.QUARTZ_BLOCK);
+        modNineBlockStorageRecipes(pWriter, RecipeCategory.BUILDING_BLOCKS, Items.QUARTZ, RecipeCategory.MISC, Items.QUARTZ_BLOCK);
         fourBlockStorageRecipes(pWriter, RecipeCategory.BUILDING_BLOCKS, Items.FLINT, RecipeCategory.MISC, ModBlocks.FLINT_BLOCK.get());
     }
 
@@ -103,7 +100,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("##")
                 .pattern("##")
                 .unlockedBy("has_" + ModItems.PEBBLE.get(), has(ModItems.PEBBLE.get()))
-                .save(pWriter, getItemName(block) + "_from_" + "pebble");
+                .save(pWriter, Helpers.identifier(getItemName(block) + "_from_" + "pebble"));
     }
 
     protected void cookRecipe(Consumer<FinishedRecipe> pWriter, Item ingredient, Item result) {
@@ -113,32 +110,54 @@ public class ModRecipeProvider extends RecipeProvider {
                         result,
                         0.35F, 200)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
-                .save(pWriter,getItemName(result) + "_from_" + "smelting");
+                .save(pWriter,Helpers.identifier(getItemName(result) + "_from_" + "smelting"));
         SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ingredient),
                 RecipeCategory.FOOD, result,
                         0.35F, 200)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
-                .save(pWriter,getItemName(result) + "_from_" + "campfire");
+                .save(pWriter,Helpers.identifier(getItemName(result) + "_from_" + "campfire"));
         SimpleCookingRecipeBuilder.smoking(Ingredient.of(ingredient),
                 RecipeCategory.FOOD, result,
                 0.35F, 200)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
-                .save(pWriter,getItemName(result) + "_from_" + "smoking");
+                .save(pWriter,Helpers.identifier(getItemName(result) + "_from_" + "smoking"));
     }
 
-    protected void stair(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pStair, ItemLike pMaterial) {
-        stairBuilder(pStair, Ingredient.of(pMaterial)).unlockedBy(getHasName(pMaterial), has(pMaterial)).save(pFinishedRecipeConsumer);
+    protected static void modNineBlockStorageRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer, RecipeCategory pUnpackedCategory, ItemLike pUnpacked, RecipeCategory pPackedCategory, ItemLike pPacked) {
+        modNineBlockStorageRecipes(pFinishedRecipeConsumer, pUnpackedCategory, pUnpacked, pPackedCategory, pPacked, getSimpleRecipeName(pPacked), (String)null, getSimpleRecipeName(pUnpacked), (String)null);
+    }
+
+    protected static void modNineBlockStorageRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer, RecipeCategory pUnpackedCategory, ItemLike pUnpacked, RecipeCategory pPackedCategory, ItemLike pPacked, String pPackedName, @Nullable String pPackedGroup, String pUnpackedName, @Nullable String pUnpackedGroup) {
+        ShapelessRecipeBuilder.shapeless(pUnpackedCategory, pUnpacked, 9)
+                .requires(pPacked).group(pUnpackedGroup)
+                .unlockedBy(getHasName(pPacked), has(pPacked))
+                .save(pFinishedRecipeConsumer, Helpers.identifier(pUnpackedName));
+        ShapedRecipeBuilder.shaped(pPackedCategory, pPacked)
+                .define('#', pUnpacked)
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .group(pPackedGroup)
+                .unlockedBy(getHasName(pUnpacked), has(pUnpacked))
+                .save(pFinishedRecipeConsumer, Helpers.identifier(pPackedName));
     }
 
     protected static void fourBlockStorageRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer, RecipeCategory pUnpackedCategory, ItemLike pUnpacked, RecipeCategory pPackedCategory, ItemLike pPacked) {
-        fourBlockStorageRecipes(pFinishedRecipeConsumer, pUnpackedCategory, pUnpacked, pPackedCategory, pPacked, getSimpleRecipeName(pPacked), (String)null, getSimpleRecipeName(pUnpacked), (String)null);
+        fourBlockStorageRecipes(pFinishedRecipeConsumer,
+                pUnpackedCategory, pUnpacked, pPackedCategory,
+                pPacked, getSimpleRecipeName(pPacked), null,
+                getSimpleRecipeName(pUnpacked), null);
     }
 
     protected static void fourBlockStorageRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer, RecipeCategory pUnpackedCategory, ItemLike pUnpacked, RecipeCategory pPackedCategory, ItemLike pPacked, String pPackedName, @Nullable String pPackedGroup, String pUnpackedName, @Nullable String pUnpackedGroup) {
-        ShapelessRecipeBuilder.shapeless(pUnpackedCategory, pUnpacked, 4).requires(pPacked).group(pUnpackedGroup).unlockedBy(getHasName(pPacked), has(pPacked)).save(pFinishedRecipeConsumer, new ResourceLocation(pUnpackedName));
+        ShapelessRecipeBuilder.shapeless(pUnpackedCategory, pUnpacked, 4)
+                .requires(pPacked).group(pUnpackedGroup)
+                .unlockedBy(getHasName(pPacked), has(pPacked))
+                .save(pFinishedRecipeConsumer, Helpers.identifier(pUnpackedName));
         ShapedRecipeBuilder.shaped(pPackedCategory, pPacked).define('#', pUnpacked)
                 .pattern("##")
-                .pattern("##").group(pPackedGroup).unlockedBy(getHasName(pUnpacked), has(pUnpacked)).save(pFinishedRecipeConsumer, new ResourceLocation(pPackedName));
+                .pattern("##").group(pPackedGroup).unlockedBy(getHasName(pUnpacked), has(pUnpacked))
+                .save(pFinishedRecipeConsumer, Helpers.identifier(pPackedName));
     }
 
 }

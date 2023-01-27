@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:cooked_egg_from_smoking"
+        "recipe": "classicraft:cooked_egg_from_smoking"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:cooked_egg_from_smoking"
+      "classicraft:cooked_egg_from_smoking"
     ]
   }
 }

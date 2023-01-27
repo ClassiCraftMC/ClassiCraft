@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_pebble": {
+    "has_flint_block": {
       "conditions": {
         "items": [
           {
             "items": [
-              "classicraft:pebble"
+              "classicraft:flint_block"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:netherrack_from_pebble"
+        "recipe": "classicraft:flint"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_pebble",
+      "has_flint_block",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:netherrack_from_pebble"
+      "classicraft:flint"
     ]
   }
 }

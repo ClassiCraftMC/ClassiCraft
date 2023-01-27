@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_pebble": {
+    "has_quartz": {
       "conditions": {
         "items": [
           {
             "items": [
-              "classicraft:pebble"
+              "minecraft:quartz"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:end_stone_from_pebble"
+        "recipe": "classicraft:quartz_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_pebble",
+      "has_quartz",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:end_stone_from_pebble"
+      "classicraft:quartz_block"
     ]
   }
 }

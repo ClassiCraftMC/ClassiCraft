@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_flint_block": {
+    "has_pebble": {
       "conditions": {
         "items": [
           {
             "items": [
-              "classicraft:flint_block"
+              "classicraft:pebble"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:flint"
+        "recipe": "classicraft:basalt_from_pebble"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_flint_block",
+      "has_pebble",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:flint"
+      "classicraft:basalt_from_pebble"
     ]
   }
 }

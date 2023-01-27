@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:diorite_from_pebble"
+        "recipe": "classicraft:granite_from_pebble"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:diorite_from_pebble"
+      "classicraft:granite_from_pebble"
     ]
   }
 }

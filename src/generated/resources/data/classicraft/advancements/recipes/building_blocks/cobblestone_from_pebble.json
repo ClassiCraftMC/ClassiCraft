@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:granite_from_pebble"
+        "recipe": "classicraft:cobblestone_from_pebble"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:granite_from_pebble"
+      "classicraft:cobblestone_from_pebble"
     ]
   }
 }

@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:basalt_from_pebble"
+        "recipe": "classicraft:soul_sandstone_from_pebble"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:basalt_from_pebble"
+      "classicraft:soul_sandstone_from_pebble"
     ]
   }
 }

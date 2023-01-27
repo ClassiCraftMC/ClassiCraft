@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_pebble": {
+    "has_rotten_flesh": {
       "conditions": {
         "items": [
           {
             "items": [
-              "classicraft:pebble"
+              "minecraft:rotten_flesh"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:cobblestone_from_pebble"
+        "recipe": "classicraft:leather_from_smoking"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_pebble",
+      "has_rotten_flesh",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:cobblestone_from_pebble"
+      "classicraft:leather_from_smoking"
     ]
   }
 }
