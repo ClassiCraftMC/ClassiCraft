@@ -36,7 +36,6 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import java.util.List;
 import java.util.Map;
 
 public class ModBlockStateProvider extends BlockStateProvider {

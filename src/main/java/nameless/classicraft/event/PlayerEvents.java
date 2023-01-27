@@ -25,8 +25,6 @@ import nameless.classicraft.util.EventUtils;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
@@ -38,35 +36,17 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
 public class PlayerEvents {
-
-    @SubscribeEvent
-    public static void stopWhenUseWrongTool(PlayerEvent.HarvestCheck event) {
-        BlockState state = event.getTargetBlock();
-        Player player = event.getEntity();
-        if (!player.hasCorrectToolForDrops(state)) {
-            event.setCanHarvest(false);
-        }
-        if (state.getMaterial() == Material.WOOD
-                && !player.getUseItem().is(Tags.Items.TOOLS)) {
-            event.setCanHarvest(false);
-        }
-    }
 
     @SubscribeEvent
     public static void pebbleTool(PlayerInteractEvent.RightClickItem event) {
