@@ -22,7 +22,7 @@ import nameless.classicraft.block.StoneBricksBlock;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import nameless.classicraft.item.PebbleItem;
-import nameless.classicraft.util.ExtraUtils;
+import nameless.classicraft.util.Helpers;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.flag.FeatureFlags;
@@ -86,7 +86,7 @@ public class ModBlockLoot extends BlockLootSubProvider {
         dropOther(ModBlocks.REAL_WALL_TORCH.get(), Items.STICK);
         dropOther(ModBlocks.REAL_SOUL_TORCH.get(), Items.STICK);
         dropOther(ModBlocks.REAL_SOUL_WALL_TORCH.get(), Items.STICK);
-        Set<Block> blocks = ExtraUtils.getBlocks();
+        Set<Block> blocks = Helpers.getBlocks();
         blocks.stream().filter(block -> block instanceof StairBlock)
                 .forEach(this::dropSelf);
         blocks.stream().filter(block -> block instanceof WallBlock)

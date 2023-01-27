@@ -17,10 +17,10 @@
  */
 package nameless.classicraft.client.renderer;
 
-import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.client.model.OceanSharkModel;
 import nameless.classicraft.entity.OceanShark;
 import nameless.classicraft.init.ModEntityModelLayers;
+import nameless.classicraft.util.Helpers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
@@ -36,6 +36,6 @@ public class OceanSharkRenderer<T extends OceanShark> extends MobRenderer<T, Oce
 
     @Override
     public ResourceLocation getTextureLocation(T pEntity) {
-        return new ResourceLocation(ClassiCraftMod.MOD_ID, "textures/entity/ocean_shark.png");
+        return Helpers.identifier("textures/entity/ocean_shark.png");
     }
 }

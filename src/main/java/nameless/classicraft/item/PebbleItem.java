@@ -22,7 +22,7 @@ import nameless.classicraft.api.item.MetaItem;
 import nameless.classicraft.init.ModItems;
 import nameless.classicraft.init.ModSounds;
 import nameless.classicraft.init.ModTags;
-import nameless.classicraft.util.ExtraUtils;
+import nameless.classicraft.util.Helpers;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.stats.Stats;
@@ -44,7 +44,7 @@ import java.util.Objects;
 public class PebbleItem extends MetaItem {
 
     public static String getPebbleType(ItemStack stack) {
-        ExtraUtils.setVanillaMeta(stack);
+        Helpers.setVanillaMeta(stack);
         String meta = getMeta(stack);
         return meta.substring(0, meta.length() - 7);
     }
@@ -93,7 +93,7 @@ public class PebbleItem extends MetaItem {
         if (player != null &&
                 level.getBlockState(pContext.getClickedPos()).getMaterial() == Material.STONE) {
             player.swing(pContext.getHand());
-            ExtraUtils.addPebbleCoolDown(player, item.getItem());
+            Helpers.addCoolDown(player, item.getItem(), 10);
             if (addItem(player, item))
                 item.shrink(1);
 
@@ -114,7 +114,7 @@ public class PebbleItem extends MetaItem {
 
             if (off.getItem() instanceof PebbleItem || off.is(ModTags.Items.VANILLA_PEBBLES)) {
                 pPlayer.swing(pUsedHand);
-                ExtraUtils.addPebbleCoolDown(pPlayer, this);
+                Helpers.addCoolDown(pPlayer, this, 10);
                 if (addItem(pPlayer, main)) {
                     main.shrink(1);
                     off.shrink(1);

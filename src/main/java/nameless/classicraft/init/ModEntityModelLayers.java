@@ -17,9 +17,8 @@
  */
 package nameless.classicraft.init;
 
-import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.util.Helpers;
 import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.resources.ResourceLocation;
 
 public class ModEntityModelLayers {
 
@@ -31,6 +30,6 @@ public class ModEntityModelLayers {
     }
 
     private static ModelLayerLocation register(String name, String text) {
-        return new ModelLayerLocation(new ResourceLocation(ClassiCraftMod.MOD_ID, name), text);
+        return new ModelLayerLocation(Helpers.identifier(name), text);
     }
 }

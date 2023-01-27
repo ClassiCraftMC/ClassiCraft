@@ -18,7 +18,7 @@
 package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
-import net.minecraft.resources.ResourceLocation;
+import nameless.classicraft.util.Helpers;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -40,6 +40,6 @@ public class ModSounds {
     private static RegistryObject<SoundEvent> register(String sound) {
         return SOUND_EVENTS.register(sound, () ->
                 SoundEvent.createVariableRangeEvent(
-                        new ResourceLocation(ClassiCraftMod.MOD_ID, sound)));
+                        Helpers.identifier(sound)));
     }
 }

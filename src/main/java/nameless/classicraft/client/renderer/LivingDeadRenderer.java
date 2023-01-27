@@ -19,6 +19,7 @@ package nameless.classicraft.client.renderer;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.entity.LivingDead;
+import nameless.classicraft.util.Helpers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelLayers;
@@ -35,7 +36,7 @@ public class LivingDeadRenderer<T extends LivingDead> extends MobRenderer<Living
     private static final ResourceLocation[] TEXTURES =
             new ResourceLocation[LivingDead.MAX_VARIANTS];
     private static final ResourceLocation DEFAULT_TEXTURES =
-            new ResourceLocation(ClassiCraftMod.MOD_ID, "textures/entity/living_dead/zombie1.png");
+            Helpers.identifier("textures/entity/living_dead/zombie1.png");
 
     public LivingDeadRenderer(EntityRendererProvider.Context pContext) {
         super(pContext, new HumanoidModel<>(pContext.bakeLayer(ModelLayers.ZOMBIE)), 0.5f);
@@ -48,7 +49,7 @@ public class LivingDeadRenderer<T extends LivingDead> extends MobRenderer<Living
     public ResourceLocation getTextureLocation(LivingDead pEntity) {
         int variant = pEntity.getVariant() + 1;
         if (TEXTURES[variant - 1] == null) {
-            ResourceLocation loc = new ResourceLocation(ClassiCraftMod.MOD_ID, "textures/entity/living_dead/zombie" + variant + ".png");
+            ResourceLocation loc = Helpers.identifier("textures/entity/living_dead/zombie" + variant + ".png");
             if (Minecraft.getInstance().getResourceManager().getResource(loc).isEmpty()) {
                 ClassiCraftMod.LOGGER.warn("Found Unknown variant " + variant + ", using default");
                 loc = DEFAULT_TEXTURES;

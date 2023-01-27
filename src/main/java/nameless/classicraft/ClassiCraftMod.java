@@ -20,7 +20,7 @@ package nameless.classicraft;
 import com.mojang.logging.LogUtils;
 import nameless.classicraft.glm.ModLootModifiers;
 import nameless.classicraft.init.*;
-import nameless.classicraft.util.FoodUtils;
+import nameless.classicraft.util.Helpers;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -40,7 +40,7 @@ public class ClassiCraftMod {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ModConfigurations.SPEC, "classicraft.toml");
         ModConfigurations.loadConfig(ModConfigurations.SPEC, FMLPaths.CONFIGDIR.get().resolve("classicraft.toml"));
-        FoodUtils.handleFood();
+        Helpers.handleFood();
         ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
         ModBiomeModifiers.BIOME_MODIFIER_SERIALIZERS.register(modEventBus);

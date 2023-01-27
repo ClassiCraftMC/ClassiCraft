@@ -31,7 +31,7 @@ import nameless.classicraft.init.ModEntities;
 import nameless.classicraft.init.ModEntityModelLayers;
 import nameless.classicraft.init.ModItems;
 import nameless.classicraft.item.DepthMeterItem;
-import nameless.classicraft.util.ExtraUtils;
+import nameless.classicraft.util.Helpers;
 import net.minecraft.client.model.CodModel;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -85,7 +85,7 @@ public class ClientRegisterEvents {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.REAL_SOUL_WALL_TORCH.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CACTUS_BALL.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.TWIGS.get(), RenderType.cutout());
-        for (Block block : ExtraUtils.getBlocks()) {
+        for (Block block : Helpers.getBlocks()) {
             if (block instanceof WallBlock
                     || block instanceof StairBlock
                     || block instanceof SlabBlock) {

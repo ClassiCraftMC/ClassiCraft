@@ -17,8 +17,7 @@
  */
 package nameless.classicraft.init;
 
-import nameless.classicraft.ClassiCraftMod;
-import net.minecraft.resources.ResourceLocation;
+import nameless.classicraft.util.Helpers;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -31,7 +30,7 @@ public class ModTags {
         public static final TagKey<Block> LEVEL_SURFACE_PLACEABLE_ON = register("level_surface_placeable_on");
 
         private static TagKey<Block> register(String name) {
-            return BlockTags.create(new ResourceLocation(ClassiCraftMod.MOD_ID, name));
+            return BlockTags.create(Helpers.identifier(name));
         }
     }
 
@@ -43,7 +42,7 @@ public class ModTags {
         public static final TagKey<Item> TAG_THICK = register("thick");
 
         private static TagKey<Item> register(String name) {
-            return ItemTags.create(new ResourceLocation(ClassiCraftMod.MOD_ID, name));
+            return ItemTags.create(Helpers.identifier(name));
         }
     }
 }

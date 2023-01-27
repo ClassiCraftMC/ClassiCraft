@@ -17,14 +17,12 @@
  */
 package nameless.classicraft.init;
 
-import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.api.item.MetaItem;
 import nameless.classicraft.block.QuickSandBlock;
 import nameless.classicraft.block.SandStoneBlock;
 import nameless.classicraft.block.StoneBricksBlock;
-import nameless.classicraft.util.ExtraUtils;
+import nameless.classicraft.util.Helpers;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.*;
@@ -42,7 +40,7 @@ public class ModCreativeModeTabs {
 
     @SubscribeEvent
     public static void registerCreativeModeTab(CreativeModeTabEvent.Register event) {
-        COMMON_TAB = event.registerCreativeModeTab(new ResourceLocation(ClassiCraftMod.MOD_ID, "common"),
+        COMMON_TAB = event.registerCreativeModeTab(Helpers.identifier("common"),
                 builder -> builder.icon(() -> new ItemStack(ModItems.CLASSIC_CRAFT.get()))
                         .displayItems((features, output, hasPermissions) -> {
                             output.accept(ModItems.TORCH_UNLIT.get());
@@ -64,10 +62,10 @@ public class ModCreativeModeTabs {
                         .title(Component.translatable("itemGroup.classicraft.common"))
                         .build());
 
-        BUILDING_BLOCKS = event.registerCreativeModeTab(new ResourceLocation(ClassiCraftMod.MOD_ID, "building_blocks"),
+        BUILDING_BLOCKS = event.registerCreativeModeTab(Helpers.identifier("building_blocks"),
                 builder -> builder.icon(() -> new ItemStack(ModBlocks.MOSSY_BRICKS.get()))
                         .displayItems((features, output, hasPermissions) -> {
-                            Set<Block> blocks = ExtraUtils.getBlocks();
+                            Set<Block> blocks = Helpers.getBlocks();
                             blocks.stream().filter(block -> block instanceof StairBlock)
                                             .forEach(output::accept);
                             blocks.stream().filter(block -> block instanceof FenceBlock)
@@ -91,7 +89,7 @@ public class ModCreativeModeTabs {
                         }).title(Component.translatable("itemGroup.classicraft.building_blocks"))
                         .build());
 
-        MATERIAL = event.registerCreativeModeTab(new ResourceLocation(ClassiCraftMod.MOD_ID, "material"),
+        MATERIAL = event.registerCreativeModeTab(Helpers.identifier("material"),
                 builder -> builder.icon(() -> new ItemStack(ModItems.MATERIAL.get()))
                         .displayItems((features, output, hasPermissions) -> {
                             output.accept(ModItems.SULFUR.get());
@@ -100,7 +98,7 @@ public class ModCreativeModeTabs {
                         .title(Component.translatable("itemGroup.classicraft.material"))
                         .build());
 
-        NATURAL_BLOCKS = event.registerCreativeModeTab(new ResourceLocation(ClassiCraftMod.MOD_ID, "natural_blocks"),
+        NATURAL_BLOCKS = event.registerCreativeModeTab(Helpers.identifier("natural_blocks"),
                 builder -> builder.icon(() -> new ItemStack(ModBlocks.SULFUR_ORE.get()))
                         .displayItems((features, output, hasPermissions) -> {
                             output.accept(ModBlocks.SULFUR_ORE.get());
