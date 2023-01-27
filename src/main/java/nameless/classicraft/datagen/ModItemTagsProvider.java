@@ -19,7 +19,7 @@ package nameless.classicraft.datagen;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.init.ModTags;
-import nameless.classicraft.util.ExtraUtils;
+import nameless.classicraft.util.Helpers;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -42,7 +42,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
-        Set<Block> blocks = ExtraUtils.getBlocks();
+        Set<Block> blocks = Helpers.getBlocks();
         blocks.stream().filter(block -> block instanceof WallBlock)
                         .forEach(this::wallTag);
         blocks.stream().filter(block -> block instanceof StairBlock)

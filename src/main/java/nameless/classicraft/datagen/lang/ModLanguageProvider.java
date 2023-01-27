@@ -392,6 +392,22 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.PINK_CONCRETE_SLAB.get(), "Pink Concrete Slab");
         add(ModBlocks.PINK_CONCRETE_STAIRS.get(), "Pink Concrete Stairs");
         add(ModBlocks.PINK_CONCRETE_WALL.get(), "Pink Concrete Wall");
+        add(ModBlocks.ANDESITE_BRICKS.get(), "Andesite Bricks");
+        add(ModBlocks.ANDESITE_BRICKS_SLAB.get(), "Andesite Bricks Slab");
+        add(ModBlocks.ANDESITE_BRICKS_STAIRS.get(), "Andesite Bricks Stairs");
+        add(ModBlocks.ANDESITE_BRICKS_WALL.get(), "Andesite Bricks Wall");
+        add(ModBlocks.CRACKED_ANDESITE_BRICKS.get(), "Cracked Andesite Bricks");
+        add(ModBlocks.CRACKED_ANDESITE_BRICKS_SLAB.get(), "Cracked Andesite Bricks Slab");
+        add(ModBlocks.CRACKED_ANDESITE_BRICKS_STAIRS.get(), "Cracked Andesite Bricks Stairs");
+        add(ModBlocks.CRACKED_ANDESITE_BRICKS_WALL.get(), "Cracked Andesite Bricks Wall");
+        add(ModBlocks.MOSSY_ANDESITE_BRICKS.get(), "Mossy Andesite Bricks");
+        add(ModBlocks.MOSSY_ANDESITE_BRICKS_SLAB.get(), "Mossy Andesite Bricks Slab");
+        add(ModBlocks.MOSSY_ANDESITE_BRICKS_STAIRS.get(), "Mossy Andesite Bricks Stairs");
+        add(ModBlocks.MOSSY_ANDESITE_BRICKS_WALL.get(), "Mossy Andesite Bricks Wall");
+        add(ModBlocks.CHISELED_ANDESITE_BRICKS.get(), "Chiseled Andesite Bricks");
+        add(ModBlocks.CHISELED_ANDESITE_BRICKS_SLAB.get(), "Chiseled Andesite Bricks Slab");
+        add(ModBlocks.CHISELED_ANDESITE_BRICKS_STAIRS.get(), "Chiseled Andesite Bricks Stairs");
+        add(ModBlocks.CHISELED_ANDESITE_BRICKS_WALL.get(), "Chiseled Andesite Bricks Wall");
 
         pebbleBlock();
         meta();

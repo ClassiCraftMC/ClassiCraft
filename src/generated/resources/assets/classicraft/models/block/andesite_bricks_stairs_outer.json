@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "classicraft:block/andesite_bricks",
+    "side": "classicraft:block/andesite_bricks",
+    "top": "classicraft:block/andesite_bricks"
+  }
+}

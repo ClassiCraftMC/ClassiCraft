@@ -342,7 +342,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> DEEPSLATE_STAIRS =
             registerDefault("deepslate_stairs", () ->
-                    new StairBlock(() -> Blocks.DEEPSLATE.defaultBlockState(),
+                    new StairBlock(Blocks.DEEPSLATE::defaultBlockState,
                             BlockBehaviour.Properties
                                     .of(Material.STONE).requiresCorrectToolForDrops()
                                     .sound(SoundType.DEEPSLATE)
@@ -1683,6 +1683,85 @@ public class ModBlocks {
     public static final RegistryObject<Block> BLACK_TERRACOTTA_WALL =
             registerDefault("black_terracotta_wall", () ->
                     new WallBlock(ofTerracotta(MaterialColor.TERRACOTTA_BLACK)));
+
+    public static final RegistryObject<Block> ANDESITE_BRICKS =
+            registerDefault("andesite_bricks", () ->
+                    new StoneBricksBlock(SoundType.STONE, MaterialColor.STONE));
+
+    public static final RegistryObject<Block> ANDESITE_BRICKS_STAIRS =
+            registerDefault("andesite_bricks_stairs", () ->
+                    new StairBlock(ANDESITE_BRICKS.get()::defaultBlockState,
+                            ofStone()));
+
+    public static final RegistryObject<Block> ANDESITE_BRICKS_SLAB =
+            registerDefault("andesite_bricks_slab", () ->
+                    new SlabBlock(ofStone()));
+
+    public static final RegistryObject<Block> ANDESITE_BRICKS_WALL =
+            registerDefault("andesite_bricks_wall", () ->
+                    new WallBlock(ofStone()));
+
+    public static final RegistryObject<Block> CRACKED_ANDESITE_BRICKS =
+            registerDefault("cracked_andesite_bricks", () ->
+                    new StoneBricksBlock(SoundType.STONE, MaterialColor.STONE));
+
+    public static final RegistryObject<Block> CRACKED_ANDESITE_BRICKS_STAIRS =
+            registerDefault("cracked_andesite_bricks_stairs", () ->
+                    new StairBlock(CRACKED_ANDESITE_BRICKS.get()::defaultBlockState,
+                            ofStone()));
+
+    public static final RegistryObject<Block> CRACKED_ANDESITE_BRICKS_SLAB =
+            registerDefault("cracked_andesite_bricks_slab", () ->
+                    new SlabBlock(ofStone()));
+
+    public static final RegistryObject<Block> CRACKED_ANDESITE_BRICKS_WALL =
+            registerDefault("cracked_andesite_bricks_wall", () ->
+                    new WallBlock(ofStone()));
+
+    public static final RegistryObject<Block> MOSSY_ANDESITE_BRICKS =
+            registerDefault("mossy_andesite_bricks", () ->
+                    new StoneBricksBlock(SoundType.STONE, MaterialColor.STONE));
+
+    public static final RegistryObject<Block> MOSSY_ANDESITE_BRICKS_STAIRS =
+            registerDefault("mossy_andesite_bricks_stairs", () ->
+                    new StairBlock(MOSSY_ANDESITE_BRICKS.get()::defaultBlockState,
+                            ofStone()));
+
+    public static final RegistryObject<Block> MOSSY_ANDESITE_BRICKS_SLAB =
+            registerDefault("mossy_andesite_bricks_slab", () ->
+                    new SlabBlock(ofStone()));
+
+    public static final RegistryObject<Block> MOSSY_ANDESITE_BRICKS_WALL =
+            registerDefault("mossy_andesite_bricks_wall", () ->
+                    new WallBlock(ofStone()));
+
+    public static final RegistryObject<Block> CHISELED_ANDESITE_BRICKS =
+            registerDefault("chiseled_andesite_bricks", () ->
+                    new StoneBricksBlock(SoundType.STONE, MaterialColor.STONE));
+
+    public static final RegistryObject<Block> CHISELED_ANDESITE_BRICKS_STAIRS =
+            registerDefault("chiseled_andesite_bricks_stairs", () ->
+                    new StairBlock(CHISELED_ANDESITE_BRICKS.get()::defaultBlockState,
+                            ofStone()));
+
+    public static final RegistryObject<Block> CHISELED_ANDESITE_BRICKS_SLAB =
+            registerDefault("chiseled_andesite_bricks_slab", () ->
+                    new SlabBlock(ofStone()));
+
+    public static final RegistryObject<Block> CHISELED_ANDESITE_BRICKS_WALL =
+            registerDefault("chiseled_andesite_bricks_wall", () ->
+                    new WallBlock(ofStone()));
+
+    public static final RegistryObject<Block> GRANITE_BRICKS =
+            registerDefault("granite_bricks", () ->
+                    new StoneBricksBlock(SoundType.STONE, MaterialColor.STONE));
+
+    private static BlockBehaviour.Properties ofStone() {
+        return BlockBehaviour.Properties
+                .of(Material.STONE).requiresCorrectToolForDrops()
+                .sound(SoundType.STONE)
+                .strength(1.5F, 6.0F);
+    }
 
     private static BlockBehaviour.Properties ofTerracotta(MaterialColor color) {
         return BlockBehaviour.Properties.of(Material.STONE, color)

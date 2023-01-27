@@ -135,9 +135,14 @@ public class ModItemModelProvider extends ItemModelProvider {
         otherItem(ModItems.PHOBOS_OUTPOST_DISC.get(), "classicraft:item/music_disc_blood_moon");
         otherItem(ModItems.DRAGON_FISH_DISC.get(), "classicraft:item/music_disc_dragon_fish");
         threeBuildBlockItems("tinted_glass", "minecraft:block/tinted_glass");
+        threeBuildBlockItems("andesite_bricks", "classicraft:block/andesite_bricks");
+        threeBuildBlockItems("cracked_andesite_bricks", "classicraft:block/cracked_andesite_bricks");
+        threeBuildBlockItems("mossy_andesite_bricks", "classicraft:block/mossy_andesite_bricks");
+        threeBuildBlockItems("chiseled_andesite_bricks", "classicraft:block/chiseled_andesite_bricks");
         concreteThreeBlockItems();
         blockItem(ModBlocks.GLISTERING_MELON);
         terracottaThreeBlockItems();
+
     }
 
     public ItemModelBuilder otherItem(Item item, String texture)

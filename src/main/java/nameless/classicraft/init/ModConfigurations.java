@@ -30,6 +30,7 @@ public class ModConfigurations {
     public static ForgeConfigSpec.BooleanValue hardcore;
     public static ForgeConfigSpec.BooleanValue waterBurnt;
     public static ForgeConfigSpec.BooleanValue replaceVanillaBlock;
+    public static ForgeConfigSpec.BooleanValue enableForcedGameRules;
 
     static {
         BUILDER.comment("天工开物模组配置文件");
@@ -45,6 +46,9 @@ public class ModConfigurations {
 
         desc = "决定是否将原版方块替换为模组方块生成";
         replaceVanillaBlock =  BUILDER.comment(desc).define("replaceVanillaBlock",true);
+
+        desc = "决定是否启用天工开物的强制游戏模式， 将提升游戏难度";
+        enableForcedGameRules = BUILDER.comment(desc).define("enableForcedGameRules", true);
 
         BUILDER.pop();
         SPEC = BUILDER.build();

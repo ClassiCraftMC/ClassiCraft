@@ -17,18 +17,21 @@
  */
 package nameless.classicraft.event;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.entity.LivingDead;
+import nameless.classicraft.init.ModConfigurations;
 import nameless.classicraft.init.ModItems;
 import nameless.classicraft.network.SimpleNetworkHandler;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.block.ComposterBlock;
+import net.minecraftforge.event.level.LevelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class SetupEvents {
 
     @SubscribeEvent
@@ -39,6 +42,20 @@ public class SetupEvents {
 
         if (!hasRottenFood) {
             ComposterBlock.COMPOSTABLES.put(ModItems.ROTTEN_FOOD.get(), .3F);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onWorldSetup(LevelEvent.Load event) {
+        if (event.getLevel() instanceof final ServerLevel level) {
+            final MinecraftServer server = level.getServer();
+            final GameRules rules = level.getGameRules();
+            if (ModConfigurations.enableForcedGameRules.get()) {
+                rules.getRule(GameRules.RULE_NATURAL_REGENERATION).set(false, server);
+
+                ClassiCraftMod.LOGGER.info("Updating ClassiCraft Relevant Game Rules for level {}.",
+                        level.dimension().location());
+            }
         }
     }
 }

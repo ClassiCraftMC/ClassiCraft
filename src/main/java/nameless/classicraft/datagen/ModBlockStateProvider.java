@@ -57,6 +57,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(ModBlocks.SOUL_SANDSTONE_BRICKS);
         simpleBlockWithItem(ModBlocks.CRACKED_BRICKS);
         simpleBlockWithItem(ModBlocks.SMOOTH_QUARTZ_SANDSTONE);
+        simpleBlockWithItem(ModBlocks.ANDESITE_BRICKS);
+        simpleBlockWithItem(ModBlocks.CRACKED_ANDESITE_BRICKS);
+        simpleBlockWithItem(ModBlocks.MOSSY_ANDESITE_BRICKS);
+        simpleBlockWithItem(ModBlocks.CHISELED_ANDESITE_BRICKS);
         vanillaSimpleBlockWithItem(ModBlocks.INFESTED_MOSSY_COBBLESTONE, "mossy_cobblestone");
         vanillaSimpleBlockWithItem(ModBlocks.INFESTED_CHISELED_DEEPSLATE, "chiseled_deepslate");
         vanillaSimpleBlockWithItem(ModBlocks.INFESTED_COBBLED_DEEPSLATE, "cobbled_deepslate");
@@ -299,6 +303,18 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 ModBlocks.RED_TERRACOTTA_SLAB, DyeColor.RED);
         threeColorTerracottas(ModBlocks.BLACK_TERRACOTTA_WALL, ModBlocks.BLACK_TERRACOTTA_STAIRS,
                 ModBlocks.BLACK_TERRACOTTA_SLAB, DyeColor.BLACK);
+        threeBuildBlocks(ModBlocks.ANDESITE_BRICKS_WALL, ModBlocks.ANDESITE_BRICKS_STAIRS,
+                ModBlocks.ANDESITE_BRICKS_SLAB,
+                "andesite_bricks", "classicraft:block/andesite_bricks");
+        threeBuildBlocks(ModBlocks.CRACKED_ANDESITE_BRICKS_WALL, ModBlocks.CRACKED_ANDESITE_BRICKS_STAIRS,
+                ModBlocks.CRACKED_ANDESITE_BRICKS_SLAB,
+                "cracked_andesite_bricks", "classicraft:block/cracked_andesite_bricks");
+        threeBuildBlocks(ModBlocks.MOSSY_ANDESITE_BRICKS_WALL, ModBlocks.MOSSY_ANDESITE_BRICKS_STAIRS,
+                ModBlocks.MOSSY_ANDESITE_BRICKS_SLAB,
+                "mossy_andesite_bricks", "classicraft:block/mossy_andesite_bricks");
+        threeBuildBlocks(ModBlocks.CHISELED_ANDESITE_BRICKS_WALL, ModBlocks.CHISELED_ANDESITE_BRICKS_STAIRS,
+                ModBlocks.CHISELED_ANDESITE_BRICKS_SLAB,
+                "chiseled_andesite_bricks", "classicraft:block/chiseled_andesite_bricks");
     }
 
     protected void threeColorTerracottas(RegistryObject<Block> wall, RegistryObject<Block> stairs, RegistryObject<Block> slab, DyeColor dyeColor) {

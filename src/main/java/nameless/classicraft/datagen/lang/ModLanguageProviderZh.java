@@ -392,6 +392,22 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModBlocks.PINK_CONCRETE_SLAB.get(), "粉色混凝土台阶");
         add(ModBlocks.PINK_CONCRETE_STAIRS.get(), "粉色混凝土楼梯");
         add(ModBlocks.PINK_CONCRETE_WALL.get(), "粉色混凝土墙");
+        add(ModBlocks.ANDESITE_BRICKS.get(), "安山岩砖");
+        add(ModBlocks.ANDESITE_BRICKS_SLAB.get(), "安山岩台阶");
+        add(ModBlocks.ANDESITE_BRICKS_STAIRS.get(), "安山岩楼梯");
+        add(ModBlocks.ANDESITE_BRICKS_WALL.get(), "安山岩墙");
+        add(ModBlocks.CRACKED_ANDESITE_BRICKS.get(), "裂纹安山岩砖");
+        add(ModBlocks.CRACKED_ANDESITE_BRICKS_SLAB.get(), "裂纹安山岩台阶");
+        add(ModBlocks.CRACKED_ANDESITE_BRICKS_STAIRS.get(), "裂纹安山岩楼梯");
+        add(ModBlocks.CRACKED_ANDESITE_BRICKS_WALL.get(), "裂纹安山岩墙");
+        add(ModBlocks.MOSSY_ANDESITE_BRICKS.get(), "苔安山岩砖");
+        add(ModBlocks.MOSSY_ANDESITE_BRICKS_SLAB.get(), "苔安山岩台阶");
+        add(ModBlocks.MOSSY_ANDESITE_BRICKS_STAIRS.get(), "苔安山岩楼梯");
+        add(ModBlocks.MOSSY_ANDESITE_BRICKS_WALL.get(), "苔安山岩墙");
+        add(ModBlocks.CHISELED_ANDESITE_BRICKS.get(), "雕纹安山岩砖");
+        add(ModBlocks.CHISELED_ANDESITE_BRICKS_SLAB.get(), "雕纹安山岩台阶");
+        add(ModBlocks.CHISELED_ANDESITE_BRICKS_STAIRS.get(), "雕纹安山岩楼梯");
+        add(ModBlocks.CHISELED_ANDESITE_BRICKS_WALL.get(), "雕纹安山岩墙");
 
         pebbleBlock();
         meta();
