@@ -93,7 +93,7 @@ public class PebbleItem extends MetaItem {
         if (player != null &&
                 level.getBlockState(pContext.getClickedPos()).getMaterial() == Material.STONE) {
             player.swing(pContext.getHand());
-            Helpers.addCoolDown(player, item.getItem(), 10);
+            Helpers.addCoolDown(player, item.getItem(), 60);
             if (addItem(player, item))
                 item.shrink(1);
 
@@ -114,7 +114,7 @@ public class PebbleItem extends MetaItem {
 
             if (off.getItem() instanceof PebbleItem || off.is(ModTags.Items.VANILLA_PEBBLES)) {
                 pPlayer.swing(pUsedHand);
-                Helpers.addCoolDown(pPlayer, this, 10);
+                Helpers.addCoolDown(pPlayer, this, 60);
                 if (addItem(pPlayer, main)) {
                     main.shrink(1);
                     off.shrink(1);
