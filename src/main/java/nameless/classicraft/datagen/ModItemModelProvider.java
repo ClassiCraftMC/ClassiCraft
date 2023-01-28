@@ -143,8 +143,17 @@ public class ModItemModelProvider extends ItemModelProvider {
         concreteThreeBlockItems();
         blockItem(ModBlocks.GLISTERING_MELON);
         terracottaThreeBlockItems();
+        threeBuildBlockItems("granite_bricks", "classicraft:block/granite_bricks");
+        threeBuildBlockItems("cracked_granite_bricks", "classicraft:block/cracked_granite_bricks");
+        threeBuildBlockItems("mossy_granite_bricks", "classicraft:block/mossy_granite_bricks");
+        threeBuildBlockItems("chiseled_granite_bricks", "classicraft:block/chiseled_granite_bricks");
+        threeBuildBlockItems("diorite_bricks", "classicraft:block/diorite_bricks");
+        threeBuildBlockItems("cracked_diorite_bricks", "classicraft:block/cracked_diorite_bricks");
+        threeBuildBlockItems("mossy_diorite_bricks", "classicraft:block/mossy_diorite_bricks");
+        threeBuildBlockItems("chiseled_diorite_bricks", "classicraft:block/chiseled_diorite_bricks");
 
     }
+
 
     public ItemModelBuilder otherItem(Item item, String texture)
     {

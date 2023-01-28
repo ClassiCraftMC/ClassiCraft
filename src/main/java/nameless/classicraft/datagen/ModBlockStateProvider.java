@@ -61,6 +61,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(ModBlocks.CRACKED_ANDESITE_BRICKS);
         simpleBlockWithItem(ModBlocks.MOSSY_ANDESITE_BRICKS);
         simpleBlockWithItem(ModBlocks.CHISELED_ANDESITE_BRICKS);
+        simpleBlockWithItem(ModBlocks.GRANITE_BRICKS);
+        simpleBlockWithItem(ModBlocks.CRACKED_GRANITE_BRICKS);
+        simpleBlockWithItem(ModBlocks.MOSSY_GRANITE_BRICKS);
+        simpleBlockWithItem(ModBlocks.CHISELED_GRANITE_BRICKS);
+        simpleBlockWithItem(ModBlocks.DIORITE_BRICKS);
+        simpleBlockWithItem(ModBlocks.CRACKED_DIORITE_BRICKS);
+        simpleBlockWithItem(ModBlocks.MOSSY_DIORITE_BRICKS);
+        simpleBlockWithItem(ModBlocks.CHISELED_DIORITE_BRICKS);
         vanillaSimpleBlockWithItem(ModBlocks.INFESTED_MOSSY_COBBLESTONE, "mossy_cobblestone");
         vanillaSimpleBlockWithItem(ModBlocks.INFESTED_CHISELED_DEEPSLATE, "chiseled_deepslate");
         vanillaSimpleBlockWithItem(ModBlocks.INFESTED_COBBLED_DEEPSLATE, "cobbled_deepslate");
@@ -315,6 +323,30 @@ public class ModBlockStateProvider extends BlockStateProvider {
         threeBuildBlocks(ModBlocks.CHISELED_ANDESITE_BRICKS_WALL, ModBlocks.CHISELED_ANDESITE_BRICKS_STAIRS,
                 ModBlocks.CHISELED_ANDESITE_BRICKS_SLAB,
                 "chiseled_andesite_bricks", "classicraft:block/chiseled_andesite_bricks");
+        threeBuildBlocks(ModBlocks.GRANITE_BRICKS_WALL, ModBlocks.GRANITE_BRICKS_STAIRS,
+                ModBlocks.GRANITE_BRICKS_SLAB,
+                "granite_bricks", "classicraft:block/granite_bricks");
+        threeBuildBlocks(ModBlocks.CRACKED_GRANITE_BRICKS_WALL, ModBlocks.CRACKED_GRANITE_BRICKS_STAIRS,
+                ModBlocks.CRACKED_GRANITE_BRICKS_SLAB,
+                "cracked_granite_bricks", "classicraft:block/cracked_granite_bricks");
+        threeBuildBlocks(ModBlocks.MOSSY_GRANITE_BRICKS_WALL, ModBlocks.MOSSY_GRANITE_BRICKS_STAIRS,
+                ModBlocks.MOSSY_GRANITE_BRICKS_SLAB,
+                "mossy_granite_bricks", "classicraft:block/mossy_granite_bricks");
+        threeBuildBlocks(ModBlocks.CHISELED_GRANITE_BRICKS_WALL, ModBlocks.CHISELED_GRANITE_BRICKS_STAIRS,
+                ModBlocks.CHISELED_GRANITE_BRICKS_SLAB,
+                "chiseled_granite_bricks", "classicraft:block/chiseled_granite_bricks");
+        threeBuildBlocks(ModBlocks.DIORITE_BRICKS_WALL, ModBlocks.DIORITE_BRICKS_STAIRS,
+                ModBlocks.DIORITE_BRICKS_SLAB,
+                "diorite_bricks", "classicraft:block/diorite_bricks");
+        threeBuildBlocks(ModBlocks.CRACKED_DIORITE_BRICKS_WALL, ModBlocks.CRACKED_DIORITE_BRICKS_STAIRS,
+                ModBlocks.CRACKED_DIORITE_BRICKS_SLAB,
+                "cracked_diorite_bricks", "classicraft:block/cracked_diorite_bricks");
+        threeBuildBlocks(ModBlocks.MOSSY_DIORITE_BRICKS_WALL, ModBlocks.MOSSY_DIORITE_BRICKS_STAIRS,
+                ModBlocks.MOSSY_DIORITE_BRICKS_SLAB,
+                "mossy_diorite_bricks", "classicraft:block/mossy_diorite_bricks");
+        threeBuildBlocks(ModBlocks.CHISELED_DIORITE_BRICKS_WALL, ModBlocks.CHISELED_DIORITE_BRICKS_STAIRS,
+                ModBlocks.CHISELED_DIORITE_BRICKS_SLAB,
+                "chiseled_diorite_bricks", "classicraft:block/chiseled_diorite_bricks");
     }
 
     protected void threeColorTerracottas(RegistryObject<Block> wall, RegistryObject<Block> stairs, RegistryObject<Block> slab, DyeColor dyeColor) {

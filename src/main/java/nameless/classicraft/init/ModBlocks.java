@@ -1756,6 +1756,138 @@ public class ModBlocks {
             registerDefault("granite_bricks", () ->
                     new StoneBricksBlock(SoundType.STONE, MaterialColor.STONE));
 
+    public static final RegistryObject<Block> CRACKED_GRANITE_BRICKS =
+            registerDefault("cracked_granite_bricks", () ->
+                    new StoneBricksBlock(SoundType.STONE, MaterialColor.STONE));
+
+    public static final RegistryObject<Block> MOSSY_GRANITE_BRICKS =
+            registerDefault("mossy_granite_bricks", () ->
+                    new StoneBricksBlock(SoundType.STONE, MaterialColor.STONE));
+
+    public static final RegistryObject<Block> CHISELED_GRANITE_BRICKS =
+            registerDefault("chiseled_granite_bricks", () ->
+                    new StoneBricksBlock(SoundType.STONE, MaterialColor.STONE));
+
+    public static final RegistryObject<Block> GRANITE_BRICKS_STAIRS =
+            registerDefault("granite_bricks_stairs", () ->
+                    new StairBlock(GRANITE_BRICKS.get()::defaultBlockState,
+                            ofStone()));
+
+    public static final RegistryObject<Block> GRANITE_BRICKS_SLAB =
+            registerDefault("granite_bricks_slab", () ->
+                    new SlabBlock(ofStone()));
+
+    public static final RegistryObject<Block> GRANITE_BRICKS_WALL =
+            registerDefault("granite_bricks_wall", () ->
+                    new WallBlock(ofStone()));
+
+    public static final RegistryObject<Block> CRACKED_GRANITE_BRICKS_STAIRS =
+            registerDefault("cracked_granite_bricks_stairs", () ->
+                    new StairBlock(CRACKED_GRANITE_BRICKS.get()::defaultBlockState,
+                            ofStone()));
+
+    public static final RegistryObject<Block> CRACKED_GRANITE_BRICKS_SLAB =
+            registerDefault("cracked_granite_bricks_slab", () ->
+                    new SlabBlock(ofStone()));
+
+    public static final RegistryObject<Block> CRACKED_GRANITE_BRICKS_WALL =
+            registerDefault("cracked_granite_bricks_wall", () ->
+                    new WallBlock(ofStone()));
+
+    public static final RegistryObject<Block> MOSSY_GRANITE_BRICKS_STAIRS =
+            registerDefault("mossy_granite_bricks_stairs", () ->
+                    new StairBlock(MOSSY_GRANITE_BRICKS.get()::defaultBlockState,
+                            ofStone()));
+
+    public static final RegistryObject<Block> MOSSY_GRANITE_BRICKS_SLAB =
+            registerDefault("mossy_granite_bricks_slab", () ->
+                    new SlabBlock(ofStone()));
+
+    public static final RegistryObject<Block> MOSSY_GRANITE_BRICKS_WALL =
+            registerDefault("mossy_granite_bricks_wall", () ->
+                    new WallBlock(ofStone()));
+
+    public static final RegistryObject<Block> CHISELED_GRANITE_BRICKS_STAIRS =
+            registerDefault("chiseled_granite_bricks_stairs", () ->
+                    new StairBlock(GRANITE_BRICKS.get()::defaultBlockState,
+                            ofStone()));
+
+    public static final RegistryObject<Block> CHISELED_GRANITE_BRICKS_SLAB =
+            registerDefault("chiseled_granite_bricks_slab", () ->
+                    new SlabBlock(ofStone()));
+
+    public static final RegistryObject<Block> CHISELED_GRANITE_BRICKS_WALL =
+            registerDefault("chiseled_granite_bricks_wall", () ->
+                    new WallBlock(ofStone()));
+
+    public static final RegistryObject<Block> DIORITE_BRICKS =
+            registerDefault("diorite_bricks", () ->
+                    new StoneBricksBlock(SoundType.STONE, MaterialColor.STONE));
+
+    public static final RegistryObject<Block> CRACKED_DIORITE_BRICKS =
+            registerDefault("cracked_diorite_bricks", () ->
+                    new StoneBricksBlock(SoundType.STONE, MaterialColor.STONE));
+
+    public static final RegistryObject<Block> MOSSY_DIORITE_BRICKS =
+            registerDefault("mossy_diorite_bricks", () ->
+                    new StoneBricksBlock(SoundType.STONE, MaterialColor.STONE));
+
+    public static final RegistryObject<Block> CHISELED_DIORITE_BRICKS =
+            registerDefault("chiseled_diorite_bricks", () ->
+                    new StoneBricksBlock(SoundType.STONE, MaterialColor.STONE));
+
+    public static final RegistryObject<Block> DIORITE_BRICKS_STAIRS =
+            registerDefault("diorite_bricks_stairs", () ->
+                    new StairBlock(DIORITE_BRICKS.get()::defaultBlockState,
+                            ofStone()));
+
+    public static final RegistryObject<Block> DIORITE_BRICKS_SLAB =
+            registerDefault("diorite_bricks_slab", () ->
+                    new SlabBlock(ofStone()));
+
+    public static final RegistryObject<Block> DIORITE_BRICKS_WALL =
+            registerDefault("diorite_bricks_wall", () ->
+                    new WallBlock(ofStone()));
+
+    public static final RegistryObject<Block> CRACKED_DIORITE_BRICKS_STAIRS =
+            registerDefault("cracked_diorite_bricks_stairs", () ->
+                    new StairBlock(CRACKED_DIORITE_BRICKS.get()::defaultBlockState,
+                            ofStone()));
+
+    public static final RegistryObject<Block> CRACKED_DIORITE_BRICKS_SLAB =
+            registerDefault("cracked_diorite_bricks_slab", () ->
+                    new SlabBlock(ofStone()));
+
+    public static final RegistryObject<Block> CRACKED_DIORITE_BRICKS_WALL =
+            registerDefault("cracked_diorite_bricks_wall", () ->
+                    new WallBlock(ofStone()));
+
+    public static final RegistryObject<Block> MOSSY_DIORITE_BRICKS_STAIRS =
+            registerDefault("mossy_diorite_bricks_stairs", () ->
+                    new StairBlock(MOSSY_DIORITE_BRICKS.get()::defaultBlockState,
+                            ofStone()));
+
+    public static final RegistryObject<Block> MOSSY_DIORITE_BRICKS_SLAB =
+            registerDefault("mossy_diorite_bricks_slab", () ->
+                    new SlabBlock(ofStone()));
+
+    public static final RegistryObject<Block> MOSSY_DIORITE_BRICKS_WALL =
+            registerDefault("mossy_diorite_bricks_wall", () ->
+                    new WallBlock(ofStone()));
+
+    public static final RegistryObject<Block> CHISELED_DIORITE_BRICKS_STAIRS =
+            registerDefault("chiseled_diorite_bricks_stairs", () ->
+                    new StairBlock(DIORITE_BRICKS.get()::defaultBlockState,
+                            ofStone()));
+
+    public static final RegistryObject<Block> CHISELED_DIORITE_BRICKS_SLAB =
+            registerDefault("chiseled_diorite_bricks_slab", () ->
+                    new SlabBlock(ofStone()));
+
+    public static final RegistryObject<Block> CHISELED_DIORITE_BRICKS_WALL =
+            registerDefault("chiseled_diorite_bricks_wall", () ->
+                    new WallBlock(ofStone()));
+
     private static BlockBehaviour.Properties ofStone() {
         return BlockBehaviour.Properties
                 .of(Material.STONE).requiresCorrectToolForDrops()
