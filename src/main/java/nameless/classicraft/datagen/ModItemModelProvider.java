@@ -177,7 +177,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     void glassThreeBlockItems() {
         for (String material : List.of("_stained_glass")) {
             for (DyeColor dyeColor : DyeColor.values()) {
-                threeBuildBlockItems(dyeColor.getName() + material, "minecraft:block/" + dyeColor.getName() + material);
+                twoBuildBlockItems(dyeColor.getName() + material, "minecraft:block/" + dyeColor.getName() + material);
             }
         }
     }
