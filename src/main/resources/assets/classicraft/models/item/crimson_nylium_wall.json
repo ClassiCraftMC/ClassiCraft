@@ -1,6 +1,38 @@
 {
-  "parent": "minecraft:block/wall_inventory",
-  "textures": {
-    "wall": "minecraft:block/crimson_nylium"
-  }
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:block/wall_inventory",
+	"textures": {
+		"0": "block/crimson_nylium",
+		"1": "block/crimson_nylium_side",
+		"2": "block/netherrack",
+		"particle": "block/crimson_nylium"
+	},
+	"elements": [
+		{
+			"name": "Center post",
+			"from": [4, 0, 4],
+			"to": [12, 16, 12],
+			"faces": {
+				"north": {"uv": [8, 0, 16, 16], "texture": "#1"},
+				"east": {"uv": [0, 0, 8, 16], "texture": "#1"},
+				"south": {"uv": [8, 0, 16, 16], "texture": "#1"},
+				"west": {"uv": [0, 0, 8, 16], "texture": "#1"},
+				"up": {"uv": [4, 4, 12, 12], "texture": "#0"},
+				"down": {"uv": [4, 4, 12, 12], "texture": "#2", "cullface": "down"}
+			}
+		},
+		{
+			"name": "Full wall",
+			"from": [5, 0, 0],
+			"to": [11, 13, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 6, 13], "texture": "#1", "cullface": "north"},
+				"east": {"uv": [0, 0, 16, 13], "texture": "#1"},
+				"south": {"uv": [10, 0, 16, 13], "texture": "#1", "cullface": "south"},
+				"west": {"uv": [0, 0, 16, 13], "texture": "#1"},
+				"up": {"uv": [5, 0, 11, 16], "texture": "#0"},
+				"down": {"uv": [5, 0, 11, 16], "texture": "#2", "cullface": "down"}
+			}
+		}
+	]
 }
