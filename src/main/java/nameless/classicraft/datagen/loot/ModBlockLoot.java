@@ -28,10 +28,17 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.storage.loot.IntRange;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
+import net.minecraft.world.level.storage.loot.functions.LimitCount;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.functions.SetNbtFunction;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 import java.util.Set;
 import java.util.function.BiConsumer;
@@ -97,6 +104,7 @@ public class ModBlockLoot extends BlockLootSubProvider {
                 .forEach(this::dropSelf);
         blocks.stream().filter(block -> block instanceof SandStoneBlock)
                 .forEach(this::dropSelf);
+        melonStyleDrop(Blocks.PUMPKIN, ModItems.PUMPKIN_SLICE.get());
     }
 
     @Override
@@ -109,6 +117,15 @@ public class ModBlockLoot extends BlockLootSubProvider {
     void addPebble(Block block) {
         add(block, createSingleItemTable(ModItems.PEBBLE.get())
                 .apply(SetNbtFunction.setTag(PebbleItem.getTagFrom(block))));
+    }
+
+    void melonStyleDrop(Block block, Item item) {
+        add(block, (melon) -> createSilkTouchDispatchTable(melon, this.applyExplosionDecay(melon,
+                LootItem.lootTableItem(item)
+                        .apply(SetItemCountFunction
+                                .setCount(UniformGenerator.between(3.0F, 7.0F)))
+                        .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))
+                        .apply(LimitCount.limitCount(IntRange.upperBound(9))))));
     }
 
     void addOreDrop(Block block, Item item) {
