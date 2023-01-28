@@ -1,0 +1,25 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:block/template_wall_post",
+	"textures": {
+		"1": "block/crimson_nylium",
+		"2": "block/netherrack",
+		"particle": "block/crimson_nylium_side",
+		"wall": "block/crimson_nylium_side"
+	},
+	"elements": [
+		{
+			"name": "Center post",
+			"from": [4, 0, 4],
+			"to": [12, 16, 12],
+			"faces": {
+				"north": {"uv": [0, 16, 8, 0], "rotation": 180, "texture": "#wall"},
+				"east": {"uv": [8, 16, 16, 0], "rotation": 180, "texture": "#wall"},
+				"south": {"uv": [0, 16, 8, 0], "rotation": 180, "texture": "#wall"},
+				"west": {"uv": [8, 16, 16, 0], "rotation": 180, "texture": "#wall"},
+				"up": {"uv": [8, 0, 16, 8], "rotation": 90, "texture": "#1", "cullface": "up"},
+				"down": {"uv": [8, 0, 16, 8], "rotation": 270, "texture": "#2", "cullface": "up"}
+			}
+		}
+	]
+}

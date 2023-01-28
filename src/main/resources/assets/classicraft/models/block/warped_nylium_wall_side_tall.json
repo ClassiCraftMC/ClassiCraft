@@ -1,0 +1,23 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:block/template_wall_side_tall",
+	"textures": {
+		"1": "block/warped_nylium",
+		"2": "block/netherrack",
+		"particle": "block/warped_nylium_side",
+		"wall": "block/warped_nylium_side"
+	},
+	"elements": [
+		{
+			"from": [5, 0, 0],
+			"to": [11, 16, 8],
+			"faces": {
+				"north": {"uv": [0, 0, 6, 16], "texture": "#wall", "cullface": "north"},
+				"east": {"uv": [8, 0, 16, 16], "texture": "#wall"},
+				"west": {"uv": [0, 0, 8, 16], "texture": "#wall"},
+				"up": {"uv": [5, 0, 11, 8], "texture": "#1", "cullface": "up"},
+				"down": {"uv": [5, 8, 11, 16], "texture": "#2", "cullface": "down"}
+			}
+		}
+	]
+}
