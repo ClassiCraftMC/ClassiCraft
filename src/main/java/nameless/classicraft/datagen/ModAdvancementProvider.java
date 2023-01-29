@@ -57,6 +57,8 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                             .put(Blocks.COBBLESTONE_WALL, Blocks.MOSSY_COBBLESTONE_WALL)
                             .put(Blocks.STONE_BRICKS, Blocks.MOSSY_STONE_BRICKS)
                             .put(Blocks.STONE_BRICK_SLAB, Blocks.MOSSY_STONE_BRICK_SLAB)
+                            .put(Blocks.STONE_BRICK_STAIRS, Blocks.MOSSY_STONE_BRICK_STAIRS)
+                            .put(Blocks.STONE_BRICK_WALL, Blocks.MOSSY_STONE_BRICK_WALL)
                             .build());
 
     public static final Supplier<BiMap<Block, Block>> MOSSY_OFF_BY_BLOCK =

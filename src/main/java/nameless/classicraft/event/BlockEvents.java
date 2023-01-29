@@ -40,6 +40,8 @@ public class BlockEvents {
         EventUtils.mossyAll(event, Blocks.COBBLESTONE_WALL, Blocks.MOSSY_COBBLESTONE_WALL);
         EventUtils.mossyAll(event, Blocks.STONE_BRICKS, Blocks.MOSSY_STONE_BRICKS);
         EventUtils.mossyAll(event, Blocks.STONE_BRICK_SLAB, Blocks.MOSSY_STONE_BRICK_SLAB);
+        EventUtils.mossyAll(event, Blocks.STONE_BRICK_STAIRS, Blocks.MOSSY_STONE_BRICK_STAIRS);
+        EventUtils.mossyAll(event, Blocks.STONE_BRICK_WALL, Blocks.MOSSY_STONE_BRICK_WALL);
     }
 
     @SubscribeEvent

@@ -27,6 +27,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraftforge.event.level.LevelEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -45,7 +46,7 @@ public class SetupEvents {
         }
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onWorldSetup(LevelEvent.Load event) {
         if (event.getLevel() instanceof final ServerLevel level) {
             final MinecraftServer server = level.getServer();
