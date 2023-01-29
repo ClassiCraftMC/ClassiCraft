@@ -81,8 +81,23 @@ public class ModRecipeProvider extends RecipeProvider {
         nbtPebbleRecipe(pWriter, Blocks.RED_SANDSTONE, "red_sandstone_pebble");
         nbtPebbleRecipe(pWriter, Blocks.SANDSTONE, "sandstone_pebble");
         nbtPebbleRecipe(pWriter, ModBlocks.SOUL_SANDSTONE.get(), "soul_sandstone_pebble");
+        nbtPebbleButton(pWriter, Items.STONE_BUTTON, "cobblestone_pebble");
         modNineBlockStorageRecipes(pWriter, RecipeCategory.BUILDING_BLOCKS, Items.QUARTZ, RecipeCategory.MISC, Items.QUARTZ_BLOCK);
         fourBlockStorageRecipes(pWriter, RecipeCategory.BUILDING_BLOCKS, Items.FLINT, RecipeCategory.MISC, ModBlocks.FLINT_BLOCK.get());
+    }
+
+    protected void nbtPebbleButton(Consumer<FinishedRecipe> pWriter, ItemLike pResult, String meta) {
+        SingleItemRecipeBuilder
+                .stonecutting(StrictNBTIngredient
+                                .of(Util.make(() -> {
+                                    ItemStack stack = ModItems.PEBBLE.get().getDefaultInstance();
+                                    MetaItem.setMeta(stack, meta);
+                                    return stack;
+                        })), RecipeCategory.REDSTONE,
+                        pResult, 1)
+                .unlockedBy("has_" + ModItems.PEBBLE.get(),
+                        has(ModItems.PEBBLE.get())).save(pWriter,
+                        Helpers.identifier(getItemName(pResult) + "_from_" + meta + "_stonecutting"));
     }
 
     protected void nbtPebbleRecipe(Consumer<FinishedRecipe> pWriter, Block block, String meta) {
@@ -91,8 +106,6 @@ public class ModRecipeProvider extends RecipeProvider {
                         StrictNBTIngredient.of(Util.make(() ->
                                 {
                                     ItemStack stack = ModItems.PEBBLE.get().getDefaultInstance();
-                                    CompoundTag nbt = new CompoundTag();
-                                    assert stack.getTag() != null;
                                     MetaItem.setMeta(stack, meta);
                                     return stack;
                                 }
