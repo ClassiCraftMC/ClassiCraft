@@ -26,6 +26,7 @@ import nameless.classicraft.item.PebbleItem;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -68,6 +69,7 @@ public class EventUtils {
             }
             if (player instanceof ServerPlayer) {
                 CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, pos, player.getItemInHand(event.getHand()));
+                player.sendSystemMessage(Component.literal("Test trigger!"));
             }
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos,
                     GameEvent.Context.of(player, state));
@@ -94,6 +96,7 @@ public class EventUtils {
             }
             if (player instanceof ServerPlayer) {
                 CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, pos, player.getItemInHand(event.getHand()));
+                player.sendSystemMessage(Component.literal("Test trigger!"));
             }
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos,
                     GameEvent.Context.of(player, state));
