@@ -1,22 +1,22 @@
 {
-  "parent": "classicraft:mossy_on",
+  "parent": "classicraft:obtain_pebble",
   "criteria": {
-    "mossy_off": {
+    "mossy_on": {
       "conditions": {
         "item": {
           "items": [
-            "minecraft:wooden_axe",
-            "minecraft:golden_axe",
-            "minecraft:stone_axe",
-            "minecraft:iron_axe",
-            "minecraft:diamond_axe",
-            "minecraft:netherite_axe"
+            "classicraft:moss_clump"
           ]
         },
         "location": {
           "block": {
             "blocks": [
-              "minecraft:mossy_cobblestone"
+              "minecraft:cobblestone",
+              "minecraft:cobblestone_slab",
+              "minecraft:cobblestone_stairs",
+              "minecraft:cobblestone_wall",
+              "minecraft:stone_bricks",
+              "minecraft:stone_brick_slab"
             ]
           }
         }
@@ -28,22 +28,21 @@
     "announce_to_chat": true,
     "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
     "description": {
-      "translate": "advancements.classicraft.mossy_off.description"
+      "translate": "advancements.classicraft.mossy_on.description"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "minecraft:stone_axe",
-      "nbt": "{Damage:0}"
+      "item": "classicraft:moss_clump"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.classicraft.mossy_off.title"
+      "translate": "advancements.classicraft.mossy_on.title"
     }
   },
   "requirements": [
     [
-      "mossy_off"
+      "mossy_on"
     ]
   ]
 }

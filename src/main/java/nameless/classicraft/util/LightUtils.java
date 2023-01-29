@@ -158,7 +158,7 @@ public class LightUtils {
             pPlayer.swing(pHand);
             if (!pPlayer.isCreative()) {
                 heldStack.hurtAndBreak(1, pPlayer, (player) -> {
-                    player.broadcastBreakEvent(EquipmentSlot.MAINHAND);
+                    player.broadcastBreakEvent(pHand);
                 });
             }
             if (pLevel.isRainingAt(pPos.above())) {

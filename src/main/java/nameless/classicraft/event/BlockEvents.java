@@ -34,8 +34,12 @@ public class BlockEvents {
 
     @SubscribeEvent
     public static void mossyBlock(PlayerInteractEvent.RightClickBlock event) {
-        EventUtils.mossyOn(event, Blocks.COBBLESTONE, Blocks.MOSSY_COBBLESTONE, Items.MOSS_BLOCK);
-        EventUtils.mossyOff(event, Blocks.MOSSY_COBBLESTONE, Blocks.COBBLESTONE);
+        EventUtils.mossyAll(event, Blocks.COBBLESTONE, Blocks.MOSSY_COBBLESTONE);
+        EventUtils.mossyAll(event, Blocks.COBBLESTONE_SLAB, Blocks.MOSSY_COBBLESTONE_SLAB);
+        EventUtils.mossyAll(event, Blocks.COBBLESTONE_STAIRS, Blocks.MOSSY_COBBLESTONE_STAIRS);
+        EventUtils.mossyAll(event, Blocks.COBBLESTONE_WALL, Blocks.MOSSY_COBBLESTONE_WALL);
+        EventUtils.mossyAll(event, Blocks.STONE_BRICKS, Blocks.MOSSY_STONE_BRICKS);
+        EventUtils.mossyAll(event, Blocks.STONE_BRICK_SLAB, Blocks.MOSSY_STONE_BRICK_SLAB);
     }
 
     @SubscribeEvent
@@ -46,10 +50,11 @@ public class BlockEvents {
     }
 
     @SubscribeEvent
-    public static void putPebbleVanilla(PlayerInteractEvent.RightClickBlock event) {
-        EventUtils.putPebbleBlock(event, Items.FLINT, ModBlocks.FLINT.get());
-        EventUtils.putPebbleBlock(event, Items.PRISMARINE_SHARD, ModBlocks.PRISMARINE.get());
-        EventUtils.putPebbleBlock(event, Items.QUARTZ, ModBlocks.QUARTZ_PEBBLE.get());
+    public static void putAddonVanilla(PlayerInteractEvent.RightClickBlock event) {
+        EventUtils.putAddonBlock(event, Items.STICK, ModBlocks.TWIGS.get());
+        EventUtils.putAddonBlock(event, Items.FLINT, ModBlocks.FLINT.get());
+        EventUtils.putAddonBlock(event, Items.PRISMARINE_SHARD, ModBlocks.PRISMARINE.get());
+        EventUtils.putAddonBlock(event, Items.QUARTZ, ModBlocks.QUARTZ_PEBBLE.get());
     }
 
     @SubscribeEvent

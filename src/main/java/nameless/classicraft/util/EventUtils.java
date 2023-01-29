@@ -20,6 +20,7 @@ package nameless.classicraft.util;
 import nameless.classicraft.api.event.BlockDropEvent;
 import nameless.classicraft.api.event.ItemEntityTickEvent;
 import nameless.classicraft.block.AbstractLightBlock;
+import nameless.classicraft.init.ModItems;
 import nameless.classicraft.init.ModTags;
 import nameless.classicraft.item.PebbleItem;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -48,7 +49,12 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class EventUtils {
 
-    public static void mossyOn(PlayerInteractEvent.RightClickBlock event, Block needChange, Block mossy, Item changeItem) {
+    public static void mossyAll(PlayerInteractEvent.RightClickBlock event, Block needChange, Block mossy) {
+        mossyOn(event, needChange, mossy, ModItems.MOSS_CLUMP.get());
+        mossyOff(event, mossy, needChange);
+    }
+
+    public static void mossyOn(PlayerInteractEvent.RightClickBlock event, Block needChange, Block result, Item changeItem) {
         BlockPos pos = event.getPos();
         BlockState state = event.getLevel().getBlockState(pos);
         ItemStack stack = event.getItemStack();
@@ -56,20 +62,22 @@ public class EventUtils {
         Player player = event.getEntity();
         if (state.is(needChange) && stack.is(changeItem)) {
             player.swing(event.getHand());
-            level.setBlockAndUpdate(pos, mossy.defaultBlockState());
-            mossy.setPlacedBy(level, pos, mossy.defaultBlockState(), player, stack);
-            if (player instanceof ServerPlayer) {
-                CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, pos, stack);
+            level.setBlock(pos, result.defaultBlockState(), 11);
+            if (!player.getAbilities().instabuild) {
+                stack.shrink(1);
             }
-            level.gameEvent(GameEvent.BLOCK_PLACE, pos, GameEvent.Context.of(player,
-                    mossy.defaultBlockState()));
+            if (player instanceof ServerPlayer) {
+                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, pos, stack);
+            }
+            level.gameEvent(GameEvent.BLOCK_CHANGE, pos,
+                    GameEvent.Context.of(player, state));
             level.playSound(null, pos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS,1, level.random.nextFloat() * 0.1F + 0.9F);
-            player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
-            event.setCancellationResult(InteractionResult.PASS);
+            level.levelEvent(1505, pos, 0);
+            event.setCancellationResult(InteractionResult.sidedSuccess(level.isClientSide));
         }
     }
 
-    public static void mossyOff(PlayerInteractEvent.RightClickBlock event, Block needChange, Block mossy) {
+    public static void mossyOff(PlayerInteractEvent.RightClickBlock event, Block needChange, Block result) {
         BlockPos pos = event.getPos();
         BlockState state = event.getLevel().getBlockState(pos);
         ItemStack stack = event.getItemStack();
@@ -77,17 +85,20 @@ public class EventUtils {
         Player player = event.getEntity();
         if (state.is(needChange) && stack.is(Tags.Items.TOOLS_AXES)) {
             player.swing(event.getHand());
-            level.setBlockAndUpdate(pos, mossy.defaultBlockState());
-            mossy.setPlacedBy(level, pos, mossy.defaultBlockState(), player, stack);
-            stack.setDamageValue(1);
-            if (player instanceof ServerPlayer) {
-                CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, pos, stack);
+            level.setBlock(pos, result.defaultBlockState(), 11);
+            if (!player.getAbilities().instabuild) {
+                stack.hurtAndBreak(1, player, (pOnBroken) -> {
+                    pOnBroken.broadcastBreakEvent(player.getUsedItemHand());
+                });
             }
-            level.gameEvent(GameEvent.BLOCK_PLACE, pos, GameEvent.Context.of(player,
-                    mossy.defaultBlockState()));
+            if (player instanceof ServerPlayer) {
+                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, pos, stack);
+            }
+            level.gameEvent(GameEvent.BLOCK_CHANGE, pos,
+                    GameEvent.Context.of(player, state));
             level.playSound(null, pos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS,1, level.random.nextFloat() * 0.1F + 0.9F);
-            player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
-            event.setCancellationResult(InteractionResult.PASS);
+            level.levelEvent(1505, pos, 0);
+            event.setCancellationResult(InteractionResult.sidedSuccess(level.isClientSide));
         }
     }
 
@@ -128,7 +139,7 @@ public class EventUtils {
         }
     }
 
-    public static void putPebbleBlock(PlayerInteractEvent.RightClickBlock event, Item vanillaItem, Block pebbleBlock) {
+    public static void putAddonBlock(PlayerInteractEvent.RightClickBlock event, Item vanillaItem, Block pebbleBlock) {
         Level level = event.getLevel();
         ItemStack itemStack = event.getItemStack();
         BlockPos pos = event.getPos();

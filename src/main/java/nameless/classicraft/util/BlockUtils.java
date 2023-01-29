@@ -17,14 +17,11 @@
  */
 package nameless.classicraft.util;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 import net.minecraft.world.level.material.Material;
 
 import static net.minecraft.world.level.material.PushReaction.BLOCK;
 import static net.minecraft.world.level.material.PushReaction.DESTROY;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class BlockUtils {
     public static Material.Builder from(Material material) {
         var result =  new Material.Builder(material.getColor());

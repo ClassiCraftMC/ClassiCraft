@@ -33,21 +33,21 @@ public class ModConfigurations {
     public static ForgeConfigSpec.BooleanValue enableForcedGameRules;
 
     static {
-        BUILDER.comment("天工开物模组配置文件");
-        BUILDER.comment("通常");
+        BUILDER.comment("ClassiCraft Configurations");
+        BUILDER.comment("Common");
         BUILDER.push("General");
         String desc;
 
-        desc = "*困难*决定是否背包里的点燃的方块会熄灭";
+        desc = "*Difficult*Decide the lit block can be burn out by some facts in inventory";
         hardcore = BUILDER.comment(desc).define("hardcore",true);
 
-        desc = "决定当你进入水中时是否你背包里点燃的火把会被熄灭";
+        desc = "Decide the lit block can be burn out in water";
         waterBurnt = BUILDER.comment(desc).define("water_burnt",true);
 
-        desc = "决定是否将原版方块替换为模组方块生成";
+        desc = "Decide to replace the vanilla block to mod block in world gen";
         replaceVanillaBlock =  BUILDER.comment(desc).define("replaceVanillaBlock",true);
 
-        desc = "决定是否启用天工开物的强制游戏模式， 将提升游戏难度";
+        desc = "Decide to enable ClassiCraft Forced GameRules...It will enforced the difficulty";
         enableForcedGameRules = BUILDER.comment(desc).define("enableForcedGameRules", true);
 
         BUILDER.pop();

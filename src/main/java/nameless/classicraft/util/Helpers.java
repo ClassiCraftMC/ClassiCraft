@@ -32,11 +32,19 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * A utility class of ClassiCraft
+ */
 public final class Helpers {
 
 
     public static final DeferredRegister<? extends Block> deferredRegister = ModBlocks.BLOCKS;
 
+    /**
+     * A method that create a new ItemStack in order to simplify code
+     * @param item the Item
+     * @return new ItemStack
+     */
     public static ItemStack stack(ItemLike item) {
         return new ItemStack(item);
     }
@@ -74,11 +82,18 @@ public final class Helpers {
         return new ResourceLocation(ClassiCraftMod.MOD_ID, name);
     }
 
+    /**
+     * A method used to get Blocks that ClassiCraft mod registered
+     * @return a set list of blocks
+     */
     public static Set<Block> getBlocks() {
         return deferredRegister.getEntries().stream()
                 .map(RegistryObject::get).collect(Collectors.toSet());
     }
 
+    /**
+     * Used to handle food values
+     */
     @SuppressWarnings("deprecation")
     public static void handleFood() {
         if (Items.DRIED_KELP.getFoodProperties() != null) {

@@ -51,7 +51,13 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
     public static final Supplier<BiMap<Block, Block>> MOSSY_ABLES =
             Suppliers.memoize(() ->
                     ImmutableBiMap.<Block, Block>builder()
-                    .put(Blocks.COBBLESTONE, Blocks.MOSSY_COBBLESTONE).build());
+                            .put(Blocks.COBBLESTONE, Blocks.MOSSY_COBBLESTONE)
+                            .put(Blocks.COBBLESTONE_SLAB, Blocks.MOSSY_COBBLESTONE_SLAB)
+                            .put(Blocks.COBBLESTONE_STAIRS, Blocks.MOSSY_COBBLESTONE_STAIRS)
+                            .put(Blocks.COBBLESTONE_WALL, Blocks.MOSSY_COBBLESTONE_WALL)
+                            .put(Blocks.STONE_BRICKS, Blocks.MOSSY_STONE_BRICKS)
+                            .put(Blocks.STONE_BRICK_SLAB, Blocks.MOSSY_STONE_BRICK_SLAB)
+                            .build());
 
     public static final Supplier<BiMap<Block, Block>> MOSSY_OFF_BY_BLOCK =
             Suppliers.memoize(() -> MOSSY_ABLES.get().inverse());
@@ -70,7 +76,8 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 .addCriterion("has_pebble",
                         InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.PEBBLE.get()))
                 .save(saver, Helpers.identifier("obtain_pebble"), existingFileHelper);
-        Advancement MOSSY_ON = Advancement.Builder.advancement().parent(OBTAIN_PEBBLE).display(Items.MOSSY_COBBLESTONE,
+        Advancement MOSSY_ON = Advancement.Builder.advancement().parent(OBTAIN_PEBBLE)
+                .display(ModItems.MOSS_CLUMP.get(),
                                 Component.translatable("advancements.classicraft.mossy_on.title"),
                                 Component.translatable("advancements.classicraft.mossy_on.description"),
                                 new ResourceLocation("textures/gui/advancements/backgrounds/stone.png"),
@@ -83,8 +90,8 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                                         itemUsedOnBlock(LocationPredicate.Builder.location()
                                                         .setBlock(BlockPredicate.Builder.block()
                                                                 .of(MOSSY_ABLES.get().keySet()).build()),
-                                        ItemPredicate.Builder.item().of(Items.MOSS_BLOCK)))
-                        .save(saver, Helpers.identifier("mossy_on"), existingFileHelper);
+                                        ItemPredicate.Builder.item().of(ModItems.MOSS_CLUMP.get())))
+                        .save(saver, Helpers.identifier("building_blocks/mossy_on"), existingFileHelper);
         Advancement MOSSY_OFF = Advancement.Builder.advancement()
                 .parent(MOSSY_ON).display(Items.STONE_AXE,
                         Component.translatable("advancements.classicraft.mossy_off.title"),
@@ -100,6 +107,6 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                                                 .setBlock(BlockPredicate.Builder.block()
                                                         .of(MOSSY_OFF_BY_BLOCK.get().keySet()).build()),
                                         ItemPredicate.Builder.item().of(MOSSY_OFF_SCRAPING_TOOLS)))
-                .save(saver, Helpers.identifier("mossy_off"), existingFileHelper);
+                .save(saver, Helpers.identifier("building_blocks/mossy_off"), existingFileHelper);
     }
 }
