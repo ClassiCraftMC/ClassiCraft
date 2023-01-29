@@ -24,8 +24,6 @@ import nameless.classicraft.util.Helpers;
 import net.minecraft.Util;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -85,6 +83,12 @@ public class ModRecipeProvider extends RecipeProvider {
         nbtPebbleButton(pWriter, Items.POLISHED_BLACKSTONE_BUTTON, "blackstone_pebble");
         modNineBlockStorageRecipes(pWriter, RecipeCategory.BUILDING_BLOCKS, Items.QUARTZ, RecipeCategory.MISC, Items.QUARTZ_BLOCK);
         fourBlockStorageRecipes(pWriter, RecipeCategory.BUILDING_BLOCKS, Items.FLINT, RecipeCategory.MISC, ModBlocks.FLINT_BLOCK.get());
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC,
+                        Blocks.MOSS_BLOCK).define('#', ModItems.MOSS_CLUMP.get())
+                .pattern("##")
+                .pattern("##")
+                .unlockedBy("has_" + ModItems.MOSS_CLUMP.get(), has(ModItems.PEBBLE.get()))
+                .save(pWriter, Helpers.identifier(getItemName(Blocks.MOSS_BLOCK)));
     }
 
     protected void nbtPebbleButton(Consumer<FinishedRecipe> pWriter, ItemLike pResult, String meta) {

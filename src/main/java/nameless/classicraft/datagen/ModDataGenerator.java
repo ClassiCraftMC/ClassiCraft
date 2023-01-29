@@ -31,10 +31,12 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.common.data.ForgeAdvancementProvider;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
@@ -87,5 +89,8 @@ public class ModDataGenerator {
                         new ModBlockTagsProvider(pack, lookup, helper), helper));
         generator.addProvider(event.includeClient(),
                 new ModSoundDefinitions(pack, helper));
+        generator.addProvider(event.includeServer(),
+                new ForgeAdvancementProvider(pack,
+                        lookup, helper, List.of(new ModAdvancementProvider())));
     }
 }

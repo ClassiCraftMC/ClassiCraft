@@ -159,6 +159,9 @@ public class ModItems {
             register("dragon_fish_disc", () ->
                     new RecordItem(11, ModSounds.DRAGON_FISH, new Item.Properties().stacksTo(1), 238));
 
+    public static final RegistryObject<Item> MOSS_CLUMP =
+            register("moss_clump", () -> new Item(new Item.Properties()));
+
     private static RegistryObject<Item> food(String name, FoodProperties foodData) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().food(foodData)));
     }

@@ -424,6 +424,13 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.CHISELED_DIORITE_BRICKS_SLAB.get(), "Chiseled Diorite Bricks Slab");
         add(ModBlocks.CHISELED_DIORITE_BRICKS_STAIRS.get(), "Chiseled Diorite Bricks Stairs");
         add(ModBlocks.CHISELED_DIORITE_BRICKS_WALL.get(), "Chiseled Diorite Bricks Wall");
+        add(ModItems.MOSS_CLUMP.get(), "Moss Clump");
+        add("advancements.classicraft.mossy_on.title", "Mossy on");
+        add("advancements.classicraft.mossy_off.title", "Mossy off");
+        add("advancements.classicraft.mossy_on.description", "Apply Moss Block to a CobbleStone!");
+        add("advancements.classicraft.mossy_off.description", "Scrape Wax off of a Mossy CobbleStone block!");
+        add("advancements.classicraft.obtain_pebble.title", "ClassiCraft Life");
+        add("advancements.classicraft.obtain_pebble.description", "Obtain a pebble and get start your ClassiCraft Life!");
 
         pebbleBlock();
         meta();

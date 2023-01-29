@@ -43,9 +43,53 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Material;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class EventUtils {
+
+    public static void mossyOn(PlayerInteractEvent.RightClickBlock event, Block needChange, Block mossy, Item changeItem) {
+        BlockPos pos = event.getPos();
+        BlockState state = event.getLevel().getBlockState(pos);
+        ItemStack stack = event.getItemStack();
+        Level level = event.getLevel();
+        Player player = event.getEntity();
+        if (state.is(needChange) && stack.is(changeItem)) {
+            player.swing(event.getHand());
+            level.setBlockAndUpdate(pos, mossy.defaultBlockState());
+            mossy.setPlacedBy(level, pos, mossy.defaultBlockState(), player, stack);
+            if (player instanceof ServerPlayer) {
+                CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, pos, stack);
+            }
+            level.gameEvent(GameEvent.BLOCK_PLACE, pos, GameEvent.Context.of(player,
+                    mossy.defaultBlockState()));
+            level.playSound(null, pos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS,1, level.random.nextFloat() * 0.1F + 0.9F);
+            player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
+            event.setCancellationResult(InteractionResult.PASS);
+        }
+    }
+
+    public static void mossyOff(PlayerInteractEvent.RightClickBlock event, Block needChange, Block mossy) {
+        BlockPos pos = event.getPos();
+        BlockState state = event.getLevel().getBlockState(pos);
+        ItemStack stack = event.getItemStack();
+        Level level = event.getLevel();
+        Player player = event.getEntity();
+        if (state.is(needChange) && stack.is(Tags.Items.TOOLS_AXES)) {
+            player.swing(event.getHand());
+            level.setBlockAndUpdate(pos, mossy.defaultBlockState());
+            mossy.setPlacedBy(level, pos, mossy.defaultBlockState(), player, stack);
+            stack.setDamageValue(1);
+            if (player instanceof ServerPlayer) {
+                CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, pos, stack);
+            }
+            level.gameEvent(GameEvent.BLOCK_PLACE, pos, GameEvent.Context.of(player,
+                    mossy.defaultBlockState()));
+            level.playSound(null, pos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS,1, level.random.nextFloat() * 0.1F + 0.9F);
+            player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
+            event.setCancellationResult(InteractionResult.PASS);
+        }
+    }
 
     public static void pebbleToolByStoneVanilla(PlayerInteractEvent.RightClickBlock event, Item vanillaItem) {
         Player player = event.getEntity();

@@ -22,6 +22,7 @@ import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.util.EventUtils;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DeadBushBlock;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -30,6 +31,12 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
 public class BlockEvents {
+
+    @SubscribeEvent
+    public static void mossyBlock(PlayerInteractEvent.RightClickBlock event) {
+        EventUtils.mossyOn(event, Blocks.COBBLESTONE, Blocks.MOSSY_COBBLESTONE, Items.MOSS_BLOCK);
+        EventUtils.mossyOff(event, Blocks.MOSSY_COBBLESTONE, Blocks.COBBLESTONE);
+    }
 
     @SubscribeEvent
     public static void pebbleTool(PlayerInteractEvent.RightClickBlock event) {

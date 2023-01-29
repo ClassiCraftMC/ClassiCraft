@@ -60,6 +60,7 @@ public class ModGlobalModifierProvider extends GlobalLootModifierProvider {
         replaceBlock(Blocks.ROOTED_DIRT, Items.FLINT, 1);
 
         replaceBlock(Blocks.COARSE_DIRT, Items.FLINT, 1);
+        replaceBlock(Blocks.MOSS_BLOCK, ModItems.MOSS_CLUMP.get(), "moss_drop", 1, 4);
     }
 
     void pebble(Block block) {

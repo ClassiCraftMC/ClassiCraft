@@ -424,6 +424,14 @@ public class ModLanguageProviderZh extends LanguageProvider {
         add(ModBlocks.CHISELED_DIORITE_BRICKS_SLAB.get(), "雕纹闪长岩台阶");
         add(ModBlocks.CHISELED_DIORITE_BRICKS_STAIRS.get(), "雕纹闪长岩楼梯");
         add(ModBlocks.CHISELED_DIORITE_BRICKS_WALL.get(), "雕纹闪长岩墙");
+        add(ModItems.MOSS_CLUMP.get(), "苔藓丛");
+        add("advancements.classicraft.mossy_on.title", "苔化");
+        add("advancements.classicraft.mossy_off.title", "去苔");
+        add("advancements.classicraft.mossy_on.description", "将苔藓块应用到圆石上面!");
+        add("advancements.classicraft.mossy_off.description", "去除苔石块上的苔藓!");
+        add("advancements.classicraft.obtain_pebble.title", "天工开物生活");
+        add("advancements.classicraft.obtain_pebble.description", "获得一个石子，开启你的天工开物模组生活!");
+
 
         pebbleBlock();
         meta();

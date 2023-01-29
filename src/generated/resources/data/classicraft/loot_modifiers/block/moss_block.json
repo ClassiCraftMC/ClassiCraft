@@ -1,0 +1,14 @@
+{
+  "type": "classicraft:replace_drop",
+  "conditions": [
+    {
+      "block": "minecraft:moss_block",
+      "condition": "minecraft:block_state_property"
+    }
+  ],
+  "drop": "classicraft:moss_clump",
+  "max": 4,
+  "meta": "moss_drop",
+  "min": 1,
+  "probability": 100
+}

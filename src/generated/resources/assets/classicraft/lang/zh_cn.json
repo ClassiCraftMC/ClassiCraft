@@ -1,4 +1,10 @@
 {
+  "advancements.classicraft.mossy_off.description": "去除苔石块上的苔藓!",
+  "advancements.classicraft.mossy_off.title": "去苔",
+  "advancements.classicraft.mossy_on.description": "将苔藓块应用到圆石上面!",
+  "advancements.classicraft.mossy_on.title": "苔化",
+  "advancements.classicraft.obtain_pebble.description": "获得一个石子，开启你的天工开物模组生活!",
+  "advancements.classicraft.obtain_pebble.title": "天工开物生活",
   "block.classicraft.andesite_bricks": "安山岩砖",
   "block.classicraft.andesite_bricks_slab": "安山岩台阶",
   "block.classicraft.andesite_bricks_stairs": "安山岩楼梯",

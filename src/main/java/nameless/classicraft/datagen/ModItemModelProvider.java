@@ -110,6 +110,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.MATERIAL.get());
         basicItem(ModItems.DEBUG_BURN_TIME_STICK.get());
         basicItem(ModItems.PUMPKIN_SLICE.get());
+        basicItem(ModItems.MOSS_CLUMP.get());
         threeBuildBlockItems("cracked_deepslate_tiles", "minecraft:block/cracked_deepslate_tiles");
         threeBuildBlockItems("sandstone_bricks", "classicraft:block/sandstone_bricks");
         threeBuildBlockItems("red_sandstone_bricks", "classicraft:block/red_sandstone_bricks");

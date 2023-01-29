@@ -1,4 +1,10 @@
 {
+  "advancements.classicraft.mossy_off.description": "Scrape Wax off of a Mossy CobbleStone block!",
+  "advancements.classicraft.mossy_off.title": "Mossy off",
+  "advancements.classicraft.mossy_on.description": "Apply Moss Block to a CobbleStone!",
+  "advancements.classicraft.mossy_on.title": "Mossy on",
+  "advancements.classicraft.obtain_pebble.description": "Obtain a pebble and get start your ClassiCraft Life!",
+  "advancements.classicraft.obtain_pebble.title": "ClassiCraft Life",
   "block.classicraft.andesite_bricks": "Andesite Bricks",
   "block.classicraft.andesite_bricks_slab": "Andesite Bricks Slab",
   "block.classicraft.andesite_bricks_stairs": "Andesite Bricks Stairs",

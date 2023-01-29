@@ -1,0 +1,37 @@
+{
+  "criteria": {
+    "has_pebble": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "classicraft:pebble"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "description": {
+      "translate": "advancements.classicraft.obtain_pebble.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "classicraft:material"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.classicraft.obtain_pebble.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_pebble"
+    ]
+  ]
+}
