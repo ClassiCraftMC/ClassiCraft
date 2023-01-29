@@ -82,6 +82,7 @@ public class ModRecipeProvider extends RecipeProvider {
         nbtPebbleRecipe(pWriter, Blocks.SANDSTONE, "sandstone_pebble");
         nbtPebbleRecipe(pWriter, ModBlocks.SOUL_SANDSTONE.get(), "soul_sandstone_pebble");
         nbtPebbleButton(pWriter, Items.STONE_BUTTON, "cobblestone_pebble");
+        nbtPebbleButton(pWriter, Items.POLISHED_BLACKSTONE_BUTTON, "blackstone_pebble");
         modNineBlockStorageRecipes(pWriter, RecipeCategory.BUILDING_BLOCKS, Items.QUARTZ, RecipeCategory.MISC, Items.QUARTZ_BLOCK);
         fourBlockStorageRecipes(pWriter, RecipeCategory.BUILDING_BLOCKS, Items.FLINT, RecipeCategory.MISC, ModBlocks.FLINT_BLOCK.get());
     }
