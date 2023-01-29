@@ -73,6 +73,7 @@ public class EventUtils {
                     GameEvent.Context.of(player, state));
             level.playSound(null, pos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS,1, level.random.nextFloat() * 0.1F + 0.9F);
             level.levelEvent(1505, pos, 0);
+            player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
             event.setCancellationResult(InteractionResult.sidedSuccess(level.isClientSide));
         }
     }
@@ -98,6 +99,7 @@ public class EventUtils {
                     GameEvent.Context.of(player, state));
             level.playSound(null, pos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS,1, level.random.nextFloat() * 0.1F + 0.9F);
             level.levelEvent(1505, pos, 0);
+            player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
             event.setCancellationResult(InteractionResult.sidedSuccess(level.isClientSide));
         }
     }
