@@ -83,8 +83,6 @@ public class ModRecipeProvider extends RecipeProvider {
         nbtPebbleRecipe(pWriter, ModBlocks.SOUL_SANDSTONE.get(), "soul_sandstone_pebble");
         modNineBlockStorageRecipes(pWriter, RecipeCategory.BUILDING_BLOCKS, Items.QUARTZ, RecipeCategory.MISC, Items.QUARTZ_BLOCK);
         fourBlockStorageRecipes(pWriter, RecipeCategory.BUILDING_BLOCKS, Items.FLINT, RecipeCategory.MISC, ModBlocks.FLINT_BLOCK.get());
-        modStoneCutter(pWriter, Blocks.ANDESITE_STAIRS, Blocks.ANDESITE_SLAB, Blocks.ANDESITE_WALL, Blocks.ANDESITE);
-        modStoneCutter(pWriter, Blocks.BLACKSTONE_STAIRS, Blocks.BLACKSTONE_SLAB, Blocks.BLACKSTONE_WALL, Blocks.BLACKSTONE);
     }
 
     protected void nbtPebbleRecipe(Consumer<FinishedRecipe> pWriter, Block block, String meta) {
