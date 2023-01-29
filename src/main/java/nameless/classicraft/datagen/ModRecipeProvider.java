@@ -83,6 +83,8 @@ public class ModRecipeProvider extends RecipeProvider {
         nbtPebbleRecipe(pWriter, ModBlocks.SOUL_SANDSTONE.get(), "soul_sandstone_pebble");
         modNineBlockStorageRecipes(pWriter, RecipeCategory.BUILDING_BLOCKS, Items.QUARTZ, RecipeCategory.MISC, Items.QUARTZ_BLOCK);
         fourBlockStorageRecipes(pWriter, RecipeCategory.BUILDING_BLOCKS, Items.FLINT, RecipeCategory.MISC, ModBlocks.FLINT_BLOCK.get());
+        modStoneCutter(pWriter, Blocks.ANDESITE_STAIRS, Blocks.ANDESITE_SLAB, Blocks.ANDESITE_WALL, Blocks.ANDESITE);
+        modStoneCutter(pWriter, Blocks.BLACKSTONE_STAIRS, Blocks.BLACKSTONE_SLAB, Blocks.BLACKSTONE_WALL, Blocks.BLACKSTONE);
     }
 
     protected void nbtPebbleRecipe(Consumer<FinishedRecipe> pWriter, Block block, String meta) {
@@ -160,4 +162,19 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(pFinishedRecipeConsumer, Helpers.identifier(pPackedName));
     }
 
+    protected static void modStoneCutter(Consumer<FinishedRecipe> pWriter, ItemLike stairs, ItemLike slab, ItemLike wall, ItemLike pMaterial) {
+        stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS, stairs, pMaterial, 1);
+        stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS, slab, pMaterial, 2);
+        stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS, wall, pMaterial, 2);
+        stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS, slab, stairs, 1);
+    }
+
+    protected static void stonecutterResultFrom(Consumer<FinishedRecipe> pWriter, RecipeCategory pCategory, ItemLike pResult, ItemLike pMaterial, int pResultCount) {
+        SingleItemRecipeBuilder
+                .stonecutting(Ingredient.of(pMaterial), pCategory,
+                        pResult, pResultCount)
+                .unlockedBy(getHasName(pMaterial),
+                        has(pMaterial)).save(pWriter,
+                        Helpers.identifier(getConversionRecipeName(pResult, pMaterial) + "_stonecutting"));
+    }
 }
