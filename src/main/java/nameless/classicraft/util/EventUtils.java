@@ -67,7 +67,7 @@ public class EventUtils {
                 stack.shrink(1);
             }
             if (player instanceof ServerPlayer) {
-                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, pos, stack);
+                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, pos, player.getItemInHand(event.getHand()));
             }
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos,
                     GameEvent.Context.of(player, state));
@@ -93,7 +93,7 @@ public class EventUtils {
                 });
             }
             if (player instanceof ServerPlayer) {
-                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, pos, stack);
+                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, pos, player.getItemInHand(event.getHand()));
             }
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos,
                     GameEvent.Context.of(player, state));
