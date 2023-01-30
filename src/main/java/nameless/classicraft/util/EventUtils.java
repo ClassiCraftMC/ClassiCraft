@@ -26,7 +26,6 @@ import nameless.classicraft.item.PebbleItem;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -69,12 +68,10 @@ public class EventUtils {
             }
             if (player instanceof ServerPlayer) {
                 CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, pos, stack);
-                player.sendSystemMessage(Component.literal("Test trigger!"));
             }
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos,
                     GameEvent.Context.of(player, state));
             level.playSound(null, pos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS,1, level.random.nextFloat() * 0.1F + 0.9F);
-            level.levelEvent(1505, pos, 0);
             player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
             event.setCancellationResult(InteractionResult.sidedSuccess(level.isClientSide));
         }
@@ -89,6 +86,7 @@ public class EventUtils {
         if (state.is(needChange) && stack.is(Tags.Items.TOOLS_AXES)) {
             player.swing(event.getHand());
             level.setBlock(pos, result.defaultBlockState(), 11);
+            state.updateIndirectNeighbourShapes(level, pos, 1);
             if (!player.getAbilities().instabuild) {
                 stack.hurtAndBreak(1, player, (pOnBroken) -> {
                     pOnBroken.broadcastBreakEvent(player.getUsedItemHand());
@@ -96,12 +94,10 @@ public class EventUtils {
             }
             if (player instanceof ServerPlayer) {
                 CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, pos, stack);
-                player.sendSystemMessage(Component.literal("Test trigger!"));
             }
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos,
                     GameEvent.Context.of(player, state));
             level.playSound(null, pos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS,1, level.random.nextFloat() * 0.1F + 0.9F);
-            level.levelEvent(1505, pos, 0);
             player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
             event.setCancellationResult(InteractionResult.sidedSuccess(level.isClientSide));
         }

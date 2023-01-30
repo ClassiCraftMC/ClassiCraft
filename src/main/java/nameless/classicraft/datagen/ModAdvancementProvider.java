@@ -93,7 +93,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                                                         .setBlock(BlockPredicate.Builder.block()
                                                                 .of(MOSSY_ABLES.get().keySet()).build()),
                                         ItemPredicate.Builder.item().of(ModItems.MOSS_CLUMP.get())))
-                        .save(saver, Helpers.identifier("building_blocks/mossy_on"), existingFileHelper);
+                        .save(saver, Helpers.identifier("mossy_on"), existingFileHelper);
         Advancement MOSSY_OFF = Advancement.Builder.advancement()
                 .parent(MOSSY_ON).display(Items.STONE_AXE,
                         Component.translatable("advancements.classicraft.mossy_off.title"),
@@ -109,6 +109,6 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                                                 .setBlock(BlockPredicate.Builder.block()
                                                         .of(MOSSY_OFF_BY_BLOCK.get().keySet()).build()),
                                         ItemPredicate.Builder.item().of(MOSSY_OFF_SCRAPING_TOOLS)))
-                .save(saver, Helpers.identifier("building_blocks/mossy_off"), existingFileHelper);
+                .save(saver, Helpers.identifier("mossy_off"), existingFileHelper);
     }
 }

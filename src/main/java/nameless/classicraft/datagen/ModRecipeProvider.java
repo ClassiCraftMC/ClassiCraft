@@ -54,7 +54,9 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("X")
                 .pattern("#")
                 .unlockedBy("has_stone_pickaxe",
-                        has(Items.STONE_PICKAXE)).save(pWriter);
+                        has(Items.STONE_PICKAXE)).save(pWriter,
+                        Helpers.identifier(RecipeCategory.DECORATIONS.getFolderName())
+                        + "/" + getItemName(ModItems.TORCH_UNLIT.get()));
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS,
                 ModItems.SOUL_TORCH_UNLIT.get(), 4).define('X',
                 Ingredient.of(Items.COAL, Items.CHARCOAL))
@@ -64,7 +66,9 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("#")
                 .pattern("S")
                 .unlockedBy("has_soul_sand",
-                        has(ItemTags.SOUL_FIRE_BASE_BLOCKS)).save(pWriter);
+                        has(ItemTags.SOUL_FIRE_BASE_BLOCKS)).save(pWriter,
+                        Helpers.identifier(RecipeCategory.DECORATIONS.getFolderName())
+                                + "/" + getItemName(ModItems.SOUL_TORCH_UNLIT.get()));
 
         nbtPebbleRecipe(pWriter, Blocks.ANDESITE, "andesite_pebble");
         nbtPebbleRecipe(pWriter, Blocks.BASALT, "basalt_pebble");
@@ -88,7 +92,23 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("##")
                 .pattern("##")
                 .unlockedBy("has_" + ModItems.MOSS_CLUMP.get(), has(ModItems.PEBBLE.get()))
-                .save(pWriter, Helpers.identifier(getItemName(Blocks.MOSS_BLOCK)));
+                .save(pWriter, Helpers.identifier(RecipeCategory.MISC.getFolderName()) + "/" + getItemName(Blocks.MOSS_BLOCK));
+        stairToSlab(pWriter, Items.COBBLESTONE_SLAB, Items.COBBLESTONE_STAIRS);
+        stairToSlab(pWriter, Items.GRANITE_SLAB, Items.GRANITE_STAIRS);
+        stairToSlab(pWriter, Items.DIORITE_SLAB, Items.DIORITE_STAIRS);
+        stairToSlab(pWriter, Items.ANDESITE_SLAB, Items.ANDESITE_STAIRS);
+        stairToSlab(pWriter, Items.RED_SANDSTONE_SLAB, Items.RED_SANDSTONE_STAIRS);
+        stairToSlab(pWriter, Items.DEEPSLATE_BRICK_SLAB, Items.DEEPSLATE_BRICK_STAIRS);
+        stairToSlab(pWriter, Items.DEEPSLATE_TILE_SLAB, Items.DEEPSLATE_TILE_STAIRS);
+        stairToSlab(pWriter, Items.COBBLED_DEEPSLATE_SLAB, Items.COBBLED_DEEPSLATE_STAIRS);
+        stairToSlab(pWriter, Items.POLISHED_DEEPSLATE_SLAB, Items.POLISHED_DEEPSLATE_STAIRS);
+        stairToSlab(pWriter, Items.SANDSTONE_SLAB, Items.SANDSTONE_STAIRS);
+        stairToSlab(pWriter, Items.QUARTZ_STAIRS, Items.QUARTZ_STAIRS);
+        stairToSlab(pWriter, Items.SMOOTH_QUARTZ_STAIRS, Items.SMOOTH_QUARTZ_STAIRS);
+    }
+
+    protected void stairToSlab(Consumer<FinishedRecipe> pWriter, ItemLike slab, ItemLike material) {
+        stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS, slab, material, 1);
     }
 
     protected void nbtPebbleButton(Consumer<FinishedRecipe> pWriter, ItemLike pResult, String meta) {
@@ -102,7 +122,7 @@ public class ModRecipeProvider extends RecipeProvider {
                         pResult, 1)
                 .unlockedBy("has_" + ModItems.PEBBLE.get(),
                         has(ModItems.PEBBLE.get())).save(pWriter,
-                        Helpers.identifier(getItemName(pResult) + "_from_" + meta + "_stonecutting"));
+                        Helpers.identifier(RecipeCategory.REDSTONE.getFolderName()) + "/"  + getItemName(pResult) + "_from_" + meta + "_stonecutting");
     }
 
     protected void nbtPebbleRecipe(Consumer<FinishedRecipe> pWriter, Block block, String meta) {
@@ -118,7 +138,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("##")
                 .pattern("##")
                 .unlockedBy("has_" + ModItems.PEBBLE.get(), has(ModItems.PEBBLE.get()))
-                .save(pWriter, Helpers.identifier(getItemName(block) + "_from_" + "pebble"));
+                .save(pWriter, Helpers.identifier(RecipeCategory.BUILDING_BLOCKS.getFolderName()) + "/"  + getItemName(block) + "_from_" + "pebble");
     }
 
     protected void cookRecipe(Consumer<FinishedRecipe> pWriter, Item ingredient, Item result) {
@@ -128,28 +148,28 @@ public class ModRecipeProvider extends RecipeProvider {
                         result,
                         0.35F, 200)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
-                .save(pWriter,Helpers.identifier(getItemName(result) + "_from_" + "smelting"));
+                .save(pWriter,Helpers.identifier(RecipeCategory.FOOD.getFolderName()) + "/"  + getItemName(result) + "_from_" + "smelting");
         SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ingredient),
                 RecipeCategory.FOOD, result,
                         0.35F, 200)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
-                .save(pWriter,Helpers.identifier(getItemName(result) + "_from_" + "campfire"));
+                .save(pWriter,Helpers.identifier(RecipeCategory.FOOD.getFolderName()) + "/"  + getItemName(result) + "_from_" + "campfire");
         SimpleCookingRecipeBuilder.smoking(Ingredient.of(ingredient),
                 RecipeCategory.FOOD, result,
                 0.35F, 200)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
-                .save(pWriter,Helpers.identifier(getItemName(result) + "_from_" + "smoking"));
+                .save(pWriter,Helpers.identifier(RecipeCategory.FOOD.getFolderName()) + "/"  + getItemName(result) + "_from_" + "smoking");
     }
 
     protected static void modNineBlockStorageRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer, RecipeCategory pUnpackedCategory, ItemLike pUnpacked, RecipeCategory pPackedCategory, ItemLike pPacked) {
-        modNineBlockStorageRecipes(pFinishedRecipeConsumer, pUnpackedCategory, pUnpacked, pPackedCategory, pPacked, getSimpleRecipeName(pPacked), (String)null, getSimpleRecipeName(pUnpacked), (String)null);
+        modNineBlockStorageRecipes(pFinishedRecipeConsumer, pUnpackedCategory, pUnpacked, pPackedCategory, pPacked, getSimpleRecipeName(pPacked), null, getSimpleRecipeName(pUnpacked), null);
     }
 
     protected static void modNineBlockStorageRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer, RecipeCategory pUnpackedCategory, ItemLike pUnpacked, RecipeCategory pPackedCategory, ItemLike pPacked, String pPackedName, @Nullable String pPackedGroup, String pUnpackedName, @Nullable String pUnpackedGroup) {
         ShapelessRecipeBuilder.shapeless(pUnpackedCategory, pUnpacked, 9)
                 .requires(pPacked).group(pUnpackedGroup)
                 .unlockedBy(getHasName(pPacked), has(pPacked))
-                .save(pFinishedRecipeConsumer, Helpers.identifier(pUnpackedName));
+                .save(pFinishedRecipeConsumer, Helpers.identifier(pUnpackedCategory.getFolderName() + "/" + pUnpackedName));
         ShapedRecipeBuilder.shaped(pPackedCategory, pPacked)
                 .define('#', pUnpacked)
                 .pattern("###")
@@ -157,7 +177,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("###")
                 .group(pPackedGroup)
                 .unlockedBy(getHasName(pUnpacked), has(pUnpacked))
-                .save(pFinishedRecipeConsumer, Helpers.identifier(pPackedName));
+                .save(pFinishedRecipeConsumer, Helpers.identifier(pPackedCategory.getFolderName() + "/" + pPackedName));
     }
 
     protected static void fourBlockStorageRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer, RecipeCategory pUnpackedCategory, ItemLike pUnpacked, RecipeCategory pPackedCategory, ItemLike pPacked) {
@@ -171,18 +191,11 @@ public class ModRecipeProvider extends RecipeProvider {
         ShapelessRecipeBuilder.shapeless(pUnpackedCategory, pUnpacked, 4)
                 .requires(pPacked).group(pUnpackedGroup)
                 .unlockedBy(getHasName(pPacked), has(pPacked))
-                .save(pFinishedRecipeConsumer, Helpers.identifier(pUnpackedName));
+                .save(pFinishedRecipeConsumer, Helpers.identifier(pUnpackedCategory.getFolderName() + "/" + pUnpackedName));
         ShapedRecipeBuilder.shaped(pPackedCategory, pPacked).define('#', pUnpacked)
                 .pattern("##")
                 .pattern("##").group(pPackedGroup).unlockedBy(getHasName(pUnpacked), has(pUnpacked))
-                .save(pFinishedRecipeConsumer, Helpers.identifier(pPackedName));
-    }
-
-    protected static void modStoneCutter(Consumer<FinishedRecipe> pWriter, ItemLike stairs, ItemLike slab, ItemLike wall, ItemLike pMaterial) {
-        stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS, stairs, pMaterial, 1);
-        stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS, slab, pMaterial, 2);
-        stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS, wall, pMaterial, 2);
-        stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS, slab, stairs, 1);
+                .save(pFinishedRecipeConsumer, Helpers.identifier(pPackedCategory.getFolderName() + "/"  + pPackedName));
     }
 
     protected static void stonecutterResultFrom(Consumer<FinishedRecipe> pWriter, RecipeCategory pCategory, ItemLike pResult, ItemLike pMaterial, int pResultCount) {
@@ -191,6 +204,6 @@ public class ModRecipeProvider extends RecipeProvider {
                         pResult, pResultCount)
                 .unlockedBy(getHasName(pMaterial),
                         has(pMaterial)).save(pWriter,
-                        Helpers.identifier(getConversionRecipeName(pResult, pMaterial) + "_stonecutting"));
+                        Helpers.identifier(pCategory.getFolderName() + "/"  + getConversionRecipeName(pResult, pMaterial) + "_stonecutting"));
     }
 }
