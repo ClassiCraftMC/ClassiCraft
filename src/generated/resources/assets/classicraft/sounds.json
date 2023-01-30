@@ -12,6 +12,19 @@
     ],
     "subtitle": "subtitles.misc.classicraft.knapping.pebble"
   },
+  "misc.moss.mossy_off": {
+    "sounds": [
+      {
+        "name": "classicraft:misc/mossy_off",
+        "pitch": 0.9
+      },
+      {
+        "name": "classicraft:misc/mossy_off",
+        "pitch": 1.1
+      }
+    ],
+    "subtitle": "subtitles.misc.classicraft.moss.mossy_off"
+  },
   "music.event.dragon_fish": {
     "sounds": [
       {

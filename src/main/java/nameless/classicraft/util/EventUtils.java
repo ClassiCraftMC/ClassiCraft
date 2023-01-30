@@ -22,6 +22,7 @@ import nameless.classicraft.api.event.ItemEntityTickEvent;
 import nameless.classicraft.block.AbstractLightBlock;
 import nameless.classicraft.compat.WorldEditCompat;
 import nameless.classicraft.init.ModItems;
+import nameless.classicraft.init.ModSounds;
 import nameless.classicraft.init.ModTags;
 import nameless.classicraft.item.PebbleItem;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -100,7 +101,7 @@ public class EventUtils {
             Helpers.obtainAdvancement(player, "mossy_off");
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos,
                     GameEvent.Context.of(player, state));
-            level.playSound(null, pos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS,1, level.random.nextFloat() * 0.1F + 0.9F);
+            level.playSound(null, pos, ModSounds.MOSSY_OFF.get(), SoundSource.BLOCKS,1, level.random.nextFloat() * 0.1F + 0.9F);
             player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
             event.setCancellationResult(InteractionResult.sidedSuccess(level.isClientSide));
         }

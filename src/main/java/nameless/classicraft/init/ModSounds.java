@@ -37,6 +37,9 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> PHOBOS_OUTPOST =
             register("music.event.phobos_outpost");
 
+    public static final RegistryObject<SoundEvent> MOSSY_OFF =
+            register("misc.moss.mossy_off");
+
     private static RegistryObject<SoundEvent> register(String sound) {
         return SOUND_EVENTS.register(sound, () ->
                 SoundEvent.createVariableRangeEvent(

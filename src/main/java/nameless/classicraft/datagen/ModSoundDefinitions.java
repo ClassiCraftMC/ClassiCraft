@@ -36,5 +36,10 @@ public class ModSoundDefinitions extends SoundDefinitionsProvider {
                         sound(Helpers.identifier("music/phobos_outpost")).pitch(0.9),
                         sound(Helpers.identifier("music/phobos_outpost")).pitch(1.1)
                 ).subtitle("subtitles.music.classicraft.event.phobos_outpost"));
+        add(ModSounds.MOSSY_OFF.get(),
+                definition().with(
+                        sound(Helpers.identifier("misc/mossy_off")).pitch(0.9),
+                        sound(Helpers.identifier("misc/mossy_off")).pitch(1.1)
+                ).subtitle("subtitles.misc.classicraft.moss.mossy_off"));
     }
 }
