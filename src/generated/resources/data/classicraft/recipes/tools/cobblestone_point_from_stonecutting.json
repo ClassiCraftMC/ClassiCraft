@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "type": "forge:nbt",
+    "count": 1,
+    "item": "classicraft:pebble",
+    "nbt": "{classicraft:{Meta:\"cobblestone_pebble\"}}"
+  },
+  "result": "classicraft:point"
+}

@@ -22,6 +22,7 @@ import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import nameless.classicraft.util.Helpers;
 import net.minecraft.Util;
+import net.minecraft.advancements.critereon.NbtPredicate;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
@@ -32,7 +33,9 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.crafting.PartialNBTIngredient;
 import net.minecraftforge.common.crafting.StrictNBTIngredient;
+import net.minecraftforge.fml.common.Mod;
 
 import javax.annotation.Nullable;
 import java.util.function.Consumer;
@@ -105,10 +108,30 @@ public class ModRecipeProvider extends RecipeProvider {
         stairToSlab(pWriter, Items.SANDSTONE_SLAB, Items.SANDSTONE_STAIRS);
         stairToSlab(pWriter, Items.QUARTZ_STAIRS, Items.QUARTZ_STAIRS);
         stairToSlab(pWriter, Items.SMOOTH_QUARTZ_STAIRS, Items.SMOOTH_QUARTZ_STAIRS);
+        nbtTool(pWriter, "cobblestone");
     }
 
     protected void stairToSlab(Consumer<FinishedRecipe> pWriter, ItemLike slab, ItemLike material) {
         stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS, slab, material, 1);
+    }
+
+    protected void nbtTool(Consumer<FinishedRecipe> pWriter, String prefix) {
+        SingleItemRecipeBuilder
+                .stonecutting(StrictNBTIngredient
+                                .of(Util.make(() -> {
+                                    ItemStack stack = ModItems.PEBBLE.get().getDefaultInstance();
+                                    MetaItem.setMeta(stack, prefix + "_pebble");
+                                    return stack;
+                                })), RecipeCategory.TOOLS,
+                        metaItem(ModItems.POINT.get(), prefix + "_point"), 1)
+                .unlockedBy("has_" + ModItems.PEBBLE.get(),
+                        has(ModItems.PEBBLE.get())).save(pWriter,
+                        Helpers.identifier(RecipeCategory.TOOLS.getFolderName()) + "/"  + prefix + "_point" + "_from" +  "_stonecutting");
+    }
+
+    protected Item metaItem(Item item, String meta) {
+        MetaItem.setMeta(item.getDefaultInstance(), meta);
+        return item;
     }
 
     protected void nbtPebbleButton(Consumer<FinishedRecipe> pWriter, ItemLike pResult, String meta) {

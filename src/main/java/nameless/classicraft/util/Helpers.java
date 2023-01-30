@@ -68,7 +68,7 @@ public final class Helpers {
             new SafeTag(stack, ClassiCraftMod.MOD_ID, true).putString("Meta", "flint_pebble");
         }
         if (stack.is(Items.PRISMARINE_SHARD)) {
-            new SafeTag(stack, ClassiCraftMod.MOD_ID, true).putString("Meta", "prismarine");
+            new SafeTag(stack, ClassiCraftMod.MOD_ID, true).putString("Meta", "prismarine_pebble");
         }
         if (stack.is(Items.QUARTZ)) {
             new SafeTag(stack, ClassiCraftMod.MOD_ID, true).putString("Meta", "quartz_pebble");
