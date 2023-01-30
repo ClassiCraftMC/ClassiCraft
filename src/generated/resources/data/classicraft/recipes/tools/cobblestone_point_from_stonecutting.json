@@ -7,8 +7,5 @@
     "item": "classicraft:pebble",
     "nbt": "{classicraft:{Meta:\"cobblestone_pebble\"}}"
   },
-  "result": {
-    "item": "classicraft:point",
-    "nbt": "{classicraft:{Meta:\"cobblestone_pebble\"}}"
-  }
+  "result": "classicraft:point"
 }

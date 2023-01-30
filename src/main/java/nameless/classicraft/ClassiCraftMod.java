@@ -20,7 +20,6 @@ package nameless.classicraft;
 import com.mojang.logging.LogUtils;
 import nameless.classicraft.glm.ModLootModifiers;
 import nameless.classicraft.init.*;
-import nameless.classicraft.recipe.NBTPredicateIngredient;
 import nameless.classicraft.util.Helpers;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -48,7 +47,6 @@ public class ClassiCraftMod {
         ModFeatures.FEATURES.register(modEventBus);
         ModEntities.ENTITIES.register(modEventBus);
         modEventBus.addListener(ModCreativeModeTabs::registerCreativeModeTab);
-        modEventBus.addListener(NBTPredicateIngredient::registerRecipeSerializers);
         ModLootModifiers.REGISTER.register(modEventBus);
         ModSounds.SOUND_EVENTS.register(modEventBus);
     }
