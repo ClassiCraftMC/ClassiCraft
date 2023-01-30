@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_quartz_stairs": {
+    "has_stone_bricks": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:quartz_stairs"
+              "minecraft:stone_bricks"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "classicraft:building_blocks/quartz_stairs_from_quartz_stairs_stonecutting"
+        "recipe": "classicraft:building_blocks/chiseled_stone_bricks_from_stone_bricks_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_quartz_stairs",
+      "has_stone_bricks",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "classicraft:building_blocks/quartz_stairs_from_quartz_stairs_stonecutting"
+      "classicraft:building_blocks/chiseled_stone_bricks_from_stone_bricks_stonecutting"
     ]
   }
 }

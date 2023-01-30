@@ -107,17 +107,23 @@ public class ModRecipeProvider extends RecipeProvider {
         stairToSlab(pWriter, Items.COBBLED_DEEPSLATE_SLAB, Items.COBBLED_DEEPSLATE_STAIRS);
         stairToSlab(pWriter, Items.POLISHED_DEEPSLATE_SLAB, Items.POLISHED_DEEPSLATE_STAIRS);
         stairToSlab(pWriter, Items.SANDSTONE_SLAB, Items.SANDSTONE_STAIRS);
-        stairToSlab(pWriter, Items.QUARTZ_STAIRS, Items.QUARTZ_STAIRS);
-        stairToSlab(pWriter, Items.SMOOTH_QUARTZ_STAIRS, Items.SMOOTH_QUARTZ_STAIRS);
+        stairToSlab(pWriter, Items.QUARTZ_SLAB, Items.QUARTZ_STAIRS);
+        stairToSlab(pWriter, Items.SMOOTH_QUARTZ_SLAB, Items.SMOOTH_QUARTZ_STAIRS);
+        stairToSlab(pWriter, Items.STONE_SLAB, Items.STONE_STAIRS);
+        stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.STONE_WALL.get(), Blocks.STONE, 2);
+        stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS,
+                Blocks.STONE_PRESSURE_PLATE, Blocks.STONE, 4);
+        stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS,
+                Blocks.SMOOTH_STONE, Blocks.STONE, 1);
+        stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS,
+                Blocks.COBBLESTONE_WALL, Blocks.COBBLESTONE, 2);
+        stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS,
+                Blocks.CHISELED_STONE_BRICKS, Blocks.STONE_BRICKS, 1);
     }
 
     protected void stairToSlab(Consumer<FinishedRecipe> pWriter, ItemLike slab, ItemLike material) {
         stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS, slab, material, 1);
-    }
-
-    protected Item metaItem(Item item, String meta) {
-        MetaItem.setMeta(item.getDefaultInstance(), meta);
-        return item;
     }
 
     protected void nbtPebbleButton(Consumer<FinishedRecipe> pWriter, ItemLike pResult, String meta) {

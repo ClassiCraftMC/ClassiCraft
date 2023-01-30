@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_smooth_quartz_stairs": {
+    "has_stone": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:smooth_quartz_stairs"
+              "minecraft:stone"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "classicraft:building_blocks/smooth_quartz_stairs_from_smooth_quartz_stairs_stonecutting"
+        "recipe": "classicraft:building_blocks/stone_wall_from_stone_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_smooth_quartz_stairs",
+      "has_stone",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "classicraft:building_blocks/smooth_quartz_stairs_from_smooth_quartz_stairs_stonecutting"
+      "classicraft:building_blocks/stone_wall_from_stone_stonecutting"
     ]
   }
 }
