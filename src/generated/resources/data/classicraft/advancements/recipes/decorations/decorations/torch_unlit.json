@@ -1,11 +1,13 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_soul_sand": {
+    "has_stone_pickaxe": {
       "conditions": {
         "items": [
           {
-            "tag": "minecraft:soul_fire_base_blocks"
+            "items": [
+              "minecraft:stone_pickaxe"
+            ]
           }
         ]
       },
@@ -13,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "classicraft:soul_torch_unlit"
+        "recipe": "classicraft:decorations/torch_unlit"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_soul_sand",
+      "has_stone_pickaxe",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "classicraft:soul_torch_unlit"
+      "classicraft:decorations/torch_unlit"
     ]
   }
 }

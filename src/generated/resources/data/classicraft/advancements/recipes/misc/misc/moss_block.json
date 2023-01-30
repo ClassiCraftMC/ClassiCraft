@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "classicraft:moss_block"
+        "recipe": "classicraft:misc/moss_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "classicraft:moss_block"
+      "classicraft:misc/moss_block"
     ]
   }
 }
