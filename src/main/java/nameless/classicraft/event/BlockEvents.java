@@ -26,13 +26,14 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DeadBushBlock;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
 public class BlockEvents {
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void mossyBlock(PlayerInteractEvent.RightClickBlock event) {
         EventUtils.mossyAll(event, Blocks.COBBLESTONE, Blocks.MOSSY_COBBLESTONE);
         EventUtils.mossyAll(event, Blocks.COBBLESTONE_SLAB, Blocks.MOSSY_COBBLESTONE_SLAB);

@@ -112,10 +112,9 @@ public class ModRecipeProvider extends RecipeProvider {
         stairToSlab(pWriter, Items.QUARTZ_SLAB, Items.QUARTZ_STAIRS);
         stairToSlab(pWriter, Items.SMOOTH_QUARTZ_SLAB, Items.SMOOTH_QUARTZ_STAIRS);
         stairToSlab(pWriter, Items.STONE_SLAB, Items.STONE_STAIRS);
-        stairToSlab(pWriter, ModBlocks.CRACKED_STONE_BRICKS_SLAB.get(),
-                ModBlocks.CRACKED_STONE_BRICKS_STAIRS.get());
         stairToSlab(pWriter, Items.MOSSY_STONE_BRICK_SLAB, Items.MOSSY_STONE_BRICK_STAIRS);
         stairToSlab(pWriter, Items.MOSSY_COBBLESTONE_SLAB, Items.MOSSY_COBBLESTONE_STAIRS);
+        stairToSlab(pWriter, Items.SMOOTH_STONE_SLAB, ModBlocks.SMOOTH_STONE_STAIRS.get());
         stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS,
                 ModBlocks.STONE_WALL.get(), Blocks.STONE, 2);
         stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS,
@@ -140,12 +139,22 @@ public class ModRecipeProvider extends RecipeProvider {
                 Items.CRACKED_STONE_BRICKS);
         stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS,
                 Blocks.MOSSY_STONE_BRICK_WALL, Blocks.MOSSY_STONE_BRICKS, 2);
+        modStoneCutting(pWriter,
+                ModBlocks.GRANITE_BRICKS_SLAB.get(), ModBlocks.GRANITE_BRICKS_STAIRS.get(),
+                ModBlocks.GRANITE_BRICKS_WALL.get(), ModBlocks.GRANITE_BRICKS.get());
+        modStoneCutting(pWriter,
+                ModBlocks.MOSSY_GRANITE_BRICKS_SLAB.get(), ModBlocks.MOSSY_GRANITE_BRICKS_STAIRS.get(),
+                ModBlocks.MOSSY_GRANITE_BRICKS_WALL.get(), ModBlocks.MOSSY_GRANITE_BRICKS.get());
+        modStoneCutting(pWriter,
+                ModBlocks.CRACKED_GRANITE_BRICKS_SLAB.get(), ModBlocks.CRACKED_GRANITE_BRICKS_STAIRS.get(),
+                ModBlocks.CRACKED_GRANITE_BRICKS_WALL.get(), ModBlocks.CRACKED_GRANITE_BRICKS.get());
     }
 
     protected void modStoneCutting(Consumer<FinishedRecipe> pWriter, ItemLike slab, ItemLike stair, ItemLike wall, ItemLike material) {
         stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS, slab, material, 2);
         stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS, stair, material, 1);
         stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS, wall, material, 2);
+        stairToSlab(pWriter, slab, stair);
     }
 
     protected void stairToSlab(Consumer<FinishedRecipe> pWriter, ItemLike slab, ItemLike material) {
