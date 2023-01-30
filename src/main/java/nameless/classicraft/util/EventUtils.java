@@ -20,6 +20,7 @@ package nameless.classicraft.util;
 import nameless.classicraft.api.event.BlockDropEvent;
 import nameless.classicraft.api.event.ItemEntityTickEvent;
 import nameless.classicraft.block.AbstractLightBlock;
+import nameless.classicraft.compat.WorldEditCompat;
 import nameless.classicraft.init.ModItems;
 import nameless.classicraft.init.ModTags;
 import nameless.classicraft.item.PebbleItem;
@@ -69,6 +70,7 @@ public class EventUtils {
             if (player instanceof ServerPlayer) {
                 CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, pos, stack);
             }
+            Helpers.obtainAdvancement(player, "mossy_on");
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos,
                     GameEvent.Context.of(player, state));
             level.playSound(null, pos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS,1, level.random.nextFloat() * 0.1F + 0.9F);
@@ -83,7 +85,7 @@ public class EventUtils {
         ItemStack stack = event.getItemStack();
         Level level = event.getLevel();
         Player player = event.getEntity();
-        if (state.is(needChange) && stack.is(Tags.Items.TOOLS_AXES)) {
+        if (state.is(needChange) && stack.is(Tags.Items.TOOLS_AXES) && WorldEditCompat.compatWE(stack)) {
             player.swing(event.getHand());
             level.setBlock(pos, result.defaultBlockState(), 11);
             state.updateIndirectNeighbourShapes(level, pos, 1);
@@ -95,6 +97,7 @@ public class EventUtils {
             if (player instanceof ServerPlayer) {
                 CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, pos, stack);
             }
+            Helpers.obtainAdvancement(player, "mossy_off");
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos,
                     GameEvent.Context.of(player, state));
             level.playSound(null, pos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS,1, level.random.nextFloat() * 0.1F + 0.9F);
@@ -308,4 +311,5 @@ public class EventUtils {
             itemEntity.getLevel().addFreshEntity(newItem);
         }
     }
+
 }

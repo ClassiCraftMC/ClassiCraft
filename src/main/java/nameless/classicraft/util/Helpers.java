@@ -19,7 +19,10 @@ package nameless.classicraft.util;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.init.ModBlocks;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -29,6 +32,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -110,6 +114,21 @@ public final class Helpers {
             Items.ROTTEN_FLESH.getFoodProperties().canAlwaysEat = true;
             Items.ROTTEN_FLESH.getFoodProperties().nutrition = 0;
             Items.ROTTEN_FLESH.getFoodProperties().saturationModifier = 0.0F;
+        }
+    }
+
+    public static void obtainAdvancement(Player player, String id) {
+        if (player instanceof ServerPlayer serverPlayer) {
+            Advancement advancement =
+                    Objects.requireNonNull(serverPlayer.getServer())
+                            .getAdvancements().getAdvancement(Helpers.identifier(id));
+            assert advancement != null;
+            AdvancementProgress progress = serverPlayer.getAdvancements()
+                    .getOrStartProgress(advancement);
+            if (!progress.isDone()) {
+                for (String s : progress.getRemainingCriteria())
+                    serverPlayer.getAdvancements().award(advancement, s);
+            }
         }
     }
 }
