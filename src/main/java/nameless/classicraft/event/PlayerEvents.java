@@ -33,20 +33,39 @@ import net.minecraft.world.entity.animal.Turtle;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrownEgg;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
+import net.minecraftforge.common.TierSortingRegistry;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
+import net.minecraftforge.event.entity.living.ShieldBlockEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
 public class PlayerEvents {
+
+    @SubscribeEvent
+    public static void onShieldBlock(ShieldBlockEvent event) {
+        float damageModifier = 1f;
+        final Item useItem = event.getEntity().getUseItem().getItem();
+        if (event.getDamageSource().getDirectEntity() instanceof LivingEntity livingEntity && livingEntity.getMainHandItem().getItem() instanceof TieredItem attackWeapon) {
+            if (useItem instanceof TieredItem shieldItem && TierSortingRegistry.getTiersLowerThan(attackWeapon.getTier()).contains(shieldItem.getTier())) {
+                damageModifier = 0.3f; // shield is worse tier than the attack weapon!
+            }
+        }
+        if (useItem.getDefaultInstance().is(Items.SHIELD)) {
+            damageModifier = 0.25f; // wooden shield is bad
+        }
+        event.setBlockedDamage(event.getOriginalBlockedDamage() * damageModifier);
+    }
 
     @SubscribeEvent
     public static void pebbleTool(PlayerInteractEvent.RightClickItem event) {

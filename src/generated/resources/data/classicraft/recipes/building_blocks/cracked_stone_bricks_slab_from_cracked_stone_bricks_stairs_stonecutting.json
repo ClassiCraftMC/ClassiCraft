@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "classicraft:cracked_stone_bricks_stairs"
+  },
+  "result": "classicraft:cracked_stone_bricks_slab"
+}

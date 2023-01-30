@@ -51,6 +51,8 @@ public class ModRecipeProvider extends RecipeProvider {
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
         cookRecipe(pWriter, Items.EGG, ModItems.COOKED_EGG.get());
         cookRecipe(pWriter, Items.ROTTEN_FLESH, Items.LEATHER);
+        cookRecipe(pWriter, Items.STONE_BRICKS, Items.CRACKED_STONE_BRICKS);
+        cookRecipe(pWriter, Items.MOSSY_COBBLESTONE, Items.STONE);
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS,
                 ModItems.TORCH_UNLIT.get(), 4).define('#', Items.STICK)
                 .define('X',
@@ -110,6 +112,10 @@ public class ModRecipeProvider extends RecipeProvider {
         stairToSlab(pWriter, Items.QUARTZ_SLAB, Items.QUARTZ_STAIRS);
         stairToSlab(pWriter, Items.SMOOTH_QUARTZ_SLAB, Items.SMOOTH_QUARTZ_STAIRS);
         stairToSlab(pWriter, Items.STONE_SLAB, Items.STONE_STAIRS);
+        stairToSlab(pWriter, ModBlocks.CRACKED_STONE_BRICKS_SLAB.get(),
+                ModBlocks.CRACKED_STONE_BRICKS_STAIRS.get());
+        stairToSlab(pWriter, Items.MOSSY_STONE_BRICK_SLAB, Items.MOSSY_STONE_BRICK_STAIRS);
+        stairToSlab(pWriter, Items.MOSSY_COBBLESTONE_SLAB, Items.MOSSY_COBBLESTONE_STAIRS);
         stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS,
                 ModBlocks.STONE_WALL.get(), Blocks.STONE, 2);
         stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS,
@@ -120,6 +126,26 @@ public class ModRecipeProvider extends RecipeProvider {
                 Blocks.COBBLESTONE_WALL, Blocks.COBBLESTONE, 2);
         stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS,
                 Blocks.CHISELED_STONE_BRICKS, Blocks.STONE_BRICKS, 1);
+        stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS,
+                Blocks.STONE_BRICK_WALL, Blocks.STONE_BRICKS, 2);
+        stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.SMOOTH_STONE_STAIRS.get(), Blocks.SMOOTH_STONE, 1);
+        stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS,
+                ModBlocks.SMOOTH_STONE_WALL.get(), Blocks.SMOOTH_STONE, 2);
+        stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS,
+                Blocks.MOSSY_COBBLESTONE_WALL, Blocks.MOSSY_COBBLESTONE, 2);
+        modStoneCutting(pWriter, ModBlocks.CRACKED_STONE_BRICKS_SLAB.get(),
+                ModBlocks.CRACKED_STONE_BRICKS_STAIRS.get(),
+                ModBlocks.CRACKED_STONE_BRICKS_WALL.get(),
+                Items.CRACKED_STONE_BRICKS);
+        stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS,
+                Blocks.MOSSY_STONE_BRICK_WALL, Blocks.MOSSY_STONE_BRICKS, 2);
+    }
+
+    protected void modStoneCutting(Consumer<FinishedRecipe> pWriter, ItemLike slab, ItemLike stair, ItemLike wall, ItemLike material) {
+        stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS, slab, material, 2);
+        stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS, stair, material, 1);
+        stonecutterResultFrom(pWriter, RecipeCategory.BUILDING_BLOCKS, wall, material, 2);
     }
 
     protected void stairToSlab(Consumer<FinishedRecipe> pWriter, ItemLike slab, ItemLike material) {
