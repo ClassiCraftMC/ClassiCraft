@@ -28,10 +28,12 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Player.class)
@@ -101,5 +103,13 @@ public abstract class MixinPlayer extends LivingEntity implements ISanHandler {
     private void readSan(CompoundTag compound, CallbackInfo ci) {
         this.setMaxSan(compound.getFloat(ClassiCraftMod.MOD_ID + ":MaxSan"));
         this.setSan(compound.getFloat(ClassiCraftMod.MOD_ID + ":San"));
+    }
+
+    /**
+     * Fixes MC-219083 by only doing natural regeneration on server
+     */
+    @Redirect(method = "aiStep", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/GameRules;getBoolean(Lnet/minecraft/world/level/GameRules$Key;)Z"), require = 0)
+    private boolean onlyDoNaturalRegenerationOnServer(GameRules instance, GameRules.Key<GameRules.BooleanValue> key) {
+        return instance.getBoolean(key) && !level.isClientSide;
     }
 }

@@ -9,7 +9,8 @@
     "MixinItem",
     "MixinItemEntity",
     "MixinItemStack",
-    "MixinPlayer"
+    "MixinPlayer",
+    "MixinPrimaryLevelData"
   ],
   "client": [
     "MixinGui",

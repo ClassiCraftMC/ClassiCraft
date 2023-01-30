@@ -31,6 +31,7 @@ public class ModConfigurations {
     public static ForgeConfigSpec.BooleanValue waterBurnt;
     public static ForgeConfigSpec.BooleanValue replaceVanillaBlock;
     public static ForgeConfigSpec.BooleanValue enableForcedGameRules;
+    public static ForgeConfigSpec.BooleanValue ignoreExperimentalWorldGenWarning;
 
     static {
         BUILDER.comment("ClassiCraft Configurations");
@@ -50,6 +51,9 @@ public class ModConfigurations {
         desc = "Decide to enable ClassiCraft Forced GameRules...It will enforced the difficulty";
         enableForcedGameRules = BUILDER.comment(desc).define("enableForcedGameRules", true);
 
+        desc = "Decide to ignore the experimental world gen info";
+        ignoreExperimentalWorldGenWarning =
+                BUILDER.comment(desc).define("ignoreExperimentalWorldGenWarning", true);
         BUILDER.pop();
         SPEC = BUILDER.build();
     }
