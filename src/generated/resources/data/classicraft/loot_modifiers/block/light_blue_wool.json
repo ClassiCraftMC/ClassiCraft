@@ -1,0 +1,14 @@
+{
+  "type": "classicraft:replace_drop",
+  "conditions": [
+    {
+      "block": "minecraft:light_blue_wool",
+      "condition": "minecraft:block_state_property"
+    }
+  ],
+  "drop": "minecraft:string",
+  "max": 4,
+  "meta": "wool_drop",
+  "min": 1,
+  "probability": 100
+}

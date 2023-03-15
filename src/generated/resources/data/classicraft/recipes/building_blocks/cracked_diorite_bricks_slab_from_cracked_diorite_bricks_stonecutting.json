@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "ingredient": {
+    "item": "classicraft:cracked_diorite_bricks"
+  },
+  "result": "classicraft:cracked_diorite_bricks_slab"
+}

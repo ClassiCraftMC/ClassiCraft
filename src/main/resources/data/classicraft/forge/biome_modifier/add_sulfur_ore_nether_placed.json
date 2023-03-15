@@ -1,0 +1,8 @@
+{
+  "type": "forge:add_features",
+  "biomes": [
+    "basalt_deltas"
+  ],
+  "features": "classicraft:sulfur_ore_nether_placed",
+  "step": "underground_ores"
+}

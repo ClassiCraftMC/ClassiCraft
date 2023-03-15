@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "ingredient": {
+    "item": "classicraft:mossy_bricks"
+  },
+  "result": "classicraft:mossy_bricks_slab"
+}

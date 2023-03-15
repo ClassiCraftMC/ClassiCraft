@@ -28,7 +28,7 @@ println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty '
 
 minecraft {
 
-    mappings channel: 'parchment', version: '2022.12.18-1.19.3'
+    mappings channel: 'parchment', version: '2023.02.05-1.19.3'
 
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -108,14 +108,30 @@ repositories {
     maven {
         url "https://jitpack.io"
     }
+    maven {
+        url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+    }
+    maven {
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
     mavenCentral()
 }
+
+jarJar.enable()
 
 dependencies {
     implementation 'org.projectlombok:lombok:1.18.24'
     implementation 'org.jetbrains:annotations:23.1.0'
-    minecraft 'net.minecraftforge:forge:1.19.3-44.1.5'
+    minecraft 'net.minecraftforge:forge:1.19.3-44.1.16'
+    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.19.3:4.0.3')
+    jarJar(group: 'software.bernie.geckolib', name: 'geckolib-forge-1.19.3', version: '[3.0.9,4.0.4)') {
+        transitive(false)
+    }
 
+    compileOnly(fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}"))
+    compileOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}"))
+    runtimeOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}"))
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
@@ -126,10 +142,6 @@ mixin {
 }
 
 jar {
-    from("LICENSE")
-    exclude(".cache/**")
-    exclude("nameless/classicraft/datagen/**")
-    exclude("nameless/classicraft/event/TestEvents.class")
     manifest {
         attributes([
                 "Specification-Title"     : project.mod_id,
@@ -144,42 +156,10 @@ jar {
 }
 
 jar.finalizedBy('reobfJar')
+reobf.create('jarJar')
 
-task deobfJar(type: Jar) {
-    classifier 'deobf'
-    from sourceSets.main.output
-    from("LICENSE")
-    exclude(".cache/**")
-    exclude("nameless/classicraft/datagen/**")
-    exclude("nameless/classicraft/event/TestEvents.class")
-    manifest {
-        attributes([
-                "Specification-Title"     : project.mod_id,
-                "Specification-Vendor"    : project.mod_id + "sareus",
-                "Specification-Version"   : "1", // We are version 1 of ourselves
-                "Implementation-Title"    : project.name,
-                "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "Nameless",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-        ])
-    }
-}
-
-artifacts {
-    archives deobfJar
-}
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifact jar
-        }
-    }
-    repositories {
-        maven {
-            url "file://${project.projectDir}/mcmodsrepo"
-        }
-    }
+build {
+    dependsOn 'jarJar'
 }
 
 tasks.withType(JavaCompile).configureEach {

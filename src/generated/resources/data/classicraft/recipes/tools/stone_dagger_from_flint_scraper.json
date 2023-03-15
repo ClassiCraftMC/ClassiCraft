@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "type": "forge:nbt",
+      "count": 1,
+      "item": "classicraft:scraper",
+      "nbt": "{classicraft:{Meta:\"flint_scraper\"}}"
+    },
+    "S": {
+      "item": "minecraft:string"
+    },
+    "Z": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "S#",
+    "Z "
+  ],
+  "result": {
+    "item": "classicraft:stone_dagger"
+  }
+}

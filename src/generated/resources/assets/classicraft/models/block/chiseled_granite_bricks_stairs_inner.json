@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "classicraft:block/chiseled_granite_bricks",
-    "side": "classicraft:block/chiseled_granite_bricks",
-    "top": "classicraft:block/chiseled_granite_bricks"
-  }
-}

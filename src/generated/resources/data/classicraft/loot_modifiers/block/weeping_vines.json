@@ -1,0 +1,14 @@
+{
+  "type": "classicraft:replace_drop",
+  "conditions": [
+    {
+      "block": "minecraft:weeping_vines",
+      "condition": "minecraft:block_state_property"
+    }
+  ],
+  "drop": "minecraft:air",
+  "max": 0,
+  "meta": "",
+  "min": 0,
+  "probability": 100
+}

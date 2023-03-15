@@ -17,16 +17,11 @@
  */
 package nameless.classicraft.util;
 
-import nameless.classicraft.api.event.BlockDropEvent;
 import nameless.classicraft.api.event.ItemEntityTickEvent;
 import nameless.classicraft.block.AbstractLightBlock;
-import nameless.classicraft.compat.WorldEditCompat;
-import nameless.classicraft.init.ModItems;
-import nameless.classicraft.init.ModSounds;
 import nameless.classicraft.init.ModTags;
 import nameless.classicraft.item.PebbleItem;
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -37,7 +32,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -46,71 +40,15 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Material;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.level.BlockEvent;
 
 public class EventUtils {
 
-    public static void mossyAll(PlayerInteractEvent.RightClickBlock event, Block needChange, Block mossy) {
-        mossyOn(event, needChange, mossy, ModItems.MOSS_CLUMP.get());
-        mossyOff(event, mossy, needChange);
-    }
-
-    public static void mossyOn(PlayerInteractEvent.RightClickBlock event, Block needChange, Block result, Item changeItem) {
-        BlockPos pos = event.getPos();
-        BlockState state = event.getLevel().getBlockState(pos);
-        ItemStack stack = event.getItemStack();
-        Level level = event.getLevel();
-        Player player = event.getEntity();
-        if (state.is(needChange) && stack.is(changeItem)) {
-            player.swing(event.getHand());
-            level.setBlock(pos, result.defaultBlockState(), 11);
-            if (!player.getAbilities().instabuild) {
-                stack.shrink(1);
-            }
-            if (player instanceof ServerPlayer) {
-                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, pos, stack);
-            }
-            Helpers.obtainAdvancement(player, "mossy_on");
-            level.gameEvent(GameEvent.BLOCK_CHANGE, pos,
-                    GameEvent.Context.of(player, state));
-            level.playSound(null, pos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS,1, level.random.nextFloat() * 0.1F + 0.9F);
-            player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
-            event.setCancellationResult(InteractionResult.sidedSuccess(level.isClientSide));
-        }
-    }
-
-    public static void mossyOff(PlayerInteractEvent.RightClickBlock event, Block needChange, Block result) {
-        BlockPos pos = event.getPos();
-        BlockState state = event.getLevel().getBlockState(pos);
-        ItemStack stack = event.getItemStack();
-        Level level = event.getLevel();
-        Player player = event.getEntity();
-        if (state.is(needChange) && stack.is(Tags.Items.TOOLS_AXES) && WorldEditCompat.compatWE(stack)) {
-            player.swing(event.getHand());
-            level.setBlock(pos, result.defaultBlockState(), 11);
-            state.updateIndirectNeighbourShapes(level, pos, 1);
-            if (!player.getAbilities().instabuild) {
-                stack.hurtAndBreak(1, player, (pOnBroken) -> {
-                    pOnBroken.broadcastBreakEvent(player.getUsedItemHand());
-                });
-            }
-            if (player instanceof ServerPlayer) {
-                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, pos, stack);
-            }
-            Helpers.obtainAdvancement(player, "mossy_off");
-            level.gameEvent(GameEvent.BLOCK_CHANGE, pos,
-                    GameEvent.Context.of(player, state));
-            level.playSound(null, pos, ModSounds.MOSSY_OFF.get(), SoundSource.BLOCKS,1, level.random.nextFloat() * 0.1F + 0.9F);
-            player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
-            event.setCancellationResult(InteractionResult.sidedSuccess(level.isClientSide));
-        }
-    }
-
     public static void pebbleToolByStoneVanilla(PlayerInteractEvent.RightClickBlock event, Item vanillaItem) {
-        Player player = event.getEntity();
-        BlockState state = player.getBlockStateOn();
-        ItemStack itemStack = event.getItemStack();
+        var player = event.getEntity();
+        var state = player.getBlockStateOn();
+        var itemStack = event.getItemStack();
         if (itemStack.is(vanillaItem)) {
             if (state.getMaterial() == Material.STONE) {
                 player.swing(InteractionHand.MAIN_HAND);
@@ -124,12 +62,12 @@ public class EventUtils {
     }
 
     public static void pebbleToolByHandVanilla(PlayerInteractEvent.RightClickItem event, Item vanillaItem) {
-        InteractionHand hand = event.getHand();
-        Player player = event.getEntity();
-        ItemStack held = event.getItemStack();
+        var hand = event.getHand();
+        var player = event.getEntity();
+        var held = event.getItemStack();
         if (hand == InteractionHand.MAIN_HAND) {
             if (player.getItemInHand(hand).is(vanillaItem)) {
-                ItemStack off = player.getOffhandItem();
+                var off = player.getOffhandItem();
                 player.swing(InteractionHand.MAIN_HAND);
                 Helpers.addCoolDown(player, vanillaItem, 60);
                 if (off.getItem() instanceof PebbleItem
@@ -145,11 +83,11 @@ public class EventUtils {
     }
 
     public static void putAddonBlock(PlayerInteractEvent.RightClickBlock event, Item vanillaItem, Block pebbleBlock) {
-        Level level = event.getLevel();
-        ItemStack itemStack = event.getItemStack();
-        BlockPos pos = event.getPos();
-        Player player = event.getEntity();
-        BlockPos abovePos = pos.above();
+        var level = event.getLevel();
+        var itemStack = event.getItemStack();
+        var pos = event.getPos();
+        var player = event.getEntity();
+        var abovePos = pos.above();
         if (itemStack.is(vanillaItem)) {
             BlockState stateUnder = level.getBlockState(pos);
             if (stateUnder.isFaceSturdy(level, pos, Direction.UP)
@@ -172,20 +110,19 @@ public class EventUtils {
         }
     }
 
-    public static void blockdropRandom(BlockDropEvent event, Block dropBlock, Item dropItem) {
-        BlockState blockState = event.getState();
-        Level level = event.getLevel();
-        BlockPos pos = event.getPos();
+    public static void blockDropRandom(BlockEvent.BreakEvent event, Block dropBlock, Item dropItem) {
+        var blockState = event.getState();
+        var level = (Level) event.getLevel();
+        var pos = event.getPos();
         if (blockState.is(dropBlock)) {
             ItemStack itemStack = new ItemStack(dropItem, event.getLevel().getRandom().nextInt(1, 2));
-            ItemEntity itemEntity = new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), itemStack);
-            event.getLevel().addFreshEntity(itemEntity);
+            level.addFreshEntity(Helpers.itemEntity(level, pos, itemStack));
         }
     }
 
     public static void shiftRightItem(PlayerInteractEvent.RightClickItem event, Item torchItem, ItemStack newItem) {
-        Player player = event.getEntity();
-        ItemStack itemStack = player.getMainHandItem();
+        var player = event.getEntity();
+        var itemStack = player.getMainHandItem();
         if (itemStack.is(torchItem) && player.isShiftKeyDown()) {
             int oldCount = itemStack.getCount();
             player.getInventory().removeItem(itemStack);
@@ -195,8 +132,8 @@ public class EventUtils {
     }
 
     public static void litBlock(PlayerInteractEvent.RightClickBlock event, Block blockChange, Item needItem, Block newBlock) {
-        BlockState blockState = event.getLevel().getBlockState(event.getPos());
-        ItemStack itemStack = event.getEntity().getMainHandItem();
+        var blockState = event.getLevel().getBlockState(event.getPos());
+        var itemStack = event.getEntity().getMainHandItem();
         if (blockState.is(blockChange)
                 && itemStack.is(needItem)
                 && blockState.getValue(AbstractLightBlock.getLitState())) {
@@ -207,8 +144,8 @@ public class EventUtils {
     }
 
     public static void litItem(PlayerInteractEvent.RightClickBlock event, Block litBlock, Item needLit, Item finalItem) {
-        BlockState blockState = event.getLevel().getBlockState(event.getPos());
-        ItemStack itemStack = event.getEntity().getMainHandItem();
+        var blockState = event.getLevel().getBlockState(event.getPos());
+        var itemStack = event.getEntity().getMainHandItem();
         if (blockState.is(litBlock)
                 && blockState.getValue(AbstractLightBlock.getLitState())
                 && itemStack.is(needLit)) {
@@ -220,12 +157,12 @@ public class EventUtils {
     }
 
     public static void litItem(PlayerInteractEvent.RightClickItem event, Item fireStarter, Item needLit, Item finalItem) {
-        Player player = event.getEntity();
+        var player = event.getEntity();
         if (player != null) {
-            ItemStack firstItem = player.getOffhandItem();
-            ItemStack itemStack = event.getItemStack();
-            Level level = event.getLevel();
-            BlockPos pos = event.getPos();
+            var firstItem = player.getOffhandItem();
+            var itemStack = event.getItemStack();
+            var level = event.getLevel();
+            var pos = event.getPos();
             if (itemStack.is(fireStarter)
                     && firstItem.is(needLit)
                     && !event.getLevel().isRainingAt(event.getPos().above(2))) {
@@ -250,9 +187,9 @@ public class EventUtils {
     }
 
     public static void resetFuel(PlayerInteractEvent.RightClickItem event, Item needFuel, Item fuelItem, ItemStack fullFuelItem) {
-        Player player = event.getEntity();
-        ItemStack mainHandItem = player.getMainHandItem();
-        ItemStack offHandItem = player.getOffhandItem();
+        var player = event.getEntity();
+        var mainHandItem = player.getMainHandItem();
+        var offHandItem = player.getOffhandItem();
         if (mainHandItem.is(needFuel) && offHandItem.is(fuelItem)) {
             if (mainHandItem.getCount() == 1) {
                 offHandItem.shrink(1);
@@ -262,16 +199,14 @@ public class EventUtils {
     }
 
     public static void tickItemInWater(ItemEntityTickEvent event, Item tickItem, Item changedItem) {
-        ItemEntity itemEntity = event.getEntity();
-        Level level = itemEntity.getLevel();
+        var itemEntity = event.getEntity();
+        var level = itemEntity.getLevel();
         if (itemEntity.getItem().is(tickItem)
                 && itemEntity.isInWater()) {
             int oldCount = itemEntity.getItem().getCount();
             itemEntity.remove(Entity.RemovalReason.KILLED);
-            ItemEntity newItem = new ItemEntity(
-                    itemEntity.getLevel(),
-                    itemEntity.getX(), itemEntity.getY(),
-                    itemEntity.getZ(),
+            ItemEntity newItem = Helpers.itemEntity(level,
+                    itemEntity.getOnPos(),
                     changedItem.getDefaultInstance());
             newItem.getItem().setCount(oldCount);
             level.addFreshEntity(newItem);
@@ -279,16 +214,14 @@ public class EventUtils {
     }
 
     public static void tickItemInRaining(ItemEntityTickEvent event, Item tickItem, Item changedItem) {
-        ItemEntity itemEntity = event.getEntity();
-        Level level = itemEntity.getLevel();
+        var itemEntity = event.getEntity();
+        var level = itemEntity.getLevel();
         if (itemEntity.getItem().is(tickItem)
                 && level.isRainingAt(itemEntity.getOnPos().above(2))) {
             int oldCount = itemEntity.getItem().getCount();
             itemEntity.remove(Entity.RemovalReason.KILLED);
-            ItemEntity newItem = new ItemEntity(
-                    itemEntity.getLevel(),
-                    itemEntity.getX(), itemEntity.getY(),
-                    itemEntity.getZ(),
+            ItemEntity newItem = Helpers.itemEntity(
+                    level, itemEntity.getOnPos(),
                     changedItem.getDefaultInstance());
             newItem.getItem().setCount(oldCount);
             level.addFreshEntity(newItem);
@@ -296,17 +229,16 @@ public class EventUtils {
     }
 
     public static void tickItemToUnlit(ItemEntityTickEvent event, Item tickItem, Item changedItem) {
-        ItemEntity itemEntity = event.getEntity();
-        ItemStack itemStack = itemEntity.getItem();
+        var itemEntity = event.getEntity();
+        var itemStack = itemEntity.getItem();
         if (itemStack.is(tickItem)
                 && itemEntity.getAge()
                 == 2 * 1200) {
             int oldCount = itemEntity.getItem().getCount();
             itemEntity.remove(Entity.RemovalReason.KILLED);
-            ItemEntity newItem = new ItemEntity(
+            ItemEntity newItem = Helpers.itemEntity(
                     itemEntity.getLevel(),
-                    itemEntity.getX(), itemEntity.getY(),
-                    itemEntity.getZ(),
+                    itemEntity.getOnPos(),
                     changedItem.getDefaultInstance());
             newItem.getItem().setCount(oldCount);
             itemEntity.getLevel().addFreshEntity(newItem);

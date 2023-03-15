@@ -17,32 +17,119 @@
  */
 package nameless.classicraft.event;
 
-import nameless.classicraft.api.event.BlockDropEvent;
-import nameless.classicraft.init.ModBlocks;
+import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.block.CactusBallBlock;
+import nameless.classicraft.compat.WorldEditCompat;
+import nameless.classicraft.init.*;
 import nameless.classicraft.util.EventUtils;
+import nameless.classicraft.util.Helpers;
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.util.ParticleUtils;
+import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.item.ShearsItem;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DeadBushBlock;
 import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.material.Material;
+import net.minecraftforge.common.Tags;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.event.level.BlockEvent;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ClassiCraftMod.MOD_ID)
 public class BlockEvents {
 
-    @SubscribeEvent(priority = EventPriority.HIGHEST)
-    public static void mossyBlock(PlayerInteractEvent.RightClickBlock event) {
-        EventUtils.mossyAll(event, Blocks.COBBLESTONE, Blocks.MOSSY_COBBLESTONE);
-        EventUtils.mossyAll(event, Blocks.COBBLESTONE_SLAB, Blocks.MOSSY_COBBLESTONE_SLAB);
-        EventUtils.mossyAll(event, Blocks.COBBLESTONE_STAIRS, Blocks.MOSSY_COBBLESTONE_STAIRS);
-        EventUtils.mossyAll(event, Blocks.COBBLESTONE_WALL, Blocks.MOSSY_COBBLESTONE_WALL);
-        EventUtils.mossyAll(event, Blocks.STONE_BRICKS, Blocks.MOSSY_STONE_BRICKS);
-        EventUtils.mossyAll(event, Blocks.STONE_BRICK_SLAB, Blocks.MOSSY_STONE_BRICK_SLAB);
-        EventUtils.mossyAll(event, Blocks.STONE_BRICK_STAIRS, Blocks.MOSSY_STONE_BRICK_STAIRS);
-        EventUtils.mossyAll(event, Blocks.STONE_BRICK_WALL, Blocks.MOSSY_STONE_BRICK_WALL);
+    @SubscribeEvent
+    public static void onVineBreak(BlockEvent.BreakEvent event) {
+        var state = event.getState();
+        var level = (Level) event.getLevel();
+        var pos = event.getPos();
+        var player = event.getPlayer();
+        ItemStack stack;
+        if (!player.getAbilities().instabuild) {
+            if (state.is(Blocks.VINE)) {
+                stack = Helpers.stack(Items.VINE);
+                level.addFreshEntity(Helpers.itemEntity(level, pos, stack));
+            }
+            if (state.is(Blocks.TWISTING_VINES)) {
+                stack = Helpers.stack(Items.TWISTING_VINES);
+                level.addFreshEntity(Helpers.itemEntity(level, pos, stack));
+            }
+            if (state.is(Blocks.WEEPING_VINES)) {
+                stack = Helpers.stack(Items.WEEPING_VINES);
+                level.addFreshEntity(Helpers.itemEntity(level, pos, stack));
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void harvestCheck(PlayerEvent.HarvestCheck event) {
+        var state = event.getTargetBlock();
+        var player = event.getEntity();
+        if (ModConfigurations.noBlockDropsWithoutTools.get()) {
+            if (!(player.getMainHandItem().getItem() instanceof AxeItem)) {
+                if (state.is(BlockTags.LOGS) || state.getMaterial() == Material.WOOD) {
+                    event.setCanHarvest(false);
+                    event.setResult(Event.Result.DENY);
+                }
+            }
+            if (state.getBlock() instanceof CactusBallBlock) {
+                event.setCanHarvest(player.getMainHandItem().getItem() instanceof ShearsItem);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void mossyAll(PlayerInteractEvent.RightClickBlock event) {
+        var level = event.getLevel();
+        var pos = event.getPos();
+        var itemstack = event.getItemStack();
+        var player = event.getEntity();
+        var state =level.getBlockState(pos);
+        if (itemstack.is(ModItems.MOSS_CLUMP.get())) {
+            event.setCancellationResult(ModBlockProperties.getMossed(state).map((mossed) -> {
+                if (player instanceof ServerPlayer) {
+                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, pos, itemstack);
+                }
+
+                if (!player.getAbilities().instabuild) {
+                    itemstack.shrink(1);
+                }
+                level.setBlock(pos, mossed, 11);
+                level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, mossed));
+                ParticleUtils.spawnParticlesOnBlockFaces(level, pos,
+                        ParticleTypes.HAPPY_VILLAGER, UniformInt.of(3, 5));
+                level.playSound(null, pos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS,1, level.random.nextFloat() * 0.1F + 0.9F);
+                return InteractionResult.sidedSuccess(level.isClientSide);
+            }).orElse(InteractionResult.PASS));
+        }
+        if (itemstack.is(Tags.Items.TOOLS_AXES) && WorldEditCompat.compatWE(itemstack)) {
+            event.setCancellationResult(ModBlockProperties.getMossedOFF(state).map((mossedOff) -> {
+                if (player instanceof ServerPlayer) {
+                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, pos, itemstack);
+                }
+                level.setBlock(pos, mossedOff, 11);
+                level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, mossedOff));
+                ParticleUtils.spawnParticlesOnBlockFaces(level, pos,
+                        ParticleTypes.WAX_OFF, UniformInt.of(3, 5));
+                level.playSound(null, pos, ModSounds.MOSSY_OFF.get(), SoundSource.BLOCKS,1, level.random.nextFloat() * 0.1F + 0.9F);
+                return InteractionResult.sidedSuccess(level.isClientSide);
+            }).orElse(InteractionResult.PASS));
+        }
     }
 
     @SubscribeEvent
@@ -61,12 +148,14 @@ public class BlockEvents {
     }
 
     @SubscribeEvent
-    public static void blockDropItems(BlockDropEvent event) {
-        Block block = event.getState().getBlock();
+    public static void blockDropItems(BlockEvent.BreakEvent event) {
+        var block = event.getState().getBlock();
         if (!event.getPlayer().isCreative()) {
             if (block instanceof LeavesBlock
                     || block instanceof DeadBushBlock) {
-                EventUtils.blockdropRandom(event, block, Items.STICK);
+                if (Math.random() <= 0.7) {
+                    EventUtils.blockDropRandom(event, block, Items.STICK);
+                }
             }
         }
     }

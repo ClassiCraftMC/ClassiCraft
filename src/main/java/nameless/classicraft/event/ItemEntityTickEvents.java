@@ -17,6 +17,7 @@
  */
 package nameless.classicraft.event;
 
+import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.api.event.ItemEntityTickEvent;
 import nameless.classicraft.init.ModItems;
 import nameless.classicraft.util.EventUtils;
@@ -24,7 +25,7 @@ import net.minecraft.world.item.Items;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ClassiCraftMod.MOD_ID)
 public class ItemEntityTickEvents {
 
     @SubscribeEvent
@@ -32,7 +33,6 @@ public class ItemEntityTickEvents {
         EventUtils.tickItemToUnlit(event, ModItems.TORCH_LIT.get(), Items.STICK);
         EventUtils.tickItemToUnlit(event, ModItems.SOUL_TORCH_LIT.get(), Items.STICK);
     }
-
 
     @SubscribeEvent
     public static void onTorchInRaining(ItemEntityTickEvent event) {

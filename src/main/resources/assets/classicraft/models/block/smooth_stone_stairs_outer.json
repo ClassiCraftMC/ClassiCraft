@@ -2,9 +2,7 @@
 	"credit": "Made with Blockbench",
 	"parent": "minecraft:block/outer_stairs",
 	"textures": {
-		"1": "block/smooth_stone_slab_side",
-		"3": "classicraft:block/smooth_stone_slab_cross",
-		"4": "block/smooth_stone",
+		"1": "block/smooth_stone",
 		"particle": "block/smooth_stone"
 	},
 	"elements": [
@@ -12,12 +10,12 @@
 			"from": [8, 8, 8],
 			"to": [16, 16, 16],
 			"faces": {
-				"north": {"uv": [0, 8, 8, 16], "texture": "#3"},
-				"east": {"uv": [0, 8, 8, 16], "texture": "#3"},
-				"south": {"uv": [0, 8, 8, 16], "texture": "#3"},
-				"west": {"uv": [0, 8, 8, 16], "texture": "#3"},
-				"up": {"uv": [8, 0, 16, 8], "texture": "#3"},
-				"down": {"uv": [0, 0, 8, 8], "texture": "#3"}
+				"north": {"uv": [0, 0, 8, 8], "texture": "#1"},
+				"east": {"uv": [0, 0, 8, 8], "texture": "#1"},
+				"south": {"uv": [8, 0, 16, 8], "texture": "#1"},
+				"west": {"uv": [8, 0, 16, 8], "texture": "#1"},
+				"up": {"uv": [8, 8, 16, 16], "texture": "#1"},
+				"down": {"uv": [0, 0, 8, 8], "texture": "#missing"}
 			}
 		},
 		{
@@ -28,8 +26,8 @@
 				"east": {"uv": [0, 8, 16, 16], "texture": "#1"},
 				"south": {"uv": [0, 8, 16, 16], "texture": "#1"},
 				"west": {"uv": [0, 8, 16, 16], "texture": "#1"},
-				"up": {"uv": [0, 0, 16, 16], "texture": "#4"},
-				"down": {"uv": [0, 0, 16, 16], "texture": "#4"}
+				"up": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#1"}
 			}
 		}
 	]

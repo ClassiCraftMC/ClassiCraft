@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "classicraft:block/dried_thatch_top",
+    "side": "classicraft:block/dried_thatch",
+    "top": "classicraft:block/dried_thatch_top"
+  }
+}

@@ -18,12 +18,21 @@
 package nameless.classicraft.entity;
 
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.animal.AbstractSchoolingFish;
+import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.level.Level;
+import software.bernie.geckolib.constant.DefaultAnimations;
+import software.bernie.geckolib.core.animation.AnimatableManager;
 
 public class OceanShark extends AbstractShark {
 
-    public OceanShark(EntityType<? extends AbstractSchoolingFish> pEntityType, Level pLevel) {
+    public OceanShark(EntityType<? extends WaterAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(DefaultAnimations.genericAttackAnimation(this,
+                DefaultAnimations.ATTACK_FLYING_ATTACK));
+    }
+
 }

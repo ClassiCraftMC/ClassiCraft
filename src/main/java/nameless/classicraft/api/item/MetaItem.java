@@ -23,6 +23,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
@@ -31,59 +32,55 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * 代表一类有重复性的物品<p></p>
- * 会自动注册模型 (MetaModelRegistry)<p></p>
+ * Represents a list of repeatability items<p></p>
+ * it could be auto registry item models (MetaModelRegistry)<p></p>
  *
  * @see nameless.classicraft.client.meta.MetaModelRegistry
  */
-public class MetaItem extends Item {
-    private static final List<MetaItem> META_ITEMS = new ArrayList<>();
+public interface MetaItem extends ItemLike {
+    List<MetaItem> META_ITEMS = new ArrayList<>();
 
-    public static List<MetaItem> getMetaItems() {
+    static List<MetaItem> getMetaItems() {
         return META_ITEMS;
     }
 
-    public final List<String> metas;
-
-    public MetaItem(Properties pProperties, List<String> metas) {
-        super(pProperties);
-
-        this.metas = metas;
-
-        META_ITEMS.add(this);
+    static ItemStack setMetaItem(ItemStack stack, String meta) {
+        MetaItem.setMeta(stack, meta);
+        return stack;
     }
 
-    public static String getMeta(ItemStack stack) {
-        return new SafeTag(stack, ClassiCraftMod.MOD_ID, false).getString("Meta").orElse(null);
+    List<String> getMetas();
+
+    static String getMeta(ItemStack stack) {
+        return new SafeTag(stack, ClassiCraftMod.MOD_ID, false).getString("Meta").orElse("");
     }
 
-    public static void setMeta(ItemStack stack, String meta) {
+    static void setMeta(ItemStack stack, String meta) {
         new SafeTag(stack, ClassiCraftMod.MOD_ID, true).putString("Meta", meta);
     }
 
-    public static boolean equals(ItemStack i1, ItemStack i2) {
+    static boolean equals(ItemStack i1, ItemStack i2) {
         return i1.getItem() == i2.getItem() && Objects.equals(getMeta(i1), getMeta(i2));
     }
 
-    @Override
-    public @NotNull String getDescriptionId(ItemStack pStack) {
-        return this.getDescriptionId() + "." + getMeta(pStack);
+    static void copyMeta(ItemStack source, ItemStack target) {
+        MetaItem.setMeta(target, MetaItem.getMeta(source));
     }
 
     /**
-     * 将每个 meta 对应的物品注册到创造模式物品栏
+     * Put all metas to Creative mode tabs
      *
      * @param output output
      */
-    public void acceptToCreativeModeTab(CreativeModeTab.Output output) {
+    default void acceptToCreativeModeTab(CreativeModeTab.Output output) {
         getMetaItemStacks().forEach(output::accept);
     }
 
-    public List<ItemStack> getMetaItemStacks() {
+    default List<ItemStack> getMetaItemStacks() {
         List<ItemStack> result = new ArrayList<>();
-        ItemStack itemStack = new ItemStack(this);
+        ItemStack itemStack = new ItemStack(asItem());
 
-        for (String meta : metas) {
+        for (String meta : getMetas()) {
             setMeta(itemStack, meta);
             result.add(itemStack.copy());
         }
@@ -91,12 +88,17 @@ public class MetaItem extends Item {
         return result;
     }
 
-    public ResourceLocation metaResLoc(ItemStack stack) {
+    default ResourceLocation metaResLoc(ItemStack stack) {
         return metaResLoc(getMeta(stack));
     }
 
-    public ResourceLocation metaResLoc(String meta) {
-        ResourceLocation key = Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(this));
+    default ResourceLocation metaResLoc(String meta) {
+        ResourceLocation key = Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(asItem()));
         return new ResourceLocation(key.getNamespace(), key.getPath() + "/" + meta);
+    }
+
+    @Override
+    default @NotNull Item asItem() {
+        return (Item) this;
     }
 }

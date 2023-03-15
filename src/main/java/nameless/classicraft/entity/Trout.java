@@ -18,6 +18,7 @@
 package nameless.classicraft.entity;
 
 import nameless.classicraft.init.ModItems;
+import nameless.classicraft.util.Helpers;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -63,7 +64,7 @@ public class Trout extends AbstractSchoolingFish {
 
     @Override
     public ItemStack getBucketItemStack() {
-        return new ItemStack(ModItems.TROUT_BUCKET.get());
+        return Helpers.stack(ModItems.TROUT_BUCKET.get());
     }
 
     @Override

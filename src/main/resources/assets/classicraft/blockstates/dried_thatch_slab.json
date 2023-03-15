@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "classicraft:block/dried_thatch_slab"
+    },
+    "type=double": {
+      "model": "classicraft:block/dried_thatch"
+    },
+    "type=top": {
+      "model": "classicraft:block/dried_thatch_slab_top"
+    }
+  }
+}

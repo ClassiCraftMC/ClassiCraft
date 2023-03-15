@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/carpet",
+  "textures": {
+    "wool": "classicraft:block/dried_thatch_top"
+  }
+}

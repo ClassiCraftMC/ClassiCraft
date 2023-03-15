@@ -17,25 +17,59 @@
  */
 package nameless.classicraft.event;
 
+import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ClassiCraftMod.MOD_ID)
 public class FurnaceEvents {
 
     @SubscribeEvent
     public static void setFuelValue(FurnaceFuelBurnTimeEvent event) {
-        ItemStack itemStack = event.getItemStack();
-        if (itemStack.is(ModItems.TALLOW.get())) {
-            event.setBurnTime(20);
+        handleFuelValue(event, ModItems.TALLOW.get(), 20);
+        handleFuelValue(event, ItemTags.SAPLINGS, 100);
+        handleFuelValue(event, ItemTags.LEAVES, 200);
+        handleFuelValue(event, ModBlocks.THATCH.get(), 200);
+        handleFuelValue(event, ModBlocks.DRIED_THATCH.get(), 200);
+        handleFuelValue(event, ModBlocks.THATCH_STAIRS.get(), 200);
+        handleFuelValue(event, ModBlocks.DRIED_THATCH_STAIRS.get(), 200);
+        handleFuelValue(event, ModBlocks.THATCH_SLAB.get(), 50);
+        handleFuelValue(event, ModBlocks.DRIED_THATCH_SLAB.get(), 50);
+        handleFuelValue(event, ModBlocks.THATCH_CARPET.get(), 20);
+        handleFuelValue(event, ModBlocks.DRIED_THATCH_CARPET.get(), 20);
+        handleFuelValue(event, Items.WHEAT, 200);
+        handleFuelValue(event, ModBlocks.REED.get(), 200);
+        handleFuelValue(event, ModBlocks.CATTAIL.get(), 200);
+        handleFuelValue(event, Items.HAY_BLOCK, 1800);
+        handleFuelValue(event, ModBlocks.THATCH.get(), 1800);
+        handleFuelValue(event, ModBlocks.DRIED_THATCH.get(), 1800);
+        handleFuelValue(event, ModBlocks.THATCH_SLAB.get(), 900);
+        handleFuelValue(event, ModBlocks.DRIED_THATCH_SLAB.get(), 900);
+        handleFuelValue(event, ModBlocks.THATCH_STAIRS.get(), 1800);
+        handleFuelValue(event, ModBlocks.DRIED_THATCH_STAIRS.get(), 1800);
+        handleFuelValue(event, ModBlocks.THATCH_CARPET.get(), 450);
+        handleFuelValue(event, ModBlocks.DRIED_THATCH_CARPET.get(), 450);
+    }
+
+    private static void handleFuelValue(FurnaceFuelBurnTimeEvent event, ItemLike item, int burnTime) {
+        var itemStack = event.getItemStack();
+        if (itemStack.is(item.asItem())) {
+            event.setBurnTime(burnTime);
         }
-        if (itemStack.is(ItemTags.SAPLINGS)
-                || itemStack.is(ItemTags.SAPLINGS)) {
-            event.setBurnTime(100);
+    }
+
+    private static void handleFuelValue(FurnaceFuelBurnTimeEvent event, TagKey<Item> item, int burnTime) {
+        var itemStack = event.getItemStack();
+        if (itemStack.is(item)) {
+            event.setBurnTime(burnTime);
         }
     }
 }

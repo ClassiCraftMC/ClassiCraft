@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "minecraft:deepslate_brick_stairs"
+  },
+  "result": "classicraft:cracked_deepslate_bricks_stairs"
+}

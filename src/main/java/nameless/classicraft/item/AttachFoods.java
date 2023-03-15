@@ -18,6 +18,7 @@
 package nameless.classicraft.item;
 
 import com.google.common.collect.ImmutableMap;
+import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -55,12 +56,12 @@ public class AttachFoods {
                     .effect(() -> new MobEffectInstance(MobEffects.WEAKNESS, 300, 2), 1)
                     .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 300, 0), 1).build())
             .put(Items.GLISTERING_MELON_SLICE, food(4, 4.8).build())
-            //.put(ModItems.GLISTERING_MELON.get(), food(12, 4.8).build())
+            .put(ModBlocks.GLISTERING_MELON.get().asItem(), food(12, 4.8).build())
             .put(ModItems.COOKED_EGG.get(), food(6, 9.6).build())
             .put(ModItems.NETHER_MUSHROOM_STEW.get(), food(6, 7.2).build())
             .put(Items.MELON, food(6, 1.2).build())
             .put(Items.PUMPKIN, food(4, 1.2).build())
-            //.put(ModItems.CACTUS_FRUIT.get(), food(2, 0.4).build())
+            .put(ModItems.CACTUS_FRUIT.get(), food(2, 0.4).build())
             .put(Items.CAKE, food(14, 2.8).build()).build();
 
     public static boolean isAttach(Item item) {

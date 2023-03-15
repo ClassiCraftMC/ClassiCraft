@@ -21,9 +21,12 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import nameless.classicraft.api.item.MetaItem;
+import nameless.classicraft.init.ModLootModifiers;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
@@ -68,16 +71,31 @@ public class ReplaceDropModifier extends LootModifier {
     @NotNull
     @Override
     public ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
-        if (context.getRandom().nextInt(100) < probability) {
-            generatedLoot.clear();
-            ItemStack item = new ItemStack(drop, max - min > 0 ? context.getRandom().nextInt(max - min + 1) + min : min);
+        ItemStack param = context.getParamOrNull(LootContextParams.TOOL);
 
-            if (meta != null && !meta.isEmpty())
-                MetaItem.setMeta(item, meta);
+        if (param != null) {
+            if (param.getEnchantmentLevel(Enchantments.SILK_TOUCH) > 0) {
+                return generatedLoot;
+            } else {
+                if (context.getRandom().nextInt(100) < probability) {
+                    generatedLoot.clear();
+                    ItemStack item;
+                    if (param.getEnchantmentLevel(Enchantments.BLOCK_FORTUNE) > 0) {
+                        int fortuneLevel = param.getEnchantmentLevel(Enchantments.BLOCK_FORTUNE);
+                        int newMin = min + fortuneLevel;
+                        item = new ItemStack(drop, max - newMin > 0
+                                ? context.getRandom().nextInt(max - newMin + 1)
+                                + newMin : newMin);
+                    }else {
+                        item = new ItemStack(drop, max - min > 0 ? context.getRandom().nextInt(max - min + 1) + min : min);
+                    }
+                    if (meta != null && !meta.isEmpty())
+                        MetaItem.setMeta(item, meta);
 
-            generatedLoot.add(item);
+                    generatedLoot.add(item);
+                }
+            }
         }
-
         return generatedLoot;
     }
 

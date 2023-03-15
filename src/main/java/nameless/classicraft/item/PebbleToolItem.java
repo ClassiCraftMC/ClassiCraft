@@ -18,6 +18,7 @@
 package nameless.classicraft.item;
 
 import nameless.classicraft.api.item.MetaItem;
+import nameless.classicraft.api.item.MetaItemImpl;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -26,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class PebbleToolItem extends MetaItem {
+public class PebbleToolItem extends MetaItemImpl {
     public static final List<PebbleToolItem> TOOLS = new ArrayList<>();
 
     public PebbleToolItem(Properties pProperties, List<String> metas) {
@@ -41,7 +42,7 @@ public class PebbleToolItem extends MetaItem {
 
         if (tool.metas.contains(meta)) {
             ItemStack result = new ItemStack(tool);
-            setMeta(result, meta);
+            MetaItem.setMeta(result, meta);
             return result;
         } else {
             return ItemStack.EMPTY;

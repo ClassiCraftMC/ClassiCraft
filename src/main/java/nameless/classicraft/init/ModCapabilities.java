@@ -20,6 +20,7 @@ package nameless.classicraft.init;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import nameless.classicraft.capability.rot.AbstractRot;
+import nameless.classicraft.capability.san.SanCapability;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.capabilities.CapabilityToken;
@@ -31,9 +32,12 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModCapabilities {
     public static final Capability<AbstractRot> ROT = CapabilityManager.get(new CapabilityToken<>(){});
+    public static Capability<SanCapability> PLAYER_SAN_LEVEL =
+            CapabilityManager.get(new CapabilityToken<>(){});
 
     @SubscribeEvent
     public static void onRegisterCapabilities(RegisterCapabilitiesEvent event) {
         event.register(AbstractRot.class);
+        event.register(SanCapability.class);
     }
 }

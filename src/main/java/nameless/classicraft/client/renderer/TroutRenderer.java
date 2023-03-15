@@ -47,6 +47,7 @@ public class TroutRenderer<T extends Trout> extends MobRenderer<Trout, CodModel<
         }
 
     }
+
     @Override
     public ResourceLocation getTextureLocation(Trout pEntity) {
         return Helpers.identifier("textures/entity/trout.png");

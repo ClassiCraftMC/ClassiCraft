@@ -19,15 +19,19 @@ package nameless.classicraft.util;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.init.ModBlocks;
+import nameless.classicraft.init.ModItems;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementProgress;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -42,7 +46,45 @@ import java.util.stream.Collectors;
 public final class Helpers {
 
 
-    public static final DeferredRegister<? extends Block> deferredRegister = ModBlocks.BLOCKS;
+    public static final DeferredRegister<? extends Block> BLOCK_LIST = ModBlocks.BLOCKS;
+    public static final DeferredRegister<? extends Item> ITEM_LIST = ModItems.ITEMS;
+
+    /**
+     * A method that create a new ItemEntity
+     * @param level the world taht ItemEntity generate
+     * @param pos drop block pos
+     * @param stack the origin ItemStack
+     * @return a new Item Entity
+     */
+    public static ItemEntity itemEntity(Level level, BlockPos pos, ItemStack stack) {
+        return new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), stack);
+    }
+
+    public static String namespace(String name) {
+        return ClassiCraftMod.MOD_ID + ":" + name;
+    }
+
+    public static ItemStack randomStack(Level level, Item drop, int min, int max) {
+        return new ItemStack(drop, max - min > 0 ? level.getRandom().nextInt(max - min + 1) + min : min);
+    }
+
+    public static ItemStack randomStack(Level level, Item drop, int min, int max, int looting) {
+        if (looting > 0) {
+            return new ItemStack(drop, max+looting - min > 0
+                    ? level.getRandom().nextInt(max+looting - min + 1)
+                    + min : min);
+        }else {
+            return randomStack(level, drop, min, max);
+        }
+    }
+
+    public static ItemStack stack(Level level, Item drop, int count) {
+        return randomStack(level, drop, count, count);
+    }
+
+    public static ItemStack stack(Level level, Item drop, int count, int looting) {
+        return randomStack(level, drop, count, count, looting);
+    }
 
     /**
      * A method that create a new ItemStack in order to simplify code
@@ -91,7 +133,16 @@ public final class Helpers {
      * @return a set list of blocks
      */
     public static Set<Block> getBlocks() {
-        return deferredRegister.getEntries().stream()
+        return BLOCK_LIST.getEntries().stream()
+                .map(RegistryObject::get).collect(Collectors.toSet());
+    }
+
+    /**
+     * A method used to get Items that ClassiCraft mod registered
+     * @return a set list of items
+     */
+    public static Set<Item> getItems() {
+        return ITEM_LIST.getEntries().stream()
                 .map(RegistryObject::get).collect(Collectors.toSet());
     }
 

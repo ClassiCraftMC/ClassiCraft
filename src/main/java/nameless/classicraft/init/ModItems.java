@@ -18,16 +18,21 @@
 package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
-import nameless.classicraft.api.item.MetaItem;
+import nameless.classicraft.api.item.MetaItemImpl;
 import nameless.classicraft.item.*;
+import nameless.classicraft.tier.DaggerTiers;
+import nameless.classicraft.tier.HammerTiers;
+import nameless.classicraft.tier.JavelinTiers;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.MobBucketItem;
 import net.minecraft.world.item.RecordItem;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
@@ -68,6 +73,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> DEPTH_METER =
             register("depth_meter", DepthMeterItem::new);
+
     public static final RegistryObject<Item> TROUT =
             food("trout", Foods.COD);
 
@@ -83,8 +89,8 @@ public class ModItems {
     public static final RegistryObject<Item> TROUT_SPAWN_EGG =
             registerSpawnEgg(ModEntities.TROUT_ENTITY, 0x5a867c, 0x6b9f93);
 
-    public static final RegistryObject<Item> LIVING_DEAD_SPAWN_EGG =
-            registerSpawnEgg(ModEntities.LIVING_DEAD, 0x5a867c, 0x6b9f93);
+    public static final RegistryObject<Item> GLARE_SPAWN_EGG =
+            registerSpawnEgg(ModEntities.GLARE, 0x5a867c, 0x6b9f93);
 
     public static final RegistryObject<Item> TALLOW =
             register("tallow", () -> new Item(new Item.Properties()));
@@ -101,9 +107,9 @@ public class ModItems {
     public static final RegistryObject<Item> SULFUR =
             register("sulfur", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<MetaItem> PEBBLE = register("pebble", PebbleItem::new);
+    public static final RegistryObject<MetaItemImpl> PEBBLE = register("pebble", PebbleItem::new);
 
-    public static final RegistryObject<MetaItem> POINT =
+    public static final RegistryObject<MetaItemImpl> POINT =
             register("point", () -> new PebbleToolItem(new Item.Properties(), List.of(
                     "cobblestone_point",
                     "deepslate_point",
@@ -112,7 +118,7 @@ public class ModItems {
                     "quartz_point"
             )));
 
-    public static final RegistryObject<MetaItem> ADZE =
+    public static final RegistryObject<MetaItemImpl> ADZE =
             register("adze", () -> new PebbleToolItem(new Item.Properties(), List.of(
                     "cobblestone_adze",
                     "deepslate_adze",
@@ -121,7 +127,7 @@ public class ModItems {
                     "quartz_adze"
             )));
 
-    public static final RegistryObject<MetaItem> SCRAPER =
+    public static final RegistryObject<MetaItemImpl> SCRAPER =
             register("scraper", () -> new PebbleToolItem(new Item.Properties(), List.of(
                     "cobblestone_scraper",
                     "deepslate_scraper",
@@ -130,7 +136,7 @@ public class ModItems {
                     "quartz_scraper"
             )));
 
-    public static final RegistryObject<MetaItem> AWL =
+    public static final RegistryObject<MetaItemImpl> AWL =
             register("awl", () -> new PebbleToolItem(new Item.Properties(), List.of(
                     "cobblestone_awl",
                     "deepslate_awl",
@@ -139,7 +145,7 @@ public class ModItems {
                     "quartz_awl"
             )));
 
-    public static final RegistryObject<MetaItem> CHOPPER =
+    public static final RegistryObject<MetaItemImpl> CHOPPER =
             register("chopper", () -> new PebbleToolItem(new Item.Properties(), List.of(
                     "cobblestone_chopper",
                     "deepslate_chopper",
@@ -147,6 +153,18 @@ public class ModItems {
                     "blackstone_chopper",
                     "quartz_chopper"
             )));
+
+    public static final RegistryObject<Item> CERAMIC_BOWL =
+            register("ceramic_bowl", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> UNFIRED_CLAY_BRICK =
+            register("unfired_clay_brick", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> UNFIRED_CLAY_BOWL =
+            register("unfired_clay_bowl", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> UNFIRED_CLAY_FLOWER_POT =
+            register("unfired_clay_flower_pot", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> PUMPKIN_SLICE =
             food("pumpkin_slice", Foods.MELON_SLICE);
@@ -162,6 +180,117 @@ public class ModItems {
     public static final RegistryObject<Item> MOSS_CLUMP =
             register("moss_clump", () -> new Item(new Item.Properties()));
 
+    private static final List<Fluid> DENIED_FLUIDS_WOODEN =
+            List.of(Fluids.LAVA);
+
+    public static final RegistryObject<Item> CACTUS_FRUIT =
+            register("cactus_fruit", () ->
+                    new BlockItem(ModBlocks.CACTUS_FRUIT.get(),
+                            new Item.Properties().food(Foods.SWEET_BERRIES)));
+
+    public static final RegistryObject<Item> PLAINTIVE_SOUL =
+            register("plaintive_soul", () ->
+                    new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> WITHER_BONE =
+            register("wither_bone", () ->
+                    new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> SHIVER_BONE =
+            register("shiver_bone", () ->
+                    new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> FURIOUS_SOUL =
+            register("furious_soul", () ->
+                    new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> CAREFREE_SOUL =
+            register("carefree_soul", () ->
+                    new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> TERRIFIED_SOUL =
+            register("terrified_soul", () ->
+                    new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> NITER =
+            register("niter", () ->
+                    new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> WOODEN_HAMMER =
+            register("wooden_hammer", () ->
+                    new HammerItem(HammerTiers.WOOD, 1, -3.2f,new Item.Properties()));
+
+    public static final RegistryObject<Item> STONE_HAMMER =
+            register("stone_hammer", () ->
+                    new HammerItem(HammerTiers.STONE, 1, -3.2f,new Item.Properties()));
+
+    public static final RegistryObject<Item> IRON_HAMMER =
+            register("iron_hammer", () ->
+                    new HammerItem(HammerTiers.IRON, 1, -3.2f,new Item.Properties()));
+
+    public static final RegistryObject<Item> GOLDEN_HAMMER =
+            register("golden_hammer", () ->
+                    new HammerItem(HammerTiers.GOLD, 1, -3.2f,new Item.Properties()));
+
+    public static final RegistryObject<Item> DIAMOND_HAMMER =
+            register("diamond_hammer", () ->
+                    new HammerItem(HammerTiers.DIAMOND, 1, -3.2f,new Item.Properties()));
+
+    public static final RegistryObject<Item> NETHERITE_HAMMER =
+            register("netherite_hammer", () ->
+                    new HammerItem(HammerTiers.NETHERITE, 1, -3.2f,new
+                            Item.Properties().fireResistant()));
+
+    public static final RegistryObject<Item> STONE_DAGGER =
+            register("stone_dagger", () ->
+                    new DaggerItem(DaggerTiers.STONE, 1, -1.5f, new Item.Properties()));
+
+    public static final RegistryObject<Item> WOODEN_DAGGER =
+            register("wooden_dagger", () ->
+                    new DaggerItem(DaggerTiers.WOOD, 1, -1.5f, new Item.Properties()));
+
+    public static final RegistryObject<Item> IRON_DAGGER =
+            register("iron_dagger", () ->
+                    new DaggerItem(DaggerTiers.IRON, 1, -1.5f, new Item.Properties()));
+
+    public static final RegistryObject<Item> GOLDEN_DAGGER =
+            register("golden_dagger", () ->
+                    new DaggerItem(DaggerTiers.GOLD, 1, -1.5f, new Item.Properties()));
+
+    public static final RegistryObject<Item> DIAMOND_DAGGER =
+            register("diamond_dagger", () ->
+                    new DaggerItem(DaggerTiers.DIAMOND, 1, -1.5f, new Item.Properties()));
+
+    public static final RegistryObject<Item> NETHERITE_DAGGER =
+            register("netherite_dagger", () ->
+                    new DaggerItem(DaggerTiers.NETHERITE, 1, -1.5f,
+                            new Item.Properties().fireResistant()));
+
+    public static final RegistryObject<Item> STONE_JAVELIN =
+           register("stone_javelin", () -> new JavelinItem(JavelinTiers.STONE, 4, -2.4F,
+                   new Item.Properties(), "stone"));
+
+    public static final RegistryObject<Item> WOODEN_JAVELIN =
+            register("wooden_javelin", () -> new JavelinItem(JavelinTiers.WOOD, 4, -2.4F,
+                    new Item.Properties(), "wooden"));
+
+    public static final RegistryObject<Item> IRON_JAVELIN =
+            register("iron_javelin", () -> new JavelinItem(JavelinTiers.IRON, 4, -2.4F,
+                    new Item.Properties(), "iron"));
+
+    public static final RegistryObject<Item> GOLDEN_JAVELIN =
+            register("golden_javelin", () -> new JavelinItem(JavelinTiers.GOLD, 4, -2.4F,
+                    new Item.Properties(), "golden"));
+
+    public static final RegistryObject<Item> DIAMOND_JAVELIN =
+            register("diamond_javelin", () -> new JavelinItem(JavelinTiers.DIAMOND, 4, -2.4F,
+                    new Item.Properties(), "diamond"));
+
+    public static final RegistryObject<Item> NETHERITE_JAVELIN =
+            register("netherite_javelin", () -> new JavelinItem(JavelinTiers.NETHERITE, 4, -2.4F,
+                    new Item.Properties().fireResistant(), "netherite"));
+
+
     private static RegistryObject<Item> food(String name, FoodProperties foodData) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().food(foodData)));
     }
@@ -175,7 +304,7 @@ public class ModItems {
     }
 
     private static <T extends EntityType<? extends Mob>> RegistryObject<Item> registerMobBuckteItem(RegistryObject<T> entity) {
-        return register("bucket/" + entity.getId().getPath(), () ->
+        return register(entity.getId().getPath() + "_bucket", () ->
                 new MobBucketItem(entity,
                         () -> Fluids.WATER,
                         () -> SoundEvents.BUCKET_EMPTY_FISH,

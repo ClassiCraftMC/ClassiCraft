@@ -1,0 +1,15 @@
+{
+  "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "classicraft:milk/lingering_milk_bottle",
+      "predicate": {
+        "minecraft:milk": 1.0
+      }
+    }
+  ],
+  "textures": {
+    "layer0": "minecraft:item/potion_overlay",
+    "layer1": "minecraft:item/lingering_potion"
+  }
+}

@@ -32,6 +32,9 @@ public class ModConfigurations {
     public static ForgeConfigSpec.BooleanValue replaceVanillaBlock;
     public static ForgeConfigSpec.BooleanValue enableForcedGameRules;
     public static ForgeConfigSpec.BooleanValue ignoreExperimentalWorldGenWarning;
+    public static ForgeConfigSpec.BooleanValue noBlockDropsWithoutTools;
+    public static ForgeConfigSpec.BooleanValue enableMilking;
+    public static ForgeConfigSpec.BooleanValue enableEntityObtaining;
 
     static {
         BUILDER.comment("ClassiCraft Configurations");
@@ -54,6 +57,19 @@ public class ModConfigurations {
         desc = "Decide to ignore the experimental world gen info";
         ignoreExperimentalWorldGenWarning =
                 BUILDER.comment(desc).define("ignoreExperimentalWorldGenWarning", true);
+
+        desc = "Decide to make block no drops without using correct tools.";
+        noBlockDropsWithoutTools =
+                BUILDER.comment(desc).define("noBlockDropsWithoutTools", true);
+
+        desc = "Decide to enable buckets can be milking of this mod added items";
+        enableMilking =
+                BUILDER.comment(desc).define("enableMilking", true);
+
+        desc = "Decide to enable entity obtaining of mod buckets";
+        enableEntityObtaining =
+                BUILDER.comment(desc).define("enableEntityObtaining", true);
+
         BUILDER.pop();
         SPEC = BUILDER.build();
     }

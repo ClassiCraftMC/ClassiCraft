@@ -18,7 +18,6 @@
 package nameless.classicraft;
 
 import com.mojang.logging.LogUtils;
-import nameless.classicraft.glm.ModLootModifiers;
 import nameless.classicraft.init.*;
 import nameless.classicraft.util.Helpers;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -47,7 +46,9 @@ public class ClassiCraftMod {
         ModFeatures.FEATURES.register(modEventBus);
         ModEntities.ENTITIES.register(modEventBus);
         modEventBus.addListener(ModCreativeModeTabs::registerCreativeModeTab);
-        ModLootModifiers.REGISTER.register(modEventBus);
+        ModLootModifiers.GLOBAL_LOOT_MODIFIER_SERIALIZERS.register(modEventBus);
         ModSounds.SOUND_EVENTS.register(modEventBus);
+        ModEffects.MOB_EFFECTS.register(modEventBus);
+        ModPotions.POTIONS.register(modEventBus);
     }
 }

@@ -1,0 +1,15 @@
+{
+    "parent": "minecraft:item/handheld",
+    "gui_light": "front",
+    "textures": {
+        "layer0": "classicraft:item/wooden_javelin"
+    },
+    "overrides": [
+        {
+            "predicate": {
+                "throwing": 1
+            },
+            "model": "classicraft:item/wooden_javelin_throwing"
+        }
+    ]
+}

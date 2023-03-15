@@ -38,10 +38,13 @@ public class LevelSurfaceFeature extends Feature<NoneFeatureConfiguration> {
     static Random random = new Random();
 
     static Supplier<Block> randomPebble() {
-        return () -> switch (random.nextInt(4)) {
+        return () -> switch (random.nextInt(7)) {
             case 1 -> ModBlocks.ANDESITE_PEBBLE.get();
             case 2 -> ModBlocks.DIORITE_PEBBLE.get();
             case 3 -> ModBlocks.GRANITE_PEBBLE.get();
+            case 4 -> ModBlocks.FLINT.get();
+            case 5 -> ModBlocks.DEEPSLATE_PEBBLE.get();
+            case 6 -> ModBlocks.BLACKSTONE_PEBBLE.get();
             default -> ModBlocks.COBBLESTONE_PEBBLE.get();
         };
     }

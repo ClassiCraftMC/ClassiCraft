@@ -21,15 +21,14 @@ import com.mojang.brigadier.arguments.FloatArgumentType;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import nameless.classicraft.ClassiCraftMod;
-import nameless.classicraft.api.san.ISanHandler;
 import nameless.classicraft.capability.rot.AbstractRot;
+import nameless.classicraft.network.PlayerSanMessage;
+import nameless.classicraft.network.SimpleNetworkHandler;
 import nameless.classicraft.rot.RotManager;
-import net.minecraft.client.Minecraft;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -104,14 +103,20 @@ public class ModCommands {
                         Commands.argument("san", FloatArgumentType.floatArg())
                                 .requires(source -> source.hasPermission(2))
                                 .executes(c -> {
+                                    CommandSourceStack source = c.getSource();
+                                    ServerPlayer player = source.getPlayerOrException();
                                     float san = c.getArgument("san", Float.class);
-                                    Player player = Minecraft.getInstance().player;
-                                    if (player != null) {
-                                        ((ISanHandler) player).regenSan(san);
-                                        c.getSource().sendSuccess(
-                                                Component.translatable("设置成功，当前为: %.1f".formatted(san)),
-                                                false);
-                                    }
+                                    player.getCapability(ModCapabilities.PLAYER_SAN_LEVEL).ifPresent(
+                                            sanCapability -> {
+                                                sanCapability.regenSan(san);
+                                                SimpleNetworkHandler.PACKET_HANDLER
+                                                        .sendToServer(new PlayerSanMessage(sanCapability.getSan(),
+                                                        sanCapability.getMaxSan()));
+                                            }
+                                    );
+                                    c.getSource().sendSuccess(
+                                            Component.translatable("设置成功，当前为: %.1f".formatted(san)),
+                                            false);
                                     return 1;
                                 })
                 )

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "classicraft:block/thatch_top",
+    "side": "classicraft:block/thatch"
+  }
+}

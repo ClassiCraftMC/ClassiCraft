@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "classicraft:block/chiseled_diorite_bricks",
-    "side": "classicraft:block/chiseled_diorite_bricks",
-    "top": "classicraft:block/chiseled_diorite_bricks"
-  }
-}

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "classicraft:heat/cooked_trout_from_smoking"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_trout": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "classicraft:trout"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_trout",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "classicraft:heat/cooked_trout_from_smoking"
+    ]
+  }
+}

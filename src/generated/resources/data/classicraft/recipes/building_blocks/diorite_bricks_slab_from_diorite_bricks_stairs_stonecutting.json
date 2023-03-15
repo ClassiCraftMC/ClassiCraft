@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "classicraft:diorite_bricks_stairs"
+  },
+  "result": "classicraft:diorite_bricks_slab"
+}

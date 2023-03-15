@@ -18,47 +18,45 @@
 package nameless.classicraft.event;
 
 import nameless.classicraft.ClassiCraftMod;
-import nameless.classicraft.entity.LivingDead;
-import nameless.classicraft.init.ModConfigurations;
+import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
+import nameless.classicraft.network.PlayerSanMessage;
+import nameless.classicraft.network.SanChangeMessage;
 import nameless.classicraft.network.SimpleNetworkHandler;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.ComposterBlock;
-import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = ClassiCraftMod.MOD_ID)
 public class SetupEvents {
 
     @SubscribeEvent
     public static void onCommonSetup(FMLCommonSetupEvent event) {
-        SimpleNetworkHandler.init();
-        event.enqueueWork(LivingDead::init);
-        boolean hasRottenFood = ComposterBlock.COMPOSTABLES.containsKey(ModItems.ROTTEN_FOOD.get());
-
-        if (!hasRottenFood) {
-            ComposterBlock.COMPOSTABLES.put(ModItems.ROTTEN_FOOD.get(), .3F);
-        }
+        event.enqueueWork(() -> {
+            SimpleNetworkHandler.registerMessage(PlayerSanMessage.class,
+                    PlayerSanMessage::buffer, PlayerSanMessage::new, PlayerSanMessage::handler);
+            SimpleNetworkHandler.registerMessage(SanChangeMessage.class,
+                    SanChangeMessage::buffer, SanChangeMessage::new, SanChangeMessage::handler);
+            handleCompostableItem(ModBlocks.THATCH.get(), 0.65F);
+            handleCompostableItem(ModBlocks.DRIED_THATCH.get(), 0.65F);
+            handleCompostableItem(ModBlocks.THATCH_STAIRS.get(), 0.65F);
+            handleCompostableItem(ModBlocks.DRIED_THATCH_STAIRS.get(), 0.65F);
+            handleCompostableItem(ModBlocks.THATCH_SLAB.get(), 0.55F);
+            handleCompostableItem(ModBlocks.DRIED_THATCH_SLAB.get(), 0.55F);
+            handleCompostableItem(ModBlocks.THATCH_CARPET.get(), 0.50F);
+            handleCompostableItem(ModBlocks.DRIED_THATCH_CARPET.get(), 0.50F);
+            handleCompostableItem(ModItems.ROTTEN_FOOD.get(), 0.3F);
+            handleCompostableItem(ModBlocks.REED.get(), 0.45F);
+            handleCompostableItem(ModBlocks.CATTAIL.get(), 0.45F);
+        });
     }
 
-    @SubscribeEvent
-    public static void onWorldSetup(EntityJoinLevelEvent event) {
-        if (event.getLevel() instanceof final ServerLevel level) {
-            final MinecraftServer server = level.getServer();
-            final GameRules rules = level.getGameRules();
-            if (ModConfigurations.enableForcedGameRules.get()) {
-                if (rules.getRule(GameRules.RULE_NATURAL_REGENERATION).get()) {
-                    rules.getRule(GameRules.RULE_NATURAL_REGENERATION).set(false, server);
-                    ClassiCraftMod.LOGGER.info("Updating ClassiCraft Relevant Game Rules for level {}.",
-                            level.dimension().location());
-                }
-            }
+    private static void handleCompostableItem(ItemLike item, float chance) {
+        boolean hasPut = ComposterBlock.COMPOSTABLES.containsKey(item.asItem());
+        if (!hasPut) {
+            ComposterBlock.COMPOSTABLES.put(item.asItem(), chance);
         }
     }
 }

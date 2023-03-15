@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "classicraft:block/dried_thatch_top",
+    "side": "classicraft:block/dried_thatch"
+  }
+}

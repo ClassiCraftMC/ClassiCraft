@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "classicraft:block/mossy_deepslate_tiles_slab"
+    },
+    "type=double": {
+      "model": "classicraft:block/mossy_deepslate_tiles"
+    },
+    "type=top": {
+      "model": "classicraft:block/mossy_deepslate_tiles_slab_top"
+    }
+  }
+}

@@ -18,7 +18,7 @@
 package nameless.classicraft.datagen.loot;
 
 import nameless.classicraft.block.SandStoneBlock;
-import nameless.classicraft.block.StoneBricksBlock;
+import nameless.classicraft.block.StoneLikeBlock;
 import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModItems;
 import nameless.classicraft.item.PebbleItem;
@@ -75,36 +75,65 @@ public class ModBlockLoot extends BlockLootSubProvider {
 
         dropSelf(ModBlocks.CHARCOAL_BLOCK.get());
         dropSelf(ModBlocks.CACTUS_BALL.get());
+        dropOther(ModBlocks.CACTUS_FRUIT.get(), Items.STICK);
         dropSelf(ModBlocks.QUICKSAND.get());
         dropSelf(ModBlocks.RED_QUICKSAND.get());
         dropSelf(ModBlocks.QUARTZ_QUICKSAND.get());
         dropSelf(ModBlocks.ROSE.get());
         dropSelf(ModBlocks.TALLOW_BLOCK.get());
-        addOreDrop(ModBlocks.SULFUR_ORE.get(), ModItems.SULFUR.get());
+        dropSelf(ModBlocks.NITER_BLOCK.get());
+        dropSelf(ModBlocks.SULFUR_BLOCK.get());
+        dropSelf(ModBlocks.THATCH.get());
+        dropSelf(ModBlocks.DRIED_THATCH.get());
+        addOreDrop(ModBlocks.DEEPSLATE_SULFUR_ORE.get(), ModItems.SULFUR.get(), 1, 2);
+        addOreDrop(ModBlocks.NETHER_SULFUR_ORE.get(), ModItems.SULFUR.get(), 1, 2);
+        addOreDrop(ModBlocks.SANDSTONE_NITER_ORE.get(), ModItems.NITER.get(), 1, 3);
+        addOreDrop(ModBlocks.QUARTZ_SANDSTONE_NITER_ORE.get(), ModItems.NITER.get(), 1, 3);
+        addOreDrop(ModBlocks.RED_SANDSTONE_NITER_ORE.get(), ModItems.NITER.get(), 1, 3);
+        addOreDrop(ModBlocks.SOUL_SANDSTONE_NITER_ORE.get(), ModItems.NITER.get(), 1, 3);
         dropSelf(ModBlocks.QUARTZ_SAND.get());
         dropSelf(ModBlocks.SOUL_QUICKSAND.get());
+        dropSelf(ModBlocks.FLINT_BLOCK.get());
+        dropSelf(ModBlocks.CATTAIL.get());
+        dropSelf(ModBlocks.REED.get());
         dropOther(ModBlocks.INFESTED_MOSSY_COBBLESTONE.get(), Items.MOSSY_COBBLESTONE);
         dropOther(ModBlocks.INFESTED_CHISELED_DEEPSLATE.get(), Items.CHISELED_DEEPSLATE);
         dropOther(ModBlocks.INFESTED_COBBLED_DEEPSLATE.get(), Items.COBBLED_DEEPSLATE);
         dropOther(ModBlocks.INFESTED_DEEPSLATE_TILES.get(), Items.DEEPSLATE_TILES);
         dropOther(ModBlocks.INFESTED_CRACKED_DEEPSLATE_BRICKS.get(), Items.CRACKED_DEEPSLATE_BRICKS);
         dropOther(ModBlocks.INFESTED_CRACKED_DEEPSLATE_TILES.get(), Items.CRACKED_DEEPSLATE_TILES);
+        dropOther(ModBlocks.INFESTED_DEEPSLATE_BRICKS.get(), Items.DEEPSLATE_BRICKS);
+        dropOther(ModBlocks.INFESTED_CHISELED_DEEPSLATE_TILES.get(), ModBlocks.CHISELED_DEEPSLATE_TILES.get());
+        dropOther(ModBlocks.INFESTED_CHISELED_DEEPSLATE_BRICKS.get(), ModBlocks.CHISELED_DEEPSLATE_BRICKS.get());
+        dropOther(ModBlocks.INFESTED_MOSSY_DEEPSLATE_BRICKS.get(), ModBlocks.MOSSY_DEEPSLATE_BRICKS.get());
+        dropOther(ModBlocks.INFESTED_MOSSY_COBBLED_DEEPSLATE.get(), ModBlocks.MOSSY_COBBLED_DEEPSLATE.get());
+        dropOther(ModBlocks.INFESTED_MOSSY_DEEPSLATE_TILES.get(), ModBlocks.MOSSY_DEEPSLATE_TILES.get());
         dropOther(ModBlocks.REAL_TORCH.get(), Items.STICK);
         dropOther(ModBlocks.REAL_WALL_TORCH.get(), Items.STICK);
         dropOther(ModBlocks.REAL_SOUL_TORCH.get(), Items.STICK);
         dropOther(ModBlocks.REAL_SOUL_WALL_TORCH.get(), Items.STICK);
+        dropOther(ModBlocks.POTTED_ROSE.get(), ModBlocks.ROSE.get());
         Set<Block> blocks = Helpers.getBlocks();
         blocks.stream().filter(block -> block instanceof StairBlock)
                 .forEach(this::dropSelf);
         blocks.stream().filter(block -> block instanceof WallBlock)
                 .forEach(this::dropSelf);
         blocks.stream().filter(block -> block instanceof SlabBlock)
-                .forEach(this::dropSelf);
-        blocks.stream().filter(block -> block instanceof StoneBricksBlock)
+                .forEach(this::addSlabDrop);
+        blocks.stream().filter(block -> block instanceof StoneLikeBlock)
                 .forEach(this::dropSelf);
         blocks.stream().filter(block -> block instanceof SandStoneBlock)
                 .forEach(this::dropSelf);
+        blocks.stream().filter(block -> block instanceof CarpetBlock)
+                .forEach(this::dropSelf);
+        blocks.stream().filter(block -> block instanceof FenceBlock)
+                .forEach(this::dropSelf);
+        blocks.stream().filter(block -> block instanceof ButtonBlock)
+                .forEach(this::dropSelf);
+        blocks.stream().filter(block -> block instanceof PressurePlateBlock)
+                .forEach(this::dropSelf);
         melonStyleDrop(Blocks.PUMPKIN, ModItems.PUMPKIN_SLICE.get());
+        melonStyleDrop(ModBlocks.GLISTERING_MELON.get(), Items.GLISTERING_MELON_SLICE);
     }
 
     @Override
@@ -128,8 +157,9 @@ public class ModBlockLoot extends BlockLootSubProvider {
                         .apply(LimitCount.limitCount(IntRange.upperBound(9))))));
     }
 
-    void addOreDrop(Block block, Item item) {
-        add(block, (ore) -> createOreDrop(block, item));
+    void addOreDrop(Block block, Item item, int min, int max) {
+        add(block, (ore) -> createSilkTouchDispatchTable(block, this.applyExplosionDecay(block,
+                LootItem.lootTableItem(item).apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))));
     }
 
     void addSlabDrop(Block block) {
@@ -140,4 +170,5 @@ public class ModBlockLoot extends BlockLootSubProvider {
         add(block, createSingleItemTable(item)
                 .apply(SetNbtFunction.setTag(PebbleItem.getTagFrom(block))));
     }
+
 }

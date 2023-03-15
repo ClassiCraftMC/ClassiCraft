@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "waterlogged=true": {
+      "model": "classicraft:block/cattail"
+    },
+    "waterlogged=false,lower=true": [
+      {
+        "model": "classicraft:block/cattail_top"
+      },
+      {
+        "model": "classicraft:block/cattail_top",
+        "y": 90
+      },
+      {
+        "model": "classicraft:block/cattail_top",
+        "y": 180
+      },
+      {
+        "model": "classicraft:block/cattail_top",
+        "y": 270
+      }
+    ],
+    "waterlogged=false,lower=false": {
+      "model": "classicraft:block/cattail_empty"
+    }
+  }
+}

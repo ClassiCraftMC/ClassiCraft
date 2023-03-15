@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "minecraft:stone_pressure_plate"
+  },
+  "result": "classicraft:smooth_stone_pressure_plate"
+}

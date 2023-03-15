@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_mossy_granite_bricks_wall": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "classicraft:mossy_granite_bricks_wall"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "classicraft:heat/granite_bricks_wall_from_smoking"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_mossy_granite_bricks_wall",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "classicraft:heat/granite_bricks_wall_from_smoking"
+    ]
+  }
+}

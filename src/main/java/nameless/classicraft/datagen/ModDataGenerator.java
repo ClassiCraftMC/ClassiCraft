@@ -21,6 +21,7 @@ import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.datagen.lang.EmptyLangProvider;
 import nameless.classicraft.datagen.lang.ModLanguageProvider;
 import nameless.classicraft.datagen.lang.ModLanguageProviderZh;
+import nameless.classicraft.datagen.levelgen.ModBiomesProvider;
 import nameless.classicraft.datagen.levelgen.ModConfiguredFeatureProvider;
 import nameless.classicraft.datagen.levelgen.ModPlacedFeatureProvider;
 import nameless.classicraft.datagen.loot.ModLootTableProvider;
@@ -41,9 +42,9 @@ import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * ClassicCraft 数据生成类
- * 用于自动生成模组json文件
- * 运用GatherDataEvent类
+ * ClassicCraft Datagen Class
+ * Auto generate json file
+ * @see net.minecraftforge.data.event.GatherDataEvent
  */
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModDataGenerator {
@@ -53,7 +54,9 @@ public class ModDataGenerator {
                     .add(Registries.PLACED_FEATURE,
                             ModPlacedFeatureProvider::placedFeature)
                     .add(Registries.CONFIGURED_FEATURE,
-                            ModConfiguredFeatureProvider::configuredFeatures);
+                            ModConfiguredFeatureProvider::configuredFeatures)
+                    .add(Registries.BIOME,
+                            ModBiomesProvider::biomes);
 
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
@@ -66,6 +69,8 @@ public class ModDataGenerator {
         generator.addProvider(event.includeClient(),
                 new ModItemModelProvider(generator, helper));
         generator.addProvider(event.includeClient(),
+                new ReplaceModelProvider(generator, helper));
+        generator.addProvider(event.includeClient(),
                 new ModLanguageProvider(generator));
         generator.addProvider(event.includeClient(),
                 new ModLanguageProviderZh(generator));
@@ -75,7 +80,7 @@ public class ModDataGenerator {
         generator.addProvider(event.includeServer(),
                 new ModLootTableProvider(pack));
         generator.addProvider(event.includeServer(),
-                new ModGlobalModifierProvider(pack, ClassiCraftMod.MOD_ID));
+                new ModGlobalModifierProvider(pack));
         generator.addProvider(event.includeServer(),
                 new DatapackBuiltinEntriesProvider(pack,
                         lookup, BUILDER,

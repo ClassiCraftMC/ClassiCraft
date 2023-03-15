@@ -1,0 +1,14 @@
+{
+  "type": "classicraft:replace_drop",
+  "conditions": [
+    {
+      "block": "minecraft:potted_mangrove_propagule",
+      "condition": "minecraft:block_state_property"
+    }
+  ],
+  "drop": "minecraft:stick",
+  "max": 2,
+  "meta": "propagule_drop",
+  "min": 1,
+  "probability": 100
+}

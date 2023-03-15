@@ -19,6 +19,7 @@ package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.block.*;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
@@ -88,7 +89,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> MOSSY_BRICKS =
             registerDefault("mossy_bricks", () ->
-                    new StoneBricksBlock(SoundType.STONE, MaterialColor.COLOR_GREEN));
+                    new StoneLikeBlock(SoundType.STONE, MaterialColor.COLOR_GREEN));
 
     public static final RegistryObject<Block> MOSSY_BRICKS_STAIRS =
             registerDefault("mossy_bricks_stairs", () ->
@@ -130,7 +131,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CRACKED_BRICKS =
             registerDefault("cracked_bricks", () ->
-                    new StoneBricksBlock(SoundType.STONE, MaterialColor.COLOR_RED));
+                    new StoneLikeBlock(SoundType.STONE, MaterialColor.COLOR_RED));
 
     public static final RegistryObject<Block> CRACKED_BRICKS_STAIRS =
             registerDefault("cracked_bricks_stairs", () ->
@@ -201,11 +202,19 @@ public class ModBlocks {
                             .requiresCorrectToolForDrops()
                             .strength(3.0F, 3.0F)));
 
-    public static final RegistryObject<Block> SULFUR_ORE =
-            registerDefault("sulfur_ore", () ->
-                    new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE)
-                            .strength(3.0F, 3.0F).requiresCorrectToolForDrops(),
-                            UniformInt.of(0, 2)));
+    public static final RegistryObject<Block> DEEPSLATE_SULFUR_ORE =
+            registerDefault("deepslate_sulfur_ore", () ->
+                    new DropExperienceBlock(BlockBehaviour.Properties.of(Material.METAL)
+                            .strength(2.0F, 3.0F).requiresCorrectToolForDrops()
+                            .sound(SoundType.DEEPSLATE),
+                            UniformInt.of(1, 5)));
+
+    public static final RegistryObject<Block> NETHER_SULFUR_ORE =
+            registerDefault("nether_sulfur_ore", () ->
+                    new DropExperienceBlock(BlockBehaviour.Properties.of(Material.METAL)
+                            .strength(2.0F, 3.0F).requiresCorrectToolForDrops()
+                            .sound(SoundType.DEEPSLATE),
+                            UniformInt.of(1, 5)));
 
     public static final RegistryObject<Block> STONE_WALL =
             registerDefault("stone_wall", () ->
@@ -215,7 +224,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> SMOOTH_STONE_STAIRS =
             registerDefault("smooth_stone_stairs", () ->
-                    new StairBlock(() -> Blocks.SMOOTH_STONE.defaultBlockState(),
+                    new StairBlock(Blocks.SMOOTH_STONE::defaultBlockState,
                             BlockBehaviour.Properties
                                     .of(Material.STONE)
                                     .requiresCorrectToolForDrops()
@@ -223,7 +232,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CRACKED_STONE_BRICKS_STAIRS =
             registerDefault("cracked_stone_bricks_stairs", () ->
-                    new StairBlock(() -> Blocks.CRACKED_STONE_BRICKS.defaultBlockState(),
+                    new StairBlock(Blocks.CRACKED_STONE_BRICKS::defaultBlockState,
                             BlockBehaviour.Properties
                                     .of(Material.STONE)
                                     .requiresCorrectToolForDrops()
@@ -273,19 +282,19 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> QUARTZ_SANDSTONE_BRICKS =
             registerDefault("quartz_sandstone_bricks", () ->
-                    new StoneBricksBlock(SoundType.STONE, MaterialColor.QUARTZ));
+                    new StoneLikeBlock(SoundType.STONE, MaterialColor.QUARTZ));
 
     public static final RegistryObject<Block> RED_SANDSTONE_BRICKS =
             registerDefault("red_sandstone_bricks", () ->
-                    new StoneBricksBlock(SoundType.STONE, MaterialColor.FIRE));
+                    new StoneLikeBlock(SoundType.STONE, MaterialColor.FIRE));
 
     public static final RegistryObject<Block> SANDSTONE_BRICKS =
             registerDefault("sandstone_bricks", () ->
-                    new StoneBricksBlock(SoundType.STONE, MaterialColor.SAND));
+                    new StoneLikeBlock(SoundType.STONE, MaterialColor.SAND));
 
     public static final RegistryObject<Block> SOUL_SANDSTONE_BRICKS =
             registerDefault("soul_sandstone_bricks", () ->
-                    new StoneBricksBlock(SoundType.STONE, MaterialColor.COLOR_BROWN));
+                    new StoneLikeBlock(SoundType.STONE, MaterialColor.COLOR_BROWN));
 
     public static final RegistryObject<Block> QUARTZ_PEBBLE =
             register("quartz_pebble", () -> new VanillaPickBlock(Items.QUARTZ));
@@ -364,7 +373,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CRACKED_DEEPSLATE_BRICKS_STAIRS =
             registerDefault("cracked_deepslate_bricks_stairs", () ->
-                    new StairBlock(() -> Blocks.CRACKED_DEEPSLATE_BRICKS.defaultBlockState(),
+                    new StairBlock(Blocks.CRACKED_DEEPSLATE_BRICKS::defaultBlockState,
                             BlockBehaviour.Properties
                                     .of(Material.STONE).requiresCorrectToolForDrops()
                                     .strength(1.5F, 6.0F)));
@@ -384,7 +393,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CUT_RED_SANDSTONE_STAIRS =
             registerDefault("cut_red_sandstone_stairs", () ->
-                    new StairBlock(() -> Blocks.CUT_RED_SANDSTONE.defaultBlockState(),
+                    new StairBlock(Blocks.CUT_RED_SANDSTONE::defaultBlockState,
                             BlockBehaviour.Properties
                                     .of(Material.STONE).requiresCorrectToolForDrops()
                                     .strength(1.5F, 6.0F)));
@@ -1622,7 +1631,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> ANDESITE_BRICKS =
             registerDefault("andesite_bricks", () ->
-                    new StoneBricksBlock(SoundType.STONE, MaterialColor.STONE));
+                    new StoneLikeBlock(SoundType.STONE, MaterialColor.STONE));
 
     public static final RegistryObject<Block> ANDESITE_BRICKS_STAIRS =
             registerDefault("andesite_bricks_stairs", () ->
@@ -1639,7 +1648,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CRACKED_ANDESITE_BRICKS =
             registerDefault("cracked_andesite_bricks", () ->
-                    new StoneBricksBlock(SoundType.STONE, MaterialColor.STONE));
+                    new StoneLikeBlock(SoundType.STONE, MaterialColor.STONE));
 
     public static final RegistryObject<Block> CRACKED_ANDESITE_BRICKS_STAIRS =
             registerDefault("cracked_andesite_bricks_stairs", () ->
@@ -1656,7 +1665,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> MOSSY_ANDESITE_BRICKS =
             registerDefault("mossy_andesite_bricks", () ->
-                    new StoneBricksBlock(SoundType.STONE, MaterialColor.STONE));
+                    new StoneLikeBlock(SoundType.STONE, MaterialColor.STONE));
 
     public static final RegistryObject<Block> MOSSY_ANDESITE_BRICKS_STAIRS =
             registerDefault("mossy_andesite_bricks_stairs", () ->
@@ -1673,36 +1682,23 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CHISELED_ANDESITE_BRICKS =
             registerDefault("chiseled_andesite_bricks", () ->
-                    new StoneBricksBlock(SoundType.STONE, MaterialColor.STONE));
-
-    public static final RegistryObject<Block> CHISELED_ANDESITE_BRICKS_STAIRS =
-            registerDefault("chiseled_andesite_bricks_stairs", () ->
-                    new StairBlock(CHISELED_ANDESITE_BRICKS.get()::defaultBlockState,
-                            ofStone()));
-
-    public static final RegistryObject<Block> CHISELED_ANDESITE_BRICKS_SLAB =
-            registerDefault("chiseled_andesite_bricks_slab", () ->
-                    new SlabBlock(ofStone()));
-
-    public static final RegistryObject<Block> CHISELED_ANDESITE_BRICKS_WALL =
-            registerDefault("chiseled_andesite_bricks_wall", () ->
-                    new WallBlock(ofStone()));
+                    new StoneLikeBlock(SoundType.STONE, MaterialColor.STONE));
 
     public static final RegistryObject<Block> GRANITE_BRICKS =
             registerDefault("granite_bricks", () ->
-                    new StoneBricksBlock(SoundType.STONE, MaterialColor.STONE));
+                    new StoneLikeBlock(SoundType.STONE, MaterialColor.STONE));
 
     public static final RegistryObject<Block> CRACKED_GRANITE_BRICKS =
             registerDefault("cracked_granite_bricks", () ->
-                    new StoneBricksBlock(SoundType.STONE, MaterialColor.STONE));
+                    new StoneLikeBlock(SoundType.STONE, MaterialColor.STONE));
 
     public static final RegistryObject<Block> MOSSY_GRANITE_BRICKS =
             registerDefault("mossy_granite_bricks", () ->
-                    new StoneBricksBlock(SoundType.STONE, MaterialColor.STONE));
+                    new StoneLikeBlock(SoundType.STONE, MaterialColor.STONE));
 
     public static final RegistryObject<Block> CHISELED_GRANITE_BRICKS =
             registerDefault("chiseled_granite_bricks", () ->
-                    new StoneBricksBlock(SoundType.STONE, MaterialColor.STONE));
+                    new StoneLikeBlock(SoundType.STONE, MaterialColor.STONE));
 
     public static final RegistryObject<Block> GRANITE_BRICKS_STAIRS =
             registerDefault("granite_bricks_stairs", () ->
@@ -1743,34 +1739,21 @@ public class ModBlocks {
             registerDefault("mossy_granite_bricks_wall", () ->
                     new WallBlock(ofStone()));
 
-    public static final RegistryObject<Block> CHISELED_GRANITE_BRICKS_STAIRS =
-            registerDefault("chiseled_granite_bricks_stairs", () ->
-                    new StairBlock(GRANITE_BRICKS.get()::defaultBlockState,
-                            ofStone()));
-
-    public static final RegistryObject<Block> CHISELED_GRANITE_BRICKS_SLAB =
-            registerDefault("chiseled_granite_bricks_slab", () ->
-                    new SlabBlock(ofStone()));
-
-    public static final RegistryObject<Block> CHISELED_GRANITE_BRICKS_WALL =
-            registerDefault("chiseled_granite_bricks_wall", () ->
-                    new WallBlock(ofStone()));
-
     public static final RegistryObject<Block> DIORITE_BRICKS =
             registerDefault("diorite_bricks", () ->
-                    new StoneBricksBlock(SoundType.STONE, MaterialColor.STONE));
+                    new StoneLikeBlock(SoundType.STONE, MaterialColor.STONE));
 
     public static final RegistryObject<Block> CRACKED_DIORITE_BRICKS =
             registerDefault("cracked_diorite_bricks", () ->
-                    new StoneBricksBlock(SoundType.STONE, MaterialColor.STONE));
+                    new StoneLikeBlock(SoundType.STONE, MaterialColor.STONE));
 
     public static final RegistryObject<Block> MOSSY_DIORITE_BRICKS =
             registerDefault("mossy_diorite_bricks", () ->
-                    new StoneBricksBlock(SoundType.STONE, MaterialColor.STONE));
+                    new StoneLikeBlock(SoundType.STONE, MaterialColor.STONE));
 
     public static final RegistryObject<Block> CHISELED_DIORITE_BRICKS =
             registerDefault("chiseled_diorite_bricks", () ->
-                    new StoneBricksBlock(SoundType.STONE, MaterialColor.STONE));
+                    new StoneLikeBlock(SoundType.STONE, MaterialColor.STONE));
 
     public static final RegistryObject<Block> DIORITE_BRICKS_STAIRS =
             registerDefault("diorite_bricks_stairs", () ->
@@ -1811,18 +1794,222 @@ public class ModBlocks {
             registerDefault("mossy_diorite_bricks_wall", () ->
                     new WallBlock(ofStone()));
 
-    public static final RegistryObject<Block> CHISELED_DIORITE_BRICKS_STAIRS =
-            registerDefault("chiseled_diorite_bricks_stairs", () ->
-                    new StairBlock(DIORITE_BRICKS.get()::defaultBlockState,
-                            ofStone()));
+    public static final RegistryObject<Block> MOSSY_COBBLED_DEEPSLATE =
+            registerDefault("mossy_cobbled_deepslate", () ->
+                    new StoneLikeBlock(SoundType.DEEPSLATE, MaterialColor.DEEPSLATE));
 
-    public static final RegistryObject<Block> CHISELED_DIORITE_BRICKS_SLAB =
-            registerDefault("chiseled_diorite_bricks_slab", () ->
-                    new SlabBlock(ofStone()));
+    public static final RegistryObject<Block> MOSSY_DEEPSLATE_BRICKS =
+            registerDefault("mossy_deepslate_bricks", () ->
+                    new StoneLikeBlock(SoundType.DEEPSLATE, MaterialColor.DEEPSLATE));
 
-    public static final RegistryObject<Block> CHISELED_DIORITE_BRICKS_WALL =
-            registerDefault("chiseled_diorite_bricks_wall", () ->
-                    new WallBlock(ofStone()));
+    public static final RegistryObject<Block> MOSSY_DEEPSLATE_TILES =
+            registerDefault("mossy_deepslate_tiles", () ->
+                    new StoneLikeBlock(SoundType.DEEPSLATE, MaterialColor.DEEPSLATE));
+
+    public static final RegistryObject<Block> MOSSY_DEEPSLATE_BRICKS_STAIRS =
+            registerDefault("mossy_deepslate_bricks_stairs", () ->
+                    new StairBlock(MOSSY_DEEPSLATE_BRICKS.get()::defaultBlockState,
+                            ofStone().sound(SoundType.DEEPSLATE)));
+
+    public static final RegistryObject<Block> MOSSY_DEEPSLATE_BRICKS_SLAB =
+            registerDefault("mossy_deepslate_bricks_slab", () ->
+                    new SlabBlock(ofStone().sound(SoundType.DEEPSLATE)));
+
+    public static final RegistryObject<Block> MOSSY_DEEPSLATE_BRICKS_WALL =
+            registerDefault("mossy_deepslate_bricks_wall", () ->
+                    new WallBlock(ofStone().sound(SoundType.DEEPSLATE)));
+
+    public static final RegistryObject<Block> MOSSY_COBBLED_DEEPSLATE_STAIRS =
+            registerDefault("mossy_cobbled_deepslate_stairs", () ->
+                    new StairBlock(MOSSY_COBBLED_DEEPSLATE.get()::defaultBlockState,
+                            ofStone().sound(SoundType.DEEPSLATE)));
+
+    public static final RegistryObject<Block> MOSSY_COBBLED_DEEPSLATE_SLAB =
+            registerDefault("mossy_cobbled_deepslate_slab", () ->
+                    new SlabBlock(ofStone().sound(SoundType.DEEPSLATE)));
+
+    public static final RegistryObject<Block> MOSSY_COBBLED_DEEPSLATE_WALL =
+            registerDefault("mossy_cobbled_deepslate_wall", () ->
+                    new WallBlock(ofStone().sound(SoundType.DEEPSLATE)));
+
+    public static final RegistryObject<Block> MOSSY_DEEPSLATE_TILES_STAIRS =
+            registerDefault("mossy_deepslate_tiles_stairs", () ->
+                    new StairBlock(MOSSY_DEEPSLATE_TILES.get()::defaultBlockState,
+                            ofStone().sound(SoundType.DEEPSLATE)));
+
+    public static final RegistryObject<Block> MOSSY_DEEPSLATE_TILES_SLAB =
+            registerDefault("mossy_deepslate_tiles_slab", () ->
+                    new SlabBlock(ofStone().sound(SoundType.DEEPSLATE)));
+
+    public static final RegistryObject<Block> MOSSY_DEEPSLATE_TILES_WALL =
+            registerDefault("mossy_deepslate_tiles_wall", () ->
+                    new WallBlock(ofStone().sound(SoundType.DEEPSLATE)));
+
+    public static final RegistryObject<Block> CACTUS_FRUIT =
+            register("cactus_fruit", CactusFruitBlock::new);
+
+    public static final RegistryObject<Block> SULFUR_BLOCK =
+            registerDefault("sulfur_block", () ->
+                    new Block(BlockBehaviour.Properties.of(Material.METAL)
+                            .strength(2.0F, 3.0F).requiresCorrectToolForDrops()
+                            .sound(SoundType.STONE)));
+
+    public static final RegistryObject<Block> NITER_BLOCK =
+            registerDefault("niter_block", () ->
+                    new Block(BlockBehaviour.Properties.of(Material.METAL)
+                            .strength(2.0F, 3.0F).requiresCorrectToolForDrops()
+                            .sound(SoundType.STONE)));
+
+    public static final RegistryObject<Block> SANDSTONE_NITER_ORE =
+            registerDefault("sandstone_niter_ore", () ->
+                    new DropExperienceBlock(BlockBehaviour.Properties.of(Material.METAL)
+                            .strength(2.0F, 3.0F).requiresCorrectToolForDrops()
+                            .sound(SoundType.STONE),
+                            UniformInt.of(1, 5)));
+
+    public static final RegistryObject<Block> QUARTZ_SANDSTONE_NITER_ORE =
+            registerDefault("quartz_sandstone_niter_ore", () ->
+                    new DropExperienceBlock(BlockBehaviour.Properties.of(Material.METAL)
+                            .strength(2.0F, 3.0F).requiresCorrectToolForDrops()
+                            .sound(SoundType.STONE),
+                            UniformInt.of(1, 5)));
+
+    public static final RegistryObject<Block> RED_SANDSTONE_NITER_ORE =
+            registerDefault("red_sandstone_niter_ore", () ->
+                    new DropExperienceBlock(BlockBehaviour.Properties.of(Material.METAL)
+                            .strength(2.0F, 3.0F).requiresCorrectToolForDrops()
+                            .sound(SoundType.STONE),
+                            UniformInt.of(1, 5)));
+
+    public static final RegistryObject<Block> SOUL_SANDSTONE_NITER_ORE =
+            registerDefault("soul_sandstone_niter_ore", () ->
+                    new DropExperienceBlock(BlockBehaviour.Properties.of(Material.METAL)
+                            .strength(2.0F, 3.0F).requiresCorrectToolForDrops()
+                            .sound(SoundType.STONE),
+                            UniformInt.of(1, 5)));
+
+    public static final RegistryObject<Block> CATTAIL =
+            registerDefault("cattail", CattailBlock::new);
+
+    public static final RegistryObject<Block> THATCH =
+            registerDefault("thatch", ThatchBlock::new);
+
+    public static final RegistryObject<Block> DRIED_THATCH =
+            registerDefault("dried_thatch", DriedThatchBlock::new);
+
+    public static final RegistryObject<Block> THATCH_CARPET =
+            registerDefault("thatch_carpet", ThatchCarpetBlock::new);
+
+    public static final RegistryObject<Block> DRIED_THATCH_CARPET =
+            registerDefault("dried_thatch_carpet", DriedThatchCarpetBlock::new);
+
+    public static final RegistryObject<Block> THATCH_SLAB =
+            registerDefault("thatch_slab", ThatchSlabBlock::new);
+
+    public static final RegistryObject<Block> DRIED_THATCH_SLAB =
+            registerDefault("dried_thatch_slab", DriedThatchSlabBlock::new);
+
+    public static final RegistryObject<Block> THATCH_STAIRS =
+            registerDefault("thatch_stairs", ThatchStairBlock::new);
+
+    public static final RegistryObject<Block> DRIED_THATCH_STAIRS =
+            registerDefault("dried_thatch_stairs", DriedThatchStairBlock::new);
+
+    public static final RegistryObject<Block> REED =
+            registerDefault("reed", ReedBlock::new);
+
+    public static final RegistryObject<Block> POLISHED_ANDESITE_BUTTON =
+            registerDefault("polished_andesite_button", ModBlocks::stoneButton);
+
+    public static final RegistryObject<Block> POLISHED_DIORITE_BUTTON =
+            registerDefault("polished_diorite_button", ModBlocks::stoneButton);
+
+    public static final RegistryObject<Block> SMOOTH_STONE_BUTTON =
+            registerDefault("smooth_stone_button", ModBlocks::stoneButton);
+    public static final RegistryObject<Block> BLACKSTONE_BUTTON =
+            registerDefault("blackstone_button", ModBlocks::stoneButton);
+
+    public static final RegistryObject<Block> POLISHED_GRANITE_BUTTON =
+            registerDefault("polished_granite_button", ModBlocks::stoneButton);
+
+    public static final RegistryObject<Block> DEEPSLATE_BUTTON =
+            registerDefault("deepslate_button", ModBlocks::stoneButton);
+    public static final RegistryObject<Block> POLISHED_DEEPSLATE_BUTTON =
+            registerDefault("polished_deepslate_button", ModBlocks::stoneButton);
+    public static final RegistryObject<Block> DEEPSLATE_PRESSURE_PLATE =
+            registerDefault("deepslate_pressure_plate", ModBlocks::pressurePlate);
+
+    public static final RegistryObject<Block>  POLISHED_DEEPSLATE_PRESSURE_PLATE =
+            registerDefault("polished_deepslate_pressure_plate", ModBlocks::pressurePlate);
+
+    public static final RegistryObject<Block> POLISHED_ANDESITE_PRESSURE_PLATE =
+            registerDefault("polished_andesite_pressure_plate", ModBlocks::pressurePlate);
+
+    public static final RegistryObject<Block> POLISHED_DIORITE_PRESSURE_PLATE =
+            registerDefault("polished_diorite_pressure_plate", ModBlocks::pressurePlate);
+
+    public static final RegistryObject<Block> POLISHED_GRANITE_PRESSURE_PLATE =
+            registerDefault("polished_granite_pressure_plate", ModBlocks::pressurePlate);
+    public static final RegistryObject<Block> SMOOTH_STONE_PRESSURE_PLATE =
+            registerDefault("smooth_stone_pressure_plate", ModBlocks::pressurePlate);
+    public static final RegistryObject<Block> BLACKSTONE_PRESSURE_PLATE =
+            registerDefault("blackstone_pressure_plate", ModBlocks::pressurePlate);
+
+    public static final RegistryObject<Block> CHISELED_DEEPSLATE_BRICKS =
+            registerDefault("chiseled_deepslate_bricks", () ->
+                    new StoneLikeBlock(SoundType.DEEPSLATE, MaterialColor.DEEPSLATE));
+
+    public static final RegistryObject<Block> CHISELED_DEEPSLATE_TILES =
+            registerDefault("chiseled_deepslate_tiles", () ->
+                    new StoneLikeBlock(SoundType.DEEPSLATE, MaterialColor.DEEPSLATE));
+
+    public static final RegistryObject<Block> CHISELED_POLISHED_DEEPSLATE =
+            registerDefault("chiseled_polished_deepslate", () ->
+                    new StoneLikeBlock(SoundType.DEEPSLATE, MaterialColor.DEEPSLATE));
+
+    public static final RegistryObject<Block> INFESTED_CHISELED_DEEPSLATE_TILES =
+            registerDefault("infested_chiseled_deepslate_tiles", () ->
+                    new InfestedBlock(ModBlocks.CHISELED_DEEPSLATE_TILES.get(),
+                            BlockBehaviour.Properties.of(Material.CLAY)
+                                    .sound(SoundType.DEEPSLATE)));
+
+    public static final RegistryObject<Block> INFESTED_CHISELED_DEEPSLATE_BRICKS =
+            registerDefault("infested_chiseled_deepslate_bricks", () ->
+                    new InfestedBlock(ModBlocks.CHISELED_DEEPSLATE_BRICKS.get(),
+                            BlockBehaviour.Properties.of(Material.CLAY)
+                                    .sound(SoundType.DEEPSLATE)));
+
+    public static final RegistryObject<Block> INFESTED_MOSSY_COBBLED_DEEPSLATE =
+            registerDefault("infested_mossy_cobbled_deepslate", () ->
+                    new InfestedBlock(ModBlocks.MOSSY_COBBLED_DEEPSLATE.get(),
+                            BlockBehaviour.Properties.of(Material.CLAY)
+                                    .sound(SoundType.DEEPSLATE)));
+
+    public static final RegistryObject<Block> INFESTED_MOSSY_DEEPSLATE_BRICKS =
+            registerDefault("infested_mossy_deepslate_bricks", () ->
+                    new InfestedBlock(ModBlocks.MOSSY_DEEPSLATE_BRICKS.get(),
+                            BlockBehaviour.Properties.of(Material.CLAY)
+                                    .sound(SoundType.DEEPSLATE)));
+
+    public static final RegistryObject<Block> INFESTED_MOSSY_DEEPSLATE_TILES =
+            registerDefault("infested_mossy_deepslate_tiles", () ->
+                    new InfestedBlock(ModBlocks.MOSSY_DEEPSLATE_TILES.get(),
+                            BlockBehaviour.Properties.of(Material.CLAY)
+                                    .sound(SoundType.DEEPSLATE)));
+
+    private static PressurePlateBlock pressurePlate() {
+        return new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS,
+                BlockBehaviour.Properties.of(Material.STONE)
+                .requiresCorrectToolForDrops().noCollission().strength(0.5F),
+                SoundEvents.STONE_PRESSURE_PLATE_CLICK_OFF, SoundEvents.STONE_PRESSURE_PLATE_CLICK_ON);
+    }
+
+    private static ButtonBlock stoneButton() {
+        return new ButtonBlock(BlockBehaviour.Properties.of(Material.DECORATION)
+                .noCollission().strength(0.5F)
+                .sound(SoundType.STONE), 20, false,
+                SoundEvents.STONE_BUTTON_CLICK_OFF, SoundEvents.STONE_BUTTON_CLICK_ON);
+    }
 
     private static BlockBehaviour.Properties ofStone() {
         return BlockBehaviour.Properties

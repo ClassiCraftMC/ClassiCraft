@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "classicraft:mossy_deepslate_bricks"
+  },
+  "result": "minecraft:deepslate_bricks"
+}

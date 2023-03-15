@@ -19,6 +19,7 @@ package nameless.classicraft.datagen.lang;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.init.ModBlocks;
+import nameless.classicraft.init.ModEffects;
 import nameless.classicraft.init.ModEntities;
 import nameless.classicraft.init.ModItems;
 import net.minecraft.data.DataGenerator;
@@ -74,7 +75,6 @@ public class ModLanguageProvider extends LanguageProvider {
         add("info.classicraft.food.nutrition", "Nutrition");
         add("info.classicraft.food.saturation", "Saturation");
         add(ModItems.OCEAN_SHARK_SPAWN_EGG.get(), "Ocean Shark Spawn Egg");
-        add(ModItems.LIVING_DEAD_SPAWN_EGG.get(), "Living Dead Spawn Egg");
         add(ModItems.COOKED_EGG.get(), "Cooked Egg");
         add(ModItems.NETHER_MUSHROOM_STEW.get(), "Nether Mushroom Stew");
         add(ModItems.ROTTEN_FOOD.get(), "Rotten Food");
@@ -86,7 +86,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.CRACKED_BRICKS_STAIRS.get(), "Cracked Bricks Stairs");
         add(ModBlocks.CRACKED_BRICKS_WALL.get(), "Cracked Bricks Wall");
         add(ModBlocks.CRACKED_BRICKS_SLAB.get(), "Cracked Bricks Slab");
-        add(ModBlocks.SULFUR_ORE.get(), "Sulfur Ore");
+        add(ModBlocks.DEEPSLATE_SULFUR_ORE.get(), "Deepslate Sulfur Ore");
         add(ModItems.SULFUR.get(), "Sulfur");
         add(ModBlocks.SMOOTH_STONE_WALL.get(), "Smooth Stone Wall");
         add(ModBlocks.SMOOTH_STONE_STAIRS.get(), "Smooth Stone Stairs");
@@ -179,8 +179,9 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.QUARTZ_BRICKS_STAIRS.get(), "Quartz Bricks Stairs");
         add("itemGroup.classicraft.common", "ClassiCraft|Common");
         add("itemGroup.classicraft.building_blocks", "ClassiCraft|Building Blocks");
-        add("itemGroup.classicraft.material", "ClassiCraft|Material");
+        add("itemGroup.classicraft.materials", "ClassiCraft|Materials");
         add("itemGroup.classicraft.natural_blocks", "ClassiCraft|Natural Blocks");
+        add("itemGroup.classicraft.tools", "ClassiCraft|Tools");
         add(ModBlocks.WHITE_WOOL_STAIRS.get(), "White Wool Stairs");
         add(ModBlocks.WHITE_WOOL_SLAB.get(), "White Wool Slab");
         add(ModBlocks.ORANGE_WOOL_STAIRS.get(), "Orange Wool Stairs");
@@ -389,9 +390,6 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.MOSSY_ANDESITE_BRICKS_STAIRS.get(), "Mossy Andesite Bricks Stairs");
         add(ModBlocks.MOSSY_ANDESITE_BRICKS_WALL.get(), "Mossy Andesite Bricks Wall");
         add(ModBlocks.CHISELED_ANDESITE_BRICKS.get(), "Chiseled Andesite Bricks");
-        add(ModBlocks.CHISELED_ANDESITE_BRICKS_SLAB.get(), "Chiseled Andesite Bricks Slab");
-        add(ModBlocks.CHISELED_ANDESITE_BRICKS_STAIRS.get(), "Chiseled Andesite Bricks Stairs");
-        add(ModBlocks.CHISELED_ANDESITE_BRICKS_WALL.get(), "Chiseled Andesite Bricks Wall");
         add(ModBlocks.GRANITE_BRICKS.get(), "Granite Bricks");
         add(ModBlocks.GRANITE_BRICKS_SLAB.get(), "Granite Bricks Slab");
         add(ModBlocks.GRANITE_BRICKS_STAIRS.get(), "Granite Bricks Stairs");
@@ -405,9 +403,6 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.MOSSY_GRANITE_BRICKS_STAIRS.get(), "Mossy Granite Bricks Stairs");
         add(ModBlocks.MOSSY_GRANITE_BRICKS_WALL.get(), "Mossy Granite Bricks Wall");
         add(ModBlocks.CHISELED_GRANITE_BRICKS.get(), "Chiseled Granite Bricks");
-        add(ModBlocks.CHISELED_GRANITE_BRICKS_SLAB.get(), "Chiseled Granite Bricks Slab");
-        add(ModBlocks.CHISELED_GRANITE_BRICKS_STAIRS.get(), "Chiseled Granite Bricks Stairs");
-        add(ModBlocks.CHISELED_GRANITE_BRICKS_WALL.get(), "Chiseled Granite Bricks Wall");
         add(ModBlocks.DIORITE_BRICKS.get(), "Diorite Bricks");
         add(ModBlocks.DIORITE_BRICKS_SLAB.get(), "Diorite Bricks Slab");
         add(ModBlocks.DIORITE_BRICKS_STAIRS.get(), "Diorite Bricks Stairs");
@@ -421,9 +416,6 @@ public class ModLanguageProvider extends LanguageProvider {
         add(ModBlocks.MOSSY_DIORITE_BRICKS_STAIRS.get(), "Mossy Diorite Bricks Stairs");
         add(ModBlocks.MOSSY_DIORITE_BRICKS_WALL.get(), "Mossy Diorite Bricks Wall");
         add(ModBlocks.CHISELED_DIORITE_BRICKS.get(), "Chiseled Diorite Bricks");
-        add(ModBlocks.CHISELED_DIORITE_BRICKS_SLAB.get(), "Chiseled Diorite Bricks Slab");
-        add(ModBlocks.CHISELED_DIORITE_BRICKS_STAIRS.get(), "Chiseled Diorite Bricks Stairs");
-        add(ModBlocks.CHISELED_DIORITE_BRICKS_WALL.get(), "Chiseled Diorite Bricks Wall");
         add(ModItems.MOSS_CLUMP.get(), "Moss Clump");
         add("advancements.classicraft.mossy_on.title", "Mossy on");
         add("advancements.classicraft.mossy_off.title", "Mossy off");
@@ -431,6 +423,93 @@ public class ModLanguageProvider extends LanguageProvider {
         add("advancements.classicraft.mossy_off.description", "Scrape Wax off of a Mossy CobbleStone block!");
         add("advancements.classicraft.obtain_pebble.title", "ClassiCraft Life");
         add("advancements.classicraft.obtain_pebble.description", "Obtain a pebble and get start your ClassiCraft Life!");
+        add(ModItems.CERAMIC_BOWL.get(), "Ceramic Bowl");
+        add(ModItems.UNFIRED_CLAY_BOWL.get(), "Unfired Clay Bowl");
+        add(ModItems.UNFIRED_CLAY_BRICK.get(), "Unfired Clay Brick");
+        add(ModItems.UNFIRED_CLAY_FLOWER_POT.get(), "Unfired Clay Flower Pot");
+        add(ModItems.PUMPKIN_SLICE.get(), "Pumpkin Slice");
+        add(ModEffects.MILK.get(), "Milk");
+        add(ModBlocks.CACTUS_FRUIT.get(), "Cactus Fruit");
+        add(ModItems.PLAINTIVE_SOUL.get(), "Plaintive Soul");
+        add(ModItems.WITHER_BONE.get(), "Wither Bone");
+        add(ModItems.SHIVER_BONE.get(), "Shiver Bone");
+        add(ModBlocks.NETHER_SULFUR_ORE.get(), "Nether Sulfur Ore");
+        add(ModBlocks.SULFUR_BLOCK.get(), "Sulfur Block");
+        add(ModItems.FURIOUS_SOUL.get(), "Furious Soul");
+        add(ModItems.CAREFREE_SOUL.get(), "Carefree Soul");
+        add(ModItems.TERRIFIED_SOUL.get(), "Terrified Soul");
+        add(ModItems.GLARE_SPAWN_EGG.get(), "Glare Spawn Egg");
+        add(ModBlocks.NITER_BLOCK.get(), "Niter Block");
+        add(ModItems.NITER.get(), "Niter");
+        add(ModBlocks.SANDSTONE_NITER_ORE.get(), "SandStone Niter Ore");
+        add(ModBlocks.QUARTZ_SANDSTONE_NITER_ORE.get(), "Quartz SandStone Niter Ore");
+        add(ModBlocks.RED_SANDSTONE_NITER_ORE.get(), "Red SandStone Niter Ore");
+        add(ModBlocks.SOUL_SANDSTONE_NITER_ORE.get(), "Soul SandStone Niter Ore");
+        add(ModBlocks.CATTAIL.get(), "Cattail");
+        add(ModBlocks.THATCH.get(), "Thatch");
+        add(ModBlocks.DRIED_THATCH.get(), "Dried Thatch");
+        add(ModBlocks.THATCH_CARPET.get(), "Thatch Carpet");
+        add(ModBlocks.THATCH_STAIRS.get(), "Thatch Stairs");
+        add(ModBlocks.THATCH_SLAB.get(), "Thatch Slab");
+        add(ModBlocks.DRIED_THATCH_CARPET.get(), "Dried Thatch Carpet");
+        add(ModBlocks.DRIED_THATCH_STAIRS.get(), "Dried Thatch Stairs");
+        add(ModBlocks.DRIED_THATCH_SLAB.get(), "Dried Thatch Slab");
+        add(ModBlocks.REED.get(), "Reed");
+        add(ModItems.STONE_HAMMER.get(), "Stone Hammer");
+        add(ModItems.WOODEN_HAMMER.get(), "Wooden Hammer");
+        add(ModItems.IRON_HAMMER.get(), "Iron Hammer");
+        add(ModItems.GOLDEN_HAMMER.get(), "Golden Hammer");
+        add(ModItems.DIAMOND_HAMMER.get(), "Diamond Hammer");
+        add(ModItems.NETHERITE_HAMMER.get(), "Netherite Hammer");
+        add(ModItems.STONE_DAGGER.get(), "Stone Dagger");
+        add(ModItems.WOODEN_DAGGER.get(), "Wooden Dagger");
+        add(ModItems.IRON_DAGGER.get(), "Iron Dagger");
+        add(ModItems.GOLDEN_DAGGER.get(), "Golden Dagger");
+        add(ModItems.DIAMOND_DAGGER.get(), "Diamond Dagger");
+        add(ModItems.NETHERITE_DAGGER.get(), "Netherite Dagger");
+        add(ModItems.STONE_JAVELIN.get(), "Stone Javelin");
+        add(ModItems.WOODEN_JAVELIN.get(), "Wooden Javelin");
+        add(ModItems.IRON_JAVELIN.get(), "Iron Javelin");
+        add(ModItems.GOLDEN_JAVELIN.get(), "Golden Javelin");
+        add(ModItems.DIAMOND_JAVELIN.get(), "Diamond Javelin");
+        add(ModItems.NETHERITE_JAVELIN.get(), "Netherite Javelin");
+        add("info.classicraft.backstab", "You backstabed the");
+        add("info.classicraft.cause", ", and caused ");
+        add("info.classicraft.damage", " damage.");
+        add(ModBlocks.POLISHED_ANDESITE_BUTTON.get(), "Polished Andesite Button");
+        add(ModBlocks.POLISHED_GRANITE_BUTTON.get(), "Polished Granite Button");
+        add(ModBlocks.POLISHED_DIORITE_BUTTON.get(), "Polished Diorite Button");
+        add(ModBlocks.SMOOTH_STONE_BUTTON.get(), "Smooth Stone Button");
+        add(ModBlocks.POLISHED_ANDESITE_PRESSURE_PLATE.get(), "Polished Andesite Pressure Plate");
+        add(ModBlocks.POLISHED_GRANITE_PRESSURE_PLATE.get(), "Polished Granite Pressure Plate");
+        add(ModBlocks.POLISHED_DIORITE_PRESSURE_PLATE.get(), "Polished Diorite Pressure Plate");
+        add(ModBlocks.SMOOTH_STONE_PRESSURE_PLATE.get(), "Smooth Stone Pressure Plate");
+        add(ModBlocks.BLACKSTONE_BUTTON.get(), "BlackStone Button");
+        add(ModBlocks.BLACKSTONE_PRESSURE_PLATE.get(), "BlackStone Pressure Plate");
+        add(ModBlocks.MOSSY_DEEPSLATE_BRICKS.get(), "Mossy Deepslate Bricks");
+        add(ModBlocks.MOSSY_COBBLED_DEEPSLATE.get(), "Mossy Cobbled Deepslate");
+        add(ModBlocks.MOSSY_DEEPSLATE_TILES.get(), "Mossy Deepslate Tiles");
+        add(ModBlocks.MOSSY_DEEPSLATE_BRICKS_SLAB.get(), "Mossy Deepslate Bricks Slab");
+        add(ModBlocks.MOSSY_COBBLED_DEEPSLATE_SLAB.get(), "Mossy Cobbled Deepslate Slab");
+        add(ModBlocks.MOSSY_DEEPSLATE_TILES_SLAB.get(), "Mossy Deepslate Tiles Slab");
+        add(ModBlocks.MOSSY_DEEPSLATE_BRICKS_STAIRS.get(), "Mossy Deepslate Bricks Stairs");
+        add(ModBlocks.MOSSY_COBBLED_DEEPSLATE_STAIRS.get(), "Mossy Cobbled Deepslate Stairs");
+        add(ModBlocks.MOSSY_DEEPSLATE_TILES_STAIRS.get(), "Mossy Deepslate Tiles Stairs");
+        add(ModBlocks.MOSSY_DEEPSLATE_BRICKS_WALL.get(), "Mossy Deepslate Bricks Wall");
+        add(ModBlocks.MOSSY_COBBLED_DEEPSLATE_WALL.get(), "Mossy Cobbled Deepslate Wall");
+        add(ModBlocks.MOSSY_DEEPSLATE_TILES_WALL.get(), "Mossy Deepslate Tiles Wall");
+        add(ModBlocks.CHISELED_DEEPSLATE_BRICKS.get(), "Chiseled Deepslate Bricks");
+        add(ModBlocks.CHISELED_DEEPSLATE_TILES.get(), "Chiseled Deepslate Tiles");
+        add(ModBlocks.CHISELED_POLISHED_DEEPSLATE.get(), "Chiseled Polished Deepslate");
+        add(ModBlocks.INFESTED_CHISELED_DEEPSLATE_BRICKS.get(), "Infested Chiseled Deepslate Bricks");
+        add(ModBlocks.INFESTED_CHISELED_DEEPSLATE_TILES.get(), "Infested Chiseled Deepslate Tiles");
+        add(ModBlocks.INFESTED_MOSSY_DEEPSLATE_BRICKS.get(), "Infested Mossy Deepslate Bricks");
+        add(ModBlocks.INFESTED_MOSSY_COBBLED_DEEPSLATE.get(), "Infested Mossy Cobbled Deepslate");
+        add(ModBlocks.INFESTED_MOSSY_DEEPSLATE_TILES.get(), "Infested Mossy Deepslate Tiles");
+        add(ModBlocks.DEEPSLATE_BUTTON.get(), "Deepslate Button");
+        add(ModBlocks.POLISHED_DEEPSLATE_BUTTON.get(), "Polished Deepslate Button");
+        add(ModBlocks.DEEPSLATE_PRESSURE_PLATE.get(), "Deepslate Pressure Plate");
+        add(ModBlocks.POLISHED_DEEPSLATE_PRESSURE_PLATE.get(), "Polished Deepslate Pressure Plate");
 
         pebbleBlock();
         meta();
@@ -461,7 +540,7 @@ public class ModLanguageProvider extends LanguageProvider {
     private void entity() {
         add(ModEntities.OCEAN_SHARK_ENTITY.get(), "Ocean Shark");
         add(ModEntities.TROUT_ENTITY.get(), "Trout");
-        add(ModEntities.LIVING_DEAD.get(), "Living Dead");
+        add(ModEntities.GLARE.get(), "Glare");
     }
 
     private void vanilla() {
@@ -472,6 +551,12 @@ public class ModLanguageProvider extends LanguageProvider {
         add(Blocks.RED_NETHER_BRICK_STAIRS, "Crimson Nether Brick Stairs");
         add(Blocks.RED_NETHER_BRICK_SLAB, "Crimson Nether Brick Slab");
         add(Blocks.RED_NETHER_BRICK_WALL, "Crimson Nether Brick Wall");
+        add("fluid.minecraft.milk", "Milk");
+        add("item.minecraft.potion.effect.milk", "Milk Bottle");
+        add("item.minecraft.splash_potion.effect.milk", "Splash Milk Bottle");
+        add("item.minecraft.lingering_potion.effect.milk", "Lingering Milk Bottle");
+        add("item.minecraft.tipped_arrow.effect.milk", "Tipped Milk Arrow");
+        add(Items.HAY_BLOCK, "Dired Wheat Block");
     }
 
     private void meta() {
@@ -513,5 +598,17 @@ public class ModLanguageProvider extends LanguageProvider {
         add("item.classicraft.scraper.flint_scraper", "Flint Scraper");
         add("item.classicraft.scraper.blackstone_scraper", "Blackstone Scraper");
         add("item.classicraft.scraper.quartz_scraper", "Quartz Scraper");
+        add("item.minecraft.bucket_wooden", "Wooden Bucket");
+        add("item.minecraft.water_bucket_wooden", "Wooden Bucket of Water");
+        add("item.minecraft.pufferfish_bucket_wooden", "Wooden Bucket of Puffer Fish");
+        add("item.minecraft.salmon_bucket_wooden", "Wooden Bucket of Salmon");
+        add("item.minecraft.cod_bucket_wooden", "Wooden Bucket of Cod");
+        add("item.minecraft.tropical_fish_bucket_wooden", "Wooden Bucket of Tropical Fish");
+        add("item.minecraft.axolotl_bucket_wooden", "Wooden Bucket of Axolotl");
+        add("item.minecraft.tadpole_bucket_wooden", "Wooden Bucket of Tadpole");
+        add("item.minecraft.lava_bucket_wooden", "Wooden Bucket of Lava");
+        add("item.classicraft.trout_bucket_wooden", "Wooden Bucket of Trout");
+        add("item.minecraft.milk_bucket_wooden", "Wooden Bucket of Milk");
+        add("item.minecraft.powder_snow_bucket_wooden", "Wooden Bucket of Powder Snow");
     }
 }

@@ -17,8 +17,7 @@
  */
 package nameless.classicraft.network;
 
-import nameless.classicraft.api.network.INormalMessage;
-import nameless.classicraft.api.san.ISanHandler;
+import nameless.classicraft.init.ModCapabilities;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkEvent;
@@ -26,25 +25,28 @@ import net.minecraftforge.network.PacketDistributor;
 
 import java.util.function.Supplier;
 
-public class SanChangeMessage implements INormalMessage {
+public class SanChangeMessage{
 
     public SanChangeMessage(FriendlyByteBuf buf) {
 
     }
 
-    @Override
-    public void toBytes(FriendlyByteBuf buf) {
+    public static void buffer(SanChangeMessage message, FriendlyByteBuf buf) {
 
     }
 
-    @Override
-    public void process(Supplier<NetworkEvent.Context> context) {
+    public static void handler(SanChangeMessage message, Supplier<NetworkEvent.Context> context) {
         ServerPlayer player = context.get().getSender();
         if (player != null) {
-            SimpleNetworkHandler.CHANNEL.
-                    send(PacketDistributor.PLAYER.with(() -> player),
-                            new PlayerSanMessage(((ISanHandler) player).getSan(),
-                                    ((ISanHandler) player).getMaxSan()));
+            player.getCapability(ModCapabilities.PLAYER_SAN_LEVEL).ifPresent(
+                    capability -> {
+                        SimpleNetworkHandler.PACKET_HANDLER.send(PacketDistributor.PLAYER.with(()
+                                        -> player),
+                                new PlayerSanMessage(capability.getSan(),
+                                        capability.getMaxSan()));
+                    }
+            );
+            context.get().setPacketHandled(true);
         }
     }
 }

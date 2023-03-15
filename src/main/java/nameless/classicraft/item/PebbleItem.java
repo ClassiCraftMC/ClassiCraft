@@ -19,6 +19,7 @@ package nameless.classicraft.item;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.api.item.MetaItem;
+import nameless.classicraft.api.item.MetaItemImpl;
 import nameless.classicraft.init.ModItems;
 import nameless.classicraft.init.ModSounds;
 import nameless.classicraft.init.ModTags;
@@ -41,11 +42,10 @@ import net.minecraftforge.registries.ForgeRegistries;
 import java.util.List;
 import java.util.Objects;
 
-public class PebbleItem extends MetaItem {
-
+public class PebbleItem extends MetaItemImpl {
     public static String getPebbleType(ItemStack stack) {
         Helpers.setVanillaMeta(stack);
-        String meta = getMeta(stack);
+        String meta = MetaItem.getMeta(stack);
         return meta.substring(0, meta.length() - 7);
     }
 
@@ -73,7 +73,7 @@ public class PebbleItem extends MetaItem {
 
     public static ItemStack fromBlock(Block block) {
         ItemStack result = new ItemStack(ModItems.PEBBLE.get());
-        setMeta(result, metaFromBlock(block));
+        MetaItem.setMeta(result, metaFromBlock(block));
         return result;
     }
 
@@ -90,7 +90,7 @@ public class PebbleItem extends MetaItem {
         ItemStack item = pContext.getItemInHand();
         Player player = pContext.getPlayer();
 
-        if (player != null &&
+        if (player != null && player.isShiftKeyDown() &&
                 level.getBlockState(pContext.getClickedPos()).getMaterial() == Material.STONE) {
             player.swing(pContext.getHand());
             Helpers.addCoolDown(player, item.getItem(), 60);
@@ -101,7 +101,7 @@ public class PebbleItem extends MetaItem {
             return InteractionResult.SUCCESS;
         } else
             return Objects.requireNonNull(ForgeRegistries.BLOCKS
-                            .getValue(new ResourceLocation(ClassiCraftMod.MOD_ID, getMeta(item))))
+                            .getValue(new ResourceLocation(ClassiCraftMod.MOD_ID, MetaItem.getMeta(item))))
                     .asItem()
                     .useOn(pContext);
     }
@@ -127,11 +127,12 @@ public class PebbleItem extends MetaItem {
     }
 
     /**
-     * 添加随机工具到玩家身上并返回是否成功
+     * Add random tools to player inventory and check wheather if success
      *
-     * @param player 玩家
-     * @param item   手持（左手或者右手）
-     * @return 在需要减少物品数量时返回 true（工具存在、在服务端以及玩家不是创造模式）
+     * @param player Player
+     * @param item   HandHeld Item(Left or Right Hand)
+     * @return result to true if you need decrease
+     * Item count(The tools exist, and in the server side,player isn't creative mode
      */
     public static boolean addItem(Player player, ItemStack item) {
         Level level = player.level;

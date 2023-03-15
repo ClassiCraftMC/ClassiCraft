@@ -37,17 +37,22 @@ import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.animal.*;
+import net.minecraft.world.entity.animal.Cow;
+import net.minecraft.world.entity.animal.Pig;
+import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
+import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
 import javax.annotation.Nullable;
 
-public class AbstractShark extends AbstractSchoolingFish implements Enemy {
+public class AbstractShark extends WaterAnimal implements Enemy, GeoEntity {
 
     private static final EntityDataAccessor<Boolean> GOT_FISH = SynchedEntityData.defineId(AbstractShark.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> MOISTNESS_LEVEL = SynchedEntityData.defineId(AbstractShark.class, EntityDataSerializers.INT);
@@ -56,7 +61,10 @@ public class AbstractShark extends AbstractSchoolingFish implements Enemy {
     public static final TargetingConditions SWIM_WITH_PLAYER_TARGETING = TargetingConditions.forNonCombat().range(10.0D).ignoreLineOfSight();
     int lastTimeSinceHungry;
 
-    public AbstractShark(EntityType<? extends AbstractSchoolingFish> pEntityType, Level pLevel) {
+    private final AnimatableInstanceCache cache =
+            GeckoLibUtil.createInstanceCache(this);
+
+    protected AbstractShark(EntityType<? extends WaterAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
@@ -263,11 +271,6 @@ public class AbstractShark extends AbstractSchoolingFish implements Enemy {
         this.goalSelector.addGoal(5, new SharkJumpGoal(this, 10));
         this.goalSelector.addGoal(2, new SharkAttackGoal(this, 1.2, true));
         this.goalSelector.addGoal(8, new FollowBoatGoal(this));
-        this.targetSelector.addGoal(3, new SharkNearestAttackableTargetGoal(this, Trout.class, true, false));
-        this.targetSelector.addGoal(3, new SharkNearestAttackableTargetGoal(this, Pufferfish.class, true, false));
-        this.targetSelector.addGoal(3, new SharkNearestAttackableTargetGoal(this, Cod.class, true, false));
-        this.targetSelector.addGoal(3, new SharkNearestAttackableTargetGoal(this, TropicalFish.class, true, false));
-        this.targetSelector.addGoal(3, new SharkNearestAttackableTargetGoal(this, Salmon.class, true, false));
         this.targetSelector.addGoal(3, new SharkNearestAttackableTargetGoal(this, Player.class, true, false));
         this.targetSelector.addGoal(3, new SharkNearestAttackableTargetGoal(this, Pig.class, true, false));
         this.targetSelector.addGoal(1, new SharkNearestAttackableTargetGoal(this, Cow.class, true, false));
@@ -290,18 +293,17 @@ public class AbstractShark extends AbstractSchoolingFish implements Enemy {
     }
 
     @Override
-    protected SoundEvent getFlopSound() {
-        return SoundEvents.PUFFER_FISH_FLOP;
-    }
-
-    @Override
     protected SoundEvent getSwimSound() {
         return SoundEvents.FISH_SWIM;
     }
 
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
+
+    }
 
     @Override
-    public ItemStack getBucketItemStack() {
-        return null;
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return this.cache;
     }
 }

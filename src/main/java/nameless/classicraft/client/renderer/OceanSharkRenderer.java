@@ -19,23 +19,15 @@ package nameless.classicraft.client.renderer;
 
 import nameless.classicraft.client.model.OceanSharkModel;
 import nameless.classicraft.entity.OceanShark;
-import nameless.classicraft.init.ModEntityModelLayers;
-import nameless.classicraft.util.Helpers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 @OnlyIn(Dist.CLIENT)
-public class OceanSharkRenderer<T extends OceanShark> extends MobRenderer<T, OceanSharkModel<T>> {
+public class OceanSharkRenderer extends GeoEntityRenderer<OceanShark> {
 
-    public OceanSharkRenderer(EntityRendererProvider.Context pContext) {
-        super(pContext, new OceanSharkModel<>(pContext.bakeLayer(ModEntityModelLayers.OCEAN_SHARK)), 0.2F);
-    }
-
-    @Override
-    public ResourceLocation getTextureLocation(T pEntity) {
-        return Helpers.identifier("textures/entity/ocean_shark.png");
+    public OceanSharkRenderer(EntityRendererProvider.Context renderManager) {
+        super(renderManager, new OceanSharkModel());
     }
 }

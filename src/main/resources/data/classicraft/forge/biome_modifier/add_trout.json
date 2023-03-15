@@ -6,8 +6,8 @@
   ],
   "spawners": {
     "type": "classicraft:trout",
-    "weight": 60,
-    "minCount": 6,
-    "maxCount": 12
+    "weight": 15,
+    "minCount": 1,
+    "maxCount": 5
   }
 }

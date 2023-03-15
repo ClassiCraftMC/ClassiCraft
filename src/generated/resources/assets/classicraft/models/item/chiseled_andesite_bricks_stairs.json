@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "classicraft:block/chiseled_andesite_bricks",
-    "side": "classicraft:block/chiseled_andesite_bricks",
-    "top": "classicraft:block/chiseled_andesite_bricks"
-  }
-}

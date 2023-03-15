@@ -42,7 +42,7 @@ public class MetaModelRegistry {
         ModelBakery bakery = event.getModelBakery();
 
         MetaItem.getMetaItems().forEach(metaItem -> {
-            ResourceLocation regName = Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(metaItem));
+            ResourceLocation regName = Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(metaItem.asItem()));
 
             bakery.getBakedTopLevelModels().put(new ModelResourceLocation(
                     regName.getNamespace(),
@@ -53,14 +53,14 @@ public class MetaModelRegistry {
     }
 
     /**
-     * 从 meta item 返回 meta -> model 的 map
+     * From meta item return meta -> model's map
      *
      * @param metaItem meta item
      * @return meta -> model
      */
     public static Map<String, BlockModel> fromMetaItem(MetaItem metaItem) {
         Map<String, BlockModel> result = new HashMap<>();
-        metaItem.metas.forEach(meta -> result.put(meta, model(metaItem.metaResLoc(meta))));
+        metaItem.getMetas().forEach(meta -> result.put(meta, model(metaItem.metaResLoc(meta))));
         return result;
     }
 

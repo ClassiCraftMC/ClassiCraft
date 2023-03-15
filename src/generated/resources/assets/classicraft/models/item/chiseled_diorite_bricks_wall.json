@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/wall_inventory",
-  "textures": {
-    "wall": "classicraft:block/chiseled_diorite_bricks"
-  }
-}

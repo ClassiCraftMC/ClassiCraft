@@ -18,32 +18,28 @@
 package nameless.classicraft.network;
 
 import nameless.classicraft.ClassiCraftMod;
-import nameless.classicraft.api.network.INormalMessage;
+import nameless.classicraft.util.Helpers;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 
+import java.util.function.BiConsumer;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
-public final class SimpleNetworkHandler {
+public class SimpleNetworkHandler {
 
-    public static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder
-            .named(new ResourceLocation(ClassiCraftMod.MOD_ID, "main"))
-            .networkProtocolVersion(() -> ClassiCraftMod.NETWORK_VERSION)
-            .serverAcceptedVersions(ClassiCraftMod.NETWORK_VERSION::equals)
-            .clientAcceptedVersions(ClassiCraftMod.NETWORK_VERSION::equals).simpleChannel();
+    public static final SimpleChannel PACKET_HANDLER =
+            NetworkRegistry.newSimpleChannel(Helpers.identifier("main"),
+                    () -> ClassiCraftMod.NETWORK_VERSION,
+                    ClassiCraftMod.NETWORK_VERSION::equals,
+                    ClassiCraftMod.NETWORK_VERSION::equals);
 
-    public static void init() {
-        int id = 0;
-        registerMessage(id++, PlayerSanMessage.class, PlayerSanMessage::new);
-        registerMessage(id++, SanChangeMessage.class, SanChangeMessage::new);
-    }
+    public static int id = 0;
 
-    private static <T extends INormalMessage> void registerMessage(int index, Class<T> messageType, Function<FriendlyByteBuf, T> decoder) {
-        CHANNEL.registerMessage(index, messageType, INormalMessage::toBytes, decoder, (message, context) -> {
-            message.process(context);
-            context.get().setPacketHandled(true);
-        });
+    public static <T> void registerMessage(Class<T> messageType, BiConsumer<T, FriendlyByteBuf> encoder, Function<FriendlyByteBuf, T> decoder, BiConsumer<T, Supplier<NetworkEvent.Context>> messageConsumer) {
+        PACKET_HANDLER.registerMessage(id, messageType, encoder, decoder, messageConsumer);
+        id++;
     }
 }

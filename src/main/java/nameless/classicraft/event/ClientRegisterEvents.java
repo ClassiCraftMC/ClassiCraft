@@ -19,17 +19,15 @@ package nameless.classicraft.event;
 
 import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.block.StonePebbleBlock;
-import nameless.classicraft.client.model.OceanSharkModel;
-import nameless.classicraft.client.renderer.LivingDeadRenderer;
+import nameless.classicraft.client.model.JavelinModel;
+import nameless.classicraft.client.renderer.GlareRenderer;
 import nameless.classicraft.client.renderer.OceanSharkRenderer;
+import nameless.classicraft.client.renderer.ThrownJavelinRenderer;
 import nameless.classicraft.client.renderer.TroutRenderer;
-import nameless.classicraft.entity.LivingDead;
+import nameless.classicraft.entity.Glare;
 import nameless.classicraft.entity.OceanShark;
 import nameless.classicraft.entity.Trout;
-import nameless.classicraft.init.ModBlocks;
-import nameless.classicraft.init.ModEntities;
-import nameless.classicraft.init.ModEntityModelLayers;
-import nameless.classicraft.init.ModItems;
+import nameless.classicraft.init.*;
 import nameless.classicraft.item.DepthMeterItem;
 import nameless.classicraft.util.Helpers;
 import net.minecraft.client.model.CodModel;
@@ -37,11 +35,12 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.item.CompassItemPropertyFunction;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.client.renderer.item.ItemPropertyFunction;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SlabBlock;
-import net.minecraft.world.level.block.StairBlock;
-import net.minecraft.world.level.block.WallBlock;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.level.block.*;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -49,6 +48,8 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+
+import java.util.List;
 
 @SuppressWarnings("removal")
 @Mod.EventBusSubscriber(modid = ClassiCraftMod.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -58,7 +59,7 @@ public class ClientRegisterEvents {
     public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntities.TROUT_ENTITY.get(), Trout.registerAttributes().build());
         event.put(ModEntities.OCEAN_SHARK_ENTITY.get(), OceanShark.registerAttributes().build());
-        event.put(ModEntities.LIVING_DEAD.get(), LivingDead.registerAttributes().build());
+        event.put(ModEntities.GLARE.get(), Glare.registerAttributes().build());
     }
 
     @SubscribeEvent
@@ -67,14 +68,16 @@ public class ClientRegisterEvents {
                 TroutRenderer::new);
         event.registerEntityRenderer(ModEntities.OCEAN_SHARK_ENTITY.get(),
                 OceanSharkRenderer::new);
-        event.registerEntityRenderer(ModEntities.LIVING_DEAD.get(),
-                LivingDeadRenderer::new);
+        event.registerEntityRenderer(ModEntities.GLARE.get(),
+                GlareRenderer::new);
+        event.registerEntityRenderer(ModEntities.THROWN_JAVELIN.get(),
+                ThrownJavelinRenderer::new);
     }
 
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(ModEntityModelLayers.TROUT, CodModel::createBodyLayer);
-        event.registerLayerDefinition(ModEntityModelLayers.OCEAN_SHARK, OceanSharkModel::create);
+        event.registerLayerDefinition(ModEntityModelLayers.JAVELIN, JavelinModel::createBodyLayer);
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
@@ -85,10 +88,12 @@ public class ClientRegisterEvents {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.REAL_SOUL_WALL_TORCH.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CACTUS_BALL.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.TWIGS.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CACTUS_FRUIT.get(), RenderType.cutout());
         for (Block block : Helpers.getBlocks()) {
             if (block instanceof WallBlock
                     || block instanceof StairBlock
-                    || block instanceof SlabBlock) {
+                    || block instanceof SlabBlock
+                    || block instanceof CarpetBlock) {
                 ItemBlockRenderTypes.setRenderLayer(block, RenderType.translucent());
             }
             if (block instanceof StonePebbleBlock) {
@@ -100,5 +105,35 @@ public class ClientRegisterEvents {
                         -> DepthMeterItem.isLodestoneCompass(stack) ?
                         DepthMeterItem.getLodestonePosition(stack.getOrCreateTag()) :
                         DepthMeterItem.getSpawnPosition(level)));
+        ItemProperties.register(ModItems.WOODEN_JAVELIN.get(),
+                new ResourceLocation("throwing"), (pStack, newStack, pEntity, pSeed) -> pEntity
+                        != null && pEntity.isUsingItem() && pEntity.getUseItem() == pStack ? 1.0F : 0.0F);
+        ItemProperties.register(ModItems.STONE_JAVELIN.get(),
+                new ResourceLocation("throwing"), (pStack, newStack, pEntity, pSeed) -> pEntity
+                        != null && pEntity.isUsingItem() && pEntity.getUseItem() == pStack ? 1.0F : 0.0F);
+        ItemProperties.register(ModItems.IRON_JAVELIN.get(),
+                new ResourceLocation("throwing"), (pStack, newStack, pEntity, pSeed) -> pEntity
+                        != null && pEntity.isUsingItem() && pEntity.getUseItem() == pStack ? 1.0F : 0.0F);
+        ItemProperties.register(ModItems.GOLDEN_JAVELIN.get(),
+                new ResourceLocation("throwing"), (pStack, newStack, pEntity, pSeed) -> pEntity
+                        != null && pEntity.isUsingItem() && pEntity.getUseItem() == pStack ? 1.0F : 0.0F);
+        ItemProperties.register(ModItems.DIAMOND_JAVELIN.get(),
+                new ResourceLocation("throwing"), (pStack, newStack, pEntity, pSeed) -> pEntity
+                        != null && pEntity.isUsingItem() && pEntity.getUseItem() == pStack ? 1.0F : 0.0F);
+        ItemProperties.register(ModItems.NETHERITE_JAVELIN.get(),
+                new ResourceLocation("throwing"), (pStack, newStack, pEntity, pSeed) -> pEntity
+                        != null && pEntity.isUsingItem() && pEntity.getUseItem() == pStack ? 1.0F : 0.0F);
+
+
+        ItemPropertyFunction milk = (stack, level, living, seed) -> {
+            List<MobEffectInstance> allEffects = PotionUtils.getAllEffects(stack.getTag());
+            if (allEffects.stream().anyMatch(instance -> instance.getEffect() == ModEffects.MILK.get()))
+                return 1;
+            return 0;
+        };
+
+        ItemProperties.register(Items.POTION, new ResourceLocation("milk"), milk);
+        ItemProperties.register(Items.LINGERING_POTION, new ResourceLocation("milk"), milk);
+        ItemProperties.register(Items.SPLASH_POTION, new ResourceLocation("milk"), milk);
     }
 }

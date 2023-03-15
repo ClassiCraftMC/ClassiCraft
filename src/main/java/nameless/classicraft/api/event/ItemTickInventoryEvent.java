@@ -18,28 +18,24 @@
 package nameless.classicraft.api.event;
 
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.eventbus.api.Event;
 
 public class ItemTickInventoryEvent extends Event {
 
-    private final Item item;
+    private final ItemStack itemStack;
     private final Level level;
     private final Entity entity;
     private final int slotId;
     private final boolean isSelected;
 
-    public ItemTickInventoryEvent(Item item, Level level, Entity entity, int slotId, boolean isSelected) {
-        this.item = item;
+    public ItemTickInventoryEvent(ItemStack itemStack, Level level, Entity entity, int slotId, boolean isSelected) {
+        this.itemStack = itemStack;
         this.level = level;
         this.entity = entity;
         this.slotId = slotId;
         this.isSelected = isSelected;
-    }
-
-    public Item getItem() {
-        return item;
     }
 
     public Level getLevel() {
@@ -56,5 +52,9 @@ public class ItemTickInventoryEvent extends Event {
 
     public boolean isSelected() {
         return isSelected;
+    }
+
+    public ItemStack getItemStack() {
+        return itemStack;
     }
 }

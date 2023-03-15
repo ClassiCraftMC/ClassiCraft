@@ -24,6 +24,7 @@ public class ModEntityModelLayers {
 
     public static final ModelLayerLocation TROUT = register("trout");
     public static final ModelLayerLocation OCEAN_SHARK = register("ocean_shark");
+    public static final ModelLayerLocation JAVELIN = register("javelin");
 
     private static ModelLayerLocation register(String name) {
         return register(name, "main");

@@ -18,6 +18,7 @@
 package nameless.classicraft.datagen;
 
 import nameless.classicraft.ClassiCraftMod;
+import nameless.classicraft.init.ModBlocks;
 import nameless.classicraft.init.ModTags;
 import nameless.classicraft.util.Helpers;
 import net.minecraft.core.HolderLookup;
@@ -53,8 +54,29 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .forEach(this::flowerTag);
         blocks.stream().filter(block -> block instanceof FenceBlock)
                         .forEach(this::fenceTag);
+        blocks.stream().filter(block -> block instanceof ButtonBlock)
+                .forEach(this::button);
         addVanillaPebbleTags();
         addDrinkableTags();
+        soulFires();
+    }
+
+    private void soulFires() {
+        soulFire(ModBlocks.SOUL_QUICKSAND.get());
+        soulFire(ModBlocks.SOUL_SANDSTONE.get());
+        soulFire(ModBlocks.SOUL_SANDSTONE_BRICKS.get());
+        soulFire(ModBlocks.SOUL_SANDSTONE_NITER_ORE.get());
+        soulFire(ModBlocks.SMOOTH_SOUL_SANDSTONE.get());
+        soulFire(ModBlocks.CHISELED_SOUL_SANDSTONE.get());
+        soulFire(ModBlocks.CUT_SOUL_SANDSTONE.get());
+    }
+
+    private void button(Block button) {
+        tag(ItemTags.BUTTONS).add(button.asItem());
+    }
+
+    private void soulFire(Block soul) {
+        tag(ItemTags.SOUL_FIRE_BASE_BLOCKS).add(soul.asItem());
     }
 
     void fenceTag(Block fence) {

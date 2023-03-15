@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 4,
+  "ingredient": {
+    "item": "minecraft:polished_deepslate"
+  },
+  "result": "classicraft:polished_deepslate_pressure_plate"
+}

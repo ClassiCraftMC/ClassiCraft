@@ -6,9 +6,9 @@
       "condition": "minecraft:block_state_property"
     }
   ],
-  "drop": "classicraft:pebble",
+  "drop": "minecraft:prismarine_shard",
   "max": 4,
-  "meta": "prismarine_pebble",
+  "meta": "prismarine",
   "min": 1,
   "probability": 100
 }

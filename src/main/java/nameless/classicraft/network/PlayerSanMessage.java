@@ -17,8 +17,7 @@
  */
 package nameless.classicraft.network;
 
-import nameless.classicraft.api.network.INormalMessage;
-import nameless.classicraft.api.san.ISanHandler;
+import nameless.classicraft.init.ModCapabilities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
@@ -27,36 +26,39 @@ import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-public class PlayerSanMessage implements INormalMessage {
+public class PlayerSanMessage{
 
     float san;
-    float maxSan;
+    int maxSan;
 
-    public PlayerSanMessage(float san, float maxSan) {
+    public PlayerSanMessage(float san, int maxSan) {
         this.san = san;
         this.maxSan = maxSan;
     }
 
     public PlayerSanMessage(FriendlyByteBuf buf) {
         san = buf.readFloat();
-        maxSan = buf.readFloat();
+        maxSan = buf.readInt();
     }
 
 
-    @Override
-    public void toBytes(FriendlyByteBuf buf) {
-        buf.writeFloat(san);
-        buf.writeFloat(maxSan);
+    public static void buffer(PlayerSanMessage message, FriendlyByteBuf buf) {
+        buf.writeFloat(message.san);
+        buf.writeFloat(message.maxSan);
     }
 
-    @Override
-    public void process(Supplier<NetworkEvent.Context> context) {
+    public static void handler(PlayerSanMessage message, Supplier<NetworkEvent.Context> context) {
         if (context.get().getDirection() == NetworkDirection.PLAY_TO_CLIENT) {
             Player player = Minecraft.getInstance().player;
             if (player != null) {
-                context.get().enqueueWork(() -> ((ISanHandler) player).setSan(san));
-                context.get().enqueueWork(() -> ((ISanHandler) player).setMaxSan(maxSan));
+                context.get().enqueueWork(() -> player.getCapability(ModCapabilities.PLAYER_SAN_LEVEL).ifPresent(
+                        sanCapability -> {
+                            sanCapability.setSan(message.san);
+                            sanCapability.setMaxSan(message.maxSan);
+                        })
+                );
             }
+            context.get().setPacketHandled(true);
         }
     }
 }

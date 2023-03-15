@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "classicraft:mossy_cobbled_deepslate_slab"
+  },
+  "result": "minecraft:cobbled_deepslate_slab"
+}

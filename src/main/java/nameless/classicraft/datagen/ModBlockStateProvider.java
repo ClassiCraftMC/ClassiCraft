@@ -22,6 +22,7 @@ import nameless.classicraft.block.StainedGlassSlabBlock;
 import nameless.classicraft.block.StainedGlassStairBlock;
 import nameless.classicraft.block.StainedGlassWallBlock;
 import nameless.classicraft.init.ModBlocks;
+import nameless.classicraft.util.Helpers;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -69,6 +70,16 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(ModBlocks.CRACKED_DIORITE_BRICKS);
         simpleBlockWithItem(ModBlocks.MOSSY_DIORITE_BRICKS);
         simpleBlockWithItem(ModBlocks.CHISELED_DIORITE_BRICKS);
+        simpleBlockWithItem(ModBlocks.MOSSY_DEEPSLATE_BRICKS);
+        simpleBlockWithItem(ModBlocks.MOSSY_COBBLED_DEEPSLATE);
+        simpleBlockWithItem(ModBlocks.MOSSY_DEEPSLATE_TILES);
+        simpleBlockWithItem(ModBlocks.DEEPSLATE_SULFUR_ORE);
+        simpleBlockWithItem(ModBlocks.NETHER_SULFUR_ORE);
+        simpleBlockWithItem(ModBlocks.SULFUR_BLOCK);
+        simpleBlockWithItem(ModBlocks.NITER_BLOCK);
+        simpleBlockWithItem(ModBlocks.CHISELED_DEEPSLATE_BRICKS);
+        simpleBlockWithItem(ModBlocks.CHISELED_DEEPSLATE_TILES);
+        simpleBlockWithItem(ModBlocks.CHISELED_POLISHED_DEEPSLATE);
         vanillaSimpleBlockWithItem(ModBlocks.INFESTED_MOSSY_COBBLESTONE, "mossy_cobblestone");
         vanillaSimpleBlockWithItem(ModBlocks.INFESTED_CHISELED_DEEPSLATE, "chiseled_deepslate");
         vanillaSimpleBlockWithItem(ModBlocks.INFESTED_COBBLED_DEEPSLATE, "cobbled_deepslate");
@@ -76,6 +87,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
         vanillaSimpleBlockWithItem(ModBlocks.INFESTED_DEEPSLATE_TILES, "deepslate_tiles");
         vanillaSimpleBlockWithItem(ModBlocks.INFESTED_CRACKED_DEEPSLATE_BRICKS, "cracked_deepslate_bricks");
         vanillaSimpleBlockWithItem(ModBlocks.INFESTED_CRACKED_DEEPSLATE_TILES, "cracked_deepslate_tiles");
+        modSimpleBlockWithItem(ModBlocks.INFESTED_CHISELED_DEEPSLATE_BRICKS, "chiseled_deepslate_bricks");
+        modSimpleBlockWithItem(ModBlocks.INFESTED_CHISELED_DEEPSLATE_TILES, "chiseled_deepslate_tiles");
+        modSimpleBlockWithItem(ModBlocks.INFESTED_MOSSY_COBBLED_DEEPSLATE, "mossy_cobbled_deepslate");
+        modSimpleBlockWithItem(ModBlocks.INFESTED_MOSSY_DEEPSLATE_TILES, "mossy_deepslate_tiles");
+        modSimpleBlockWithItem(ModBlocks.INFESTED_MOSSY_DEEPSLATE_BRICKS, "mossy_deepslate_bricks");
         simpleBlockWithItem(ModBlocks.SMOOTH_SOUL_SANDSTONE);
         sandstoneBlockWithItem(ModBlocks.CHISELED_QUARTZ_SANDSTONE, "classicraft:block/quartz_sandstone_bottom", "classicraft:block/quartz_sandstone_top", "classicraft:block/chiseled_quartz_sandstone");
         sandstoneBlockWithItem(ModBlocks.CHISELED_SOUL_SANDSTONE, "classicraft:block/soul_sandstone_bottom", "classicraft:block/soul_sandstone_top", "classicraft:block/chiseled_soul_sandstone");
@@ -298,9 +314,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
         threeBuildBlocks(ModBlocks.MOSSY_ANDESITE_BRICKS_WALL, ModBlocks.MOSSY_ANDESITE_BRICKS_STAIRS,
                 ModBlocks.MOSSY_ANDESITE_BRICKS_SLAB,
                 "mossy_andesite_bricks", "classicraft:block/mossy_andesite_bricks");
-        threeBuildBlocks(ModBlocks.CHISELED_ANDESITE_BRICKS_WALL, ModBlocks.CHISELED_ANDESITE_BRICKS_STAIRS,
-                ModBlocks.CHISELED_ANDESITE_BRICKS_SLAB,
-                "chiseled_andesite_bricks", "classicraft:block/chiseled_andesite_bricks");
         threeBuildBlocks(ModBlocks.GRANITE_BRICKS_WALL, ModBlocks.GRANITE_BRICKS_STAIRS,
                 ModBlocks.GRANITE_BRICKS_SLAB,
                 "granite_bricks", "classicraft:block/granite_bricks");
@@ -310,9 +323,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
         threeBuildBlocks(ModBlocks.MOSSY_GRANITE_BRICKS_WALL, ModBlocks.MOSSY_GRANITE_BRICKS_STAIRS,
                 ModBlocks.MOSSY_GRANITE_BRICKS_SLAB,
                 "mossy_granite_bricks", "classicraft:block/mossy_granite_bricks");
-        threeBuildBlocks(ModBlocks.CHISELED_GRANITE_BRICKS_WALL, ModBlocks.CHISELED_GRANITE_BRICKS_STAIRS,
-                ModBlocks.CHISELED_GRANITE_BRICKS_SLAB,
-                "chiseled_granite_bricks", "classicraft:block/chiseled_granite_bricks");
         threeBuildBlocks(ModBlocks.DIORITE_BRICKS_WALL, ModBlocks.DIORITE_BRICKS_STAIRS,
                 ModBlocks.DIORITE_BRICKS_SLAB,
                 "diorite_bricks", "classicraft:block/diorite_bricks");
@@ -322,9 +332,42 @@ public class ModBlockStateProvider extends BlockStateProvider {
         threeBuildBlocks(ModBlocks.MOSSY_DIORITE_BRICKS_WALL, ModBlocks.MOSSY_DIORITE_BRICKS_STAIRS,
                 ModBlocks.MOSSY_DIORITE_BRICKS_SLAB,
                 "mossy_diorite_bricks", "classicraft:block/mossy_diorite_bricks");
-        threeBuildBlocks(ModBlocks.CHISELED_DIORITE_BRICKS_WALL, ModBlocks.CHISELED_DIORITE_BRICKS_STAIRS,
-                ModBlocks.CHISELED_DIORITE_BRICKS_SLAB,
-                "chiseled_diorite_bricks", "classicraft:block/chiseled_diorite_bricks");
+        threeBuildBlocks(ModBlocks.MOSSY_COBBLED_DEEPSLATE_WALL, ModBlocks.MOSSY_COBBLED_DEEPSLATE_STAIRS,
+                ModBlocks.MOSSY_COBBLED_DEEPSLATE_SLAB,
+                "mossy_cobbled_deepslate", "classicraft:block/mossy_cobbled_deepslate");
+        threeBuildBlocks(ModBlocks.MOSSY_DEEPSLATE_BRICKS_WALL, ModBlocks.MOSSY_DEEPSLATE_BRICKS_STAIRS,
+                ModBlocks.MOSSY_DEEPSLATE_BRICKS_SLAB,
+                "mossy_deepslate_bricks", "classicraft:block/mossy_deepslate_bricks");
+        threeBuildBlocks(ModBlocks.MOSSY_DEEPSLATE_TILES_WALL, ModBlocks.MOSSY_DEEPSLATE_TILES_STAIRS,
+                ModBlocks.MOSSY_DEEPSLATE_TILES_SLAB,
+                "mossy_deepslate_tiles", "classicraft:block/mossy_deepslate_tiles");
+        buttonBlock(ModBlocks.POLISHED_ANDESITE_BUTTON, "minecraft:block/polished_andesite");
+        buttonBlock(ModBlocks.POLISHED_DIORITE_BUTTON, "minecraft:block/polished_diorite");
+        buttonBlock(ModBlocks.POLISHED_GRANITE_BUTTON, "minecraft:block/polished_granite");
+        buttonBlock(ModBlocks.SMOOTH_STONE_BUTTON, "minecraft:block/smooth_stone");
+        buttonBlock(ModBlocks.BLACKSTONE_BUTTON, "minecraft:block/blackstone_top");
+        buttonBlock(ModBlocks.DEEPSLATE_BUTTON, "minecraft:block/deepslate_top");
+        buttonBlock(ModBlocks.POLISHED_DEEPSLATE_BUTTON, "minecraft:block/polished_deepslate");
+        pressurePlateBlock(ModBlocks.POLISHED_ANDESITE_PRESSURE_PLATE, "minecraft:block/polished_andesite");
+        pressurePlateBlock(ModBlocks.POLISHED_DIORITE_PRESSURE_PLATE, "minecraft:block/polished_diorite");
+        pressurePlateBlock(ModBlocks.POLISHED_GRANITE_PRESSURE_PLATE, "minecraft:block/polished_granite");
+        pressurePlateBlock(ModBlocks.SMOOTH_STONE_PRESSURE_PLATE, "minecraft:block/smooth_stone");
+        pressurePlateBlock(ModBlocks.BLACKSTONE_PRESSURE_PLATE, "minecraft:block/blackstone_top");
+        pressurePlateBlock(ModBlocks.DEEPSLATE_PRESSURE_PLATE, "minecraft:block/deepslate_top");
+        pressurePlateBlock(ModBlocks.POLISHED_DEEPSLATE_PRESSURE_PLATE, "minecraft:block/polished_deepslate");
+    }
+
+    protected void pressurePlateBlock(RegistryObject<Block> block, String texture) {
+        pressurePlateBlock((PressurePlateBlock) block.get(), new ResourceLocation(texture));
+    }
+
+    protected void buttonBlock(RegistryObject<Block> block, String texture) {
+        buttonBlock((ButtonBlock) block.get(), new ResourceLocation(texture));
+    }
+
+    void carpetBlockWithItem(Block carpet, Block base) {
+        simpleBlock(carpet, models().carpet(name(carpet), Helpers.identifier("block/" + name(base))));
+        simpleBlockItem(carpet, models().carpet(name(carpet), Helpers.identifier("block/" + name(base))));
     }
 
     protected void threeColorTerracottas(RegistryObject<Block> wall, RegistryObject<Block> stairs, RegistryObject<Block> slab, DyeColor dyeColor) {
@@ -552,401 +595,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     private String name(Block block) {
         return key(block).getPath();
-    }
-
-    private void pebbleModels(String prefix, String texture) {
-        models().withExistingParent(prefix + "_pebble", "block")
-                .texture("0", texture)
-                .texture("particle", texture)
-                .element()
-                .from(3F, (float) -0.7, 4)
-                .to(8F, (float) 0.3, 7)
-                .shade(false)
-                .rotation()
-                .angle((float) -22.5)
-                .axis(Direction.Axis.Y)
-                .origin(3F, (float) -2.7, 5)
-                .end().face(Direction.NORTH)
-                .uvs(11, 13, 16, 16)
-                .texture("#0")
-                .cullface(Direction.UP)
-                .end()
-                .face(Direction.EAST)
-                .uvs(13, 9, 16, 12)
-                .texture("#0")
-                .cullface(Direction.UP)
-                .end()
-                .face(Direction.SOUTH)
-                .uvs(1, 12, 6, 15)
-                .texture("#0")
-                .cullface(Direction.UP)
-                .end()
-                .face(Direction.WEST)
-                .uvs(11, 3, 14, 6)
-                .texture("#0")
-                .cullface(Direction.UP)
-                .end()
-                .face(Direction.UP)
-                .uvs(7, 0, 12, 3)
-                .texture("#0")
-                .cullface(Direction.UP)
-                .end()
-                .from(5.5F, (float) -0.2, 6)
-                .to(9.5F, (float) 0.8, 10)
-                .shade(false)
-                .rotation()
-                .angle(22.5F)
-                .axis(Direction.Axis.Y)
-                .origin(7.5F, (float) -0.2, 8)
-                .end().face(Direction.NORTH)
-                .uvs(5, 13, 9, 14)
-                .texture("#0")
-                .cullface(Direction.UP)
-                .end()
-                .face(Direction.EAST)
-                .uvs(0, 11, 4, 12)
-                .texture("#0")
-                .cullface(Direction.UP)
-                .end()
-                .face(Direction.SOUTH)
-                .uvs(0, 11, 4, 12)
-                .texture("#0")
-                .cullface(Direction.UP)
-                .end()
-                .face(Direction.WEST)
-                .uvs(7, 11, 11, 12)
-                .texture("#0")
-                .cullface(Direction.UP)
-                .end()
-                .face(Direction.UP)
-                .uvs(7, 0, 11, 4)
-                .texture("#0")
-                .cullface(Direction.UP)
-                .end();
-
-        models().withExistingParent(prefix + "_pebble_1", "block")
-                .texture("0", texture)
-                .texture("particle", texture)
-                .element()
-                .from(5.5F, (float) -0.2, 6)
-                .to(9.5F, (float) 0.8, 10)
-                .rotation()
-                .angle(22.5F)
-                .axis(Direction.Axis.Y)
-                .origin(7.5F, (float) -0.2, 8)
-                .end().face(Direction.NORTH)
-                .uvs(6, 0, 10, 1)
-                .texture("#0")
-                .end()
-                .face(Direction.EAST)
-                .uvs(6, 1, 10, 2)
-                .texture("#0")
-                .end()
-                .face(Direction.SOUTH)
-                .uvs(6, 3, 10, 4)
-                .texture("#0")
-                .end()
-                .face(Direction.WEST)
-                .uvs(6, 2, 10, 3)
-                .texture("#0")
-                .end()
-                .face(Direction.UP)
-                .uvs(6, 4, 10, 8)
-                .end()
-                .face(Direction.DOWN)
-                .uvs(6, 4, 10, 8)
-                .texture("#0")
-                .end()
-                .from(3F, (float) -0.7, 4)
-                .to(8F, (float) 0.3, 7)
-                .rotation()
-                .angle(-22.5F)
-                .axis(Direction.Axis.Y)
-                .origin(3F, (float) -2.7, 5)
-                .end().face(Direction.NORTH)
-                .uvs(6, 2, 11, 3)
-                .texture("#0")
-                .end()
-                .face(Direction.EAST)
-                .uvs(8, 1, 11, 2)
-                .texture("#0")
-                .end()
-                .face(Direction.SOUTH)
-                .uvs(6, 4, 11, 5)
-                .texture("#0")
-                .end()
-                .face(Direction.WEST)
-                .uvs(8, 3, 11, 4)
-                .texture("#0")
-                .end()
-                .face(Direction.UP)
-                .uvs(6, 5, 11, 8)
-                .texture("#0")
-                .end()
-                .face(Direction.DOWN)
-                .uvs(6, 5, 11, 8)
-                .texture("#0")
-                .end();
-
-         models().withExistingParent(prefix + "_pebble_2", "block")
-                .texture("0", texture)
-                .texture("particle", texture)
-                .element()
-                .from(4F, (float) -0.6, 5)
-                .to(9F, (float) 0.4, 9)
-                .rotation()
-                .angle((float) 22.5)
-                .axis(Direction.Axis.Y)
-                .origin(4F, (float) -2.6, 7)
-                .end().face(Direction.NORTH)
-                .uvs(3, 3, 8, 4)
-                .texture("#0")
-                .end()
-                .face(Direction.EAST)
-                .uvs(4, 4, 8, 5)
-                .texture("#0")
-                .end()
-                .face(Direction.SOUTH)
-                .uvs(3, 5, 8, 6)
-                .texture("#0")
-                .end()
-                .face(Direction.WEST)
-                .uvs(4, 2, 8, 3)
-                .texture("#0")
-                .end()
-                .face(Direction.UP)
-                .uvs(3, 6, 8, 10)
-                .end()
-                .face(Direction.DOWN)
-                .uvs(3, 6, 8, 10)
-                .texture("#0")
-                .end()
-                .from(7.5F, (float) -0.2, 4)
-                .to(10.5F, (float) 0.8, 7)
-                .rotation()
-                .angle(-22.5F)
-                .axis(Direction.Axis.Y)
-                .origin(8.5F, (float) -0.2, 5)
-                .end().face(Direction.NORTH)
-                .uvs(5, 5, 8, 6)
-                .texture("#0")
-                .end()
-                .face(Direction.EAST)
-                .uvs(5, 2, 8, 3)
-                .texture("#0")
-                .end()
-                .face(Direction.SOUTH)
-                .uvs(5, 3, 8, 4)
-                .texture("#0")
-                .end()
-                .face(Direction.WEST)
-                .uvs(5, 4, 8, 5)
-                .texture("#0")
-                .end()
-                .face(Direction.UP)
-                .uvs(5, 6, 8, 9)
-                .texture("#0")
-                .end()
-                .face(Direction.DOWN)
-                .uvs(5, 6, 8, 9)
-                .texture("#0")
-                .end();
-
-        models().withExistingParent(prefix + "_pebble_3", "block")
-                .texture("0", texture)
-                .texture("particle", texture)
-                .element()
-                .from(11.5F, (float) -0.2, 2)
-                .to(14.5F, (float) 0.8, 5)
-                .rotation()
-                .angle((float) 0)
-                .axis(Direction.Axis.Y)
-                .origin(12.5F, (float) 15.8, 4)
-                .end().face(Direction.NORTH)
-                .uvs(0, 0, 3, 1)
-                .texture("#0")
-                .end()
-                .face(Direction.EAST)
-                .uvs(0, 0, 3, 1)
-                .texture("#0")
-                .end()
-                .face(Direction.SOUTH)
-                .uvs(0, 0, 3, 1)
-                .texture("#0")
-                .end()
-                .face(Direction.WEST)
-                .uvs(0, 0, 3, 1)
-                .texture("#0")
-                .end()
-                .face(Direction.UP)
-                .uvs(0, 0, 3, 3)
-                .end()
-                .face(Direction.DOWN)
-                .uvs(0, 0, 3, 3)
-                .texture("#0")
-                .end();
-
-        models().withExistingParent(prefix + "_pebble_4", "block")
-                .texture("0", texture)
-                .texture("particle", texture)
-                .element()
-                .from(9.5F, (float) -0.2, 8)
-                .to(13.5F, (float) 0.8, 12)
-                .rotation()
-                .angle((float) -45)
-                .axis(Direction.Axis.Y)
-                .origin(10.5F, (float) -0.2, 8)
-                .end().face(Direction.NORTH)
-                .uvs(11, 15, 15, 16)
-                .texture("#0")
-                .end()
-                .face(Direction.EAST)
-                .uvs(6, 11, 10, 12)
-                .texture("#0")
-                .end()
-                .face(Direction.SOUTH)
-                .uvs(12, 10, 16, 11)
-                .texture("#0")
-                .end()
-                .face(Direction.WEST)
-                .uvs(6, 12, 10, 13)
-                .texture("#0")
-                .end()
-                .face(Direction.UP)
-                .uvs(10, 3, 14, 7)
-                .end()
-                .face(Direction.DOWN)
-                .uvs(7, 0, 11, 4)
-                .texture("#0")
-                .end()
-                .from(8F, (float) -0.7, 7)
-                .to(13F, (float) 0.3, 10)
-                .rotation()
-                .angle(-22.5F)
-                .axis(Direction.Axis.Y)
-                .origin(3, 0, 0)
-                .end().face(Direction.NORTH)
-                .uvs(11, 15, 16, 16)
-                .texture("#0")
-                .end()
-                .face(Direction.EAST)
-                .uvs(1, 13, 4, 14)
-                .texture("#0")
-                .end()
-                .face(Direction.SOUTH)
-                .uvs(6, 12, 11, 13)
-                .texture("#0")
-                .end()
-                .face(Direction.WEST)
-                .uvs(5, 5, 8, 6)
-                .texture("#0")
-                .end()
-                .face(Direction.UP)
-                .uvs(3, 6, 8, 9)
-                .texture("#0")
-                .end()
-                .face(Direction.DOWN)
-                .uvs(3, 6, 8, 9)
-                .texture("#0")
-                .end();
-
-        models().withExistingParent(prefix + "_pebble_5", "block")
-                .texture("0", texture)
-                .texture("particle", texture)
-                .element()
-                .from(6F, (float) -0.6, 10)
-                .to(11F, (float) 0.4, 14)
-                .rotation()
-                .angle(22.5F)
-                .axis(Direction.Axis.Y)
-                .origin(2, 0, 2)
-                .end().face(Direction.NORTH)
-                .uvs(5, 4, 10, 5)
-                .texture("#0")
-                .end()
-                .face(Direction.EAST)
-                .uvs(6, 2, 10, 3)
-                .texture("#0")
-                .end()
-                .face(Direction.SOUTH)
-                .uvs(5, 3, 10, 4)
-                .texture("#0")
-                .end()
-                .face(Direction.WEST)
-                .uvs(6, 1, 10, 2)
-                .texture("#0")
-                .end()
-                .face(Direction.UP)
-                .uvs(5, 5, 10, 9)
-                .end()
-                .face(Direction.DOWN)
-                .uvs(5, 5, 10, 9)
-                .texture("#0")
-                .end()
-                .from(10.5F, (float) -0.2, 9)
-                .to(13.5F, (float) 0.8, 12)
-                .rotation()
-                .angle(-22.5F)
-                .axis(Direction.Axis.Y)
-                .origin(2, 0, 2)
-                .end().face(Direction.NORTH)
-                .uvs(5, 8, 8, 9)
-                .texture("#0")
-                .end()
-                .face(Direction.EAST)
-                .uvs(5, 5, 8, 6)
-                .texture("#0")
-                .end()
-                .face(Direction.SOUTH)
-                .uvs(5, 6, 8, 7)
-                .texture("#0")
-                .end()
-                .face(Direction.WEST)
-                .uvs(5, 7, 8, 8)
-                .texture("#0")
-                .end()
-                .face(Direction.UP)
-                .uvs(5, 9, 8, 12)
-                .texture("#0")
-                .end()
-                .face(Direction.DOWN)
-                .uvs(5, 9, 8, 12)
-                .texture("#0")
-                .end();
-
-        models().withExistingParent(prefix + "_pebble_6", "block")
-                .texture("0", texture)
-                .texture("particle", texture)
-                .element()
-                .from(10.5F, (float) -0.2, 2)
-                .to(13.5F, (float) 0.8, 5)
-                .rotation()
-                .angle((float) 45)
-                .axis(Direction.Axis.Y)
-                .origin(12.5F, (float) 15.8, 4)
-                .end().face(Direction.NORTH)
-                .uvs(12, 15, 15, 16)
-                .texture("#0")
-                .end()
-                .face(Direction.EAST)
-                .uvs(13, 10, 16, 11)
-                .texture("#0")
-                .end()
-                .face(Direction.SOUTH)
-                .uvs(6, 12, 9, 13)
-                .texture("#0")
-                .end()
-                .face(Direction.WEST)
-                .uvs(7, 1, 10, 2)
-                .texture("#0")
-                .end()
-                .face(Direction.UP)
-                .uvs(11, 3, 14, 6)
-                .end()
-                .face(Direction.DOWN)
-                .uvs(8, 7, 11, 10)
-                .texture("#0")
-                .end();
     }
 
 }

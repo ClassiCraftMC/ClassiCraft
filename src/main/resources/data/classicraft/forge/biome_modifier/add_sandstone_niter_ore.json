@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_overworld",
+  "features": "classicraft:niter_ore_with_sandstone_placed",
+  "step": "underground_ores"
+}

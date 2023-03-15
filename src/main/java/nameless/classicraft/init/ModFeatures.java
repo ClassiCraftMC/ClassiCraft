@@ -18,9 +18,7 @@
 package nameless.classicraft.init;
 
 import nameless.classicraft.ClassiCraftMod;
-import nameless.classicraft.levelgen.LevelSurfaceFeature;
-import nameless.classicraft.levelgen.ReplaceAllFeature;
-import nameless.classicraft.levelgen.TwigSurfaceFeature;
+import nameless.classicraft.levelgen.*;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraftforge.registries.DeferredRegister;
@@ -41,4 +39,16 @@ public class ModFeatures {
 
     public static final RegistryObject<TwigSurfaceFeature> TWIG_SURFACE_FEATURE =
             FEATURES.register("twig_surface", TwigSurfaceFeature::new);
+
+    public static final RegistryObject<SulfurOreFeature> SULFUR_ORE_FEATURE =
+            FEATURES.register("sulfur_ore", SulfurOreFeature::new);
+
+    public static final RegistryObject<CattailFeature> CATTAIL_FEATURE =
+            FEATURES.register("cattail", CattailFeature::new);
+
+    public static final RegistryObject<ReedFeature> REED_FEATURE =
+            FEATURES.register("reed", ReedFeature::new);
+
+    public static final RegistryObject<NiterOreWithSandStoneFeature> NITER_ORE_WITH_SANDSTONE =
+            FEATURES.register("niter_ore_with_sandstone", NiterOreWithSandStoneFeature::new);
 }

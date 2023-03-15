@@ -48,7 +48,7 @@ public abstract class MixinItem {
 
     @Inject(method = "inventoryTick", at = @At("HEAD"))
     private void callItemTickInventoryEvent(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected, CallbackInfo ci) {
-        ItemTickInventoryEvent event = new ItemTickInventoryEvent(pStack.getItem(), pLevel, pEntity, pSlotId, pIsSelected);
+        ItemTickInventoryEvent event = new ItemTickInventoryEvent(pStack, pLevel, pEntity, pSlotId, pIsSelected);
         MinecraftForge.EVENT_BUS.post(event);
     }
 }

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "minecraft:mossy_stone_brick_wall"
+  },
+  "result": "minecraft:stone_brick_wall"
+}

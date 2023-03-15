@@ -56,6 +56,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                         .forEach(this::pickaxeMineAble);
         blocks.stream().filter(block -> block.defaultBlockState().getMaterial() == Material.GLASS)
                 .forEach(this::pickaxeMineAble);
+        blocks.stream().filter(block -> block.defaultBlockState().getMaterial() == Material.METAL)
+                .forEach(this::pickaxeMineAble);
         blocks.stream().filter(block -> block.defaultBlockState().getMaterial() == Material.SAND)
                 .forEach(this::shovelMineAble);
         blocks.stream().filter(block -> block.defaultBlockState().getMaterial() == Material.STONE)
@@ -64,7 +66,40 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .forEach(this::needWoodTool);
         blocks.stream().filter(block -> block instanceof FenceBlock)
                 .forEach(this::fenceTag);
+        blocks.stream().filter(block -> block.defaultBlockState().getMaterial() == Material.METAL)
+                        .forEach(this::needStoneTool);
+        blocks.stream().filter(block -> block instanceof ButtonBlock)
+                .forEach(this::button);
+        blocks.stream().filter(block -> block instanceof PressurePlateBlock)
+                .forEach(this::pressurePlate);
         wallPost();
+        soulFires();
+    }
+
+    private void soulFires() {
+        soulFire(ModBlocks.SOUL_QUICKSAND.get());
+        soulFire(ModBlocks.SOUL_SANDSTONE.get());
+        soulFire(ModBlocks.SOUL_SANDSTONE_BRICKS.get());
+        soulFire(ModBlocks.SOUL_SANDSTONE_NITER_ORE.get());
+        soulFire(ModBlocks.SMOOTH_SOUL_SANDSTONE.get());
+        soulFire(ModBlocks.CHISELED_SOUL_SANDSTONE.get());
+        soulFire(ModBlocks.CUT_SOUL_SANDSTONE.get());
+    }
+
+    private void button(Block button) {
+        tag(BlockTags.BUTTONS).add(button);
+    }
+
+    private void pressurePlate(Block pressurePlate) {
+        tag(BlockTags.PRESSURE_PLATES).add(pressurePlate);
+    }
+
+    private void soulFire(Block soul) {
+        tag(BlockTags.SOUL_FIRE_BASE_BLOCKS).add(soul);
+    }
+
+    private void needStoneTool(Block ore) {
+        tag(BlockTags.NEEDS_STONE_TOOL).add(ore);
     }
 
     private void wallPost() {

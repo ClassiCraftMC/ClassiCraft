@@ -111,6 +111,23 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.DEBUG_BURN_TIME_STICK.get());
         basicItem(ModItems.PUMPKIN_SLICE.get());
         basicItem(ModItems.MOSS_CLUMP.get());
+        basicItem(ModItems.CERAMIC_BOWL.get());
+        basicItem(ModItems.UNFIRED_CLAY_BRICK.get());
+        basicItem(ModItems.UNFIRED_CLAY_BOWL.get());
+        basicItem(ModItems.UNFIRED_CLAY_FLOWER_POT.get());
+        basicItem(ModItems.PLAINTIVE_SOUL.get());
+        basicItem(ModItems.SHIVER_BONE.get());
+        basicItem(ModItems.WITHER_BONE.get());
+        basicItem(ModItems.FURIOUS_SOUL.get());
+        basicItem(ModItems.CAREFREE_SOUL.get());
+        basicItem(ModItems.TERRIFIED_SOUL.get());
+        basicItem(ModItems.NITER.get());
+        toolItem(ModItems.STONE_HAMMER.get());
+        toolItem(ModItems.WOODEN_HAMMER.get());
+        toolItem(ModItems.IRON_HAMMER.get());
+        toolItem(ModItems.GOLDEN_HAMMER.get());
+        toolItem(ModItems.DIAMOND_HAMMER.get());
+        toolItem(ModItems.NETHERITE_HAMMER.get());
         threeBuildBlockItems("cracked_deepslate_tiles", "minecraft:block/cracked_deepslate_tiles");
         threeBuildBlockItems("sandstone_bricks", "classicraft:block/sandstone_bricks");
         threeBuildBlockItems("red_sandstone_bricks", "classicraft:block/red_sandstone_bricks");
@@ -134,24 +151,43 @@ public class ModItemModelProvider extends ItemModelProvider {
         threeBuildBlockItems("andesite_bricks", "classicraft:block/andesite_bricks");
         threeBuildBlockItems("cracked_andesite_bricks", "classicraft:block/cracked_andesite_bricks");
         threeBuildBlockItems("mossy_andesite_bricks", "classicraft:block/mossy_andesite_bricks");
-        threeBuildBlockItems("chiseled_andesite_bricks", "classicraft:block/chiseled_andesite_bricks");
         concreteThreeBlockItems();
         blockItem(ModBlocks.GLISTERING_MELON);
         terracottaThreeBlockItems();
         threeBuildBlockItems("granite_bricks", "classicraft:block/granite_bricks");
         threeBuildBlockItems("cracked_granite_bricks", "classicraft:block/cracked_granite_bricks");
         threeBuildBlockItems("mossy_granite_bricks", "classicraft:block/mossy_granite_bricks");
-        threeBuildBlockItems("chiseled_granite_bricks", "classicraft:block/chiseled_granite_bricks");
         threeBuildBlockItems("diorite_bricks", "classicraft:block/diorite_bricks");
         threeBuildBlockItems("cracked_diorite_bricks", "classicraft:block/cracked_diorite_bricks");
         threeBuildBlockItems("mossy_diorite_bricks", "classicraft:block/mossy_diorite_bricks");
-        threeBuildBlockItems("chiseled_diorite_bricks", "classicraft:block/chiseled_diorite_bricks");
-
+        threeBuildBlockItems("mossy_cobbled_deepslate", "classicraft:block/mossy_cobbled_deepslate");
+        threeBuildBlockItems("mossy_deepslate_bricks", "classicraft:block/mossy_deepslate_bricks");
+        threeBuildBlockItems("mossy_deepslate_tiles", "classicraft:block/mossy_deepslate_tiles");
+        buttonInventory(ModBlocks.POLISHED_ANDESITE_BUTTON, "minecraft:block/polished_andesite");
+        buttonInventory(ModBlocks.POLISHED_DIORITE_BUTTON, "minecraft:block/polished_diorite");
+        buttonInventory(ModBlocks.POLISHED_GRANITE_BUTTON, "minecraft:block/polished_granite");
+        buttonInventory(ModBlocks.SMOOTH_STONE_BUTTON, "minecraft:block/smooth_stone");
+        buttonInventory(ModBlocks.BLACKSTONE_BUTTON, "minecraft:block/blackstone_top");
+        buttonInventory(ModBlocks.DEEPSLATE_BUTTON, "minecraft:block/deepslate_top");
+        buttonInventory(ModBlocks.POLISHED_DEEPSLATE_BUTTON, "minecraft:block/polished_deepslate");
+        pressurePlateInventory(ModBlocks.POLISHED_ANDESITE_PRESSURE_PLATE, "minecraft:block/polished_andesite");
+        pressurePlateInventory(ModBlocks.POLISHED_DIORITE_PRESSURE_PLATE, "minecraft:block/polished_diorite");
+        pressurePlateInventory(ModBlocks.POLISHED_GRANITE_PRESSURE_PLATE, "minecraft:block/polished_granite");
+        pressurePlateInventory(ModBlocks.SMOOTH_STONE_PRESSURE_PLATE, "minecraft:block/smooth_stone");
+        pressurePlateInventory(ModBlocks.BLACKSTONE_PRESSURE_PLATE, "minecraft:block/blackstone_top");
+        pressurePlateInventory(ModBlocks.DEEPSLATE_PRESSURE_PLATE, "minecraft:block/deepslate_top");
+        pressurePlateInventory(ModBlocks.POLISHED_DEEPSLATE_PRESSURE_PLATE, "minecraft:block/polished_deepslate");
     }
 
+    private void pressurePlateInventory(RegistryObject<Block> block, String texture) {
+        pressurePlate(block.getId().toString(), new ResourceLocation(texture));
+    }
 
-    public ItemModelBuilder otherItem(Item item, String texture)
-    {
+    private void buttonInventory(RegistryObject<Block> block, String texture) {
+        buttonInventory(block.getId().toString(), new ResourceLocation(texture));
+    }
+
+    public ItemModelBuilder otherItem(Item item, String texture) {
         return getBuilder(Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)).toString())
                 .parent(new ModelFile.UncheckedModelFile("item/generated"))
                 .texture("layer0", new ResourceLocation(texture));
@@ -240,5 +276,24 @@ public class ModItemModelProvider extends ItemModelProvider {
     void blockItem(RegistryObject<Block> block) {
         withExistingParent(block.getId().getPath(),
                 modLoc("block/" + block.getId().getPath()));
+    }
+
+    void bucketLibItem(RegistryObject<Item> item) {
+        withExistingParent(item.getId().getPath(),
+                new ResourceLocation("bucketlib:item/universal_bucket"))
+                .texture("base", modLoc("item/" + item.getId().getPath()))
+                .texture("lowerBase", modLoc("item/" + "lower_" + item.getId().getPath()))
+                .texture("crackedBase", modLoc("item/" + item.getId().getPath()))
+                .texture("crackedLowerBase", modLoc("item/" + "lower_" + item.getId().getPath()));
+    }
+
+    public ItemModelBuilder toolItem(Item item) {
+        return toolItem(Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)));
+    }
+
+    public ItemModelBuilder toolItem(ResourceLocation item) {
+        return getBuilder(item.toString())
+                .parent(new ModelFile.UncheckedModelFile("item/handheld"))
+                .texture("layer0", new ResourceLocation(item.getNamespace(), "item/" + item.getPath()));
     }
 }

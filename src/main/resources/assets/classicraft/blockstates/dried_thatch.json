@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "classicraft:block/dried_thatch_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "classicraft:block/dried_thatch"
+    },
+    "axis=z": {
+      "model": "classicraft:block/dried_thatch_horizontal",
+      "x": 90
+    }
+  }
+}
