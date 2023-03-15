@@ -79,10 +79,10 @@ public class ModBlocks {
                     () -> new QuickSandBlock(11098145));
 
     public static final RegistryObject<Block> ROSE =
-            registerDefault("rose", () -> new FlowerBlock(MobEffects.DIG_SPEED, 2
+            registerDefault("rose", () -> new FlowerBlock(() -> MobEffects.DIG_SPEED, 2
             , BlockBehaviour.Properties.copy(Blocks.DANDELION)));
     public static final RegistryObject<Block> POTTED_ROSE =
-            register("potted_rose", () -> new FlowerPotBlock(ROSE.get(),
+            register("potted_rose", () -> new FlowerPotBlock(null, () -> ROSE.get(),
                     BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
 
     public static final RegistryObject<Block> TALLOW_BLOCK =
@@ -1938,23 +1938,29 @@ public class ModBlocks {
     public static final RegistryObject<Block> POLISHED_DEEPSLATE_BUTTON =
             registerDefault("polished_deepslate_button", ModBlocks::stoneButton);
     public static final RegistryObject<Block> DEEPSLATE_PRESSURE_PLATE =
-            registerDefault("deepslate_pressure_plate", ModBlocks::pressurePlate);
+            registerDefault("deepslate_pressure_plate", () ->
+                    pressurePlate(SoundType.DEEPSLATE));
 
     public static final RegistryObject<Block>  POLISHED_DEEPSLATE_PRESSURE_PLATE =
-            registerDefault("polished_deepslate_pressure_plate", ModBlocks::pressurePlate);
+            registerDefault("polished_deepslate_pressure_plate", () ->
+                    pressurePlate(SoundType.DEEPSLATE));
 
     public static final RegistryObject<Block> POLISHED_ANDESITE_PRESSURE_PLATE =
-            registerDefault("polished_andesite_pressure_plate", ModBlocks::pressurePlate);
-
+            registerDefault("polished_andesite_pressure_plate",  () ->
+                    pressurePlate(SoundType.STONE));
     public static final RegistryObject<Block> POLISHED_DIORITE_PRESSURE_PLATE =
-            registerDefault("polished_diorite_pressure_plate", ModBlocks::pressurePlate);
+            registerDefault("polished_diorite_pressure_plate",  () ->
+                    pressurePlate(SoundType.STONE));
 
     public static final RegistryObject<Block> POLISHED_GRANITE_PRESSURE_PLATE =
-            registerDefault("polished_granite_pressure_plate", ModBlocks::pressurePlate);
+            registerDefault("polished_granite_pressure_plate",  () ->
+                    pressurePlate(SoundType.STONE));
     public static final RegistryObject<Block> SMOOTH_STONE_PRESSURE_PLATE =
-            registerDefault("smooth_stone_pressure_plate", ModBlocks::pressurePlate);
+            registerDefault("smooth_stone_pressure_plate",  () ->
+                    pressurePlate(SoundType.STONE));
     public static final RegistryObject<Block> BLACKSTONE_PRESSURE_PLATE =
-            registerDefault("blackstone_pressure_plate", ModBlocks::pressurePlate);
+            registerDefault("blackstone_pressure_plate",  () ->
+                    pressurePlate(SoundType.STONE));
 
     public static final RegistryObject<Block> CHISELED_DEEPSLATE_BRICKS =
             registerDefault("chiseled_deepslate_bricks", () ->
@@ -1998,11 +2004,11 @@ public class ModBlocks {
                             BlockBehaviour.Properties.of(Material.CLAY)
                                     .sound(SoundType.DEEPSLATE)));
 
-    private static PressurePlateBlock pressurePlate() {
+    private static PressurePlateBlock pressurePlate(SoundType soundType) {
         return new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS,
                 BlockBehaviour.Properties.of(Material.STONE)
-                .requiresCorrectToolForDrops().noCollission().strength(0.5F),
-                SoundEvents.STONE_PRESSURE_PLATE_CLICK_OFF, SoundEvents.STONE_PRESSURE_PLATE_CLICK_ON);
+                .requiresCorrectToolForDrops().noCollission().strength(0.5F)
+                        .sound(soundType), BlockSetType.STONE);
     }
 
     private static ButtonBlock stoneButton() {
