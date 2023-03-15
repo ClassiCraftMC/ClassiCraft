@@ -142,7 +142,7 @@ public class AbstractShark extends WaterAnimal implements Enemy, GeoEntity {
     }
 
     public boolean doHurtTarget(Entity pEntity) {
-        boolean flag = pEntity.hurt(DamageSource.mobAttack(this), (float)((int)this.getAttributeValue(Attributes.ATTACK_DAMAGE)));
+        boolean flag = pEntity.hurt(pEntity.damageSources().mobAttack(this), (float)((int)this.getAttributeValue(Attributes.ATTACK_DAMAGE)));
         if (flag) {
             this.doEnchantDamageEffects(this, pEntity);
             this.playSound(SoundEvents.DOLPHIN_ATTACK, 1.0F, 1.0F);
@@ -184,7 +184,7 @@ public class AbstractShark extends WaterAnimal implements Enemy, GeoEntity {
             } else {
                 this.setMoisntessLevel(this.getMoistnessLevel() - 1);
                 if (this.getMoistnessLevel() <= 0) {
-                    this.hurt(DamageSource.DRY_OUT, 1.0F);
+                    this.hurt(this.damageSources().dryOut(), 1.0F);
                 }
 
                 if (this.onGround) {
@@ -217,7 +217,7 @@ public class AbstractShark extends WaterAnimal implements Enemy, GeoEntity {
     }
 
     public void attack(LivingEntity entity) {
-        if (entity.hurt(DamageSource.mobAttack(this), 2.0F) && entity.isInWater()) {
+        if (entity.hurt(entity.damageSources().mobAttack(this), 2.0F) && entity.isInWater()) {
             this.playSound(SoundEvents.PUFFER_FISH_STING, 1.0F, 1.0F);
             if (entity instanceof Player) {
                 this.setTarget(entity);

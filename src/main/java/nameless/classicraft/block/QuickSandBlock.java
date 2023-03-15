@@ -67,7 +67,7 @@ public class QuickSandBlock extends SandBlock {
     public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
         if (!(pEntity instanceof LivingEntity) || pEntity.getFeetBlockState().is(this)) {
             pEntity.makeStuckInBlock(pState, new Vec3(0.6D, 0.4D, 0.6D));
-            pEntity.hurt(DamageSource.CACTUS, 1.0F);
+            pEntity.hurt(pEntity.damageSources().cactus(), 1.0F);
             if (pLevel.isClientSide) {
                 RandomSource randomsource = pLevel.getRandom();
                 boolean flag = pEntity.xOld != pEntity.getX() || pEntity.zOld != pEntity.getZ();

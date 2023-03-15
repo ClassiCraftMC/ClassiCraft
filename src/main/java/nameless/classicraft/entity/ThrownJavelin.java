@@ -86,7 +86,7 @@ public class ThrownJavelin extends AbstractArrow {
         Entity owner = this.getOwner();
         this.dealtDamage = true;
         SoundEvent soundevent = SoundEvents.TRIDENT_HIT;
-        if (hitEntity.hurt(DamageSource.trident(this, owner == null ? this : owner), damage)) {
+        if (hitEntity.hurt(hitEntity.damageSources().trident(this, owner == null ? this : owner), damage)) {
             if (hitEntity.getType() == EntityType.ENDERMAN) {
                 return;
             }

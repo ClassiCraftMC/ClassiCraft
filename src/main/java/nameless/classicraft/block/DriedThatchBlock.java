@@ -46,7 +46,7 @@ public class DriedThatchBlock extends RotatedPillarBlock implements DryingBlockS
 
     @Override
     public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float distance) {
-        entity.causeFallDamage(distance, 0.2F, DamageSource.FALL);
+        entity.causeFallDamage(distance, 0.2F, entity.damageSources().fall());
     }
 
     @Override

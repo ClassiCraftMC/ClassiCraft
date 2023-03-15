@@ -36,11 +36,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: classicraft-1.0.9.jar
-          path: build/libs/classicraft-1.0.9.jar
-          repo-token:  ${{ secrets.ACTION_TOKEN }}
-      - name: Upload deobf Jar to release
-        uses: actions/upload-artifact@v2
-        with:
-          name: classicraft-1.0.9-deobf.jar
-          path: build/libs/classicraft-1.0.9-deobf.jar
+          path: build/libs/classicraft-1.1.1-all.jar
           repo-token:  ${{ secrets.ACTION_TOKEN }}

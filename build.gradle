@@ -28,7 +28,7 @@ println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty '
 
 minecraft {
 
-    mappings channel: 'parchment', version: '2023.02.05-1.19.3'
+    mappings channel: 'parchment', version: '1.19.3-2023.03.12-1.19.4'
 
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -123,7 +123,7 @@ jarJar.enable()
 dependencies {
     implementation 'org.projectlombok:lombok:1.18.24'
     implementation 'org.jetbrains:annotations:23.1.0'
-    minecraft 'net.minecraftforge:forge:1.19.3-44.1.16'
+    minecraft 'net.minecraftforge:forge:1.19.4-45.0.1'
     implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.19.3:4.0.3')
     jarJar(group: 'software.bernie.geckolib', name: 'geckolib-forge-1.19.3', version: '[3.0.9,4.0.4)') {
         transitive(false)

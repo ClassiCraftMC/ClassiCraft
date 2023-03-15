@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[44,)"
+loaderVersion="[45,)"
 license="GPLv2.0"
 [[mods]]
 modId="classicraft"
@@ -14,22 +14,22 @@ A Vanilla Expandation mod
 '''
 
 [[dependencies.classicraft]]
-    modId="forge"
-    mandatory=true
-    versionRange="[44,)"
-    ordering="NONE"
-    side="BOTH"
+modId="forge"
+mandatory=true
+versionRange="[45,)"
+ordering="NONE"
+side="BOTH"
 
 [[dependencies.classicraft]]
-    modId="minecraft"
-    mandatory=true
-    versionRange="[1.19.3,1.20)"
-    ordering="NONE"
-    side="BOTH"
+modId="minecraft"
+mandatory=true
+versionRange="[1.19.4,1.20)"
+ordering="NONE"
+side="BOTH"
 
 [[dependencies.classicraft]]
-    modId="geckolib"
-    mandatory=true
-    versionRange="[3.0.9,4.0.5)"
-    ordering="NONE"
-    side="BOTH"
+modId="geckolib"
+mandatory=true
+versionRange="[3.0.9,4.0.5)"
+ordering="NONE"
+side="BOTH"

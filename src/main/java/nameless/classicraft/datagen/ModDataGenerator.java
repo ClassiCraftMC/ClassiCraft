@@ -21,7 +21,6 @@ import nameless.classicraft.ClassiCraftMod;
 import nameless.classicraft.datagen.lang.EmptyLangProvider;
 import nameless.classicraft.datagen.lang.ModLanguageProvider;
 import nameless.classicraft.datagen.lang.ModLanguageProviderZh;
-import nameless.classicraft.datagen.levelgen.ModBiomesProvider;
 import nameless.classicraft.datagen.levelgen.ModConfiguredFeatureProvider;
 import nameless.classicraft.datagen.levelgen.ModPlacedFeatureProvider;
 import nameless.classicraft.datagen.loot.ModLootTableProvider;
@@ -54,9 +53,7 @@ public class ModDataGenerator {
                     .add(Registries.PLACED_FEATURE,
                             ModPlacedFeatureProvider::placedFeature)
                     .add(Registries.CONFIGURED_FEATURE,
-                            ModConfiguredFeatureProvider::configuredFeatures)
-                    .add(Registries.BIOME,
-                            ModBiomesProvider::biomes);
+                            ModConfiguredFeatureProvider::configuredFeatures);
 
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
@@ -91,7 +88,7 @@ public class ModDataGenerator {
                 new ModRecipeProvider(pack));
         generator.addProvider(event.includeServer(),
                 new ModItemTagsProvider(pack, lookup,
-                        new ModBlockTagsProvider(pack, lookup, helper), helper));
+                        new ModBlockTagsProvider(pack, lookup, helper).contentsGetter(), helper));
         generator.addProvider(event.includeClient(),
                 new ModSoundDefinitions(pack, helper));
         generator.addProvider(event.includeServer(),

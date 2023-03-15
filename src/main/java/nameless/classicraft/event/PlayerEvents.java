@@ -32,12 +32,10 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrownEgg;
 import net.minecraft.world.item.*;
@@ -48,13 +46,11 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.minecraftforge.common.TierSortingRegistry;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
-import net.minecraftforge.event.entity.living.ShieldBlockEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -149,7 +145,7 @@ public class PlayerEvents {
         if (stack.isEmpty() && state.getBlock() instanceof CactusBlock
                 || stack.isEmpty() && state.getBlock() instanceof CactusBallBlock) {
             if (!player.getAbilities().instabuild) {
-                player.hurt(DamageSource.CACTUS, 1.0F);
+                player.hurt(player.damageSources().cactus(), 1.0F);
             }
         }
         if (stack.getItem() instanceof HoeItem) {
@@ -158,21 +154,6 @@ public class PlayerEvents {
                 event.setNewSpeed(event.getOriginalSpeed() + (float) 2);
             }
         }
-    }
-
-    @SubscribeEvent
-    public static void onShieldBlock(ShieldBlockEvent event) {
-        float damageModifier = 1f;
-        final var useItem = event.getEntity().getUseItem().getItem();
-        if (event.getDamageSource().getDirectEntity() instanceof LivingEntity livingEntity && livingEntity.getMainHandItem().getItem() instanceof TieredItem attackWeapon) {
-            if (useItem instanceof TieredItem shieldItem && TierSortingRegistry.getTiersLowerThan(attackWeapon.getTier()).contains(shieldItem.getTier())) {
-                damageModifier = 0.3f; // shield is worse tier than the attack weapon!
-            }
-        }
-        if (useItem.getDefaultInstance().is(Items.SHIELD)) {
-            damageModifier = 0.25f; // wooden shield is bad
-        }
-        event.setBlockedDamage(event.getOriginalBlockedDamage() * damageModifier);
     }
 
     @SubscribeEvent

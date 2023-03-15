@@ -51,7 +51,7 @@ public class ModCreativeModeTabs {
         Set<Block> blocks = Helpers.getBlocks();
         COMMON_TAB = event.registerCreativeModeTab(Helpers.identifier("common"),
                 builder -> builder.icon(() -> new ItemStack(ModItems.CLASSIC_CRAFT.get()))
-                        .displayItems((features, output, hasPermissions) -> {
+                        .displayItems((params, output) -> {
                             output.accept(ModItems.TORCH_UNLIT.get());
                             output.accept(ModItems.SOUL_TORCH_UNLIT.get());
                             output.accept(ModItems.TROUT.get());
@@ -73,7 +73,7 @@ public class ModCreativeModeTabs {
                         .build());
         TOOLS = event.registerCreativeModeTab(Helpers.identifier("tools"),
                 builder -> builder.icon(() -> new ItemStack(ModItems.IRON_HAMMER.get()))
-                        .displayItems(((features, output, hasPermissions) -> {
+                        .displayItems(((params, output) -> {
                             buckets("_wooden").forEach(output::accept);
                             output.accept(ModItems.CERAMIC_BOWL.get());
                             output.accept(ModItems.DEBUG_BURN_TIME_STICK.get());
@@ -88,7 +88,7 @@ public class ModCreativeModeTabs {
                         .build());
         BUILDING_BLOCKS = event.registerCreativeModeTab(Helpers.identifier("building_blocks"),
                 builder -> builder.icon(() -> new ItemStack(ModBlocks.MOSSY_BRICKS.get()))
-                        .displayItems((features, output, hasPermissions) -> {
+                        .displayItems((params, output) -> {
                             blocks.stream().filter(block -> block instanceof StairBlock)
                                     .forEach(output::accept);
                             blocks.stream().filter(block -> block instanceof FenceBlock)
@@ -118,7 +118,7 @@ public class ModCreativeModeTabs {
 
         MATERIALS = event.registerCreativeModeTab(Helpers.identifier("materials"),
                 builder -> builder.icon(() -> new ItemStack(ModItems.MATERIAL.get()))
-                        .displayItems((features, output, hasPermissions) -> {
+                        .displayItems((params, output) -> {
                             output.accept(ModItems.SULFUR.get());
                             output.accept(ModItems.TALLOW.get());
                             output.accept(ModItems.MOSS_CLUMP.get());
@@ -145,7 +145,7 @@ public class ModCreativeModeTabs {
 
         NATURAL_BLOCKS = event.registerCreativeModeTab(Helpers.identifier("natural_blocks"),
                 builder -> builder.icon(() -> new ItemStack(ModBlocks.DEEPSLATE_SULFUR_ORE.get()))
-                        .displayItems((features, output, hasPermissions) -> {
+                        .displayItems((params, output) -> {
                             output.accept(ModBlocks.DEEPSLATE_SULFUR_ORE.get());
                             output.accept(ModBlocks.NETHER_SULFUR_ORE.get());
                             output.accept(ModBlocks.NITER_BLOCK.get());

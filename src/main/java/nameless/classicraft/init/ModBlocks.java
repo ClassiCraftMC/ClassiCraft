@@ -28,6 +28,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.registries.DeferredRegister;
@@ -2005,10 +2006,8 @@ public class ModBlocks {
     }
 
     private static ButtonBlock stoneButton() {
-        return new ButtonBlock(BlockBehaviour.Properties.of(Material.DECORATION)
-                .noCollission().strength(0.5F)
-                .sound(SoundType.STONE), 20, false,
-                SoundEvents.STONE_BUTTON_CLICK_OFF, SoundEvents.STONE_BUTTON_CLICK_ON);
+        return new ButtonBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(0.5F),
+                BlockSetType.STONE, 20, false);
     }
 
     private static BlockBehaviour.Properties ofStone() {

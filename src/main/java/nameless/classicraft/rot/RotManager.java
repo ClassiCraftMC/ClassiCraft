@@ -239,7 +239,7 @@ public enum RotManager {
             return 1.25F;
         }
 
-        Biome biome = level.getBiome(new BlockPos(pos)).value();
+        Biome biome = level.getBiome(new BlockPos((int) pos.x, (int) pos.y, (int) pos.z)).value();
 
         if (biome.getBaseTemperature() < .31) {
             return .75F;

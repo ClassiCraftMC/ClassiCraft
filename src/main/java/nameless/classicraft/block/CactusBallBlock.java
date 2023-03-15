@@ -24,6 +24,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageSources;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.BlockGetter;
@@ -54,7 +55,7 @@ public class CactusBallBlock extends Block implements IPlantable, BonemealableBl
 
     @Override
     public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
-        pEntity.hurt(DamageSource.CACTUS, 1.0F);
+        pEntity.hurt(pEntity.damageSources().cactus(), 1.0F);
         if (pEntity instanceof LivingEntity living) {
            if (living.isDeadOrDying()) {
                living.sendSystemMessage(Component.translatable("info.classicraft.cactus_sting").append(living.getName()));
